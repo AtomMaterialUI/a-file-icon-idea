@@ -1,0 +1,46 @@
+plugins {
+    id 'org.jetbrains.intellij' version '0.2.14'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+}
+
+dependencies {
+    compile('com.thoughtworks.xstream:xstream:1.4.8') {
+        exclude group: 'xmlpull', module: 'xmlpull'
+        exclude group: 'xpp3', module: 'xpp3_min'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceSets {
+    main {
+        java.srcDirs 'src/main/java'
+        resources.srcDir 'src/main/resources'
+    }
+    test {
+        java.srcDir 'src/test/java'
+        resources.srcDir 'src/test/resources'
+    }
+}
+
+intellij {
+    pluginName 'Atom File Icons IDEA'
+    version '173.2290.1'
+    downloadSources true
+    sameSinceUntilBuild true
+    alternativeIdePath idePath
+    updateSinceUntilBuild = false
+
+    publishPlugin {
+        username publishUsername
+        password publishPassword
+    }
+
+}
