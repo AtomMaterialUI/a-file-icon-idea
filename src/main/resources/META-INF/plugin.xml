@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.mallowigi</id>
     <name>Atom File Icons IDEA</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="heliosaian@gmail.com" url="http://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -16,7 +16,7 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="173.0"/>
+    <idea-version since-build="171.0"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
