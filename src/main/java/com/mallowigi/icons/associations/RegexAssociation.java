@@ -24,25 +24,34 @@
  *
  */
 
-package com.mallowigi.icons;
+package com.mallowigi.icons.associations;
 
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.mallowigi.icons.utils.IconReplacer;
-import org.jetbrains.annotations.NotNull;
+import com.mallowigi.icons.Association;
+import com.mallowigi.icons.FileInfo;
 
-public final class MTIconReplacerComponent implements ApplicationComponent {
+import java.util.regex.Pattern;
 
-  public void initComponent() {
-    IconReplacer.replaceIcons(AllIcons.class, "/icons");
+/**
+ * Association for Regular Expressions
+ */
+public final class RegexAssociation extends Association {
+
+  private String pattern;
+  private transient Pattern compiledPattern;
+
+  @Override
+  public boolean matches(FileInfo file) {
+    if (compiledPattern == null) {
+      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+    }
+    return compiledPattern.matcher(file.getName()).matches();
   }
 
-  public void disposeComponent() {
-
+  public String getPattern() {
+    return pattern;
   }
 
-  @NotNull
-  public String getComponentName() {
-    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
+  public void setPattern(String pattern) {
+    this.pattern = pattern;
   }
 }

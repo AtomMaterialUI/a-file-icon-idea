@@ -47,6 +47,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.ElementBase;
 import com.intellij.psi.util.PsiUtilCore;
 import com.intellij.util.PlatformIcons;
+import com.mallowigi.icons.associations.PsiElementAssociation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -61,15 +62,15 @@ public final class FileIconProvider extends IconProvider {
 
   @Nullable
   @Override
-  public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
+  public Icon getIcon(@NotNull PsiElement psiElement, int i) {
     Icon icon = null;
 
     // Only replace icons on elements representing a file
     // Prevents file icons from being assigned to classes, methods, fields, etc.
     if (psiElement instanceof PsiFile) {
-      final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+      VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
       if (virtualFile != null) {
-        final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+        FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
         icon = getIconForAssociation(file, associations.findAssociationForFile(file));
       }
     } else if (psiElement instanceof PsiDirectory) {
@@ -80,23 +81,35 @@ public final class FileIconProvider extends IconProvider {
   }
 
   /**
+   * Get the relevant icon for association
+   *
+   * @param file        a file
+   * @param association the found association
+   * @return the replaced icon, or null if not found
+   */
+  private Icon getIconForAssociation(FileInfo file, Association association) {
+    boolean isInputInvalid = association == null || association.getIcon() == null;
+    return isInputInvalid ? null : loadIcon(file, association);
+  }
+
+  /**
    * Return correct instance of directory icon (taken straight from the source code)
    *
-   * @param element
-   * @return
+   * @param directory the directory
+   * @return the directory icon
    */
-  private Icon getDirectoryIcon(final PsiDirectory element) {
-    final VirtualFile vFile = element.getVirtualFile();
-    final Project project = element.getProject();
+  private Icon getDirectoryIcon(PsiDirectory directory) {
+    VirtualFile vFile = directory.getVirtualFile();
+    Project project = directory.getProject();
 
-    final SourceFolder sourceFolder;
+    SourceFolder sourceFolder;
     Icon symbolIcon = null;
 
     boolean hasJFS;
     try {
       Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
       hasJFS = true;
-    } catch (final ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       hasJFS = false;
     }
 
@@ -104,51 +117,39 @@ public final class FileIconProvider extends IconProvider {
     try {
       Class.forName("com.intellij.psi.JavaDirectoryService");
       hasJDS = true;
-    } catch (final ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       hasJDS = false;
     }
 
     if (vFile.getParent() == null && vFile.getFileSystem() instanceof ArchiveFileSystem) {
       symbolIcon = PlatformIcons.JAR_ICON;
     } else if (ProjectRootsUtil.isModuleContentRoot(vFile, project)) {
-      final Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
+      Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
       symbolIcon = module != null ? ModuleType.get(module).getIcon() : PlatformIcons.CONTENT_ROOT_ICON_CLOSED;
     } else if ((sourceFolder = ProjectRootsUtil.getModuleSourceRoot(vFile, project)) != null) {
       symbolIcon = SourceRootPresentation.getSourceRootIcon(sourceFolder);
     } else if (hasJFS && JrtFileSystem.isModuleRoot(vFile)) {
       symbolIcon = AllIcons.Nodes.JavaModuleRoot;
-    } else if (hasJDS && JavaDirectoryService.getInstance().getPackage(element) != null) {
+    } else if (hasJDS && JavaDirectoryService.getInstance().getPackage(directory) != null) {
       symbolIcon = PlatformIcons.PACKAGE_ICON;
     } else if (!Registry.is("ide.hide.excluded.files") && ProjectRootManager.getInstance(project).getFileIndex().isExcluded(vFile)) {
       symbolIcon = AllIcons.Modules.ExcludeRoot;
     }
 
     if (symbolIcon != null) {
-      return ElementBase.createLayeredIcon(element, symbolIcon, 0);
+      return ElementBase.createLayeredIcon(directory, symbolIcon, 0);
     }
     return null;
   }
 
   /**
-   * Get the relevant icon for association
+   * Find the icon specified by the association and load it
    *
-   * @param file
-   * @param association
-   * @return
+   * @param file        the file
+   * @param association the association found
+   * @return the icon if found, null otherwise
    */
-  private Icon getIconForAssociation(final FileInfo file, final Association association) {
-    final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadIcon(file, association);
-  }
-
-  /**
-   * Load the association's icon
-   *
-   * @param file
-   * @param association
-   * @return
-   */
-  private Icon loadIcon(final FileInfo file, final Association association) {
+  private Icon loadIcon(FileInfo file, Association association) {
     Icon icon = null;
 
     try {

@@ -30,6 +30,9 @@ import com.google.common.annotations.VisibleForTesting;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
+import com.mallowigi.icons.associations.PsiElementAssociation;
+import com.mallowigi.icons.associations.RegexAssociation;
+import com.mallowigi.icons.associations.TypeAssociation;
 import com.mallowigi.icons.utils.StaticPatcher;
 import com.thoughtworks.xstream.XStream;
 import org.jetbrains.annotations.Nullable;
@@ -49,31 +52,32 @@ public final class Associations implements Serializable {
     return associations;
   }
 
-  public void setAssociations(final List<Association> associations) {
+  public void setAssociations(List<Association> associations) {
     this.associations = associations;
   }
 
   /**
    * Find the Association for the given FileInfo
    *
-   * @param file
-   * @return
+   * @param file a file
+   * @return the association if found
    */
   @VisibleForTesting
   @Nullable
-  protected Association findAssociationForFile(final FileInfo file) {
+  protected Association findAssociationForFile(FileInfo file) {
     Association result = null;
-    for (final Association association : associations) {
+    for (Association association : associations) {
       if (association.matches(file)) {
         result = association;
         break;
       }
     }
 
-    if (result != null && result.getName().equals("Images")) {
+    // Special case for images
+    if (result != null && "Images".equals(result.getName())) {
       try {
         // Icon viewer plugin
-        final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
+        IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
         if (plugin != null) {
           return null;
         }
@@ -85,15 +89,18 @@ public final class Associations implements Serializable {
     return result;
   }
 
-  public static final class AssociationsFactory {
+  /**
+   * Parse XML files to build the list of associations
+   */
+  static final class AssociationsFactory {
     /**
      * Parse icon_associations.xml to build the list of Associations
      *
-     * @return
+     * @return the associations list
      */
-    public static Associations create() {
-      final URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
-      final XStream xStream = new XStream();
+    static Associations create() {
+      URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
+      XStream xStream = new XStream();
       xStream.alias("associations", Associations.class);
       xStream.alias("regex", RegexAssociation.class);
       xStream.alias("type", TypeAssociation.class);

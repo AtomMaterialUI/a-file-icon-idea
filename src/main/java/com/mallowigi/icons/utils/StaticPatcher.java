@@ -34,31 +34,31 @@ public final class StaticPatcher {
   private StaticPatcher() {
   }
 
-  public static void setFieldValue(final Object object, final String fieldName, final Object value) {
+  static void setFieldValue(Object object, String fieldName, Object value) {
     try {
-      final Field field = object.getClass().getDeclaredField(fieldName);
+      Field field = object.getClass().getDeclaredField(fieldName);
       field.setAccessible(true);
       field.set(object, value);
-    } catch (final Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  public static void setFinalStatic(final Class cls, final String fieldName, final Object newValue) throws Exception {
-    final Field[] fields = cls.getDeclaredFields();
+  public static void setFinalStatic(Class cls, String fieldName, Object newValue) throws Exception {
+    Field[] fields = cls.getDeclaredFields();
 
-    for (final Field field : fields) {
+    for (Field field : fields) {
       if (field.getName().equals(fieldName)) {
-        setFinalStatic(field, newValue);
+        StaticPatcher.setFinalStatic(field, newValue);
         return;
       }
     }
   }
 
-  public static void setFinalStatic(final Field field, final Object newValue) throws Exception {
+  static void setFinalStatic(Field field, Object newValue) throws Exception {
     field.setAccessible(true);
 
-    final Field modifiersField = Field.class.getDeclaredField("modifiers");
+    Field modifiersField = Field.class.getDeclaredField("modifiers");
     modifiersField.setAccessible(true);
     modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
@@ -70,11 +70,11 @@ public final class StaticPatcher {
     field.setAccessible(false);
   }
 
-  public static boolean isClass(final String className) {
+  public static boolean isClass(String className) {
     try {
       Class.forName(className);
       return true;
-    } catch (final ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       return false;
     }
   }

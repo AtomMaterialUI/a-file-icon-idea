@@ -26,37 +26,25 @@
 
 package com.mallowigi.icons;
 
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.ElementPresentationUtil;
+import com.intellij.icons.AllIcons;
+import com.intellij.openapi.components.ApplicationComponent;
+import com.mallowigi.icons.utils.IconReplacer;
+import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
-/**
- * Association for PsiElements icons
- * todo
- */
-public final class PsiElementAssociation extends Association {
-  private Class<? extends PsiElement> type;
+public final class IconReplacerComponent implements ApplicationComponent {
+  @Override
+  public void initComponent() {
+    IconReplacer.replaceIcons(AllIcons.class, "/icons");
+  }
 
   @Override
-  public boolean matches(final FileInfo file) {
-    final PsiElement psiElement = file.getPsiElement();
-    return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
+  public void disposeComponent() {
+
   }
 
-  public Icon getIconForFile(final FileInfo file) {
-    final PsiElement psiElement = file.getPsiElement();
-    final int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);
-    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, basicClassKind);
-  }
-
-  public Class<? extends PsiElement> getType() {
-    return type;
-  }
-
-  public void setType(final Class<? extends PsiElement> psiClass) {
-    this.type = psiClass;
+  @Override
+  @NotNull
+  public String getComponentName() {
+    return "IconReplacerComponent";
   }
 }
-

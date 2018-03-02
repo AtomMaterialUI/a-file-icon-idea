@@ -24,7 +24,10 @@
  *
  */
 
-package com.mallowigi.icons;
+package com.mallowigi.icons.associations;
+
+import com.mallowigi.icons.Association;
+import com.mallowigi.icons.FileInfo;
 
 /**
  * Association for Types
@@ -34,7 +37,7 @@ public final class TypeAssociation extends Association {
   private String type;
 
   @Override
-  public boolean matches(final FileInfo file) {
+  public boolean matches(FileInfo file) {
     return file.getFileType().equals(type);
   }
 
@@ -42,7 +45,7 @@ public final class TypeAssociation extends Association {
     return type;
   }
 
-  public void setType(final String type) {
+  public void setType(String type) {
     this.type = type;
   }
 }

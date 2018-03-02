@@ -4,6 +4,23 @@
     <version>1.0.4</version>
     <vendor email="heliosaian@gmail.com" url="http://github.com/mallowigi">Mallowigi</vendor>
 
+    <idea-version since-build="145.0"/>
+
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.mallowigi.icons.IconReplacerComponent</implementation-class>
+        </component>
+    </application-components>
+
+    <actions>
+    </actions>
+
     <description><![CDATA[
       This is a port of the Atom File Icons (https://github.com/file-icons/atom) for Jetbrains products.
 
@@ -14,20 +31,5 @@
 
     ]]>
     </change-notes>
-
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="145.0"/>
-
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <depends>com.intellij.modules.lang</depends>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
-    </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
 
 </idea-plugin>

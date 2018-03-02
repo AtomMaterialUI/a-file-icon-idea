@@ -36,11 +36,19 @@ public abstract class Association implements Serializable {
   private String name;
   private String icon;
 
+  /**
+   * Check whether the file matches the association
+   *
+   * @param file a file
+   * @return true if the association matches
+   */
+  public abstract boolean matches(FileInfo file);
+
   public final String getIcon() {
-    return this.icon;
+    return icon;
   }
 
-  public final void setIcon(final String icon) {
+  public final void setIcon(String icon) {
     this.icon = icon;
   }
 
@@ -48,9 +56,7 @@ public abstract class Association implements Serializable {
     return name;
   }
 
-  public final void setName(final String name) {
+  public final void setName(String name) {
     this.name = name;
   }
-
-  public abstract boolean matches(FileInfo file);
 }

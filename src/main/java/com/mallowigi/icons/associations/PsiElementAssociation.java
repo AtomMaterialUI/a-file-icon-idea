@@ -24,31 +24,41 @@
  *
  */
 
-package com.mallowigi.icons;
+package com.mallowigi.icons.associations;
 
-import java.util.regex.Pattern;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.impl.ElementPresentationUtil;
+import com.mallowigi.icons.Association;
+import com.mallowigi.icons.FileInfo;
+
+import javax.swing.*;
 
 /**
- * Association for Regular Expressions
+ * Association for PsiElements icons
+ * todo
  */
-public final class RegexAssociation extends Association {
-
-  private String pattern;
-  private transient Pattern compiledPattern;
+public final class PsiElementAssociation extends Association {
+  private Class<? extends PsiElement> type;
 
   @Override
-  public boolean matches(final FileInfo file) {
-    if (compiledPattern == null) {
-      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-    }
-    return compiledPattern.matcher(file.getName()).matches();
+  public boolean matches(FileInfo file) {
+    PsiElement psiElement = file.getPsiElement();
+    return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
   }
 
-  public String getPattern() {
-    return pattern;
+  public Icon getIconForFile(FileInfo file) {
+    PsiElement psiElement = file.getPsiElement();
+    int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);
+    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, basicClassKind);
   }
 
-  public void setPattern(final String pattern) {
-    this.pattern = pattern;
+  public Class<? extends PsiElement> getType() {
+    return type;
+  }
+
+  public void setType(Class<? extends PsiElement> psiClass) {
+    type = psiClass;
   }
 }
+
