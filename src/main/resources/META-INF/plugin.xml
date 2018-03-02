@@ -6,6 +6,9 @@
 
     <idea-version since-build="145.0"/>
 
+    <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
+    <depends optional="true">com.jetbrains.twig</depends>
+    <depends optional="true" config-file="python.xml">com.intellij.modules.python</depends>
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
