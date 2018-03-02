@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+    }
+    dependencies {
+        classpath 'org.kordamp:markdown-gradle-plugin:1.0.0'
+    }
+}
+
 plugins {
     id 'org.jetbrains.intellij' version '0.2.14'
 }
@@ -14,6 +24,7 @@ dependencies {
     }
 }
 
+apply plugin: 'org.kordamp.markdown.convert'
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -30,17 +41,32 @@ sourceSets {
     }
 }
 
+markdownToHtml {
+    sourceDir new File("$projectDir/changelog")
+    outputDir new File("$projectDir/changelog")
+}
+
+
+version = System.getenv("pluginVersion") ?: pluginVersion
+
 intellij {
     pluginName 'Atom File Icons IDEA'
-    version '173.2290.1'
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
-    sameSinceUntilBuild true
+//    sameSinceUntilBuild true
 //    alternativeIdePath idePath
-    updateSinceUntilBuild = false
+    updateSinceUntilBuild = true
 
-//    publishPlugin {
-//        username publishUsername
-//        password publishPassword
-//    }
+    patchPluginXml {
+        version "$version"
+        sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
+        changeNotes file("$projectDir/changelog/CHANGELOG.html").text
+//        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
+    }
 
+    publishPlugin {
+        username System.getenv("publishUsername") ?: publishUsername
+        password System.getenv("publishPassword") ?: publishPassword
+//        channels = ['eap']
+    }
 }
