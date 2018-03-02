@@ -31,6 +31,7 @@ import com.intellij.ide.IconProvider;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleType;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.roots.SourceFolder;
@@ -56,7 +57,7 @@ import javax.swing.*;
 /**
  * Provider for file icons
  */
-public final class FileIconProvider extends IconProvider {
+public final class FileIconProvider extends IconProvider implements DumbAware {
 
   private final Associations associations = Associations.AssociationsFactory.create();
 
