@@ -35,12 +35,12 @@ intellij {
     version '173.2290.1'
     downloadSources true
     sameSinceUntilBuild true
-    alternativeIdePath idePath
+//    alternativeIdePath idePath
     updateSinceUntilBuild = false
 
-    publishPlugin {
-        username publishUsername
-        password publishPassword
-    }
+//    publishPlugin {
+//        username publishUsername
+//        password publishPassword
+//    }
 
 }
