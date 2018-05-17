@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+# 2.0
+- Add folder icons feature
+- Add more icons
+
 # 1.2
 - feat(project): add PHPStorm and Pycharm files and plugin support
 - fix(project): rename "files" to "fileTypes" to that it replaces all icons
