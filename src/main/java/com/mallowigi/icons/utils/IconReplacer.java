@@ -38,7 +38,7 @@ public final class IconReplacer {
     // prevent outside instantiation
   }
 
-  public static void replaceIcons(final Class iconsClass, final String iconsRootPath) {
+  public static void replaceIcons(final Class iconsClass, final String iconsRootPath, final String removedPath) {
     // Iterate all fields (which hold icon locations) and patch them if necessary
     for (final Field field : iconsClass.getDeclaredFields()) {
       if (Modifier.isStatic(field.getModifiers())) {
@@ -53,7 +53,7 @@ public final class IconReplacer {
             StaticPatcher.setFieldValue(value, "myIcon", null);
           }
           else if (byClass.getName().endsWith("$CachedImageIcon")) {
-            final String newPath = patchUrlIfNeeded(value, iconsRootPath);
+            final String newPath = patchUrlIfNeeded(value, iconsRootPath, removedPath);
             if (newPath != null) {
               final Icon newIcon = IconLoader.getIcon(newPath);
               StaticPatcher.setFinalStatic(field, newIcon);
@@ -69,11 +69,15 @@ public final class IconReplacer {
 
     // Recurse into nested classes
     for (final Class subClass : iconsClass.getDeclaredClasses()) {
-      replaceIcons(subClass, iconsRootPath);
+      replaceIcons(subClass, iconsRootPath, removedPath);
     }
   }
 
-  private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {
+  public static void replaceIcons(final Class iconsClass, final String iconsRootPath) {
+    replaceIcons(iconsClass, iconsRootPath, "/icons/");
+  }
+
+  private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath, final String removedPath) {
     try {
       final Field urlField = icon.getClass().getDeclaredField("myUrl");
       final Field iconField = icon.getClass().getDeclaredField("myRealIcon");
@@ -87,14 +91,21 @@ public final class IconReplacer {
           path = path.substring(path.lastIndexOf(33) + 1);
 
           if (iconsRootPath.contains("plugins")) {
-            path = path.replace("/icons/", "");
-            path = path.substring(path.lastIndexOf('/') + 1);
+            path = path.replace(removedPath, "");
+            //            path = path.substring(path.lastIndexOf('/') + 1);
           }
 
           path = iconsRootPath + path;
         }
 
-        final URL newUrl = IconReplacer.class.getResource(path);
+        URL newUrl = IconReplacer.class.getResource(path);
+        // if not found and svg
+        if (newUrl == null && path != null && path.contains(".svg")) {
+          // try again with png
+          path = path.replace(".svg", ".png");
+          newUrl = IconReplacer.class.getResource(path);
+        }
+
         if (newUrl != null && path != null) {
           iconField.set(icon, null);
           urlField.set(icon, newUrl);

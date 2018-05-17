@@ -35,8 +35,11 @@ public final class PythonPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/");
+      final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+
+      final Class<?> iconsClass2 = Class.forName("icons.PythonIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass2, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
     } catch (ClassNotFoundException e) {
       // Suppress
     }

@@ -35,6 +35,7 @@ import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.TypeAssociation;
 import com.mallowigi.icons.utils.StaticPatcher;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
@@ -52,7 +53,7 @@ public final class Associations implements Serializable {
     return associations;
   }
 
-  public void setAssociations(List<Association> associations) {
+  public void setAssociations(final List<Association> associations) {
     this.associations = associations;
   }
 
@@ -64,24 +65,25 @@ public final class Associations implements Serializable {
    */
   @VisibleForTesting
   @Nullable
-  protected Association findAssociationForFile(FileInfo file) {
+  public Association findAssociationForFile(final FileInfo file) {
     Association result = null;
-    for (Association association : associations) {
+    for (final Association association : associations) {
       if (association.matches(file)) {
         result = association;
         break;
       }
     }
 
-    // Special case for images
-    if (result != null && "Images".equals(result.getName())) {
+    if (result != null && result.getName().equals("Images")) {
       try {
         // Icon viewer plugin
-        IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
-        if (plugin != null) {
+        final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
+        final IdeaPluginDescriptor plugin2 = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer.fork"));
+
+        if (plugin != null || plugin2 != null) {
           return null;
         }
-      } catch (Exception e) {
+      } catch (final Exception e) {
         e.printStackTrace();
       }
     }
@@ -98,9 +100,9 @@ public final class Associations implements Serializable {
      *
      * @return the associations list
      */
-    static Associations create() {
-      URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
-      XStream xStream = new XStream();
+    public static Associations create(final String associationsFile) {
+      final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
+      final XStream xStream = new XStream(new DomDriver());
       xStream.alias("associations", Associations.class);
       xStream.alias("regex", RegexAssociation.class);
       xStream.alias("type", TypeAssociation.class);
@@ -120,7 +122,11 @@ public final class Associations implements Serializable {
         xStream.useAttributeFor(PsiElementAssociation.class, "type");
       }
 
-      return (Associations) xStream.fromXML(associationsXml);
+      try {
+        return (Associations) xStream.fromXML(associationsXml);
+      } catch (final Exception e) {
+        return new Associations();
+      }
     }
   }
 }

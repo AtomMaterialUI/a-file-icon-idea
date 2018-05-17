@@ -26,6 +26,7 @@
 
 <associations>
     <associations>
+        <type name="Database" type="Database Element" icon="/icons/fileTypes/db.png"/>
         <!-- Custom -->
         <regex name="Github CODE" pattern="CODE_OF_CONDUCT\.md" icon="/icons/fileTypes/github.png"/>
         <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/fileTypes/github.png"/>
@@ -58,7 +59,7 @@
         <regex name="Adobe Elements" pattern=".*\.ae(p|t)$" icon="/icons/fileTypes/ae.png"/>
         <regex name="Ada" pattern=".*\.ada$" icon="/icons/fileTypes/ada.png"/>
         <regex name="Akka" pattern=".*\.akka$" icon="/icons/fileTypes/akka.png"/>
-        <regex name="Angular-CLI" pattern="angular-cli\.json$" icon="/icons/fileTypes/angular.png"/>
+        <regex name="Angular-CLI" pattern="angular(-cli)?\.json$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Android Manifest" pattern="AndroidManifest\.xml$" icon="/icons/fileTypes/android.png"/>
         <regex name="Android Main" pattern="MainActivity\.java$" icon="/icons/fileTypes/android.png"/>
         <regex name="API Blueprint" pattern=".*\.apib$" icon="/icons/fileTypes/apib.png"/>
@@ -106,8 +107,7 @@
         <regex name="DLang" pattern=".*\.d$" icon="/icons/fileTypes/dlang.png"/>
         <regex name="Diff" pattern=".*\.(diff|patch)$" icon="/icons/fileTypes/diff.png"/>
         <regex name="Django" pattern=".*\.(flake8)$" icon="/icons/fileTypes/django.png"/>
-        <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.(extra|dockerignore)$)"
-               icon="/icons/fileTypes/docker.png"/>
+        <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.(extra|dockerignore)$)" icon="/icons/fileTypes/docker.png"/>
         <regex name="DockerCompose" pattern=".*docker-compose.(yml|yaml)$" icon="/icons/fileTypes/docker.png"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj|vb)$" icon="/icons/fileTypes/dotnet.png"/>
         <regex name="Doxygen" pattern="(D|d)oxyfile$" icon="/icons/fileTypes/doxygen.png"/>
@@ -195,7 +195,7 @@
         <regex name="Note" pattern=".*\.(scratch|note)$" icon="/icons/fileTypes/note.png"/>
         <regex name="Node" pattern=".*(server|app)\.js$" icon="/icons/fileTypes/nodejs.png"/>
         <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/fileTypes/npm.png"/>
-        <regex name="NPMfileTypes" pattern=".*\.(npmignore|npmrc)$" icon="/icons/fileTypes/npm.png"/>
+        <regex name="NPMFiles" pattern=".*\.(npmignore|npmrc)$" icon="/icons/fileTypes/npm.png"/>
         <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/fileTypes/npm.png"/>
         <regex name="NVM" pattern=".*\.nvmrc$" icon="/icons/fileTypes/nodejs.png"/>
         <regex name="NSIS" pattern=".*\.nsis*$" icon="/icons/fileTypes/nsis.png"/>
@@ -205,7 +205,7 @@
         <regex name="OneNote" pattern=".*\.onenote" icon="/icons/fileTypes/onenote.png"/>
         <regex name="OpenOffice" pattern=".*\.(odt|odf|ods)$" icon="/icons/fileTypes/openoffice.png"/>
         <regex name="Objective-C" pattern=".*\.mm?$" icon="/icons/fileTypes/objc.png"/>
-        <regex name="Pascal" pattern=".*(pas|pp|pascal)$" icon="/icons/fileTypes/pascal.png"/>
+        <regex name="Pascal" pattern=".*(pas|pascal)$" icon="/icons/fileTypes/pascal.png"/>
         <regex name="Patch" pattern=".*\.(patch|meld)$" icon="/icons/fileTypes/patch.png"/>
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/fileTypes/pdf.png"/>
         <regex name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/fileTypes/perl.png"/>
@@ -224,15 +224,16 @@
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/fileTypes/psd.png"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/fileTypes/premiere.png"/>
         <regex name="Protractor" pattern="protractor\.js(on)?$" icon="/icons/fileTypes/protractor.png"/>
-        <regex name="Puppet" pattern=".*\.(puppet|pp)$" icon="/icons/fileTypes/puppet.png"/>
+        <regex name="Puppet" pattern=".*\.(puppet|pp|epp)$" icon="/icons/fileTypes/puppet.png"/>
         <regex name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx)$" icon="/icons/fileTypes/powerpoint.png"/>
         <regex name="PowerShell" pattern=".*\.(powershell|ps1|cmd)$" icon="/icons/fileTypes/powershell.png"/>
         <regex name="PureScript" pattern=".*\.(purescript|purs)$" icon="/icons/fileTypes/purescript.png"/>
         <regex name="Python" pattern=".*\.(py|python)$" icon="/icons/fileTypes/python.png"/>
         <regex name="R" pattern=".*\.r$" icon="/icons/fileTypes/r.png"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/fileTypes/erb.png"/>
-        <regex name="Rails/Rake" pattern=".*(rails|rake)$" icon="/icons/fileTypes/rails.png"/>
-        <regex name="Rakefile" pattern="Rakefile" icon="/icons/fileTypes/rails.png"/>
+        <regex name="Rails" pattern=".*(rails|rake)$" icon="/icons/fileTypes/rails.png"/>
+        <regex name="Rake" pattern=".*rake$" icon="/icons/fileTypes/rake.png"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/fileTypes/rake.png"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/fileTypes/reason.png"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/fileTypes/rdoc.png"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/fileTypes/react.png"/>
@@ -294,8 +295,7 @@
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/fileTypes/vue.png"/>
         <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$"
                icon="/icons/fileTypes/webpack.png"/>
-        <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$"
-               icon="/icons/fileTypes/word.png"/>
+        <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/fileTypes/word.png"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/fileTypes/windows.png"/>
         <regex name="Xamarin" pattern=".*\.xamarin.*$" icon="/icons/fileTypes/xamarin.png"/>
         <regex name="XCode" pattern=".*\.xcodeproj$" icon="/icons/fileTypes/appstore.png"/>

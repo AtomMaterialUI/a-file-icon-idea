@@ -1,0 +1,72 @@
+<!--
+  ~  The MIT License (MIT)
+  ~
+  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
+  ~
+  -->
+
+<associations>
+    <associations>
+        <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/icons/folders/audio.svg"/>
+        <regex name="aws" pattern="^\.?aws$" icon="/icons/folders/aws.svg"/>
+        <regex name="bower" pattern="^bower_components$" icon="/icons/folders/bower.svg"/>
+        <regex name="circleci" pattern="^\.?circleci$" icon="/icons/folders/circleci.svg"/>
+        <regex name="config" pattern="^(config|conf|environments?|env)$" icon="/icons/folders/config.svg"/>
+        <regex name="components" pattern="^(components?|modules?)$" icon="/icons/folders/components.svg"/>
+        <regex name="db" pattern="^(db|migrate|sql|database)$" icon="/icons/folders/db.svg"/>
+        <regex name="dist" pattern="^(dist|out|build|release)$" icon="/icons/folders/dist.svg"/>
+        <regex name="docker" pattern="^\.?docker$" icon="/icons/folders/docker.svg"/>
+        <regex name="docs" pattern="^docs?$" icon="/icons/folders/docs.svg"/>
+        <regex name="fonts" pattern="^fonts?$" icon="/icons/folders/fonts.svg"/>
+        <regex name="git" pattern="^(\.git|\.submodules)$" icon="/icons/folders/git.svg"/>
+        <regex name="github" pattern="^\.?github$" icon="/icons/folders/github.svg"/>
+        <regex name="global" pattern="^global$" icon="/icons/folders/global.svg"/>
+        <regex name="gradle" pattern="^\.?gradle$" icon="/icons/folders/gradle.svg"/>
+        <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
+        <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/folders/images.svg"/>
+        <regex name="include" pattern="^includes?$" icon="/icons/folders/include.svg"/>
+        <regex name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/icons/folders/kubernetes.svg"/>
+        <regex name="logs" pattern="^logs?$" icon="/icons/folders/logs.svg"/>
+        <regex name="markdown" pattern="^(md|markdown)$" icon="/icons/folders/markdown.svg"/>
+        <regex name="node_modules" pattern="^node_modules$" icon="/icons/folders/node.svg"/>
+        <regex name="other" pattern="^(other|misc)$" icon="/icons/folders/other.svg"/>
+        <regex name="php" pattern="^php$" icon="/icons/folders/php.svg"/>
+        <regex name="redux" pattern="^(reducers?|store)$" icon="/icons/folders/redux.svg"/>
+        <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/icons/folders/resource.svg"/>
+        <regex name="sass" pattern="^(sass|scss)$" icon="/icons/folders/sass.svg"/>
+        <regex name="sources" pattern="^(src|app)$" icon="/icons/folders/src.svg"/>
+        <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/icons/folders/styles.svg"/>
+        <regex name="scripts" pattern="^(scripts?|javascripts?|js)$" icon="/icons/folders/js.svg"/>
+        <regex name="tests" pattern="^(tests?|specs?)$" icon="/icons/folders/tests.svg"/>
+        <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/icons/folders/temp.svg"/>
+        <regex name="themes" pattern="^(themes?)$" icon="/icons/folders/themes.svg"/>
+        <regex name="typescript" pattern="^(typescripts?|ts)$" icon="/icons/folders/ts.svg"/>
+        <regex name="vendors" pattern="^(vendors?|lib)$" icon="/icons/folders/lib.svg"/>
+        <regex name="video" pattern="^(videos?|movies?)$" icon="/icons/folders/video.svg"/>
+        <regex name="views" pattern="^(views?|templates?|pages?|layouts?)$" icon="/icons/folders/views.svg"/>
+        <regex name="vscode" pattern="^\.?vscode$" icon="/icons/folders/vscode.svg"/>
+        <regex name="vue" pattern="^vues?$" icon="/icons/folders/vue.svg"/>
+        <regex name="web" pattern="^(public|static)$" icon="/icons/folders/web.svg"/>
+        <regex name="webpack" pattern="^webpack$" icon="/icons/folders/webpack.svg"/>
+        <regex name="wordpress" pattern="^wp-content$" icon="/icons/folders/wordpress.svg"/>
+
+    </associations>
+</associations>
