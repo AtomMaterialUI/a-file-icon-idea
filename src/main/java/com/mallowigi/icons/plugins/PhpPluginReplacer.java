@@ -27,6 +27,7 @@
 package com.mallowigi.icons.plugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.mallowigi.config.Config;
 import com.mallowigi.icons.utils.IconReplacer;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,9 +36,11 @@ public final class PhpPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      Class<?> iconsClass = Class.forName("icons.PhpIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/php/");
-    } catch (ClassNotFoundException e) {
+      if (Config.getInstance().isEnabledUIIcons()) {
+        final Class<?> iconsClass = Class.forName("icons.PhpIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/php/");
+      }
+    } catch (final ClassNotFoundException e) {
       // Suppress
     }
   }

@@ -29,14 +29,16 @@ package com.mallowigi.icons;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.util.PlatformIcons;
+import com.mallowigi.config.Config;
 import com.mallowigi.icons.utils.IconReplacer;
-import org.jetbrains.annotations.NotNull;
 
 public final class IconReplacerComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
-    IconReplacer.replaceIcons(AllIcons.class, "/icons");
-    IconReplacer.replaceIcons(PlatformIcons.class, "");
+    if (Config.getInstance().isEnabledUIIcons()) {
+      IconReplacer.replaceIcons(AllIcons.class, "/icons");
+      IconReplacer.replaceIcons(PlatformIcons.class, "");
+    }
   }
 
   @Override
@@ -45,7 +47,6 @@ public final class IconReplacerComponent implements ApplicationComponent {
   }
 
   @Override
-  @NotNull
   public String getComponentName() {
     return "IconReplacerComponent";
   }

@@ -27,6 +27,7 @@
 package com.mallowigi.icons.plugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.mallowigi.config.Config;
 import com.mallowigi.icons.utils.IconReplacer;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,20 +36,22 @@ public final class CLionPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      Class<?> iconsClass = Class.forName("icons.CLionIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+      if (Config.getInstance().isEnabledUIIcons()) {
+        Class<?> iconsClass = Class.forName("icons.CLionIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
 
-      iconsClass = Class.forName("icons.CidrDebuggerIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+        iconsClass = Class.forName("icons.CidrDebuggerIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
 
-      iconsClass = Class.forName("icons.RemoteServersIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+        iconsClass = Class.forName("icons.RemoteServersIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
 
-      iconsClass = Class.forName("icons.CidrLangIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+        iconsClass = Class.forName("icons.CidrLangIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
 
-      iconsClass = Class.forName("icons.VcsLogIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+        iconsClass = Class.forName("icons.VcsLogIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+      }
     } catch (final ClassNotFoundException e) {
       // Suppress
     }

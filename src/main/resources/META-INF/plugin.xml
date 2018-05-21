@@ -16,6 +16,10 @@
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.mallowigi.config.Config"/>
+        <applicationConfigurable instance="com.mallowigi.config.Configurable"
+                                 groupId="appearance"
+                                 id="com.mallowigi.config"/>
         <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
     </extensions>
 

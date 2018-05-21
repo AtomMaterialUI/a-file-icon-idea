@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,34 +24,31 @@
  *
  */
 
-package com.mallowigi.icons.plugins;
+package com.mallowigi.config;
 
-import com.intellij.openapi.components.ApplicationComponent;
-import com.mallowigi.config.Config;
-import com.mallowigi.icons.utils.IconReplacer;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.util.messages.Topic;
 
-public final class DataGripPluginReplacer implements ApplicationComponent {
+/**
+ * Configuration Save Events
+ */
+public interface ConfigNotifier {
+  /**
+   * Topic for Material Theme Settings changes
+   */
+  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Atom File Icons Config save", ConfigNotifier.class);
 
-  @Override
-  public void initComponent() {
-    try {
-      if (Config.getInstance().isEnabledUIIcons()) {
-        final Class<?> iconsClass = Class.forName("icons.DatabaseIcons", false, getClass().getClassLoader());
-        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/datagrip/");
-      }
-    } catch (final ClassNotFoundException e) {
-      // Suppress
+  /**
+   * Called when config is changed
+   *
+   * @param mtConfig
+   */
+  void configChanged(Config mtConfig);
+
+  class Adapter implements ConfigNotifier {
+
+    @Override
+    public void configChanged(final Config mtConfig) {
+
     }
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "RubyPluginReplacer";
   }
 }

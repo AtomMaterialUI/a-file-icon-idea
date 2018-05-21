@@ -1,0 +1,39 @@
+JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "config"
+	"i18n.bundleName": "Bundle"
+	"i18n.keyPrefix": "SettingsForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill]"
+			"$rowConstraints": "[][][]"
+		} ) {
+			name: "content"
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "enableFileIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableFileIconsCheckbox.text" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "enableDirectoryIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.text" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "enableUIIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.text" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

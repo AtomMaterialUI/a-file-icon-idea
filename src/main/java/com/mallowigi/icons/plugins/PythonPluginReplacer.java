@@ -27,6 +27,7 @@
 package com.mallowigi.icons.plugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.mallowigi.config.Config;
 import com.mallowigi.icons.utils.IconReplacer;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,12 +36,15 @@ public final class PythonPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+      if (Config.getInstance().isEnabledUIIcons()) {
 
-      final Class<?> iconsClass2 = Class.forName("icons.PythonIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass2, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
-    } catch (ClassNotFoundException e) {
+        final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+
+        final Class<?> iconsClass2 = Class.forName("icons.PythonIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass2, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+      }
+    } catch (final ClassNotFoundException e) {
       // Suppress
     }
   }

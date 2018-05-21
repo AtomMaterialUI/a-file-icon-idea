@@ -27,6 +27,7 @@
 package com.mallowigi.icons.plugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.mallowigi.config.Config;
 import com.mallowigi.icons.utils.IconReplacer;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,8 +36,10 @@ public final class RubyPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      final Class<?> iconsClass = Class.forName("icons.RubyIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/ruby/");
+      if (Config.getInstance().isEnabledUIIcons()) {
+        final Class<?> iconsClass = Class.forName("icons.RubyIcons", false, getClass().getClassLoader());
+        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/ruby/");
+      }
     } catch (final ClassNotFoundException e) {
       // Suppress
     }

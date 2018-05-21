@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,34 +24,19 @@
  *
  */
 
-package com.mallowigi.icons.plugins;
+package com.mallowigi.config.ui;
 
-import com.intellij.openapi.components.ApplicationComponent;
-import com.mallowigi.config.Config;
-import com.mallowigi.icons.utils.IconReplacer;
-import org.jetbrains.annotations.NotNull;
+import javax.swing.*;
 
-public final class DataGripPluginReplacer implements ApplicationComponent {
+/**
+ * Created by helio on 24/03/2017.
+ */
+public interface SettingsFormUI {
+  void init();
 
-  @Override
-  public void initComponent() {
-    try {
-      if (Config.getInstance().isEnabledUIIcons()) {
-        final Class<?> iconsClass = Class.forName("icons.DatabaseIcons", false, getClass().getClassLoader());
-        IconReplacer.replaceIcons(iconsClass, "/icons/plugins/datagrip/");
-      }
-    } catch (final ClassNotFoundException e) {
-      // Suppress
-    }
-  }
+  JComponent getContent();
 
-  @Override
-  public void disposeComponent() {
-  }
+  void afterStateSet();
 
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "RubyPluginReplacer";
-  }
+  void dispose();
 }
