@@ -13,6 +13,10 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 public class SettingsForm implements SettingsFormUI {
+  public SettingsForm() {
+    initComponents();
+  }
+
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
@@ -27,7 +31,7 @@ public class SettingsForm implements SettingsFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
     content = new JPanel();
     enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
@@ -109,11 +113,11 @@ public class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
+  //region Directory Icons
   public boolean getIsEnabledDirectories() {
     return enableDirectoryIconsCheckbox.isSelected();
   }
 
-  //region Directory Icons
   public void setIsEnabledDirectories(final boolean enabledDirectories) {
     enableDirectoryIconsCheckbox.setSelected(enabledDirectories);
   }

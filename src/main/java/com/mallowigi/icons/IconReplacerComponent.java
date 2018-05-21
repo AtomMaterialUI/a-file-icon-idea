@@ -27,23 +27,47 @@
 package com.mallowigi.icons;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.util.PlatformIcons;
+import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.config.ConfigNotifier;
 import com.mallowigi.icons.utils.IconReplacer;
 
 public final class IconReplacerComponent implements ApplicationComponent {
+
+  private MessageBusConnection connect;
+
   @Override
   public void initComponent() {
     if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
       IconReplacer.replaceIcons(AllIcons.class, "/icons");
       IconReplacer.replaceIcons(PlatformIcons.class, "");
     }
+
+    // Listen for changes on the settings
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+  }
+
+  private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
+    updateFileIcons();
+  }
+
+  private void updateFileIcons() {
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+      instanceEx.fireFileTypesChanged();
+      ActionToolbarImpl.updateAllToolbarsImmediately();
+    });
   }
 
   @Override
   public void disposeComponent() {
-
+    connect.disconnect();
   }
 
   @Override
