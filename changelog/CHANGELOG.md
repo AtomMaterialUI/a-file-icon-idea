@@ -7,7 +7,7 @@
 
 # 1.2
 - feat(project): add PHPStorm and Pycharm files and plugin support
-- fix(project): rename "files" to "fileTypes" to that it replaces all icons
+- fix(project): rename "files" to "files" to that it replaces all icons
 - feat(project): Add "nodes" icons for various file trees
 - fix(FileIconProvider): make it DumbAware
 - chore(project): Add markdown to html for changelog
