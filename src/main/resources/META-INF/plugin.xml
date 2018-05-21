@@ -15,7 +15,7 @@
     <depends optional="true" config-file="datagrip.xml">com.intellij.modules.database</depends>
     <depends>com.intellij.modules.lang</depends>
 
-    <resource-bundle>config.Bundle</resource-bundle>
+    <resource-bundle>config.AtomFileIconsBundle</resource-bundle>
 
 
     <extensions defaultExtensionNs="com.intellij">

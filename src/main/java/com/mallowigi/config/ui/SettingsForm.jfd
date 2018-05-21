@@ -3,33 +3,54 @@ JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	"i18n.autoExternalize": true
 	"i18n.bundlePackage": "config"
-	"i18n.bundleName": "Bundle"
+	"i18n.bundleName": "AtomFileIconsBundle"
 	"i18n.keyPrefix": "SettingsForm"
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
-			"$columnConstraints": "[fill]"
+			"$columnConstraints": "[fill][fill][fill]"
 			"$rowConstraints": "[][][]"
 		} ) {
 			name: "content"
-			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "enableFileIconsCheckbox"
-				"text": new FormMessage( null, "SettingsForm.enableFileIconsCheckbox.text" )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "enableFileIconsIcon"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/fileTypes/atom@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "enableDirectoryIconsCheckbox"
-				"text": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.text" )
+				name: "enableFileIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableFileIconsCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.enableFileIconsCheckbox.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "enableDirectoryIconsIcon"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/nodes/compiledClassesFolder@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 1"
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "enableUIIconsCheckbox"
-				"text": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.text" )
+				name: "enableDirectoryIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "enableUIIconsIcon"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/nodes/plugin@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 2"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "enableUIIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 2"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
 public final class SettingsBundle {
 
   @NonNls
-  public static final String PATH_TO_BUNDLE = "config.SettingsBundle";
+  public static final String PATH_TO_BUNDLE = "config.AtomFileIconsBundle";
 
   @NotNull
   private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(SettingsBundle.PATH_TO_BUNDLE);

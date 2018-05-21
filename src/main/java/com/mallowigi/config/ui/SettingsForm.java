@@ -16,21 +16,24 @@ public class SettingsForm implements SettingsFormUI {
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
+  private JLabel enableFileIconsIcon;
   private JCheckBox enableFileIconsCheckbox;
+  private JLabel enableDirectoryIconsIcon;
   private JCheckBox enableDirectoryIconsCheckbox;
+  private JLabel enableUIIconsIcon;
   private JCheckBox enableUIIconsCheckbox;
-
-  public SettingsForm() {
-    initComponents();
-  }
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("config.Bundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
     content = new JPanel();
+    enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
+    enableDirectoryIconsIcon = new JLabel();
     enableDirectoryIconsCheckbox = new JCheckBox();
+    enableUIIconsIcon = new JLabel();
     enableUIIconsCheckbox = new JCheckBox();
 
     //======== content ========
@@ -38,23 +41,40 @@ public class SettingsForm implements SettingsFormUI {
       content.setLayout(new MigLayout(
           "hidemode 3",
           // columns
+          "[fill]" +
+          "[fill]" +
           "[fill]",
           // rows
           "[]" +
           "[]" +
           "[]"));
 
+      //---- enableFileIconsIcon ----
+      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/fileTypes/atom@2x.png")));
+      content.add(enableFileIconsIcon, "cell 0 0");
+
       //---- enableFileIconsCheckbox ----
       enableFileIconsCheckbox.setText(bundle.getString("SettingsForm.enableFileIconsCheckbox.text"));
-      content.add(enableFileIconsCheckbox, "cell 0 0");
+      enableFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableFileIconsCheckbox.toolTipText"));
+      content.add(enableFileIconsCheckbox, "cell 1 0");
+
+      //---- enableDirectoryIconsIcon ----
+      enableDirectoryIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/compiledClassesFolder@2x.png")));
+      content.add(enableDirectoryIconsIcon, "cell 0 1");
 
       //---- enableDirectoryIconsCheckbox ----
       enableDirectoryIconsCheckbox.setText(bundle.getString("SettingsForm.enableDirectoryIconsCheckbox.text"));
-      content.add(enableDirectoryIconsCheckbox, "cell 0 1");
+      enableDirectoryIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableDirectoryIconsCheckbox.toolTipText"));
+      content.add(enableDirectoryIconsCheckbox, "cell 1 1");
+
+      //---- enableUIIconsIcon ----
+      enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/plugin@2x.png")));
+      content.add(enableUIIconsIcon, "cell 0 2");
 
       //---- enableUIIconsCheckbox ----
       enableUIIconsCheckbox.setText(bundle.getString("SettingsForm.enableUIIconsCheckbox.text"));
-      content.add(enableUIIconsCheckbox, "cell 0 2");
+      enableUIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableUIIconsCheckbox.toolTipText"));
+      content.add(enableUIIconsCheckbox, "cell 1 2");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -63,7 +83,6 @@ public class SettingsForm implements SettingsFormUI {
   public void init() {
 
   }
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @Override
   public JComponent getContent() {
