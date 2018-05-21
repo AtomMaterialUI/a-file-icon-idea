@@ -23,6 +23,5 @@ public final class EnableDirectoryIconsAction extends ToggleAction {
    */
   @Override
   public void update(final AnActionEvent e) {
-    e.getPresentation().setEnabled(AtomFileIconsConfig.getInstance().isEnabledDirectories());
   }
 }
