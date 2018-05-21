@@ -31,7 +31,7 @@ public class SettingsForm implements SettingsFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
     content = new JPanel();
     enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
