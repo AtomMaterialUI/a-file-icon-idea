@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+# 3.0
+- Add settings page to control which components to enable or disable.
+- Components: File Icons, Directory Icons and UI Icons (experimental)
+
 # 2.0
 - Add folder icons feature
 - Add more icons
