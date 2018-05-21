@@ -29,13 +29,13 @@ package com.mallowigi.icons;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.util.PlatformIcons;
-import com.mallowigi.config.Config;
+import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.utils.IconReplacer;
 
 public final class IconReplacerComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
-    if (Config.getInstance().isEnabledUIIcons()) {
+    if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
       IconReplacer.replaceIcons(AllIcons.class, "/icons");
       IconReplacer.replaceIcons(PlatformIcons.class, "");
     }

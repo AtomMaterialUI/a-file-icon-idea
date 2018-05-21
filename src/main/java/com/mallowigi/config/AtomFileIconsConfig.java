@@ -35,15 +35,15 @@ import com.mallowigi.config.ui.SettingsForm;
 import org.jetbrains.annotations.Nullable;
 
 @State(
-    name = "MaterialThemeConfig",
-    storages = @Storage("material_theme.xml")
+    name = "AtomFileIconsConfig",
+    storages = @Storage("a-file-icons.xml")
 )
-public class Config implements PersistentStateComponent<Config> {
-  public boolean enabledIcons;
-  public boolean enabledDirectories;
-  public boolean enabledUIIcons;
+public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
+  public boolean enabledIcons = true;
+  public boolean enabledDirectories = true;
+  public boolean enabledUIIcons = true;
 
-  public Config() {
+  public AtomFileIconsConfig() {
   }
 
   /**
@@ -51,8 +51,8 @@ public class Config implements PersistentStateComponent<Config> {
    *
    * @return the MTConfig instance
    */
-  public static Config getInstance() {
-    return ServiceManager.getService(Config.class);
+  public static AtomFileIconsConfig getInstance() {
+    return ServiceManager.getService(AtomFileIconsConfig.class);
   }
 
   public boolean needsRestart(final SettingsForm form) {
@@ -65,7 +65,7 @@ public class Config implements PersistentStateComponent<Config> {
    */
   @Nullable
   @Override
-  public Config getState() {
+  public AtomFileIconsConfig getState() {
     return this;
   }
 
@@ -75,7 +75,7 @@ public class Config implements PersistentStateComponent<Config> {
    * @param state the MTConfig instance
    */
   @Override
-  public void loadState(final Config state) {
+  public void loadState(final AtomFileIconsConfig state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 

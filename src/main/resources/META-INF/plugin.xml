@@ -15,8 +15,11 @@
     <depends optional="true" config-file="datagrip.xml">com.intellij.modules.database</depends>
     <depends>com.intellij.modules.lang</depends>
 
+    <resource-bundle>config.Bundle</resource-bundle>
+
+
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.mallowigi.config.Config"/>
+        <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
         <applicationConfigurable instance="com.mallowigi.config.Configurable"
                                  groupId="appearance"
                                  id="com.mallowigi.config"/>
@@ -30,6 +33,14 @@
     </application-components>
 
     <actions>
+        <!--<group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom File Icon Settings" popup="true"-->
+        <!--icon="/icons/actions/options.png">-->
+        <!--<add-to-group group-id="MainToolBar" anchor="last"/>-->
+        <!--<action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"-->
+        <!--icon="/icons/actions/mtContrast.png"-->
+        <!--description="Toggle Contrast"/>-->
+        <!--</group>-->
+
     </actions>
 
     <description><![CDATA[

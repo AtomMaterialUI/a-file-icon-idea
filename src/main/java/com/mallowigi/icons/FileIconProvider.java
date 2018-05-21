@@ -34,6 +34,7 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiUtilCore;
+import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.associations.PsiElementAssociation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -50,13 +51,15 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
 
   @Nullable
   @Override
-  public Icon getIcon(@NotNull PsiElement psiElement, int i) {
+  public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
     Icon icon = null;
+    final boolean enabledIcons = AtomFileIconsConfig.getInstance().isEnabledIcons();
+    final boolean enabledDirectories = AtomFileIconsConfig.getInstance().isEnabledDirectories();
 
-    if (psiElement instanceof PsiDirectory) {
+    if (enabledDirectories && psiElement instanceof PsiDirectory) {
       icon = getDirectoryIcon(psiElement);
-    } else if (psiElement instanceof PsiFile) {
-      VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+    } else if (enabledIcons && psiElement instanceof PsiFile) {
+      final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
       if (virtualFile != null) {
         final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
         icon = getIconForAssociation(file, associations.findAssociationForFile(file));

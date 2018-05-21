@@ -27,7 +27,7 @@
 package com.mallowigi.icons.plugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
-import com.mallowigi.config.Config;
+import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.utils.IconReplacer;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +36,7 @@ public final class PythonPluginReplacer implements ApplicationComponent {
   @Override
   public void initComponent() {
     try {
-      if (Config.getInstance().isEnabledUIIcons()) {
+      if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
 
         final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
         IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/", "/icons/com/jetbrains/python/");

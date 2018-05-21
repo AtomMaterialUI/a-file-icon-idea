@@ -35,19 +35,19 @@ public interface ConfigNotifier {
   /**
    * Topic for Material Theme Settings changes
    */
-  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Atom File Icons Config save", ConfigNotifier.class);
+  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Atom File Icons AtomFileIconsConfig save", ConfigNotifier.class);
 
   /**
    * Called when config is changed
    *
-   * @param mtConfig
+   * @param atomFileIconsConfig
    */
-  void configChanged(Config mtConfig);
+  void configChanged(AtomFileIconsConfig atomFileIconsConfig);
 
   class Adapter implements ConfigNotifier {
 
     @Override
-    public void configChanged(final Config mtConfig) {
+    public void configChanged(final AtomFileIconsConfig atomFileIconsConfig) {
 
     }
   }

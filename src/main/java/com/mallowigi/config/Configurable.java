@@ -33,10 +33,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Service used to load and save settings from MTConfig
  */
-public final class Configurable extends ConfigurableBase<SettingsForm, Config> implements SearchableConfigurable {
+public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileIconsConfig> implements SearchableConfigurable {
 
   public static final String ID = "com.mallowigi.config";
-  public static final String HELP_ID = "Config";
+  public static final String HELP_ID = "AtomFileIconsConfig";
 
   @Nls
   @Override
@@ -51,8 +51,8 @@ public final class Configurable extends ConfigurableBase<SettingsForm, Config> i
   }
 
   @Override
-  protected Config getConfig() {
-    return Config.getInstance();
+  protected AtomFileIconsConfig getConfig() {
+    return AtomFileIconsConfig.getInstance();
   }
 
   @Override
@@ -61,29 +61,29 @@ public final class Configurable extends ConfigurableBase<SettingsForm, Config> i
   }
 
   @Override
-  protected void setFormState(final SettingsForm mtForm, final Config mtConfig) {
-    getForm().setIsEnabledIcons(mtConfig.isEnabledIcons());
-    getForm().setIsEnabledDirectories(mtConfig.isEnabledDirectories());
-    getForm().setIsEnabledUIIcons(mtConfig.isEnabledUIIcons());
+  protected void setFormState(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
+    getForm().setIsEnabledIcons(atomFileIconsConfig.isEnabledIcons());
+    getForm().setIsEnabledDirectories(atomFileIconsConfig.isEnabledDirectories());
+    getForm().setIsEnabledUIIcons(atomFileIconsConfig.isEnabledUIIcons());
 
     getForm().afterStateSet();
   }
 
   @Override
-  protected void doApply(final SettingsForm mtForm, final Config mtConfig) {
-    mtConfig.setIsEnabledIcons(mtForm.getIsEnabledIcons());
-    mtConfig.setEnabledDirectories(mtForm.getIsEnabledDirectories());
-    mtConfig.setEnabledUIIcons(mtForm.getIsEnabledUIIcons());
+  protected void doApply(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
+    atomFileIconsConfig.setIsEnabledIcons(mtForm.getIsEnabledIcons());
+    atomFileIconsConfig.setEnabledDirectories(mtForm.getIsEnabledDirectories());
+    atomFileIconsConfig.setEnabledUIIcons(mtForm.getIsEnabledUIIcons());
 
-    mtConfig.fireChanged();
+    atomFileIconsConfig.fireChanged();
   }
 
   @Override
-  protected boolean checkModified(final SettingsForm mtForm, final Config mtConfig) {
+  protected boolean checkModified(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
     boolean modified = false;
-    modified |= mtConfig.isEnabledIconsChanged(getForm().getIsEnabledIcons());
-    modified |= mtConfig.isEnabledDirectoriesChanged(getForm().getIsEnabledDirectories());
-    modified |= mtConfig.isEnabledUIIconsChanged(getForm().getIsEnabledUIIcons());
+    modified |= atomFileIconsConfig.isEnabledIconsChanged(getForm().getIsEnabledIcons());
+    modified |= atomFileIconsConfig.isEnabledDirectoriesChanged(getForm().getIsEnabledDirectories());
+    modified |= atomFileIconsConfig.isEnabledUIIconsChanged(getForm().getIsEnabledUIIcons());
 
     return modified;
   }
