@@ -153,7 +153,7 @@ public abstract class ConfigurableBase<FORM extends SettingsFormUI, CONFIG exten
   private synchronized void initComponent() {
     if (getForm() == null) {
       setForm(UIUtil.invokeAndWaitIfNeeded(() -> {
-        FORM form = createForm();
+        final FORM form = createForm();
         form.init();
         return form;
       }));

@@ -42,7 +42,7 @@ public final class SettingsBundle {
   public static final String PATH_TO_BUNDLE = "config.SettingsBundle";
 
   @NotNull
-  private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(PATH_TO_BUNDLE);
+  private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(SettingsBundle.PATH_TO_BUNDLE);
 
   /**
    * Prevent instantiation
@@ -58,9 +58,9 @@ public final class SettingsBundle {
    * @param params
    * @return the message
    */
-  public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
+  public static String message(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
                                @NotNull final Object... params) {
-    return CommonBundle.message(BUNDLE, key, params);
+    return CommonBundle.message(SettingsBundle.BUNDLE, key, params);
   }
 
   /**
@@ -71,9 +71,9 @@ public final class SettingsBundle {
    * @param params
    * @return the message or default
    */
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
+  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
                                         final String defaultValue,
                                         final Object... params) {
-    return CommonBundle.messageOrDefault(BUNDLE, key, defaultValue, params);
+    return CommonBundle.messageOrDefault(SettingsBundle.BUNDLE, key, defaultValue, params);
   }
 }
