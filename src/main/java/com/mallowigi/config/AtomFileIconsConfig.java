@@ -136,4 +136,16 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     return enabledDirectories != isEnabledUIIcons;
   }
   //endregion
+
+  public void toggleEnabledIcons() {
+    enabledIcons = !enabledIcons;
+  }
+
+  public void toggleDirectoriesIcons() {
+    enabledDirectories = !enabledDirectories;
+  }
+
+  public void toggleUIIcons() {
+    enabledUIIcons = !enabledUIIcons;
+  }
 }
