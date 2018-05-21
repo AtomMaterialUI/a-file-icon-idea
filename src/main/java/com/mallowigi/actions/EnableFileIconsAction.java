@@ -6,22 +6,16 @@ import com.mallowigi.config.AtomFileIconsConfig;
 
 public final class EnableFileIconsAction extends ToggleAction {
 
+  public static final AtomFileIconsConfig CONFIG = AtomFileIconsConfig.getInstance();
+
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return AtomFileIconsConfig.getInstance().isEnabledIcons();
+    return CONFIG.isEnabledIcons();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    AtomFileIconsConfig.getInstance().toggleEnabledIcons();
-  }
-
-  /**
-   * Disable Contrast Mode if Material Theme is disabled
-   *
-   * @param e
-   */
-  @Override
-  public void update(final AnActionEvent e) {
+    CONFIG.toggleEnabledIcons();
+    CONFIG.fireChanged();
   }
 }

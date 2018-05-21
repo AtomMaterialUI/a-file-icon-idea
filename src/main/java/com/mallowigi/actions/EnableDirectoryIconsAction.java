@@ -6,22 +6,16 @@ import com.mallowigi.config.AtomFileIconsConfig;
 
 public final class EnableDirectoryIconsAction extends ToggleAction {
 
+  public static final AtomFileIconsConfig CONFIG = AtomFileIconsConfig.getInstance();
+
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return AtomFileIconsConfig.getInstance().isEnabledDirectories();
+    return CONFIG.isEnabledDirectories();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    AtomFileIconsConfig.getInstance().toggleDirectoriesIcons();
-  }
-
-  /**
-   * Disable Contrast Mode if Material Theme is disabled
-   *
-   * @param e
-   */
-  @Override
-  public void update(final AnActionEvent e) {
+    CONFIG.toggleDirectoriesIcons();
+    CONFIG.fireChanged();
   }
 }
