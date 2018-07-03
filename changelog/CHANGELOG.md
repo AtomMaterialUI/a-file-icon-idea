@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+# 4.0
+- Convert icons to SVG
+- Add more system UI icons
+
 # 3.0
 - Add settings page to control which components to enable or disable.
 - Components: File Icons, Directory Icons and UI Icons (experimental)
