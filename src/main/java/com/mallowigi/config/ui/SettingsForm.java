@@ -54,7 +54,7 @@ public class SettingsForm implements SettingsFormUI {
           "[]"));
 
       //---- enableFileIconsIcon ----
-      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/files/atom@2x.png")));
+      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/atom@2x.png")));
       content.add(enableFileIconsIcon, "cell 0 0");
 
       //---- enableFileIconsCheckbox ----

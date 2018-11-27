@@ -1,5 +1,9 @@
 # Changelog
 
+# 6.0
+- Added new **file icons**: Jenkins, Rspec, Rubocop
+- Added new **folder icons**: android, deploy, api, archives, config, constants, core, download, env, exclude, functions, generated, hooks, ios, include, jinja, job, keys, layouts, mailers, meta, middleware, notification, other, packages, posts, react, resourceIOS, routes, scripts, server, serverless, shared, sublime, tasks, themes, utils, upload, vendors, views, vue
+
 # 5.0
 - Added new **file icons**: Arduino, Assembly, Authors, Ballerina, Crystal, CSSMap, Dotjs, DTS, Favicon, Firebase, Flash, Gatsby, Gemfile, Po, JSMap, MJML, Nimble, Raml, Razor, Redux Actions/Stores/Reducers, Smarty, Solidity, Sonar, Stencil, Storybook, Wallaby
 - Added new **folder icons**: benchmarks, coverage, controllers, debug, excluded, expo, jinja, less, maven, messages, models, plugin, python, react, redux, routes, scripts, sublime, sync, tasks

@@ -172,6 +172,7 @@
         <regex name="JS Map" pattern=".*\.js\.map$" icon="/icons/files/jsmap.svg"/>
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/files/pug.svg"/>
         <regex name="Jekyll" pattern=".*_config\.yml$" icon="/icons/files/jekyll.svg"/>
+        <regex name="Jenkins" pattern="^(j|J)enkinsfile(.*)$" icon="/icons/files/jenkins.svg"/>
         <regex name="Jest" pattern=".*jest\.config$" icon="/icons/files/jest.svg"/>
         <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
@@ -236,7 +237,7 @@
         <regex name="PostCSS" pattern=".*\.(pcss|postcss)$" icon="/icons/files/postcss.svg"/>
         <regex name="PostCSS Config" pattern="^(\.postcssrc|postcss\.config)\.js$" icon="/icons/files/postcss.svg"/>
         <regex name="Polymer" pattern="polymer\.json" icon="/icons/files/polymer.svg"/>
-        <regex name="Procfile" pattern="(P|p)rocfile$" icon="/icons/files/procfile.svg"/>
+        <regex name="Procfile" pattern="(P|p)rocfile(\.windows)?$" icon="/icons/files/procfile.svg"/>
         <regex name="Prettier" pattern=".*\.prettier.*$" icon="/icons/files/prettier.svg"/>
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.svg"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.svg"/>
@@ -266,6 +267,8 @@
         <regex name="Robot" pattern=".*(robot)$" icon="/icons/files/robot.svg"/>
         <regex name="Rollup" pattern=".*rollup.*$" icon="/icons/files/rollup.svg"/>
         <regex name="RSpec" pattern=".*\.rspec$" icon="/icons/files/rspec.svg"/>
+        <regex name="RSpec" pattern=".*\*_spec\.rb$" icon="/icons/files/rspec.svg"/>
+        <regex name="Rubocop" pattern=".*\.rubocop.*\.yml$" icon="/icons/files/rubocop.svg"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/files/ruby.svg"/>
         <regex name="Rust" pattern=".*\.(rs|rust)$" icon="/icons/files/rust.svg"/>
         <regex name="RVM" pattern=".*\.rvmrc$" icon="/icons/files/ruby.svg"/>
@@ -334,6 +337,7 @@
         <regex name="Yarn" pattern="(.*yarn(\.lock|rc)$|.*\.yarnclean$)" icon="/icons/files/yarn.svg"/>
         <!-- These take the least priority -->
         <regex name="Preferences" pattern=".*\.(ini|config|env|cfg)$" icon="/icons/files/preferences.svg"/>
+        <regex name="Envs" pattern=".*\.env\.(.*)$" icon="/icons/files/preferences.svg"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.svg"/>
 
         <regex name="Font" pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"

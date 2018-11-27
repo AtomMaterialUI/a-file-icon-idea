@@ -15,7 +15,7 @@ new FormModel {
 			name: "content"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "enableFileIconsIcon"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/files/atom@2x.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/nodes/atom@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
