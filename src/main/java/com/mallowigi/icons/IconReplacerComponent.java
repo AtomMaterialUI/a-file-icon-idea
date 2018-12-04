@@ -76,6 +76,8 @@ public final class IconReplacerComponent implements ApplicationComponent {
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+
+    IconManager.applyFilter();
   }
 
   private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {

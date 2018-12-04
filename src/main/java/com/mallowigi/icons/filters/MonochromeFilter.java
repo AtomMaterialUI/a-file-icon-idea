@@ -25,6 +25,10 @@
 
 package com.mallowigi.icons.filters;
 
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
+import com.intellij.util.ui.UIUtil;
+
 import java.awt.*;
 
 public class MonochromeFilter extends ColorizeFilter {
@@ -33,6 +37,6 @@ public class MonochromeFilter extends ColorizeFilter {
   }
 
   private static Color getPrimaryColor() {
-    return Color.WHITE;
+    return UIUtil.isUnderDarcula() ? ColorUtil.darker(JBColor.WHITE, 2) : ColorUtil.darker(JBColor.BLACK, 2);
   }
 }
