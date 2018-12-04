@@ -26,16 +26,15 @@
 
 package com.mallowigi.icons;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
-import com.intellij.util.PlatformIcons;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.ConfigNotifier;
-import com.mallowigi.icons.utils.IconReplacer;
+import com.mallowigi.icons.patchers.*;
 
 public final class IconReplacerComponent implements ApplicationComponent {
 
@@ -43,10 +42,36 @@ public final class IconReplacerComponent implements ApplicationComponent {
 
   @Override
   public void initComponent() {
-    if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
-      IconReplacer.replaceIcons(AllIcons.class, "/icons");
-      IconReplacer.replaceIcons(PlatformIcons.class, "");
-    }
+    IconLoader.installPathPatcher(new AllIconsPatcher());
+    IconLoader.installPathPatcher(new ImagesIconsPatcher());
+    IconLoader.installPathPatcher(new VCSIconsPatcher());
+    IconLoader.installPathPatcher(new GradleIconsPatcher());
+    IconLoader.installPathPatcher(new TasksIconsPatcher());
+    IconLoader.installPathPatcher(new MavenIconsPatcher());
+    IconLoader.installPathPatcher(new TerminalIconsPatcher());
+    IconLoader.installPathPatcher(new BuildToolsIconsPatcher());
+    IconLoader.installPathPatcher(new RemoteServersIconsPatcher());
+    IconLoader.installPathPatcher(new DatabaseToolsIconsPatcher());
+
+    IconLoader.installPathPatcher(new PHPIconsPatcher());
+    IconLoader.installPathPatcher(new PythonIconsPatcher());
+    IconLoader.installPathPatcher(new CythonIconsPatcher());
+    IconLoader.installPathPatcher(new MakoIconsPatcher());
+    IconLoader.installPathPatcher(new JinjaIconsPatcher());
+    IconLoader.installPathPatcher(new FlaskIconsPatcher());
+    IconLoader.installPathPatcher(new DjangoIconsPatcher());
+    IconLoader.installPathPatcher(new ChameleonIconsPatcher());
+
+    IconLoader.installPathPatcher(new RubyIconsPatcher());
+
+    IconLoader.installPathPatcher(new GolandIconsPatcher());
+    IconLoader.installPathPatcher(new DataGripIconsPatcher());
+    IconLoader.installPathPatcher(new CLionIconsPatcher());
+    IconLoader.installPathPatcher(new AppCodeIconsPatcher());
+    IconLoader.installPathPatcher(new RestClientIconsPatcher());
+
+    IconLoader.installPathPatcher(new RiderIconsPatcher());
+    IconLoader.installPathPatcher(new ResharperIconsPatcher());
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -68,6 +93,8 @@ public final class IconReplacerComponent implements ApplicationComponent {
   @Override
   public void disposeComponent() {
     connect.disconnect();
+
+    MTIconPatcher.clearCache();
   }
 
   @Override

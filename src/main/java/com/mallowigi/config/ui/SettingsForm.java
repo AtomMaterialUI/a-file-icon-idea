@@ -26,6 +26,7 @@ public class SettingsForm implements SettingsFormUI {
   private JCheckBox enableDirectoryIconsCheckbox;
   private JLabel enableUIIconsIcon;
   private JCheckBox enableUIIconsCheckbox;
+  private JTextPane notice;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   private void initComponents() {
@@ -39,6 +40,7 @@ public class SettingsForm implements SettingsFormUI {
     enableDirectoryIconsCheckbox = new JCheckBox();
     enableUIIconsIcon = new JLabel();
     enableUIIconsCheckbox = new JCheckBox();
+    notice = new JTextPane();
 
     //======== content ========
     {
@@ -49,6 +51,7 @@ public class SettingsForm implements SettingsFormUI {
           "[fill]" +
           "[fill]",
           // rows
+          "[]" +
           "[]" +
           "[]" +
           "[]"));
@@ -79,6 +82,10 @@ public class SettingsForm implements SettingsFormUI {
       enableUIIconsCheckbox.setText(bundle.getString("SettingsForm.enableUIIconsCheckbox.text"));
       enableUIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableUIIconsCheckbox.toolTipText"));
       content.add(enableUIIconsCheckbox, "cell 1 2");
+
+      //---- notice ----
+      notice.setText(bundle.getString("SettingsForm.notice.text"));
+      content.add(notice, "cell 1 3");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
