@@ -10,7 +10,7 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[fill][fill][fill]"
-			"$rowConstraints": "[][][][]"
+			"$rowConstraints": "[][][][][]"
 		} ) {
 			name: "content"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -40,23 +40,37 @@ new FormModel {
 				"value": "cell 1 1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "monochromeIcon"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/nodes/monochrome@2x.png" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "monochromeCheckbox"
+				"text": new FormMessage( null, "SettingsForm.monochromeCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.monochromeCheckbox.toolTipText" )
+				"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "enableUIIconsIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/nodes/plugin@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 2"
+				"value": "cell 0 3"
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "enableUIIconsCheckbox"
 				"text": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.text" )
 				"toolTipText": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.toolTipText" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 2"
+				"value": "cell 1 3"
 			} )
 			add( new FormComponent( "javax.swing.JTextPane" ) {
 				name: "notice"
 				"text": new FormMessage( null, "SettingsForm.notice.text" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 3"
+				"value": "cell 1 4"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -74,27 +74,28 @@ public final class IconReplacerComponent implements ApplicationComponent {
     IconLoader.installPathPatcher(new ResharperIconsPatcher());
 
     // Listen for changes on the settings
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+    this.connect = ApplicationManager.getApplication().getMessageBus().connect();
+    this.connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
 
     IconManager.applyFilter();
   }
 
   private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
-    updateFileIcons();
+    this.updateFileIcons();
   }
 
   private void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
       instanceEx.fireFileTypesChanged();
+      IconManager.applyFilter();
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
   }
 
   @Override
   public void disposeComponent() {
-    connect.disconnect();
+    this.connect.disconnect();
 
     MTIconPatcher.clearCache();
   }

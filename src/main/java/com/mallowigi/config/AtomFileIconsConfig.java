@@ -31,7 +31,9 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.ui.SettingsForm;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @State(
@@ -39,9 +41,14 @@ import org.jetbrains.annotations.Nullable;
     storages = @Storage("a-file-icons.xml")
 )
 public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
-  public boolean enabledIcons = true;
-  public boolean enabledDirectories = true;
-  public boolean enabledUIIcons = true;
+  @Property
+  private boolean enabledIcons = true;
+  @Property
+  private boolean enabledDirectories = true;
+  @Property
+  private boolean enabledUIIcons = true;
+  @Property
+  private boolean monochromeIcons = false;
 
   public AtomFileIconsConfig() {
   }
@@ -56,7 +63,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean needsRestart(final SettingsForm form) {
-    final boolean modified = false;
+    final boolean modified = this.isEnabledUIIconsChanged(form.getIsEnabledUIIcons());
     return modified;
   }
 
@@ -75,7 +82,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    * @param state the MTConfig instance
    */
   @Override
-  public void loadState(final AtomFileIconsConfig state) {
+  public void loadState(@NotNull final AtomFileIconsConfig state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 
@@ -88,64 +95,96 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
         .configChanged(this);
   }
 
+  void applySettings(final SettingsForm form) {
+    this.setIsEnabledIcons(form.getIsEnabledIcons());
+    this.setEnabledDirectories(form.getIsEnabledDirectories());
+    this.setEnabledUIIcons(form.getIsEnabledUIIcons());
+    this.setMonochromeIcons(form.getIsEnabledMonochromeIcons());
+
+    this.fireChanged();
+  }
+
   /**
    * Convenience method to reset settings
    */
   public void resetSettings() {
+    this.enabledIcons = true;
+    this.enabledDirectories = true;
+    this.enabledUIIcons = true;
+    this.monochromeIcons = false;
   }
 
   //region Enabled Icons
   public boolean isEnabledIcons() {
-    return enabledIcons;
+    return this.enabledIcons;
   }
 
-  public void setIsEnabledIcons(final boolean enabledIcons) {
+  private void setIsEnabledIcons(final boolean enabledIcons) {
     this.enabledIcons = enabledIcons;
   }
 
   public boolean isEnabledIconsChanged(final boolean isEnabledIcons) {
-    return isEnabledIcons() != isEnabledIcons;
+    return this.isEnabledIcons() != isEnabledIcons;
   }
   //endregion
 
   //region Enabled directories
   public boolean isEnabledDirectories() {
-    return enabledDirectories;
+    return this.enabledDirectories;
   }
 
-  public void setEnabledDirectories(final boolean enabledDirectories) {
+  private void setEnabledDirectories(final boolean enabledDirectories) {
     this.enabledDirectories = enabledDirectories;
   }
 
   public boolean isEnabledDirectoriesChanged(final boolean isEnabledDirectories) {
-    return enabledDirectories != isEnabledDirectories;
+    return this.enabledDirectories != isEnabledDirectories;
+  }
+
+  //endregion
+
+  //region Monochrome icons
+  public boolean isMonochromeIcons() {
+    return this.monochromeIcons;
+  }
+
+  private void setMonochromeIcons(final boolean monochromeIcons) {
+    this.monochromeIcons = monochromeIcons;
+  }
+
+  public boolean isMonochromeIconsChanged(final boolean isEnabledDirectories) {
+    return this.monochromeIcons != isEnabledDirectories;
   }
 
   //endregion
 
   //region UI Icons
   public boolean isEnabledUIIcons() {
-    return enabledUIIcons;
+    return this.enabledUIIcons;
   }
 
-  public void setEnabledUIIcons(final boolean enabledUIIcons) {
+  private void setEnabledUIIcons(final boolean enabledUIIcons) {
     this.enabledUIIcons = enabledUIIcons;
   }
 
   public boolean isEnabledUIIconsChanged(final boolean isEnabledUIIcons) {
-    return enabledDirectories != isEnabledUIIcons;
+    return this.enabledDirectories != isEnabledUIIcons;
   }
   //endregion
 
   public void toggleEnabledIcons() {
-    enabledIcons = !enabledIcons;
+    this.enabledIcons = !this.enabledIcons;
   }
 
   public void toggleDirectoriesIcons() {
-    enabledDirectories = !enabledDirectories;
+    this.enabledDirectories = !this.enabledDirectories;
   }
 
   public void toggleUIIcons() {
-    enabledUIIcons = !enabledUIIcons;
+    this.enabledUIIcons = !this.enabledUIIcons;
+  }
+
+  public void toggleMonochromeIcons() {
+    this.monochromeIcons = !this.monochromeIcons;
   }
 }

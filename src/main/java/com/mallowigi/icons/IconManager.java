@@ -27,6 +27,7 @@
 package com.mallowigi.icons;
 
 import com.intellij.openapi.util.IconLoader;
+import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.filters.MonochromeFilter;
 
 public enum IconManager {
@@ -34,7 +35,7 @@ public enum IconManager {
   MONOCHROME;
 
   public static void applyFilter() {
-    final boolean monochromeIcons = true;
+    final boolean monochromeIcons = AtomFileIconsConfig.getInstance().isMonochromeIcons();
     if (monochromeIcons) {
       IconLoader.setFilter(new MonochromeFilter());
     } else {

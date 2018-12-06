@@ -37,6 +37,6 @@ public class MonochromeFilter extends ColorizeFilter {
   }
 
   private static Color getPrimaryColor() {
-    return UIUtil.isUnderDarcula() ? ColorUtil.darker(JBColor.WHITE, 2) : ColorUtil.darker(JBColor.BLACK, 2);
+    return UIUtil.isUnderDarcula() ? ColorUtil.darker(JBColor.WHITE, 2) : ColorUtil.brighter(JBColor.BLACK, 2);
   }
 }

@@ -35,6 +35,9 @@
                     description="Enable Directory Icons"/>
             <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction" text="Enable UI Icons"
                     description="Enable UI Icons"/>
+            <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
+                    text="Enable Monochrome Icons"
+                    description="Enable Monochrome Icons"/>
         </group>
 
     </actions>

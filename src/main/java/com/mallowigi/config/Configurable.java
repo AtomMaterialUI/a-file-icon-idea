@@ -30,6 +30,8 @@ import com.mallowigi.config.ui.SettingsForm;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * Service used to load and save settings from MTConfig
  */
@@ -61,30 +63,27 @@ public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileI
   }
 
   @Override
-  protected void setFormState(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
-    getForm().setIsEnabledIcons(atomFileIconsConfig.isEnabledIcons());
-    getForm().setIsEnabledDirectories(atomFileIconsConfig.isEnabledDirectories());
-    getForm().setIsEnabledUIIcons(atomFileIconsConfig.isEnabledUIIcons());
-
-    getForm().afterStateSet();
+  protected void setFormState(final SettingsForm form, final AtomFileIconsConfig config) {
+    Objects.requireNonNull(form).setFormState(config);
   }
 
   @Override
-  protected void doApply(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
-    atomFileIconsConfig.setIsEnabledIcons(mtForm.getIsEnabledIcons());
-    atomFileIconsConfig.setEnabledDirectories(mtForm.getIsEnabledDirectories());
-    atomFileIconsConfig.setEnabledUIIcons(mtForm.getIsEnabledUIIcons());
-
-    atomFileIconsConfig.fireChanged();
+  protected void doApply(final SettingsForm form, final AtomFileIconsConfig config) {
+    config.applySettings(form);
   }
 
   @Override
-  protected boolean checkModified(final SettingsForm mtForm, final AtomFileIconsConfig atomFileIconsConfig) {
-    boolean modified = false;
-    modified |= atomFileIconsConfig.isEnabledIconsChanged(getForm().getIsEnabledIcons());
-    modified |= atomFileIconsConfig.isEnabledDirectoriesChanged(getForm().getIsEnabledDirectories());
-    modified |= atomFileIconsConfig.isEnabledUIIconsChanged(getForm().getIsEnabledUIIcons());
+  protected boolean checkModified(final SettingsForm form, final AtomFileIconsConfig config) {
+    return checkFormModified(form, config);
+  }
 
-    return modified;
+  /**
+   * Checks whether the form is modified by comparing to the config
+   *
+   * @param config the config
+   * @return true if changed
+   */
+  private boolean checkFormModified(final SettingsForm form, final AtomFileIconsConfig config) {
+    return Objects.requireNonNull(form).isModified(config);
   }
 }
