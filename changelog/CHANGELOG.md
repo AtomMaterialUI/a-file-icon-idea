@@ -1,5 +1,12 @@
 # Changelog
 
+# 8.0
+- Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons
+- New Option: Monochrome Icons
+
+# 7.0
+- Fix fatal error
+
 # 6.0
 - Added new **file icons**: Jenkins, Rspec, Rubocop
 - Added new **folder icons**: android, deploy, api, archives, config, constants, core, download, env, exclude, functions, generated, hooks, ios, include, jinja, job, keys, layouts, mailers, meta, middleware, notification, other, packages, posts, react, resourceIOS, routes, scripts, server, serverless, shared, sublime, tasks, themes, utils, upload, vendors, views, vue
