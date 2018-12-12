@@ -26,6 +26,8 @@
 
 package com.mallowigi.icons;
 
+import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -40,6 +42,8 @@ import com.mallowigi.icons.patchers.*;
 
 import java.util.Set;
 
+import static com.mallowigi.icons.IconManager.applyFilter;
+
 public final class IconReplacerComponent implements ApplicationComponent {
 
   private MessageBusConnection connect;
@@ -51,9 +55,12 @@ public final class IconReplacerComponent implements ApplicationComponent {
 
     // Listen for changes on the settings
     this.connect = ApplicationManager.getApplication().getMessageBus().connect();
+    this.connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
     this.connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
 
     IconManager.applyFilter();
+    LafManager.getInstance().updateUI();
+
   }
 
   private void installPathPatcher(IconPathPatcher patcher) {
@@ -112,12 +119,11 @@ public final class IconReplacerComponent implements ApplicationComponent {
   }
 
   private void updateFileIcons() {
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-      instanceEx.fireFileTypesChanged();
-      IconManager.applyFilter();
-      ActionToolbarImpl.updateAllToolbarsImmediately();
-    });
+    final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+    instanceEx.fireFileTypesChanged();
+    applyFilter();
+    LafManager.getInstance().updateUI();
+    ActionToolbarImpl.updateAllToolbarsImmediately();
   }
 
   private void updateIcons() {
