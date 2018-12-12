@@ -23,6 +23,9 @@
         <component>
             <implementation-class>com.mallowigi.icons.IconReplacerComponent</implementation-class>
         </component>
+        <component>
+            <implementation-class>com.mallowigi.icons.TintedIconsComponent</implementation-class>
+        </component>
     </application-components>
 
     <actions>
@@ -49,7 +52,8 @@
     ]]></description>
 
     <change-notes><![CDATA[
-
+This is how we do, we make a move and act a fool while we're up in the club.
+This is how we do, nobody do it like we do so just show us some love.
     ]]>
     </change-notes>
 

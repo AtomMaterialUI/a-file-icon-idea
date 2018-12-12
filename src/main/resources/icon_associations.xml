@@ -228,7 +228,7 @@
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/files/pdf.svg"/>
         <regex name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/files/perl.svg"/>
         <regex name="Perforce" pattern=".*p4ignore$" icon="/icons/files/p4.svg"/>
-        <!--<regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/files/php.svg"/>-->
+        <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/files/php.svg"/>
         <regex name="Phalcon" pattern=".*\.(volt)$" icon="/icons/files/phalcon.svg"/>
         <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/files/phpunit.svg"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.svg"/>

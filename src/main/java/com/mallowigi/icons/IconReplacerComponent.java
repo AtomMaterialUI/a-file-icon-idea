@@ -62,8 +62,8 @@ public final class IconReplacerComponent implements ApplicationComponent {
   }
 
   private void removePathPatcher(IconPathPatcher patcher) {
-    CACHE.add(patcher);
-    IconLoader.installPathPatcher(patcher);
+    CACHE.remove(patcher);
+    IconLoader.removePathPatcher(patcher);
   }
 
   private void installPathPatchers() {
