@@ -43,7 +43,7 @@ import java.util.Set;
 public final class IconReplacerComponent implements ApplicationComponent {
 
   private MessageBusConnection connect;
-  Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
+  private Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
 
   @Override
   public void initComponent() {

@@ -25,9 +25,7 @@
 
 package com.mallowigi.icons.filters;
 
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
-import com.intellij.util.ui.UIUtil;
+import com.mallowigi.config.AtomFileIconsConfig;
 
 import java.awt.*;
 
@@ -37,6 +35,6 @@ public class MonochromeFilter extends ColorizeFilter {
   }
 
   private static Color getPrimaryColor() {
-    return UIUtil.isUnderDarcula() ? ColorUtil.darker(JBColor.WHITE, 4) : ColorUtil.brighter(JBColor.BLACK, 4);
+    return AtomFileIconsConfig.getInstance().getMonochromeColor();
   }
 }
