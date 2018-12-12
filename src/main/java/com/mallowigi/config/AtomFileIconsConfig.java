@@ -63,8 +63,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean needsRestart(final SettingsForm form) {
-    final boolean modified = this.isEnabledUIIconsChanged(form.getIsEnabledUIIcons());
-    return modified;
+    return this.isEnabledUIIconsChanged(form.getIsEnabledUIIcons());
   }
 
   /**
@@ -152,8 +151,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     this.monochromeIcons = monochromeIcons;
   }
 
-  public boolean isMonochromeIconsChanged(final boolean isEnabledDirectories) {
-    return this.monochromeIcons != isEnabledDirectories;
+  public boolean isMonochromeIconsChanged(final boolean isMonochrome) {
+    return this.monochromeIcons != isMonochrome;
   }
 
   //endregion
@@ -168,7 +167,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isEnabledUIIconsChanged(final boolean isEnabledUIIcons) {
-    return this.enabledDirectories != isEnabledUIIcons;
+    return this.enabledUIIcons != isEnabledUIIcons;
   }
   //endregion
 

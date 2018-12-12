@@ -31,47 +31,23 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.IconPathPatcher;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.ConfigNotifier;
 import com.mallowigi.icons.patchers.*;
 
+import java.util.Set;
+
 public final class IconReplacerComponent implements ApplicationComponent {
 
   private MessageBusConnection connect;
+  Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
 
   @Override
   public void initComponent() {
-    IconLoader.installPathPatcher(new AllIconsPatcher());
-    IconLoader.installPathPatcher(new ImagesIconsPatcher());
-    IconLoader.installPathPatcher(new VCSIconsPatcher());
-    IconLoader.installPathPatcher(new GradleIconsPatcher());
-    IconLoader.installPathPatcher(new TasksIconsPatcher());
-    IconLoader.installPathPatcher(new MavenIconsPatcher());
-    IconLoader.installPathPatcher(new TerminalIconsPatcher());
-    IconLoader.installPathPatcher(new BuildToolsIconsPatcher());
-    IconLoader.installPathPatcher(new RemoteServersIconsPatcher());
-    IconLoader.installPathPatcher(new DatabaseToolsIconsPatcher());
-
-    IconLoader.installPathPatcher(new PHPIconsPatcher());
-    IconLoader.installPathPatcher(new PythonIconsPatcher());
-    IconLoader.installPathPatcher(new CythonIconsPatcher());
-    IconLoader.installPathPatcher(new MakoIconsPatcher());
-    IconLoader.installPathPatcher(new JinjaIconsPatcher());
-    IconLoader.installPathPatcher(new FlaskIconsPatcher());
-    IconLoader.installPathPatcher(new DjangoIconsPatcher());
-    IconLoader.installPathPatcher(new ChameleonIconsPatcher());
-
-    IconLoader.installPathPatcher(new RubyIconsPatcher());
-
-    IconLoader.installPathPatcher(new GolandIconsPatcher());
-    IconLoader.installPathPatcher(new DataGripIconsPatcher());
-    IconLoader.installPathPatcher(new CLionIconsPatcher());
-    IconLoader.installPathPatcher(new AppCodeIconsPatcher());
-    IconLoader.installPathPatcher(new RestClientIconsPatcher());
-
-    IconLoader.installPathPatcher(new RiderIconsPatcher());
-    IconLoader.installPathPatcher(new ResharperIconsPatcher());
+    updateIcons();
 
     // Listen for changes on the settings
     this.connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -80,8 +56,59 @@ public final class IconReplacerComponent implements ApplicationComponent {
     IconManager.applyFilter();
   }
 
+  private void installPathPatcher(IconPathPatcher patcher) {
+    CACHE.add(patcher);
+    IconLoader.installPathPatcher(patcher);
+  }
+
+  private void removePathPatcher(IconPathPatcher patcher) {
+    CACHE.add(patcher);
+    IconLoader.installPathPatcher(patcher);
+  }
+
+  private void installPathPatchers() {
+    installPathPatcher(new AllIconsPatcher());
+    installPathPatcher(new ImagesIconsPatcher());
+    installPathPatcher(new VCSIconsPatcher());
+    installPathPatcher(new GradleIconsPatcher());
+    installPathPatcher(new TasksIconsPatcher());
+    installPathPatcher(new MavenIconsPatcher());
+    installPathPatcher(new TerminalIconsPatcher());
+    installPathPatcher(new BuildToolsIconsPatcher());
+    installPathPatcher(new RemoteServersIconsPatcher());
+    installPathPatcher(new DatabaseToolsIconsPatcher());
+
+    installPathPatcher(new PHPIconsPatcher());
+    installPathPatcher(new PythonIconsPatcher());
+    installPathPatcher(new CythonIconsPatcher());
+    installPathPatcher(new MakoIconsPatcher());
+    installPathPatcher(new JinjaIconsPatcher());
+    installPathPatcher(new FlaskIconsPatcher());
+    installPathPatcher(new DjangoIconsPatcher());
+    installPathPatcher(new ChameleonIconsPatcher());
+
+    installPathPatcher(new RubyIconsPatcher());
+
+    installPathPatcher(new GolandIconsPatcher());
+    installPathPatcher(new DataGripIconsPatcher());
+    installPathPatcher(new CLionIconsPatcher());
+    installPathPatcher(new AppCodeIconsPatcher());
+    installPathPatcher(new RestClientIconsPatcher());
+
+    installPathPatcher(new RiderIconsPatcher());
+    installPathPatcher(new ResharperIconsPatcher());
+  }
+
+  private void removePathPatchers() {
+    for (IconPathPatcher iconPathPatcher : CACHE) {
+      IconLoader.removePathPatcher(iconPathPatcher);
+    }
+    CACHE.clear();
+  }
+
   private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
     this.updateFileIcons();
+    this.updateIcons();
   }
 
   private void updateFileIcons() {
@@ -91,6 +118,14 @@ public final class IconReplacerComponent implements ApplicationComponent {
       IconManager.applyFilter();
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
+  }
+
+  private void updateIcons() {
+    if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
+      this.installPathPatchers();
+    } else {
+      this.removePathPatchers();
+    }
   }
 
   @Override
