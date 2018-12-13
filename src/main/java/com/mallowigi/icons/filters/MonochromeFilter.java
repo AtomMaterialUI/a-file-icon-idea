@@ -25,16 +25,22 @@
 
 package com.mallowigi.icons.filters;
 
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import com.mallowigi.config.AtomFileIconsConfig;
 
 import java.awt.*;
 
 public class MonochromeFilter extends ColorizeFilter {
+
+  public static final int TONES = 8;
+
   public MonochromeFilter() {
     super(getPrimaryColor());
   }
 
   private static Color getPrimaryColor() {
-    return AtomFileIconsConfig.getInstance().getMonochromeColor();
+    Color color = ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getMonochromeColor());
+    return new JBColor(ColorUtil.darker(color, TONES), ColorUtil.brighter(color, TONES));
   }
 }

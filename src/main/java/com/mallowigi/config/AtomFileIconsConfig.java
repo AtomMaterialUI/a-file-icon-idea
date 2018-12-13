@@ -30,15 +30,11 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.ui.SettingsForm;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
 
 @State(
     name = "AtomFileIconsConfig",
@@ -54,7 +50,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   @Property
   private boolean monochromeIcons = false;
   @Property
-  private Color monochromeColor = new ColorUIResource(0x546E7A);
+  private String monochromeColor = "546E7A";
 
   public AtomFileIconsConfig() {
   }
@@ -92,8 +88,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   void applySettings(final SettingsForm form) {
@@ -110,11 +106,11 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    * Convenience method to reset settings
    */
   public void resetSettings() {
-    this.enabledIcons = true;
-    this.enabledDirectories = true;
-    this.enabledUIIcons = true;
-    this.monochromeIcons = false;
-    this.monochromeColor = new ColorUIResource(0x546E7A);
+    enabledIcons = true;
+    enabledDirectories = true;
+    enabledUIIcons = true;
+    monochromeIcons = false;
+    monochromeColor = "546E7A";
   }
 
   //region Enabled Icons
@@ -176,16 +172,16 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   //endregion
 
   //region monochrome color
-  public Color getMonochromeColor() {
+  public String getMonochromeColor() {
     return this.monochromeColor;
   }
 
-  private void setMonochromeColor(Color monochromeColor) {
+  private void setMonochromeColor(final String monochromeColor) {
     this.monochromeColor = monochromeColor;
   }
 
-  public boolean isMonochromeColorChanged(final Color monochromeColor) {
-    return !ColorUtil.toHex(this.monochromeColor).equals(ColorUtil.toHex(monochromeColor));
+  public boolean isMonochromeColorChanged(final String monochromeColor) {
+    return !this.monochromeColor.equals(monochromeColor);
   }
   //endregion
 
@@ -204,6 +200,4 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   public void toggleMonochromeIcons() {
     this.monochromeIcons = !this.monochromeIcons;
   }
-
-
 }

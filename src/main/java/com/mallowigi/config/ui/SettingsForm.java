@@ -5,12 +5,12 @@
 package com.mallowigi.config.ui;
 
 import com.intellij.ui.ColorPanel;
+import com.intellij.ui.ColorUtil;
 import com.mallowigi.config.AtomFileIconsConfig;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import java.awt.*;
+import javax.swing.event.*;
 import java.util.ResourceBundle;
 
 /**
@@ -21,7 +21,6 @@ public class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
     this.initComponents();
   }
-
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -36,7 +35,6 @@ public class SettingsForm implements SettingsFormUI {
   private JLabel enableUIIconsIcon;
   private JCheckBox enableUIIconsCheckbox;
   private JTextPane notice;
-
 
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
@@ -63,14 +61,14 @@ public class SettingsForm implements SettingsFormUI {
           "hidemode 3",
           // columns
           "[fill]" +
-              "[::600,fill]" +
-              "[fill]",
+          "[::600,fill]" +
+          "[fill]",
           // rows
           "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/atom@2x.png")));
@@ -209,12 +207,12 @@ public class SettingsForm implements SettingsFormUI {
   //endregion
 
   //region mono color
-  public Color getMonochromeColor() {
-    return monoColorChooser.getSelectedColor();
+  public String getMonochromeColor() {
+    return ColorUtil.toHex(monoColorChooser.getSelectedColor());
   }
 
-  private void setMonochromeColor(final Color color) {
-    monoColorChooser.setSelectedColor(color);
+  private void setMonochromeColor(final String color) {
+    monoColorChooser.setSelectedColor(ColorUtil.fromHex(color));
   }
   //endregion
 }
