@@ -47,20 +47,21 @@ import static com.mallowigi.icons.IconManager.applyFilter;
 public final class IconReplacerComponent implements ApplicationComponent {
 
   private MessageBusConnection connect;
-  private Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
+  private final Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
 
   @Override
   public void initComponent() {
     updateIcons();
 
     // Listen for changes on the settings
-    this.connect = ApplicationManager.getApplication().getMessageBus().connect();
-    this.connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
-    this.connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
 
-    IconManager.applyFilter();
-    LafManager.getInstance().updateUI();
-
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      IconManager.applyFilter();
+      LafManager.getInstance().updateUI();
+    });
   }
 
   private void installPathPatcher(IconPathPatcher patcher) {
@@ -113,30 +114,32 @@ public final class IconReplacerComponent implements ApplicationComponent {
     CACHE.clear();
   }
 
-  private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
-    this.updateFileIcons();
-    this.updateIcons();
+  private void onSettingsChanged(AtomFileIconsConfig atomFileIconsConfig) {
+    updateFileIcons();
+    updateIcons();
   }
 
   private void updateFileIcons() {
-    final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-    instanceEx.fireFileTypesChanged();
-    applyFilter();
-    LafManager.getInstance().updateUI();
-    ActionToolbarImpl.updateAllToolbarsImmediately();
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+      instanceEx.fireFileTypesChanged();
+      applyFilter();
+      LafManager.getInstance().updateUI();
+      ActionToolbarImpl.updateAllToolbarsImmediately();
+    });
   }
 
   private void updateIcons() {
     if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
-      this.installPathPatchers();
+      installPathPatchers();
     } else {
-      this.removePathPatchers();
+      removePathPatchers();
     }
   }
 
   @Override
   public void disposeComponent() {
-    this.connect.disconnect();
+    connect.disconnect();
 
     MTIconPatcher.clearCache();
   }

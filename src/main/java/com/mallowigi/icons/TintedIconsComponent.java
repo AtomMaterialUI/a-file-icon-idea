@@ -26,6 +26,7 @@
 
 package com.mallowigi.icons;
 
+import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
@@ -35,11 +36,9 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 /**
@@ -58,6 +57,13 @@ public final class TintedIconsComponent implements BaseComponent {
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
+    LafManagerImpl.getInstance().addLafManagerListener(source -> {
+      SVGLoader.setColorPatcher(null);
+      SVGLoader.setColorPatcher(getColorPatcher());
+
+      TintedColorPatcher.refreshThemeColor(getTintedColor());
+    });
+
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, atomFileIconsConfig -> {
       SVGLoader.setColorPatcher(null);
       SVGLoader.setColorPatcher(getColorPatcher());
@@ -78,7 +84,6 @@ public final class TintedIconsComponent implements BaseComponent {
     return "TintedIconsComponent";
   }
 
-  @SuppressWarnings("WeakerAccess")
   TintedColorPatcher getColorPatcher() {
     return colorPatcher;
   }
@@ -95,7 +100,7 @@ public final class TintedIconsComponent implements BaseComponent {
       refreshColors();
     }
 
-    static void refreshThemeColor(final ColorUIResource theme) {
+    static void refreshThemeColor(ColorUIResource theme) {
       themedColor = theme;
     }
 
@@ -103,16 +108,14 @@ public final class TintedIconsComponent implements BaseComponent {
       themedColor = getTintedColor();
     }
 
-    private String getColorHex(final Color color) {
+    private String getColorHex(Color color) {
       return ColorUtil.toHex(color);
     }
 
-    @SuppressWarnings({"IfStatementWithTooManyBranches",
-        "DuplicateStringLiteralInspection"})
     @Override
-    public final void patchColors(@NonNls final Element svg) {
-      @NonNls final String themed = svg.getAttribute("themed");
-      final String hexColor = getColorHex(themedColor);
+    public final void patchColors(@NonNls Element svg) {
+      @NonNls String themed = svg.getAttribute("themed");
+      String hexColor = getColorHex(themedColor);
 
       if ("true".equals(themed) || "fill".equals(themed)) {
         svg.setAttribute("fill", "#" + hexColor);
@@ -120,10 +123,10 @@ public final class TintedIconsComponent implements BaseComponent {
         svg.setAttribute("stroke", "#" + hexColor);
       }
 
-      final NodeList nodes = svg.getChildNodes();
-      final int length = nodes.getLength();
+      NodeList nodes = svg.getChildNodes();
+      int length = nodes.getLength();
       for (int i = 0; i < length; i++) {
-        final Node item = nodes.item(i);
+        Node item = nodes.item(i);
         if (item instanceof Element) {
           patchColors((Element) item);
         }
