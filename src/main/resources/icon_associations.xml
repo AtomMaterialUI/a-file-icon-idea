@@ -79,6 +79,7 @@
         <regex name="Bazel" pattern=".*\.(bzl)$" icon="/icons/files/bazel.svg"/>
         <regex name="Java Bean" pattern=".*(b|B)ean\.java$" icon="/icons/files/bean.svg"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/files/behat.svg"/>
+        <regex name="Bitbucket Pipelines" pattern="^bitbucket-pipelines.yml$" icon="/icons/files/bitbucket.svg"/>
         <regex name="Blade" pattern=".*\.blade(\.php)*$" icon="/icons/files/blade.svg"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/files/bower.svg"/>
         <regex name="Browserslist" pattern="\.browserslist(rc)?$" icon="/icons/files/browserslist.svg"/>
