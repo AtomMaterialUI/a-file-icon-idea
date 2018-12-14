@@ -57,7 +57,7 @@
         <regex name="global" pattern="^global$" icon="/icons/folders/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/icons/folders/gradle.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/icons/folders/hook.svg"/>
-        <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
+        <regex name="i18n" pattern="^(i18n|langs?|languages?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
         <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/icons/folders/ios.svg"/>
         <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/folders/images.svg"/>
         <regex name="include" pattern="^(includes?|import)$" icon="/icons/folders/include.svg"/>
