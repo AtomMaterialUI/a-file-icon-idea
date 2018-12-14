@@ -175,7 +175,7 @@
         <regex name="Jekyll" pattern=".*_config\.yml$" icon="/icons/files/jekyll.svg"/>
         <regex name="Jenkins" pattern="^(j|J)enkinsfile(.*)$" icon="/icons/files/jenkins.svg"/>
         <regex name="Jest" pattern=".*jest\.config$" icon="/icons/files/jest.svg"/>
-        <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/files/jinja.svg"/>
+        <regex name="Jinja" pattern=".*\.(jinja2?|j2|jnj2?)" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
         <regex name="jQuery" pattern=".*jquery.*\.js" icon="/icons/files/jquery.svg"/>
         <regex name="JS Map" pattern=".*\.js\.map$" icon="/icons/files/jsmap.svg"/>
@@ -205,13 +205,14 @@
         <regex name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.svg"/>
         <regex name="Meteor" pattern=".*\.(meteor)$" icon="/icons/files/meteor.svg"/>
         <regex name="MJML" pattern=".*\.(mjml)$" icon="/icons/files/mjml.svg"/>
-        <regex name="Mocha" pattern="mocha\.opts$" icon="/icons/files/mocha.svg"/>
+        <regex name="Mocha" pattern="^mocha\.opts$" icon="/icons/files/mocha.svg"/>
+        <regex name="Mocha JSON" pattern="^\.mocha(rc)?\.(js|json|yml)$" icon="/icons/files/mocha.svg"/>
         <regex name="Mongodb" pattern=".*\.(mongodb|bson)$" icon="/icons/files/mongodb.svg"/>
         <regex name="Mustache" pattern=".*\.(mustache|handlebars|hbs|hamlbars)$" icon="/icons/files/mustache.svg"/>
         <regex name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.svg"/>
         <regex name="Nib" pattern=".*\.(nib)$" icon="/icons/files/nib.svg"/>
         <regex name="Nimble" pattern=".*\.(nim|nimble)$" icon="/icons/files/nim.svg"/>
-        <regex name="Node" pattern=".*(server|app)\.js$" icon="/icons/files/nodejs.svg"/>
+        <regex name="Node" pattern=".*(server|app)\.(js|ts)$" icon="/icons/files/nodejs.svg"/>
         <regex name="Nodemon" pattern=".*\.nodemon.*$" icon="/icons/files/nodemon.svg"/>
         <regex name="Note" pattern=".*\.(scratch|note)$" icon="/icons/files/note.svg"/>
         <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/files/npm.svg"/>
@@ -264,7 +265,7 @@
         <regex name="Redux Store" pattern=".*(s|S)tore\.(js|ts)$" icon="/icons/files/redux-store.svg"/>
         <regex name="Restructured" pattern=".*\.rst$" icon="/icons/files/rst.svg"/>
         <regex name="Riot" pattern=".*\.riot$" icon="/icons/files/riot.svg"/>
-        <regex name="Robot" pattern=".*(robot)$" icon="/icons/files/robot.svg"/>
+        <regex name="Robot" pattern=".*\.(robot)$" icon="/icons/files/robot.svg"/>
         <regex name="Rollup" pattern=".*rollup.*$" icon="/icons/files/rollup.svg"/>
         <regex name="RSpec" pattern=".*\*_spec\.rb$" icon="/icons/files/rspec.svg"/>
         <regex name="RSpec Config" pattern=".*\.rspec$" icon="/icons/files/rspec.svg"/>
@@ -301,15 +302,15 @@
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.svg"/>
         <regex name="TeX" pattern=".*\.tex$" icon="/icons/files/tex.svg"/>
         <regex name="Tern" pattern=".*\.tern-(config|project)$" icon="/icons/files/tern.svg"/>
-        <regex name="Test Java" pattern=".*\.(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
-        <regex name="Test JS" pattern=".*\.(test|spec)\.js$" icon="/icons/files/testjs.svg"/>
+        <regex name="Test Java" pattern=".*(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
+        <regex name="Test JS" pattern=".*\.?(test|spec)\.(js|es6|jsx)$" icon="/icons/files/testjs.svg"/>
         <regex name="Test Python" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
-        <regex name="Test Ruby" pattern=".*\.(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
-        <regex name="Test TypeScript" pattern=".*\.(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
+        <regex name="Test Ruby" pattern=".*_(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
+        <regex name="Test TypeScript" pattern=".*\.?(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
         <regex name="Textile" pattern=".*\.textile" icon="/icons/files/textile.svg"/>
         <regex name="Textmate" pattern=".*\.(tmPreferences|tmTheme)" icon="/icons/files/textmate.svg"/>
         <regex name="Tomcat" pattern=".*tomcat.*" icon="/icons/files/tomcat.svg"/>
-        <regex name="TODO" pattern="^TODO$" icon="/icons/files/todo.svg"/>
+        <regex name="TODO" pattern="^TODO" icon="/icons/files/todo.svg"/>
         <regex name="Travis" pattern="\.travis\.yml$" icon="/icons/files/travis.svg"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.svg"/>
         <regex name="TypeScript" pattern=".*\.(ts|tsx|tslint)$" icon="/icons/files/typeScript.svg"/>
@@ -324,7 +325,7 @@
         <regex name="Visual Studio" pattern=".*\.(vscode|vssettings).*" icon="/icons/files/vs.svg"/>
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/files/vue.svg"/>
         <regex name="Wallaby" pattern=".*wallaby.*$" icon="/icons/files/wallaby.svg"/>
-        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$"
+        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee|ts)$"
                icon="/icons/files/webpack.svg"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/files/windows.svg"/>
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.svg"/>
@@ -349,9 +350,9 @@
 
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
                icon="/icons/files/archive.svg"/>
-        <regex name="Audio" pattern=".*\.(mp3|mp4|aac|aiff|au|flac|m4a|mpc|mp+|mpp|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
+        <regex name="Audio" pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/files/audio.svg"/>
-        <regex name="Video" pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|h264|webm|wmv|ogv|ogg|3gp|m4v|3gpp|ogm|dvd)$"
+        <regex name="Video" pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx)$"
                icon="/icons/files/video.svg"/>
 
         <regex name="Text" pattern=".*\.(txt|rtf)$" icon="/icons/files/text.svg"/>
