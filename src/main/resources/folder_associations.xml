@@ -114,6 +114,6 @@
         <regex name="vue" pattern="^vue$" icon="/icons/folders/vue.svg"/>
         <regex name="web" pattern="^(public|static)$" icon="/icons/folders/web.svg"/>
         <regex name="webpack" pattern="^webpack$" icon="/icons/folders/webpack.svg"/>
-        <regex name="wordpress" pattern="^wp-content$" icon="/icons/folders/wordpress.svg"/>
+        <regex name="wordpress" pattern="^wp-(admin|content|includes)$" icon="/icons/folders/wordpress.svg"/>
     </associations>
 </associations>
