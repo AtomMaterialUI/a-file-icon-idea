@@ -82,9 +82,11 @@
         <regex name="messages" pattern="^(messages|msgs?)$" icon="/icons/folders/messages.svg"/>
         <regex name="meta" pattern="^meta$" icon="/icons/folders/meta.svg"/>
         <regex name="middlewares" pattern="^(middlewares?|thunks?)$" icon="/icons/folders/middleware.svg"/>
+        <regex name="mocks" pattern="^(mocks?|fakes?|stubs?)$" icon="/icons/folders/mocks.svg"/>
         <regex name="models" pattern="^(models?|structs?|classes)$" icon="/icons/folders/models.svg"/>
         <regex name="node_modules" pattern="^node_modules$" icon="/icons/folders/node.svg"/>
         <regex name="notification" pattern="(notifications?|flash)" icon="/icons/folders/notification.svg"/>
+        <regex name="nyc" pattern="^\.nyc" icon="/icons/folders/coverage.svg"/>
         <regex name="other" pattern="^(other|misc|extras?)$" icon="/icons/folders/other.svg"/>
         <regex name="packages" pattern="^packages?$" icon="/icons/folders/packages.svg"/>
         <regex name="php" pattern="^php$" icon="/icons/folders/php.svg"/>
@@ -99,15 +101,20 @@
         <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/icons/folders/resource.svg"/>
         <regex name="resourceIOS" pattern=".*\.xcassets" icon="/icons/folders/resource.svg"/>
         <regex name="routes" pattern="^(routes|router)$" icon="/icons/folders/routes.svg"/>
+        <regex name="rules" pattern="^(rules?)$" icon="/icons/folders/rules.svg"/>
         <regex name="sass" pattern="^(sass|scss)$" icon="/icons/folders/sass.svg"/>
+        <regex name="scripts" pattern="^(screens?|screenshots?)$" icon="/icons/folders/screens.svg"/>
         <regex name="scripts" pattern="^scripts?$" icon="/icons/folders/scripts.svg"/>
         <regex name="server" pattern="^(server|http|requests?|sagas?)$" icon="/icons/folders/server.svg"/>
         <regex name="serverless" pattern="^\.?serverless$" icon="/icons/folders/serverless.svg"/>
         <regex name="shared" pattern="^shared$" icon="/icons/folders/shared.svg"/>
         <regex name="sources" pattern="^(src|app)$" icon="/icons/folders/src.svg"/>
+        <regex name="storybook" pattern="^(stories|storybooks?)$" icon="/icons/folders/storybook.svg"/>
         <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/icons/folders/styles.svg"/>
+        <regex name="stylus" pattern="^(styl|stylus)$" icon="/icons/folders/stylus.svg"/>
         <regex name="sublime" pattern="^\.sublime$" icon="/icons/folders/sublime.svg"/>
         <regex name="sync" pattern="^(sync|synced)$" icon="/icons/folders/sync.svg"/>
+        <regex name="syntax" pattern="^(syntax|syntaxes|spellcheck)$" icon="/icons/folders/syntax.svg"/>
         <regex name="tasks" pattern="^(tasks?)$" icon="/icons/folders/tasks.svg"/>
         <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/icons/folders/temp.svg"/>
         <regex name="tests" pattern="^(tests?|specs?)$" icon="/icons/folders/tests.svg"/>
