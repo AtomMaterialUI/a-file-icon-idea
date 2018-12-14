@@ -26,6 +26,7 @@
 <associations>
     <associations>
         <regex name="android" pattern="^android$" icon="/icons/folders/android.svg"/>
+        <regex name="animations" pattern="^(animations?|anims?)$" icon="/icons/folders/animations.svg"/>
         <regex name="api" pattern="^(apis?|rest|swagger)$" icon="/icons/folders/api.svg"/>
         <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/icons/folders/audio.svg"/>
         <regex name="archives" pattern="^(archives?|jars?|zips?|backup)" icon="/icons/folders/archive.svg"/>
@@ -39,6 +40,7 @@
         <regex name="controllers" pattern="^(controllers?|ctrls?)$" icon="/icons/folders/controllers.svg"/>
         <regex name="core" pattern="^core$" icon="/icons/folders/core.svg"/>
         <regex name="coverage" pattern="^coverage$" icon="/icons/folders/coverage.svg"/>
+        <regex name="custom" pattern="^custom$" icon="/icons/folders/custom.svg"/>
         <regex name="db" pattern="^(db|migrate|sql|database)$" icon="/icons/folders/db.svg"/>
         <regex name="debug" pattern="^(debug|debugging)$" icon="/icons/folders/debug.svg"/>
         <regex name="deploy" pattern="^deploy$" icon="/icons/folders/aws.svg"/>
@@ -46,6 +48,7 @@
         <regex name="docker" pattern="^\.?docker$" icon="/icons/folders/docker.svg"/>
         <regex name="docs" pattern="^docs?$" icon="/icons/folders/docs.svg"/>
         <regex name="download" pattern="^downloads?$" icon="/icons/folders/download.svg"/>
+        <regex name="e2e" pattern="^(e2e|scenarios?)$" icon="/icons/folders/e2e.svg"/>
         <regex name="env" pattern="^(env|environments?)$" icon="/icons/folders/env.svg"/>
         <regex name="exclude" pattern="^(excludes?|export)$" icon="/icons/folders/exclude.svg"/>
         <regex name="expo" pattern="^\.expo$" icon="/icons/folders/expo.svg"/>
@@ -56,9 +59,11 @@
         <regex name="github" pattern="^\.?github$" icon="/icons/folders/github.svg"/>
         <regex name="global" pattern="^global$" icon="/icons/folders/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/icons/folders/gradle.svg"/>
+        <regex name="grunt" pattern="^grunt$" icon="/icons/folders/grunt.svg"/>
         <regex name="guard" pattern="^guards?$" icon="/icons/folders/guard.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/icons/folders/hook.svg"/>
         <regex name="i18n" pattern="^(i18n|langs?|languages?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
+        <regex name="icons" pattern="^(icons?|ico|svgicons?)$" icon="/icons/folders/icons.svg"/>
         <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/icons/folders/ios.svg"/>
         <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/folders/images.svg"/>
         <regex name="include" pattern="^(includes?|import)$" icon="/icons/folders/include.svg"/>
