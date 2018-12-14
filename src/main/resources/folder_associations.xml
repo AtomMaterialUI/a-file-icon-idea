@@ -80,7 +80,7 @@
         <regex name="notification" pattern="(notifications?|flash)" icon="/icons/folders/notification.svg"/>
         <regex name="other" pattern="^(other|misc|extras?)$" icon="/icons/folders/other.svg"/>
         <regex name="packages" pattern="^packages?$" icon="/icons/folders/packages.svg"/>
-        <regex name="plugin" pattern="^plugins?$" icon="/icons/folders/plugin.svg"/>
+        <regex name="plugin" pattern="^(mu-)?plugins?$" icon="/icons/folders/plugin.svg"/>
         <regex name="php" pattern="^php$" icon="/icons/folders/php.svg"/>
         <regex name="posts" pattern="^posts?$" icon="/icons/folders/posts.svg"/>
         <regex name="python" pattern="^python$" icon="/icons/folders/python.svg"/>
