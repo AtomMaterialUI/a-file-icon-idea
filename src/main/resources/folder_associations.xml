@@ -57,7 +57,7 @@
         <regex name="global" pattern="^global$" icon="/icons/folders/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/icons/folders/gradle.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/icons/folders/hook.svg"/>
-        <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
+        <regex name="i18n" pattern="^(i18n|langs?|languages?|locales?|translations?)$" icon="/icons/folders/i18n.svg"/>
         <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/icons/folders/ios.svg"/>
         <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/folders/images.svg"/>
         <regex name="include" pattern="^(includes?|import)$" icon="/icons/folders/include.svg"/>
@@ -80,7 +80,7 @@
         <regex name="notification" pattern="(notifications?|flash)" icon="/icons/folders/notification.svg"/>
         <regex name="other" pattern="^(other|misc|extras?)$" icon="/icons/folders/other.svg"/>
         <regex name="packages" pattern="^packages?$" icon="/icons/folders/packages.svg"/>
-        <regex name="plugin" pattern="^plugins?$" icon="/icons/folders/plugin.svg"/>
+        <regex name="plugin" pattern="^(mu-)?plugins?$" icon="/icons/folders/plugin.svg"/>
         <regex name="php" pattern="^php$" icon="/icons/folders/php.svg"/>
         <regex name="posts" pattern="^posts?$" icon="/icons/folders/posts.svg"/>
         <regex name="python" pattern="^python$" icon="/icons/folders/python.svg"/>
@@ -114,6 +114,6 @@
         <regex name="vue" pattern="^vue$" icon="/icons/folders/vue.svg"/>
         <regex name="web" pattern="^(public|static)$" icon="/icons/folders/web.svg"/>
         <regex name="webpack" pattern="^webpack$" icon="/icons/folders/webpack.svg"/>
-        <regex name="wordpress" pattern="^wp-content$" icon="/icons/folders/wordpress.svg"/>
+        <regex name="wordpress" pattern="^wp-(admin|content|includes)$" icon="/icons/folders/wordpress.svg"/>
     </associations>
 </associations>
