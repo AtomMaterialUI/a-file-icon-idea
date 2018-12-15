@@ -36,9 +36,11 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.*;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 /**
@@ -114,7 +116,7 @@ public final class TintedIconsComponent implements BaseComponent {
 
     @Override
     public final void patchColors(@NonNls Element svg) {
-      @NonNls String themed = svg.getAttribute("themed");
+      @NonNls String themed = svg.getAttribute("customTint");
       String hexColor = getColorHex(themedColor);
 
       if ("true".equals(themed) || "fill".equals(themed)) {

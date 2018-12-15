@@ -7,6 +7,7 @@
 - Add more contrast to monochrome icons
 - Fix some directories icons' contrast between the directory and the icon
 - Add more directories: guard, providers, animations, grunt, icons, e2e, custom, rules, screens, storybook, stylus, syntax, security, meta-inf, fixtures, channels, concerns, support, features, fabricators, nyc, reviews
+- Add more files: ANTLR, brainfuck, cobol, delphi, eiffel, fortran, idris, io, j, lerna, postscript, prolog, racket, red, supercollider, scheme, terraform, test-react, turing, toml
 
 # 8.0
 - Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons

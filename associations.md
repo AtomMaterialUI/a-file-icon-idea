@@ -10,7 +10,6 @@ Files are sorted by priority.
 | Github Commit       | COMMIT_MESSAGE_CONVENTION.md                 | github            |
 | Github Template     | TEMPLATE.md                                  | github            |
 | README              | README.md                                    | readme            |
-| Angular ES6         | *.es6                                        | angular           |
 | Jetbrains Plugin    | plugin.xml                                   | plugin            |
 | Preferences         | *.prefs                                      | config            |
 | Images              | *.(gif,png,jpg,jpeg,bmp)                     | image             |
@@ -20,7 +19,7 @@ Files are sorted by priority.
 | ActionScript        | *.as                                         | actionscript      |
 | Adobe Elements      | *.aep, *.aet                                 | ae                |
 | Adobe Illustrator   | *.ai                                         | ai                |
-| Ada                 | *.ada                                        | ada               |
+| Ada                 | *.ada, *.adb                                 | ada               |
 | Akka                | *.akka                                       | akka              |
 | Android Manifest    | AndroidManifest.xml                          | android           |
 | Android Main        | MainActivity.java                            | android           |
@@ -37,12 +36,13 @@ Files are sorted by priority.
 | Angular Routing     | *.routing.js, *.routing.ts                   | angular-routing   |
 | Angular Resolver    | *.resolver.js, *.resolver.ts                 | angular-resolver  |
 | Ansible             | site.yml                                     | ansible           |
+| ANTLR               | *.g4                                         | antlr             |
 | API Blueprint       | *.apib                                       | apib              |
 | APK                 | *.apk                                        | android           |
 | Appveyor            | appveyor.yml                                 | appveyor          |
 | Applescript         | *.applescript                                | applescript       |
-| Arduino             | *.ino                                        | arduino           |
-| Asciidoc            | *.ad, *.adoc, *.asciidoc                     | asciidoc          |
+| Arduino             | *.ino, *.pde                                 | arduino           |
+| Asciidoctor         | *.ad, *.adoc, *.asciidoc                     | asciidoc          |
 | AspectJ             | *.aj                                         | aspectj           |
 | ASM                 | *.(asm,nasm,s,ms,agc,aes.aea)                | asm               |
 |                     | *.(argus,mitigus)                            |                   |
@@ -56,9 +56,12 @@ Files are sorted by priority.
 | Bazel               | *.bzl                                        | bazel             |
 | Bean                | *bean.java, *Bean.java                       | bean              |
 | Behat               | *.feature, *.feature.php                     | behat             |
+| Basic               | *.bas, *.vb, *.vbs                           | vscode            |
 | Bitbucket           | bitbucket-pipelines.yml                      | bitbucket         |
 | Blade               | *.blade, *.blade.php                         | blade             |
 | Bower               | .bowerrc, bower.json                         | bower             |
+| Brainfuck           | *.b, *.bf                                    | brainfuck         |
+| Bro                 | *.bro                                        | bro               |
 | Browserslist        | .browserslist, .browserslistrc               | browserslist      |
 | Bundler             | Gemfile                                      | bundle            |
 | C                   | *.c, *.objc                                  | c                 |
@@ -67,13 +70,14 @@ Files are sorted by priority.
 | CFC                 | *.cfc, *.cfm                                 | cfc               |
 | Changelog           | CHANGELOG, CHANGELOG.md, CHANGELOG.html      | log               |
 | Chef                | knife.rb                                     | chef              |
-| Berksfile           | Berksfile                                    | chef              |
+| Chef Berksfile      | Berksfile                                    | chef              |
 | CircleCI            | .circleci, circle.yml, config.yml            | circleci          |
 | Class               | *.class, *.o                                 | class             |
 | Clojure             | *.(clj,cljs,cljc,clojure)                    | clojure           |
 | CMake               | *.cmake                                      | cmake             |
 | CMakelists          | CMakeLists                                   | cmake             |
 | CNAME               | CNAME                                        | cname             |
+| Cobol               | *.cbl, *.cobol                               | cobol             |
 | CoffeeScript        | *.coffee                                     | coffeescript      |
 | ColdFusion          | *.cf                                         | cf                |
 | Compass             | config.rb                                    | compass           |
@@ -85,12 +89,14 @@ Files are sorted by priority.
 | CSV                 | *.csv, *.tsv                                 | csv               |
 | Cucumber            | *.feature.rb                                 | cucumber          |
 | C++                 | *.cpp, *.hpp, *.cc                           | cpp               |
-| CSharp              | *.cs                                         | csharp            |
+| CSharp              | *.cs, *.csx                                  | csharp            |
 | Dart                | *.dart                                       | dart              |
 | DB                  | *.db, *.ddl                                  | db                |
 | D                   | *.d                                          | dlang             |
+| Delphi              | *.delphi                                     | delphi            |
 | Diff                | *.diff                                       | diff              |
 | Django              | *.flake8, *.djt                              | django            |
+| Do                  | *.do                                         | tomcat            |
 | Docker              | dockerfile, Dockerfile, .dockerignore        | docker            |
 | Docker Composer     | docker-compose.(yml,yaml)                    | docker            |
 | DotJS               | *.def, *.dot, *.jst                          | dotjs             |
@@ -100,7 +106,9 @@ Files are sorted by priority.
 | Dylib               | *.dylib                                      | dylib             |
 | Eclipse             | *.eclipse, *.eclipseconfig                   | eclipse           |
 | EditorConfig        | .editorconfig                                | editorconfig      |
+| Eiffel              | *.e                                          | eiffel            |
 | Emacs               | .emacs.*                                     | emacs             |
+| Emacs Lisp          | *.el, *.elc                                  | emacs             |
 | Ember               | .ember-cli, .ember.json                      | ember             |
 | EJS                 | *.ejs                                        | ejs               |
 | Elixir              | *.ex, *.exs, *.elixir                        | elixir            |
@@ -112,6 +120,7 @@ Files are sorted by priority.
 | Favicon             | favicon.ico, favicon.png, favicon.jpg        | favicon           |
 | Finder              | ._MACOSX                                     | finder            |
 | Firebase            | .firebaserc, firebase.json                   | firebase          |
+| Fortran             | *.f77, *.f90                                 | fortran           |
 | Flash               | *.swf, *.flash                               | flash             |
 | Flow                | *.flow, *.flowconfig                         | flow              |
 | FreeMarker          | *.ftl, *.freemarker                          | freemarker        |
@@ -135,12 +144,14 @@ Files are sorted by priority.
 | Haskell             | *.haskell, *.hs                              | haskell           |
 | Haxe                | *.haxe, *.hx                                 | haxe              |
 | HTAccess            | .htaccess, .htpasswd                         | htaccess          |
-| HTML                | *.html, *.htm                                |                   |
+| HTML                | *.html, *.htm                                | html              |
 | i18n                | *.pot, *.po, *.mo                            | i18n              |
 | IDEA                | *.iml, *.icls                                | idea              |
+| Idris               | *.idr, *.idris                               | idris             |
 | InDesign            | *.id, *.indl, *.indt, *.indb                 | indesign          |
+| IO                  | *.io                                         | io                |
 | Ionic               | *.ionic.config                               | ionic             |
-| Java                | *.java, *.jar, *.war                         | java              |
+| J                   | *.ijs                                        | j                 |
 | Jade/Pug            | *.jade, *.pug                                | pug               |
 | Jekyll              | _config.yml                                  | jekyll            |
 | Jenkins             | jenkinsfile, Jenkinsfile.(js,json,yml)       | jenkins           |
@@ -150,21 +161,22 @@ Files are sorted by priority.
 | JQuery              | jquery.js, jquery.min.js                     | jquery            |
 | JS Map              | *.js.map                                     | jsmap             |
 | JSP                 | *.jsp, *.jsf, *.jspx                         | jsp               |
-| JSX                 | *.jsx, *.tsx                                 | jsx               |
 | Julia               | *.julia, *.jl                                | julia             |
 | Jupyter             | *.ipynb                                      | jupyter           |
 | Karma               | karma.conf.js, karma.conf.ts                 | karma             |
 | Knockout            | *.knockout, *.ko                             | knockout          |
 | Kotlin              | *.kt, *.kts, *.kotlin                        | kotlin            |
+| Lerna               | lerna.json                                   | lerna             |
 | Less                | *.less                                       | less              |
 | License             | LICENSE, LICENSE.md, LICENSE, LICENSE.md     | license           |
 | Liquid              | *.liquid                                     | liquid            |
 | Lisp                | *.lisp                                       | lisp              |
 | Log                 | *.log, *.log.0, *.log.txt...                 | log               |
+| LSL                 | *.lsl                                        | lsl               |
 | Lua                 | *.lua                                        | lua               |
 | Magento             | *.mage                                       | magento           |
 | Makefile            | *.makefile, Makefile                         | makefile          |
-| Manpage             | *.man, *.1, *.8                              | manpage           |
+| Manpage             | *.man, *.man1, *.man8                        | manpage           |
 | Markdown            | *.md, *.markdown, *.mson                     | markdown          |
 | Markup              | *.shtml, *.dhtml, *.dtd                      | markup            |
 | Mathematica         | *.nb, *.ma, *.mb, *.cdf                      | mathematica       |
@@ -185,7 +197,7 @@ Files are sorted by priority.
 | Note                | *.scratch, *.note                            | note              |
 | NPM                 | package.json, package-lock.json              | npm               |
 | NPMFiles            | .npmignore, .npmrc                           | npm               |
-| NSIS                | *.nsis                                       | nsis              |
+| NSIS                | *.nsi, *.nsis                                | nsis              |
 | NVM                 | .nvmrc                                       | nodejs            |
 | Nuclide             | *.nuclide                                    | nuclide           |
 | NuGet               | *.nuspec                                     | nuget             |
@@ -200,7 +212,6 @@ Files are sorted by priority.
 | Perforce            | .p4ignore                                    | perforce          |
 | Phalcon             | *.volt                                       | phalcon           |
 | Photoshop           | *.psb, *.psd                                 | photoshop         |
-| PHP                 | *.php, *,phps                                | php               |
 | PHPUnit             | *test.php, *Test.php                         | phpunit           |
 | PHTML               | *.phtml                                      | phtml             |
 | Play                | *.play                                       | play              |
@@ -208,18 +219,20 @@ Files are sorted by priority.
 | PostCSS             | *.pcss, *.postcss                            | postcss           |
 | PostCSS Config      | .postcssrc, postcss.config.(js,json)         | postcss           |
 | Polymer             | polymer.json                                 | polymer           |
+| PostScript          | *.ps, *.eps                                  | postscript        |
 | Powerpoint          | *.(ppt, pptx, pps, ppsx)                     | powerpoint        |
 | PowerShell          | *.powershell, *.ps1, *.cmd                   | powershell        |
 | Adobe Premiere      | *.prel, *.prproj, *.psq                      | premiere          |
 | Prettier            | .prettierrc, prettier.config.(js,json)       | prettier          |
 | Prettier Config     | .prettier.js, .prettier.json                 | prettier          |
 | Procfile            | procfile, Procfile, Procfile.windows         | procfile          |
+| Prolog              | *.pro, *.prolog                              | prolog            |
 | Properties          | *.properties                                 | properties        |
 | Protractor          | protractor.js, protractor.json               | protractor        |
 | Puppet              | *.pp, *.puppet, *.epp                        | puppet            |
 | PureScript          | *.purescript, *.purs                         | purescript        |
-| Python              | *.py, *.python                               | python            |
 | R                   | *.r                                          | r                 |
+| Racket              | *.rkt                                        | racket            |
 | Raml                | *.raml                                       | raml              |
 | Rails               | rails                                        | rails             |
 | Rake                | rake, *.rake, Rakefile                       | rake              |
@@ -227,6 +240,7 @@ Files are sorted by priority.
 | RDoc                | *.rdoc                                       | rdoc              |
 | React               | .react-cli                                   | react             |
 | ReasonML            | *.rei                                        | reason            |
+| Red                 | *.red                                        | red               |
 | Redis               | redis, redis.yml, redis.rb                   | redis             |
 | Redux Action        | *.action.js, *Actions.ts...                  | redux-action      |
 | Redux Reducer       | *.reducer.js, *Reducer.ts...                 | redux-reducer     |
@@ -236,15 +250,15 @@ Files are sorted by priority.
 | Rollup              | rollup.json, rollup.yml                      | rollup            |
 | RSpec               | *_spec.rb, *.rspec                           | rspec             |
 | Rubocop             | .rubocop.yml                                 | rubocop           |
-| Ruby                | *.rb                                         | ruby              |
 | Ruby Gemset         | .ruby-gemset                                 | gemfile           |
 | Ruby Version        | .ruby-version                                | ruby              |
 | Rust                | *.rs, *.rust                                 | rust              |
 | RVM                 | .rvmrc                                       | ruby              |
 |                     |                                              |                   |
-| SASS                | *.sass, *.scss                               | sass              |
+| SASS                | *.sass, *.scss                               | scss              |
 | SBT                 | *.sbt                                        | sbt               |
 | Scala               | *.scala                                      | scala             |
+| Scheme              | *.scheme, *.scm                              | scheme            |
 | Settings            | *.settings                                   | settings          |
 | Shell               | *.sh, *.zsh, *.fish, *.bash                  | shell             |
 |                     | .bashrc, .zshrc, .fishrc                     |                   |
@@ -254,14 +268,15 @@ Files are sorted by priority.
 | Solidity            | *.sol                                        | solidity          |
 | Sonar               | .sonarrc                                     | sonar             |
 | Spring              | *.spring                                     | spring            |
-| SQL                 | *.sql, *.pgsql, *.mysql                      | sql               |
+| SQL                 | *.sql, *.pgsql, *.mysql, *.hql, *.qml        | sql               |
 | SQLite              | *.sqlite, *.sqlite3                          | sqlite            |
 | Stata               | *.stata                                      | stata             |
 | Stencil             | stencil.config.js, stencil.config.ts         | stencil           |
 | Storybook           | *.story.(js,ts), *.story.(jsx,tsx),          | storybook         |
-| Stylelint           | .stylelintrc, stylelint.(js,json)            | stylelint         |
+| Stylelint           | .stylelintrc, stylelint.config.(js,json)     | stylelint         |
 | Stylus              | *.styl                                       | stylus            |
 | Sublime             | *.sublime, *.sublimepackage                  | sublime           |
+| SuperCollider       | *.scd                                        | scd               |
 | SVN                 | .svn                                         | svn               |
 | Swagger             | *.swagger, *.swag                            | swagger           |
 | Swagger Config      | swagger.yml, swagger.json, api.yml, api.json | swagger           |
@@ -271,8 +286,10 @@ Files are sorted by priority.
 | TCL                 | *.tcl                                        | tcl               |
 | TeX                 | *.tex                                        | tex               |
 | Tern                | .ternconfig, .tern-config, .tern-project     | tern              |
+| Terraform           | *.tf                                         | terraform         |
 | Test Java           | *test.java, *Test.java                       | testjava          |
-| Test JS             | *.test.(js,es6,jsx), *.spec.(js,es6,jsx)     | testjs            |
+| Test JS             | *.test.(js,es6), *.spec.(js,es6)             | testjs            |
+| Test React          | *.test.(jsx,tsx), *.spec.(jsx,tsx)           | testreact         |
 | Test Python         | *.test.py, *.spec.py                         | testpy            |
 | Test Ruby           | *_test.rb, *_spec.rb                         | testruby          |
 | Test Typescript     | *.test.(ts,tsx), *.spec.(ts,tsx)             | testts            |
@@ -280,15 +297,16 @@ Files are sorted by priority.
 | Textmate            | *.tmPreferences, *.tmTheme                   | textmate          |
 | Tomcat              | tomcat.properties, tomcat.ini                | tomcat            |
 | TODO                | TODO, TODO.md, TODO.txt                      | todo              |
+| TOML                | *.toml                                       | toml              |
 | Travis              | *.travis.yml                                 | travis            |
+| Turing              | *.t                                          | turing            |
 | Twig                | *.twig                                       | twig              |
-| TypeScript          | *.ts, *.tsx, *.tslint                        | typeScript        |
 | TypeScript Defs     | *.d.ts                                       | dts               |
 | Typings             | typings.json                                 |                   |
 | Unreal              | *.(u,unr,utx,umx,uax,ukx,uz,uc,upkg,upl)     | unreal            |
 |                     | *.(obj,asc,lwo)                              |                   |
 | Vagrant             | vagrantfile, Vagrantfile                     | vagrant           |
-| VHDL                | *.vhdl                                       | vhdl              |
+| VHDL                | *.vhd, *.vhdl, *.v                           | vhdl              |
 | Vim                 | *.(vim,viml,vimrc,gvimrc)                    | vim               |
 | Visio               | *.visio                                      | visio             |
 | Visual Studio       | *.vscode, *.vssetings                        | vs                |
@@ -322,6 +340,12 @@ Files are sorted by priority.
 |                     | *.(wmv,ogv,3gp,m4v,3gpp,ogm,dvd,divx)        |                   |
 | Text                | *.txt, *.rtf                                 | text              |
 | JS Minified         | *.min.(js,es,es6,jsx,ts)                     | jsmin             |
+| Java                | *.java, *.jar, *.war                         | java              |
+| Python              | *.py, *.python                               | python            |
+| PHP                 | *.php, *,phps                                | php               |
+| Ruby                | *.rb                                         | ruby              |
+| JSX                 | *.jsx, *.tsx                                 | jsx               |
+| TypeScript          | *.ts, *.tsx, *.tslint                        | typeScript        |
 | JavaScript          | *.js, *.es6, *.es                            | js                |
 | JSON                | *.json, *.cson                               | json              |
 |                     |                                              |                   |
