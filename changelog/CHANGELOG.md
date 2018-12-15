@@ -1,5 +1,13 @@
 # Changelog
 
+# 9.0
+- Add Monochrome Icons' tint color selection
+- Fix UI Icons setting needing the IDE to be restarted
+- Fix settings not being persisted
+- Add more contrast to monochrome icons
+- Fix some directories icons' contrast between the directory and the icon
+- Add more directories: guard, providers, animations, grunt, icons, e2e, custom, rules, screens, storybook, stylus, syntax, security, meta-inf, fixtures, channels, concerns, support, features, fabricators, nyc, reviews
+
 # 8.0
 - Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons
 - New Option: Monochrome Icons
