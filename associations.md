@@ -64,11 +64,11 @@ Files are sorted by priority.
 | C                   | *.c, *.objc                                  | c                 |
 | Cabal               | *.cabal, cabal.project                       | cabal             |
 | CakePHP             | *.cake                                       | cakephp           |
-| CFC                 | *.cfc                                        | cfc               |
-| Changelog           | CHANGELOG, CHANGELOG.md, CHANGELOG.html      | changelog         |
+| CFC                 | *.cfc, *.cfm                                 | cfc               |
+| Changelog           | CHANGELOG, CHANGELOG.md, CHANGELOG.html      | log               |
 | Chef                | knife.rb                                     | chef              |
 | Berksfile           | Berksfile                                    | chef              |
-| CircleCI            | circle.yml                                   | circleci          |
+| CircleCI            | .circleci, circle.yml, config.yml            | circleci          |
 | Class               | *.class, *.o                                 | class             |
 | Clojure             | *.(clj,cljs,cljc,clojure)                    | clojure           |
 | CMake               | *.cmake                                      | cmake             |
@@ -153,7 +153,7 @@ Files are sorted by priority.
 | JSX                 | *.jsx, *.tsx                                 | jsx               |
 | Julia               | *.julia, *.jl                                | julia             |
 | Jupyter             | *.ipynb                                      | jupyter           |
-| Karma               | karma.conf.js, karma.json                    | karma             |
+| Karma               | karma.conf.js, karma.conf.ts                 | karma             |
 | Knockout            | *.knockout, *.ko                             | knockout          |
 | Kotlin              | *.kt, *.kts, *.kotlin                        | kotlin            |
 | Less                | *.less                                       | less              |
@@ -191,7 +191,7 @@ Files are sorted by priority.
 | NuGet               | *.nuspec                                     | nuget             |
 | Objective C         | *.m, *.mm                                    | objc              |
 | OCaml               | *.(ocaml,ml,mli,ocamllex,ocamlyacc)          | ocaml             |
-| OneNote             | *.onenote                                    | onenote           |
+| OneNote             | *.onenote, *.one                             | onenote           |
 | OpenOffice          | *.odf, *.ods                                 | openoffice        |
 | Pascal              | *.pas, *.pascal                              | pascal            |
 | Patch               | *.patch, *.meld                              | patch             |
@@ -212,6 +212,7 @@ Files are sorted by priority.
 | PowerShell          | *.powershell, *.ps1, *.cmd                   | powershell        |
 | Adobe Premiere      | *.prel, *.prproj, *.psq                      | premiere          |
 | Prettier            | .prettierrc, prettier.config.(js,json)       | prettier          |
+| Prettier Config     | .prettier.js, .prettier.json                 | prettier          |
 | Procfile            | procfile, Procfile, Procfile.windows         | procfile          |
 | Properties          | *.properties                                 | properties        |
 | Protractor          | protractor.js, protractor.json               | protractor        |
@@ -245,7 +246,7 @@ Files are sorted by priority.
 | SBT                 | *.sbt                                        | sbt               |
 | Scala               | *.scala                                      | scala             |
 | Settings            | *.settings                                   | settings          |
-| Shell               | *.sh, *.zsh, *.fish                          | shell             |
+| Shell               | *.sh, *.zsh, *.fish, *.bash                  | shell             |
 |                     | .bashrc, .zshrc, .fishrc                     |                   |
 | Sketch              | *.sketch                                     | sketch            |
 | Slim                | *.slim                                       | slim              |
