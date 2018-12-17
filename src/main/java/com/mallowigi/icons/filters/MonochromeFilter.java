@@ -41,6 +41,6 @@ public class MonochromeFilter extends ColorizeFilter {
 
   private static Color getPrimaryColor() {
     Color color = ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getMonochromeColor());
-    return new JBColor(ColorUtil.darker(color, TONES), ColorUtil.brighter(color, TONES));
+    return new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, TONES));
   }
 }
