@@ -52,6 +52,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   private boolean monochromeIcons = false;
   @Property
   private String monochromeColor = "546E7A";
+  @Property
+  private boolean enabledPsiIcons = true;
 
   public AtomFileIconsConfig() {
   }
@@ -99,6 +101,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setEnabledUIIcons(form.getIsEnabledUIIcons());
     setMonochromeIcons(form.getIsEnabledMonochromeIcons());
     setMonochromeColor(form.getMonochromeColor());
+    setEnabledPsiIcons(form.getIsEnabledPsiIcons());
 
     fireChanged();
   }
@@ -112,6 +115,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     enabledUIIcons = true;
     monochromeIcons = false;
     monochromeColor = "546E7A";
+    enabledPsiIcons = true;
   }
 
   //region Enabled Icons
@@ -200,4 +204,22 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
   //endregion
 
+  // region psi icons
+  public boolean isEnabledPsiIcons() {
+    return enabledPsiIcons;
+  }
+
+  private void setEnabledPsiIcons(final boolean enabledPsiIcons) {
+    this.enabledPsiIcons = enabledPsiIcons;
+  }
+
+  public boolean isEnabledPsiIconsChanged(final boolean isEnabledPsiIcons) {
+    return enabledPsiIcons != isEnabledPsiIcons;
+  }
+
+  public void togglePsiIcons() {
+    enabledPsiIcons = !enabledPsiIcons;
+  }
+
+  //endregion
 }

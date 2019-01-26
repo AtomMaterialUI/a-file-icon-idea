@@ -177,6 +177,7 @@ public class SettingsForm implements SettingsFormUI {
     setIsEnabledMonochromeIcons(config.isMonochromeIcons());
     setIsEnabledUIIcons(config.isEnabledUIIcons());
     setMonochromeColor(config.getMonochromeColor());
+    setIsEnabledPsiIcons(config.isEnabledPsiIcons());
 
     afterStateSet();
   }
@@ -188,6 +189,7 @@ public class SettingsForm implements SettingsFormUI {
     modified = modified || config.isMonochromeIconsChanged(getIsEnabledMonochromeIcons());
     modified = modified || config.isEnabledUIIconsChanged(getIsEnabledUIIcons());
     modified = modified || config.isMonochromeColorChanged(getMonochromeColor());
+    modified = modified || config.isEnabledPsiIconsChanged(getIsEnabledPsiIcons());
 
     return modified;
   }
@@ -254,6 +256,16 @@ public class SettingsForm implements SettingsFormUI {
 
   private void setMonochromeColor(final String color) {
     monoColorChooser.setSelectedColor(ColorUtil.fromHex(color));
+  }
+  //endregion
+
+  //region psi Icons
+  public boolean getIsEnabledPsiIcons() {
+    return enablePSIIconsCheckbox.isSelected();
+  }
+
+  private void setIsEnabledPsiIcons(final boolean enabledPsiIcons) {
+    enablePSIIconsCheckbox.setSelected(enabledPsiIcons);
   }
   //endregion
 }
