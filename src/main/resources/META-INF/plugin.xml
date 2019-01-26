@@ -1,15 +1,14 @@
 <idea-plugin>
     <id>com.mallowigi</id>
-    <name>Atom File Icons IDEA</name>
-    <version>2.0</version>
+    <name>Atom Material Icons</name>
+    <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="http://github.com/mallowigi">Mallowigi</vendor>
 
-    <idea-version since-build="145.0"/>
+    <idea-version since-build="183.0"/>
 
     <depends>com.intellij.modules.lang</depends>
 
     <resource-bundle>config.AtomFileIconsBundle</resource-bundle>
-
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
@@ -46,15 +45,13 @@
     </actions>
 
     <description><![CDATA[
-      This is a port of the Atom File Icons (https://github.com/file-icons/atom) for Jetbrains products.
+      Replace Jetbrains' icons with Atom File Icons and Material Design Icons!
 
-      The implementation has been taken from the Material Theme plugin (https://github.com/ChrisRM/material-theme-jetbrains)
+      This is a both a port of the Atom File Icons (https://github.com/file-icons/atom) and the Material Theme Icons
+      (https://github.com/ChrisRM/material-theme-jetbrains) for Jetbrains products.
     ]]></description>
 
-    <change-notes><![CDATA[
-This is how we do, we make a move and act a fool while we're up in the club.
-This is how we do, nobody do it like we do so just show us some love.
-    ]]>
+    <change-notes>
     </change-notes>
 
 </idea-plugin>
