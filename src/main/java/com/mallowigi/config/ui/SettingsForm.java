@@ -10,7 +10,8 @@ import com.mallowigi.config.AtomFileIconsConfig;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.event.ChangeEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -120,6 +121,7 @@ public class SettingsForm implements SettingsFormUI {
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
+  @SuppressWarnings("unused")
   private void monochromeCheckboxStateChanged(final ChangeEvent e) {
     monoColorChooser.setEnabled(monochromeCheckbox.isEnabled());
   }
@@ -208,7 +210,7 @@ public class SettingsForm implements SettingsFormUI {
 
   //region mono color
   public String getMonochromeColor() {
-    return ColorUtil.toHex(monoColorChooser.getSelectedColor());
+    return ColorUtil.toHex(Objects.requireNonNull(monoColorChooser.getSelectedColor()));
   }
 
   private void setMonochromeColor(final String color) {
