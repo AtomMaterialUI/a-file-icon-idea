@@ -38,8 +38,7 @@ import java.util.Objects;
  */
 public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileIconsConfig> implements SearchableConfigurable {
 
-  public static final String ID = "com.mallowigi.config";
-  public static final String HELP_ID = "AtomFileIconsConfig";
+  private static final String ID = "com.mallowigi.config";
 
   @Nls
   @Override

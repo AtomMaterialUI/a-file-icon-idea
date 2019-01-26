@@ -30,10 +30,8 @@ import com.google.common.annotations.VisibleForTesting;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
-import com.mallowigi.icons.associations.PsiElementAssociation;
 import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.TypeAssociation;
-import com.mallowigi.icons.utils.StaticPatcher;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.Nullable;
@@ -47,6 +45,7 @@ import java.util.List;
  */
 public final class Associations implements Serializable {
 
+  private static final long serialVersionUID = -2509137393329824727L;
   private List<Association> associations;
 
   public List<Association> getAssociations() {
@@ -65,7 +64,7 @@ public final class Associations implements Serializable {
    */
   @VisibleForTesting
   @Nullable
-  public Association findAssociationForFile(final FileInfo file) {
+  Association findAssociationForFile(final FileInfo file) {
     Association result = null;
     for (final Association association : associations) {
       if (association.matches(file)) {
@@ -100,27 +99,17 @@ public final class Associations implements Serializable {
      *
      * @return the associations list
      */
-    public static Associations create(final String associationsFile) {
+    static Associations create(final String associationsFile) {
       final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
       final XStream xStream = new XStream(new DomDriver());
       xStream.alias("associations", Associations.class);
       xStream.alias("regex", RegexAssociation.class);
       xStream.alias("type", TypeAssociation.class);
 
-      if (StaticPatcher.isClass("com.intellij.psi.PsiClass")) {
-        xStream.alias("psi", PsiElementAssociation.class);
-      } else {
-        xStream.alias("psi", TypeAssociation.class);
-      }
-
       xStream.useAttributeFor(Association.class, "icon");
       xStream.useAttributeFor(Association.class, "name");
       xStream.useAttributeFor(RegexAssociation.class, "pattern");
       xStream.useAttributeFor(TypeAssociation.class, "type");
-
-      if (StaticPatcher.isClass("com.intellij.psi.PsiClass")) {
-        xStream.useAttributeFor(PsiElementAssociation.class, "type");
-      }
 
       try {
         return (Associations) xStream.fromXML(associationsXml);

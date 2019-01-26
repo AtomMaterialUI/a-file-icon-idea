@@ -35,7 +35,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiUtilCore;
 import com.mallowigi.config.AtomFileIconsConfig;
-import com.mallowigi.icons.associations.PsiElementAssociation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -107,11 +106,7 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     Icon icon = null;
 
     try {
-      if (association instanceof PsiElementAssociation) {
-        icon = ((PsiElementAssociation) association).getIconForFile(file);
-      } else {
-        icon = IconLoader.getIcon(association.getIcon());
-      }
+      icon = IconLoader.getIcon(association.getIcon());
     } catch (final Exception e) {
       e.printStackTrace();
     }

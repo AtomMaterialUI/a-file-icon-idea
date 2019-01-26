@@ -89,18 +89,18 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   void applySettings(final SettingsForm form) {
-    this.setIsEnabledIcons(form.getIsEnabledIcons());
-    this.setEnabledDirectories(form.getIsEnabledDirectories());
-    this.setEnabledUIIcons(form.getIsEnabledUIIcons());
-    this.setMonochromeIcons(form.getIsEnabledMonochromeIcons());
-    this.setMonochromeColor(form.getMonochromeColor());
+    setIsEnabledIcons(form.getIsEnabledIcons());
+    setEnabledDirectories(form.getIsEnabledDirectories());
+    setEnabledUIIcons(form.getIsEnabledUIIcons());
+    setMonochromeIcons(form.getIsEnabledMonochromeIcons());
+    setMonochromeColor(form.getMonochromeColor());
 
-    this.fireChanged();
+    fireChanged();
   }
 
   /**
@@ -116,7 +116,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
 
   //region Enabled Icons
   public boolean isEnabledIcons() {
-    return this.enabledIcons;
+    return enabledIcons;
   }
 
   private void setIsEnabledIcons(final boolean enabledIcons) {
@@ -124,13 +124,17 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isEnabledIconsChanged(final boolean isEnabledIcons) {
-    return this.isEnabledIcons() != isEnabledIcons;
+    return isEnabledIcons() != isEnabledIcons;
+  }
+
+  public void toggleEnabledIcons() {
+    enabledIcons = !enabledIcons;
   }
   //endregion
 
   //region Enabled directories
   public boolean isEnabledDirectories() {
-    return this.enabledDirectories;
+    return enabledDirectories;
   }
 
   private void setEnabledDirectories(final boolean enabledDirectories) {
@@ -138,14 +142,17 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isEnabledDirectoriesChanged(final boolean isEnabledDirectories) {
-    return this.enabledDirectories != isEnabledDirectories;
+    return enabledDirectories != isEnabledDirectories;
   }
 
+  public void toggleDirectoriesIcons() {
+    enabledDirectories = !enabledDirectories;
+  }
   //endregion
 
   //region Monochrome icons
   public boolean isMonochromeIcons() {
-    return this.monochromeIcons;
+    return monochromeIcons;
   }
 
   private void setMonochromeIcons(final boolean monochromeIcons) {
@@ -153,14 +160,17 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isMonochromeIconsChanged(final boolean isMonochrome) {
-    return this.monochromeIcons != isMonochrome;
+    return monochromeIcons != isMonochrome;
   }
 
+  public void toggleMonochromeIcons() {
+    monochromeIcons = !monochromeIcons;
+  }
   //endregion
 
   //region UI Icons
   public boolean isEnabledUIIcons() {
-    return this.enabledUIIcons;
+    return enabledUIIcons;
   }
 
   private void setEnabledUIIcons(final boolean enabledUIIcons) {
@@ -168,13 +178,17 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isEnabledUIIconsChanged(final boolean isEnabledUIIcons) {
-    return this.enabledUIIcons != isEnabledUIIcons;
+    return enabledUIIcons != isEnabledUIIcons;
+  }
+
+  public void toggleUIIcons() {
+    enabledUIIcons = !enabledUIIcons;
   }
   //endregion
 
   //region monochrome color
   public String getMonochromeColor() {
-    return this.monochromeColor;
+    return monochromeColor;
   }
 
   private void setMonochromeColor(final String monochromeColor) {
@@ -186,19 +200,4 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
   //endregion
 
-  public void toggleEnabledIcons() {
-    this.enabledIcons = !this.enabledIcons;
-  }
-
-  public void toggleDirectoriesIcons() {
-    this.enabledDirectories = !this.enabledDirectories;
-  }
-
-  public void toggleUIIcons() {
-    this.enabledUIIcons = !this.enabledUIIcons;
-  }
-
-  public void toggleMonochromeIcons() {
-    this.monochromeIcons = !this.monochromeIcons;
-  }
 }

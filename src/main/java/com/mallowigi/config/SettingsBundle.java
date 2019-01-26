@@ -36,10 +36,10 @@ import java.util.ResourceBundle;
 /**
  * Messages Bundle for Material Theme
  */
-public final class SettingsBundle {
+final class SettingsBundle {
 
   @NonNls
-  public static final String PATH_TO_BUNDLE = "config.AtomFileIconsBundle";
+  private static final String PATH_TO_BUNDLE = "config.AtomFileIconsBundle";
 
   @NotNull
   private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(SettingsBundle.PATH_TO_BUNDLE);
@@ -53,27 +53,10 @@ public final class SettingsBundle {
 
   /**
    * Get a message from the resource bundle
-   *
-   * @param key
-   * @param params
-   * @return the message
    */
-  public static String message(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
-                               @NotNull final Object... params) {
+  static String message(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
+                        @NotNull final Object... params) {
     return CommonBundle.message(SettingsBundle.BUNDLE, key, params);
   }
 
-  /**
-   * Get a message from the resource bundle or return a default message
-   *
-   * @param key
-   * @param defaultValue
-   * @param params
-   * @return the message or default
-   */
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
-                                        final String defaultValue,
-                                        final Object... params) {
-    return CommonBundle.messageOrDefault(SettingsBundle.BUNDLE, key, defaultValue, params);
-  }
 }

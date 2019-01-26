@@ -133,17 +133,17 @@ public abstract class ConfigurableBase<FORM extends SettingsFormUI, CONFIG exten
   /**
    * Dispose resources
    */
-  protected void dispose() {
+  private void dispose() {
   }
 
   /**
    * Return the created form
    */
-  protected final FORM getForm() {
+  private FORM getForm() {
     return form;
   }
 
-  public final void setForm(final FORM form) {
+  private void setForm(final FORM form) {
     this.form = form;
   }
 

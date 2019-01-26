@@ -39,11 +39,10 @@ public interface ConfigNotifier {
 
   /**
    * Called when config is changed
-   *
-   * @param atomFileIconsConfig
    */
   void configChanged(AtomFileIconsConfig atomFileIconsConfig);
 
+  @SuppressWarnings("unused")
   class Adapter implements ConfigNotifier {
 
     @Override
