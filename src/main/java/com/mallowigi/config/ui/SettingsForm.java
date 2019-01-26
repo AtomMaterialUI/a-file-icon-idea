@@ -46,7 +46,7 @@ import java.util.ResourceBundle;
 @SuppressWarnings("FieldCanBeLocal")
 public class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
-    this.initComponents();
+    initComponents();
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -61,15 +61,16 @@ public class SettingsForm implements SettingsFormUI {
   private ColorPanel monoColorChooser;
   private JLabel enableUIIconsIcon;
   private JCheckBox enableUIIconsCheckbox;
+  private JLabel enablePSIIconsIcon;
+  private JCheckBox enablePSIIconsCheckbox;
   private JTextPane notice;
-
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("Convert2MethodRef")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
     content = new JPanel();
     enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
@@ -80,6 +81,8 @@ public class SettingsForm implements SettingsFormUI {
     monoColorChooser = new ColorPanel();
     enableUIIconsIcon = new JLabel();
     enableUIIconsCheckbox = new JCheckBox();
+    enablePSIIconsIcon = new JLabel();
+    enablePSIIconsCheckbox = new JCheckBox();
     notice = new JTextPane();
 
     //======== content ========
@@ -88,17 +91,18 @@ public class SettingsForm implements SettingsFormUI {
           "hidemode 3",
           // columns
           "[fill]" +
-          "[::600,fill]" +
-          "[fill]",
+              "[::600,fill]" +
+              "[fill]",
           // rows
           "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
       //---- enableFileIconsIcon ----
-      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/atom@2x.png")));
+      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
       content.add(enableFileIconsIcon, "cell 0 0");
 
       //---- enableFileIconsCheckbox ----
@@ -107,7 +111,7 @@ public class SettingsForm implements SettingsFormUI {
       content.add(enableFileIconsCheckbox, "cell 1 0");
 
       //---- enableDirectoryIconsIcon ----
-      enableDirectoryIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/compiledClassesFolder@2x.png")));
+      enableDirectoryIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/compiledClassesFolder@2x.png")));
       content.add(enableDirectoryIconsIcon, "cell 0 1");
 
       //---- enableDirectoryIconsCheckbox ----
@@ -116,7 +120,7 @@ public class SettingsForm implements SettingsFormUI {
       content.add(enableDirectoryIconsCheckbox, "cell 1 1");
 
       //---- monochromeIcon ----
-      monochromeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/monochrome@2x.png")));
+      monochromeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/monochrome@2x.png")));
       content.add(monochromeIcon, "cell 0 2");
 
       //---- monochromeCheckbox ----
@@ -131,7 +135,7 @@ public class SettingsForm implements SettingsFormUI {
       content.add(monoColorChooser, "cell 1 2,alignx right,growx 0");
 
       //---- enableUIIconsIcon ----
-      enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/nodes/plugin@2x.png")));
+      enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plugin@2x.png")));
       content.add(enableUIIconsIcon, "cell 0 3");
 
       //---- enableUIIconsCheckbox ----
@@ -139,10 +143,19 @@ public class SettingsForm implements SettingsFormUI {
       enableUIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableUIIconsCheckbox.toolTipText"));
       content.add(enableUIIconsCheckbox, "cell 1 3");
 
+      //---- enablePSIIconsIcon ----
+      enablePSIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/psiIcons@2x.png")));
+      content.add(enablePSIIconsIcon, "cell 0 4");
+
+      //---- enablePSIIconsCheckbox ----
+      enablePSIIconsCheckbox.setText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.text"));
+      enablePSIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.toolTipText"));
+      content.add(enablePSIIconsCheckbox, "cell 1 4");
+
       //---- notice ----
       notice.setText(bundle.getString("SettingsForm.notice.text"));
       notice.setEnabled(false);
-      content.add(notice, "tag help,cell 1 4,align left top,grow 0 0,wmax 400");
+      content.add(notice, "tag help,cell 1 5,align left top,grow 0 0,wmax 400");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -159,29 +172,29 @@ public class SettingsForm implements SettingsFormUI {
 
   public final void setFormState(final AtomFileIconsConfig config) {
 
-    this.setIsEnabledIcons(config.isEnabledIcons());
-    this.setIsEnabledDirectories(config.isEnabledDirectories());
-    this.setIsEnabledMonochromeIcons(config.isMonochromeIcons());
-    this.setIsEnabledUIIcons(config.isEnabledUIIcons());
-    this.setMonochromeColor(config.getMonochromeColor());
+    setIsEnabledIcons(config.isEnabledIcons());
+    setIsEnabledDirectories(config.isEnabledDirectories());
+    setIsEnabledMonochromeIcons(config.isMonochromeIcons());
+    setIsEnabledUIIcons(config.isEnabledUIIcons());
+    setMonochromeColor(config.getMonochromeColor());
 
-    this.afterStateSet();
+    afterStateSet();
   }
 
   public final boolean isModified(final AtomFileIconsConfig config) {
 
-    boolean modified = config.isEnabledIconsChanged(this.getIsEnabledIcons());
-    modified = modified || config.isEnabledDirectoriesChanged(this.getIsEnabledDirectories());
-    modified = modified || config.isMonochromeIconsChanged(this.getIsEnabledMonochromeIcons());
-    modified = modified || config.isEnabledUIIconsChanged(this.getIsEnabledUIIcons());
-    modified = modified || config.isMonochromeColorChanged(this.getMonochromeColor());
+    boolean modified = config.isEnabledIconsChanged(getIsEnabledIcons());
+    modified = modified || config.isEnabledDirectoriesChanged(getIsEnabledDirectories());
+    modified = modified || config.isMonochromeIconsChanged(getIsEnabledMonochromeIcons());
+    modified = modified || config.isEnabledUIIconsChanged(getIsEnabledUIIcons());
+    modified = modified || config.isMonochromeColorChanged(getMonochromeColor());
 
     return modified;
   }
 
   @Override
   public JComponent getContent() {
-    return this.content;
+    return content;
   }
 
   @Override
@@ -196,41 +209,41 @@ public class SettingsForm implements SettingsFormUI {
 
   //region File Icons
   public boolean getIsEnabledIcons() {
-    return this.enableFileIconsCheckbox.isSelected();
+    return enableFileIconsCheckbox.isSelected();
   }
 
   private void setIsEnabledIcons(final boolean enabledIcons) {
-    this.enableFileIconsCheckbox.setSelected(enabledIcons);
+    enableFileIconsCheckbox.setSelected(enabledIcons);
   }
   //endregion
 
   //region Directory Icons
   public boolean getIsEnabledDirectories() {
-    return this.enableDirectoryIconsCheckbox.isSelected();
+    return enableDirectoryIconsCheckbox.isSelected();
   }
 
   private void setIsEnabledDirectories(final boolean enabledDirectories) {
-    this.enableDirectoryIconsCheckbox.setSelected(enabledDirectories);
+    enableDirectoryIconsCheckbox.setSelected(enabledDirectories);
   }
   //endregion
 
   //region Monochrome Icons
   public boolean getIsEnabledMonochromeIcons() {
-    return this.monochromeCheckbox.isSelected();
+    return monochromeCheckbox.isSelected();
   }
 
   private void setIsEnabledMonochromeIcons(final boolean isEnabledMonochromeIcons) {
-    this.monochromeCheckbox.setSelected(isEnabledMonochromeIcons);
+    monochromeCheckbox.setSelected(isEnabledMonochromeIcons);
   }
   //endregion
 
   //region UI Icons
   public boolean getIsEnabledUIIcons() {
-    return this.enableUIIconsCheckbox.isSelected();
+    return enableUIIconsCheckbox.isSelected();
   }
 
   private void setIsEnabledUIIcons(final boolean enabledUIIcons) {
-    this.enableUIIconsCheckbox.setSelected(enabledUIIcons);
+    enableUIIconsCheckbox.setSelected(enabledUIIcons);
   }
   //endregion
 
