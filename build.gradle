@@ -91,6 +91,7 @@ intellij {
     }
 
     publishPlugin {
+        token System.getenv("publishToken") ?: publishToken
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
 //        channels = ['eap']
