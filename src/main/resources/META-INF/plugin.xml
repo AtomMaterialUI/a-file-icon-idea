@@ -30,7 +30,7 @@
     <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="http://github.com/mallowigi">Mallowigi</vendor>
 
-    <idea-version since-build="183.0"/>
+    <idea-version since-build="191.0"/>
 
     <depends>com.intellij.modules.lang</depends>
 
@@ -54,12 +54,14 @@
     </application-components>
 
     <actions>
-        <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom File Icon Settings" popup="true"
-               icon="/icons/actions/atom.svg">
+        <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom File Icon Settings"
+               popup="true" icon="/icons/actions/atom.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction" text="Enable File Icons"
+            <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
+                    text="Enable File Icons"
                     description="Enable File Icons"/>
-            <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction" text="Enable Directory Icons"
+            <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
+                    text="Enable Directory Icons"
                     description="Enable Directory Icons"/>
             <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction" text="Enable UI Icons"
                     description="Enable UI Icons"/>

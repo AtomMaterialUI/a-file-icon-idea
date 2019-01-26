@@ -23,25 +23,24 @@
  *
  *
  */
+package com.mallowigi.icons.patchers;
 
-package com.mallowigi.icons.filters;
+import org.jetbrains.annotations.NotNull;
 
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
-import com.mallowigi.config.AtomFileIconsConfig;
+/**
+ * @author Konstantin Bulenkov
+ */
+public class WizardPluginsIconsPatcher extends MTIconPatcher {
 
-import java.awt.*;
-
-public class MonochromeFilter extends ColorizeFilter {
-
-  private static final int TONES = 8;
-
-  public MonochromeFilter() {
-    super(getPrimaryColor());
+  @NotNull
+  @Override
+  public final String getPathToAppend() {
+    return "/icons/plugins/wizard";
   }
 
-  private static Color getPrimaryColor() {
-    final Color color = ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getMonochromeColor());
-    return new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, TONES));
+  @NotNull
+  @Override
+  public final String getPathToRemove() {
+    return "/icons/plugins";
   }
 }

@@ -96,6 +96,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
     return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
 
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Nullable
   @Override
   public final String patchPath(final String path, final ClassLoader classLoader) {
