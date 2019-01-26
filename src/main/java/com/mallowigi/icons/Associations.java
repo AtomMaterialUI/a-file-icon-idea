@@ -30,6 +30,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.TypeAssociation;
 import com.thoughtworks.xstream.XStream;
@@ -43,18 +44,10 @@ import java.util.List;
 /**
  * Represents a list of association parsed from the XML
  */
-public final class Associations implements Serializable {
-
+final class Associations implements Serializable {
   private static final long serialVersionUID = -2509137393329824727L;
+  @Property
   private List<Association> associations;
-
-  public List<Association> getAssociations() {
-    return associations;
-  }
-
-  public void setAssociations(final List<Association> associations) {
-    this.associations = associations;
-  }
 
   /**
    * Find the Association for the given FileInfo

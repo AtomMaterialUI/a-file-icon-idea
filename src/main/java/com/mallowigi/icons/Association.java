@@ -26,14 +26,18 @@
 
 package com.mallowigi.icons;
 
+import com.intellij.util.xmlb.annotations.Property;
+
 import java.io.Serializable;
 
 /**
  * Represent an association of a name with an icon
  */
 public abstract class Association implements Serializable {
-
+  private static final long serialVersionUID = -1208494241596750299L;
+  @Property
   private String name;
+  @Property
   private String icon;
 
   /**
@@ -44,19 +48,11 @@ public abstract class Association implements Serializable {
    */
   public abstract boolean matches(FileInfo file);
 
-  public final String getIcon() {
-    return icon;
-  }
-
-  public final void setIcon(String icon) {
-    this.icon = icon;
-  }
-
-  public final String getName() {
+  public String getName() {
     return name;
   }
 
-  public final void setName(String name) {
-    this.name = name;
+  String getIcon() {
+    return icon;
   }
 }

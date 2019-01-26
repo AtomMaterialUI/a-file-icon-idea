@@ -60,7 +60,7 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     } else if (enabledIcons && psiElement instanceof PsiFile) {
       final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
       if (virtualFile != null) {
-        final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+        final FileInfo file = new VirtualFileInfo(virtualFile);
         icon = getIconForAssociation(file, associations.findAssociationForFile(file));
       }
     }
@@ -72,7 +72,7 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     Icon icon = null;
     final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
     if (virtualFile != null) {
-      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+      final FileInfo file = new VirtualFileInfo(virtualFile);
       icon = getDirectoryIconForAssociation(file, dirAssociations.findAssociationForFile(file));
     }
     return icon;

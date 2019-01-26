@@ -26,6 +26,7 @@
 
 package com.mallowigi.icons.associations;
 
+import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.Association;
 import com.mallowigi.icons.FileInfo;
 
@@ -33,19 +34,12 @@ import com.mallowigi.icons.FileInfo;
  * Association for Types
  */
 public final class TypeAssociation extends Association {
-
+  private static final long serialVersionUID = -4332815766322915339L;
+  @Property
   private String type;
 
   @Override
-  public boolean matches(FileInfo file) {
+  public boolean matches(final FileInfo file) {
     return file.getFileType().equals(type);
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
   }
 }

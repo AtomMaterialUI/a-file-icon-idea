@@ -26,6 +26,7 @@
 
 package com.mallowigi.icons.associations;
 
+import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.Association;
 import com.mallowigi.icons.FileInfo;
 
@@ -35,23 +36,17 @@ import java.util.regex.Pattern;
  * Association for Regular Expressions
  */
 public final class RegexAssociation extends Association {
-
+  private static final long serialVersionUID = -8406831867350147465L;
+  @Property
   private String pattern;
+
   private transient Pattern compiledPattern;
 
   @Override
-  public boolean matches(FileInfo file) {
+  public boolean matches(final FileInfo file) {
     if (compiledPattern == null) {
       compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
     }
     return compiledPattern.matcher(file.getName()).matches();
-  }
-
-  public String getPattern() {
-    return pattern;
-  }
-
-  public void setPattern(String pattern) {
-    this.pattern = pattern;
   }
 }

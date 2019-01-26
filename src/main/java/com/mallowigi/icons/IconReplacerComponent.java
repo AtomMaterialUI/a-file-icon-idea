@@ -150,7 +150,7 @@ public final class IconReplacerComponent implements BaseComponent {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
       instanceEx.fireFileTypesChanged();
       applyFilter();
-      LafManager.getInstance().updateUI();
+      //      LafManager.getInstance().updateUI();
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
   }
@@ -165,10 +165,6 @@ public final class IconReplacerComponent implements BaseComponent {
   private void installPathPatcher(final IconPathPatcher patcher) {
     CACHE.add(patcher);
     IconLoader.installPathPatcher(patcher);
-  }
-
-  private void removePathPatcher(final IconPathPatcher patcher) {
-    IconLoader.removePathPatcher(patcher);
   }
 
   @Override

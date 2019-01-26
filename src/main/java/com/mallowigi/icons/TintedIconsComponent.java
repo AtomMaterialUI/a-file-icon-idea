@@ -86,7 +86,7 @@ public final class TintedIconsComponent implements BaseComponent {
     return "TintedIconsComponent";
   }
 
-  TintedColorPatcher getColorPatcher() {
+  private TintedColorPatcher getColorPatcher() {
     return colorPatcher;
   }
 
@@ -102,7 +102,7 @@ public final class TintedIconsComponent implements BaseComponent {
       refreshColors();
     }
 
-    static void refreshThemeColor(ColorUIResource theme) {
+    static void refreshThemeColor(final ColorUIResource theme) {
       themedColor = theme;
     }
 
@@ -110,14 +110,14 @@ public final class TintedIconsComponent implements BaseComponent {
       themedColor = getTintedColor();
     }
 
-    private String getColorHex(Color color) {
+    private String getColorHex(final Color color) {
       return ColorUtil.toHex(color);
     }
 
     @Override
-    public final void patchColors(@NonNls Element svg) {
-      @NonNls String themed = svg.getAttribute("customTint");
-      String hexColor = getColorHex(themedColor);
+    public final void patchColors(@NonNls final Element svg) {
+      @NonNls final String themed = svg.getAttribute("customTint");
+      final String hexColor = getColorHex(themedColor);
 
       if ("true".equals(themed) || "fill".equals(themed)) {
         svg.setAttribute("fill", "#" + hexColor);
@@ -125,10 +125,10 @@ public final class TintedIconsComponent implements BaseComponent {
         svg.setAttribute("stroke", "#" + hexColor);
       }
 
-      NodeList nodes = svg.getChildNodes();
-      int length = nodes.getLength();
+      final NodeList nodes = svg.getChildNodes();
+      final int length = nodes.getLength();
       for (int i = 0; i < length; i++) {
-        Node item = nodes.item(i);
+        final Node item = nodes.item(i);
         if (item instanceof Element) {
           patchColors((Element) item);
         }

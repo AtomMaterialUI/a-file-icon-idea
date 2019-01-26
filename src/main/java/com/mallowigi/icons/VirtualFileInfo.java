@@ -27,14 +27,11 @@
 package com.mallowigi.icons;
 
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
 
 public final class VirtualFileInfo implements FileInfo {
   private final VirtualFile vFile;
-  private final PsiElement psiElement;
 
-  VirtualFileInfo(PsiElement psiElement, VirtualFile vFile) {
-    this.psiElement = psiElement;
+  VirtualFileInfo(final VirtualFile vFile) {
     this.vFile = vFile;
   }
 
@@ -45,11 +42,7 @@ public final class VirtualFileInfo implements FileInfo {
 
   @Override
   public String getFileType() {
-    return String.valueOf(vFile.getFileType().getName());
+    return vFile.getFileType().getName();
   }
 
-  @Override
-  public PsiElement getPsiElement() {
-    return psiElement;
-  }
 }
