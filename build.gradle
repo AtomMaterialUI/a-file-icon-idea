@@ -54,7 +54,7 @@ intellij {
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild true
-//    alternativeIdePath idePath
+    alternativeIdePath idePath
     updateSinceUntilBuild = true
 
     patchPluginXml {
