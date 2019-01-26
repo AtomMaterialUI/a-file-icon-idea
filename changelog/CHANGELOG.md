@@ -1,5 +1,10 @@
 # Changelog
 
+# 10.0
+- New setting: **PSI Icons**. Replaces icons about program structure: classes, interfaces, methods, enums etc.
+- Import last set of UI Icons from the Material Theme
+- Update for 2019.1
+
 # 9.0
 - Add Monochrome Icons' tint color selection
 - Fix UI Icons setting needing the IDE to be restarted
