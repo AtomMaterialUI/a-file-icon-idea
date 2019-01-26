@@ -59,14 +59,23 @@
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
                     text="Enable File Icons"
+                    icon="/icons/settings/atom.png"
                     description="Enable File Icons"/>
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
                     text="Enable Directory Icons"
+                    icon="/icons/settings/compiledClassesFolder.png"
                     description="Enable Directory Icons"/>
-            <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction" text="Enable UI Icons"
+            <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
+                    text="Enable UI Icons"
+                    icon="/icons/settings/plugin.png"
                     description="Enable UI Icons"/>
+            <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
+                    text="Enable PSI Icons"
+                    icon="/icons/settings/psiIcons.png"
+                    description="Enable PSI Icons"/>
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
                     text="Enable Monochrome Icons"
+                    icon="/icons/settings/monochrome.png"
                     description="Enable Monochrome Icons"/>
         </group>
 
