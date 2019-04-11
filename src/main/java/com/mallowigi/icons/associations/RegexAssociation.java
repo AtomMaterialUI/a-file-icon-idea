@@ -26,10 +26,11 @@
 
 package com.mallowigi.icons.associations;
 
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.Association;
 import com.mallowigi.icons.FileInfo;
 
+import javax.swing.*;
 import java.util.regex.Pattern;
 
 /**
@@ -41,6 +42,11 @@ public final class RegexAssociation extends Association {
   private String pattern;
 
   private transient Pattern compiledPattern;
+
+  @Override
+  public Icon getIconForFile(final FileInfo file) {
+    return IconLoader.getIcon(getIcon());
+  }
 
   @Override
   public boolean matches(final FileInfo file) {

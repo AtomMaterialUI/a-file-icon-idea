@@ -23,25 +23,43 @@
  *
  *
  */
-package com.mallowigi.icons.patchers.glyphs;
 
-import com.mallowigi.icons.patchers.MTIconPatcher;
-import org.jetbrains.annotations.NotNull;
+package com.mallowigi.icons.associations;
+
+import com.intellij.util.xmlb.annotations.Property;
+import com.mallowigi.icons.FileInfo;
+import org.jetbrains.annotations.NonNls;
+
+import javax.swing.*;
+import java.io.Serializable;
 
 /**
- * @author Konstantin Bulenkov
+ * Represent an association of a name with an icon
  */
-public class PythonGlyphsPatcher extends MTIconPatcher {
+public abstract class Association implements Serializable {
 
-  @NotNull
-  @Override
-  public final String getPathToAppend() {
-    return "/icons/plugins/python/glyphs";
+  private static final long serialVersionUID = -3023717098723853935L;
+  @Property
+  private String name;
+  @Property
+  private String icon;
+
+  /**
+   * Get the icon for a given file info according
+   *
+   * @param file the file info
+   * @return the icon if found
+   */
+  public abstract Icon getIconForFile(FileInfo file);
+
+  public final String getIcon() {
+    return icon;
   }
 
-  @NotNull
-  @Override
-  public final String getPathToRemove() {
-    return "/icons";
+  @NonNls
+  public final String getName() {
+    return name;
   }
+
+  public abstract boolean matches(FileInfo file);
 }

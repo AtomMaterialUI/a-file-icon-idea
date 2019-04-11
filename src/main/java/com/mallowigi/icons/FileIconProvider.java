@@ -28,13 +28,16 @@ package com.mallowigi.icons;
 
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiUtilCore;
 import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.icons.associations.Association;
+import com.mallowigi.icons.associations.Associations;
+import com.mallowigi.icons.associations.AssociationsFactory;
+import icons.MTIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,69 +48,88 @@ import javax.swing.*;
  */
 public final class FileIconProvider extends IconProvider implements DumbAware {
 
-  private final Associations associations = Associations.AssociationsFactory.create("/icon_associations.xml");
-  private final Associations dirAssociations = Associations.AssociationsFactory.create("/folder_associations.xml");
+  private final Associations associations = AssociationsFactory.create("/icon_associations.xml");
+  private final Associations dirAssociations = AssociationsFactory.create("/folder_associations.xml");
 
   @Nullable
   @Override
-  public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
+  public Icon getIcon(@NotNull final PsiElement element, final int flags) {
     Icon icon = null;
-    final boolean enabledIcons = AtomFileIconsConfig.getInstance().isEnabledIcons();
-    final boolean enabledDirectories = AtomFileIconsConfig.getInstance().isEnabledDirectories();
 
-    if (enabledDirectories && psiElement instanceof PsiDirectory) {
-      icon = getDirectoryIcon(psiElement);
-    } else if (enabledIcons && psiElement instanceof PsiFile) {
-      final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
-      if (virtualFile != null) {
-        final FileInfo file = new VirtualFileInfo(virtualFile);
-        icon = getIconForAssociation(file, associations.findAssociationForFile(file));
-      }
+    if (element instanceof PsiDirectory) {
+      icon = getDirectoryIcon(element);
+    } else if (element instanceof PsiFile) {
+      icon = getFileIcon(element);
     }
 
     return icon;
   }
 
-  private Icon getDirectoryIcon(final PsiElement psiElement) {
+  private Icon getFileIcon(final PsiElement psiElement) {
     Icon icon = null;
+    if (!AtomFileIconsConfig.getInstance().isEnabledIcons()) {
+      return null;
+    }
+
     final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
     if (virtualFile != null) {
-      final FileInfo file = new VirtualFileInfo(virtualFile);
-      icon = getDirectoryIconForAssociation(file, dirAssociations.findAssociationForFile(file));
+      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+      icon = getIconForAssociation(file, associations.findAssociationForFile(file));
+    }
+    return icon;
+  }
+
+  private DirIcon getDirectoryIcon(final PsiElement psiElement) {
+    DirIcon icon = null;
+    if (!AtomFileIconsConfig.getInstance().isEnabledDirectories()) {
+      return null;
+    }
+
+    final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+    if (virtualFile != null) {
+      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+      icon = getDirectoryIconForAssociation(dirAssociations.findAssociationForFile(file));
     }
     return icon;
   }
 
   /**
    * Get the relevant icon for association
-   *
-   * @param file        a file
-   * @param association the found association
-   * @return the replaced icon, or null if not found
    */
-  private Icon getIconForAssociation(final FileInfo file, final Association association) {
+  private static Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
     return isInputInvalid ? null : loadIcon(file, association);
   }
 
-  private Icon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
+  private static DirIcon getDirectoryIconForAssociation(final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadIcon(file, association);
+    return isInputInvalid ? null : loadDirIcon(association);
   }
 
   /**
-   * Find the icon specified by the association and load it
-   *
-   * @param file        the file
-   * @param association the association found
-   * @return the icon if found, null otherwise
+   * Load the association's icon
    */
-  private Icon loadIcon(final FileInfo file, final Association association) {
+  private static Icon loadIcon(final FileInfo file, final Association association) {
     Icon icon = null;
 
     try {
-      icon = IconLoader.getIcon(association.getIcon());
-    } catch (final Exception e) {
+      icon = association.getIconForFile(file);
+    } catch (final RuntimeException e) {
+      e.printStackTrace();
+    }
+    return icon;
+  }
+
+  /**
+   * Load the association's icon
+   */
+  private static DirIcon loadDirIcon(final Association association) {
+    DirIcon icon = null;
+
+    try {
+      final String iconPath = association.getIcon();
+      icon = MTIcons.getFolderIcon(iconPath);
+    } catch (final RuntimeException e) {
       e.printStackTrace();
     }
     return icon;

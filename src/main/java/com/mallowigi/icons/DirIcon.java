@@ -23,24 +23,54 @@
  *
  *
  */
-package com.mallowigi.icons.patchers;
+package com.mallowigi.icons;
 
-import org.jetbrains.annotations.NotNull;
+import icons.MTIcons;
 
-/**
- * @author Konstantin Bulenkov
- */
-public class CLionIconsPatcher extends MTIconPatcher {
+import javax.swing.*;
+import java.awt.*;
 
-  @Override
-  @NotNull
-  public final String getPathToAppend() {
-    return "/icons/plugins/clion";
+public class DirIcon implements Icon {
+
+  private final Icon closedIcon;
+  private final Icon openedIcon;
+
+  @SuppressWarnings("unused")
+  DirIcon() {
+    this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen);
+  }
+
+  @SuppressWarnings("unused")
+  public DirIcon(final Icon icon) {
+    this(icon, icon);
+  }
+
+  public DirIcon(final Icon closedIcon, final Icon openedIcon) {
+    this.closedIcon = closedIcon;
+    this.openedIcon = openedIcon;
   }
 
   @Override
-  @NotNull
-  public final String getPathToRemove() {
-    return "";
+  public final void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+    closedIcon.paintIcon(c, g, x, y);
+  }
+
+  @Override
+  public final int getIconWidth() {
+    return closedIcon.getIconWidth();
+  }
+
+  @Override
+  public final int getIconHeight() {
+    return closedIcon.getIconHeight();
+  }
+
+  @SuppressWarnings("unused")
+  public final Icon getClosedIcon() {
+    return closedIcon;
+  }
+
+  public final Icon getOpenedIcon() {
+    return openedIcon;
   }
 }

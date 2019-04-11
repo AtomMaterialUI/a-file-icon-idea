@@ -25,22 +25,31 @@
  */
 package com.mallowigi.icons.patchers;
 
+import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class JinjaIconsPatcher extends MTIconPatcher {
+public class ExternalIconsPatcher extends MTIconPatcher {
+  @Property
+  private String append;
+
+  @Property
+  private String remove;
+
+  @Property
+  private String name;
 
   @Override
   @NotNull
   public final String getPathToAppend() {
-    return "/icons/plugins/python/jinja";
+    return append;
   }
 
   @Override
   @NotNull
   public final String getPathToRemove() {
-    return "/icons/com/jetbrains/jinja2";
+    return remove;
   }
 }

@@ -27,44 +27,53 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.UISettingsListener;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
+import com.intellij.openapi.fileTypes.FileTypeEvent;
+import com.intellij.openapi.fileTypes.FileTypeListener;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.ConfigNotifier;
-import com.mallowigi.icons.patchers.*;
-import com.mallowigi.icons.patchers.glyphs.*;
+import com.mallowigi.icons.patchers.IconPathPatchers;
+import com.mallowigi.icons.patchers.MTIconPatcher;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-import static com.mallowigi.icons.IconManager.applyFilter;
-
 public final class IconReplacerComponent implements BaseComponent {
+  @Property
+  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
+
+  private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
+
   private MessageBusConnection connect;
-  private final Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
 
   @Override
   public void initComponent() {
     updateIcons();
-
-    // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
 
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      IconManager.applyFilter();
-      LafManager.getInstance().updateUI();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final AtomFileIconsConfig mtConfig) {
+        updateIcons();
+      }
+    });
+    connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
+      @Override
+      public void fileTypesChanged(@NotNull final FileTypeEvent event) {
+        updateIcons();
+      }
     });
   }
 
-  private void updateIcons() {
+  @SuppressWarnings("WeakerAccess")
+  void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
 
@@ -77,94 +86,46 @@ public final class IconReplacerComponent implements BaseComponent {
     if (AtomFileIconsConfig.getInstance().isEnabledIcons()) {
       installFileIconsPatchers();
     }
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      IconManager.applyFilter();
+      LafManager.getInstance().updateUI();
+    });
   }
 
+  @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
-    installPathPatcher(new AllIconsPatcher());
-    installPathPatcher(new ImagesIconsPatcher());
-    installPathPatcher(new VCSIconsPatcher());
-    installPathPatcher(new GradleIconsPatcher());
-    installPathPatcher(new TasksIconsPatcher());
-    installPathPatcher(new MavenIconsPatcher());
-    installPathPatcher(new TerminalIconsPatcher());
-    installPathPatcher(new BuildToolsIconsPatcher());
-    installPathPatcher(new RemoteServersIconsPatcher());
-    installPathPatcher(new DatabaseToolsIconsPatcher());
-    installPathPatcher(new WizardPluginsIconsPatcher());
-
-    installPathPatcher(new PHPIconsPatcher());
-    installPathPatcher(new PythonIconsPatcher());
-    installPathPatcher(new AppEngineIconsPatcher());
-    installPathPatcher(new CythonIconsPatcher());
-    installPathPatcher(new MakoIconsPatcher());
-    installPathPatcher(new JinjaIconsPatcher());
-    installPathPatcher(new FlaskIconsPatcher());
-    installPathPatcher(new DjangoIconsPatcher());
-    installPathPatcher(new ChameleonIconsPatcher());
-    installPathPatcher(new PyQtIconsPatcher());
-    installPathPatcher(new Web2PythonIconsPatcher());
-
-    installPathPatcher(new JavascriptIconsPatcher());
-    installPathPatcher(new RubyIconsPatcher());
-
-    installPathPatcher(new GolandIconsPatcher());
-    installPathPatcher(new DataGripIconsPatcher());
-    installPathPatcher(new CLionIconsPatcher());
-    installPathPatcher(new AppCodeIconsPatcher());
-    installPathPatcher(new RestClientIconsPatcher());
-
-    installPathPatcher(new RiderIconsPatcher());
-    installPathPatcher(new ResharperIconsPatcher());
+    for (final IconPathPatcher externalPatcher : iconPathPatchers.getIconPatchers()) {
+      installPathPatcher(externalPatcher);
+    }
   }
 
   @SuppressWarnings("OverlyCoupledMethod")
   private void installPSIPatchers() {
-    installPathPatcher(new GlyphsPatcher());
-    installPathPatcher(new ActionsGlyphsPatcher());
-    installPathPatcher(new GeneralGlyphsPatcher());
-    installPathPatcher(new GutterGlyphsPatcher());
-
-    installPathPatcher(new JavascriptGlyphsPatcher());
-    installPathPatcher(new PHPGlyphsPatcher());
-    installPathPatcher(new PythonGlyphsPatcher());
-    installPathPatcher(new RubyGlyphsPatcher());
-    installPathPatcher(new DataGripGlyphsPatcher());
-    installPathPatcher(new AppCodeGlyphsPatcher());
-    installPathPatcher(new GolandGlyphsPatcher());
-    installPathPatcher(new CLionGlyphsPatcher());
-    installPathPatcher(new AopGlyphsPatcher());
-    installPathPatcher(new OtherGlyphsPatcher());
+    for (final IconPathPatcher externalPatcher : iconPathPatchers.getGlyphPatchers()) {
+      installPathPatcher(externalPatcher);
+    }
   }
 
   private void installFileIconsPatchers() {
-    installPathPatcher(new PHPFileIconsPatcher());
-  }
-
-  private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
-    updateFileIcons();
-    updateIcons();
-  }
-
-  private void updateFileIcons() {
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-      instanceEx.fireFileTypesChanged();
-      applyFilter();
-      //      LafManager.getInstance().updateUI();
-      ActionToolbarImpl.updateAllToolbarsImmediately();
-    });
+    for (final IconPathPatcher externalPatcher : iconPathPatchers.getFilePatchers()) {
+      installPathPatcher(externalPatcher);
+    }
   }
 
   private void removePathPatchers() {
-    for (final IconPathPatcher iconPathPatcher : CACHE) {
-      IconLoader.removePathPatcher(iconPathPatcher);
+    for (final IconPathPatcher iconPathPatcher : installedPatchers) {
+      removePathPatcher(iconPathPatcher);
     }
-    CACHE.clear();
+    installedPatchers.clear();
   }
 
   private void installPathPatcher(final IconPathPatcher patcher) {
-    CACHE.add(patcher);
+    installedPatchers.add(patcher);
     IconLoader.installPathPatcher(patcher);
+  }
+
+  private static void removePathPatcher(final IconPathPatcher patcher) {
+    IconLoader.removePathPatcher(patcher);
   }
 
   @Override
@@ -174,6 +135,7 @@ public final class IconReplacerComponent implements BaseComponent {
   }
 
   @Override
+  @NotNull
   public String getComponentName() {
     return "IconReplacerComponent";
   }

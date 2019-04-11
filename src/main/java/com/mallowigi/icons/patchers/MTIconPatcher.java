@@ -51,14 +51,14 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    */
   @NonNls
   @NotNull
-  public abstract String getPathToAppend();
+  protected abstract String getPathToAppend();
 
   /**
    * @return The string to remove from the original path
    */
   @NonNls
   @NotNull
-  public abstract String getPathToRemove();
+  protected abstract String getPathToRemove();
 
   @Nullable
   @Override

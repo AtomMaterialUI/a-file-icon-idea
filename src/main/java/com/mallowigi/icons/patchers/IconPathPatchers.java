@@ -23,24 +23,34 @@
  *
  *
  */
+
 package com.mallowigi.icons.patchers;
 
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.util.IconPathPatcher;
+import com.intellij.util.xmlb.annotations.Property;
 
-/**
- * @author Konstantin Bulenkov
- */
-public class BuildToolsIconsPatcher extends MTIconPatcher {
+import java.util.Collections;
+import java.util.Set;
 
-  @Override
-  @NotNull
-  public final String getPathToAppend() {
-    return "/icons/buildTools";
+public final class IconPathPatchers {
+  @Property
+  private Set<IconPathPatcher> iconPatchers;
+
+  @Property
+  private Set<IconPathPatcher> glyphPatchers;
+
+  @Property
+  private Set<IconPathPatcher> filePatchers;
+
+  public Set<IconPathPatcher> getIconPatchers() {
+    return Collections.unmodifiableSet(iconPatchers);
   }
 
-  @Override
-  @NotNull
-  public final String getPathToRemove() {
-    return "/icons/buildTools";
+  public Set<IconPathPatcher> getGlyphPatchers() {
+    return Collections.unmodifiableSet(glyphPatchers);
+  }
+
+  public Set<IconPathPatcher> getFilePatchers() {
+    return Collections.unmodifiableSet(filePatchers);
   }
 }

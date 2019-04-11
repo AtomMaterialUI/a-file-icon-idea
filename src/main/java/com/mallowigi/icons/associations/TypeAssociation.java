@@ -26,17 +26,27 @@
 
 package com.mallowigi.icons.associations;
 
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.Association;
 import com.mallowigi.icons.FileInfo;
+import org.jetbrains.annotations.NonNls;
+
+import javax.swing.*;
 
 /**
  * Association for Types
  */
 public final class TypeAssociation extends Association {
-  private static final long serialVersionUID = -4332815766322915339L;
+
+  private static final long serialVersionUID = 2429756307124924070L;
+  @NonNls
   @Property
   private String type;
+
+  @Override
+  public Icon getIconForFile(final FileInfo file) {
+    return IconLoader.getIcon(getIcon());
+  }
 
   @Override
   public boolean matches(final FileInfo file) {

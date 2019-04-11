@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
 /**
  * Messages Bundle for Material Theme
  */
-final class SettingsBundle {
+public final class SettingsBundle {
 
   @NonNls
   private static final String PATH_TO_BUNDLE = "config.AtomFileIconsBundle";
@@ -54,8 +54,8 @@ final class SettingsBundle {
   /**
    * Get a message from the resource bundle
    */
-  static String message(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
-                        @NotNull final Object... params) {
+  public static String message(@NotNull @PropertyKey(resourceBundle = SettingsBundle.PATH_TO_BUNDLE) final String key,
+                               @NotNull final Object... params) {
     return CommonBundle.message(SettingsBundle.BUNDLE, key, params);
   }
 
