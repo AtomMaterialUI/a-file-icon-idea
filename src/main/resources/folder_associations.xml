@@ -48,14 +48,15 @@
         <regex name="deploy" pattern="^deploy$" icon="/icons/folders/aws.svg"/>
         <regex name="dist" pattern="^(dist|out|build|release)$" icon="/icons/folders/dist.svg"/>
         <regex name="docker" pattern="^\.?docker$" icon="/icons/folders/docker.svg"/>
-        <regex name="docs" pattern="^docs?$" icon="/icons/folders/docs.svg"/>
+        <regex name="docs" pattern="^(docs?|documentation)?$" icon="/icons/folders/docs.svg"/>
         <regex name="download" pattern="^downloads?$" icon="/icons/folders/download.svg"/>
         <regex name="e2e" pattern="^(e2e|scenarios?)$" icon="/icons/folders/e2e.svg"/>
         <regex name="env" pattern="^(env|environments?)$" icon="/icons/folders/env.svg"/>
         <regex name="exclude" pattern="^(excludes?|export)$" icon="/icons/folders/exclude.svg"/>
         <regex name="expo" pattern="^\.expo$" icon="/icons/folders/expo.svg"/>
         <regex name="features" pattern="^(features?|feats?)$" icon="/icons/folders/rules.svg"/>
-        <regex name="fixtures" pattern="^(fixtures?|fabricators?)$" icon="/icons/folders/fixtures.svg"/>
+        <regex name="fixtures" pattern="^(fixtures?|fabricators?|factory|factories)$"
+               icon="/icons/folders/fixtures.svg"/>
         <regex name="fonts" pattern="^fonts?$" icon="/icons/folders/fonts.svg"/>
         <regex name="functions" pattern="^(functions?|services?|lambdas?)$" icon="/icons/folders/functions.svg"/>
         <regex name="generated" pattern="^(gen|generated|auto)$" icon="/icons/folders/generated.svg"/>
