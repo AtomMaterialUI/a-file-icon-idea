@@ -27,11 +27,11 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.UISettingsListener;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.fileTypes.FileTypeEvent;
-import com.intellij.openapi.fileTypes.FileTypeListener;
-import com.intellij.openapi.fileTypes.FileTypeManager;
+import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.util.containers.ContainerUtil;
@@ -45,6 +45,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+import static com.mallowigi.icons.IconManager.applyFilter;
+
 public final class IconReplacerComponent implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
@@ -57,18 +59,13 @@ public final class IconReplacerComponent implements BaseComponent {
   public void initComponent() {
     updateIcons();
     connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
 
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
-      @Override
-      public void configChanged(final AtomFileIconsConfig mtConfig) {
-        updateIcons();
-      }
-    });
-    connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
-      @Override
-      public void fileTypesChanged(@NotNull final FileTypeEvent event) {
-        updateIcons();
-      }
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      IconManager.applyFilter();
+      LafManager.getInstance().updateUI();
     });
   }
 
@@ -86,10 +83,6 @@ public final class IconReplacerComponent implements BaseComponent {
     if (AtomFileIconsConfig.getInstance().isEnabledIcons()) {
       installFileIconsPatchers();
     }
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      IconManager.applyFilter();
-      LafManager.getInstance().updateUI();
-    });
   }
 
   @SuppressWarnings("OverlyCoupledMethod")
@@ -132,6 +125,21 @@ public final class IconReplacerComponent implements BaseComponent {
   public void disposeComponent() {
     MTIconPatcher.clearCache();
     connect.disconnect();
+  }
+
+  private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
+    updateFileIcons();
+    updateIcons();
+  }
+
+  private void updateFileIcons() {
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+      instanceEx.fireFileTypesChanged();
+      applyFilter();
+      //      LafManager.getInstance().updateUI();
+      ActionToolbarImpl.updateAllToolbarsImmediately();
+    });
   }
 
   @Override
