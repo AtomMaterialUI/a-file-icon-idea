@@ -1,5 +1,11 @@
 # Changelog
 
+# 11.0 #
+* Add light equivalents of icons
+* Update new icons: Resharper (Rider)
+* Sync with Material Icons
+* Fix errors
+
 # 10.0
 - New setting: **PSI Icons**. Replaces icons about program structure: classes, interfaces, methods, enums etc.
 - Import last set of UI Icons from the Material Theme
