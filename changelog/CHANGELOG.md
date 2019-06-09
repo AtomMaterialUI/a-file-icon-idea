@@ -1,5 +1,9 @@
 # Changelog
 
+# 12.0
+- Support for 2019.2
+- Sync with Material Icons
+
 # 11.0 #
 * Add light equivalents of icons
 * Update new icons: Resharper (Rider)
