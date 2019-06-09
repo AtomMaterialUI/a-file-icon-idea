@@ -116,10 +116,15 @@ public final class TintedIconsComponent implements BaseComponent {
 
     @Override
     public final void patchColors(@NonNls final Element svg) {
-      @NonNls final String themed = svg.getAttribute("customTint");
+      @NonNls final String tint = svg.getAttribute("tint");
+      @NonNls final String themed = svg.getAttribute("themed");
       final String hexColor = getColorHex(themedColor);
 
-      if ("true".equals(themed) || "fill".equals(themed)) {
+      if ("true".equals(tint) || "fill".equals(tint)) {
+        svg.setAttribute("fill", "#" + hexColor);
+      } else if ("stroke".equals(tint)) {
+        svg.setAttribute("stroke", "#" + hexColor);
+      } else if ("true".equals(themed) || "fill".equals(themed)) {
         svg.setAttribute("fill", "#" + hexColor);
       } else if ("stroke".equals(themed)) {
         svg.setAttribute("stroke", "#" + hexColor);
