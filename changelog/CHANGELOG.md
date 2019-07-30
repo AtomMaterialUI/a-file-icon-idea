@@ -1,5 +1,9 @@
 # Changelog
 
+# 13.0
+- New Icons and associations
+- Sync with Material Icons
+
 # 12.0
 - Support for 2019.2
 - Sync with Material Icons
