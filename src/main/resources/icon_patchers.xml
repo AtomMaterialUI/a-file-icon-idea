@@ -34,6 +34,7 @@
         <patcher name="CLion" remove="" append="/icons/plugins/clion"/>
         <patcher name="Cython" remove="/icons/com/jetbrains/cython" append="/icons/plugins/python/cython"/>
         <patcher name="Database" remove="/icons" append="/icons/plugins/datagrip"/>
+        <patcher name="Debugger" remove="/icons" append="/icons/debugger"/>
         <patcher name="DataGrip" remove="" append="/icons/plugins/datagrip"/>
         <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
@@ -44,7 +45,7 @@
         <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript"/>
         <patcher name="Jinja" remove="/icons/com/jetbrains/jinja2" append="/icons/plugins/python/jinja"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin"/>
         <patcher name="Mako" remove="/icons/com/jetbrains/mako" append="/icons/plugins/python/mako"/>
         <patcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown"/>
         <patcher name="Maven" remove="/images" append="/icons/plugins/maven"/>
@@ -78,17 +79,47 @@
         <patcher name="Groovy" remove="/icons" append="/icons/plugins/groovy/glyphs"/>
         <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin"/>
         <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/glyphs"/>
         <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
         <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby/glyphs"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass/glyphs"/>
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml/glyphs"/>
+
+        <patcher name="Resharper Sources" remove="/resharper/ExternalSources"
+                 append="/icons/plugins/resharper/ExternalSources/glyphs"/>
+        <patcher name="Resharper Layout" remove="/resharper/FileLayout"
+                 append="/icons/plugins/resharper/FileLayout/glyphs"/>
+        <patcher name="Resharper Build Scripts" remove="/resharper/PsiBuildScripts"
+                 append="/icons/plugins/resharper/PsiBuildScripts/glyphs"/>
+        <patcher name="Resharper CSS" remove="/resharper/PsiCss" append="/icons/plugins/resharper/PsiCss/glyphs"/>
+        <patcher name="Resharper Csharp" remove="/resharper/PsiCSharp"
+                 append="/icons/plugins/resharper/PsiCSharp/glyphs"/>
+        <patcher name="Resharper Html" remove="/resharper/PsiHtml"
+                 append="/icons/plugins/resharper/PsiHtml/glyphs"/>
+        <patcher name="Resharper JS" remove="/resharper/PsiJavaScript"
+                 append="/icons/plugins/resharper/PsiJavaScript/glyphs"/>
+        <patcher name="Resharper Razor" remove="/resharper/PsiRazor"
+                 append="/icons/plugins/resharper/PsiRazor/glyphs"/>
+        <patcher name="Resharper Resx" remove="/resharper/PsiResx"
+                 append="/icons/plugins/resharper/PsiResx/glyphs"/>
+        <patcher name="Resharper PsiServices" remove="/resharper/PsiServices"
+                 append="/icons/plugins/resharper/PsiServices/glyphs"/>
+        <patcher name="Resharper VB" remove="/resharper/PsiVB"
+                 append="/icons/plugins/resharper/PsiVB/glyphs"/>
+        <patcher name="Resharper PsiWeb" remove="/resharper/PsiWeb"
+                 append="/icons/plugins/resharper/PsiWeb/glyphs"/>
+        <patcher name="Resharper Xaml" remove="/resharper/PsiXaml"
+                 append="/icons/plugins/resharper/PsiXaml/glyphs"/>
+        <patcher name="Resharper Xml" remove="/resharper/PsiXml"
+                 append="/icons/plugins/resharper/PsiXml/glyphs"/>
+
     </glyphPatchers>
     <filePatchers>
-        <patcher name="FileIcons" remove="/files" append="/icons/files"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin/files"/>
+        <patcher name="AllIconFiles" remove="/fileTypes" append="/icons/plugins/fileTypes"/>
+        <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
     </filePatchers>
