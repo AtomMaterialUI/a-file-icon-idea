@@ -68,6 +68,7 @@
         <regex name="Appveyor" pattern="^\.?appveyor\.yml$" icon="/icons/files/appveyor.svg"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.svg"/>
         <regex name="Arduino" pattern=".*\.(ino|pde)$" icon="/icons/files/arduino.svg"/>
+        <regex name="Artisan" pattern="^artisan" icon="/icons/files/laravel.svg"/>
         <regex name="Asciidoc" pattern=".*\.(ad|adoc|asciidoc)$" icon="/icons/files/asciidoc.svg"/>
         <regex name="AspectJ" pattern=".*\.aj$" icon="/icons/files/eclipse.svg"/>
         <regex name="ASM" pattern=".*\.(asm|nasm|s|ms|agc|aes|aea|argus|mitigus)$" icon="/icons/files/asm.svg"/>
