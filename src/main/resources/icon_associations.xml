@@ -219,7 +219,7 @@
         <regex name="Makefile" pattern=".*\.?(m|M)akefile$" icon="/icons/files/makefile.svg"/>
         <regex name="Manpage" pattern=".*\.man([1-8])?$" icon="/icons/files/manpage.svg"/>
         <regex name="Manifest" pattern="manifest\.json$" icon="/icons/files/manifest.svg"/>
-        <regex name="Markdown" pattern=".*\.(md|markdown|mson)$" icon="/icons/files/markdown.svg"/>
+        <regex name="Markdown" pattern=".*\.(md|markdown|mson|mdx)$" icon="/icons/files/markdown.svg"/>
         <regex name="Markup" pattern=".*\.(shtml|dhtml|dtd)$" icon="/icons/files/markup.svg"/>
         <regex name="Mathematica" pattern=".*\.(nb|ma|mb|cdf)$" icon="/icons/files/mathematica.svg"/>
         <regex name="Matlab" pattern=".*\.matlab$" icon="/icons/files/matlab.svg"/>

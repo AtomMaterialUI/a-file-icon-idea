@@ -177,7 +177,7 @@ Files are sorted by priority.
 | Magento             | *.mage                                       | magento           |
 | Makefile            | *.makefile, Makefile                         | makefile          |
 | Manpage             | *.man, *.man1, *.man8                        | manpage           |
-| Markdown            | *.md, *.markdown, *.mson                     | markdown          |
+| Markdown            | *.md, *.markdown, *.mson, *.mdx                     | markdown          |
 | Markup              | *.shtml, *.dhtml, *.dtd                      | markup            |
 | Mathematica         | *.nb, *.ma, *.mb, *.cdf                      | mathematica       |
 | Matlab              | *.matlab                                     | matlab            |
