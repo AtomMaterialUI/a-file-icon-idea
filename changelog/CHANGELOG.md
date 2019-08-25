@@ -1,5 +1,14 @@
 # Changelog
 
+# 14.0
+- New File Icons:
+  - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
+  - graphcool, helm, istanbul, key, kivy, lib, livescript, markojs, mdx, merlin, mint, moonscript, mxml, nest
+  - houdini, now, nunjucks, prisma, processing, restql, san, sequelize, swc, unity, velocity, vm, webassembly, webhint, wepy, yang
+- New Folder Icons:
+  - ci, class, container, content, css, delta, dump, error, examples, flow, helper, modals, maps
+  - pipe, prisma, private, stack, utils, vm
+
 # 13.0
 - New Icons and associations
 - Sync with Material Icons

@@ -10,12 +10,13 @@ Files are sorted by priority.
 | Github Commit       | COMMIT_MESSAGE_CONVENTION.md                 | github            |
 | Github Template     | TEMPLATE.md                                  | github            |
 | README              | README.md                                    | readme            |
-| Jetbrains Plugin    | plugin.xml                                   | plugin            |
+| JetBrains Plugin    | plugin.xml                                   | plugin            |
 | Preferences         | *.prefs                                      | config            |
 | Images              | *.(gif,png,jpg,jpeg,bmp)                     | image             |
 | SVG                 | *.svg                                        | svg               |
 | Microsoft Access    | *.(adn,accdb,accdr,accda,mdw,                | access            |
 |                     | accde,mam,maq,mar,mat,maf,laccdb)            |                   |
+| 3D                  | *.stl, *.obj                                 | 3d                |
 | ActionScript        | *.as                                         | actionscript      |
 | Adobe Elements      | *.aep, *.aet                                 | ae                |
 | Adobe Illustrator   | *.ai                                         | ai                |
@@ -39,7 +40,7 @@ Files are sorted by priority.
 | ANTLR               | *.g4                                         | antlr             |
 | API Blueprint       | *.apib                                       | apib              |
 | APK                 | *.apk                                        | android           |
-| Appveyor            | appveyor.yml                                 | appveyor          |
+| Appveyor            | .appveyor.yml, appveyor.yml                  | appveyor          |
 | Applescript         | *.applescript                                | applescript       |
 | Arduino             | *.ino, *.pde                                 | arduino           |
 | Asciidoctor         | *.ad, *.adoc, *.asciidoc                     | asciidoc          |
@@ -82,8 +83,10 @@ Files are sorted by priority.
 | ColdFusion          | *.cf                                         | cf                |
 | Compass             | config.rb                                    | compass           |
 | Composer            | composer.json, composer.phar                 | composer          |
+| CommitLint          | .*.commitlintrc.(js,json,yaml)               | commitlint        |
+| CommitLint Config   | commitlint.config.js                         | commitlint        |
 | Cordova             | cordova, cordova.json                        | cordova           |
-| Crystal             | *.cr                                         | crystal           |
+| Crystal             | *.cr, *.ecr                                  | crystal           |
 | CSS                 | *.css                                        | css               |
 | CSS Map             | *.css.map                                    | cssmap            |
 | CSV                 | *.csv, *.tsv                                 | csv               |
@@ -97,8 +100,8 @@ Files are sorted by priority.
 | Diff                | *.diff                                       | diff              |
 | Django              | *.flake8, *.djt                              | django            |
 | Do                  | *.do                                         | tomcat            |
-| Docker              | dockerfile, Dockerfile, .dockerignore        | docker            |
-| Docker Composer     | docker-compose.(yml,yaml)                    | docker            |
+| Docker              | .*dockerfile, Dockerfile, .dockerignore      | docker            |
+| Docker Compose      | docker-compose.(yml,yaml)                    | docker            |
 | DotJS               | *.def, *.dot, *.jst                          | dotjs             |
 | DotNET              | *.xaml, *.csproj, *.vb                       | dotnet            |
 | Doxygen             | doxyfile, Doxyfile                           | doxygen           |
@@ -111,7 +114,7 @@ Files are sorted by priority.
 | Emacs Lisp          | *.el, *.elc                                  | emacs             |
 | Ember               | .ember-cli, .ember.json                      | ember             |
 | EJS                 | *.ejs                                        | ejs               |
-| Elixir              | *.ex, *.exs, *.elixir                        | elixir            |
+| Elixir              | *.ex, *.exs, *.elixir, *.eex, *.leex         | elixir            |
 | Elm                 | *.elm                                        | elm               |
 | ESLint              | .eslintrc, .eslintignore                     | eslint            |
 | ERB                 | *.erb, *.ru                                  | erb               |
@@ -125,14 +128,16 @@ Files are sorted by priority.
 | Flow                | *.flow, *.flowconfig                         | flow              |
 | FreeMarker          | *.ftl, *.freemarker                          | freemarker        |
 | FSharp              | *.fs, *.fsi, *.fsx                           | fsharp            |
-| Gatsby              | gatsby.config.js                             | gatsby            |
+| Gatsby              | gatsby.*.js                                  | gatsby            |
 | GhostScript         | *.ghostscript                                | ghostscript       |
 | Gemfile             | Gemfile.lock, Gemfile                        | gemfile           |
 | Git                 | .git, .gitignore                             | git               |
+| GitLab              | .gitlab-ci.yml                               | gitlab            |
 | Go                  | *.go, *.gohtml                               | go                |
 | Godot               | *.gd                                         | godot             |
 | Gradle              | *.gradle, gradlew                            | gradle            |
 | GraphQL             | *.gql, *.graphql                             | graphql           |
+| GraphQL Config      | *.graphqlconfig                              | graphql           |
 | Graphviz            | *.dot, *.graphviz                            | graphviz          |
 | Groovy              | *.groovy, *.gy, *.gdsl                       | groovy            |
 | Grunt               | gruntfile.(js,ts), Gruntfile.*               | gruntfile         |
@@ -145,6 +150,7 @@ Files are sorted by priority.
 | Haxe                | *.haxe, *.hx                                 | haxe              |
 | HTAccess            | .htaccess, .htpasswd                         | htaccess          |
 | HTML                | *.html, *.htm                                | html              |
+| Husky               | .huskyrc.(js,json)                           | husky             |
 | i18n                | *.pot, *.po, *.mo                            | i18n              |
 | IDEA                | *.iml, *.icls                                | idea              |
 | Idris               | *.idr, *.idris                               | idris             |
@@ -169,6 +175,8 @@ Files are sorted by priority.
 | Lerna               | lerna.json                                   | lerna             |
 | Less                | *.less                                       | less              |
 | License             | LICENSE, LICENSE.md, LICENSE, LICENSE.md     | license           |
+| Lint Staged         | .lintstagedrc.(json,yml)                     | lint-staged       |
+| Lisp                | lint-staged.config.js                        | lint-staged       |
 | Liquid              | *.liquid                                     | liquid            |
 | Lisp                | *.lisp                                       | lisp              |
 | Log                 | *.log, *.log.0, *.log.txt...                 | log               |
@@ -177,6 +185,7 @@ Files are sorted by priority.
 | Magento             | *.mage                                       | magento           |
 | Makefile            | *.makefile, Makefile                         | makefile          |
 | Manpage             | *.man, *.man1, *.man8                        | manpage           |
+| Manifest            | manifest.json                                | manifest          |
 | Markdown            | *.md, *.markdown, *.mson                     | markdown          |
 | Markup              | *.shtml, *.dhtml, *.dtd                      | markup            |
 | Mathematica         | *.nb, *.ma, *.mb, *.cdf                      | mathematica       |
@@ -189,6 +198,7 @@ Files are sorted by priority.
 | Mocha               | mocha.opts, .mocharc, .mocha.(js,json,yml)   | mocha             |
 | Mongodb             | *.mongodb, *.bson                            | mongodb           |
 | Mustache            | *.mustache, *.handlebars, *.hbs, *.hamlbars  | mustache          |
+| Netlify             | netlify.toml                                 | netlify           |
 | nginx               | *.nginx, *.conf                              | nginx             |
 | Nib                 | *.nib                                        | nib               |
 | Nimble              | *.nim, *.nimble                              | nim               |
@@ -201,6 +211,7 @@ Files are sorted by priority.
 | NVM                 | .nvmrc                                       | nodejs            |
 | Nuclide             | *.nuclide                                    | nuclide           |
 | NuGet               | *.nuspec                                     | nuget             |
+| Nuxt                | *.nuxt.config.(js,ts)                        | nuxt              |
 | Objective C         | *.m, *.mm                                    | objc              |
 | OCaml               | *.(ocaml,ml,mli,ocamllex,ocamlyacc)          | ocaml             |
 | OneNote             | *.onenote, *.one                             | onenote           |
@@ -214,6 +225,7 @@ Files are sorted by priority.
 | Photoshop           | *.psb, *.psd                                 | photoshop         |
 | PHPUnit             | *test.php, *Test.php                         | phpunit           |
 | PHTML               | *.phtml                                      | phtml             |
+| Pipfile             | Pipfile, Pipfile.lock                        | pipfile           |
 | Play                | *.play                                       | play              |
 | PList               | *.plist                                      | plist             |
 | PostCSS             | *.pcss, *.postcss                            | postcss           |
@@ -225,12 +237,12 @@ Files are sorted by priority.
 | Adobe Premiere      | *.prel, *.prproj, *.psq                      | premiere          |
 | Prettier            | .prettierrc, prettier.config.(js,json)       | prettier          |
 | Prettier Config     | .prettier.js, .prettier.json                 | prettier          |
-| Procfile            | procfile, Procfile, Procfile.windows         | procfile          |
+| Procfile            | procfile, Procfile, Procfile.windows         | heroku            |
 | Prolog              | *.pro, *.prolog                              | prolog            |
 | Properties          | *.properties                                 | properties        |
 | Protractor          | protractor.js, protractor.json               | protractor        |
 | Puppet              | *.pp, *.puppet, *.epp                        | puppet            |
-| PureScript          | *.purescript, *.purs                         | purescript        |
+| PureScript          | *.purescript, *.purs, *.pure                 | purescript        |
 | R                   | *.r                                          | r                 |
 | Racket              | *.rkt                                        | racket            |
 | Raml                | *.raml                                       | raml              |
@@ -260,10 +272,14 @@ Files are sorted by priority.
 | Scala               | *.scala                                      | scala             |
 | Scheme              | *.scheme, *.scm                              | scheme            |
 | Settings            | *.settings                                   | settings          |
+| Semantic Release    | *.releaserc.(js,json,yaml)                   | semantic-release  |
+|                     | release.config.js                            |                   |
 | Shell               | *.sh, *.zsh, *.fish, *.bash                  | shell             |
 |                     | .bashrc, .zshrc, .fishrc                     |                   |
+| SilverStripe        | *.ss                                         | silverstripe      |
 | Sketch              | *.sketch                                     | sketch            |
 | Slim                | *.slim                                       | slim              |
+| Slugignore          | .slugignore                                  | heroku            |
 | Smarty              | *.tpl                                        | smarty            |
 | Solidity            | *.sol                                        | solidity          |
 | Sonar               | .sonarrc                                     | sonar             |
@@ -272,17 +288,19 @@ Files are sorted by priority.
 | SQLite              | *.sqlite, *.sqlite3                          | sqlite            |
 | Stata               | *.stata                                      | stata             |
 | Stencil             | stencil.config.js, stencil.config.ts         | stencil           |
-| Storybook           | *.story.(js,ts), *.story.(jsx,tsx),          | storybook         |
+| Storybook           | *.story.(js,ts), *.stories.(jsx,tsx)         | storybook         |
 | Stylelint           | .stylelintrc, stylelint.config.(js,json)     | stylelint         |
 | Stylus              | *.styl                                       | stylus            |
 | Sublime             | *.sublime, *.sublimepackage                  | sublime           |
 | SuperCollider       | *.scd                                        | scd               |
+| Svelte              | *.svelte                                     | svelte            |
 | SVN                 | .svn                                         | svn               |
 | Swagger             | *.swagger, *.swag                            | swagger           |
 | Swagger Config      | swagger.yml, swagger.json, api.yml, api.json | swagger           |
 | Swift               | *.swift                                      | swift             |
 | Swig                | *.swig                                       | swig              |
 | Symfony             | symfony.yml, symfony.json, symfony.php       | symfony           |
+| TailwindCSS         | tailwind.(.*).(js,ts)                        | tailwindcss       |
 | TCL                 | *.tcl                                        | tcl               |
 | TeX                 | *.tex                                        | tex               |
 | Tern                | .ternconfig, .tern-config, .tern-project     | tern              |
@@ -304,14 +322,17 @@ Files are sorted by priority.
 | TypeScript Defs     | *.d.ts                                       | dts               |
 | Typings             | typings.json                                 |                   |
 | Unreal              | *.(u,unr,utx,umx,uax,ukx,uz,uc,upkg,upl)     | unreal            |
-|                     | *.(obj,asc,lwo)                              |                   |
+|                     | *.(asc,lwo)                                  |                   |
 | Vagrant             | vagrantfile, Vagrantfile                     | vagrant           |
+| Version             | VERSION, version                             | version           |
 | VHDL                | *.vhd, *.vhdl, *.v                           | vhdl              |
 | Vim                 | *.(vim,viml,vimrc,gvimrc)                    | vim               |
 | Visio               | *.visio                                      | visio             |
 | Visual Studio       | *.vscode, *.vssetings                        | vs                |
-| Vue                 | *.vue, *.vuex                                | vue               |
+| Vue                 | *.vue                                        | vue               |
+| Vuex                | *.vuex                                       | vuex              |
 | Wallaby             | wallaby.config.js, wallaby.js                | wallaby           |
+| WebP                | *.webp                                       | image             |
 | Webpack             | webpack.config.(js,es,es6,coffee,ts)         | webpack           |
 |                     | webpack.(common,dev,prod).js                 | webpack           |
 | Windows             | *.bat, *.exe, *.dos, *.ms                    | windows           |
@@ -323,6 +344,7 @@ Files are sorted by priority.
 | Yarn                | .yarnrc, yarn.js, yarn.json                  | yarn              |
 | Yarn Lock           | yarn.lock                                    | yarn              |
 | Yarn Clean          | .yarnclean                                   | yarn              |
+| YVM                 | .yvmrc                                       | yvm               |
 |                     |                                              |                   |
 | Preferences         | *.ini, *.config, *.env, *.cfg                | preferences       |
 | Envs                | *.env.(prod,dev,test...)                     | preferences       |
@@ -349,3 +371,122 @@ Files are sorted by priority.
 | JavaScript          | *.js, *.es6, *.es                            | js                |
 | JSON                | *.json, *.cson                               | json              |
 |                     |                                              |                   |
+
+Directory Associations
+==============
+
+| Name           | File Pattern                                          | Icon           |
+|:---------------|:------------------------------------------------------|:---------------|
+| Android        | android                                               | android        |
+| Animations     | animation(s), anim(s)                                 | animations     |
+| API            | api(s), rest, swagger                                 | api            |
+| Audio          | mp3, wav, music(s), audio, sound(s)                   | audio          |
+| Archive        | archive(s), jar(s), zip(s), backup                    | archive        |
+| AWS            | .aws, aws                                             | aws            |
+| Benchmark      | benchmark(s)                                          | benchmark      |
+| Bower          | bower_components                                      | bower          |
+| Channels       | channel(s)                                            | messages       |
+| CircleCI       | circleci, .circleci                                   | circleci       |
+| Components     | component(s) module(s)                                | components     |
+| Config         | conf, config, settings, .config, .settings            | config         |
+| Constants      | const, constants                                      | constants      |
+| Controllers    | controller(s), ctrl(s)                                | controllers    |
+| Core           | core, support                                         | core           |
+| Coverage       | coverage                                              | coverage       |
+| Custom         | custom                                                | custom         |
+| DB             | db, migrate, sql, database                            | db             |
+| Debug          | debug, debugging                                      | debug          |
+| Deploy         | deploy                                                | aws            |
+| Dist           | dist, out, build, release                             | dist           |
+| Docker         | docker, .docker                                       | docker         |
+| Docs           | doc(s), documentation                                 | docs           |
+| Download       | download(s)                                           | download       |
+| E2E            | e2e, scenario(s)                                      | e2e            |
+| Env            | env, environment(s)                                   | env            |
+| Exclude        | exclude(s), external                                  | exclude        |
+| Expo           | expo, .expo                                           | expo           |
+| Features       | feature(s), feat(s)                                   | rules          |
+| Fixtures       | fixture(s), fabricator(s), factory, factories         | fixtures       |
+| Fonts          | font(s)                                               | fonts          |
+| Functions      | function(s), service(s), lambda(s)                    | functions      |
+| Generated      | gen, generated, auto                                  | generated      |
+| Git            | .git, .submodules                                     | git            |
+| Github         | github, .github                                       | github         |
+| Global         | global                                                | global         |
+| Gradle         | gradle, .gradle                                       | gradle         |
+| GraphQL        | graphql, gql, schemas                                 | graphql        |
+| Grunt          | grunt                                                 | grunt          |
+| Guard          | guard(s)                                              | guard          |
+| Hooks          | hook(s), trigger(s)                                   | hook           |
+| I18n           | i18n, lang(s), locale(s), language(s), translation(s) | i18n           |
+|                | localization                                          |                |
+| Icons          | icon(s), ico, svg, svgicon(s)                         | icons          |
+| IDEA           | .idea                                                 | idea           |
+| iOS            | .xcodeproj, .xcworkspace                              | ios            |
+| Images         | image(s), img, media                                  | images         |
+| Include        | include(s), import(s), concern(s)                     | include        |
+| Javascript     | js, javascript(s)                                     | js             |
+| Jinja          | jinja                                                 | jinja          |
+| Jobs           | job(s), resque                                        | job            |
+| Keys           | key(s), cert(s)                                       | keys           |
+| Kubernetes     | kubernetes, k8s                                       | kubernetes     |
+| Layouts        | layout(s)                                             | layouts        |
+| Less           | less                                                  | less           |
+| Log            | log(s)                                                | logs           |
+| Mailers        | mailer(s), email(s), mail(s)                          | mailers        |
+| Markdown       | markdown, md                                          | markdown       |
+| Maven          | maven                                                 | maven          |
+| Messages       | message(s), msg(s)                                    | messages       |
+| Meta           | meta, META-INF                                        | meta           |
+| Middlewares    | middleware(s), thunk(s)                               | middleware     |
+| Mocks          | mock(s), fake(s), stub(s)                             | mocks          |
+| Models         | model(s), struct(s), class(es)                        | models         |
+| Node           | node_modules                                          | node           |
+| Notification   | notification(s), flash                                | notification   |
+| Nuxt           | nuxt                                                  | nuxt           |
+| NYC            | .nyc                                                  | coverage       |
+| Other          | other, misc, extra(s)                                 | other          |
+| Packages       | package(s)                                            | packages       |
+| PHP            | php                                                   | php            |
+| Plugin         | plugin(s), mu-plugins                                 | plugin         |
+| Posts          | post(s)                                               | posts          |
+| Providers      | provider(s)                                           | providers      |
+| Python         | python, python                                        | python         |
+| React          | react_*, react-*                                      | react          |
+| redux-actions  | action(s)                                             | redux-actions  |
+| redux-reducers | reducer(s)                                            | redux-reducers |
+| redux-stores   | store(s)                                              | redux-stores   |
+| Resources      | res, resource(s), asset(s), .xcassets                 | resource       |
+| Reviews        | review(s)                                             | reviews        |
+| Routes         | route(s), router                                      | routes         |
+| Rules          | validation(s), validator(s), rule(s)                  | rules          |
+| SASS           | sass, scss                                            | sass           |
+| Screens        | screen(s), screenshot(s)                              | screens        |
+| Scripts        | script(s), selector(s)                                | scripts        |
+| Security       | secure, security                                      | security       |
+| Server         | server, http, request(s), saga(s)                     | server         |
+| Serverless     | serverless, .serverless                               | serverless     |
+| Shared         | shared                                                | shared         |
+| Sources        | src, app                                              | src            |
+| Storybook      | storybook(s), stories                                 | storybook      |
+| Styles         | style(s), stylesheet(s), css                          | styles         |
+| Stylus         | styl, stylus                                          | stylus         |
+| Sublime        | .sublime                                              | sublime        |
+| Sync           | sync, synced                                          | sync           |
+| Syntax         | syntax, syntaxes, spellcheck                          | syntax         |
+| Tasks          | task(s), jira(s)                                      | tasks          |
+| Temp           | temp, .temp, tmp, .tmp, cache, .cache                 | tmp            |
+| Tests          | test(s), spec(s)                                      | tests          |
+| Themes         | theme(s), color(s), scheme(s), skin(s)                | themes         |
+| Typescript     | typescript(s), ts, interface(s)                       | ts             |
+| Upload         | upload(s)                                             | upload         |
+| Utils          | util(s), tool(s), helper(s)                           | tools          |
+| Vendor         | vendor(s), lib, Pod(s)                                | lib            |
+| Video          | video(s), movie(s)                                    | video          |
+| Views          | view(s), template(s), page(s)                         | views          |
+| VSCode         | .vscode                                               | vscode         |
+| Vue            | vue                                                   | vue            |
+| Vuex           | vuex                                                  | vuex           |
+| Web            | public, static, web, www, wwwroot                     | web            |
+| Webpack        | webpack                                               | webpack        |
+| Wordpress      | wp-admin, wp-content, wp-includes                     | wordpress      |
