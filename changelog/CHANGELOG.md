@@ -1,5 +1,8 @@
 # Changelog
 
+# 15.0
+- Support for 2019.3 EAP
+
 # 14.0
 - New File Icons:
   - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
