@@ -4,9 +4,9 @@
 
 This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
 
-![darcula.png](changelog/darcula.png) ![darcula2.png](changelog/darcula2.png) ![darcula3.png](changelog/darcula3.png)
+![darcula.png](assets/darcula.png) ![darcula2.png](assets/darcula2.png) ![darcula3.png](assets/darcula3.png)
 
-![light.png](changelog/light.png)
+![light.png](assets/light.png)
 
 ## Features
 
@@ -29,10 +29,10 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 - **Customizability**: Select which settings to apply in a Settings Page
 
 ### Settings
-![settings.png](changelog/settings.png)
+![settings.png](assets/settings.png)
 
 ### Menu
-![menu.png](changelog/menu.png)
+![menu.png](assets/menu.png)
 
 ## Credits
 
