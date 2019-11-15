@@ -42,6 +42,10 @@
                                  groupId="appearance"
                                  id="com.mallowigi.config"/>
         <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
+        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first"
+                      id="MTHiddenIconProvider"/>
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"
+                                  id="MTHollowFoldersDecorator"/>
     </extensions>
 
     <application-components>

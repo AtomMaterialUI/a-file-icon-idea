@@ -54,6 +54,10 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   private String monochromeColor = "546E7A";
   @Property
   private boolean enabledPsiIcons = true;
+  @Property
+  private boolean hideFileIcons;
+  @Property
+  boolean useHollowFolders = true;
 
   public AtomFileIconsConfig() {
   }
@@ -116,6 +120,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     monochromeIcons = false;
     monochromeColor = "546E7A";
     enabledPsiIcons = true;
+    hideFileIcons = false;
+    useHollowFolders = true;
   }
 
   //region Enabled Icons
@@ -221,5 +227,67 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     enabledPsiIcons = !enabledPsiIcons;
   }
 
+  //endregion
+
+  //region Hollow Folders
+
+  /**
+   * Returns the useHollowFolders of this MTConfig object.
+   *
+   * @return the useHollowFolders (type boolean) of this MTConfig object.
+   */
+  public boolean isUseHollowFolders() {
+    return useHollowFolders;
+  }
+
+  /**
+   * Sets the useHollowFolders of this MTConfig object.
+   *
+   * @param useHollowFolders the useHollowFolders of this MTConfig object.
+   */
+  public void setUseHollowFolders(final boolean useHollowFolders) {
+    this.useHollowFolders = useHollowFolders;
+  }
+
+  /**
+   * ...
+   *
+   * @param useHollowFolders of type boolean
+   * @return boolean
+   */
+  public boolean isUseHollowFoldersChanged(final boolean useHollowFolders) {
+    return this.useHollowFolders != useHollowFolders;
+  }
+  //endregion
+
+  //region Hide File Icons
+
+  /**
+   * Returns the hideFileIcons of this MTConfig object.
+   *
+   * @return the hideFileIcons (type boolean) of this MTConfig object.
+   */
+  public boolean isHideFileIcons() {
+    return hideFileIcons;
+  }
+
+  /**
+   * Sets the hideFileIcons of this MTConfig object.
+   *
+   * @param hideFileIcons the hideFileIcons of this MTConfig object.
+   */
+  public void setHideFileIcons(final boolean hideFileIcons) {
+    this.hideFileIcons = hideFileIcons;
+  }
+
+  /**
+   * ...
+   *
+   * @param hideFileIcons of type boolean
+   * @return boolean
+   */
+  public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
+    return this.hideFileIcons != hideFileIcons;
+  }
   //endregion
 }

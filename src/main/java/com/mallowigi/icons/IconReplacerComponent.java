@@ -31,18 +31,22 @@ import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.fileTypes.FileTypeEvent;
+import com.intellij.openapi.fileTypes.FileTypeListener;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.ConfigNotifier;
+import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static com.mallowigi.icons.IconManager.applyFilter;
@@ -51,7 +55,8 @@ public final class IconReplacerComponent implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
-  private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
+  private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
+  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
 
   private MessageBusConnection connect;
 
@@ -62,6 +67,12 @@ public final class IconReplacerComponent implements BaseComponent {
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
 
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+    connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
+      @Override
+      public void fileTypesChanged(@NotNull final FileTypeEvent event) {
+        updateIcons();
+      }
+    });
 
     ApplicationManager.getApplication().runWriteAction(() -> {
       IconManager.applyFilter();
@@ -75,6 +86,7 @@ public final class IconReplacerComponent implements BaseComponent {
     removePathPatchers();
 
     if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
+      IconLoader.installPathPatcher(checkStyleIconPatcher);
       installPathPatchers();
     }
     if (AtomFileIconsConfig.getInstance().isEnabledPsiIcons()) {
