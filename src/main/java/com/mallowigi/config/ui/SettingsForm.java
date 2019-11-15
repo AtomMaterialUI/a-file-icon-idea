@@ -63,14 +63,14 @@ public class SettingsForm implements SettingsFormUI {
   private JCheckBox enableUIIconsCheckbox;
   private JLabel enablePSIIconsIcon;
   private JCheckBox enablePSIIconsCheckbox;
-  private JTextPane notice;
+  private JCheckBox hideFileIconsCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("Convert2MethodRef")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
     content = new JPanel();
     enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
@@ -83,23 +83,23 @@ public class SettingsForm implements SettingsFormUI {
     enableUIIconsCheckbox = new JCheckBox();
     enablePSIIconsIcon = new JLabel();
     enablePSIIconsCheckbox = new JCheckBox();
-    notice = new JTextPane();
+    hideFileIconsCheckbox = new JCheckBox();
 
     //======== content ========
     {
       content.setLayout(new MigLayout(
-          "hidemode 3",
-          // columns
-          "[fill]" +
-              "[::600,fill]" +
-              "[fill]",
-          // rows
+        "hidemode 3",
+        // columns
+        "[fill]" +
+          "[::600,fill]" +
+          "[fill]",
+        // rows
+        "[]" +
           "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
@@ -152,10 +152,10 @@ public class SettingsForm implements SettingsFormUI {
       enablePSIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.toolTipText"));
       content.add(enablePSIIconsCheckbox, "cell 1 4");
 
-      //---- notice ----
-      notice.setText(bundle.getString("SettingsForm.notice.text"));
-      notice.setEnabled(false);
-      content.add(notice, "tag help,cell 1 5,align left top,grow 0 0,wmax 400");
+      //---- hideFileIconsCheckbox ----
+      hideFileIconsCheckbox.setText(bundle.getString("SettingsForm.hideFileIconsCheckbox.text"));
+      hideFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFileIconsCheckbox.toolTipText"));
+      content.add(hideFileIconsCheckbox, "cell 1 5");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -171,13 +171,13 @@ public class SettingsForm implements SettingsFormUI {
   }
 
   public final void setFormState(final AtomFileIconsConfig config) {
-
     setIsEnabledIcons(config.isEnabledIcons());
     setIsEnabledDirectories(config.isEnabledDirectories());
     setIsEnabledMonochromeIcons(config.isMonochromeIcons());
     setIsEnabledUIIcons(config.isEnabledUIIcons());
     setMonochromeColor(config.getMonochromeColor());
     setIsEnabledPsiIcons(config.isEnabledPsiIcons());
+    setIsHiddenFileIcons(config.isHideFileIcons());
 
     afterStateSet();
   }
@@ -190,6 +190,7 @@ public class SettingsForm implements SettingsFormUI {
     modified = modified || config.isEnabledUIIconsChanged(getIsEnabledUIIcons());
     modified = modified || config.isMonochromeColorChanged(getMonochromeColor());
     modified = modified || config.isEnabledPsiIconsChanged(getIsEnabledPsiIcons());
+    modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
 
     return modified;
   }
@@ -268,4 +269,15 @@ public class SettingsForm implements SettingsFormUI {
     enablePSIIconsCheckbox.setSelected(enabledPsiIcons);
   }
   //endregion
+
+  //region hidden file icons Icons
+  public boolean getIsHiddenFileIcons() {
+    return hideFileIconsCheckbox.isSelected();
+  }
+
+  private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
+    hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
+  }
+  //endregion
+
 }

@@ -64,11 +64,11 @@
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
                     text="Enable File Icons"
                     icon="/icons/settings/atom.svg"
-                    description="Enable File Icons"/>
+                    description="Enable file icons"/>
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
                     text="Enable Directory Icons"
                     icon="/icons/settings/compiledClassesFolder.svg"
-                    description="Enable Directory Icons"/>
+                    description="Enable directory icons"/>
             <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
                     text="Enable UI Icons"
                     icon="/icons/settings/plugin.svg"
@@ -80,7 +80,11 @@
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
                     text="Enable Monochrome Icons"
                     icon="/icons/settings/monochrome.svg"
-                    description="Enable Monochrome Icons"/>
+                    description="Enable monochrome icons"/>
+            <action class="com.mallowigi.actions.HideFileIcons" id="HideFileIcons"
+                    text="Hide File Icons"
+                    icon="/icons/settings/monochrome.svg"
+                    description="Hide file icons"/>
         </group>
 
     </actions>

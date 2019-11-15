@@ -106,6 +106,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setMonochromeIcons(form.getIsEnabledMonochromeIcons());
     setMonochromeColor(form.getMonochromeColor());
     setEnabledPsiIcons(form.getIsEnabledPsiIcons());
+    setHideFileIcons(form.getIsHiddenFileIcons());
 
     fireChanged();
   }
@@ -288,6 +289,10 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    */
   public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
     return this.hideFileIcons != hideFileIcons;
+  }
+
+  public void toggleHideFileIcons() {
+    hideFileIcons = !hideFileIcons;
   }
   //endregion
 }

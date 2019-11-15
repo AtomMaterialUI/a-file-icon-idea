@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -86,12 +86,12 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 4"
 			} )
-			add( new FormComponent( "javax.swing.JTextPane" ) {
-				name: "notice"
-				"text": new FormMessage( null, "SettingsForm.notice.text" )
-				"enabled": false
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "hideFileIconsCheckbox"
+				"text": new FormMessage( null, "SettingsForm.hideFileIconsCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.hideFileIconsCheckbox.toolTipText" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "tag help,cell 1 5,align left top,grow 0 0,wmax 400"
+				"value": "cell 1 5"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

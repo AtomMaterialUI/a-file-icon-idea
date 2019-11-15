@@ -29,7 +29,9 @@ package com.mallowigi.icons;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
@@ -37,6 +39,7 @@ import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
+import com.intellij.ui.GuiUtils;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.AtomFileIconsConfig;
@@ -145,13 +148,13 @@ public final class IconReplacerComponent implements BaseComponent {
   }
 
   private void updateFileIcons() {
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-      instanceEx.fireFileTypesChanged();
+    GuiUtils.invokeLaterIfNeeded(() -> {
+      final Application app = ApplicationManager.getApplication();
+      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
+      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+
       applyFilter();
-      //      LafManager.getInstance().updateUI();
-      ActionToolbarImpl.updateAllToolbarsImmediately();
-    });
+    }, ModalityState.NON_MODAL);
   }
 
   @Override
