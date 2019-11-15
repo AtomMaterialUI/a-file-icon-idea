@@ -35,7 +35,29 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.intellij' version '0.4.9'
+    id 'org.jetbrains.intellij' version '0.4.13'
+    id("maven-publish")
+}
+
+group 'com.mallowigi'
+version '1.0-SNAPSHOT'
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mallowigi/a-file-icon-idea")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
 
 repositories {
@@ -52,7 +74,6 @@ dependencies {
 
 apply plugin: 'org.kordamp.markdown.convert'
 apply plugin: 'java'
-apply plugin: 'checkstyle'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
