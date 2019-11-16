@@ -1,5 +1,18 @@
 # Changelog
 
+# 17.0
+- New Icons:
+  - 1c, 3dmodel, 3dsmax, abap, abif, acre, advpl, affectscript, affinity, alacritty, alex, alloy, ampl, amusewiki, angelscript, animestudio, ant
+  - apache, apl, appcelerator, arc, archlinux, asymptote, atoum, ats, audacity, augeas, avro, backbone, bnf
+  - bem, bibtext, biml, bintray, blender, bluespec, boo, bootstrap, brakeman, broccoli, brotli, browsersync, brunch, byond, gnu
+- New Feature: Hide File Icons
+- New Feature: Hollow Directories
+
+# 16.0
+- New icons: Cargo, Codecov, codeowners, cypress, cython, gridsome, netlify, pnpm, posthtml, sapper, svelte-config, uml, v, vala
+- New folders: events, gulp, json, netlify, relay
+- Sync with new UI Icons
+
 # 15.0
 - Support for 2019.3 EAP
 
