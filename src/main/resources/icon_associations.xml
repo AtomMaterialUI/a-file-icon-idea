@@ -90,7 +90,8 @@
         <regex name="Appveyor" pattern="^\.?appveyor\.yml$" icon="/icons/files/appveyor.svg"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.svg"/>
         <regex name="Arc" pattern=".*\.arc$" icon="/icons/files/arc.svg"/>
-        <regex name="Arch Linux" pattern="(\.install|\.SRCINFO|PKGBUILD|yaourtrc)$" icon="/icons/files/archlinux.svg"/>
+        <regex name="Arch Linux" pattern="(\.install|\.SRCINFO|PKGBUILD|\.yaourtrc)$"
+               icon="/icons/files/archlinux.svg"/>
         <regex name="Arch Linux Pacman" pattern="(pacman\.conf|pamac\.conf)$" icon="/icons/files/archlinux.svg"/>
         <regex name="Arduino" pattern=".*\.ino$" icon="/icons/files/arduino.svg"/>
         <regex name="Asciidoc" pattern=".*\.(ad|adoc|asciidoc)$" icon="/icons/files/asciidoc.svg"/>
