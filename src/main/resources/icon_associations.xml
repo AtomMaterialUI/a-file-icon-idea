@@ -112,23 +112,41 @@
         <regex name="Azure Pipelines" pattern="azure-pipelines\.yml$" icon="/icons/files/azure.svg"/>
         <regex name="Babel" pattern="^(\.babelrc|babel\.json)$" icon="/icons/files/babel.svg"/>
         <regex name="Backbone" pattern="^backbone.*\.js$" icon="/icons/files/backbone.svg"/>
+        <regex name="Backup" pattern=".*\.(bak|old|orig)$" icon="/icons/files/backup.svg"/>
         <regex name="Ballerina" pattern=".*\.balx?$" icon="/icons/files/ballerina.svg"/>
         <regex name="Basic" pattern=".*\.(bas|vb|vbs)$" icon="/icons/files/vs.svg"/>
         <regex name="Bazel" pattern=".*\.(bzl|bazel)$" icon="/icons/files/bazel.svg"/>
+        <regex name="Bazel Config" pattern="(\.bazelrc|bazel\.rc)$" icon="/icons/files/bazel.svg"/>
         <regex name="Bean" pattern=".*(b|B)ean\.java$" icon="/icons/files/bean.svg"/>
         <regex name="Behat" pattern=".*\.feature(\.php)?$" icon="/icons/files/behat.svg"/>
+        <regex name="Behat Config" pattern="behat(\..*)*\.yml$" icon="/icons/files/behat.svg"/>
+        <regex name="BEM" pattern="\.bemjson(\.js)?$" icon="/icons/files/bem.svg"/>
+        <regex name="BibTex" pattern=".*\.(cbx|bbx|bib|bst)$" icon="/icons/files/bibtex.svg"/>
+        <regex name="Biml" pattern=".*\.biml$" icon="/icons/files/biml.svg"/>
+        <regex name="BinTray" pattern="\.bintray\.json$" icon="/icons/files/bintray.svg"/>
+        <regex name="Bison" pattern=".*\.(bison|yacc)$" icon="/icons/files/gnu.svg"/>
         <regex name="BitHound" pattern="\.bithoundrc$" icon="/icons/files/bithound.svg"/>
         <regex name="Bitbucket Pipelines" pattern="^bitbucket-pipelines\.yml$" icon="/icons/files/bitbucket.svg"/>
         <regex name="Blade" pattern=".*\.blade(\.php)?$" icon="/icons/files/blade.svg"/>
+        <regex name="Blender" pattern=".*\.(blend|bphys)$" icon="/icons/files/blender.svg"/>
+        <regex name="BlueSpec" pattern=".*\.(bsv|bspec)$" icon="/icons/files/bluespec.svg"/>
         <regex name="Blink" pattern=".*\.blink$" icon="/icons/files/blink.svg"/>
         <regex name="BNF" pattern=".*\.(bnf|abnf|ebnf)$" icon="/icons/files/bnf.svg"/>
+        <regex name="Boo" pattern=".*\.boo(\.unity)?$" icon="/icons/files/boo.svg"/>
+        <regex name="Bootstrap" pattern="^(custom\.)?bootstrap.*$" icon="/icons/files/bootstrap.svg"/>
         <regex name="Bower" pattern="^(\.bowerrc|bower\.json)$" icon="/icons/files/bower.svg"/>
         <regex name="Brainfuck" pattern=".*\.(b|bf)$" icon="/icons/files/brainfuck.svg"/>
+        <regex name="Brakeman" pattern="brakeman\.yml$" icon="/icons/files/brakeman.svg"/>
         <regex name="Bro" pattern=".*\.bro$" icon="/icons/files/bro.svg"/>
+        <regex name="Broccoli" pattern="Brocfile$" icon="/icons/files/broccoli.svg"/>
+        <regex name="Brotli" pattern=".*\.br" icon="/icons/files/brotli.svg"/>
         <regex name="Browserslist" pattern="\.browserslist(rc)?$" icon="/icons/files/browserslist.svg"/>
+        <regex name="Browsersync" pattern="^(bs-config|browser-sync)\.(js|json)$" icon="/icons/files/browsersync.svg"/>
+        <regex name="Brunch" pattern="^brunch-config\.(js|coffee|ts)$" icon="/icons/files/brunch.svg"/>
         <regex name="BuckleScript" pattern=".*\.cmj$" icon="/icons/files/bucklescript.svg"/>
         <regex name="BuildKite" pattern="^buildkite\.(yml|yaml)$" icon="/icons/files/buildkite.svg"/>
         <regex name="Bundler" pattern="^Gemfile$" icon="/icons/files/bundle.svg"/>
+        <regex name="Byond" pattern=".*\.dm$" icon="/icons/files/byond.svg"/>
         <regex name="C" pattern=".*\.(c|objc)$" icon="/icons/files/c.svg"/>
         <regex name="Cabal" pattern=".*\.cabal$" icon="/icons/files/cabal.svg"/>
         <regex name="Cabal Project" pattern="^cabal\.project$" icon="/icons/files/cabal.svg"/>
