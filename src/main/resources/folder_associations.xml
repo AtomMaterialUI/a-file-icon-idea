@@ -33,6 +33,7 @@
         <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/audio.svg"/>
         <regex name="archives" pattern="^(archives?|jars?|zips?|backups?)" icon="/archive.svg"/>
         <regex name="aws" pattern="^\.?aws$" icon="/aws.svg"/>
+        <regex name="azuredevops" pattern="^(azuredevops?|azure-devops?)$" icon="/azure-devops.svg"/>
         <regex name="benchmark" pattern="^benchmarks?$" icon="/benchmark.svg"/>
         <regex name="bower" pattern="^bower_components$" icon="/bower.svg"/>
         <regex name="channels" pattern="^(channels?)$" icon="/messages.svg"/>
