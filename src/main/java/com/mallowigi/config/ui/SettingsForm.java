@@ -63,7 +63,10 @@ public class SettingsForm implements SettingsFormUI {
   private JCheckBox enableUIIconsCheckbox;
   private JLabel enablePSIIconsIcon;
   private JCheckBox enablePSIIconsCheckbox;
+  private JLabel enablePSIIconsIcon3;
   private JCheckBox hideFileIconsCheckbox;
+  private JLabel enablePSIIconsIcon2;
+  private JCheckBox hollowFoldersCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("Convert2MethodRef")
@@ -83,7 +86,10 @@ public class SettingsForm implements SettingsFormUI {
     enableUIIconsCheckbox = new JCheckBox();
     enablePSIIconsIcon = new JLabel();
     enablePSIIconsCheckbox = new JCheckBox();
+    enablePSIIconsIcon3 = new JLabel();
     hideFileIconsCheckbox = new JCheckBox();
+    enablePSIIconsIcon2 = new JLabel();
+    hollowFoldersCheckbox = new JCheckBox();
 
     //======== content ========
     {
@@ -95,6 +101,8 @@ public class SettingsForm implements SettingsFormUI {
           "[fill]",
         // rows
         "[]" +
+          "[]" +
+          "[]" +
           "[]" +
           "[]" +
           "[]" +
@@ -152,10 +160,23 @@ public class SettingsForm implements SettingsFormUI {
       enablePSIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.toolTipText"));
       content.add(enablePSIIconsCheckbox, "cell 1 4");
 
+      //---- enablePSIIconsIcon3 ----
+      enablePSIIconsIcon3.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFileAction@2x.png")));
+      content.add(enablePSIIconsIcon3, "cell 0 5");
+
       //---- hideFileIconsCheckbox ----
       hideFileIconsCheckbox.setText(bundle.getString("SettingsForm.hideFileIconsCheckbox.text"));
       hideFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFileIconsCheckbox.toolTipText"));
       content.add(hideFileIconsCheckbox, "cell 1 5");
+
+      //---- enablePSIIconsIcon2 ----
+      enablePSIIconsIcon2.setIcon(new ImageIcon(getClass().getResource("/icons/settings/folderOpen@2x.png")));
+      content.add(enablePSIIconsIcon2, "cell 0 6");
+
+      //---- hollowFoldersCheckbox ----
+      hollowFoldersCheckbox.setText(bundle.getString("SettingsForm.hollowFoldersCheckbox.text"));
+      hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText"));
+      content.add(hollowFoldersCheckbox, "cell 1 6");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -178,6 +199,7 @@ public class SettingsForm implements SettingsFormUI {
     setMonochromeColor(config.getMonochromeColor());
     setIsEnabledPsiIcons(config.isEnabledPsiIcons());
     setIsHiddenFileIcons(config.isHideFileIcons());
+    setIsHollowFoldersEnabled(config.isUseHollowFolders());
 
     afterStateSet();
   }
@@ -191,6 +213,7 @@ public class SettingsForm implements SettingsFormUI {
     modified = modified || config.isMonochromeColorChanged(getMonochromeColor());
     modified = modified || config.isEnabledPsiIconsChanged(getIsEnabledPsiIcons());
     modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
+    modified = modified || config.isUseHollowFoldersChanged(getIsHollowFoldersEnabled());
 
     return modified;
   }
@@ -270,13 +293,23 @@ public class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
-  //region hidden file icons Icons
+  //region hidden file icons
   public boolean getIsHiddenFileIcons() {
     return hideFileIconsCheckbox.isSelected();
   }
 
   private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
     hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
+  }
+  //endregion
+
+  //region hollow folders
+  public boolean getIsHollowFoldersEnabled() {
+    return hollowFoldersCheckbox.isSelected();
+  }
+
+  private void setIsHollowFoldersEnabled(final boolean isHollowFoldersEnabled) {
+    hollowFoldersCheckbox.setSelected(isHollowFoldersEnabled);
   }
   //endregion
 

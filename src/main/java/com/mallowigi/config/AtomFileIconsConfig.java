@@ -107,6 +107,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setMonochromeColor(form.getMonochromeColor());
     setEnabledPsiIcons(form.getIsEnabledPsiIcons());
     setHideFileIcons(form.getIsHiddenFileIcons());
+    setUseHollowFolders(form.getIsHollowFoldersEnabled());
 
     fireChanged();
   }
@@ -259,6 +260,11 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   public boolean isUseHollowFoldersChanged(final boolean useHollowFolders) {
     return this.useHollowFolders != useHollowFolders;
   }
+
+  public void toggleUseHollowFolders() {
+    useHollowFolders = !useHollowFolders;
+  }
+
   //endregion
 
   //region Hide File Icons

@@ -10,7 +10,7 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[fill][::600,fill][fill]"
-			"$rowConstraints": "[][][][][][]"
+			"$rowConstraints": "[][][][][][][][]"
 		} ) {
 			name: "content"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -86,12 +86,31 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 4"
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "enablePSIIconsIcon3"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/hideFileAction@2x.png" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5"
+			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "hideFileIconsCheckbox"
 				"text": new FormMessage( null, "SettingsForm.hideFileIconsCheckbox.text" )
 				"toolTipText": new FormMessage( null, "SettingsForm.hideFileIconsCheckbox.toolTipText" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 5"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "enablePSIIconsIcon2"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/folderOpen@2x.png" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 6"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "hollowFoldersCheckbox"
+				"text": new FormMessage( null, "SettingsForm.hollowFoldersCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.hollowFoldersCheckbox.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 6"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
