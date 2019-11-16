@@ -79,23 +79,39 @@
         <regex name="Ansible" pattern="^(ansible|site)\.yml$" icon="/icons/files/ansible.svg"/>
         <regex name="Ant" pattern="(ant\.xml$|\.ant)" icon="/icons/files/ant.svg"/>
         <regex name="ANTLR" pattern=".*\.g4$" icon="/icons/files/antlr.svg"/>
+        <regex name="AnyScript" pattern=".*\.any" icon="/icons/files/any.svg"/>
+        <regex name="Apache Conf" pattern="(apache2?|httpd).*\.conf$" icon="/icons/files/apache.svg"/>
+        <regex name="Apache Conf-" pattern=".apacheconf$" icon="/icons/files/apache.svg"/>
+        <regex name="Apache" pattern=".*\.(vhost|thrift)$" icon="/icons/files/apache.svg"/>
         <regex name="API Blueprint" pattern=".*\.apib$" icon="/icons/files/apib.svg"/>
         <regex name="APK" pattern=".*\.apk$" icon="/icons/files/android.svg"/>
+        <regex name="APL" pattern=".*\.(apl|apla|aplc|aplf|apli|apln|aplo)$" icon="/icons/files/apl.svg"/>
+        <regex name="Appcelerator" pattern="^appcelerator\.(js|ts)$" icon="/icons/files/appcelerator.svg"/>
         <regex name="Appveyor" pattern="^\.?appveyor\.yml$" icon="/icons/files/appveyor.svg"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.svg"/>
+        <regex name="Arc" pattern=".*\.arc$" icon="/icons/files/arc.svg"/>
+        <regex name="Arch Linux" pattern="(\.install|\.SRCINFO|PKGBUILD|yaourtrc)$" icon="/icons/files/archlinux.svg"/>
+        <regex name="Arch Linux Pacman" pattern="(pacman\.conf|pamac\.conf)$" icon="/icons/files/archlinux.svg"/>
         <regex name="Arduino" pattern=".*\.ino$" icon="/icons/files/arduino.svg"/>
         <regex name="Asciidoc" pattern=".*\.(ad|adoc|asciidoc)$" icon="/icons/files/asciidoc.svg"/>
         <regex name="AspectJ" pattern=".*\.aj$" icon="/icons/files/eclipse.svg"/>
         <regex name="ASM" pattern=".*\.(asm|nasm|inc|ms|agc|aes|aea|argus|mitigus)$" icon="/icons/files/asm.svg"/>
-        <regex name="ASP" pattern=".*\.(asp|asa|aspx)$" icon="/icons/files/asp.svg"/>
-        <regex name="Atom" pattern=".*\.atom$" icon="/icons/files/atom.svg"/>
+        <regex name="ASP" pattern=".*\.(asp|asa|aspx|asax|ascx|ashx|asmx|axd)$" icon="/icons/files/asp.svg"/>
+        <regex name="Asymptote" pattern=".*\.(asy)$" icon="/icons/files/asymptote.svg"/>
+        <regex name="Atom" pattern=".*\.atom.*$" icon="/icons/files/atom.svg"/>
+        <regex name="Atoum" pattern=".*\.atoum.*\.php$" icon="/icons/files/atoum.svg"/>
+        <regex name="ATS" pattern=".*\.(dats|hats|sats)$" icon="/icons/files/ats.svg"/>
+        <regex name="Audacity" pattern=".*\.aup$" icon="/icons/files/audacity.svg"/>
+        <regex name="Augeas" pattern=".*\.aug$" icon="/icons/files/augeas.svg"/>
         <regex name="Aurelia" pattern="^aurelia(file)?\.js(on)?$" icon="/icons/files/aurelia.svg"/>
         <regex name="Authors" pattern="^(AUTHORS|authors)(\.(md|txt))?" icon="/icons/files/authors.svg"/>
-        <regex name="AutoHotKey" pattern=".*\.ahk$" icon="/icons/files/ahk.svg"/>
+        <regex name="AutoHotKey" pattern=".*\.ahkl?$" icon="/icons/files/ahk.svg"/>
         <regex name="AutoIt" pattern=".*\.au3" icon="/icons/files/autoit.svg"/>
+        <regex name="Avro" pattern=".*\.(avcs|avsc|avdl)" icon="/icons/files/avro.svg"/>
         <regex name="Azure" pattern=".*\.azcli$" icon="/icons/files/azure.svg"/>
         <regex name="Azure Pipelines" pattern="azure-pipelines\.yml$" icon="/icons/files/azure.svg"/>
         <regex name="Babel" pattern="^(\.babelrc|babel\.json)$" icon="/icons/files/babel.svg"/>
+        <regex name="Backbone" pattern="^backbone.*\.js$" icon="/icons/files/backbone.svg"/>
         <regex name="Ballerina" pattern=".*\.balx?$" icon="/icons/files/ballerina.svg"/>
         <regex name="Basic" pattern=".*\.(bas|vb|vbs)$" icon="/icons/files/vs.svg"/>
         <regex name="Bazel" pattern=".*\.(bzl|bazel)$" icon="/icons/files/bazel.svg"/>
@@ -105,6 +121,7 @@
         <regex name="Bitbucket Pipelines" pattern="^bitbucket-pipelines\.yml$" icon="/icons/files/bitbucket.svg"/>
         <regex name="Blade" pattern=".*\.blade(\.php)?$" icon="/icons/files/blade.svg"/>
         <regex name="Blink" pattern=".*\.blink$" icon="/icons/files/blink.svg"/>
+        <regex name="BNF" pattern=".*\.(bnf|abnf|ebnf)$" icon="/icons/files/bnf.svg"/>
         <regex name="Bower" pattern="^(\.bowerrc|bower\.json)$" icon="/icons/files/bower.svg"/>
         <regex name="Brainfuck" pattern=".*\.(b|bf)$" icon="/icons/files/brainfuck.svg"/>
         <regex name="Bro" pattern=".*\.bro$" icon="/icons/files/bro.svg"/>
