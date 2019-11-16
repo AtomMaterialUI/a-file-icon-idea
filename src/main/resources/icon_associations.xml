@@ -40,16 +40,30 @@
         <regex name="webp" pattern=".*\.webp$" icon="/icons/files/image.svg"/>
         <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
+        <regex name="1C" pattern=".*\.(bsl|sdbl|os|mdo)" icon="/icons/files/1c.svg"/>
         <regex name="3D" pattern=".*\.(stl|obj|dae|3ds|dxf|ac)" icon="/icons/files/3d.svg"/>
         <regex name="Access" pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
                icon="/icons/files/access.svg"/>
+        <regex name="ABAP" pattern=".*\.abp$" icon="/icons/files/abap.svg"/>
+        <regex name="ABIF" pattern=".*\.(abif|ab1|fsa)$" icon="/icons/files/abif.svg"/>
+        <regex name="Acre" pattern="acre\.config$" icon="/icons/files/acre.svg"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/files/actionscript.svg"/>
         <regex name="Adobe Elements" pattern=".*\.ae(p|t)$" icon="/icons/files/ae.svg"/>
-        <regex name="Adobe Illustrator" pattern=".*\.ai$" icon="/icons/files/ai.svg"/>
-        <regex name="Ada" pattern=".*\.(ada|adb)$" icon="/icons/files/ada.svg"/>
+        <regex name="Adobe Illustrator" pattern=".*\.(ai|ait)$" icon="/icons/files/ai.svg"/>
+        <regex name="Ada" pattern=".*\.(ada|adb|ads)$" icon="/icons/files/ada.svg"/>
+        <regex name="AdvPL" pattern=".*\.(prw|ahu|aph|tlpp)$" icon="/icons/files/advpl.svg"/>
+        <regex name="AffectScript" pattern=".*\.affect$" icon="/icons/files/affectscript.svg"/>
+        <regex name="Affinity Designer" pattern=".*\.(afdesign|afphoto|afpub)$" icon="/icons/files/affinity.svg"/>
         <regex name="Akka" pattern=".*\.akka$" icon="/icons/files/akka.svg"/>
+        <regex name="Alacritty" pattern="\.?alacritty\.yml$" icon="/icons/files/alacritty.svg"/>
+        <regex name="Alex" pattern="\.alex(rc|ignore)$" icon="/icons/files/alex.svg"/>
+        <regex name="Alloy" pattern=".*\.als$" icon="/icons/files/alloy.svg"/>
+        <regex name="AMPL" pattern=".*\.ampl$" icon="/icons/files/ampl.svg"/>
+        <regex name="AmuseWiki" pattern=".*\.muse" icon="/icons/files/amusewiki.svg"/>
         <regex name="Android Manifest" pattern="^AndroidManifest\.xml$" icon="/icons/files/android.svg"/>
         <regex name="Android Main" pattern="^MainActivity\.java$" icon="/icons/files/android.svg"/>
+        <regex name="Android Smali" pattern=".*\.(smali|rsh)$" icon="/icons/files/android.svg"/>
+        <regex name="AngelScript" pattern=".*\.(acs|angelscript)$" icon="/icons/files/angelscript.svg"/>
         <regex name="Angular-CLI" pattern="^angular(-cli)?\.json$" icon="/icons/files/angular.svg"/>
         <regex name="AngularJS" pattern="^angular\.(min\.)?js$" icon="/icons/files/angular.svg"/>
         <regex name="Angular" pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$"
@@ -61,7 +75,9 @@
         <regex name="Angular Pipe" pattern=".*\.pipe\.[tj]s$" icon="/icons/files/angularpipe.svg"/>
         <regex name="Angular Routing" pattern=".*\.routing\.[tj]s$" icon="/icons/files/angularrouting.svg"/>
         <regex name="Angular Resolver" pattern=".*\.resolver\.[tj]s$" icon="/icons/files/angularresolver.svg"/>
-        <regex name="Ansible" pattern="^site\.yml$" icon="/icons/files/ansible.svg"/>
+        <regex name="Anime Studio" pattern=".*\.anime.*$" icon="/icons/files/animestudio.svg"/>
+        <regex name="Ansible" pattern="^(ansible|site)\.yml$" icon="/icons/files/ansible.svg"/>
+        <regex name="Ant" pattern="(ant\.xml$|\.ant)" icon="/icons/files/ant.svg"/>
         <regex name="ANTLR" pattern=".*\.g4$" icon="/icons/files/antlr.svg"/>
         <regex name="API Blueprint" pattern=".*\.apib$" icon="/icons/files/apib.svg"/>
         <regex name="APK" pattern=".*\.apk$" icon="/icons/files/android.svg"/>
@@ -207,7 +223,7 @@
         <regex name="i18n" pattern=".*\.(pot|po|mo)$" icon="/icons/files/i18n.svg"/>
         <regex name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.svg"/>
         <regex name="Idris" pattern=".*\.(idr|idris)$" icon="/icons/files/idris.svg"/>
-        <regex name="InDesign" pattern=".*\.(id|indl|indt|indb)$" icon="/icons/files/indesign.svg"/>
+        <regex name="InDesign" pattern=".*\.(id|indd|indl|indt|indb|idml)$" icon="/icons/files/indesign.svg"/>
         <regex name="Istanbul" pattern=".*\.nycrc(\.json)?$" icon="/icons/files/istanbul.svg"/>
         <regex name="IO" pattern=".*\.(io)$" icon="/icons/files/io.svg"/>
         <regex name="Ionic" pattern=".*\.ionic\.config$" icon="/icons/files/ionic.svg"/>
