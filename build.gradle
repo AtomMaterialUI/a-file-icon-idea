@@ -36,28 +36,6 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.intellij' version '0.4.13'
-    id("maven-publish")
-}
-
-group 'com.mallowigi'
-version '1.0-SNAPSHOT'
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/mallowigi/a-file-icon-idea")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
-            }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
-        }
-    }
 }
 
 repositories {
