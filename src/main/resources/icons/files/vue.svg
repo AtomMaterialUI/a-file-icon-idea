@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-    <path id="file_type_vue.svg" class="i-color" fill="#26A2C1"
-          d="M15,2L8,14,1,2H2.138L8,12.05,13.863,2H15ZM8,4.729L6.382,2H3.927L8,8.982,12.073,2H9.618Z"
-          transform="translate(0 0)"/>
-</svg>
+<svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.617 2L8 4.771 6.383 2H1l7 12 7-12H9.617z" fill="#41B883"/><path d="M9.54 2L8 4.694 6.46 2H4l4 7 4-7H9.54z" fill="#34495E"/></svg>
