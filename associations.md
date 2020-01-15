@@ -510,7 +510,7 @@ Directory Associations
 | Less           | less                                                  | less           |
 | Log            | log(s)                                                | logs           |
 | Mailers        | mailer(s), email(s), mail(s)                          | mailers        |
-| Maps           | map(s), mapping(s)                                    | maps           |
+| Maps           | map(s), mapping(s), mapper(s)                         | maps           |
 | Markdown       | markdown, md                                          | markdown       |
 | Maven          | maven                                                 | maven          |
 | Messages       | message(s), msg(s)                                    | messages       |
