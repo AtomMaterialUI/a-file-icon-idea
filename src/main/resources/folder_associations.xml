@@ -33,6 +33,7 @@
         <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/audio.svg"/>
         <regex name="archives" pattern="^(archives?|jars?|zips?|backups?)" icon="/archive.svg"/>
         <regex name="aws" pattern="^\.?aws$" icon="/aws.svg"/>
+        <regex name="azuredevops" pattern="^(azuredevops?|azure-devops?)$" icon="/azure-devops.svg"/>
         <regex name="benchmark" pattern="^benchmarks?$" icon="/benchmark.svg"/>
         <regex name="bower" pattern="^bower_components$" icon="/bower.svg"/>
         <regex name="channels" pattern="^(channels?)$" icon="/messages.svg"/>
@@ -98,7 +99,7 @@
         <regex name="mailers" pattern="^(mailers?|emails?|mails?)$" icon="/mailers.svg"/>
         <regex name="markdown" pattern="^(md|markdown)$" icon="/markdown.svg"/>
         <regex name="maven" pattern="^maven$" icon="/maven.svg"/>
-        <regex name="maps" pattern="^(maps?|mappings?)$" icon="/maps.svg"/>
+        <regex name="maps" pattern="^(maps?|mappings?|mappers?)$" icon="/maps.svg"/>
         <regex name="messages" pattern="^(messages?|msgs?)$" icon="/messages.svg"/>
         <regex name="meta" pattern="^(meta|META-INF)$" icon="/meta.svg"/>
         <regex name="middlewares" pattern="^(middlewares?|thunks?)$" icon="/middleware.svg"/>
