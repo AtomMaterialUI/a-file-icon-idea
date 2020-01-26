@@ -27,14 +27,16 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.StartupUiUtil;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -47,55 +49,62 @@ import java.net.URL;
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
+@SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class TintedIconsComponent implements AppLifecycleListener {
   private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
   private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
 
-  public void appFrameCreated() {
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
+    initComponent();
+  }
+
+  @Override
+  public void appClosing() {
+    disposeComponent();
+  }
+
+  private void initComponent() {
     colorPatcher = new TintedColorPatcher();
-    SVGLoader.setColorPatcher(colorPatcher);
+    SVGLoader.setColorPatcherProvider(colorPatcher);
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    LafManagerImpl.getInstance().addLafManagerListener(source -> {
-      SVGLoader.setColorPatcher(null);
-      SVGLoader.setColorPatcher(getColorPatcher());
+    connect.subscribe(LafManagerListener.TOPIC, source -> {
+      SVGLoader.setColorPatcherProvider(null);
+      SVGLoader.setColorPatcherProvider(colorPatcher);
 
       TintedColorPatcher.refreshThemeColor(getTintedColor());
     });
-
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, atomFileIconsConfig -> {
-      SVGLoader.setColorPatcher(null);
-      SVGLoader.setColorPatcher(getColorPatcher());
+      SVGLoader.setColorPatcherProvider(null);
+      SVGLoader.setColorPatcherProvider(colorPatcher);
 
       TintedColorPatcher.refreshThemeColor(getTintedColor());
     });
   }
 
-  public void appWillBeClosed() {
+  private void disposeComponent() {
     connect.disconnect();
   }
 
-
-  private TintedColorPatcher getColorPatcher() {
-    return colorPatcher;
-  }
-
   private static ColorUIResource getTintedColor() {
-    return UIUtil.isUnderDarcula() ? DARK_COLOR : LIGHT_COLOR;
+    return StartupUiUtil.isUnderDarcula() ? DARK_COLOR : LIGHT_COLOR;
   }
 
-  private static class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
+  @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
+    "IfStatementWithTooManyBranches"})
+  private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getTintedColor();
 
-    TintedColorPatcher() {
+    private TintedColorPatcher() {
       refreshColors();
     }
 
-    static void refreshThemeColor(final ColorUIResource theme) {
+    private static void refreshThemeColor(final ColorUIResource theme) {
       themedColor = theme;
     }
 
@@ -103,40 +112,48 @@ public final class TintedIconsComponent implements AppLifecycleListener {
       themedColor = getTintedColor();
     }
 
-    @Nullable
+    @NotNull
     @Override
     public SVGLoader.SvgElementColorPatcher forURL(@Nullable final URL url) {
-      return null;
+      return new SVGLoader.SvgElementColorPatcher() {
+        @Override
+          public void patchColors(@NonNls final Element svg) {
+          @NonNls final String tint = svg.getAttribute("tint");
+          @NonNls final String themed = svg.getAttribute("themed");
+          final String hexColor = getColorHex(themedColor);
+
+          if ("true".equals(tint) || "fill".equals(tint)) {
+            svg.setAttribute("fill", "#" + hexColor);
+          } else if ("stroke".equals(tint)) {
+            svg.setAttribute("stroke", "#" + hexColor);
+          } else if ("true".equals(themed) || "fill".equals(themed)) {
+            svg.setAttribute("fill", "#" + hexColor);
+          } else if ("stroke".equals(themed)) {
+            svg.setAttribute("stroke", "#" + hexColor);
+          }
+
+          final NodeList nodes = svg.getChildNodes();
+          final int length = nodes.getLength();
+          for (int i = 0; i < length; i++) {
+            final Node item = nodes.item(i);
+            if (item instanceof Element) {
+              patchColors((Element) item);
+            }
+          }
+        }
+
+        @Nullable
+        @Override
+        public byte[] digest() {
+          return null;
+        }
+      };
     }
 
-    private String getColorHex(final Color color) {
+    private static String getColorHex(final Color color) {
       return ColorUtil.toHex(color);
     }
 
-    @Override
-    public final void patchColors(@NonNls final Element svg) {
-      @NonNls final String tint = svg.getAttribute("tint");
-      @NonNls final String themed = svg.getAttribute("themed");
-      final String hexColor = getColorHex(themedColor);
 
-      if ("true".equals(tint) || "fill".equals(tint)) {
-        svg.setAttribute("fill", "#" + hexColor);
-      } else if ("stroke".equals(tint)) {
-        svg.setAttribute("stroke", "#" + hexColor);
-      } else if ("true".equals(themed) || "fill".equals(themed)) {
-        svg.setAttribute("fill", "#" + hexColor);
-      } else if ("stroke".equals(themed)) {
-        svg.setAttribute("stroke", "#" + hexColor);
-      }
-
-      final NodeList nodes = svg.getChildNodes();
-      final int length = nodes.getLength();
-      for (int i = 0; i < length; i++) {
-        final Node item = nodes.item(i);
-        if (item instanceof Element) {
-          patchColors((Element) item);
-        }
-      }
-    }
   }
 }

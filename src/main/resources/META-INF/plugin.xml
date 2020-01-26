@@ -30,7 +30,7 @@
     <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="http://github.com/mallowigi">Mallowigi</vendor>
 
-    <idea-version since-build="191.0"/>
+    <idea-version since-build="201.0"/>
 
     <depends>com.intellij.modules.lang</depends>
 
@@ -41,9 +41,9 @@
         <applicationConfigurable instance="com.mallowigi.config.Configurable"
                                  groupId="appearance"
                                  id="com.mallowigi.config"/>
-        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first"
                       id="MTHiddenIconProvider"/>
+        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"
                                   id="MTHollowFoldersDecorator"/>
     </extensions>
@@ -52,15 +52,6 @@
         <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener"/>
         <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
     </applicationListeners>
-
-    <application-components>
-        <component>
-            <implementation-class>com.mallowigi.icons.IconReplacerComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.mallowigi.icons.TintedIconsComponent</implementation-class>
-        </component>
-    </application-components>
 
     <actions>
         <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom File Icon Settings"

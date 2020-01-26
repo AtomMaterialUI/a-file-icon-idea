@@ -37,6 +37,7 @@ import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.ui.GuiUtils;
@@ -48,22 +49,29 @@ import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 import static com.mallowigi.icons.IconManager.applyFilter;
 
+@SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class IconReplacerComponent implements AppLifecycleListener {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
-  private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
+  private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
   private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
 
   private MessageBusConnection connect;
 
-  public void appFrameCreated() {
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
+    initComponent();
+  }
+
+  private void initComponent() {
     updateIcons();
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
@@ -77,36 +85,36 @@ public final class IconReplacerComponent implements AppLifecycleListener {
     });
 
     ApplicationManager.getApplication().runWriteAction(() -> {
-      IconManager.applyFilter();
+      applyFilter();
       LafManager.getInstance().updateUI();
     });
   }
 
-  @SuppressWarnings("WeakerAccess")
+  @SuppressWarnings({"WeakerAccess",
+    "FeatureEnvy"})
   void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
 
-    if (AtomFileIconsConfig.getInstance().isEnabledUIIcons()) {
+    final AtomFileIconsConfig atomFileIconsConfig = AtomFileIconsConfig.getInstance();
+    if (atomFileIconsConfig.isEnabledUIIcons()) {
       IconLoader.installPathPatcher(checkStyleIconPatcher);
       installPathPatchers();
     }
-    if (AtomFileIconsConfig.getInstance().isEnabledPsiIcons()) {
+    if (atomFileIconsConfig.isEnabledPsiIcons()) {
       installPSIPatchers();
     }
-    if (AtomFileIconsConfig.getInstance().isEnabledIcons()) {
+    if (atomFileIconsConfig.isEnabledIcons()) {
       installFileIconsPatchers();
     }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getIconPatchers()) {
       installPathPatcher(externalPatcher);
     }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPSIPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getGlyphPatchers()) {
       installPathPatcher(externalPatcher);
@@ -135,9 +143,14 @@ public final class IconReplacerComponent implements AppLifecycleListener {
     IconLoader.removePathPatcher(patcher);
   }
 
-  public void appWillBeClosed() {
+  private void disposeComponent() {
     MTIconPatcher.clearCache();
     connect.disconnect();
+  }
+
+  @Override
+  public void appClosing() {
+    disposeComponent();
   }
 
   private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
@@ -145,7 +158,7 @@ public final class IconReplacerComponent implements AppLifecycleListener {
     updateIcons();
   }
 
-  private void updateFileIcons() {
+  private static void updateFileIcons() {
     GuiUtils.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
