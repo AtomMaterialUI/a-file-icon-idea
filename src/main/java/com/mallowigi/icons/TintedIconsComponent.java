@@ -27,6 +27,8 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.AppLifecycleListener;
+import com.intellij.ide.plugins.DynamicPluginListener;
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -50,19 +52,19 @@ import java.net.URL;
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class TintedIconsComponent implements AppLifecycleListener {
+public final class TintedIconsComponent implements DynamicPluginListener {
   private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
   private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
 
   @Override
-  public void appStarting(@Nullable final Project projectFromCommandLine) {
+  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
     initComponent();
   }
 
   @Override
-  public void appClosing() {
+  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
     disposeComponent();
   }
 
@@ -117,7 +119,7 @@ public final class TintedIconsComponent implements AppLifecycleListener {
     public SVGLoader.SvgElementColorPatcher forURL(@Nullable final URL url) {
       return new SVGLoader.SvgElementColorPatcher() {
         @Override
-          public void patchColors(@NonNls final Element svg) {
+        public void patchColors(@NonNls final Element svg) {
           @NonNls final String tint = svg.getAttribute("tint");
           @NonNls final String themed = svg.getAttribute("themed");
           final String hexColor = getColorHex(themedColor);
@@ -153,7 +155,6 @@ public final class TintedIconsComponent implements AppLifecycleListener {
     private static String getColorHex(final Color color) {
       return ColorUtil.toHex(color);
     }
-
 
   }
 }

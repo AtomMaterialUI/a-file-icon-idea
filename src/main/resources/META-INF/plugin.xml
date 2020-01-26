@@ -49,12 +49,12 @@
     </extensions>
 
     <applicationListeners>
-        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener"/>
-        <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+        <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
     </applicationListeners>
 
     <actions>
-        <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom File Icon Settings"
+        <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom file icon settings"
                popup="true" icon="/icons/actions/atom.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
@@ -93,6 +93,7 @@
     ]]></description>
 
     <change-notes>
+        Change notes will be available as part of Changelog.html
     </change-notes>
 
 </idea-plugin>

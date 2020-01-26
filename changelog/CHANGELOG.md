@@ -1,5 +1,8 @@
 # Changelog
 
+# 18.0
+- Support for 2020.1
+
 # 17.0
 - New Icons:
   - 1c, 3dmodel, 3dsmax, abap, abif, acre, advpl, affectscript, affinity, alacritty, alex, alloy, ampl, amusewiki, angelscript, animestudio, ant

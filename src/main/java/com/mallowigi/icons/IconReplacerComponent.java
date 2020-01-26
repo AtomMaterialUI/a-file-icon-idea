@@ -27,6 +27,8 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.AppLifecycleListener;
+import com.intellij.ide.plugins.DynamicPluginListener;
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
@@ -57,7 +59,17 @@ import java.util.HashSet;
 import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class IconReplacerComponent implements AppLifecycleListener {
+public final class IconReplacerComponent implements DynamicPluginListener {
+  @Override
+  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
+    initComponent();
+  }
+
+  @Override
+  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
+    disposeComponent();
+  }
+
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
@@ -65,11 +77,6 @@ public final class IconReplacerComponent implements AppLifecycleListener {
   private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
 
   private MessageBusConnection connect;
-
-  @Override
-  public void appStarting(@Nullable final Project projectFromCommandLine) {
-    initComponent();
-  }
 
   private void initComponent() {
     updateIcons();
@@ -146,11 +153,6 @@ public final class IconReplacerComponent implements AppLifecycleListener {
   private void disposeComponent() {
     MTIconPatcher.clearCache();
     connect.disconnect();
-  }
-
-  @Override
-  public void appClosing() {
-    disposeComponent();
   }
 
   private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
