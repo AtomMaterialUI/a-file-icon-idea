@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,13 @@
 
 package com.mallowigi.icons;
 
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -54,7 +54,7 @@ import java.util.Set;
 
 import static com.mallowigi.icons.IconManager.applyFilter;
 
-public final class IconReplacerComponent implements BaseComponent {
+public final class IconReplacerComponent implements AppLifecycleListener {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
@@ -63,8 +63,7 @@ public final class IconReplacerComponent implements BaseComponent {
 
   private MessageBusConnection connect;
 
-  @Override
-  public void initComponent() {
+  public void appFrameCreated() {
     updateIcons();
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
@@ -136,8 +135,7 @@ public final class IconReplacerComponent implements BaseComponent {
     IconLoader.removePathPatcher(patcher);
   }
 
-  @Override
-  public void disposeComponent() {
+  public void appWillBeClosed() {
     MTIconPatcher.clearCache();
     connect.disconnect();
   }
@@ -157,9 +155,4 @@ public final class IconReplacerComponent implements BaseComponent {
     }, ModalityState.NON_MODAL);
   }
 
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "IconReplacerComponent";
-  }
 }

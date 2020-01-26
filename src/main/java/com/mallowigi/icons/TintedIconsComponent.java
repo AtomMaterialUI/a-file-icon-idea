@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,34 +26,34 @@
 
 package com.mallowigi.icons;
 
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.net.URL;
 
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
-public final class TintedIconsComponent implements BaseComponent {
+public final class TintedIconsComponent implements AppLifecycleListener {
   private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
   private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
 
-  @Override
-  public void initComponent() {
+  public void appFrameCreated() {
     colorPatcher = new TintedColorPatcher();
     SVGLoader.setColorPatcher(colorPatcher);
 
@@ -74,17 +74,10 @@ public final class TintedIconsComponent implements BaseComponent {
     });
   }
 
-  @Override
-  public void disposeComponent() {
+  public void appWillBeClosed() {
     connect.disconnect();
   }
 
-  @NonNls
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "TintedIconsComponent";
-  }
 
   private TintedColorPatcher getColorPatcher() {
     return colorPatcher;
@@ -94,7 +87,7 @@ public final class TintedIconsComponent implements BaseComponent {
     return UIUtil.isUnderDarcula() ? DARK_COLOR : LIGHT_COLOR;
   }
 
-  private static class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
+  private static class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getTintedColor();
 
@@ -108,6 +101,12 @@ public final class TintedIconsComponent implements BaseComponent {
 
     private static void refreshColors() {
       themedColor = getTintedColor();
+    }
+
+    @Nullable
+    @Override
+    public SVGLoader.SvgElementColorPatcher forURL(@Nullable final URL url) {
+      return null;
     }
 
     private String getColorHex(final Color color) {
