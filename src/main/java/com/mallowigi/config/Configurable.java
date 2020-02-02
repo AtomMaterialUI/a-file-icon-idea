@@ -49,7 +49,7 @@ public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileI
   @NotNull
   @Override
   public String getId() {
-    return Configurable.ID;
+    return ID;
   }
 
   @Override
@@ -83,7 +83,7 @@ public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileI
    * @param config the config
    * @return true if changed
    */
-  private boolean checkFormModified(final SettingsForm form, final AtomFileIconsConfig config) {
+  private static boolean checkFormModified(final SettingsForm form, final AtomFileIconsConfig config) {
     return Objects.requireNonNull(form).isModified(config);
   }
 }

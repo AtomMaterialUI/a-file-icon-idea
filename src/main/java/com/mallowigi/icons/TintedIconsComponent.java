@@ -52,11 +52,21 @@ import java.net.URL;
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class TintedIconsComponent implements DynamicPluginListener {
+public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener {
   private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
   private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
+
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
+    initComponent();
+  }
+
+  @Override
+  public void appClosing() {
+    disposeComponent();
+  }
 
   @Override
   public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {

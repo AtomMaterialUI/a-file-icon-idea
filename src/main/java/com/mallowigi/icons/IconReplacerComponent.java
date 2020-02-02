@@ -33,6 +33,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
@@ -59,7 +60,17 @@ import java.util.HashSet;
 import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class IconReplacerComponent implements DynamicPluginListener {
+public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener {
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
+    initComponent();
+  }
+
+  @Override
+  public void appClosing() {
+    disposeComponent();
+  }
+
   @Override
   public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
     initComponent();

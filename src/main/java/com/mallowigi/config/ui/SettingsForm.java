@@ -43,8 +43,13 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings("FieldCanBeLocal")
-public class SettingsForm implements SettingsFormUI {
+@SuppressWarnings({"FieldCanBeLocal",
+  "HardCodedStringLiteral",
+  "StringConcatenation",
+  "PublicMethodNotExposedInInterface",
+  "FeatureEnvy",
+  "BooleanMethodNameMustStartWithQuestion"})
+public final class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
     initComponents();
   }
@@ -69,7 +74,8 @@ public class SettingsForm implements SettingsFormUI {
   private JCheckBox hollowFoldersCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-  @SuppressWarnings("Convert2MethodRef")
+  @SuppressWarnings({"Convert2MethodRef",
+    "LocalCanBeFinal"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -191,7 +197,7 @@ public class SettingsForm implements SettingsFormUI {
 
   }
 
-  public final void setFormState(final AtomFileIconsConfig config) {
+  public void setFormState(final AtomFileIconsConfig config) {
     setIsEnabledIcons(config.isEnabledIcons());
     setIsEnabledDirectories(config.isEnabledDirectories());
     setIsEnabledMonochromeIcons(config.isMonochromeIcons());
@@ -204,7 +210,7 @@ public class SettingsForm implements SettingsFormUI {
     afterStateSet();
   }
 
-  public final boolean isModified(final AtomFileIconsConfig config) {
+  public boolean isModified(final AtomFileIconsConfig config) {
 
     boolean modified = config.isEnabledIconsChanged(getIsEnabledIcons());
     modified = modified || config.isEnabledDirectoriesChanged(getIsEnabledDirectories());
@@ -298,6 +304,7 @@ public class SettingsForm implements SettingsFormUI {
     return hideFileIconsCheckbox.isSelected();
   }
 
+  @SuppressWarnings("NegativelyNamedBooleanVariable")
   private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
     hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
   }
