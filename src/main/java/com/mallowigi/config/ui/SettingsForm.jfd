@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -10,7 +10,7 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[fill][::600,fill][fill]"
-			"$rowConstraints": "[][][][][][][][]"
+			"$rowConstraints": "[][][][][][][][50][]"
 		} ) {
 			name: "content"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -112,9 +112,25 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 6"
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "arrowsStyleLabel"
+				"text": new FormMessage( null, "SettingsForm.arrowsStyleLabel.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.arrowsStyleLabel.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "pad 0,cell 1 7,aligny center,grow 100 0"
+			} )
+			add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+				name: "arrowsStyleComboBox"
+				"toolTipText": new FormMessage( null, "SettingsForm.arrowsStyleComboBox.toolTipText" )
+				auxiliary() {
+					"JavaCodeGenerator.typeParameters": "ArrowsStyles"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 7,align right center,grow 0 0,width 120:120:120"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 400, 370 )
 		} )
 	}
 }

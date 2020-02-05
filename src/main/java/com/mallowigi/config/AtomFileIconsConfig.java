@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,12 +34,13 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.ui.SettingsForm;
+import com.mallowigi.tree.arrows.ArrowsStyles;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @State(
-    name = "AtomFileIconsConfig",
-    storages = @Storage("a-file-icons.xml")
+  name = "AtomFileIconsConfig",
+  storages = @Storage("a-file-icons.xml")
 )
 public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
   @Property
@@ -58,6 +59,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   private boolean hideFileIcons;
   @Property
   boolean useHollowFolders = true;
+  @Property
+  ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
 
   public AtomFileIconsConfig() {
   }
@@ -108,6 +111,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setEnabledPsiIcons(form.getIsEnabledPsiIcons());
     setHideFileIcons(form.getIsHiddenFileIcons());
     setUseHollowFolders(form.getIsHollowFoldersEnabled());
+    setArrowsStyle(form.getArrowsStyle());
 
     fireChanged();
   }
@@ -124,6 +128,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     enabledPsiIcons = true;
     hideFileIcons = false;
     useHollowFolders = true;
+    arrowsStyle = ArrowsStyles.MATERIAL;
   }
 
   //region Enabled Icons
@@ -299,6 +304,20 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
 
   public void toggleHideFileIcons() {
     hideFileIcons = !hideFileIcons;
+  }
+  //endregion
+
+  //region Arrows Styles
+  public ArrowsStyles getArrowsStyle() {
+    return arrowsStyle;
+  }
+
+  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    this.arrowsStyle = arrowsStyle;
+  }
+
+  public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
+    return this.arrowsStyle != arrowsStyle;
   }
   //endregion
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,12 @@
 
 package com.mallowigi.config.ui;
 
+import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.ListCellRendererWrapper;
 import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.tree.arrows.ArrowsStyles;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -72,6 +75,8 @@ public final class SettingsForm implements SettingsFormUI {
   private JCheckBox hideFileIconsCheckbox;
   private JLabel enablePSIIconsIcon2;
   private JCheckBox hollowFoldersCheckbox;
+  private JLabel arrowsStyleLabel;
+  private ComboBox<ArrowsStyles> arrowsStyleComboBox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings({"Convert2MethodRef",
@@ -96,6 +101,8 @@ public final class SettingsForm implements SettingsFormUI {
     hideFileIconsCheckbox = new JCheckBox();
     enablePSIIconsIcon2 = new JLabel();
     hollowFoldersCheckbox = new JCheckBox();
+    arrowsStyleLabel = new JLabel();
+    arrowsStyleComboBox = new ComboBox<>();
 
     //======== content ========
     {
@@ -113,6 +120,7 @@ public final class SettingsForm implements SettingsFormUI {
           "[]" +
           "[]" +
           "[]" +
+          "[50]" +
           "[]"));
 
       //---- enableFileIconsIcon ----
@@ -183,8 +191,31 @@ public final class SettingsForm implements SettingsFormUI {
       hollowFoldersCheckbox.setText(bundle.getString("SettingsForm.hollowFoldersCheckbox.text"));
       hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText"));
       content.add(hollowFoldersCheckbox, "cell 1 6");
+
+      //---- arrowsStyleLabel ----
+      arrowsStyleLabel.setText(bundle.getString("SettingsForm.arrowsStyleLabel.text"));
+      arrowsStyleLabel.setToolTipText(bundle.getString("SettingsForm.arrowsStyleLabel.toolTipText"));
+      content.add(arrowsStyleLabel, "pad 0,cell 1 7,aligny center,grow 100 0");
+
+      //---- arrowsStyleComboBox ----
+      arrowsStyleComboBox.setToolTipText(bundle.getString("SettingsForm.arrowsStyleComboBox.toolTipText"));
+      content.add(arrowsStyleComboBox, "cell 2 7,align right center,grow 0 0,width 120:120:120");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+    // Arrows
+    arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+    arrowsStyleComboBox.setRenderer(new ListCellRendererWrapper<ArrowsStyles>() {
+      @Override
+      public void customize(final JList list, final ArrowsStyles value, final int index, final boolean selected, final boolean hasFocus) {
+        final Icon baseIcon;
+        if (value == null) {
+          return;
+        }
+        baseIcon = value.getIcon();
+        setIcon(baseIcon);
+      }
+    });
   }
 
   @SuppressWarnings("unused")
@@ -206,6 +237,7 @@ public final class SettingsForm implements SettingsFormUI {
     setIsEnabledPsiIcons(config.isEnabledPsiIcons());
     setIsHiddenFileIcons(config.isHideFileIcons());
     setIsHollowFoldersEnabled(config.isUseHollowFolders());
+    setArrowsStyle(config.getArrowsStyle());
 
     afterStateSet();
   }
@@ -220,6 +252,7 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isEnabledPsiIconsChanged(getIsEnabledPsiIcons());
     modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
     modified = modified || config.isUseHollowFoldersChanged(getIsHollowFoldersEnabled());
+    modified = modified || config.isArrowsStyleChanged(getArrowsStyle());
 
     return modified;
   }
@@ -320,4 +353,13 @@ public final class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
+  //region arrows styles
+  public ArrowsStyles getArrowsStyle() {
+    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
+  }
+
+  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+  //endregion
 }
