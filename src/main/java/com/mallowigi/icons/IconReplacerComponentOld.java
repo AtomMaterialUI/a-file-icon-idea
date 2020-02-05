@@ -26,15 +26,12 @@
 
 package com.mallowigi.icons;
 
-import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.plugins.DynamicPluginListener;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -53,7 +50,6 @@ import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -61,27 +57,7 @@ import java.util.HashSet;
 import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener {
-  @Override
-  public void appStarting(@Nullable final Project projectFromCommandLine) {
-    initComponent();
-  }
-
-  @Override
-  public void appClosing() {
-    disposeComponent();
-  }
-
-  @Override
-  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
-    initComponent();
-  }
-
-  @Override
-  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-    disposeComponent();
-  }
-
+public final class IconReplacerComponentOld implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
@@ -90,7 +66,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
 
   private MessageBusConnection connect;
 
-  private void initComponent() {
+  public void initComponent() {
     updateIcons();
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
@@ -109,10 +85,6 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       }
     });
 
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      applyFilter();
-      LafManager.getInstance().updateUI();
-    });
   }
 
   @SuppressWarnings({"WeakerAccess",
@@ -156,6 +128,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     for (final IconPathPatcher iconPathPatcher : installedPatchers) {
       removePathPatcher(iconPathPatcher);
     }
+    IconLoader.removePathPatcher(checkStyleIconPatcher);
     installedPatchers.clear();
   }
 
@@ -168,7 +141,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     IconLoader.removePathPatcher(patcher);
   }
 
-  private void disposeComponent() {
+  public void disposeComponent() {
     MTIconPatcher.clearCache();
     connect.disconnect();
   }
@@ -183,7 +156,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     GuiUtils.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+      //      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
 
       applyFilter();
     }, ModalityState.NON_MODAL);
