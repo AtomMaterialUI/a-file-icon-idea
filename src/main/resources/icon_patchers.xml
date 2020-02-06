@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +40,7 @@
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
         <patcher name="Flask" remove="/icons/com/jetbrains/flask" append="/icons/plugins/python/flask"/>
         <patcher name="Goland" remove="/icons" append="/icons/plugins/go"/>
+        <patcher name="Github" remove="/org/jetbrains/plugins/github" append="/icons/plugins/github"/>
         <patcher name="Gradle" remove="/icons" append="/icons/plugins/gradle"/>
         <patcher name="Groovy" remove="/icons/groovy" append="/icons/plugins/groovy"/>
         <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images"/>
