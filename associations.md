@@ -44,6 +44,7 @@ Files are sorted by priority.
 |                     | *.module.js                                                |                   |
 |                     | *.ng-template                                              |                   |
 | Angular Component   | *.component.js, *.component.ts                             | angular-component |
+| Angular Controller  | *.controller.js, *.controller.ts                           | angular-component |
 | Angular Directive   | *.directive.js, *.directive.ts                             | angular-directive |
 | Angular Guard       | *.guard.js, *.guard.ts                                     | angular-guard     |
 | Angular Service     | *.service.js, *.service.ts                                 | angular-service   |

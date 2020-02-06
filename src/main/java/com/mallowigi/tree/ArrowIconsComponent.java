@@ -43,7 +43,20 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleListener {
-  private MessageBusConnection connect;
+  private final MessageBusConnection connect;
+
+  public ArrowIconsComponent() {
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+  }
+
+  public static void replaceTree() {
+    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+    final ArrowsStyles arrowsStyle = AtomFileIconsConfig.getInstance().getArrowsStyle();
+    defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
+    defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
+    defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
+    defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
+  }
 
   @Override
   public void appStarting(@Nullable final Project projectFromCommandLine) {
@@ -67,7 +80,6 @@ public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleL
 
   private void initComponent() {
     replaceTree();
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
 
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, atomFileIconsConfig -> replaceTree());
     connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
@@ -81,14 +93,5 @@ public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleL
 
   private void disposeComponent() {
     connect.disconnect();
-  }
-
-  public static void replaceTree() {
-    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    final ArrowsStyles arrowsStyle = AtomFileIconsConfig.getInstance().getArrowsStyle();
-    defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
-    defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
-    defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
-    defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
   }
 }

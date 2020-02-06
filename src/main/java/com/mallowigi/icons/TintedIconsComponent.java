@@ -56,7 +56,11 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
   private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
   private TintedColorPatcher colorPatcher;
-  private MessageBusConnection connect;
+  private final MessageBusConnection connect;
+
+  public TintedIconsComponent() {
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+  }
 
   @Override
   public void appStarting(@Nullable final Project projectFromCommandLine) {
@@ -83,7 +87,6 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     SVGLoader.setColorPatcherProvider(colorPatcher);
 
     // Listen for changes on the settings
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(LafManagerListener.TOPIC, source -> {
       SVGLoader.setColorPatcherProvider(null);
       SVGLoader.setColorPatcherProvider(colorPatcher);

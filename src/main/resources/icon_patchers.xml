@@ -39,7 +39,7 @@
         <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
         <patcher name="Flask" remove="/icons/com/jetbrains/flask" append="/icons/plugins/python/flask"/>
-        <patcher name="Goland" remove="/icons" append="/icons/plugins/go"/>
+        <patcher name="Goland" remove="/icons" append="/icons/plugins/goland"/>
         <patcher name="Github" remove="/org/jetbrains/plugins/github" append="/icons/plugins/github"/>
         <patcher name="Gradle" remove="/icons" append="/icons/plugins/gradle"/>
         <patcher name="Groovy" remove="/icons/groovy" append="/icons/plugins/groovy"/>
@@ -76,7 +76,7 @@
         <patcher name="CLion" remove="/icons" append="/icons/plugins/clion/glyphs"/>
         <patcher name="DataGrip" remove="/icons" append="/icons/plugins/datagrip/glyphs"/>
         <patcher name="General" remove="/general" append="/icons/general/glyphs"/>
-        <patcher name="Goland" remove="/icons" append="/icons/plugins/go/glyphs"/>
+        <patcher name="Goland" remove="/icons" append="/icons/plugins/goland/glyphs"/>
         <patcher name="Groovy" remove="/icons" append="/icons/plugins/groovy/glyphs"/>
         <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>

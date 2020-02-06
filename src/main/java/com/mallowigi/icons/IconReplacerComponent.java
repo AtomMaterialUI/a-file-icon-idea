@@ -62,6 +62,30 @@ import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener {
+  @Property
+  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
+  private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
+  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
+  private final MessageBusConnection connect;
+
+  public IconReplacerComponent() {
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+  }
+
+  private static void removePathPatcher(final IconPathPatcher patcher) {
+    IconLoader.removePathPatcher(patcher);
+  }
+
+  private static void updateFileIcons() {
+    GuiUtils.invokeLaterIfNeeded(() -> {
+      final Application app = ApplicationManager.getApplication();
+      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
+      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+
+      applyFilter();
+    }, ModalityState.NON_MODAL);
+  }
+
   @Override
   public void appStarting(@Nullable final Project projectFromCommandLine) {
     initComponent();
@@ -82,17 +106,27 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     disposeComponent();
   }
 
-  @Property
-  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
+  @SuppressWarnings({"WeakerAccess",
+    "FeatureEnvy"})
+  void updateIcons() {
+    MTIconPatcher.clearCache();
+    removePathPatchers();
 
-  private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
-  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
-
-  private MessageBusConnection connect;
+    final AtomFileIconsConfig atomFileIconsConfig = AtomFileIconsConfig.getInstance();
+    if (atomFileIconsConfig.isEnabledUIIcons()) {
+      IconLoader.installPathPatcher(checkStyleIconPatcher);
+      installPathPatchers();
+    }
+    if (atomFileIconsConfig.isEnabledPsiIcons()) {
+      installPSIPatchers();
+    }
+    if (atomFileIconsConfig.isEnabledIcons()) {
+      installFileIconsPatchers();
+    }
+  }
 
   private void initComponent() {
     updateIcons();
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
 
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
@@ -113,25 +147,6 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       applyFilter();
       LafManager.getInstance().updateUI();
     });
-  }
-
-  @SuppressWarnings({"WeakerAccess",
-    "FeatureEnvy"})
-  void updateIcons() {
-    MTIconPatcher.clearCache();
-    removePathPatchers();
-
-    final AtomFileIconsConfig atomFileIconsConfig = AtomFileIconsConfig.getInstance();
-    if (atomFileIconsConfig.isEnabledUIIcons()) {
-      IconLoader.installPathPatcher(checkStyleIconPatcher);
-      installPathPatchers();
-    }
-    if (atomFileIconsConfig.isEnabledPsiIcons()) {
-      installPSIPatchers();
-    }
-    if (atomFileIconsConfig.isEnabledIcons()) {
-      installFileIconsPatchers();
-    }
   }
 
   private void installPathPatchers() {
@@ -164,10 +179,6 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     IconLoader.installPathPatcher(patcher);
   }
 
-  private static void removePathPatcher(final IconPathPatcher patcher) {
-    IconLoader.removePathPatcher(patcher);
-  }
-
   private void disposeComponent() {
     MTIconPatcher.clearCache();
     connect.disconnect();
@@ -177,16 +188,6 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     updateFileIcons();
     updateIcons();
     LafManager.getInstance().updateUI();
-  }
-
-  private static void updateFileIcons() {
-    GuiUtils.invokeLaterIfNeeded(() -> {
-      final Application app = ApplicationManager.getApplication();
-      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
-
-      applyFilter();
-    }, ModalityState.NON_MODAL);
   }
 
 }

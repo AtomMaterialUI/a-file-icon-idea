@@ -1,5 +1,11 @@
 # Changelog
 
+# 19.0
+- New feature: Arrows Style
+- Fix issue with icons not being applied on start
+- Add missing icons since Nov 2019
+- New pattern: angular controller
+
 # 18.0
 - Support for 2020.1
 
