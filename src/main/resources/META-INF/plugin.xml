@@ -63,6 +63,9 @@
         <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
 
         <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="com.mallowigi.tree.ArrowIconsComponent"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+
     </applicationListeners>
 
     <actions>

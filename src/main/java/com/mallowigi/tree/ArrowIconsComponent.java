@@ -29,8 +29,13 @@ package com.mallowigi.tree;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.config.ConfigNotifier;
 import com.mallowigi.tree.arrows.ArrowsStyles;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +43,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleListener {
+  private MessageBusConnection connect;
+
   @Override
   public void appStarting(@Nullable final Project projectFromCommandLine) {
     initComponent();
@@ -59,13 +66,25 @@ public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleL
   }
 
   private void initComponent() {
+    replaceTree();
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, atomFileIconsConfig -> replaceTree());
+    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
+      @Override
+      public void projectOpened(@NotNull final Project project) {
+        replaceTree();
+      }
+    });
 
   }
 
   private void disposeComponent() {
+    connect.disconnect();
   }
 
-  public static void replaceTree(final UIDefaults defaults) {
+  public static void replaceTree() {
+    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final ArrowsStyles arrowsStyle = AtomFileIconsConfig.getInstance().getArrowsStyle();
     defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
     defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
