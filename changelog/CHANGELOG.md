@@ -1,5 +1,13 @@
 # Changelog
 
+# 20.0
+- Restore the "Accent Color" function to colorize icons with the Accent color (defined from Material Theme, or from the current active tab indicator color)
+- Fix issue where arrows style were not persisted
+- Add sql/mysql/pgsql folder
+- Fix Kotlin icons being unaffected by PSI File Icons setting
+- Add bz2, xar, egg and sit to "Archive" file association
+- Make Icon Settings "dumb aware" (not affected by the indexing process)
+
 # 19.0
 - New feature: Arrows Style
 - Fix issue with icons not being applied on start
