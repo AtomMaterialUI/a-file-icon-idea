@@ -383,7 +383,7 @@ Files are sorted by priority.
 | Solidity            | *.sol                                                      | solidity          |
 | Sonar               | .sonarrc                                                   | sonar             |
 | Spring              | *.spring                                                   | spring            |
-| SQL                 | *.(sql,pgsql,mysql,hql,qml,psql,pkb)                       | sql               |
+| SQL                 | *.(sql,pgsql,mysql,hql,psql,pkb)                       | sql               |
 | SQLite              | *.sqlite, *.sqlite3                                        | sqlite            |
 | Stata               | *.stata                                                    | stata             |
 | Stencil             | stencil.config.js, stencil.config.ts                       | stencil           |
