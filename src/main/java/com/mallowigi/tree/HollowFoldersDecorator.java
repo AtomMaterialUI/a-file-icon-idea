@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -107,22 +107,25 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
 
   @SuppressWarnings("IfStatementWithTooManyBranches")
   private static void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
-    if (data.getIcon(true) instanceof DirIcon) {
-      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
-      data.setIcon(new DirIcon(openedIcon));
-    } else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
-      data.setIcon(MTIcons.EXCLUDED);
-    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
-      data.setIcon(MTIcons.MODULE);
-    } else if (ProjectRootsUtil.isInSource(file, project)) {
-      data.setIcon(MTIcons.SOURCE);
-    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
-      data.setIcon(MTIcons.TEST);
-    } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
-      //      Looks like an open directory anyway
-      data.setIcon(PlatformIcons.PACKAGE_ICON);
-    } else {
-      data.setIcon(getDirectoryIcon());
+    try {
+      if (data.getIcon(true) instanceof DirIcon) {
+        final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
+        data.setIcon(new DirIcon(openedIcon));
+      } else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+        data.setIcon(MTIcons.EXCLUDED);
+      } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+        data.setIcon(MTIcons.MODULE);
+      } else if (ProjectRootsUtil.isInSource(file, project)) {
+        data.setIcon(MTIcons.SOURCE);
+      } else if (ProjectRootsUtil.isInTestSource(file, project)) {
+        data.setIcon(MTIcons.TEST);
+      } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
+        //      Looks like an open directory anyway
+        data.setIcon(PlatformIcons.PACKAGE_ICON);
+      } else {
+        data.setIcon(getDirectoryIcon());
+      }
+    } catch (Exception e) {
     }
   }
 

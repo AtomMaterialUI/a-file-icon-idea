@@ -112,7 +112,7 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   private static ColorUIResource getTintedColor() {
-    return new ColorUIResource(JBColor.namedColor("EditorTabs.underlineColor", UIUtil.getButtonSelectColor()));
+    return new ColorUIResource(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()));
   }
 
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
