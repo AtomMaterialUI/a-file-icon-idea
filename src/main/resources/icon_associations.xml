@@ -419,7 +419,7 @@
         <regex name="Semantic Release" pattern=".*\.releaserc(.js(on)?|.y(a)?ml)?$"
                icon="/icons/files/semantic-release.svg"/>
         <regex name="Semantic Release Config" pattern="^release\.config\.js$" icon="/icons/files/semantic-release.svg"/>
-        <regex name="Settings" pattern=".*\.settings$" icon="/icons/files/settings.svg"/>
+        <regex name="Settings" pattern=".*\.(settings?|options?|opts?)$" icon="/icons/files/settings.svg"/>
         <regex name="Sequelize" pattern="\.sequelizerc$" icon="/icons/files/sequelize.svg"/>
         <regex name="Shell" pattern=".*\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc|tcsh)$" icon="/icons/files/shell.svg"/>
         <regex name="SilverStripe" pattern=".*\.ss$" icon="/icons/files/silverstripe.svg"/>
@@ -510,7 +510,7 @@
         <regex name="YVM" pattern="^\.yvmrc" icon="/icons/files/yvmrc.svg"/>
 
         <!-- These take the least priority -->
-        <regex name="Preferences" pattern=".*\.(ini|config|env|cfg)$" icon="/icons/files/preferences.svg"/>
+        <regex name="Preferences" pattern=".*\.(lds?|ini|config|env|cfg)$" icon="/icons/files/preferences.svg"/>
         <regex name="Envs" pattern=".*\.env\.(.*)$" icon="/icons/files/preferences.svg"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.svg"/>
 
@@ -521,7 +521,7 @@
                icon="/icons/files/xml.svg"/>
         <regex name="YAML" pattern=".*\.(yml|yaml|info)$" icon="/icons/files/yaml.svg"/>
 
-        <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
+        <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$"
                icon="/icons/files/archive.svg"/>
         <regex name="Audio"
                pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"

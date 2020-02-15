@@ -368,7 +368,7 @@ Files are sorted by priority.
 | SBT                 | *.sbt                                                      | sbt               |
 | Scala               | *.scala                                                    | scala             |
 | Scheme              | *.scheme, *.scm                                            | scheme            |
-| Settings            | *.settings                                                 | settings          |
+| Settings            | *.settings?, *.options?, *.opts?                                                 | settings          |
 | Semantic Release    | *.releaserc.(js,json,yaml)                                 | semantic-release  |
 |                     | release.config.js                                          |                   |
 | Sequelize           | .sequelizerc                                               | sequelize         |
@@ -458,7 +458,7 @@ Files are sorted by priority.
 | Yarn Clean          | .yarnclean                                                 | yarn              |
 | YVM                 | .yvmrc                                                     | yvm               |
 |                     |                                                            |                   |
-| Preferences         | *.ini, *.config, *.env, *.cfg                              | preferences       |
+| Preferences         | *.ini, *.config, *.env, *.cfg, *.ld, *.lds                              | preferences       |
 | Envs                | *.env.(prod,dev,test...)                                   | preferences       |
 | Binary              | anything with no extension                                 | binary            |
 | Font                | *.(ttf,ttc,pfb,pfm,otf,dfont,pfa,afm)                      | font              |
@@ -467,7 +467,7 @@ Files are sorted by priority.
 | XML                 | *.(xml,xhtml,fxml,jrxml,jnlp,pom,rng,tld)                  | xml               |
 |                     | *.(wsdl,xsd,xsl,xslt,xul)                                  |                   |
 | YAML                | *.(yml,yaml,info)                                          | yaml              |
-| Archive             | *.(7z,7zip,gzip,zip,rar,tar,gz,pzip,saz,tgz)               | archive           |
+| Archive             | *.(7z,7zip,gzip,zip,rar,tar,gz,pzip,saz,tgz,bz2,xar,egg,sit)               | archive           |
 | Audio               | *.(mp3,aac,aiff,au,flac,m4a,mpc,mp+,mpp)                   | audio             |
 |                     | *.(ogg,oga,opus,ra,rm,wav,wma,snd,mid,cda)                 |                   |
 | Video               | *.(avi,mp4,mpg,mpeg,mov,mkv,flv,h264,webm)                 | video             |

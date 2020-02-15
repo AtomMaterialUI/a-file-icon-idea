@@ -577,31 +577,6 @@ fileIcons:
 			[/^composer\.phar$/i, "dark-blue"]
 		]
 
-	Compressed:
-		icon: "zip"
-		match: [
-			[/\.(zip|z|xz)$/i, null, signature: /^(\x50\x4B(\x03\x04|\x05\x06|\x07|\x08)|\x1F[\x9D\xA0]|BZh|RNC[\x01\x02]|\xD0\xCF\x11\xE0)/]
-			[".rar", "medium-blue", signature: /^Rar!\x1A\x07\x01?\0/]
-			[/\.t?gz$/i, "dark-blue", signature: /^\x1F\x8B/]
-			[/\.(lzo?|lzma|tlz|tar\.lzma)$/i, "medium-maroon", signature: /^LZIP/]
-			[".7z", "medium-maroon", signature: /^7z\xBC\xAF\x27\x1C/]
-			[".apk", "medium-red"]
-			[".tar", "dark-blue"]
-			[".bz2", "dark-cyan"]
-			[".maff", "medium-orange", signature: /^\x04\x03KP/]
-			[".iso", "medium-blue", signature: /^\x45\x52\x02\0{3}|^\x8B\x45\x52\x02/]
-			[".xpi", "medium-orange"]
-			[".gem", "medium-red"]
-			[".whl", "dark-blue"]
-			[".epub", "medium-green"]
-			[".jar", "dark-pink"]
-			[".war", "medium-purple"]
-			[".wgt", "medium-blue"]
-			[".xar", "dark-orange", signature: /^xar!/]
-			[".egg", "light-orange"]
-			[".sit", "medium-blue", signature: /^SIT[!D]/]
-		]
-
 	Conan:
 		icon: "conan"
 		priority: 2
@@ -612,28 +587,17 @@ fileIcons:
 		icon: "config"
 		generic: true
 		match: [
-			[/\.(ini|desktop|directory|cfg|conf|prefs)$/i, "medium-yellow", scope: "ini", alias: "dosini"]
-			[".properties", "medium-purple", scope: "java-properties"]
 			[".ld", "dark-red"]
 			[".lds", "medium-red"]
 			[".opts", "medium-green"]
 			[/^mimeapps\.list$/i, "medium-blue"]
-			[/(\.|^)terminal(rc)?$/i, "dark-blue"]
 			[/^ld\.script$/i, "medium-orange"]
 			[/^\.?XCompose$/, "medium-cyan", "xcompose"]
 			[/^buildozer\.spec$/i, "dark-blue", priority: 2]
-			[/config|settings|option|pref/i, null, priority: 0]
 			[".flc", "medium-green", alias: "FIGlet control", scope: /^source\.figctrl$/i, signature: /^flc2a/]
-			[///
-				/(dev[-\w]+|troff)/ ([^/]+/)*
-				(DESC|Foundry|download|symbolmap)
-				(\.(in|proto|8400))?$
-			///i, "dark-green", matchPath: true, priority: 1.5, scope: /^source\.ditroff\.desc$/]
 			[/[\/\\]fontforge[\/\\]hotkeys[\/\\][^\/\\]+/i, "dark-blue", matchPath: true, priority: 0.75, scope: /fontforge.hotkeys/i]
-			[/\.git[\/\\](config|info[\/\\]\w+)$/, "dark-red", matchPath: true]
 			[/(^|[\/\\])\.fossil-settings\1(?:[^/\/]+)/, "dark-cyan", matchPath: true]
 			[/(^|[\/\\])\.ssh[\/\\]config$/, "dark-blue", matchPath: true, priority: 1.5]
-			[/^\/(private\/)?etc\/([^/]+\/)*[^/]*\.(cf|conf|ini)(\.default)?$/i, "dark-orange", matchPath: true]
 			[/^\/(private\/)?etc\/(aliases|auto_(home|master)|ftpusers|group|gettytab|hosts(\.equiv)?|manpaths|networks|paths|protocols|services|shells|sudoers|ttys)$/i,
 				"medium-maroon",
 				matchPath: true]
