@@ -29,6 +29,7 @@ package com.mallowigi.tree;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -56,6 +57,8 @@ public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleL
     defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
     defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
     defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
+
+    SwingUtilities.invokeLater(ActionToolbarImpl::updateAllToolbarsImmediately);
   }
 
   @Override

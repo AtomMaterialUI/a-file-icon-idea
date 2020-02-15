@@ -39,6 +39,7 @@ import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
@@ -61,7 +62,7 @@ import java.util.HashSet;
 import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener {
+public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
   private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
@@ -143,7 +144,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       }
     });
 
-    ApplicationManager.getApplication().runWriteAction(() -> {
+    ApplicationManager.getApplication().invokeLater(() -> {
       applyFilter();
       LafManager.getInstance().updateUI();
     });

@@ -31,11 +31,13 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.StartupUiUtil;
+import com.intellij.util.ui.UIUtil;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -52,9 +54,7 @@ import java.net.URL;
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener {
-  private static final ColorUIResource LIGHT_COLOR = new ColorUIResource(0x546E7A);
-  private static final ColorUIResource DARK_COLOR = new ColorUIResource(0xB0BEC5);
+public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
   private TintedColorPatcher colorPatcher;
   private final MessageBusConnection connect;
 
@@ -91,13 +91,15 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       SVGLoader.setColorPatcherProvider(null);
       SVGLoader.setColorPatcherProvider(colorPatcher);
 
-      TintedColorPatcher.refreshThemeColor(getTintedColor());
+      TintedColorPatcher.refreshThemeColor(getThemedColor());
+      TintedColorPatcher.refreshAccentColor(getTintedColor());
     });
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, atomFileIconsConfig -> {
       SVGLoader.setColorPatcherProvider(null);
       SVGLoader.setColorPatcherProvider(colorPatcher);
 
-      TintedColorPatcher.refreshThemeColor(getTintedColor());
+      TintedColorPatcher.refreshThemeColor(getThemedColor());
+      TintedColorPatcher.refreshAccentColor(getTintedColor());
     });
   }
 
@@ -105,15 +107,20 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     connect.disconnect();
   }
 
+  private static ColorUIResource getThemedColor() {
+    return new ColorUIResource(JBColor.namedColor("Label.infoForeground", UIUtil.getContextHelpForeground()));
+  }
+
   private static ColorUIResource getTintedColor() {
-    return StartupUiUtil.isUnderDarcula() ? DARK_COLOR : LIGHT_COLOR;
+    return new ColorUIResource(JBColor.namedColor("EditorTabs.underlineColor", UIUtil.getButtonSelectColor()));
   }
 
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
     "IfStatementWithTooManyBranches"})
   private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
-    private static ColorUIResource themedColor = getTintedColor();
+    private static ColorUIResource themedColor = getThemedColor();
+    private static ColorUIResource tintedColor = getTintedColor();
 
     private TintedColorPatcher() {
       refreshColors();
@@ -123,8 +130,13 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       themedColor = theme;
     }
 
+    private static void refreshAccentColor(final ColorUIResource tint) {
+      tintedColor = tint;
+    }
+
     private static void refreshColors() {
-      themedColor = getTintedColor();
+      tintedColor = getTintedColor();
+      themedColor = getThemedColor();
     }
 
     @NotNull
@@ -136,11 +148,12 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
           @NonNls final String tint = svg.getAttribute("tint");
           @NonNls final String themed = svg.getAttribute("themed");
           final String hexColor = getColorHex(themedColor);
+          final String tintColor = getColorHex(tintedColor);
 
           if ("true".equals(tint) || "fill".equals(tint)) {
-            svg.setAttribute("fill", "#" + hexColor);
+            svg.setAttribute("fill", "#" + tintColor);
           } else if ("stroke".equals(tint)) {
-            svg.setAttribute("stroke", "#" + hexColor);
+            svg.setAttribute("stroke", "#" + tintColor);
           } else if ("true".equals(themed) || "fill".equals(themed)) {
             svg.setAttribute("fill", "#" + hexColor);
           } else if ("stroke".equals(themed)) {
