@@ -1,0 +1,27 @@
+{
+  "name": "atom-icon-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/examples",
+  "bin": {
+    "example": "./bin/example"
+  },
+  "scripts": {
+    "postinstall": "npm run compile",
+    "precompile": "rimraf ./lib",
+    "compile": "tsc",
+    "compile:w": "npm run compile -- -w",
+    "lint": "tslint --project tsconfig.json",
+    "preexample": "npm run lint && npm run compile",
+    "example": "node ./bin/example"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.7.6",
+    "@types/yargs": "^15.0.4",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.2",
+    "yargs": "^15.1.0"
+  }
+}
