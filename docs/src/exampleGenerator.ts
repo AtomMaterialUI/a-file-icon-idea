@@ -151,6 +151,7 @@ export class ExampleGenerator {
    * @param fileNames
    */
   private createFiles(fileNames: string[]) {
+    ExampleGenerator.createDirectory('files');
     fileNames.forEach(name => {
       const iconAssociation = this.iconAssociations[name];
       if (!iconAssociation) {
@@ -158,16 +159,18 @@ export class ExampleGenerator {
         return;
       }
 
-      try {
-        const iconAssociations = iconAssociation.fileNames.split(',');
-        iconAssociations.forEach(fileName => {
+      const files = iconAssociation.fileNames.split(',');
+      files.forEach(fileName => {
+        try {
+          this.logger.updateLog(`File ${fileName} for '${name}' successfully created!`);
           fs.writeFileSync(fileName, null);
           this.logger.updateLog(`Example file for '${name}' successfully created!`);
-        });
-      } catch (e) {
-        this.logger.error(`Something went wrong while creating the file(s) for '${name}' :\n${e}`);
-      }
+        } catch (e) {
+          this.logger.error(`Something went wrong while creating the file(s) for '${name}' :\n${e}`);
+        }
+      });
     });
+    process.chdir('../');
   }
 
   /**
@@ -175,6 +178,7 @@ export class ExampleGenerator {
    * @param folderNames
    */
   private createFolders(folderNames: string[]) {
+    ExampleGenerator.createDirectory('folders');
     folderNames.forEach(name => {
       const folderAssociation = this.folderAssociations[name];
       if (!folderAssociation) {
@@ -182,16 +186,17 @@ export class ExampleGenerator {
         return;
       }
 
-      try {
-        const folderAssociations = folderAssociation.folderNames.split(',');
-        folderAssociations.forEach(folder => {
+      const folderAssociations = folderAssociation.folderNames.split(',');
+      folderAssociations.forEach(folder => {
+        try {
           fs.mkdirSync(folder);
           this.logger.updateLog(`Example folder for '${name}' successfully created!`);
-        });
-      } catch (e) {
-        this.logger.error(`Something went wrong while creating the file(s) for '${name}' :\n${e}`);
-      }
+        } catch (e) {
+          this.logger.error(`Something went wrong while creating the folder(s) for '${name}' :\n${e}`);
+        }
+      });
     });
+    process.chdir('../');
   }
 
   /**

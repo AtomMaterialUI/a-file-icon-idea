@@ -135,9 +135,9 @@
           "icon": "/custom.svg"
         },
         {
-          "folderNames": "db,migrate,sql,database,repo,repos,repositories",
+          "folderNames": "db,migrate,database,repo,repos,repositories",
           "name": "db",
-          "pattern": "^(db|migrate|sql|database|repos?|repositories)$",
+          "pattern": "^(db|migrate|database|repos?|repositories)$",
           "icon": "/db.svg"
         },
         {

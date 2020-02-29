@@ -12,8 +12,9 @@
     "compile": "tsc",
     "compile:w": "npm run compile -- -w",
     "lint": "tslint --project tsconfig.json",
-    "preexample": "npm run lint && npm run compile",
-    "example": "node ./bin/main",
+    "preexample": "npm run lint && npm run compile && npm run convert",
+    "example": "node ./bin/main --all",
+    "convert": "npm run convert_icons && npm run convert_folders",
     "convert_icons": "xml2json ../src/main/resources/icon_associations.xml icon_associations.json",
     "convert_folders": "xml2json ../src/main/resources/folder_associations.xml folder_associations.json"
   },

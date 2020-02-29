@@ -73,8 +73,8 @@
         <regex folderNames="custom"
                name="custom" pattern="^custom$" icon="/custom.svg"/>
 
-        <regex folderNames="db,migrate,sql,database,repo,repos,repositories"
-               name="db" pattern="^(db|migrate|sql|database|repos?|repositories)$" icon="/db.svg"/>
+        <regex folderNames="db,migrate,database,repo,repos,repositories"
+               name="db" pattern="^(db|migrate|database|repos?|repositories)$" icon="/db.svg"/>
         <regex folderNames="debug,debugging"
                name="debug" pattern="^(debug|debugging)$" icon="/debug.svg"/>
         <regex folderNames="delta,deltas,diff"

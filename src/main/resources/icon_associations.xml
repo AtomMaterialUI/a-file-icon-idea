@@ -254,7 +254,7 @@
                name="Broccoli" pattern="Brocfile$" icon="/icons/files/broccoli.svg"/>
         <regex fileNames="*.br"
                name="Brotli" pattern=".*\.br" icon="/icons/files/brotli.svg"/>
-        <regex fileNames=".browserslist,.browserslistrc,"
+        <regex fileNames=".browserslist,.browserslistrc"
                name="Browserslist" pattern="\.browserslist(rc)?$" icon="/icons/files/browserslist.svg"/>
         <regex fileNames="bs-config.js,bs-config.json,browser-sync.js,browser-sync.json"
                name="Browsersync" pattern="^(bs-config|browser-sync)\.(js|json)$" icon="/icons/files/browsersync.svg"/>
@@ -566,7 +566,7 @@
                name="Liquid" pattern=".*\.liquid$" icon="/icons/files/liquid.svg"/>
         <regex fileNames="*.lisp"
                name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.svg"/>
-        <regex fileNames="*.log,*.log.0,*.log.9,"
+        <regex fileNames="*.log,*.log.0,*.log.9"
                name="Log" pattern=".*\.log\.([0-9])?" icon="/icons/files/log.svg"/>
         <regex fileNames="*.lsl"
                name="LSL" pattern=".*\.lsl" icon="/icons/files/lsl.svg"/>
@@ -601,7 +601,7 @@
                name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.svg"/>
         <regex fileNames="*.merlin"
                name="Merlin" pattern=".*\.merlin$" icon="/icons/files/merlin.svg"/>
-        <regex fileNames="*.meteor,"
+        <regex fileNames="*.meteor"
                name="Meteor" pattern=".*\.meteor$" icon="/icons/files/meteor.svg"/>
         <regex fileNames="*.mint"
                name="Mint" pattern=".*\.mint" icon="/icons/files/mint.svg"/>
@@ -692,7 +692,7 @@
                name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.svg"/>
         <regex fileNames="my.test.php,myTest.php"
                name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/files/phpunit.svg"/>
-        <regex fileNames="*.phtml,"
+        <regex fileNames="*.phtml"
                name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.svg"/>
         <regex fileNames="Pipfile"
                name="Pipfile" pattern="Pipfile$" icon="/icons/files/pipfile.svg"/>
@@ -803,7 +803,7 @@
 
         <regex fileNames="*.san"
                name="San" pattern=".*\.san$" icon="/icons/files/san.svg"/>
-        <regex fileNames="*.sass,"
+        <regex fileNames="*.sass"
                name="SASS" pattern=".*\.sass$" icon="/icons/files/sass.svg"/>
         <regex fileNames="sapper.js"
                name="Sapper" pattern="sapper\.js$" icon="/icons/files/sapper.svg"/>
@@ -857,7 +857,7 @@
                icon="/icons/files/stylelint.svg"/>
         <regex fileNames="*.styl"
                name="Stylus" pattern=".*\.styl$" icon="/icons/files/stylus.svg"/>
-        <regex fileNames="*.sublime-workspace,*.sublime-package,"
+        <regex fileNames="*.sublime-workspace,*.sublime-package"
                name="Sublime" pattern=".*\.sublime-.*" icon="/icons/files/sublime.svg"/>
         <regex fileNames="*.scd"
                name="SuperCollider" pattern=".*\.scd$" icon="/icons/files/scd.svg"/>
@@ -883,7 +883,7 @@
 
         <regex fileNames="tailwind.js,tailwind.conf.js,tailwind.conf.ts"
                name="Tailwind CSS Config" pattern="^tailwind.*\.[jt]s$" icon="/icons/files/tailwindcss.svg"/>
-        <regex fileNames="*.tcl,"
+        <regex fileNames="*.tcl"
                name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.svg"/>
         <regex fileNames="*.tf,*.tfstate,*.tfvars"
                name="TerraForm" pattern=".*\.(tf|tfstate|tfvars)$" icon="/icons/files/terraform.svg"/>
@@ -901,7 +901,7 @@
                name="Test React" pattern=".*\.?(test|spec)\.(jsx|tsx)$" icon="/icons/files/testreact.svg"/>
         <regex fileNames="*.test.py,*.spec.py"
                name="Test Python" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
-        <regex fileNames="my_test.rb,controller_spec.rb,"
+        <regex fileNames="my_test.rb,controller_spec.rb"
                name="Test Ruby" pattern="_(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
         <regex fileNames="*.test.ts,*.spec.ts"
                name="Test TypeScript" pattern=".*\.?(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
@@ -940,7 +940,7 @@
 
         <regex fileNames="Vagrantfile,vagrantfile"
                name="Vagrant" pattern="^(V|v)agrantfile$" icon="/icons/files/vagrant.svg"/>
-        <regex fileNames="*.vala,"
+        <regex fileNames="*.vala"
                name="Vala" pattern=".*\.vala$" icon="/icons/files/vala.svg"/>
         <regex fileNames="*.vm,*.vtl,*.fhtml"
                name="Velocity" pattern=".*\.(vm|vtl|fhtml)" icon="/icons/files/velocity.svg"/>
@@ -1020,7 +1020,7 @@
         <regex fileNames="*.yml,*.yaml,*.info"
                name="YAML" pattern=".*\.(yml|yaml|info)$" icon="/icons/files/yaml.svg"/>
 
-        <regex fileNames="*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit"
+        <regex fileNames="*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit"
                name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$"
                icon="/icons/files/archive.svg"/>
         <regex fileNames="*.mp3,*.aac,*.aiff,*.au,*.flac,*.m4a,*.mpc,*.mp,*.mpp,*.ogg,*.oga,*.opus,*.ra,*.rm,*.wav,*.wma,*.snd,*.mid,*.cda"

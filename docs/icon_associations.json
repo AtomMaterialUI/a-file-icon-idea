@@ -674,7 +674,7 @@
           "icon": "/icons/files/brotli.svg"
         },
         {
-          "fileNames": ".browserslist,.browserslistrc,",
+          "fileNames": ".browserslist,.browserslistrc",
           "name": "Browserslist",
           "pattern": "\\.browserslist(rc)?$",
           "icon": "/icons/files/browserslist.svg"
@@ -1580,7 +1580,7 @@
           "icon": "/icons/files/lisp.svg"
         },
         {
-          "fileNames": "*.log,*.log.0,*.log.9,",
+          "fileNames": "*.log,*.log.0,*.log.9",
           "name": "Log",
           "pattern": ".*\\.log\\.([0-9])?",
           "icon": "/icons/files/log.svg"
@@ -1682,7 +1682,7 @@
           "icon": "/icons/files/merlin.svg"
         },
         {
-          "fileNames": "*.meteor,",
+          "fileNames": "*.meteor",
           "name": "Meteor",
           "pattern": ".*\\.meteor$",
           "icon": "/icons/files/meteor.svg"
@@ -1946,7 +1946,7 @@
           "icon": "/icons/files/phpunit.svg"
         },
         {
-          "fileNames": "*.phtml,",
+          "fileNames": "*.phtml",
           "name": "PHTML",
           "pattern": ".*\\.phtml$",
           "icon": "/icons/files/phtml.svg"
@@ -2264,7 +2264,7 @@
           "icon": "/icons/files/san.svg"
         },
         {
-          "fileNames": "*.sass,",
+          "fileNames": "*.sass",
           "name": "SASS",
           "pattern": ".*\\.sass$",
           "icon": "/icons/files/sass.svg"
@@ -2420,7 +2420,7 @@
           "icon": "/icons/files/stylus.svg"
         },
         {
-          "fileNames": "*.sublime-workspace,*.sublime-package,",
+          "fileNames": "*.sublime-workspace,*.sublime-package",
           "name": "Sublime",
           "pattern": ".*\\.sublime-.*",
           "icon": "/icons/files/sublime.svg"
@@ -2492,7 +2492,7 @@
           "icon": "/icons/files/tailwindcss.svg"
         },
         {
-          "fileNames": "*.tcl,",
+          "fileNames": "*.tcl",
           "name": "TCL",
           "pattern": ".*\\.tcl$",
           "icon": "/icons/files/tcl.svg"
@@ -2546,7 +2546,7 @@
           "icon": "/icons/files/testpy.svg"
         },
         {
-          "fileNames": "my_test.rb,controller_spec.rb,",
+          "fileNames": "my_test.rb,controller_spec.rb",
           "name": "Test Ruby",
           "pattern": "_(test|spec)\\.rb$",
           "icon": "/icons/files/testruby.svg"
@@ -2654,7 +2654,7 @@
           "icon": "/icons/files/vagrant.svg"
         },
         {
-          "fileNames": "*.vala,",
+          "fileNames": "*.vala",
           "name": "Vala",
           "pattern": ".*\\.vala$",
           "icon": "/icons/files/vala.svg"
@@ -2864,7 +2864,7 @@
           "icon": "/icons/files/yaml.svg"
         },
         {
-          "fileNames": "*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit",
+          "fileNames": "*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit",
           "name": "Archive",
           "pattern": ".*\\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$",
           "icon": "/icons/files/archive.svg"
