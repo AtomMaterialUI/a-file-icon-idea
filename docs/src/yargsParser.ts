@@ -27,16 +27,30 @@
 import {Logger} from './logger';
 import yargs from 'yargs';
 
+/**
+ * List of available options
+ */
 interface InferredArgs {
   all?: { [key: string]: yargs.Options };
   files?: { [key: string]: yargs.Options };
   folders?: { [key: string]: yargs.Options };
 }
 
+/**
+ * Command Arguments
+ * @param flag - all, files or folders
+ * @param icons - list of icons
+ */
 export interface CommandArgs {
-  flag: string;
+  flag: Flags;
   icons: string[];
 }
+
+export enum Flags {
+  ALL = 'all',
+  FILES = 'files',
+  FOLDERS = 'folders'
+};
 
 /**
  * Parse cli args
@@ -57,11 +71,14 @@ export class YargsParser {
     },
   };
   private supportedFlags: string[] = ['--all', '--files', '--folders'];
-  private readonly optionsKeys: string[];
+  // Option keys
+  private readonly optionsKeys: string[] = [Flags.ALL, Flags.FILES, Flags.FOLDERS];
 
+  /**
+   * Print the yargs usage
+   * @param logger
+   */
   constructor(private logger: Logger) {
-    this.optionsKeys = Object.keys(this.options);
-
     yargs
         .usage('Usage: $0 <flag> [space separated icon names]')
         .options(this.options)
@@ -102,10 +119,10 @@ export class YargsParser {
    * Get the requested flag - first all, then files or folders
    * @param argv
    */
-  private getFlag(argv: yargs.Arguments<yargs.Omit<{}, keyof any> & InferredArgs>): string {
-    if (argv.all) return this.optionsKeys[0];
-    if (argv.files) return this.optionsKeys[1];
-    if (argv.folders) return this.optionsKeys[2];
+  private getFlag(argv: yargs.Arguments<yargs.Omit<{}, keyof any> & InferredArgs>): Flags {
+    if (argv.all) return Flags.ALL;
+    if (argv.files) return Flags.FILES;
+    if (argv.folders) return Flags.FOLDERS;
     this.errorHandler('Invalid flag');
   }
 

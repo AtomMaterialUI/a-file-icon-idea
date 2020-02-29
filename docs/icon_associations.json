@@ -1,0 +1,2941 @@
+{
+  "associations": {
+    "associations": {
+      "type": [
+        {
+          "name": "Database",
+          "type": "Database Element",
+          "icon": "/icons/files/db.svg"
+        },
+        {
+          "name": "Images",
+          "type": "Images",
+          "icon": "/icons/files/image.svg"
+        },
+        {
+          "name": "SVG",
+          "type": "SVG",
+          "icon": "/icons/files/svg.svg"
+        }
+      ],
+      "regex": [
+        {
+          "fileNames": "CODE_OF_CONDUCT.md,CODE_OF_CONDUCT.txt",
+          "name": "Github CODE",
+          "pattern": "^CODE_OF_CONDUCT\\.(md|txt)$",
+          "icon": "/icons/files/github.svg"
+        },
+        {
+          "fileNames": "CONTRIBUTING.md,CONTRIBUTING.txt",
+          "name": "Github CONTRIBUTING",
+          "pattern": "^CONTRIBUTING\\.(md|txt)$",
+          "icon": "/icons/files/github.svg"
+        },
+        {
+          "fileNames": "COMMIT_MESSAGE_CONVENTION.md",
+          "name": "Github COMMIT",
+          "pattern": "^COMMIT_MESSAGE_CONVENTION\\.(md|txt)$",
+          "icon": "/icons/files/github.svg"
+        },
+        {
+          "fileNames": "TEMPLATE.md,TEMPLATE.txt",
+          "name": "Github TEMPLATE",
+          "pattern": ".*TEMPLATE\\.(md|txt))$",
+          "icon": "/icons/files/github.svg"
+        },
+        {
+          "fileNames": "README.md,README.txt",
+          "name": "README",
+          "pattern": "^(README|readme)(\\.(md|txt))?$",
+          "icon": "/icons/files/readme.svg"
+        },
+        {
+          "fileNames": "plugin.xml",
+          "name": "Plugin",
+          "pattern": "^plugin.xml$",
+          "icon": "/icons/files/plugin.svg"
+        },
+        {
+          "fileNames": "*.pref,*.prefs",
+          "name": "Prefs",
+          "pattern": ".*\\.prefs$",
+          "icon": "/icons/files/config.svg"
+        },
+        {
+          "fileNames": "*.jpg,*.jpeg,*.png,*.gif,*.bmp",
+          "name": "Images",
+          "pattern": ".*\\.(jpg|png|jpeg|gif|bmp)",
+          "icon": "/icons/files/image.svg"
+        },
+        {
+          "fileNames": "*.webp",
+          "name": "webp",
+          "pattern": ".*\\.webp$",
+          "icon": "/icons/files/image.svg"
+        },
+        {
+          "fileNames": "*.svg",
+          "name": "SVG",
+          "pattern": ".*\\.svg",
+          "icon": "/icons/files/svg.svg"
+        },
+        {
+          "fileNames": "*.bsl,*.mdo,*.sbsl,*.os",
+          "name": "1C",
+          "pattern": ".*\\.(bsl|sdbl|os|mdo)",
+          "icon": "/icons/files/1c.svg"
+        },
+        {
+          "fileNames": "*.stl,*.obj,*.dae,*.3ds,*.dxf,*.ac",
+          "name": "3D",
+          "pattern": ".*\\.(stl|obj|dae|3ds|dxf|ac)",
+          "icon": "/icons/files/3d.svg"
+        },
+        {
+          "fileNames": "*.adn,*.accdb,*.accdr,*.accdt,*.accda,*.mdw,*.accde,*.mam,*.maq,*.mar,*.mat,*.maf,*.laccdb",
+          "name": "Access",
+          "pattern": ".*\\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$",
+          "icon": "/icons/files/access.svg"
+        },
+        {
+          "fileNames": "*.abp",
+          "name": "ABAP",
+          "pattern": ".*\\.abp$",
+          "icon": "/icons/files/abap.svg"
+        },
+        {
+          "fileNames": "*.abif,*.ab1,*.fsa",
+          "name": "ABIF",
+          "pattern": ".*\\.(abif|ab1|fsa)$",
+          "icon": "/icons/files/abif.svg"
+        },
+        {
+          "fileNames": "acre.config",
+          "name": "Acre",
+          "pattern": "acre\\.config$",
+          "icon": "/icons/files/acre.svg"
+        },
+        {
+          "fileNames": "*.as",
+          "name": "ActionScript",
+          "pattern": ".*\\.as$",
+          "icon": "/icons/files/actionscript.svg"
+        },
+        {
+          "fileNames": "*.aep,*.aet",
+          "name": "Adobe Elements",
+          "pattern": ".*\\.ae(p|t)$",
+          "icon": "/icons/files/ae.svg"
+        },
+        {
+          "fileNames": "*.ai,*.ait",
+          "name": "Adobe Illustrator",
+          "pattern": ".*\\.(ai|ait)$",
+          "icon": "/icons/files/ai.svg"
+        },
+        {
+          "fileNames": "*.ada,*.adb,*.ads",
+          "name": "Ada",
+          "pattern": ".*\\.(ada|adb|ads)$",
+          "icon": "/icons/files/ada.svg"
+        },
+        {
+          "fileNames": "*.prw,*.ahu,*.aph,*.tlpp",
+          "name": "AdvPL",
+          "pattern": ".*\\.(prw|ahu|aph|tlpp)$",
+          "icon": "/icons/files/advpl.svg"
+        },
+        {
+          "fileNames": "*.affect",
+          "name": "AffectScript",
+          "pattern": ".*\\.affect$",
+          "icon": "/icons/files/affectscript.svg"
+        },
+        {
+          "fileNames": "*.afdesign,*.afphoto,*.afpub",
+          "name": "Affinity Designer",
+          "pattern": ".*\\.(afdesign|afphoto|afpub)$",
+          "icon": "/icons/files/affinity.svg"
+        },
+        {
+          "fileNames": "*.akka",
+          "name": "Akka",
+          "pattern": ".*\\.akka$",
+          "icon": "/icons/files/akka.svg"
+        },
+        {
+          "fileNames": "alacritty.yml",
+          "name": "Alacritty",
+          "pattern": "\\.?alacritty\\.yml$",
+          "icon": "/icons/files/alacritty.svg"
+        },
+        {
+          "fileNames": ".alexrc,.alexignore",
+          "name": "Alex",
+          "pattern": "\\.alex(rc|ignore)$",
+          "icon": "/icons/files/alex.svg"
+        },
+        {
+          "fileNames": "*.als",
+          "name": "Alloy",
+          "pattern": ".*\\.als$",
+          "icon": "/icons/files/alloy.svg"
+        },
+        {
+          "fileNames": "*.ampl",
+          "name": "AMPL",
+          "pattern": ".*\\.ampl$",
+          "icon": "/icons/files/ampl.svg"
+        },
+        {
+          "fileNames": "*.muse",
+          "name": "AmuseWiki",
+          "pattern": ".*\\.muse",
+          "icon": "/icons/files/amusewiki.svg"
+        },
+        {
+          "fileNames": "AndroidManifest.xml",
+          "name": "Android Manifest",
+          "pattern": "^AndroidManifest\\.xml$",
+          "icon": "/icons/files/android.svg"
+        },
+        {
+          "fileNames": "MainActivity.java",
+          "name": "Android Main",
+          "pattern": "^MainActivity\\.java$",
+          "icon": "/icons/files/android.svg"
+        },
+        {
+          "fileNames": "*.smali,*.rsh",
+          "name": "Android Smali",
+          "pattern": ".*\\.(smali|rsh)$",
+          "icon": "/icons/files/android.svg"
+        },
+        {
+          "fileNames": "*.acs,*.angelscript",
+          "name": "AngelScript",
+          "pattern": ".*\\.(acs|angelscript)$",
+          "icon": "/icons/files/angelscript.svg"
+        },
+        {
+          "fileNames": "angular.json,angular-cli.json",
+          "name": "Angular-CLI",
+          "pattern": "^angular(-cli)?\\.json$",
+          "icon": "/icons/files/angular.svg"
+        },
+        {
+          "fileNames": "angular.js,angular.min.js",
+          "name": "AngularJS",
+          "pattern": "^angular\\.(min\\.)?js$",
+          "icon": "/icons/files/angular.svg"
+        },
+        {
+          "fileNames": "*.ng.html,*.ng.js,*.module.ts,*.module.js,*.ng-template",
+          "name": "Angular",
+          "pattern": ".*\\.(ng\\.html|ng\\.js|module\\.[tj]s|ng-template)$",
+          "icon": "/icons/files/angular.svg"
+        },
+        {
+          "fileNames": "*.component.js,*.component.ts",
+          "name": "Angular Component",
+          "pattern": ".*\\.component\\.[tj]s$",
+          "icon": "/icons/files/angularcomponent.svg"
+        },
+        {
+          "fileNames": "*.controller.js,*.controller.ts",
+          "name": "Angular Controller",
+          "pattern": ".*\\.controller\\.[tj]s$",
+          "icon": "/icons/files/angularcomponent.svg"
+        },
+        {
+          "fileNames": "*.directive.js,*.directive.ts",
+          "name": "Angular Directive",
+          "pattern": ".*\\.directive\\.[tj]s$",
+          "icon": "/icons/files/angulardirective.svg"
+        },
+        {
+          "fileNames": "*.guard.js,*.guard.ts",
+          "name": "Angular Guard",
+          "pattern": ".*\\.guard\\.[tj]s$",
+          "icon": "/icons/files/angularguard.svg"
+        },
+        {
+          "fileNames": "*.service.js,*.service.ts",
+          "name": "Angular Service",
+          "pattern": ".*\\.service\\.[tj]s$",
+          "icon": "/icons/files/angularservice.svg"
+        },
+        {
+          "fileNames": "*.pipe.js,*.pipe.ts",
+          "name": "Angular Pipe",
+          "pattern": ".*\\.pipe\\.[tj]s$",
+          "icon": "/icons/files/angularpipe.svg"
+        },
+        {
+          "fileNames": "*.routing.js,*.routing.ts",
+          "name": "Angular Routing",
+          "pattern": ".*\\.routing\\.[tj]s$",
+          "icon": "/icons/files/angularrouting.svg"
+        },
+        {
+          "fileNames": "*.resolver.js,*.resolver.ts",
+          "name": "Angular Resolver",
+          "pattern": ".*\\.resolver\\.[tj]s$",
+          "icon": "/icons/files/angularresolver.svg"
+        },
+        {
+          "fileNames": "*.anime,*.animestudio",
+          "name": "Anime Studio",
+          "pattern": ".*\\.anime.*$",
+          "icon": "/icons/files/animestudio.svg"
+        },
+        {
+          "fileNames": "ansible.yml,site.yml",
+          "name": "Ansible",
+          "pattern": "^(ansible|site)\\.yml$",
+          "icon": "/icons/files/ansible.svg"
+        },
+        {
+          "fileNames": "ant.xml,.ant",
+          "name": "Ant",
+          "pattern": "(ant\\.xml$|\\.ant)",
+          "icon": "/icons/files/ant.svg"
+        },
+        {
+          "fileNames": "*.g4",
+          "name": "ANTLR",
+          "pattern": ".*\\.g4$",
+          "icon": "/icons/files/antlr.svg"
+        },
+        {
+          "fileNames": "*.any",
+          "name": "AnyScript",
+          "pattern": ".*\\.any",
+          "icon": "/icons/files/any.svg"
+        },
+        {
+          "fileNames": "apache.conf,apache2.conf,httpd.conf",
+          "name": "Apache Conf",
+          "pattern": "(apache2?|httpd).*\\.conf$",
+          "icon": "/icons/files/apache.svg"
+        },
+        {
+          "fileNames": ".apacheconf",
+          "name": "Apache Conf-",
+          "pattern": ".apacheconf$",
+          "icon": "/icons/files/apache.svg"
+        },
+        {
+          "fileNames": "*.vhost,*.thrift",
+          "name": "Apache",
+          "pattern": ".*\\.(vhost|thrift)$",
+          "icon": "/icons/files/apache.svg"
+        },
+        {
+          "fileNames": "*.apib",
+          "name": "API Blueprint",
+          "pattern": ".*\\.apib$",
+          "icon": "/icons/files/apib.svg"
+        },
+        {
+          "fileNames": "*.apk",
+          "name": "APK",
+          "pattern": ".*\\.apk$",
+          "icon": "/icons/files/android.svg"
+        },
+        {
+          "fileNames": "*.apl,*.apla,*.aplc,*.aplf,*.apli,*.apln,*.aplo",
+          "name": "APL",
+          "pattern": ".*\\.(apl|apla|aplc|aplf|apli|apln|aplo)$",
+          "icon": "/icons/files/apl.svg"
+        },
+        {
+          "fileNames": "appcelerator.js,appcelerator.ts",
+          "name": "Appcelerator",
+          "pattern": "^appcelerator\\.(js|ts)$",
+          "icon": "/icons/files/appcelerator.svg"
+        },
+        {
+          "fileNames": ".appveyor.yml",
+          "name": "Appveyor",
+          "pattern": "^\\.?appveyor\\.yml$",
+          "icon": "/icons/files/appveyor.svg"
+        },
+        {
+          "fileNames": "*.applescript",
+          "name": "AppleScript",
+          "pattern": ".*\\.applescript$",
+          "icon": "/icons/files/applescript.svg"
+        },
+        {
+          "fileNames": "*.arc",
+          "name": "Arc",
+          "pattern": ".*\\.arc$",
+          "icon": "/icons/files/arc.svg"
+        },
+        {
+          "fileNames": ".install,.SRCINFO,PKGBUILD,.yaourtrc",
+          "name": "Arch Linux",
+          "pattern": "(\\.install|\\.SRCINFO|PKGBUILD|\\.yaourtrc)$",
+          "icon": "/icons/files/archlinux.svg"
+        },
+        {
+          "fileNames": "pacman.conf,pamac.conf",
+          "name": "Arch Linux Pacman",
+          "pattern": "(pacman\\.conf|pamac\\.conf)$",
+          "icon": "/icons/files/archlinux.svg"
+        },
+        {
+          "fileNames": "*.ino",
+          "name": "Arduino",
+          "pattern": ".*\\.ino$",
+          "icon": "/icons/files/arduino.svg"
+        },
+        {
+          "fileNames": "*.ad,*.adoc,*.asciidoc",
+          "name": "Asciidoc",
+          "pattern": ".*\\.(ad|adoc|asciidoc)$",
+          "icon": "/icons/files/asciidoc.svg"
+        },
+        {
+          "fileNames": "*.aj",
+          "name": "AspectJ",
+          "pattern": ".*\\.aj$",
+          "icon": "/icons/files/eclipse.svg"
+        },
+        {
+          "fileNames": "*.asm,*.nasm,*.inc,*.ms,*.agc,*.aes,*.aea,*.argus,*.mitigus",
+          "name": "ASM",
+          "pattern": ".*\\.(asm|nasm|inc|ms|agc|aes|aea|argus|mitigus)$",
+          "icon": "/icons/files/asm.svg"
+        },
+        {
+          "fileNames": "*.asp,*.asa,*.aspx,*.asax,*.ascx,*.ashx,*.asmx,*.axd",
+          "name": "ASP",
+          "pattern": ".*\\.(asp|asa|aspx|asax|ascx|ashx|asmx|axd)$",
+          "icon": "/icons/files/asp.svg"
+        },
+        {
+          "fileNames": "*.asy",
+          "name": "Asymptote",
+          "pattern": ".*\\.(asy)$",
+          "icon": "/icons/files/asymptote.svg"
+        },
+        {
+          "fileNames": "*.atom.config",
+          "name": "Atom",
+          "pattern": ".*\\.atom.*$",
+          "icon": "/icons/files/atom.svg"
+        },
+        {
+          "fileNames": "*.atoum.php",
+          "name": "Atoum",
+          "pattern": ".*\\.atoum.*\\.php$",
+          "icon": "/icons/files/atoum.svg"
+        },
+        {
+          "fileNames": "*.dats,*.hats,*.sats",
+          "name": "ATS",
+          "pattern": ".*\\.(dats|hats|sats)$",
+          "icon": "/icons/files/ats.svg"
+        },
+        {
+          "fileNames": "*.aup",
+          "name": "Audacity",
+          "pattern": ".*\\.aup$",
+          "icon": "/icons/files/audacity.svg"
+        },
+        {
+          "fileNames": "*.aug",
+          "name": "Augeas",
+          "pattern": ".*\\.aug$",
+          "icon": "/icons/files/augeas.svg"
+        },
+        {
+          "fileNames": "aurelia.js,aurelia.json,aureliafile.json",
+          "name": "Aurelia",
+          "pattern": "^aurelia(file)?\\.js(on)?$",
+          "icon": "/icons/files/aurelia.svg"
+        },
+        {
+          "fileNames": "AUTHORS,AUTHORS.md,AUTHORS.txt",
+          "name": "Authors",
+          "pattern": "^(AUTHORS|authors)(\\.(md|txt))?",
+          "icon": "/icons/files/authors.svg"
+        },
+        {
+          "fileNames": "*.ahk,*.ahkl",
+          "name": "AutoHotKey",
+          "pattern": ".*\\.ahkl?$",
+          "icon": "/icons/files/ahk.svg"
+        },
+        {
+          "fileNames": "*.au3",
+          "name": "AutoIt",
+          "pattern": ".*\\.au3",
+          "icon": "/icons/files/autoit.svg"
+        },
+        {
+          "fileNames": "*.avcs,*.avsc,*.avdl",
+          "name": "Avro",
+          "pattern": ".*\\.(avcs|avsc|avdl)",
+          "icon": "/icons/files/avro.svg"
+        },
+        {
+          "fileNames": "*.azcli",
+          "name": "Azure",
+          "pattern": ".*\\.azcli$",
+          "icon": "/icons/files/azure.svg"
+        },
+        {
+          "fileNames": "azure-pipelines.yml",
+          "name": "Azure Pipelines",
+          "pattern": "azure-pipelines\\.yml$",
+          "icon": "/icons/files/azure.svg"
+        },
+        {
+          "fileNames": ".babelrc,babel.json",
+          "name": "Babel",
+          "pattern": "^(\\.babelrc|babel\\.json)$",
+          "icon": "/icons/files/babel.svg"
+        },
+        {
+          "fileNames": "backbone.js",
+          "name": "Backbone",
+          "pattern": "^backbone.*\\.js$",
+          "icon": "/icons/files/backbone.svg"
+        },
+        {
+          "fileNames": "*.bak,*.old,*.orig",
+          "name": "Backup",
+          "pattern": ".*\\.(bak|old|orig)$",
+          "icon": "/icons/files/backup.svg"
+        },
+        {
+          "fileNames": "*.bal,*.balx",
+          "name": "Ballerina",
+          "pattern": ".*\\.balx?$",
+          "icon": "/icons/files/ballerina.svg"
+        },
+        {
+          "fileNames": "*.bas,*.vb,*.vbs",
+          "name": "Basic",
+          "pattern": ".*\\.(bas|vb|vbs)$",
+          "icon": "/icons/files/vs.svg"
+        },
+        {
+          "fileNames": "*.bzl,*.bazel",
+          "name": "Bazel",
+          "pattern": ".*\\.(bzl|bazel)$",
+          "icon": "/icons/files/bazel.svg"
+        },
+        {
+          "fileNames": ".bazelrc,bazel.rc",
+          "name": "Bazel Config",
+          "pattern": "(\\.bazelrc|bazel\\.rc)$",
+          "icon": "/icons/files/bazel.svg"
+        },
+        {
+          "fileNames": "javaBean.java,javabean.java",
+          "name": "Bean",
+          "pattern": ".*(b|B)ean\\.java$",
+          "icon": "/icons/files/bean.svg"
+        },
+        {
+          "fileNames": "*.feature,*.feature.php",
+          "name": "Behat",
+          "pattern": ".*\\.feature(\\.php)?$",
+          "icon": "/icons/files/behat.svg"
+        },
+        {
+          "fileNames": "behat.yml,behat.config.yml",
+          "name": "Behat Config",
+          "pattern": "behat(\\..*)*\\.yml$",
+          "icon": "/icons/files/behat.svg"
+        },
+        {
+          "fileNames": ".bemjson,.bemjson.js",
+          "name": "BEM",
+          "pattern": "\\.bemjson(\\.js)?$",
+          "icon": "/icons/files/bem.svg"
+        },
+        {
+          "fileNames": "*.cbx,*.bbx,*.bib,*.bst",
+          "name": "BibTex",
+          "pattern": ".*\\.(cbx|bbx|bib|bst)$",
+          "icon": "/icons/files/bibtex.svg"
+        },
+        {
+          "fileNames": "*.bim",
+          "name": "Biml",
+          "pattern": ".*\\.biml$",
+          "icon": "/icons/files/biml.svg"
+        },
+        {
+          "fileNames": ".bintray.json",
+          "name": "BinTray",
+          "pattern": "\\.bintray\\.json$",
+          "icon": "/icons/files/bintray.svg"
+        },
+        {
+          "fileNames": "*.bison,*.yacc",
+          "name": "Bison",
+          "pattern": ".*\\.(bison|yacc)$",
+          "icon": "/icons/files/gnu.svg"
+        },
+        {
+          "fileNames": ".bithoundrc",
+          "name": "BitHound",
+          "pattern": "\\.bithoundrc$",
+          "icon": "/icons/files/bithound.svg"
+        },
+        {
+          "fileNames": "bitbucket-pipelines.yml",
+          "name": "Bitbucket Pipelines",
+          "pattern": "^bitbucket-pipelines\\.yml$",
+          "icon": "/icons/files/bitbucket.svg"
+        },
+        {
+          "fileNames": "*.blade,*.blade.php",
+          "name": "Blade",
+          "pattern": ".*\\.blade(\\.php)?$",
+          "icon": "/icons/files/blade.svg"
+        },
+        {
+          "fileNames": "*.blend,*.bphys",
+          "name": "Blender",
+          "pattern": ".*\\.(blend|bphys)$",
+          "icon": "/icons/files/blender.svg"
+        },
+        {
+          "fileNames": "*.bsv,*.bspec",
+          "name": "BlueSpec",
+          "pattern": ".*\\.(bsv|bspec)$",
+          "icon": "/icons/files/bluespec.svg"
+        },
+        {
+          "fileNames": "*.blink",
+          "name": "Blink",
+          "pattern": ".*\\.blink$",
+          "icon": "/icons/files/blink.svg"
+        },
+        {
+          "fileNames": "*.bnf,*.ebnf,*.abnf",
+          "name": "BNF",
+          "pattern": ".*\\.(bnf|abnf|ebnf)$",
+          "icon": "/icons/files/bnf.svg"
+        },
+        {
+          "fileNames": "*.boo,*.boo.unity",
+          "name": "Boo",
+          "pattern": ".*\\.boo(\\.unity)?$",
+          "icon": "/icons/files/boo.svg"
+        },
+        {
+          "fileNames": "bootstrap.js,bootstrap.ts,custom.bootstrap.js",
+          "name": "Bootstrap",
+          "pattern": "^(custom\\.)?bootstrap\\.(js|ts)$",
+          "icon": "/icons/files/bootstrap.svg"
+        },
+        {
+          "fileNames": ".bowerrc,bower.json",
+          "name": "Bower",
+          "pattern": "^(\\.bowerrc|bower\\.json)$",
+          "icon": "/icons/files/bower.svg"
+        },
+        {
+          "fileNames": "*.bf,*.b",
+          "name": "Brainfuck",
+          "pattern": ".*\\.(b|bf)$",
+          "icon": "/icons/files/brainfuck.svg"
+        },
+        {
+          "fileNames": "brakeman.yml",
+          "name": "Brakeman",
+          "pattern": "brakeman\\.yml$",
+          "icon": "/icons/files/brakeman.svg"
+        },
+        {
+          "fileNames": "*.bro",
+          "name": "Bro",
+          "pattern": ".*\\.bro$",
+          "icon": "/icons/files/bro.svg"
+        },
+        {
+          "fileNames": "Brocfile",
+          "name": "Broccoli",
+          "pattern": "Brocfile$",
+          "icon": "/icons/files/broccoli.svg"
+        },
+        {
+          "fileNames": "*.br",
+          "name": "Brotli",
+          "pattern": ".*\\.br",
+          "icon": "/icons/files/brotli.svg"
+        },
+        {
+          "fileNames": ".browserslist,.browserslistrc,",
+          "name": "Browserslist",
+          "pattern": "\\.browserslist(rc)?$",
+          "icon": "/icons/files/browserslist.svg"
+        },
+        {
+          "fileNames": "bs-config.js,bs-config.json,browser-sync.js,browser-sync.json",
+          "name": "Browsersync",
+          "pattern": "^(bs-config|browser-sync)\\.(js|json)$",
+          "icon": "/icons/files/browsersync.svg"
+        },
+        {
+          "fileNames": "brunch-config.js,brunch-config.coffee,brunch-config.ts",
+          "name": "Brunch",
+          "pattern": "^brunch-config\\.(js|coffee|ts)$",
+          "icon": "/icons/files/brunch.svg"
+        },
+        {
+          "fileNames": "*.cmj",
+          "name": "BuckleScript",
+          "pattern": ".*\\.cmj$",
+          "icon": "/icons/files/bucklescript.svg"
+        },
+        {
+          "fileNames": "buildkite.yml,buildkite.yaml",
+          "name": "BuildKite",
+          "pattern": "^buildkite\\.(yml|yaml)$",
+          "icon": "/icons/files/buildkite.svg"
+        },
+        {
+          "fileNames": "Gemfile",
+          "name": "Bundler",
+          "pattern": "^Gemfile$",
+          "icon": "/icons/files/bundle.svg"
+        },
+        {
+          "fileNames": "*.dm",
+          "name": "Byond",
+          "pattern": ".*\\.dm$",
+          "icon": "/icons/files/byond.svg"
+        },
+        {
+          "fileNames": "*.c,*.objc",
+          "name": "C",
+          "pattern": ".*\\.(c|objc)$",
+          "icon": "/icons/files/c.svg"
+        },
+        {
+          "fileNames": "*.cabal",
+          "name": "Cabal",
+          "pattern": ".*\\.cabal$",
+          "icon": "/icons/files/cabal.svg"
+        },
+        {
+          "fileNames": "cabal.project",
+          "name": "Cabal Project",
+          "pattern": "^cabal\\.project$",
+          "icon": "/icons/files/cabal.svg"
+        },
+        {
+          "fileNames": "*.cake",
+          "name": "CakePHP",
+          "pattern": ".*\\.cake$",
+          "icon": "/icons/files/cakephp.svg"
+        },
+        {
+          "fileNames": "cargo.toml,cargo.lock",
+          "name": "Cargo",
+          "pattern": "cargo\\.(toml|lock)$",
+          "icon": "/icons/files/cargo.svg"
+        },
+        {
+          "fileNames": "*.crt,*.cert,*.x509,*.pks",
+          "name": "Certificate",
+          "pattern": ".*\\.(crt|cert|x509|pks)$",
+          "icon": "/icons/files/certificate.svg"
+        },
+        {
+          "fileNames": "*.cfc,*.cfm,*.cfml,*.lucee",
+          "name": "CFC",
+          "pattern": ".*\\.(cfc|cfm|cfml|lucee)$",
+          "icon": "/icons/files/cfc.svg"
+        },
+        {
+          "fileNames": "CHANGELOG,CHANGELOG.md,changelog.md,CHANGELOG.txt",
+          "name": "Changelog",
+          "pattern": "^(CHANGELOG|changelog)(\\.(md|txt))?",
+          "icon": "/icons/files/log.svg"
+        },
+        {
+          "fileNames": "knife.rb",
+          "name": "Chef Knife",
+          "pattern": "^knife.rb$",
+          "icon": "/icons/files/chef.svg"
+        },
+        {
+          "fileNames": "Berksfile",
+          "name": "Chef Berksfile",
+          "pattern": "^Berksfile$",
+          "icon": "/icons/files/chef.svg"
+        },
+        {
+          "fileNames": ".circleci",
+          "name": "CircleCI",
+          "pattern": "^\\.circleci$",
+          "icon": "/icons/files/circleci.svg"
+        },
+        {
+          "fileNames": "circle.yml,config.yml",
+          "name": "CircleCI Conf",
+          "pattern": "^(circle|config)\\.yml$",
+          "icon": "/icons/files/circleci.svg"
+        },
+        {
+          "fileNames": "*.class,*.o",
+          "name": "Class",
+          "pattern": ".*\\.(class|o)$",
+          "icon": "/icons/files/class.svg"
+        },
+        {
+          "fileNames": "*.cljs,*.clj,*.cljc,*.clojure",
+          "name": "Clojure",
+          "pattern": ".*\\.(cljs|clj|cljc|clojure)$",
+          "icon": "/icons/files/clojure.svg"
+        },
+        {
+          "fileNames": "*.cmake",
+          "name": "CMake",
+          "pattern": ".*\\.cmake$",
+          "icon": "/icons/files/cmake.svg"
+        },
+        {
+          "fileNames": "CMakeLists",
+          "name": "CMakelists",
+          "pattern": "^CMakeLists",
+          "icon": "/icons/files/cmake.svg"
+        },
+        {
+          "fileNames": "CNAME",
+          "name": "CNAME",
+          "pattern": "^CNAME$",
+          "icon": "/icons/files/cname.svg"
+        },
+        {
+          "fileNames": "*.cobol,*.cbl",
+          "name": "Cobol",
+          "pattern": ".*\\.(cobol|cbl)$",
+          "icon": "/icons/files/cobol.svg"
+        },
+        {
+          "fileNames": "*.codecov.yml",
+          "name": "Codecov",
+          "pattern": "^.*codecov\\.yml$",
+          "icon": "/icons/files/codecov.svg"
+        },
+        {
+          "fileNames": "codeowners",
+          "name": "Codeowners",
+          "pattern": "^codeowners$",
+          "icon": "/icons/files/codeowners.svg"
+        },
+        {
+          "fileNames": "*.coffee,*.iced",
+          "name": "CoffeeScript",
+          "pattern": ".*\\.(coffee|iced)$",
+          "icon": "/icons/files/coffeescript.svg"
+        },
+        {
+          "fileNames": "*.cf",
+          "name": "ColdFusion",
+          "pattern": ".*\\.cf$",
+          "icon": "/icons/files/cf.svg"
+        },
+        {
+          "fileNames": ".commitlintrc,.commitlintrc.js,.commitlintrc.json,.commitlintrc.yml",
+          "name": "Commitlint",
+          "pattern": ".*\\.commitlintrc\\.(js(on)?|yml)$",
+          "icon": "/icons/files/commitlint.svg"
+        },
+        {
+          "fileNames": "commitlint.config.js",
+          "name": "Commitlint Config",
+          "pattern": "^commitlint\\.config\\.js$",
+          "icon": "/icons/files/commitlint.svg"
+        },
+        {
+          "fileNames": "config.rb",
+          "name": "Compass",
+          "pattern": "^config\\.rb$",
+          "icon": "/icons/files/compass.svg"
+        },
+        {
+          "fileNames": "composer.json",
+          "name": "Composer",
+          "pattern": "^composer\\.json$",
+          "icon": "/icons/files/composer.svg"
+        },
+        {
+          "fileNames": "composer.phar",
+          "name": "Composer Phar",
+          "pattern": "^composer\\.phar$",
+          "icon": "/icons/files/composer.svg"
+        },
+        {
+          "fileNames": "cordova",
+          "name": "Cordova",
+          "pattern": "^cordova",
+          "icon": "/icons/files/cordova.svg"
+        },
+        {
+          "fileNames": "CREDITS,CREDITS.md,CREDITS.txt,credits",
+          "name": "Credits",
+          "pattern": "(CREDITS|credits).*",
+          "icon": "/icons/files/credits.svg"
+        },
+        {
+          "fileNames": "*.cr,*.ecr",
+          "name": "Crystal",
+          "pattern": ".*\\.(cr|ecr)$",
+          "icon": "/icons/files/crystal.svg"
+        },
+        {
+          "fileNames": "*.css",
+          "name": "CSS",
+          "pattern": ".*\\.css$",
+          "icon": "/icons/files/css.svg"
+        },
+        {
+          "fileNames": "*.css.map",
+          "name": "CSS Map",
+          "pattern": ".*\\.css\\.map$",
+          "icon": "/icons/files/cssmap.svg"
+        },
+        {
+          "fileNames": "*.csv,*.tsv",
+          "name": "CSV",
+          "pattern": ".*\\.(csv|tsv)$",
+          "icon": "/icons/files/csv.svg"
+        },
+        {
+          "fileNames": "*.feature.rb",
+          "name": "Cucumber",
+          "pattern": ".*\\.feature\\.rb$",
+          "icon": "/icons/files/cucumber.svg"
+        },
+        {
+          "fileNames": "*.pyx,*.pxd",
+          "name": "Cython",
+          "pattern": "^.*\\.(pyx|pxd)$",
+          "icon": "/icons/files/cython.svg"
+        },
+        {
+          "fileNames": "cypress.json",
+          "name": "Cypress",
+          "pattern": "^cypress\\.json$",
+          "icon": "/icons/files/cypress.svg"
+        },
+        {
+          "fileNames": "*.cpp,*.cc,*.cp,*.ii,*.mii,*.cxx",
+          "name": "C++",
+          "pattern": ".*\\.(cpp|cc|cp|ii|mii|cxx)$",
+          "icon": "/icons/files/cpp.svg"
+        },
+        {
+          "fileNames": "*.csx,*.cs",
+          "name": "C#",
+          "pattern": ".*\\.csx?$",
+          "icon": "/icons/files/csharp.svg"
+        },
+        {
+          "fileNames": "*.dart",
+          "name": "Dart",
+          "pattern": ".*\\.dart$",
+          "icon": "/icons/files/dart.svg"
+        },
+        {
+          "fileNames": "*.db,*.ddl",
+          "name": "DB",
+          "pattern": ".*\\.(db|ddl)$",
+          "icon": "/icons/files/db.svg"
+        },
+        {
+          "fileNames": "*.delphi",
+          "name": "Delphi",
+          "pattern": ".*\\.delphi$",
+          "icon": "/icons/files/delphi.svg"
+        },
+        {
+          "fileNames": "*.d",
+          "name": "DLang",
+          "pattern": ".*\\.d$",
+          "icon": "/icons/files/dlang.svg"
+        },
+        {
+          "fileNames": "*.diff",
+          "name": "Diff",
+          "pattern": ".*\\.diff$",
+          "icon": "/icons/files/diff.svg"
+        },
+        {
+          "fileNames": "*.flake8,*.djt",
+          "name": "Django",
+          "pattern": ".*\\.(flake8|djt)$",
+          "icon": "/icons/files/django.svg"
+        },
+        {
+          "fileNames": "*.dll,*.dlc",
+          "name": "DLL",
+          "pattern": ".*\\.(dll|dlc)$",
+          "icon": "/icons/files/dylib.svg"
+        },
+        {
+          "fileNames": "*.do",
+          "name": "Do",
+          "pattern": ".*\\.do$",
+          "icon": "/icons/files/tomcat.svg"
+        },
+        {
+          "fileNames": "Dockerfile,dockerfile,dev.dockerfile,prodDockerfile",
+          "name": "Docker",
+          "pattern": ".*\\.?(d|D)ockerfile$",
+          "icon": "/icons/files/docker.svg"
+        },
+        {
+          "fileNames": "docker-compose.yml,docker-compose.yaml,docker-compose.dev.yml",
+          "name": "DockerCompose",
+          "pattern": "^docker-compose(.*)\\.(yml|yaml)$",
+          "icon": "/icons/files/docker.svg"
+        },
+        {
+          "fileNames": "*.def,*.dot,*.jst",
+          "name": "Dot",
+          "pattern": ".*\\.(def|dot|jst)$",
+          "icon": "/icons/files/dotjs.svg"
+        },
+        {
+          "fileNames": "*.xaml,*.csproj,*.vbproj",
+          "name": "DotNET",
+          "pattern": ".*\\.(xaml|csproj|vbproj)$",
+          "icon": "/icons/files/dotnet.svg"
+        },
+        {
+          "fileNames": "Doxyfile,doxyfile",
+          "name": "Doxygen",
+          "pattern": "^(D|d)oxyfile$",
+          "icon": "/icons/files/doxygen.svg"
+        },
+        {
+          "fileNames": "*.drupal",
+          "name": "Drupal",
+          "pattern": ".*\\.drupal$",
+          "icon": "/icons/files/drupal.svg"
+        },
+        {
+          "fileNames": "*.dylib",
+          "name": "Dylib",
+          "pattern": ".*\\.dylib$",
+          "icon": "/icons/files/dylib.svg"
+        },
+        {
+          "fileNames": "*.eclipse",
+          "name": "Eclipse",
+          "pattern": ".*\\.eclipse",
+          "icon": "/icons/files/eclipse.svg"
+        },
+        {
+          "fileNames": "*.edge",
+          "name": "Edge",
+          "pattern": ".*\\.edge$",
+          "icon": "/icons/files/adonis.svg"
+        },
+        {
+          "fileNames": ".editorconfig",
+          "name": "EditorConfig",
+          "pattern": "^\\.editorconfig$",
+          "icon": "/icons/files/editorconfig.svg"
+        },
+        {
+          "fileNames": "*.e",
+          "name": "Eiffel",
+          "pattern": ".*\\.e$",
+          "icon": "/icons/files/eiffel.svg"
+        },
+        {
+          "fileNames": ".emacs.conf,.emacsconfig,.emacsrc",
+          "name": "Emacs",
+          "pattern": "^\\.emacs.*$",
+          "icon": "/icons/files/emacs.svg"
+        },
+        {
+          "fileNames": "*.el,*.elc",
+          "name": "Emacs Lisp",
+          "pattern": "^.*\\.(el|elc)$",
+          "icon": "/icons/files/emacs.svg"
+        },
+        {
+          "fileNames": ".ember-cli",
+          "name": "Ember CLI",
+          "pattern": "^\\.ember-cli$",
+          "icon": "/icons/files/ember.svg"
+        },
+        {
+          "fileNames": ".ember.json",
+          "name": "Ember",
+          "pattern": "^\\.ember\\.json$",
+          "icon": "/icons/files/ember.svg"
+        },
+        {
+          "fileNames": "*.ejs",
+          "name": "EJS",
+          "pattern": ".*\\.(ejs)$",
+          "icon": "/icons/files/ejs.svg"
+        },
+        {
+          "fileNames": "*.ex,*.eex,*.exs,*.elixir,*.leex",
+          "name": "Elixir",
+          "pattern": ".*\\.(ex|eex|exs|elixir|leex)$",
+          "icon": "/icons/files/ex.svg"
+        },
+        {
+          "fileNames": "*.elm",
+          "name": "Elm",
+          "pattern": ".*\\.elm$",
+          "icon": "/icons/files/elm.svg"
+        },
+        {
+          "fileNames": ".eslintrc,.eslintrc.js,.eslintrc.json,.eslintrc.yml",
+          "name": "ESLint",
+          "pattern": ".*\\.eslintrc(\\.js(on)?|\\.y(a)?ml)?$",
+          "icon": "/icons/files/eslint.svg"
+        },
+        {
+          "fileNames": "*.erb,*.ru",
+          "name": "ERB",
+          "pattern": ".*\\.(erb|ru)$",
+          "icon": "/icons/files/erb.svg"
+        },
+        {
+          "fileNames": "*.erc,*.erl,*.erlang",
+          "name": "ErLang",
+          "pattern": ".*\\.(erc|erl|erlang)$",
+          "icon": "/icons/files/erlang.svg"
+        },
+        {
+          "fileNames": "*.xls,*.xlsx,*.xlm,*.xlt,*.xlsb,*.odx",
+          "name": "Excel",
+          "pattern": ".*\\.(xls|xlsx|xlm|xlt|xlsb|odx)$",
+          "icon": "/icons/files/excel.svg"
+        },
+        {
+          "fileNames": "favicon.ico,favicon.png,favicon.jpg",
+          "name": "Favicon",
+          "pattern": "^favicon\\.(ico|png|jpg)$",
+          "icon": "/icons/files/favicon.svg"
+        },
+        {
+          "fileNames": "._MACOSX,.__MACOSX",
+          "name": "Finder",
+          "pattern": "^\\._*?MACOSX$",
+          "icon": "/icons/files/finder.svg"
+        },
+        {
+          "fileNames": "*.firebaserc",
+          "name": "Firebase",
+          "pattern": ".*\\.(firebaserc)$",
+          "icon": "/icons/files/firebase.svg"
+        },
+        {
+          "fileNames": "firebase.json",
+          "name": "Firebase JSON",
+          "pattern": "^firebase\\.json$",
+          "icon": "/icons/files/firebase.svg"
+        },
+        {
+          "fileNames": "*.swf,*.flash",
+          "name": "Flash",
+          "pattern": ".*\\.(swf|flash)$",
+          "icon": "/icons/files/flash.svg"
+        },
+        {
+          "fileNames": "*.flow,*.flowconfig",
+          "name": "Flow",
+          "pattern": ".*\\.(flow|flowconfig)$",
+          "icon": "/icons/files/flow.svg"
+        },
+        {
+          "fileNames": "*.f77,*.f90",
+          "name": "Fortran",
+          "pattern": ".*\\.(f77|f90)$",
+          "icon": "/icons/files/fortran.svg"
+        },
+        {
+          "fileNames": "*.ftl,*.freemarker",
+          "name": "FreeMarker",
+          "pattern": ".*\\.(ftl|freemarker)$",
+          "icon": "/icons/files/freemarker.svg"
+        },
+        {
+          "fileNames": "*.fs,*.fsi,*.fsx,*.fsproj",
+          "name": "FSharp",
+          "pattern": ".*\\.(fs|fsi|fsx|fsproj)$",
+          "icon": "/icons/files/fsharp.svg"
+        },
+        {
+          "fileNames": "gatsby.js,gatsby.config.js,gatsby.ts",
+          "name": "Gatsby",
+          "pattern": "^gatsby.*\\.(js|ts)",
+          "icon": "/icons/files/gatsby.svg"
+        },
+        {
+          "fileNames": "*.ghostscript",
+          "name": "GhostScript",
+          "pattern": ".*\\.ghostscript$",
+          "icon": "/icons/files/ghostscript.svg"
+        },
+        {
+          "fileNames": "Gemfile.lock,gemfile.lock",
+          "name": "Gemfile",
+          "pattern": "^(G|g)emfile\\.lock$",
+          "icon": "/icons/files/gemfile.svg"
+        },
+        {
+          "fileNames": ".gitlab-ci.yml",
+          "name": "GitLab CI",
+          "pattern": "^\\.gitlab-ci\\.yml$",
+          "icon": "/icons/files/gitlab.svg"
+        },
+        {
+          "fileNames": ".git,.git-submodules,.gitignore,.gitrc",
+          "name": "Git",
+          "pattern": "^\\.git.*",
+          "icon": "/icons/files/git.svg"
+        },
+        {
+          "fileNames": "*.go,*.gohtml",
+          "name": "Go",
+          "pattern": ".*\\.(go|gohtml)$",
+          "icon": "/icons/files/go.svg"
+        },
+        {
+          "fileNames": "*.gd,*.godot,*.tres,*.tscn",
+          "name": "Godot",
+          "pattern": ".*\\.(gd|godot|tres|tscn)$",
+          "icon": "/icons/files/godot.svg"
+        },
+        {
+          "fileNames": "*.gradle",
+          "name": "Gradle",
+          "pattern": ".*\\.gradle$",
+          "icon": "/icons/files/gradle.svg"
+        },
+        {
+          "fileNames": "gradlew",
+          "name": "Gradlew",
+          "pattern": "gradlew$",
+          "icon": "/icons/files/gradle.svg"
+        },
+        {
+          "fileNames": "*.graphcool",
+          "name": "Graphcool",
+          "pattern": ".*\\.(graphcool)$",
+          "icon": "/icons/files/graphcool.svg"
+        },
+        {
+          "fileNames": "*.gql,*.graphql",
+          "name": "GraphQL",
+          "pattern": ".*\\.(gql|graphql)$",
+          "icon": "/icons/files/graphql.svg"
+        },
+        {
+          "fileNames": ".graphqlconfig",
+          "name": "GraphQL Config",
+          "pattern": "\\.graphqlconfig$",
+          "icon": "/icons/files/graphql.svg"
+        },
+        {
+          "fileNames": "*.dot,*.graphviz",
+          "name": "Graphviz",
+          "pattern": ".*\\.(dot|graphviz)$",
+          "icon": "/icons/files/graphviz.svg"
+        },
+        {
+          "fileNames": "gridsome.config.js,gridsome.server.js",
+          "name": "Gridsome",
+          "pattern": "^gridsome\\.(config|server)\\.js$",
+          "icon": "/icons/files/gridsome.svg"
+        },
+        {
+          "fileNames": "*.gy,*.gdsl,*.groovy",
+          "name": "Groovy",
+          "pattern": ".*\\.(gy|gdsl|groovy)$",
+          "icon": "/icons/files/groovy.svg"
+        },
+        {
+          "fileNames": "gruntfile,Gruntfile,gruntfile.js,Gruntfile.ts",
+          "name": "Grunt",
+          "pattern": "(g|G)runtfile.*",
+          "icon": "/icons/files/gruntfile.svg"
+        },
+        {
+          "fileNames": "gulpfile,Gulpfile,gulpfile.js,Gulpfile.ts",
+          "name": "Gulp",
+          "pattern": "(g|G)ulpfile.*",
+          "icon": "/icons/files/gulpfile.svg"
+        },
+        {
+          "fileNames": "*.objh,*.h,*.hp,*.hpp,*.tcc,*.hxx",
+          "name": "H",
+          "pattern": ".*\\.(objh|h|hp|hpp|tcc|hxx)$",
+          "icon": "/icons/files/hh.svg"
+        },
+        {
+          "fileNames": "*.hhconfig,*.hh",
+          "name": "Hack",
+          "pattern": ".*\\.(hhconfig|hh)$",
+          "icon": "/icons/files/hack.svg"
+        },
+        {
+          "fileNames": "*.haml",
+          "name": "HAML",
+          "pattern": ".*\\.haml$",
+          "icon": "/icons/files/haml.svg"
+        },
+        {
+          "fileNames": "*.hcl",
+          "name": "Hashicorp",
+          "pattern": ".*\\.hcl$",
+          "icon": "/icons/files/hcl.svg"
+        },
+        {
+          "fileNames": "*.haskell,*.hs",
+          "name": "Haskell",
+          "pattern": ".*\\.(haskell|hs)$",
+          "icon": "/icons/files/haskell.svg"
+        },
+        {
+          "fileNames": "*.haxe,*.hx",
+          "name": "Haxe",
+          "pattern": ".*\\.(haxe|hx)$",
+          "icon": "/icons/files/haxe.svg"
+        },
+        {
+          "fileNames": "*.helm,*.helmignore",
+          "name": "Helm",
+          "pattern": ".*\\.(helm|helmignore)",
+          "icon": "/icons/files/helm.svg"
+        },
+        {
+          "fileNames": "Procfile,Procfile.windows,.slugignore",
+          "name": "Heroku",
+          "pattern": "^((P|p)rocfile(\\.windows)?|\\.slugignore)$",
+          "icon": "/icons/files/heroku.svg"
+        },
+        {
+          "fileNames": "history,history.txt,historyfile",
+          "name": "History",
+          "pattern": "history.*$",
+          "icon": "/icons/files/history.svg"
+        },
+        {
+          "fileNames": "*.vfl,*.hip,*.pic,*.geo",
+          "name": "Houdini",
+          "pattern": ".*\\.(vfl|hip|pic|geo)$",
+          "icon": "/icons/files/houdini.svg"
+        },
+        {
+          "fileNames": "*.htaccess,*.htpasswd",
+          "name": "HTAccess",
+          "pattern": ".*\\.(htaccess|htpasswd)$",
+          "icon": "/icons/files/htaccess.svg"
+        },
+        {
+          "fileNames": "*.html,*.htm",
+          "name": "HTML",
+          "pattern": ".*\\.(html|htm)$",
+          "icon": "/icons/files/html.svg"
+        },
+        {
+          "fileNames": "*.http,*.rest",
+          "name": "HTTP",
+          "pattern": ".*\\.(http|rest)$",
+          "icon": "/icons/files/http.svg"
+        },
+        {
+          "fileNames": ".huskyrc,.huskyrc.js,.huskyrc.json",
+          "name": "Husky",
+          "pattern": ".*\\.huskyrc(.js(on)?)?$",
+          "icon": "/icons/files/husky.svg"
+        },
+        {
+          "fileNames": "*.pot,*.po,*.mo",
+          "name": "i18n",
+          "pattern": ".*\\.(pot|po|mo)$",
+          "icon": "/icons/files/i18n.svg"
+        },
+        {
+          "fileNames": "*.iml,*.icls",
+          "name": "IDEA",
+          "pattern": ".*\\.(iml|icls)$",
+          "icon": "/icons/files/idea.svg"
+        },
+        {
+          "fileNames": "*.idr,*.idris",
+          "name": "Idris",
+          "pattern": ".*\\.(idr|idris)$",
+          "icon": "/icons/files/idris.svg"
+        },
+        {
+          "fileNames": "*.id,*.indd,*.indl,*.indt,*.indb,*.idml",
+          "name": "InDesign",
+          "pattern": ".*\\.(id|indd|indl|indt|indb|idml)$",
+          "icon": "/icons/files/indesign.svg"
+        },
+        {
+          "fileNames": "*.nycrc.json,*.nycrc",
+          "name": "Istanbul",
+          "pattern": ".*\\.nycrc(\\.json)?$",
+          "icon": "/icons/files/istanbul.svg"
+        },
+        {
+          "fileNames": "*.io",
+          "name": "IO",
+          "pattern": ".*\\.(io)$",
+          "icon": "/icons/files/io.svg"
+        },
+        {
+          "fileNames": "*.ionic.config",
+          "name": "Ionic",
+          "pattern": ".*\\.ionic\\.config$",
+          "icon": "/icons/files/ionic.svg"
+        },
+        {
+          "fileNames": "*.ijs",
+          "name": "J",
+          "pattern": ".*\\.(ijs)$",
+          "icon": "/icons/files/j.svg"
+        },
+        {
+          "fileNames": "*.jade,*.pug",
+          "name": "Jade/Pug",
+          "pattern": ".*\\.(jade|pug)$",
+          "icon": "/icons/files/pug.svg"
+        },
+        {
+          "fileNames": "_config.yml",
+          "name": "Jekyll",
+          "pattern": "^_config\\.yml$",
+          "icon": "/icons/files/jekyll.svg"
+        },
+        {
+          "fileNames": "jenkinsfile,Jenkinsfile.groovy",
+          "name": "Jenkins",
+          "pattern": "^(j|J)enkinsfile.*",
+          "icon": "/icons/files/jenkins.svg"
+        },
+        {
+          "fileNames": "jest.config.js,jest.setup.js,jest.teardown.js",
+          "name": "Jest",
+          "pattern": "^jest\\.(config|setup|teardown).*",
+          "icon": "/icons/files/jest.svg"
+        },
+        {
+          "fileNames": ".jestrc,.jestrc.js,.jestrc.json",
+          "name": "Jestrc",
+          "pattern": "^\\.jestrc.*",
+          "icon": "/icons/files/jest.svg"
+        },
+        {
+          "fileNames": "*.jinja,*.jinja2,*.j2,*.jnj,*.jnj2",
+          "name": "Jinja",
+          "pattern": ".*\\.(jinja2?|j2|jnj2?)$",
+          "icon": "/icons/files/jinja.svg"
+        },
+        {
+          "fileNames": "*.smarty",
+          "name": "Joomla",
+          "pattern": ".*\\.smarty$",
+          "icon": "/icons/files/joomla.svg"
+        },
+        {
+          "fileNames": "jquery.js,jquery.min.js",
+          "name": "jQuery",
+          "pattern": "jquery.*\\.js",
+          "icon": "/icons/files/jquery.svg"
+        },
+        {
+          "fileNames": "*.js.map",
+          "name": "JS Map",
+          "pattern": ".*\\.js\\.map$",
+          "icon": "/icons/files/jsmap.svg"
+        },
+        {
+          "fileNames": "*.jsp,*.jsf,*.jspx",
+          "name": "JSP",
+          "pattern": ".*\\.(jsp|jsf|jspx)",
+          "icon": "/icons/files/jsp.svg"
+        },
+        {
+          "fileNames": "*.julia,*.jl",
+          "name": "Julia",
+          "pattern": ".*\\.(julia|jl)$",
+          "icon": "/icons/files/julia.svg"
+        },
+        {
+          "fileNames": "*.ipynb",
+          "name": "Jupyter Notebook",
+          "pattern": ".*\\.ipynb$",
+          "icon": "/icons/files/jupyter.svg"
+        },
+        {
+          "fileNames": "karma.conf.js,karma.conf.ts",
+          "name": "Karma",
+          "pattern": "^karma\\.conf.*",
+          "icon": "/icons/files/karma.svg"
+        },
+        {
+          "fileNames": "*.key,*.pem,*.gpg,*.pub",
+          "name": "Key",
+          "pattern": ".*\\.(key|pem|gpg|pub)",
+          "icon": "/icons/files/key.svg"
+        },
+        {
+          "fileNames": "*.kv",
+          "name": "Kivy",
+          "pattern": ".*\\.kv$",
+          "icon": "/icons/files/kivy.svg"
+        },
+        {
+          "fileNames": "*.kl",
+          "name": "KL",
+          "pattern": ".*\\.kl$",
+          "icon": "/icons/files/kl.svg"
+        },
+        {
+          "fileNames": "*.knockout,*.ko",
+          "name": "Knockout",
+          "pattern": ".*\\.(knockout|ko)$",
+          "icon": "/icons/files/knockout.svg"
+        },
+        {
+          "fileNames": "*.kt,*.kts,*.kotlin",
+          "name": "Kotlin",
+          "pattern": ".*\\.(kt|kts|kotlin)$",
+          "icon": "/icons/files/kotlin.svg"
+        },
+        {
+          "fileNames": "lerna.json",
+          "name": "Lerna",
+          "pattern": "^lerna\\.json$",
+          "icon": "/icons/files/lerna.svg"
+        },
+        {
+          "fileNames": "*.less",
+          "name": "Less",
+          "pattern": ".*\\.less$",
+          "icon": "/icons/files/less.svg"
+        },
+        {
+          "fileNames": "*.lib,*.bib,*.s",
+          "name": "Lib",
+          "pattern": ".*\\.(lib|bib|s)$",
+          "icon": "/icons/files/lib.svg"
+        },
+        {
+          "fileNames": "license,LICENSE,LICENSE.md,license.md",
+          "name": "LICENSE",
+          "pattern": "^(license|LICENSE).*",
+          "icon": "/icons/files/license.svg"
+        },
+        {
+          "fileNames": "licence,LICENCE,LICENCE.md,licence.md",
+          "name": "LICENCE",
+          "pattern": "^(licence|LICENCE).*",
+          "icon": "/icons/files/license.svg"
+        },
+        {
+          "fileNames": "*.lintstagedrc.json,*.lintstagedrc.yml",
+          "name": "Lint Staged",
+          "pattern": ".*\\.lintstagedrc\\.(json|yml)$",
+          "icon": "/icons/files/lint-staged.svg"
+        },
+        {
+          "fileNames": "lint-staged.config.js",
+          "name": "Lint Staged Config",
+          "pattern": "^lint-staged\\.config\\.js$",
+          "icon": "/icons/files/lint-staged.svg"
+        },
+        {
+          "fileNames": "*.ls",
+          "name": "LiveScript",
+          "pattern": ".*\\.ls$",
+          "icon": "/icons/files/livescript.svg"
+        },
+        {
+          "fileNames": "*.liquid",
+          "name": "Liquid",
+          "pattern": ".*\\.liquid$",
+          "icon": "/icons/files/liquid.svg"
+        },
+        {
+          "fileNames": "*.lisp",
+          "name": "LISP",
+          "pattern": ".*\\.lisp$",
+          "icon": "/icons/files/lisp.svg"
+        },
+        {
+          "fileNames": "*.log,*.log.0,*.log.9,",
+          "name": "Log",
+          "pattern": ".*\\.log\\.([0-9])?",
+          "icon": "/icons/files/log.svg"
+        },
+        {
+          "fileNames": "*.lsl",
+          "name": "LSL",
+          "pattern": ".*\\.lsl",
+          "icon": "/icons/files/lsl.svg"
+        },
+        {
+          "fileNames": "*.lua",
+          "name": "Lua",
+          "pattern": ".*\\.lua$",
+          "icon": "/icons/files/lua.svg"
+        },
+        {
+          "fileNames": "*.mage",
+          "name": "Magento",
+          "pattern": ".*\\.mage$",
+          "icon": "/icons/files/magento.svg"
+        },
+        {
+          "fileNames": "*.marko",
+          "name": "MarkoJS",
+          "pattern": ".*\\.marko$",
+          "icon": "/icons/files/marko.svg"
+        },
+        {
+          "fileNames": "Makefile,*.makefile",
+          "name": "Makefile",
+          "pattern": ".*\\.?(m|M)akefile$",
+          "icon": "/icons/files/makefile.svg"
+        },
+        {
+          "fileNames": "*.man,*.man1,*.man8",
+          "name": "Manpage",
+          "pattern": ".*\\.man([1-8])?$",
+          "icon": "/icons/files/manpage.svg"
+        },
+        {
+          "fileNames": "manifest.json",
+          "name": "Manifest",
+          "pattern": "manifest\\.json$",
+          "icon": "/icons/files/manifest.svg"
+        },
+        {
+          "fileNames": "*.md,*.markdown,*.mson",
+          "name": "Markdown",
+          "pattern": ".*\\.(md|markdown|mson)$",
+          "icon": "/icons/files/markdown.svg"
+        },
+        {
+          "fileNames": "*.shtml,*.dhtml,*.dtd",
+          "name": "Markup",
+          "pattern": ".*\\.(shtml|dhtml|dtd)$",
+          "icon": "/icons/files/markup.svg"
+        },
+        {
+          "fileNames": "*.ma,*.mb,*.cdf,*.nb",
+          "name": "Mathematica",
+          "pattern": ".*\\.(nb|ma|mb|cdf)$",
+          "icon": "/icons/files/mathematica.svg"
+        },
+        {
+          "fileNames": "*.matlab",
+          "name": "Matlab",
+          "pattern": ".*\\.matlab$",
+          "icon": "/icons/files/matlab.svg"
+        },
+        {
+          "fileNames": "pom.xml",
+          "name": "Maven",
+          "pattern": "^pom\\.xml$",
+          "icon": "/icons/files/maven.svg"
+        },
+        {
+          "fileNames": "*.maya,*.mel",
+          "name": "Maya",
+          "pattern": ".*\\.(maya|mel)$",
+          "icon": "/icons/files/maya.svg"
+        },
+        {
+          "fileNames": "*.mdx",
+          "name": "MDX",
+          "pattern": ".*\\.(mdx)$",
+          "icon": "/icons/files/mdx.svg"
+        },
+        {
+          "fileNames": "*.hg",
+          "name": "Mercurial",
+          "pattern": ".*\\.hg$",
+          "icon": "/icons/files/mercurial.svg"
+        },
+        {
+          "fileNames": "*.merlin",
+          "name": "Merlin",
+          "pattern": ".*\\.merlin$",
+          "icon": "/icons/files/merlin.svg"
+        },
+        {
+          "fileNames": "*.meteor,",
+          "name": "Meteor",
+          "pattern": ".*\\.meteor$",
+          "icon": "/icons/files/meteor.svg"
+        },
+        {
+          "fileNames": "*.mint",
+          "name": "Mint",
+          "pattern": ".*\\.mint",
+          "icon": "/icons/files/mint.svg"
+        },
+        {
+          "fileNames": "*.mjml",
+          "name": "MJML",
+          "pattern": ".*\\.mjml$",
+          "icon": "/icons/files/mjml.svg"
+        },
+        {
+          "fileNames": "*.moon",
+          "name": "Moonscript",
+          "pattern": ".*\\.moon$",
+          "icon": "/icons/files/moonscript.svg"
+        },
+        {
+          "fileNames": "mocha.opts,.mocharc",
+          "name": "Mocha",
+          "pattern": "^(mocha\\.opts|\\.mocharc)$",
+          "icon": "/icons/files/mocha.svg"
+        },
+        {
+          "fileNames": ".mocha.js,.mocha.json,.mocha.yml",
+          "name": "Mocha JSON",
+          "pattern": "^\\.mocha\\.(js|json|yml)$",
+          "icon": "/icons/files/mocha.svg"
+        },
+        {
+          "fileNames": "*.mongodb,*.bson",
+          "name": "Mongodb",
+          "pattern": ".*\\.(mongodb|bson)$",
+          "icon": "/icons/files/mongodb.svg"
+        },
+        {
+          "fileNames": "*.mustache,*.handlebars,*.hbs,*.hamlbars",
+          "name": "Mustache",
+          "pattern": ".*\\.(mustache|handlebars|hbs|hamlbars)$",
+          "icon": "/icons/files/mustache.svg"
+        },
+        {
+          "fileNames": "*.mxml",
+          "name": "MXML",
+          "pattern": ".*\\.mxml$",
+          "icon": "/icons/files/mxml.svg"
+        },
+        {
+          "fileNames": ".nest-cli.json",
+          "name": "Nest",
+          "pattern": "\\.?nest-cli\\.json",
+          "icon": "/icons/files/nest.svg"
+        },
+        {
+          "fileNames": ".nestconfig.json",
+          "name": "Nest Config",
+          "pattern": "\\.?nestconfig\\.json",
+          "icon": "/icons/files/nest.svg"
+        },
+        {
+          "fileNames": "netlify.toml",
+          "name": "Netlify",
+          "pattern": "^netlify\\.toml$",
+          "icon": "/icons/files/netlify.svg"
+        },
+        {
+          "fileNames": "_headers",
+          "name": "Netlify headers",
+          "pattern": "^_headers$",
+          "icon": "/icons/files/netlify_headers.svg"
+        },
+        {
+          "fileNames": "_redirects",
+          "name": "Netlify redirects",
+          "pattern": "^_redirects$",
+          "icon": "/icons/files/netlify_redirects.svg"
+        },
+        {
+          "fileNames": "*.nginx,*.conf",
+          "name": "nginx",
+          "pattern": ".*\\.(nginx|conf)$",
+          "icon": "/icons/files/nginx.svg"
+        },
+        {
+          "fileNames": "*.nib",
+          "name": "Nib",
+          "pattern": ".*\\.nib$",
+          "icon": "/icons/files/nib.svg"
+        },
+        {
+          "fileNames": "*.nim,*.nimble",
+          "name": "Nimble",
+          "pattern": ".*\\.(nim|nimble)$",
+          "icon": "/icons/files/nim.svg"
+        },
+        {
+          "fileNames": "server.js,server.ts,app.js,app.ts,app.es6",
+          "name": "Node",
+          "pattern": "^(server|app)\\.(js|ts|es6)$",
+          "icon": "/icons/files/nodejs.svg"
+        },
+        {
+          "fileNames": ".node-version",
+          "name": "Node Version",
+          "pattern": "^\\.node-version$",
+          "icon": "/icons/files/nodejs.svg"
+        },
+        {
+          "fileNames": "*.nodemon.js,*.nodemon.json",
+          "name": "Nodemon",
+          "pattern": ".*\\.nodemon\\.(js|json)$",
+          "icon": "/icons/files/nodemon.svg"
+        },
+        {
+          "fileNames": "*.scratch,*.note",
+          "name": "Note",
+          "pattern": ".*\\.(scratch|note)$",
+          "icon": "/icons/files/note.svg"
+        },
+        {
+          "fileNames": "now.json",
+          "name": "Now",
+          "pattern": "now\\.json$",
+          "icon": "/icons/files/now.svg"
+        },
+        {
+          "fileNames": ".nowignore",
+          "name": "Nowignore",
+          "pattern": "\\.nowignore$",
+          "icon": "/icons/files/now.svg"
+        },
+        {
+          "fileNames": "package.json",
+          "name": "NPM",
+          "pattern": "^package\\.json$",
+          "icon": "/icons/files/npm.svg"
+        },
+        {
+          "fileNames": "package-lock.json",
+          "name": "NPM lock",
+          "pattern": "^package-lock\\.json$",
+          "icon": "/icons/files/lock.svg"
+        },
+        {
+          "fileNames": ".npmignore,.npmrc",
+          "name": "NPMFiles",
+          "pattern": "^\\.(npmignore|npmrc)$",
+          "icon": "/icons/files/npm.svg"
+        },
+        {
+          "fileNames": "*.nsis",
+          "name": "NSIS",
+          "pattern": ".*\\.nsis?$",
+          "icon": "/icons/files/nsis.svg"
+        },
+        {
+          "fileNames": "*.nvmrc,*.esmrc",
+          "name": "NVM",
+          "pattern": ".*\\.(nvmrc|esmrc)$",
+          "icon": "/icons/files/nodejs.svg"
+        },
+        {
+          "fileNames": "*.nuclide",
+          "name": "Nuclide",
+          "pattern": ".*\\.nuclide$",
+          "icon": "/icons/files/nuclide.svg"
+        },
+        {
+          "fileNames": "*.nuspec",
+          "name": "NuGet",
+          "pattern": ".*\\.nuspec$",
+          "icon": "/icons/files/nuget.svg"
+        },
+        {
+          "fileNames": "*.njk,*.nunjucks",
+          "name": "Nunjucks",
+          "pattern": ".*\\.(njk|nunjucks)$",
+          "icon": "/icons/files/nunjucks.svg"
+        },
+        {
+          "fileNames": "nuxt.config.js,nuxt.config.ts",
+          "name": "Nuxt",
+          "pattern": ".*nuxt\\.config\\.(js|ts)",
+          "icon": "/icons/files/nuxt.svg"
+        },
+        {
+          "fileNames": "*.mm,*.m",
+          "name": "Objective-C",
+          "pattern": ".*\\.mm?$",
+          "icon": "/icons/files/objc.svg"
+        },
+        {
+          "fileNames": "*.ocaml,*.ml,*.mli,*.cmx,*.ocamllex,*.ocamlyacc",
+          "name": "OCaml",
+          "pattern": ".*\\.(ocaml|ml|mli|cmx|ocamllex|ocamlyacc)$",
+          "icon": "/icons/files/ocaml.svg"
+        },
+        {
+          "fileNames": "*.one,*.onenote",
+          "name": "OneNote",
+          "pattern": ".*\\.(one|onenote)$",
+          "icon": "/icons/files/onenote.svg"
+        },
+        {
+          "fileNames": "*.odf,*.ods",
+          "name": "OpenOffice",
+          "pattern": ".*\\.(odf|ods)$",
+          "icon": "/icons/files/openoffice.svg"
+        },
+        {
+          "fileNames": "*.pas,*.pascal",
+          "name": "Pascal",
+          "pattern": ".*\\.(pas|pascal)$",
+          "icon": "/icons/files/pascal.svg"
+        },
+        {
+          "fileNames": "*.patch,*.meld",
+          "name": "Patch",
+          "pattern": ".*\\.(patch|meld)$",
+          "icon": "/icons/files/patch.svg"
+        },
+        {
+          "fileNames": "*.pdf",
+          "name": "PDF",
+          "pattern": ".*\\.pdf$",
+          "icon": "/icons/files/pdf.svg"
+        },
+        {
+          "fileNames": "*.perl,*.pl,*.pm",
+          "name": "Perl",
+          "pattern": ".*\\.(perl|pl|pm)$",
+          "icon": "/icons/files/perl.svg"
+        },
+        {
+          "fileNames": ".p4ignore",
+          "name": "Perforce",
+          "pattern": "^\\.p4ignore$",
+          "icon": "/icons/files/p4.svg"
+        },
+        {
+          "fileNames": "*.volt",
+          "name": "Phalcon",
+          "pattern": ".*\\.volt$",
+          "icon": "/icons/files/phalcon.svg"
+        },
+        {
+          "fileNames": "*.psb,*.psd",
+          "name": "Photoshop",
+          "pattern": ".*\\.(psb|psd)$",
+          "icon": "/icons/files/psd.svg"
+        },
+        {
+          "fileNames": "my.test.php,myTest.php",
+          "name": "PHPUnit",
+          "pattern": ".*(t|T)est\\.php$",
+          "icon": "/icons/files/phpunit.svg"
+        },
+        {
+          "fileNames": "*.phtml,",
+          "name": "PHTML",
+          "pattern": ".*\\.phtml$",
+          "icon": "/icons/files/phtml.svg"
+        },
+        {
+          "fileNames": "Pipfile",
+          "name": "Pipfile",
+          "pattern": "Pipfile$",
+          "icon": "/icons/files/pipfile.svg"
+        },
+        {
+          "fileNames": "Pipfile.lock",
+          "name": "Pipfile.lock",
+          "pattern": "Pipfile\\.lock$",
+          "icon": "/icons/files/lock.svg"
+        },
+        {
+          "fileNames": "*.play",
+          "name": "Play",
+          "pattern": ".*\\.play$",
+          "icon": "/icons/files/play.svg"
+        },
+        {
+          "fileNames": "*.plist",
+          "name": "PList",
+          "pattern": ".*\\.plist$",
+          "icon": "/icons/files/plist.svg"
+        },
+        {
+          "fileNames": "pnpm-lock.yaml,pnpm-workspace.yaml,pnpm-debug.yaml",
+          "name": "Pnpm",
+          "pattern": "^pnpm-(lock|workspace|debug)\\.yaml",
+          "icon": "/icons/files/pnpm.svg"
+        },
+        {
+          "fileNames": "pnpmfile.js",
+          "name": "Pnpmfile",
+          "pattern": "^pnpmfile\\.js",
+          "icon": "/icons/files/pnpm.svg"
+        },
+        {
+          "fileNames": "*.pcss,*.postcss,*.sss",
+          "name": "PostCSS",
+          "pattern": ".*\\.(pcss|postcss|sss)$",
+          "icon": "/icons/files/postcss.svg"
+        },
+        {
+          "fileNames": ".postcssrc,postcss.config.js,postcss.config.json",
+          "name": "PostCSS Config",
+          "pattern": "^(\\.postcssrc|postcss\\.config\\.js(on)?)$",
+          "icon": "/icons/files/postcss.svg"
+        },
+        {
+          "fileNames": ".posthtmlrc,posthtml.config.yml,.posthtmlrc.json,posthtml.config.json",
+          "name": "PostHTML",
+          "pattern": "^(\\.posthtmlrc|posthtml\\.config\\.(yml|js|json))$",
+          "icon": "/icons/files/posthtml.svg"
+        },
+        {
+          "fileNames": "*.ps,*.eps",
+          "name": "PostScript",
+          "pattern": ".*\\.(ps|eps)$",
+          "icon": "/icons/files/postscript.svg"
+        },
+        {
+          "fileNames": "polymer.json",
+          "name": "Polymer",
+          "pattern": "^polymer\\.json",
+          "icon": "/icons/files/polymer.svg"
+        },
+        {
+          "fileNames": "*.ppt,*.pptx,*.pps,*.ppsx,*.pot,*.potx,*.ppa,*.ppam",
+          "name": "Powerpoint",
+          "pattern": ".*\\.(ppt|pptx|pps|ppsx|pot|potx|ppa|ppam)$",
+          "icon": "/icons/files/powerpoint.svg"
+        },
+        {
+          "fileNames": "*.powershell,*.ps1,*.psd1,*.psc1,*.pssc,*.cmd",
+          "name": "PowerShell",
+          "pattern": ".*\\.(powershell|ps1|psd1|psc1|pssc|cmd)$",
+          "icon": "/icons/files/powershell.svg"
+        },
+        {
+          "fileNames": "*.prel,*.prproj,*.psq",
+          "name": "Premiere",
+          "pattern": ".*\\.(prel|prproj|psq)$",
+          "icon": "/icons/files/premiere.svg"
+        },
+        {
+          "fileNames": ".prettierrc.js,.prettierrc.json,.prettierrc.yml",
+          "name": "Prettier",
+          "pattern": "^\\.prettierrc(\\.js(on)?|\\.y(a)?ml)?$",
+          "icon": "/icons/files/prettier.svg"
+        },
+        {
+          "fileNames": "prettier.config.js",
+          "name": "Prettier Config",
+          "pattern": "^prettier\\.config\\.js$",
+          "icon": "/icons/files/prettier.svg"
+        },
+        {
+          "fileNames": "prisma.yml",
+          "name": "Prisma",
+          "pattern": "prisma\\.yml",
+          "icon": "/icons/files/prisma.svg"
+        },
+        {
+          "fileNames": "*.pde",
+          "name": "Processing",
+          "pattern": ".*\\.pde$",
+          "icon": "/icons/files/processing.svg"
+        },
+        {
+          "fileNames": "*.pro,*.prolog",
+          "name": "Prolog",
+          "pattern": ".*\\.(pro|prolog)$",
+          "icon": "/icons/files/prolog.svg"
+        },
+        {
+          "fileNames": "*.properties",
+          "name": "Properties",
+          "pattern": ".*\\.properties$",
+          "icon": "/icons/files/source.svg"
+        },
+        {
+          "fileNames": "protractor.js,protractor.json",
+          "name": "Protractor",
+          "pattern": "^protractor\\.js(on)?$",
+          "icon": "/icons/files/protractor.svg"
+        },
+        {
+          "fileNames": "*.puppet,*.pp,*.epp",
+          "name": "Puppet",
+          "pattern": ".*\\.(puppet|pp|epp)$",
+          "icon": "/icons/files/puppet.svg"
+        },
+        {
+          "fileNames": "*.purescript,*.purs,*.pure",
+          "name": "PureScript",
+          "pattern": ".*\\.(purescript|purs|pure)$",
+          "icon": "/icons/files/purescript.svg"
+        },
+        {
+          "fileNames": "*.r,*.rmd",
+          "name": "R",
+          "pattern": ".*\\.(r|rmd)$",
+          "icon": "/icons/files/r.svg"
+        },
+        {
+          "fileNames": "*.rkt",
+          "name": "Racket",
+          "pattern": ".*\\.rkt",
+          "icon": "/icons/files/racket.svg"
+        },
+        {
+          "fileNames": "*.raml",
+          "name": "Raml",
+          "pattern": ".*\\.raml$",
+          "icon": "/icons/files/raml.svg"
+        },
+        {
+          "fileNames": "rails",
+          "name": "Rails",
+          "pattern": "^rails$",
+          "icon": "/icons/files/rails.svg"
+        },
+        {
+          "fileNames": "*.rake",
+          "name": "Rake",
+          "pattern": ".*rake$",
+          "icon": "/icons/files/rake.svg"
+        },
+        {
+          "fileNames": "Rakefile",
+          "name": "Rakefile",
+          "pattern": "Rakefile",
+          "icon": "/icons/files/rake.svg"
+        },
+        {
+          "fileNames": "*.cshtml,*.vbhtml",
+          "name": "Razor",
+          "pattern": ".*\\.(cshtml|vbhtml)$",
+          "icon": "/icons/files/razor.svg"
+        },
+        {
+          "fileNames": "*.rdoc",
+          "name": "RDoc",
+          "pattern": ".*\\.rdoc$",
+          "icon": "/icons/files/rdoc.svg"
+        },
+        {
+          "fileNames": "*.rql,*.restql",
+          "name": "RestQL",
+          "pattern": ".*\\.(rql|restql)$",
+          "icon": "/icons/files/restql.svg"
+        },
+        {
+          "fileNames": "*.react-cli",
+          "name": "React",
+          "pattern": ".*\\.react-cli$",
+          "icon": "/icons/files/react.svg"
+        },
+        {
+          "fileNames": "*.re,*.rei",
+          "name": "ReasonML",
+          "pattern": ".*\\.rei?",
+          "icon": "/icons/files/reason.svg"
+        },
+        {
+          "fileNames": "*.red",
+          "name": "Red",
+          "pattern": ".*\\.red",
+          "icon": "/icons/files/red.svg"
+        },
+        {
+          "fileNames": "redis,redis-config.yml",
+          "name": "Redis",
+          "pattern": "^redis.*",
+          "icon": "/icons/files/redis.svg"
+        },
+        {
+          "fileNames": "action.js,actions.ts,myAction.js,myActions.js,my-actions.js",
+          "name": "Redux Action",
+          "pattern": ".*(a|A)ctions?\\.(js|ts)$",
+          "icon": "/icons/files/redux-action.svg"
+        },
+        {
+          "fileNames": "reducer.js,reducer.ts,myReducer.js,myReducers.js,my-reducers.js",
+          "name": "Redux Reducer",
+          "pattern": ".*(r|R)educer\\.(js|ts)$",
+          "icon": "/icons/files/redux-reducer.svg"
+        },
+        {
+          "fileNames": "store.js,store.ts,myStore.js,myStores.js,my-stores.js",
+          "name": "Redux Store",
+          "pattern": ".*(s|S)tore\\.(js|ts)$",
+          "icon": "/icons/files/redux-store.svg"
+        },
+        {
+          "fileNames": "*.rst",
+          "name": "Restructured",
+          "pattern": ".*\\.rst$",
+          "icon": "/icons/files/rst.svg"
+        },
+        {
+          "fileNames": "*.riot,*.tag",
+          "name": "Riot",
+          "pattern": ".*\\.(riot|tag)$",
+          "icon": "/icons/files/riot.svg"
+        },
+        {
+          "fileNames": "*.robot",
+          "name": "Robot",
+          "pattern": ".*\\.robot$",
+          "icon": "/icons/files/robot.svg"
+        },
+        {
+          "fileNames": "rollup.js,rollup.conf.js,rollup.ts",
+          "name": "Rollup",
+          "pattern": "^rollup.*",
+          "icon": "/icons/files/rollup.svg"
+        },
+        {
+          "fileNames": "routing.js,routes.js,routes.jsx,routing.ts,routes.tsx",
+          "name": "Routes",
+          "pattern": "(routing|routes)\\.(js|jsx|ts|tsx)$",
+          "icon": "/icons/files/angularrouting.svg"
+        },
+        {
+          "fileNames": "controller_spec.rb,model_spec.rb",
+          "name": "RSpec",
+          "pattern": ".*_spec\\.rb$",
+          "icon": "/icons/files/rspec.svg"
+        },
+        {
+          "fileNames": "*.rspec",
+          "name": "RSpec Config",
+          "pattern": ".*\\.rspec$",
+          "icon": "/icons/files/rspec.svg"
+        },
+        {
+          "fileNames": "*.rubocop.yml",
+          "name": "Rubocop",
+          "pattern": ".*\\.rubocop.*\\.yml$",
+          "icon": "/icons/files/rubocop.svg"
+        },
+        {
+          "fileNames": ".ruby-gemset",
+          "name": "Ruby Gemset",
+          "pattern": "^\\.ruby-gemset$",
+          "icon": "/icons/files/gemfile.svg"
+        },
+        {
+          "fileNames": ".ruby-version",
+          "name": "Ruby Version",
+          "pattern": "^\\.ruby-version$",
+          "icon": "/icons/files/ruby.svg"
+        },
+        {
+          "fileNames": "*.rs,*.rust",
+          "name": "Rust",
+          "pattern": ".*\\.(rs|rust)$",
+          "icon": "/icons/files/rust.svg"
+        },
+        {
+          "fileNames": ".rvmrc",
+          "name": "RVM",
+          "pattern": "^\\.rvmrc$",
+          "icon": "/icons/files/ruby.svg"
+        },
+        {
+          "fileNames": "*.san",
+          "name": "San",
+          "pattern": ".*\\.san$",
+          "icon": "/icons/files/san.svg"
+        },
+        {
+          "fileNames": "*.sass,",
+          "name": "SASS",
+          "pattern": ".*\\.sass$",
+          "icon": "/icons/files/sass.svg"
+        },
+        {
+          "fileNames": "sapper.js",
+          "name": "Sapper",
+          "pattern": "sapper\\.js$",
+          "icon": "/icons/files/sapper.svg"
+        },
+        {
+          "fileNames": "*.sbt",
+          "name": "SBT",
+          "pattern": ".*\\.sbt$",
+          "icon": "/icons/files/sbt.svg"
+        },
+        {
+          "fileNames": "*.scala",
+          "name": "Scala",
+          "pattern": ".*\\.scala$",
+          "icon": "/icons/files/scala.svg"
+        },
+        {
+          "fileNames": "*.scss",
+          "name": "SCSS",
+          "pattern": ".*\\.scss$",
+          "icon": "/icons/files/sass.svg"
+        },
+        {
+          "fileNames": "*.scheme,*.scm",
+          "name": "Scheme",
+          "pattern": ".*\\.(scheme|scm)$",
+          "icon": "/icons/files/scheme.svg"
+        },
+        {
+          "fileNames": ".releaserc,.releaserc.js,.releaserc.json,.releaserc.yml",
+          "name": "Semantic Release",
+          "pattern": ".*\\.releaserc(.js(on)?|.y(a)?ml)?$",
+          "icon": "/icons/files/semantic-release.svg"
+        },
+        {
+          "fileNames": "release.config.js",
+          "name": "Semantic Release Config",
+          "pattern": "^release\\.config\\.js$",
+          "icon": "/icons/files/semantic-release.svg"
+        },
+        {
+          "fileNames": "*.setting,*.settings,*.option,*.options,*.opt,*.opts",
+          "name": "Settings",
+          "pattern": ".*\\.(settings?|options?|opts?)$",
+          "icon": "/icons/files/settings.svg"
+        },
+        {
+          "fileNames": ".sequelizerc",
+          "name": "Sequelize",
+          "pattern": "\\.sequelizerc$",
+          "icon": "/icons/files/sequelize.svg"
+        },
+        {
+          "fileNames": "*.sh,*.zsh,*.fish,*.bash,.fishrc,.zshrc,.bashrc,.tcsh",
+          "name": "Shell",
+          "pattern": ".*\\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc|tcsh)$",
+          "icon": "/icons/files/shell.svg"
+        },
+        {
+          "fileNames": "*.ss",
+          "name": "SilverStripe",
+          "pattern": ".*\\.ss$",
+          "icon": "/icons/files/silverstripe.svg"
+        },
+        {
+          "fileNames": "*.sketch",
+          "name": "Sketch",
+          "pattern": ".*\\.sketch$",
+          "icon": "/icons/files/sketch.svg"
+        },
+        {
+          "fileNames": "*.slim",
+          "name": "Slim",
+          "pattern": ".*\\.slim$",
+          "icon": "/icons/files/slim.svg"
+        },
+        {
+          "fileNames": "*.tpl",
+          "name": "Smarty",
+          "pattern": ".*\\.tpl$",
+          "icon": "/icons/files/smarty.svg"
+        },
+        {
+          "fileNames": "*.snap",
+          "name": "Snapshots",
+          "pattern": ".*\\.snap$",
+          "icon": "/icons/files/snapshot.svg"
+        },
+        {
+          "fileNames": "*.sol",
+          "name": "Solidity",
+          "pattern": ".*\\.sol$",
+          "icon": "/icons/files/solidity.svg"
+        },
+        {
+          "fileNames": "*.sonarrc",
+          "name": "Sonar",
+          "pattern": ".*\\.sonarrc$",
+          "icon": "/icons/files/sonar.svg"
+        },
+        {
+          "fileNames": "*.spring",
+          "name": "Spring",
+          "pattern": ".*\\.spring$",
+          "icon": "/icons/files/spring.svg"
+        },
+        {
+          "fileNames": "*.sql,*.pdb,*.pgsql,*.mysql,*.hql,*.qml,*.psql,*.pkb",
+          "name": "SQL",
+          "pattern": ".*\\.(sql|pdb|pgsql|mysql|hql|qml|psql|pkb)$",
+          "icon": "/icons/files/sql.svg"
+        },
+        {
+          "fileNames": "*.sqlite,*.sqlite3",
+          "name": "SQLite",
+          "pattern": ".*\\.sqlite3?$",
+          "icon": "/icons/files/sqlite.svg"
+        },
+        {
+          "fileNames": "*.stata",
+          "name": "Stata",
+          "pattern": ".*\\.stata$",
+          "icon": "/icons/files/stata.svg"
+        },
+        {
+          "fileNames": "stencil.config.js,stencil.config.ts",
+          "name": "Stencil",
+          "pattern": "^stencil\\.config\\.(js|ts)$",
+          "icon": "/icons/files/stencil.svg"
+        },
+        {
+          "fileNames": "*.story.js,*.stories.js,*.story.jsx,*.stories.ts,*.stories.tsx",
+          "name": "Storybook",
+          "pattern": ".*\\.(story|stories)\\.(jsx?|tsx?)$",
+          "icon": "/icons/files/storybook.svg"
+        },
+        {
+          "fileNames": ".stylelintrc,stylelint.config.js,stylelint.config.json",
+          "name": "Stylelint",
+          "pattern": "^(\\.stylelintrc|stylelint\\.config\\.js(on)?)$",
+          "icon": "/icons/files/stylelint.svg"
+        },
+        {
+          "fileNames": "*.styl",
+          "name": "Stylus",
+          "pattern": ".*\\.styl$",
+          "icon": "/icons/files/stylus.svg"
+        },
+        {
+          "fileNames": "*.sublime-workspace,*.sublime-package,",
+          "name": "Sublime",
+          "pattern": ".*\\.sublime-.*",
+          "icon": "/icons/files/sublime.svg"
+        },
+        {
+          "fileNames": "*.scd",
+          "name": "SuperCollider",
+          "pattern": ".*\\.scd$",
+          "icon": "/icons/files/scd.svg"
+        },
+        {
+          "fileNames": "*.svelte",
+          "name": "Svelte",
+          "pattern": ".*\\.svelte",
+          "icon": "/icons/files/svelte.svg"
+        },
+        {
+          "fileNames": "svelte.config.js,svelte.config.json",
+          "name": "Svelte Config",
+          "pattern": "svelte\\.config\\.js(on)?",
+          "icon": "/icons/files/svelte.svg"
+        },
+        {
+          "fileNames": ".svn",
+          "name": "SVN",
+          "pattern": "^\\.svn",
+          "icon": "/icons/files/svn.svg"
+        },
+        {
+          "fileNames": "*.swagger,*.swag",
+          "name": "Swagger",
+          "pattern": ".*\\.(swagger|swag)$",
+          "icon": "/icons/files/swagger.svg"
+        },
+        {
+          "fileNames": "swagger.yml,swagger.yaml,swagger.json,api.yml,api.yaml,api.json",
+          "name": "Swagger Config",
+          "pattern": "((swagger|api)\\.(yml|yaml|json))$",
+          "icon": "/icons/files/swagger.svg"
+        },
+        {
+          "fileNames": "*.swc",
+          "name": "SWC",
+          "pattern": ".*\\.swc$",
+          "icon": "/icons/files/swc.svg"
+        },
+        {
+          "fileNames": "*.swift",
+          "name": "Swift",
+          "pattern": ".*\\.swift$",
+          "icon": "/icons/files/swift.svg"
+        },
+        {
+          "fileNames": "*.swig",
+          "name": "Swig",
+          "pattern": ".*\\.swig$",
+          "icon": "/icons/files/swig.svg"
+        },
+        {
+          "fileNames": "*.symfony",
+          "name": "Symfony",
+          "pattern": ".*\\.symfony",
+          "icon": "/icons/files/symfony.svg"
+        },
+        {
+          "fileNames": "tailwind.js,tailwind.conf.js,tailwind.conf.ts",
+          "name": "Tailwind CSS Config",
+          "pattern": "^tailwind.*\\.[jt]s$",
+          "icon": "/icons/files/tailwindcss.svg"
+        },
+        {
+          "fileNames": "*.tcl,",
+          "name": "TCL",
+          "pattern": ".*\\.tcl$",
+          "icon": "/icons/files/tcl.svg"
+        },
+        {
+          "fileNames": "*.tf,*.tfstate,*.tfvars",
+          "name": "TerraForm",
+          "pattern": ".*\\.(tf|tfstate|tfvars)$",
+          "icon": "/icons/files/terraform.svg"
+        },
+        {
+          "fileNames": "*.tex,*.cls,*.sty,*.dtx,*.ltx",
+          "name": "TeX",
+          "pattern": ".*\\.(tex|cls|sty|dtx|ltx)$",
+          "icon": "/icons/files/tex.svg"
+        },
+        {
+          "fileNames": "*.tern-config,*.tern-project",
+          "name": "Tern",
+          "pattern": ".*\\.tern-(config|project)$",
+          "icon": "/icons/files/tern.svg"
+        },
+        {
+          "fileNames": ".ternconfig",
+          "name": "Tern Config",
+          "pattern": "^\\.ternconfig$",
+          "icon": "/icons/files/tern.svg"
+        },
+        {
+          "fileNames": "MyTest.java,myTest.java,mytest.java",
+          "name": "Test Java",
+          "pattern": "(t|T)est\\.java$",
+          "icon": "/icons/files/testjava.svg"
+        },
+        {
+          "fileNames": "*.test.js,*.spec.js,*.test.es6,*.spec.es6",
+          "name": "Test JS",
+          "pattern": ".*\\.?(test|spec)\\.(js|es6)$",
+          "icon": "/icons/files/testjs.svg"
+        },
+        {
+          "fileNames": "*.test.jsx,*.spec.jsx,*.test.tsx,*.spec.tsx",
+          "name": "Test React",
+          "pattern": ".*\\.?(test|spec)\\.(jsx|tsx)$",
+          "icon": "/icons/files/testreact.svg"
+        },
+        {
+          "fileNames": "*.test.py,*.spec.py",
+          "name": "Test Python",
+          "pattern": ".*\\.(test|spec)\\.py$",
+          "icon": "/icons/files/testpy.svg"
+        },
+        {
+          "fileNames": "my_test.rb,controller_spec.rb,",
+          "name": "Test Ruby",
+          "pattern": "_(test|spec)\\.rb$",
+          "icon": "/icons/files/testruby.svg"
+        },
+        {
+          "fileNames": "*.test.ts,*.spec.ts",
+          "name": "Test TypeScript",
+          "pattern": ".*\\.?(test|spec)\\.ts$",
+          "icon": "/icons/files/testts.svg"
+        },
+        {
+          "fileNames": "*.textile",
+          "name": "Textile",
+          "pattern": ".*\\.textile$",
+          "icon": "/icons/files/textile.svg"
+        },
+        {
+          "fileNames": "*.tmPreferences,*.tmTheme,*.tmLanguage",
+          "name": "Textmate",
+          "pattern": ".*\\.(tmPreferences|tmTheme|tmLanguage)",
+          "icon": "/icons/files/textmate.svg"
+        },
+        {
+          "fileNames": "tomcat.conf,tomcat.java",
+          "name": "Tomcat",
+          "pattern": "^tomcat.*",
+          "icon": "/icons/files/tomcat.svg"
+        },
+        {
+          "fileNames": "*.toml",
+          "name": "TOML",
+          "pattern": ".*\\.toml$",
+          "icon": "/icons/files/toml.svg"
+        },
+        {
+          "fileNames": "TODO,todo,TODO.md,todo.js,TODO.java",
+          "name": "TODO",
+          "pattern": "^(TODO|todo).*",
+          "icon": "/icons/files/todo.svg"
+        },
+        {
+          "fileNames": "tsconfig.js,tsconfig.json,.tsconfig.js,.tsconfig.json",
+          "name": "TSConfig",
+          "pattern": "\\.?tsconfig.*\\.(js|json)$",
+          "icon": "/icons/files/tslint.svg"
+        },
+        {
+          "fileNames": "tslint.js,tslint.json,.tslint.js,.tslint.json",
+          "name": "TSLint",
+          "pattern": "\\.?tslint.*\\.(js|json)$",
+          "icon": "/icons/files/tslint.svg"
+        },
+        {
+          "fileNames": "*.travis.yml",
+          "name": "Travis",
+          "pattern": ".*\\.travis\\.yml$",
+          "icon": "/icons/files/travis.svg"
+        },
+        {
+          "fileNames": "*.t",
+          "name": "Turing",
+          "pattern": ".*\\.t$",
+          "icon": "/icons/files/turing.svg"
+        },
+        {
+          "fileNames": "*.twig",
+          "name": "Twig",
+          "pattern": ".*\\.twig$",
+          "icon": "/icons/files/twig.svg"
+        },
+        {
+          "fileNames": "*.d.ts",
+          "name": "Typescript Defs",
+          "pattern": ".*\\.d\\.ts$",
+          "icon": "/icons/files/dts.svg"
+        },
+        {
+          "fileNames": "typings.json",
+          "name": "Typings",
+          "pattern": "^typings\\.json$",
+          "icon": "/icons/files/typings.svg"
+        },
+        {
+          "fileNames": "*.uml,*.iuml,*.puml,*.pu,*.plantuml,*.wsd",
+          "name": "UML",
+          "pattern": ".*\\.(uml|iuml|puml|pu|plantuml|wsd)",
+          "icon": "/icons/files/uml.svg"
+        },
+        {
+          "fileNames": "*.unity,*.unity3d,*.fbx",
+          "name": "Unity",
+          "pattern": ".*\\.(unity|unity3d|fbx)",
+          "icon": "/icons/files/unity.svg"
+        },
+        {
+          "fileNames": "*.u,*.unr,*.utx,*.umx,*.uax,*.ukx,*.uz,*.upkg,*.uc,*.upl,*.asc,*.lwo",
+          "name": "Unreal",
+          "pattern": ".*\\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|asc|lwo)$",
+          "icon": "/icons/files/unreal.svg"
+        },
+        {
+          "fileNames": "Vagrantfile,vagrantfile",
+          "name": "Vagrant",
+          "pattern": "^(V|v)agrantfile$",
+          "icon": "/icons/files/vagrant.svg"
+        },
+        {
+          "fileNames": "*.vala,",
+          "name": "Vala",
+          "pattern": ".*\\.vala$",
+          "icon": "/icons/files/vala.svg"
+        },
+        {
+          "fileNames": "*.vm,*.vtl,*.fhtml",
+          "name": "Velocity",
+          "pattern": ".*\\.(vm|vtl|fhtml)",
+          "icon": "/icons/files/velocity.svg"
+        },
+        {
+          "fileNames": "VERSION,version",
+          "name": "VERSION",
+          "pattern": "^(VERSION|version)$",
+          "icon": "/icons/files/version.svg"
+        },
+        {
+          "fileNames": "*.v,*.vh",
+          "name": "V",
+          "pattern": ".*\\.(v|vh)$",
+          "icon": "/icons/files/v.svg"
+        },
+        {
+          "fileNames": "*.vhdl,*.vhd,*.sv",
+          "name": "VHDL",
+          "pattern": ".*\\.(vhdl|vhd|sv)$",
+          "icon": "/icons/files/vhdl.svg"
+        },
+        {
+          "fileNames": "*.vim,*.viml,*.vimrc,*.gvimrc",
+          "name": "Vim",
+          "pattern": ".*\\.(vim|viml|vimrc|gvimrc)$",
+          "icon": "/icons/files/vim.svg"
+        },
+        {
+          "fileNames": "*.visio",
+          "name": "Visio",
+          "pattern": ".*\\.visio$",
+          "icon": "/icons/files/visio.svg"
+        },
+        {
+          "fileNames": "*.vscode,*.vssettings,*.vsix,*.sln,*.suo",
+          "name": "Visual Studio",
+          "pattern": ".*\\.(vscode|vssettings|vsix|sln|suo)$",
+          "icon": "/icons/files/vs.svg"
+        },
+        {
+          "fileNames": "*.vbox,*.vdi,*.vmware",
+          "name": "VM",
+          "pattern": ".*\\.(vbox|vdi|vmware)$",
+          "icon": "/icons/files/vm.svg"
+        },
+        {
+          "fileNames": "*.vue",
+          "name": "Vue",
+          "pattern": ".*\\.vue$",
+          "icon": "/icons/files/vue.svg"
+        },
+        {
+          "fileNames": "*.vuex",
+          "name": "Vuex",
+          "pattern": ".*\\.vuex$",
+          "icon": "/icons/files/vuex.svg"
+        },
+        {
+          "fileNames": "wallaby.js,wallaby.ts",
+          "name": "Wallaby",
+          "pattern": "^wallaby.*",
+          "icon": "/icons/files/wallaby.svg"
+        },
+        {
+          "fileNames": "*.wat,*.wasm",
+          "name": "WebAssembly",
+          "pattern": ".*\\.(wat|wasm)$",
+          "icon": "/icons/files/webassembly.svg"
+        },
+        {
+          "fileNames": "webpack.common.js,webpack.config.js,webpack.dev.js,webpack.prod.js,webpack.config.ts,webpack.config.es6,webpack.dev.coffee",
+          "name": "Webpack",
+          "pattern": "^webpack\\.(common|config|dev|prod)\\.(js|es|es6|coffee|ts)$",
+          "icon": "/icons/files/webpack.svg"
+        },
+        {
+          "fileNames": "*.hintrc",
+          "name": "Webhint",
+          "pattern": ".*\\.hintrc$",
+          "icon": "/icons/files/webhint.svg"
+        },
+        {
+          "fileNames": "*.wpy",
+          "name": "WePy",
+          "pattern": ".*\\.wpy$",
+          "icon": "/icons/files/wepy.svg"
+        },
+        {
+          "fileNames": "*.bat,*.exe,*.dos,*.ms,*.msi",
+          "name": "Windows",
+          "pattern": ".*\\.(bat|exe|dos|ms|msi)$",
+          "icon": "/icons/files/windows.svg"
+        },
+        {
+          "fileNames": "*.doc,*.docx,*.docm,*.docxml,*.dotm,*.dotx,*.wri,*.odt,*.odtx",
+          "name": "Word",
+          "pattern": ".*\\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$",
+          "icon": "/icons/files/word.svg"
+        },
+        {
+          "fileNames": "*.xamarin",
+          "name": "Xamarin",
+          "pattern": ".*\\.xamarin",
+          "icon": "/icons/files/xamarin.svg"
+        },
+        {
+          "fileNames": "*.xcodeproj",
+          "name": "XCode",
+          "pattern": ".*\\.xcodeproj$",
+          "icon": "/icons/files/appstore.svg"
+        },
+        {
+          "fileNames": "*.xcplayground",
+          "name": "XCode Playground",
+          "pattern": ".*\\.xcplayground$",
+          "icon": "/icons/files/appstore.svg"
+        },
+        {
+          "fileNames": "*.xcworkspace",
+          "name": "XCode Workspace",
+          "pattern": ".*\\.xcworkspace$",
+          "icon": "/icons/files/appstore.svg"
+        },
+        {
+          "fileNames": "*.storyboard",
+          "name": "XCode Storyboard",
+          "pattern": ".*\\.storyboard$",
+          "icon": "/icons/files/appstore.svg"
+        },
+        {
+          "fileNames": "*.yang",
+          "name": "Yang",
+          "pattern": ".*\\.yang$",
+          "icon": "/icons/files/yang.svg"
+        },
+        {
+          "fileNames": ".yarnrc, yarn.json, yarn.js",
+          "name": "Yarn",
+          "pattern": "(\\.yarnrc|yarn.js(on)?)",
+          "icon": "/icons/files/yarn.svg"
+        },
+        {
+          "fileNames": "yarn.lock",
+          "name": "Yarn Lock",
+          "pattern": "^yarn\\.lock$",
+          "icon": "/icons/files/yarn.svg"
+        },
+        {
+          "fileNames": ".yarnclean",
+          "name": "Yarn Clean",
+          "pattern": "^\\.yarnclean$",
+          "icon": "/icons/files/yarn.svg"
+        },
+        {
+          "fileNames": ".yvmrc",
+          "name": "YVM",
+          "pattern": "^\\.yvmrc",
+          "icon": "/icons/files/yvmrc.svg"
+        },
+        {
+          "fileNames": "*.lds,*.ld,*.ini,*.config,*.env,*.cfg",
+          "name": "Preferences",
+          "pattern": ".*\\.(lds?|ini|config|env|cfg)$",
+          "icon": "/icons/files/preferences.svg"
+        },
+        {
+          "fileNames": "*.env.dev,*.env.prod",
+          "name": "Envs",
+          "pattern": ".*\\.env\\.(.*)$",
+          "icon": "/icons/files/preferences.svg"
+        },
+        {
+          "fileNames": "ls,cd,myapp,run",
+          "name": "Binary",
+          "pattern": "^[^.]+$",
+          "icon": "/icons/files/binary.svg"
+        },
+        {
+          "fileNames": "*.ttf,*.ttc,*.pfb,*.pfm,*.otf,*.dfont,*.pfa,*.afm,*.eot,*.woff,*.woff2",
+          "name": "Font",
+          "pattern": ".*\\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$",
+          "icon": "/icons/files/font.svg"
+        },
+        {
+          "fileNames": "*.lock",
+          "name": "Lockfiles",
+          "pattern": ".*\\.lock$",
+          "icon": "/icons/files/lock.svg"
+        },
+        {
+          "fileNames": "*.xml,*.xhtml,*.fxml,*.jrxml,*.jnlp,*.pom,*.rng,*.tld,*.wsdl,*.xsd,*.xsl,*.xslt,*.xul",
+          "name": "XML",
+          "pattern": ".*\\.(xml|xhtml|fxml|jrxml|jnlp|pom|rng|tld|wsdl|xsd|xsl|xslt|xul)$",
+          "icon": "/icons/files/xml.svg"
+        },
+        {
+          "fileNames": "*.yml,*.yaml,*.info",
+          "name": "YAML",
+          "pattern": ".*\\.(yml|yaml|info)$",
+          "icon": "/icons/files/yaml.svg"
+        },
+        {
+          "fileNames": "*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit",
+          "name": "Archive",
+          "pattern": ".*\\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$",
+          "icon": "/icons/files/archive.svg"
+        },
+        {
+          "fileNames": "*.mp3,*.aac,*.aiff,*.au,*.flac,*.m4a,*.mpc,*.mp,*.mpp,*.ogg,*.oga,*.opus,*.ra,*.rm,*.wav,*.wma,*.snd,*.mid,*.cda",
+          "name": "Audio",
+          "pattern": ".*\\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$",
+          "icon": "/icons/files/audio.svg"
+        },
+        {
+          "fileNames": "*.avi,*.mp4,*.mpg,*.mpeg,*.mov,*.mkv,*.flv,*.h264,*.webm,*.wmv,*.ogv,*.3gp,*.m4v,*.3gpp,*.ogm,*.dvd,*.divx,*.qt,*.yuv",
+          "name": "Video",
+          "pattern": ".*\\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx|qt|yuv)$",
+          "icon": "/icons/files/video.svg"
+        },
+        {
+          "fileNames": "*.txt,*.rtf",
+          "name": "Text",
+          "pattern": ".*\\.(txt|rtf)$",
+          "icon": "/icons/files/text.svg"
+        },
+        {
+          "fileNames": "*.min.js,*.min.es6,*.min.es,*.min.jsx,*.min.ts",
+          "name": "Javascript Minified",
+          "pattern": ".*\\.min\\.(js|es6|es|jsx|ts)$",
+          "icon": "/icons/files/jsmin.svg"
+        },
+        {
+          "fileNames": "*.java,*.jar,*.war",
+          "name": "Java",
+          "pattern": ".*\\.(java|jar|war)$",
+          "icon": "/icons/files/java.svg"
+        },
+        {
+          "fileNames": "*.jsx,*.tsx",
+          "name": "JSX",
+          "pattern": ".*\\.(jsx|tsx)$",
+          "icon": "/icons/files/jsx.svg"
+        },
+        {
+          "fileNames": "*.ts,*.tslint",
+          "name": "TypeScript",
+          "pattern": ".*\\.(ts|tslint)$",
+          "icon": "/icons/files/typeScript.svg"
+        },
+        {
+          "fileNames": "*.js,*.es6,*.es,*.mjs",
+          "name": "Javascript",
+          "pattern": ".*\\.(js|es6|es|mjs)$",
+          "icon": "/icons/files/js.svg"
+        },
+        {
+          "fileNames": "*.py,*.python,*.pyc,*.whl",
+          "name": "Python",
+          "pattern": ".*\\.(py|python|pyc|whl)$",
+          "icon": "/icons/files/python.svg"
+        },
+        {
+          "fileNames": "*.rb",
+          "name": "Ruby",
+          "pattern": ".*\\.rb$",
+          "icon": "/icons/files/ruby.svg"
+        },
+        {
+          "fileNames": "*.json,*.cson",
+          "name": "JSON",
+          "pattern": ".*\\.(json|cson)$",
+          "icon": "/icons/files/json.svg"
+        }
+      ]
+    }
+  }
+}

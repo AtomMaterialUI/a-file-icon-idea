@@ -47,6 +47,7 @@
     "no-implicit-dependencies": [
       true,
       "dev"
-    ]
+    ],
+    "array-type": false
   }
 }

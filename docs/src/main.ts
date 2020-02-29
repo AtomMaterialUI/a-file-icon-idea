@@ -89,20 +89,24 @@ function findFileSync(filePath: string | RegExp, rootPath?: string, results?: st
  */
 export function main() {
   const logger = new Logger();
+  // Parse arguments
   const pargs = new YargsParser(logger).parse();
 
+  // Where to put our files
   const rootDir = findDirectorySync('../test');
 
-  // Read file and icon assocs
-  const baseRegex = 'src(?:(?:\\/|\\\\)[a-zA-Z0-9\\s_@\-^!#$%&+={}\\[\\]]+)*(?:\\/|\\\\)';
+  // Regexp to find the associations.json
+  const baseRegex = 'docs(?:(?:\\/|\\\\)[a-zA-Z0-9\\s_@\-^!#$%&+={}\\[\\]]+)*(?:\\/|\\\\)';
   // Find associations in src
   const filesPath = findFileSync(new RegExp(`${baseRegex}icon_associations\\.json`), rootDir)[0];
   const foldersPath = findFileSync(new RegExp(`${baseRegex}folder_associations\\.json`), rootDir)[0];
 
   try {
-    const files = JSON.parse(require(filesPath)).associations.regex;
-    const folders = JSON.parse(require(foldersPath)).associations.regex;
+    // Try to parse the json files
+    const files = JSON.parse(require(filesPath)).associations.associations.regex;
+    const folders = JSON.parse(require(foldersPath)).associations.associations.regex;
 
+    // Generate the files
     new ExampleGenerator(pargs, files, folders, logger).generate();
     process.exit(0);
   } finally {

@@ -24,15 +24,99 @@
  *
  */
 
+import * as readline from 'readline';
+
+export interface ISpinner {
+  timer: NodeJS.Timer;
+  line: number;
+}
+
 export class Logger {
+  private frames = ['- ', '\\ ', '| ', '/ '];
   private countLines: number = 1;
 
-  error(message: string, groupId?: string) {
-    process.stderr.write(`${this.getHeader(groupId)}${message}\n`);
+  private static cursorShow(): void {
+    process.stdout.write('\u001B[?25h');
+  }
+
+  private static cursorHide(): void {
+    process.stdout.write('\u001B[?25l');
+  }
+
+  /**
+   * Print log header
+   * @param groupId
+   */
+  private static getHeader(groupId: string) {
+    return groupId ? `[${groupId}]: ` : '';
+  }
+
+  /**
+   * Update logged line
+   * @param message the message to log
+   * @param line the line to replace
+   */
+  updateLog(message: string, line: number = 1) {
+    if (!process.stdout.isTTY) {
+      process.stdout.write(`${message}\n`);
+      return;
+    }
+    // Go to the latest line
+    readline.moveCursor(process.stdout, 0, -line);
+    // clear that line
+    readline.clearLine(process.stdout, 0);
+    process.stdout.write(`${message}\n`);
+    // move back to where it was
+    readline.moveCursor(process.stdout, 0, line);
+  }
+
+  /**
+   * Log a message
+   * @param message
+   * @param groupId
+   */
+  log(message: string, groupId?: string) {
+    process.stdout.write(`${Logger.getHeader(groupId)}${message}\n`);
     this.countLines++;
   }
 
-  private getHeader(groupId: string) {
-    return groupId ? `[${groupId}]: ` : '';
+  /**
+   * Log an error message
+   * @param message
+   * @param groupId
+   */
+  error(message: string, groupId?: string) {
+    process.stderr.write(`${Logger.getHeader(groupId)}${message}\n`);
+    this.countLines++;
+  }
+
+  public spinnerLogStart(message: string, groupId?: string): ISpinner {
+    const line = this.countLines;
+    this.log(message, groupId);
+    return {timer: this.spin(message, groupId, line), line};
+  }
+
+  public spinnerLogStop(spinner: ISpinner, message?: string, groupId?: string): void {
+    clearInterval(spinner.timer);
+    this.updateLog(`${Logger.getHeader(groupId)}${message}`, this.countLines - spinner.line);
+    Logger.cursorShow();
+  }
+
+  /**
+   * Imitate a spinning cursor
+   * @param message
+   * @param groupId
+   * @param line
+   */
+  private spin(message: string, groupId?: string, line?: number): NodeJS.Timer {
+    if (!process.stdout.isTTY) {
+      return;
+    }
+    let i = 0;
+    return setInterval(() => {
+      Logger.cursorHide();
+      const frame = this.frames[i = ++i % this.frames.length];
+      this.updateLog(`${Logger.getHeader(groupId)}${frame}${message}`, this.countLines - line);
+    }, 80);
   }
 }

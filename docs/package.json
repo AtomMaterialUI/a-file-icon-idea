@@ -13,15 +13,19 @@
     "compile:w": "npm run compile -- -w",
     "lint": "tslint --project tsconfig.json",
     "preexample": "npm run lint && npm run compile",
-    "example": "node ./bin/example"
+    "example": "node ./bin/main",
+    "convert_icons": "xml2json ../src/main/resources/icon_associations.xml icon_associations.json",
+    "convert_folders": "xml2json ../src/main/resources/folder_associations.xml folder_associations.json"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^13.7.6",
     "@types/yargs": "^15.0.4",
+    "rimraf": "^3.0.2",
     "tslint": "^6.0.0",
     "typescript": "^3.8.2",
+    "xml2json-cli": "^1.1.1",
     "yargs": "^15.1.0"
   }
 }
