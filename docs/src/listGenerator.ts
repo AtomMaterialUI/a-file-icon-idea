@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
  * The MIT License (MIT)
  *
@@ -26,4 +24,37 @@
  *
  */
 
-require('../lib/main').main();
+import {WikiAllowedOutputs, WikiCommandArgs} from './wikiArgsParser';
+import {Logger} from './logger';
+import {FolderAssociation, IconAssociation} from './associations';
+import {pathUnixJoin} from './utils';
+import {GitClient} from './gitClient';
+
+export interface ListGeneratorParams {
+  pargs: WikiCommandArgs,
+  logger: Logger,
+  folders: FolderAssociation[],
+  files: IconAssociation[],
+  gitClient: GitClient
+}
+
+export class ListGenerator {
+  constructor(private params: ListGeneratorParams) {
+
+  }
+
+
+  async generate(): Promise<any> {
+    const wikiPageContent = await this.getWikiPage();
+  }
+
+  private async getWikiPage() {
+    if (this.params.pargs.output === WikiAllowedOutputs.REPO) {
+      try {
+        const filePath = pathUnixJoin(this.params.gitClient.wikiRepoFolder, this.wikiPageFilename);
+      } catch (e) {
+        return this.params.logger.error(e);
+      }
+    }
+  }
+}

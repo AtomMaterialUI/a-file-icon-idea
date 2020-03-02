@@ -41,12 +41,12 @@ interface InferredArgs {
  * @param flag - all, files or folders
  * @param icons - list of icons
  */
-export interface CommandArgs {
-  flag: Flags;
+export interface ExamplesCommandArgs {
+  flag: ExamplesFlags;
   icons: string[];
 }
 
-export enum Flags {
+export enum ExamplesFlags {
   ALL = 'all',
   FILES = 'files',
   FOLDERS = 'folders'
@@ -55,7 +55,7 @@ export enum Flags {
 /**
  * Parse cli args
  */
-export class YargsParser {
+export class ExamplesArgsParser {
   private options: any = {
     all: {
       description: 'Generates examples for all icons',
@@ -72,7 +72,7 @@ export class YargsParser {
   };
   private supportedFlags: string[] = ['--all', '--files', '--folders'];
   // Option keys
-  private readonly optionsKeys: string[] = [Flags.ALL, Flags.FILES, Flags.FOLDERS];
+  private readonly optionsKeys: string[] = [ExamplesFlags.ALL, ExamplesFlags.FILES, ExamplesFlags.FOLDERS];
 
   /**
    * Print the yargs usage
@@ -93,7 +93,7 @@ export class YargsParser {
   /**
    * Returns the arguments
    */
-  parse(): CommandArgs {
+  parse(): ExamplesCommandArgs {
     const pargs = yargs.argv;
     return {
       flag: this.getFlag(pargs),
@@ -119,10 +119,10 @@ export class YargsParser {
    * Get the requested flag - first all, then files or folders
    * @param argv
    */
-  private getFlag(argv: yargs.Arguments<yargs.Omit<{}, keyof any> & InferredArgs>): Flags {
-    if (argv.all) return Flags.ALL;
-    if (argv.files) return Flags.FILES;
-    if (argv.folders) return Flags.FOLDERS;
+  private getFlag(argv: yargs.Arguments<yargs.Omit<{}, keyof any> & InferredArgs>): ExamplesFlags {
+    if (argv.all) return ExamplesFlags.ALL;
+    if (argv.files) return ExamplesFlags.FILES;
+    if (argv.folders) return ExamplesFlags.FOLDERS;
     this.errorHandler('Invalid flag');
   }
 

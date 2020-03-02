@@ -25,72 +25,16 @@
  */
 
 import {Logger} from './logger';
-import {YargsParser} from './yargsParser';
-import path from 'path';
-import * as fs from 'fs';
-import {ExampleGenerator} from './exampleGenerator';
+import {WikiArgsParser} from './wikiArgsParser';
+import {findDirectorySync, findFileSync} from './utils';
+import {WikiGenerator} from './wikiGenerator';
+import {GitClient} from './gitClient';
 
-function findDirectorySync(dirName: string): string {
-  let dir = path.resolve(); // will return the current path
-  const root = path.parse(dir).root; // returns {root: '/', dir: the module, base: the current dir... }
-
-  while (true) {
-    let lookUpDir: string;
-    try {
-      fs.accessSync(path.resolve(dir, dirName)); // will resolve the passed path
-      lookUpDir = dirName;
-    } catch (err) {
-      lookUpDir = undefined;
-    }
-
-    if (lookUpDir) {
-      return path.join(dir, lookUpDir); // will build the path
-    } else if (dir === root) {
-      return null;
-    }
-    dir = path.dirname(dir);
-  }
-}
-
-function findFileSync(filePath: string | RegExp, rootPath?: string, results?: string[]): string[] {
-  if (!!!rootPath) {
-    rootPath = path.resolve();
-  }
-  if (!!!results) {
-    results = [];
-  }
-  const files = fs.readdirSync(rootPath);
-
-  for (const file of files) {
-    const filename = path.join(rootPath, file);
-    const stat = fs.lstatSync(filename);
-    // If file already exists and is a directory, recurse
-    if (stat.isDirectory()) {
-      findFileSync(filePath, filename, results);
-    }
-
-    // if filePath is a regex, check match with regex
-    if (filePath instanceof RegExp) {
-      if (filePath.test(filename)) {
-        results.push(filename);
-      }
-      continue;
-    }
-    // otherwise match with contains
-    if (filename.indexOf(filePath) > -1) {
-      results.push(filename);
-    }
-  }
-  return results;
-}
-
-/**
- * Run the cli in the folder containing the associations
- */
-export function main() {
+export async function wiki() {
   const logger = new Logger();
   // Parse arguments
-  const pargs = new YargsParser(logger).parse();
+  const pargs = new WikiArgsParser(logger).parse();
+  const gitClient = new GitClient(pargs, logger);
 
   // Find the icon association files root folder
   const rootDir = findDirectorySync('.');
@@ -101,13 +45,16 @@ export function main() {
   const filesPath = findFileSync(new RegExp(`${baseRegex}icon_associations\\.json`), rootDir)[0];
   const foldersPath = findFileSync(new RegExp(`${baseRegex}folder_associations\\.json`), rootDir)[0];
 
+  // Clone or open repo
+  await Promise.all([gitClient.getCodeRepository(), gitClient.getWikiRepository()]);
+
   try {
     // Try to parse the json files
     const files = require(filesPath).associations.associations.regex;
     const folders = require(foldersPath).associations.associations.regex;
 
     // Generate the files
-    new ExampleGenerator(pargs, files, folders, logger).generate();
+    new WikiGenerator(pargs, files, folders, logger, gitClient).generate();
     process.exit(0);
   } finally {
     process.exit(1);

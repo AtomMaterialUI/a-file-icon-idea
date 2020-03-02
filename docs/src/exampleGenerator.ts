@@ -25,57 +25,17 @@
  */
 
 import {Logger} from './logger';
-import {CommandArgs, Flags} from './yargsParser';
+import {ExamplesCommandArgs, ExamplesFlags} from './examplesArgsParser';
 import * as fs from 'fs';
-
-interface IconAssociation {
-  name: string;
-  pattern: string | RegExp;
-  fileNames: string;
-  icon: string;
-
-}
-
-interface FolderAssociation {
-  name: string;
-  pattern: string | RegExp;
-  folderNames: string;
-  icon: string;
-}
-
-/**
- * Delete a directory
- * @param dirName
- */
-function deleteDirectoryRecursively(dirName: string) {
-  if (fs.existsSync(dirName)) {
-    fs.readdirSync(dirName)
-        .forEach(file => {
-          const curPath = `${dirName}/${file}`;
-          if (fs.lstatSync(curPath).isDirectory()) {
-            deleteDirectoryRecursively(curPath);
-          } else {
-            fs.unlinkSync(curPath);
-          }
-        });
-    fs.rmdirSync(dirName);
-  }
-}
-
-interface IconAssociations {
-  [name: string]: IconAssociation
-}
-
-interface FolderAssociations {
-  [name: string]: FolderAssociation
-}
+import {deleteDirectoryRecursively} from './utils';
+import {FolderAssociation, FolderAssociations, IconAssociation, IconAssociations} from './associations';
 
 export class ExampleGenerator {
   private readonly iconAssociations: IconAssociations;
   private readonly folderAssociations: FolderAssociations;
   private unsupported: Array<IconAssociation | FolderAssociation> = [];
 
-  constructor(private pargs: CommandArgs,
+  constructor(private pargs: ExamplesCommandArgs,
               private files: IconAssociation[],
               private folders: FolderAssociation[],
               private logger: Logger) {
@@ -103,16 +63,16 @@ export class ExampleGenerator {
     this.logger.log('');
 
     switch (this.pargs.flag) {
-      case Flags.ALL:
+      case ExamplesFlags.ALL:
         this.createFiles(Object.keys(this.iconAssociations));
         this.createFolders(Object.keys(this.folderAssociations));
         break;
-      case Flags.FILES: {
+      case ExamplesFlags.FILES: {
         const icons = this.pargs.icons.length ? this.pargs.icons : Object.keys(this.iconAssociations);
         this.createFiles(icons);
         break;
       }
-      case Flags.FOLDERS: {
+      case ExamplesFlags.FOLDERS: {
         const icons = this.pargs.icons.length ? this.pargs.icons : Object.keys(this.folderAssociations);
         this.createFolders(icons);
         break;
@@ -208,7 +168,7 @@ export class ExampleGenerator {
     let s = isMany ? 's' : '';
 
     // file, folder or all
-    const noun = this.pargs.flag !== Flags.ALL ?
+    const noun = this.pargs.flag !== ExamplesFlags.ALL ?
         this.pargs.flag.substring(0, this.pargs.flag.length - 1) :
         this.pargs.flag;
 
