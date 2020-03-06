@@ -25,10 +25,42 @@
  */
 
 import {Logger} from './logger';
-import {WikiArgsParser} from './wikiArgsParser';
+import {ExamplesArgsParser} from './examplesArgsParser';
+import {ExampleGenerator} from './exampleGenerator';
 import {findDirectorySync, findFileSync} from './utils';
-import {WikiGenerator} from './wikiGenerator';
+import {WikiArgsParser} from './wikiArgsParser';
 import {GitClient} from './gitClient';
+import {WikiGenerator} from './wikiGenerator';
+
+/**
+ * Run the cli in the folder containing the associations
+ */
+export function examples() {
+  const logger = new Logger();
+  // Parse arguments
+  const pargs = new ExamplesArgsParser(logger).parse();
+
+  // Find the icon association files root folder
+  const rootDir = findDirectorySync('.');
+
+  // Regexp to find the associations.json
+  const baseRegex = 'docs(?:(?:\\/|\\\\)[a-zA-Z0-9\\s_@\-^!#$%&+={}\\[\\]]+)*(?:\\/|\\\\)';
+  // Find associations in src
+  const filesPath = findFileSync(new RegExp(`${baseRegex}icon_associations\\.json`), rootDir)[0];
+  const foldersPath = findFileSync(new RegExp(`${baseRegex}folder_associations\\.json`), rootDir)[0];
+
+  try {
+    // Try to parse the json files
+    const files = require(filesPath).associations.associations.regex;
+    const folders = require(foldersPath).associations.associations.regex;
+
+    // Generate the files
+    new ExampleGenerator(pargs, files, folders, logger).generate();
+    process.exit(0);
+  } finally {
+    process.exit(1);
+  }
+}
 
 export async function wiki() {
   const logger = new Logger();
@@ -54,7 +86,7 @@ export async function wiki() {
     const folders = require(foldersPath).associations.associations.regex;
 
     // Generate the files
-    new WikiGenerator(pargs, files, folders, logger, gitClient).generate();
+    await new WikiGenerator(pargs, files, folders, logger, gitClient).generate();
     process.exit(0);
   } finally {
     process.exit(1);

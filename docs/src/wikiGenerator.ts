@@ -44,11 +44,15 @@ export class WikiGenerator {
     this.filesListGenerator = new FilesListGenerator({
       pargs,
       files,
+      associationsFile: '',
+      wikiPageFilename: '',
       logger,
       gitClient,
     });
 
     this.foldersListGenerator = new FoldersListGenerator({
+      associationsFile: '',
+      wikiPageFilename: '',
       pargs,
       folders,
       logger,
@@ -62,18 +66,18 @@ export class WikiGenerator {
    */
   async generate() {
     const results = [];
+    this.logger.log(`Running generate command for ${this.pargs.command}`, 'wiki');
     switch (this.pargs.command) {
       case ExamplesFlags.ALL:
-        results.push(this.filesListGenerator.generate());
-        results.push(this.foldersListGenerator.generate());
+        results.push(await this.filesListGenerator.generate());
+        results.push(await this.foldersListGenerator.generate());
         break;
       case ExamplesFlags.FILES:
-        results.push(this.filesListGenerator.generate());
+        results.push(await this.filesListGenerator.generate());
         break;
       case ExamplesFlags.FOLDERS:
-        results.push(this.foldersListGenerator.generate());
+        results.push(await this.foldersListGenerator.generate());
         break;
-
     }
 
     try {

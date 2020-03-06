@@ -2,8 +2,9 @@
   "name": "atom-icon-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "./lib/examples",
+  "main": "./lib/main",
   "bin": {
+    "wiki": "./bin/wiki",
     "example": "./bin/example"
   },
   "scripts": {

@@ -82,36 +82,36 @@ export class FilesListGenerator extends ListGenerator {
   private getName(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
     mdText += ` [${iconAssociation.name}](#${slugify(iconAssociation.name)}) `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getPattern(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` \`${iconAssociation.pattern}\` `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` <code>${iconAssociation.pattern}</code> `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getExamples(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` ${iconAssociation.fileNames.split(',').join('\n')} `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` ${iconAssociation.fileNames} `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getIcon(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
     mdText += ` ![${iconAssociation.icon}](${this.getImagesUrl()}${iconAssociation.icon}) `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 }

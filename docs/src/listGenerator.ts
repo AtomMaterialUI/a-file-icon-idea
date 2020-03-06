@@ -30,7 +30,6 @@ import {pathUnixJoin, ROOT} from './utils';
 import {GitClient} from './gitClient';
 import * as fs from 'fs';
 import * as https from 'https';
-import * as url from 'url';
 import * as http from 'http';
 
 export interface ListGeneratorParams {
@@ -182,9 +181,8 @@ export abstract class ListGenerator {
       const uri = `${this.WIKI_URL}/${this.wikiPageFilename}`;
       const spinner: ISpinner = this.logger.spinnerLogStart(`Requesting wiki page from: ${uri}`, this.logGroupId);
 
-      const options: https.RequestOptions = url.parse(uri);
-      // Callback response
-      const response = (resp: http.IncomingMessage) => {
+      // Fetch the page
+      https.get(uri, (resp: http.IncomingMessage) => {
         const body = [];
 
         resp.on('error', err => {
@@ -205,9 +203,7 @@ export abstract class ListGenerator {
           return reject(resp.statusMessage);
         }
 
-      };
-      // Fetch the page
-      return https.get(options, response);
+      });
     });
   }
 
