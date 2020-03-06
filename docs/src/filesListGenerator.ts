@@ -24,15 +24,94 @@
  *
  */
 
-import {ListGenerator} from './listGenerator';
-import {FolderAssociation, IconAssociation} from './associations';
-import {GitClient} from './gitClient';
-import {WikiCommandArgs} from './wikiArgsParser';
+import {ListGenerator, ListGeneratorParams} from './listGenerator';
+import {IconAssociation} from './associations';
+import {ROOT, slugify} from './utils';
+
+export interface FilesListGeneratorParams extends ListGeneratorParams {
+  files: IconAssociation[],
+}
 
 export class FilesListGenerator extends ListGenerator {
-  constructor(param: { folders: FolderAssociation[]; gitClient: GitClient; pargs: WikiCommandArgs; logger: Logger; files: IconAssociation[] }) {
-    super(param);
+  private files: IconAssociation[];
+
+  constructor(param: FilesListGeneratorParams) {
+    super({
+      wikiPageFilename: 'associations.md',
+      associationsFile: 'icon_associations.json',
+      logGroupId: 'files',
+      pargs: param.pargs,
+      logger: param.logger,
+      gitClient: param.gitClient,
+    });
+    this.files = param.files;
   }
 
+  protected createList(): string {
+    const listHeaders = [
+      'Name',
+      'Pattern',
+      'Examples',
+      'Icon',
+    ];
 
+    let mdText = '';
+    this.logger.log('Starting creating icon associations', this.logGroupId);
+
+    // Headers and separator
+    mdText += this.getHeaders(listHeaders);
+
+    // Add lines
+    this.files.forEach(iconAssociation => {
+      mdText += this.getName(iconAssociation);
+      mdText += this.getPattern(iconAssociation);
+      mdText += this.getExamples(iconAssociation);
+      mdText += this.getIcon(iconAssociation);
+      mdText += this.getLineEnd([], -1);
+    });
+
+    this.logger.log('Finished creating icon associations', this.logGroupId);
+
+    return mdText;
+  }
+
+  protected getImagesUrl() {
+    return `https://github.com/${this.pargs.account}/${ROOT}/blob/master/src/main/resources/icons/files/`;
+  }
+
+  private getName(iconAssociation: IconAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` [${iconAssociation.name}](#${slugify(iconAssociation.name)}) `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getPattern(iconAssociation: IconAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` \`${iconAssociation.pattern}\` `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getExamples(iconAssociation: IconAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` ${iconAssociation.fileNames.split(',').join('\n')} `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getIcon(iconAssociation: IconAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` ![${iconAssociation.icon}](${this.getImagesUrl()}${iconAssociation.icon}) `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
 }

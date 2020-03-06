@@ -37,21 +37,19 @@ export class WikiGenerator {
   foldersListGenerator: FoldersListGenerator;
 
   constructor(private pargs: WikiCommandArgs,
-              private files: IconAssociation[],
-              private folders: FolderAssociation[],
+              files: IconAssociation[],
+              folders: FolderAssociation[],
               private logger: Logger,
               private gitClient: GitClient) {
     this.filesListGenerator = new FilesListGenerator({
       pargs,
       files,
-      folders,
       logger,
       gitClient,
     });
 
     this.foldersListGenerator = new FoldersListGenerator({
       pargs,
-      files,
       folders,
       logger,
       gitClient,
@@ -68,7 +66,6 @@ export class WikiGenerator {
       case ExamplesFlags.ALL:
         results.push(this.filesListGenerator.generate());
         results.push(this.foldersListGenerator.generate());
-
         break;
       case ExamplesFlags.FILES:
         results.push(this.filesListGenerator.generate());

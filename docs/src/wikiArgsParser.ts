@@ -40,6 +40,7 @@ interface InferredArgs {
 }
 
 export interface WikiCommandArgs {
+  useSmallFonts?: string;
   command: ExamplesFlags;
   account: string;
   output: WikiAllowedOutputs;

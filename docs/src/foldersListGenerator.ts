@@ -24,13 +24,105 @@
  *
  */
 
-import {ListGenerator} from './listGenerator';
-import {FolderAssociation, IconAssociation} from './associations';
-import {GitClient} from './gitClient';
-import {WikiCommandArgs} from './wikiArgsParser';
+import {ListGenerator, ListGeneratorParams} from './listGenerator';
+import {FolderAssociation} from './associations';
+import {ROOT, slugify} from './utils';
+
+export interface FoldersListGeneratorParams extends ListGeneratorParams {
+  folders: FolderAssociation[],
+}
 
 export class FoldersListGenerator extends ListGenerator {
-  constructor(param: { folders: FolderAssociation[]; gitClient: GitClient; pargs: WikiCommandArgs; logger: Logger; files: IconAssociation[] }) {
-    super(param);
+  private folders: FolderAssociation[];
+
+  constructor(param: FoldersListGeneratorParams) {
+    super({
+      wikiPageFilename: 'folder_associations.md',
+      associationsFile: 'folder_associations.json',
+      logGroupId: 'folders',
+      pargs: param.pargs,
+      logger: param.logger,
+      gitClient: param.gitClient,
+    });
+    this.folders = param.folders;
+  }
+
+  protected getImagesUrl() {
+    return `https://github.com/${this.pargs.account}/${ROOT}/blob/master/src/main/resources/icons/`;
+  }
+
+  protected createList(): string {
+    const listHeaders = [
+      'Name',
+      'Pattern',
+      'Examples',
+      'Closed Icon',
+      'Opened Icon',
+    ];
+
+    let mdText = '';
+    this.logger.log('Starting creating folder associations', this.logGroupId);
+
+    // Headers and separator
+    mdText += this.getHeaders(listHeaders);
+
+    // Add lines
+    this.folders.forEach(folderAssociation => {
+      mdText += this.getName(folderAssociation);
+      mdText += this.getPattern(folderAssociation);
+      mdText += this.getExamples(folderAssociation);
+      mdText += this.getClosedIcon(folderAssociation);
+      mdText += this.getOpenedIcon(folderAssociation);
+      mdText += this.getLineEnd([], -1);
+    });
+
+    this.logger.log('Finished creating folder associations', this.logGroupId);
+
+    return mdText;
+  }
+
+  private getName(folderAssociation: FolderAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` [${folderAssociation.name}](#${slugify(folderAssociation.name)}) `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getPattern(folderAssociation: FolderAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` \`${folderAssociation.pattern}\` `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getExamples(folderAssociation: FolderAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` ${folderAssociation.folderNames.split(',').join('\n')} `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getClosedIcon(folderAssociation: FolderAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` ![${folderAssociation.icon}](${this.getImagesUrl()}folders/${folderAssociation.icon}) `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
+  }
+
+  private getOpenedIcon(folderAssociation: FolderAssociation) {
+    let mdText = '| ';
+
+    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += ` ![${folderAssociation.icon}](${this.getImagesUrl()}foldersOpen/${folderAssociation.icon}) `;
+    mdText += this.pargs.useSmallFonts && '</sub>';
+    return mdText;
   }
 }

@@ -131,3 +131,7 @@ export function combine(array1: any[], array2: any[], separator = '.'): any[] {
 }
 
 export const ROOT = 'a-file-icon-idea';
+
+export function slugify(name: string) {
+  return name.replace(/[ _-]/g, '-').toLowerCase();
+}

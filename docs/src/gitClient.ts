@@ -33,9 +33,13 @@ import {clearInterval} from 'timers';
 
 export class GitClient {
   /**
+   * Path to the wiki
+   */
+  wikiRepoFolder: string;
+  /**
    * Path to the folder containing the icons
    */
-  private rootFolder: string | RegExp;
+  rootFolder: string | RegExp;
   /**
    * A groupId to group logs into
    */
@@ -43,19 +47,15 @@ export class GitClient {
   /**
    * Path to the code repository
    */
-  private codeRepoFolder: string;
-  /**
-   * Path to the wiki
-   */
-  private wikiRepoFolder: string;
+  private readonly codeRepoFolder: string;
   /**
    * Url to the code repo
    */
-  private codeRepoUrl: string;
+  private readonly codeRepoUrl: string;
   /**
    * Url to the wiki
    */
-  private wikiRepoUrl: string;
+  private readonly wikiRepoUrl: string;
 
   /**
    * Code Repository
@@ -73,6 +73,35 @@ export class GitClient {
 
     this.codeRepoUrl = `https://github.com/${this.pargs.account}/vscode-icons`;
     this.wikiRepoUrl = `${this.codeRepoUrl}.wiki`;
+  }
+
+  /**
+   * Create the origin remote
+   * @param repo
+   * @param url
+   */
+  private static addRemote(repo: Repository, url: string) {
+    return Remote.create(repo, 'origin', url);
+  }
+
+  /**
+   * Checks if there are changes in the provided filename
+   * @param repo the repo to check
+   * @param filename the filename to check
+   */
+  private static async checkForDiff(repo: Repository, filename: string): Promise<boolean> {
+    const commit = await repo.getMasterCommit();
+
+    for (const diff of await commit.getDiff()) {
+      for (const patch of await diff.patches()) {
+        const exists = new RegExp(`.*/${filename}$`, 'gi').test(patch.newFile().path());
+        if (exists) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -128,7 +157,7 @@ export class GitClient {
     // Fetch or add remote
     let remote = await this.wikiRepo.getRemote('origin');
     if (!remote) {
-      remote = this.addRemote(this.wikiRepo, this.wikiRepoUrl);
+      remote = GitClient.addRemote(this.wikiRepo, this.wikiRepoUrl);
     }
     await this.push(remote, numOfCommits);
   }
@@ -145,7 +174,7 @@ export class GitClient {
       await this.getCodeRepository();
     }
 
-    return this.checkForDiff(this.codeRepo, filename);
+    return GitClient.checkForDiff(this.codeRepo, filename);
   }
 
   /**
@@ -226,15 +255,6 @@ export class GitClient {
   }
 
   /**
-   * Create the origin remote
-   * @param repo
-   * @param url
-   */
-  private addRemote(repo: Repository, url: string) {
-    return Remote.create(repo, 'origin', url);
-  }
-
-  /**
    * Push the master branch
    * @param remote
    * @param numOfCommits
@@ -263,26 +283,6 @@ export class GitClient {
       clearInterval(spinner.timer);
       throw e;
     }
-  }
-
-  /**
-   * Checks if there are changes in the provided filename
-   * @param repo the repo to check
-   * @param filename the filename to check
-   */
-  private async checkForDiff(repo: Repository, filename: string): Promise<boolean> {
-    const commit = await repo.getMasterCommit();
-
-    for (const diff of await commit.getDiff()) {
-      for (const patch of await diff.patches()) {
-        const exists = new RegExp(`.*/${filename}$`, 'gi').test(patch.newFile().path());
-        if (exists) {
-          return true;
-        }
-      }
-    }
-
-    return false;
   }
 
 }
