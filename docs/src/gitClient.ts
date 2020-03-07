@@ -68,10 +68,10 @@ export class GitClient {
 
   constructor(private pargs: WikiCommandArgs, private logger: Logger) {
     this.rootFolder = pathUnixJoin(findDirectorySync(ROOT), './../../');
-    this.codeRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, 'a-file-icon-idea');
-    this.wikiRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, 'a-file-icon-idea.wiki');
+    this.codeRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, ROOT);
+    this.wikiRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, `${ROOT}.wiki`);
 
-    this.codeRepoUrl = `https://github.com/${this.pargs.account}/vscode-icons`;
+    this.codeRepoUrl = `https://github.com/${this.pargs.account}/${ROOT}`;
     this.wikiRepoUrl = `${this.codeRepoUrl}.wiki`;
   }
 
@@ -228,7 +228,7 @@ export class GitClient {
         throw new Error('Failed writing repo index');
       }
 
-      const matches = filename.match(/files|folders/i);
+      const matches = filename.match(/associations|folder_associations/i);
       const name = matches && matches[0];
       if (!name) {
         throw new Error('Can not determine list name');
@@ -236,7 +236,7 @@ export class GitClient {
 
       const commitMessage = `:robot: Update list of ${name.toLowerCase()}`;
       const time = +(Date.now() / 1000).toFixed(0); // unix UTC
-      const author = Signature.create('a-file-icon-idea-bot', 'a-file-icon-idea-bot@github.com', time, 0); // our own bot!!
+      const author = Signature.create('hayate', 'hayate@github.com', time, 0); // our own bot!!
       const committer = author;
       // Get the commit message
       const oid = await index.writeTree();

@@ -40,6 +40,7 @@ interface InferredArgs {
 }
 
 export interface WikiCommandArgs {
+  force?: boolean;
   useSmallFonts?: string;
   command: ExamplesFlags;
   account: string;
@@ -77,6 +78,10 @@ export class WikiArgsParser {
       requiresArg: true,
       type: 'string',
     },
+    force: {
+      alias: 'f',
+      type: 'boolean',
+    },
   };
 
   /**
@@ -109,6 +114,7 @@ export class WikiArgsParser {
       account: pargs.account as string,
       output: pargs.out as WikiAllowedOutputs,
       token: pargs.token as string,
+      force: pargs.force as boolean,
     };
   }
 

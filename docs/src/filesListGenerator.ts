@@ -92,7 +92,7 @@ export class FilesListGenerator extends ListGenerator {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` \`${iconAssociation.pattern} \` `;
+    mdText += ` \`${iconAssociation.pattern.replace(/[|]/g, '\\|')} \` `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }

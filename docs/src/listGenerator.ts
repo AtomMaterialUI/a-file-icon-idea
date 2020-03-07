@@ -103,7 +103,7 @@ export abstract class ListGenerator {
     const createdList = this.createList();
 
     // Do not generate if nothing changed (repo mode)
-    const hasChanged = this.compareLists(wikiPageContent, createdList);
+    const hasChanged = this.pargs.force || this.compareLists(wikiPageContent, createdList);
     if (this.pargs.output === WikiAllowedOutputs.REPO && !hasChanged) {
       return;
     }

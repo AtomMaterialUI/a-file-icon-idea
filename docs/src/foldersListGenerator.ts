@@ -94,7 +94,7 @@ export class FoldersListGenerator extends ListGenerator {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` \`${folderAssociation.pattern} \` `;
+    mdText += ` \`${folderAssociation.pattern.replace(/[|]/g, '\\|')} \` `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }

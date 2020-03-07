@@ -1,6 +1,6 @@
 export interface IconAssociation {
   name: string;
-  pattern: string | RegExp;
+  pattern: string;
   fileNames: string;
   icon: string;
 
@@ -8,7 +8,7 @@ export interface IconAssociation {
 
 export interface FolderAssociation {
   name: string;
-  pattern: string | RegExp;
+  pattern: string;
   folderNames: string;
   icon: string;
 }
