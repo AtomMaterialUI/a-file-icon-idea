@@ -76,7 +76,7 @@ export class FilesListGenerator extends ListGenerator {
   }
 
   protected getImagesUrl() {
-    return `https://github.com/${this.pargs.account}/${ROOT}/blob/master/src/main/resources/icons/files/`;
+    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources`;
   }
 
   private getName(iconAssociation: IconAssociation) {
@@ -92,7 +92,7 @@ export class FilesListGenerator extends ListGenerator {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` <code>${iconAssociation.pattern}</code> `;
+    mdText += ` \`${iconAssociation.pattern} \` `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
@@ -101,7 +101,7 @@ export class FilesListGenerator extends ListGenerator {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` ${iconAssociation.fileNames} `;
+    mdText += ` ${iconAssociation.fileNames.split(',').join('<br>')} `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
@@ -110,7 +110,7 @@ export class FilesListGenerator extends ListGenerator {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` ![${iconAssociation.icon}](${this.getImagesUrl()}${iconAssociation.icon}) `;
+    mdText += ` ![${iconAssociation.name}](${this.getImagesUrl()}${iconAssociation.icon}?sanitize=true) `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }

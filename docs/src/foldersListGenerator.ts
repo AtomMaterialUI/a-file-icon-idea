@@ -48,7 +48,7 @@ export class FoldersListGenerator extends ListGenerator {
   }
 
   protected getImagesUrl() {
-    return `https://github.com/${this.pargs.account}/${ROOT}/blob/master/src/main/resources/icons/`;
+    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources/icons/`;
   }
 
   protected createList(): string {
@@ -84,45 +84,45 @@ export class FoldersListGenerator extends ListGenerator {
   private getName(folderAssociation: FolderAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
     mdText += ` [${folderAssociation.name}](#${slugify(folderAssociation.name)}) `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getPattern(folderAssociation: FolderAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` \`${folderAssociation.pattern}\` `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` \`${folderAssociation.pattern} \` `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getExamples(folderAssociation: FolderAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` ${folderAssociation.folderNames.split(',').join('\n')} `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` ${folderAssociation.folderNames.split(',').join('<br>')} `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getClosedIcon(folderAssociation: FolderAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` ![${folderAssociation.icon}](${this.getImagesUrl()}folders/${folderAssociation.icon}) `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` ![${folderAssociation.name}](${this.getImagesUrl()}folders/${folderAssociation.icon}?sanitize=true) `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
   private getOpenedIcon(folderAssociation: FolderAssociation) {
     let mdText = '| ';
 
-    mdText += this.pargs.useSmallFonts && '<sub>';
-    mdText += ` ![${folderAssociation.icon}](${this.getImagesUrl()}foldersOpen/${folderAssociation.icon}) `;
-    mdText += this.pargs.useSmallFonts && '</sub>';
+    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
+    mdText += ` ![${folderAssociation.name}](${this.getImagesUrl()}foldersOpen/${folderAssociation.icon}?sanitize=true) `;
+    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 }
