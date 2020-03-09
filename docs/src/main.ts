@@ -28,13 +28,12 @@ import {Logger} from './services/logger';
 import {ExamplesArgsParser} from './argsParsers/examplesArgsParser';
 import {ExampleGenerator} from './exampleGenerator';
 import {findDirectorySync, findFileSync} from './utils';
-import {WikiArgsParser} from './argsParsers/wikiArgsParser';
+import {WikiArgsParser, WikiCommandArgs} from './argsParsers/wikiArgsParser';
 import {GitClient} from './services/gitClient';
 import {WikiGenerator} from './wikiGenerator';
+import {PreviewArgsParser, PreviewCommandArgs} from './argsParsers/previewArgsParser';
+import {PreviewGenerator} from './previewGenerator';
 
-/**
- * Run the cli in the folder containing the associations
- */
 export function examples() {
   const logger = new Logger();
   // Parse arguments
@@ -66,7 +65,7 @@ export async function wiki() {
   const logger = new Logger();
   // Parse arguments
   const pargs = new WikiArgsParser(logger).parse();
-  const gitClient = new GitClient(pargs, logger);
+  const gitClient = new GitClient<WikiCommandArgs>(pargs, logger);
 
   // Find the icon association files root folder
   const rootDir = findDirectorySync('.');
@@ -87,6 +86,34 @@ export async function wiki() {
 
     // Generate the files
     await new WikiGenerator(pargs, files, folders, logger, gitClient).generate();
+    process.exit(0);
+  } finally {
+    process.exit(1);
+  }
+}
+
+export async function preview() {
+  const logger = new Logger();
+  // Parse arguments
+  const pargs = new PreviewArgsParser(logger).parse();
+  const gitClient = new GitClient<PreviewCommandArgs>(pargs, logger);
+
+  // Find the icon association files root folder
+  const rootDir = findDirectorySync('.');
+
+  // Regexp to find the associations.json
+  const baseRegex = 'docs(?:(?:\\/|\\\\)[a-zA-Z0-9\\s_@\-^!#$%&+={}\\[\\]]+)*(?:\\/|\\\\)';
+  // Find associations in src
+  const filesPath = findFileSync(new RegExp(`${baseRegex}icon_associations\\.json`), rootDir)[0];
+  const foldersPath = findFileSync(new RegExp(`${baseRegex}folder_associations\\.json`), rootDir)[0];
+
+  try {
+    // Try to parse the json files
+    const files = require(filesPath).associations.associations.regex;
+    const folders = require(foldersPath).associations.associations.regex;
+
+    // Generate the files
+    await new PreviewGenerator(pargs, files, folders, logger, gitClient).generate();
     process.exit(0);
   } finally {
     process.exit(1);

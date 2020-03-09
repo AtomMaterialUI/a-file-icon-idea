@@ -24,36 +24,37 @@
  *
  */
 
-import {ExamplesFlags} from '../argsParsers/examplesArgsParser';
-import {WikiAllowedOutputs} from '../argsParsers/wikiArgsParser';
-import {PreviewAllowedOutputs} from '../argsParsers/previewArgsParser';
+import {BasePreviewGenerator, PreviewGeneratorParams} from './basePreviewGenerator';
+import {FolderAssociation} from './types/associations';
+import {ROOT} from './utils';
 
-export interface Association {
-  name: string;
-  pattern: string;
-  icon: string;
+export interface FoldersPreviewGeneratorParams extends PreviewGeneratorParams {
+  folders: FolderAssociation[],
 }
 
-export interface IconAssociation extends Association {
-  fileNames: string;
+export class FoldersPreviewGenerator extends BasePreviewGenerator<FolderAssociation> {
+  private readonly folders: FolderAssociation[];
+
+  constructor(params: FoldersPreviewGeneratorParams) {
+    super({
+      fileName: 'folderIcons.png',
+      logGroupId: 'folders',
+      pargs: params.pargs,
+      logger: params.logger,
+      gitClient: params.gitClient,
+    });
+    this.folders = params.folders;
+  }
+
+  async generate(): Promise<{ filename: string, content: any }> {
+    return {
+      filename: 'folderIcons.png',
+      content: this.savePreview('folders', 5, this.folders),
+    };
+  }
+
+  protected getImagesUrl() {
+    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources/icons/`;
+  }
 }
 
-export interface FolderAssociation extends Association {
-  folderNames: string;
-}
-
-export interface IconAssociations {
-  [name: string]: IconAssociation
-}
-
-export interface FolderAssociations {
-  [name: string]: FolderAssociation
-}
-
-export interface CommandArgs {
-  force?: boolean;
-  command: ExamplesFlags;
-  account: string;
-  output: WikiAllowedOutputs | PreviewAllowedOutputs;
-  token: string;
-}

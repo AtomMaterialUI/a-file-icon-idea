@@ -24,35 +24,34 @@
  *
  */
 
-import {Logger} from './services/logger';
-import {WikiCommandArgs} from './argsParsers/wikiArgsParser';
-import {ExamplesFlags} from './argsParsers/examplesArgsParser';
-import {FilesListGenerator} from './generators/filesListGenerator';
-import {FoldersListGenerator} from './generators/foldersListGenerator';
 import {FolderAssociation, IconAssociation} from './types/associations';
+import {Logger} from './services/logger';
 import {GitClient} from './services/gitClient';
+import {PreviewCommandArgs} from './argsParsers/previewArgsParser';
+import {FilesPreviewGenerator} from './filesPreviewGenerator';
+import {FoldersPreviewGenerator} from './foldersPreviewGenerator';
+import {ExamplesFlags} from './argsParsers/examplesArgsParser';
 
-export class WikiGenerator {
-  filesListGenerator: FilesListGenerator;
-  foldersListGenerator: FoldersListGenerator;
 
-  constructor(private pargs: WikiCommandArgs,
+export class PreviewGenerator {
+  private filesPreviewGenerator: FilesPreviewGenerator;
+  private foldersPreviewGenerator: FoldersPreviewGenerator;
+
+  constructor(private pargs: PreviewCommandArgs,
               files: IconAssociation[],
               folders: FolderAssociation[],
               private logger: Logger,
-              private gitClient: GitClient<WikiCommandArgs>) {
-    this.filesListGenerator = new FilesListGenerator({
+              private gitClient: GitClient<PreviewCommandArgs>) {
+    this.filesPreviewGenerator = new FilesPreviewGenerator({
       pargs,
       files,
-      associationsFile: '',
-      wikiPageFilename: '',
+      fileName: '',
       logger,
       gitClient,
     });
 
-    this.foldersListGenerator = new FoldersListGenerator({
-      associationsFile: '',
-      wikiPageFilename: '',
+    this.foldersPreviewGenerator = new FoldersPreviewGenerator({
+      fileName: '',
       pargs,
       folders,
       logger,
@@ -61,22 +60,20 @@ export class WikiGenerator {
 
   }
 
-  /**
-   * Start the process
-   */
+
   async generate() {
     const results = [];
-    this.logger.log(`Running generate command for ${this.pargs.command}`, 'wiki');
+    this.logger.log(`Running generate command for ${this.pargs.command}`, 'preview');
     switch (this.pargs.command) {
       case ExamplesFlags.ALL:
-        results.push(await this.filesListGenerator.generate());
-        results.push(await this.foldersListGenerator.generate());
+        results.push(await this.filesPreviewGenerator.generate());
+        results.push(await this.foldersPreviewGenerator.generate());
         break;
       case ExamplesFlags.FILES:
-        results.push(await this.filesListGenerator.generate());
+        results.push(await this.filesPreviewGenerator.generate());
         break;
       case ExamplesFlags.FOLDERS:
-        results.push(await this.foldersListGenerator.generate());
+        results.push(await this.foldersPreviewGenerator.generate());
         break;
     }
 

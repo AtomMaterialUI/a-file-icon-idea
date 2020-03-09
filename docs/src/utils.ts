@@ -27,6 +27,9 @@
 import path from 'path';
 import fs from 'fs';
 
+export const ROOT = 'a-file-icon-idea';
+
+
 /**
  * Find a directory from the current directory
  * @param dirName
@@ -130,8 +133,28 @@ export function combine(array1: any[], array2: any[], separator = '.'): any[] {
       previous.concat(array2.map(value => [current, value].join(separator))), []);
 }
 
-export const ROOT = 'a-file-icon-idea';
 
 export function slugify(name: string) {
   return name.replace(/[ _-]/g, '-').toLowerCase();
+}
+
+/**
+ * Distribute the associations in rows and columns matrix
+ * @param items associations
+ * @param numCols number of columns
+ */
+export function buildMatrix<A>(items: A[], numCols: number): A[][] {
+  const matrix: A[][] = [];
+  // number of items per column
+  const itemsPerColumn = Math.floor(items.length / numCols);
+
+  for (let c = 0; c < numCols; c++) {
+    matrix[c] = [];
+
+    for (let r = 0; r < itemsPerColumn; r++) {
+      matrix[c][r] = items[c * itemsPerColumn + r];
+    }
+  }
+
+  return matrix;
 }

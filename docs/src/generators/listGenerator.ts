@@ -35,14 +35,14 @@ import * as http from 'http';
 export interface ListGeneratorParams {
   pargs: WikiCommandArgs,
   logger: Logger,
-  gitClient: GitClient,
+  gitClient: GitClient<WikiCommandArgs>,
   logGroupId?: string,
   wikiPageFilename: string,
   associationsFile: string,
 }
 
 export abstract class ListGenerator {
-  protected gitClient: GitClient;
+  protected gitClient: GitClient<WikiCommandArgs>;
   protected logger: Logger;
   protected pargs: WikiCommandArgs;
   protected logGroupId: string;

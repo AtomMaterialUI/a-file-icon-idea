@@ -24,14 +24,15 @@
  *
  */
 
-import {WikiAllowedOutputs, WikiCommandArgs} from '../argsParsers/wikiArgsParser';
+import {WikiAllowedOutputs} from '../argsParsers/wikiArgsParser';
 import {ISpinner, Logger} from './logger';
 import * as fs from 'fs';
 import {Clone, Cred, PushOptions, Reference, Remote, Repository, Signature} from 'nodegit';
 import {findDirectorySync, pathUnixJoin, ROOT} from '../utils';
 import {clearInterval} from 'timers';
+import {CommandArgs} from '../types/associations';
 
-export class GitClient {
+export class GitClient<T extends CommandArgs> {
   /**
    * Path to the wiki
    */
@@ -66,7 +67,7 @@ export class GitClient {
    */
   private wikiRepo: Repository;
 
-  constructor(private pargs: WikiCommandArgs, private logger: Logger) {
+  constructor(private pargs: T, private logger: Logger) {
     this.rootFolder = pathUnixJoin(findDirectorySync(ROOT), './../../');
     this.codeRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, ROOT);
     this.wikiRepoFolder = pathUnixJoin(this.rootFolder, this.pargs.account, `${ROOT}.wiki`);
