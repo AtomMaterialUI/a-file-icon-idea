@@ -24,10 +24,10 @@
  *
  */
 
-import {WikiAllowedOutputs, WikiCommandArgs} from './wikiArgsParser';
-import {ISpinner, Logger} from './logger';
-import {pathUnixJoin, ROOT} from './utils';
-import {GitClient} from './gitClient';
+import {WikiAllowedOutputs, WikiCommandArgs} from '../argsParsers/wikiArgsParser';
+import {ISpinner, Logger} from '../services/logger';
+import {pathUnixJoin, ROOT} from '../utils';
+import {GitClient} from '../services/gitClient';
 import * as fs from 'fs';
 import * as https from 'https';
 import * as http from 'http';

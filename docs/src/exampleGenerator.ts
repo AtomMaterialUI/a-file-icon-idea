@@ -24,11 +24,11 @@
  *
  */
 
-import {Logger} from './logger';
-import {ExamplesCommandArgs, ExamplesFlags} from './examplesArgsParser';
+import {Logger} from './services/logger';
+import {ExamplesCommandArgs, ExamplesFlags} from './argsParsers/examplesArgsParser';
 import * as fs from 'fs';
 import {deleteDirectoryRecursively} from './utils';
-import {FolderAssociation, FolderAssociations, IconAssociation, IconAssociations} from './associations';
+import {FolderAssociation, FolderAssociations, IconAssociation, IconAssociations} from './types/associations';
 
 export class ExampleGenerator {
   private readonly iconAssociations: IconAssociations;

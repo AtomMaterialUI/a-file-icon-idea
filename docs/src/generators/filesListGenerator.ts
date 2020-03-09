@@ -25,30 +25,26 @@
  */
 
 import {ListGenerator, ListGeneratorParams} from './listGenerator';
-import {FolderAssociation} from './associations';
-import {ROOT, slugify} from './utils';
+import {IconAssociation} from '../types/associations';
+import {ROOT, slugify} from '../utils';
 
-export interface FoldersListGeneratorParams extends ListGeneratorParams {
-  folders: FolderAssociation[],
+export interface FilesListGeneratorParams extends ListGeneratorParams {
+  files: IconAssociation[],
 }
 
-export class FoldersListGenerator extends ListGenerator {
-  private folders: FolderAssociation[];
+export class FilesListGenerator extends ListGenerator {
+  private files: IconAssociation[];
 
-  constructor(param: FoldersListGeneratorParams) {
+  constructor(param: FilesListGeneratorParams) {
     super({
-      wikiPageFilename: 'folder_associations.md',
-      associationsFile: 'folder_associations.json',
-      logGroupId: 'folders',
+      wikiPageFilename: 'associations.md',
+      associationsFile: 'icon_associations.json',
+      logGroupId: 'files',
       pargs: param.pargs,
       logger: param.logger,
       gitClient: param.gitClient,
     });
-    this.folders = param.folders;
-  }
-
-  protected getImagesUrl() {
-    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources/icons/`;
+    this.files = param.files;
   }
 
   protected createList(): string {
@@ -56,72 +52,65 @@ export class FoldersListGenerator extends ListGenerator {
       'Name',
       'Pattern',
       'Examples',
-      'Closed Icon',
-      'Opened Icon',
+      'Icon',
     ];
 
     let mdText = '';
-    this.logger.log('Starting creating folder associations', this.logGroupId);
+    this.logger.log('Starting creating icon associations', this.logGroupId);
 
     // Headers and separator
     mdText += this.getHeaders(listHeaders);
 
     // Add lines
-    this.folders.forEach(folderAssociation => {
-      mdText += this.getName(folderAssociation);
-      mdText += this.getPattern(folderAssociation);
-      mdText += this.getExamples(folderAssociation);
-      mdText += this.getClosedIcon(folderAssociation);
-      mdText += this.getOpenedIcon(folderAssociation);
+    this.files.forEach(iconAssociation => {
+      mdText += this.getName(iconAssociation);
+      mdText += this.getPattern(iconAssociation);
+      mdText += this.getExamples(iconAssociation);
+      mdText += this.getIcon(iconAssociation);
       mdText += this.getLineEnd([], -1);
     });
 
-    this.logger.log('Finished creating folder associations', this.logGroupId);
+    this.logger.log('Finished creating icon associations', this.logGroupId);
 
     return mdText;
   }
 
-  private getName(folderAssociation: FolderAssociation) {
+  protected getImagesUrl() {
+    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources`;
+  }
+
+  private getName(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` [${folderAssociation.name}](#${slugify(folderAssociation.name)}) `;
+    mdText += ` [${iconAssociation.name}](#${slugify(iconAssociation.name)}) `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
-  private getPattern(folderAssociation: FolderAssociation) {
+  private getPattern(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` \`${folderAssociation.pattern.replace(/[|]/g, '\\|')} \` `;
+    mdText += ` \`${iconAssociation.pattern.replace(/[|]/g, '\\|')} \` `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
-  private getExamples(folderAssociation: FolderAssociation) {
+  private getExamples(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` ${folderAssociation.folderNames.split(',').join('<br>')} `;
+    mdText += ` ${iconAssociation.fileNames.split(',').join('<br>')} `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }
 
-  private getClosedIcon(folderAssociation: FolderAssociation) {
+  private getIcon(iconAssociation: IconAssociation) {
     let mdText = '| ';
 
     mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` ![${folderAssociation.name}](${this.getImagesUrl()}folders/${folderAssociation.icon}?sanitize=true) `;
-    mdText += this.pargs.useSmallFonts ? '</sub>' : '';
-    return mdText;
-  }
-
-  private getOpenedIcon(folderAssociation: FolderAssociation) {
-    let mdText = '| ';
-
-    mdText += this.pargs.useSmallFonts ? '<sub>' : '';
-    mdText += ` ![${folderAssociation.name}](${this.getImagesUrl()}foldersOpen/${folderAssociation.icon}?sanitize=true) `;
+    mdText += ` ![${iconAssociation.name}](${this.getImagesUrl()}${iconAssociation.icon}?sanitize=true) `;
     mdText += this.pargs.useSmallFonts ? '</sub>' : '';
     return mdText;
   }

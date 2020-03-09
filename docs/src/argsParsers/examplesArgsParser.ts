@@ -24,7 +24,7 @@
  *
  */
 
-import {Logger} from './logger';
+import {Logger} from '../services/logger';
 import yargs from 'yargs';
 
 /**

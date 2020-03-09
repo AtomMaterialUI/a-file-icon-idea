@@ -25,7 +25,7 @@
  */
 
 import yargs from 'yargs';
-import {Logger} from './logger';
+import {Logger} from '../services/logger';
 import {ExamplesFlags} from './examplesArgsParser';
 
 export enum WikiAllowedOutputs {

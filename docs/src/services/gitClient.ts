@@ -24,11 +24,11 @@
  *
  */
 
-import {WikiAllowedOutputs, WikiCommandArgs} from './wikiArgsParser';
+import {WikiAllowedOutputs, WikiCommandArgs} from '../argsParsers/wikiArgsParser';
 import {ISpinner, Logger} from './logger';
 import * as fs from 'fs';
 import {Clone, Cred, PushOptions, Reference, Remote, Repository, Signature} from 'nodegit';
-import {findDirectorySync, pathUnixJoin, ROOT} from './utils';
+import {findDirectorySync, pathUnixJoin, ROOT} from '../utils';
 import {clearInterval} from 'timers';
 
 export class GitClient {

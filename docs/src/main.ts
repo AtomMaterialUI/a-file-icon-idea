@@ -24,12 +24,12 @@
  *
  */
 
-import {Logger} from './logger';
-import {ExamplesArgsParser} from './examplesArgsParser';
+import {Logger} from './services/logger';
+import {ExamplesArgsParser} from './argsParsers/examplesArgsParser';
 import {ExampleGenerator} from './exampleGenerator';
 import {findDirectorySync, findFileSync} from './utils';
-import {WikiArgsParser} from './wikiArgsParser';
-import {GitClient} from './gitClient';
+import {WikiArgsParser} from './argsParsers/wikiArgsParser';
+import {GitClient} from './services/gitClient';
 import {WikiGenerator} from './wikiGenerator';
 
 /**

@@ -24,13 +24,13 @@
  *
  */
 
-import {Logger} from './logger';
-import {WikiCommandArgs} from './wikiArgsParser';
-import {ExamplesFlags} from './examplesArgsParser';
-import {FilesListGenerator} from './filesListGenerator';
-import {FoldersListGenerator} from './foldersListGenerator';
-import {FolderAssociation, IconAssociation} from './associations';
-import {GitClient} from './gitClient';
+import {Logger} from './services/logger';
+import {WikiCommandArgs} from './argsParsers/wikiArgsParser';
+import {ExamplesFlags} from './argsParsers/examplesArgsParser';
+import {FilesListGenerator} from './generators/filesListGenerator';
+import {FoldersListGenerator} from './generators/foldersListGenerator';
+import {FolderAssociation, IconAssociation} from './types/associations';
+import {GitClient} from './services/gitClient';
 
 export class WikiGenerator {
   filesListGenerator: FilesListGenerator;
