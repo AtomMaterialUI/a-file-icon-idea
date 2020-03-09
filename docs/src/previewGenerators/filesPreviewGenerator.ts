@@ -25,8 +25,8 @@
  */
 
 import {BasePreviewGenerator, PreviewGeneratorParams} from './basePreviewGenerator';
-import {IconAssociation} from './types/associations';
-import {ROOT} from './utils';
+import {IconAssociation} from '../types/associations';
+import {ROOT} from '../utils';
 
 export interface FilesPreviewGeneratorParams extends PreviewGeneratorParams {
   files: IconAssociation[],

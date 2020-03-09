@@ -25,8 +25,8 @@
  */
 
 import {BasePreviewGenerator, PreviewGeneratorParams} from './basePreviewGenerator';
-import {FolderAssociation} from './types/associations';
-import {ROOT} from './utils';
+import {FolderAssociation} from '../types/associations';
+import {ROOT} from '../utils';
 
 export interface FoldersPreviewGeneratorParams extends PreviewGeneratorParams {
   folders: FolderAssociation[],

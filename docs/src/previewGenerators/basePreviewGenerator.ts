@@ -24,11 +24,11 @@
  *
  */
 
-import {Association} from './types/associations';
-import {GitClient} from './services/gitClient';
-import {PreviewCommandArgs} from './argsParsers/previewArgsParser';
-import {Logger} from './services/logger';
-import {buildMatrix} from './utils';
+import {Association} from '../types/associations';
+import {GitClient} from '../services/gitClient';
+import {PreviewCommandArgs} from '../argsParsers/previewArgsParser';
+import {Logger} from '../services/logger';
+import {buildMatrix} from '../utils';
 import path from 'path';
 import fs from 'fs';
 import * as puppeteer from 'puppeteer';

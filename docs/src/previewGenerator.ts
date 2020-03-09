@@ -28,8 +28,8 @@ import {FolderAssociation, IconAssociation} from './types/associations';
 import {Logger} from './services/logger';
 import {GitClient} from './services/gitClient';
 import {PreviewCommandArgs} from './argsParsers/previewArgsParser';
-import {FilesPreviewGenerator} from './filesPreviewGenerator';
-import {FoldersPreviewGenerator} from './foldersPreviewGenerator';
+import {FilesPreviewGenerator} from './previewGenerators/filesPreviewGenerator';
+import {FoldersPreviewGenerator} from './previewGenerators/foldersPreviewGenerator';
 import {ExamplesFlags} from './argsParsers/examplesArgsParser';
 
 
