@@ -49,7 +49,7 @@ export class FilesPreviewGenerator extends BasePreviewGenerator<IconAssociation>
   async generate(): Promise<{ filename: string, content: any }> {
     return {
       filename: 'fileIcons.png',
-      content: await this.savePreview('files', 5, this.files),
+      content: await this.savePreview('files', 7, this.files),
     };
   }
 

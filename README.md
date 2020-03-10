@@ -2,8 +2,7 @@
 
 <h1 align="center">
   <br>
-    <img src="
-    <img src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/src/main/resources/META-INF/pluginIcon.svg" alt="logo" width="200">
+    <img src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/src/main/resources/META-INF/pluginIcon.svg?sanitize=true" alt="logo" width="200">
   <br><br>
   Atom Material File Icons
   <br>

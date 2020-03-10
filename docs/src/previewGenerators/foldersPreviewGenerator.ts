@@ -49,7 +49,7 @@ export class FoldersPreviewGenerator extends BasePreviewGenerator<FolderAssociat
   async generate(): Promise<{ filename: string, content: any }> {
     return {
       filename: 'folderIcons.png',
-      content: await this.savePreview('folders', 5, this.folders),
+      content: await this.savePreview('folders', 7, this.folders),
     };
   }
 
