@@ -135,7 +135,7 @@ export abstract class BasePreviewGenerator<A extends Association> {
     <title></title>
   </head>
   <body>
-    ${BasePreviewGenerator.createHTMLTable(this.createHTMLTableBodyRows(assocs))};
+    ${BasePreviewGenerator.createHTMLTable(this.createHTMLTableBodyRows(assocs))}
   </body>
 </html>
 `;

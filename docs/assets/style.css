@@ -25,7 +25,8 @@
  */
 
 :root {
-    --main-bg-color: #1e1e1e;
+    --main-bg-color: #263238;
+    --main-fg-color: #b0bec5;
 }
 
 body {
@@ -34,16 +35,16 @@ body {
 }
 
 table {
-    font-family: arial, sans-serif;
+    font-family: Roboto, Ubuntu, "Helvetica Neue", arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
     background: var(--main-bg-color);
-    color: rgb(250, 250, 250);
+    color: var(--main-fg-color);
     font-size: 1rem;
 }
 
 td, th {
-    border: 0px solid #dddddd;
+    border: 0 solid #dddddd;
     text-align: left;
     padding: 8px;
 }

@@ -54,7 +54,7 @@ export class FoldersPreviewGenerator extends BasePreviewGenerator<FolderAssociat
   }
 
   protected getImagesUrl() {
-    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources/icons/`;
+    return `https://raw.githubusercontent.com/${this.pargs.account}/${ROOT}/master/src/main/resources/icons/folders/`;
   }
 }
 
