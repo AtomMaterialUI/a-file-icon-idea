@@ -1,12 +1,24 @@
 # Atom Material Icons Plugin for JetBrains
 
-![pluginIcon.svg](src/main/resources/META-INF/pluginIcon.svg)
+<h1 align="center">
+  <br>
+    <img src="
+    <img src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/src/main/resources/META-INF/pluginIcon.svg" alt="logo" width="200">
+  <br><br>
+  Atom Material File Icons
+  <br>
+  <br>
+</h1>
+
 
 This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
 
-![darcula.png](assets/darcula.png) ![darcula2.png](assets/darcula2.png) ![darcula3.png](assets/darcula3.png)
+## File Icons
+![File Icons](docs/files.png)
 
-![light.png](assets/light.png)
+## Folder Icons
+![Folder Icons](docs/folders.png)
+
 
 ## Features
 
