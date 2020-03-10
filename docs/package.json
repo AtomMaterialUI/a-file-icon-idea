@@ -5,7 +5,8 @@
   "main": "./lib/main",
   "bin": {
     "wiki": "./bin/wiki",
-    "example": "./bin/example"
+    "example": "./bin/example",
+    "preview": "./bin/preview"
   },
   "scripts": {
     "postinstall": "npm run compile",
@@ -14,7 +15,9 @@
     "compile:w": "npm run compile -- -w",
     "lint": "tslint --project tsconfig.json",
     "preexample": "npm run lint && npm run compile && npm run convert",
-    "example": "node ./bin/examples --all",
+    "example": "node ./bin/examples all",
+    "wiki": "node ./bin/wiki all",
+    "preview": "node ./bin/preview all -o file",
     "convert": "npm run convert_icons && npm run convert_folders",
     "convert_icons": "xml2json ../src/main/resources/icon_associations.xml icon_associations.json",
     "convert_folders": "xml2json ../src/main/resources/folder_associations.xml folder_associations.json"
@@ -27,9 +30,13 @@
     "nodegit": "^0.26.5",
     "puppeteer": "^2.1.1",
     "rimraf": "^3.0.2",
+    "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.0.0",
     "typescript": "^3.8.2",
     "xml2json-cli": "^1.1.1",
     "yargs": "^15.1.0"
+  },
+  "dependencies": {
+    "puppeteer-core": "^2.1.1"
   }
 }

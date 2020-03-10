@@ -27,10 +27,10 @@
 import {Logger} from './services/logger';
 import {WikiCommandArgs} from './argsParsers/wikiArgsParser';
 import {ExamplesFlags} from './argsParsers/examplesArgsParser';
-import {FilesListGenerator} from './generators/filesListGenerator';
-import {FoldersListGenerator} from './generators/foldersListGenerator';
 import {FolderAssociation, IconAssociation} from './types/associations';
 import {GitClient} from './services/gitClient';
+import {FilesListGenerator} from './listGenerators/filesListGenerator';
+import {FoldersListGenerator} from './listGenerators/foldersListGenerator';
 
 export class WikiGenerator {
   filesListGenerator: FilesListGenerator;

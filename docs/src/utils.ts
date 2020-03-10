@@ -148,11 +148,10 @@ export function buildMatrix<A>(items: A[], numCols: number): A[][] {
   // number of items per column
   const itemsPerColumn = Math.floor(items.length / numCols);
 
-  for (let c = 0; c < numCols; c++) {
-    matrix[c] = [];
-
-    for (let r = 0; r < itemsPerColumn; r++) {
-      matrix[c][r] = items[c * itemsPerColumn + r];
+  for (let r = 0; r < itemsPerColumn; r++) {
+    matrix[r] = [];
+    for (let c = 0; c < numCols; c++) {
+      matrix[r][c] = items[c * itemsPerColumn + r];
     }
   }
 
