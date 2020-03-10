@@ -26,4 +26,4 @@
  *
  */
 
-require('../lib/main').preview();
+require('../dist/main').preview();

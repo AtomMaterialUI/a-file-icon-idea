@@ -2,7 +2,7 @@
   "name": "atom-icon-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "./lib/main",
+  "main": "./dist/main",
   "bin": {
     "wiki": "./bin/wiki",
     "example": "./bin/example",
@@ -10,13 +10,13 @@
   },
   "scripts": {
     "postinstall": "npm run compile",
-    "precompile": "rimraf ./lib",
+    "precompile": "rimraf ./dist",
     "compile": "tsc",
     "compile:w": "npm run compile -- -w",
     "lint": "tslint --project tsconfig.json",
     "preexample": "npm run lint && npm run compile && npm run convert",
     "example": "node ./bin/examples all",
-    "wiki": "node ./bin/wiki all",
+    "wiki": "node ./bin/wiki all -o file",
     "preview": "node ./bin/preview all -o file",
     "convert": "npm run convert_icons && npm run convert_folders",
     "convert_icons": "xml2json ../src/main/resources/icon_associations.xml icon_associations.json",
@@ -35,8 +35,5 @@
     "typescript": "^3.8.2",
     "xml2json-cli": "^1.1.1",
     "yargs": "^15.1.0"
-  },
-  "dependencies": {
-    "puppeteer-core": "^2.1.1"
   }
 }

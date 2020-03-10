@@ -1,5 +1,6 @@
 node_modules
 examples/
-lib
+dist
 .DS_Store
 npm-debug.*
+deploy_key
