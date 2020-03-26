@@ -35,7 +35,7 @@
         <regex fileNames="COMMIT_MESSAGE_CONVENTION.md"
                name="Github COMMIT" pattern="^COMMIT_MESSAGE_CONVENTION\.(md|txt)$" icon="/icons/files/github.svg"/>
         <regex fileNames="TEMPLATE.md,TEMPLATE.txt"
-               name="Github TEMPLATE" pattern=".*TEMPLATE\.(md|txt))$" icon="/icons/files/github.svg"/>
+               name="Github TEMPLATE" pattern=".*TEMPLATE\.(md|txt)$" icon="/icons/files/github.svg"/>
         <regex fileNames="README.md,README.txt"
                name="README" pattern="^(README|readme)(\.(md|txt))?$" icon="/icons/files/readme.svg"/>
 

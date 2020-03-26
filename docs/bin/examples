@@ -26,4 +26,4 @@
  *
  */
 
-require('../dist/examples').examples();
+require('../dist/main').examples();

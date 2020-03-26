@@ -15,7 +15,7 @@
     "compile:w": "npm run compile -- -w",
     "lint": "tslint --project tsconfig.json",
     "preexample": "npm run lint && npm run compile && npm run convert",
-    "example": "node ./bin/examples all",
+    "example": "node ./bin/examples --all",
     "wiki": "node ./bin/wiki all -o file",
     "preview": "node ./bin/preview all -o file",
     "convert": "npm run convert_icons && npm run convert_folders",
