@@ -108,7 +108,8 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   private static ColorUIResource getThemedColor() {
-    return new ColorUIResource(JBColor.namedColor("Label.infoForeground", UIUtil.getContextHelpForeground()));
+    final JBColor caretForeground = JBColor.namedColor("Tree.foreground", UIUtil.getTreeForeground());
+    return new ColorUIResource(caretForeground);
   }
 
   private static ColorUIResource getTintedColor() {
@@ -116,7 +117,9 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-    "IfStatementWithTooManyBranches"})
+      "IfStatementWithTooManyBranches",
+      "DuplicateStringLiteralInspection",
+      "SyntheticAccessorCall"})
   private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();

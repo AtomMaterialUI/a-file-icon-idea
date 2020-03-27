@@ -47,11 +47,6 @@
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"
                                   id="MTHollowFoldersDecorator"/>
     </extensions>
-    <!--    <application-components>-->
-    <!--        <component>-->
-    <!--            <implementation-class>com.mallowigi.icons.IconReplacerComponent2</implementation-class>-->
-    <!--        </component>-->
-    <!--    </application-components>-->
 
     <applicationListeners>
         <listener class="com.mallowigi.icons.IconReplacerComponent"
