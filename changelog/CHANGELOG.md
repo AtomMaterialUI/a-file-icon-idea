@@ -1,5 +1,11 @@
 # Changelog
 
+# 21.0
+- Fix issue with Arrow Colors being black in Darcula
+- Fix issue with Plugins labels being black in Darcula
+- Add new 2020.1 UI Icons
+- Add folder associations: bin and units
+
 # 20.0
 - Restore the "Accent Color" function to colorize icons with the Accent color (defined from Material Theme, or from the current active tab indicator color)
 - Fix issue where arrows style were not persisted

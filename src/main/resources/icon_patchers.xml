@@ -80,7 +80,7 @@
         <patcher name="Groovy" remove="/icons" append="/icons/plugins/groovy/glyphs"/>
         <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/glyphs"/>
         <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/glyphs"/>
         <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
