@@ -66,8 +66,8 @@
                name="constants" pattern="^(constants?|const)$" icon="/constants.svg"/>
         <regex folderNames="controller,controllers,ctrl,ctrls"
                name="controllers" pattern="^(controllers?|ctrls?)$" icon="/controllers.svg"/>
-        <regex folderNames="core,support"
-               name="core" pattern="^(core|support)$" icon="/core.svg"/>
+        <regex folderNames="bin,core,support"
+               name="core" pattern="^(bin|core|support)$" icon="/core.svg"/>
         <regex folderNames="coverage"
                name="coverage" pattern="^coverage$" icon="/coverage.svg"/>
         <regex folderNames="custom"
@@ -292,8 +292,8 @@
                name="tasks" pattern="^(tasks?)$" icon="/tasks.svg"/>
         <regex folderNames="tmp,.tmp,temp,.temp,cache,.cache"
                name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/temp.svg"/>
-        <regex folderNames="test,tests,spec,specs"
-               name="tests" pattern="^(tests?|specs?)$" icon="/tests.svg"/>
+        <regex folderNames="test,tests,spec,specs,unit,units"
+               name="tests" pattern="^(tests?|specs?|units?)$" icon="/tests.svg"/>
         <regex folderNames="theme,themes,color,colors,scheme,schemes,skin,skins"
                name="themes" pattern="^(themes?|colors?|schemes?|skins?)$" icon="/themes.svg"/>
         <regex folderNames="typescript,typescripts,ts,interface,interfaces"
