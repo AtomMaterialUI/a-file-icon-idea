@@ -49,6 +49,7 @@ import org.w3c.dom.NodeList;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.net.URL;
+import java.util.Random;
 
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
@@ -117,9 +118,9 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-      "IfStatementWithTooManyBranches",
-      "DuplicateStringLiteralInspection",
-      "SyntheticAccessorCall"})
+    "IfStatementWithTooManyBranches",
+    "DuplicateStringLiteralInspection",
+    "SyntheticAccessorCall"})
   private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
@@ -185,5 +186,14 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       return ColorUtil.toHex(color);
     }
 
+    @SuppressWarnings("UnsecureRandomNumberGeneration")
+    private static Color getRandomColor() {
+      //to get rainbow, pastel colors
+      final Random random = new Random();
+      final float hue = random.nextFloat();
+      final float saturation = 0.9f;//1.0 for brilliant, 0.0 for dull
+      final float luminance = 1.0f; //1.0 for brighter, 0.0 for black
+      return Color.getHSBColor(hue, saturation, luminance);
+    }
   }
 }

@@ -518,6 +518,8 @@
                name="Jest" pattern="^jest\.(config|setup|teardown).*" icon="/icons/files/jest.svg"/>
         <regex fileNames=".jestrc,.jestrc.js,.jestrc.json"
                name="Jestrc" pattern="^\.jestrc.*" icon="/icons/files/jest.svg"/>
+        <regex fileNames="*.theme.json"
+               name="JetBrains theme" pattern=".*\.theme\.json" icon="/icons/files/theme.svg"/>
         <regex fileNames="*.jinja,*.jinja2,*.j2,*.jnj,*.jnj2"
                name="Jinja" pattern=".*\.(jinja2?|j2|jnj2?)$" icon="/icons/files/jinja.svg"/>
         <regex fileNames="*.smarty"
