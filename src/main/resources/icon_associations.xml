@@ -26,1035 +26,2099 @@
 
 <associations>
     <associations>
-        <type name="Database" type="Database Element" icon="/icons/files/db.svg"/>
+        <type name="Database" type="Database Element"
+              color="E57373"
+              icon="/icons/files/db.svg"/>
         <!-- Custom -->
         <regex fileNames="CODE_OF_CONDUCT.md,CODE_OF_CONDUCT.txt"
-               name="Github CODE" pattern="^CODE_OF_CONDUCT\.(md|txt)$" icon="/icons/files/github.svg"/>
+               name="Github CODE"
+               pattern="^CODE_OF_CONDUCT\.(md|txt)$"
+               color="78909C"
+               icon="/icons/files/github.svg"/>
         <regex fileNames="CONTRIBUTING.md,CONTRIBUTING.txt"
-               name="Github CONTRIBUTING" pattern="^CONTRIBUTING\.(md|txt)$" icon="/icons/files/github.svg"/>
+               name="Github CONTRIBUTING"
+               pattern="^CONTRIBUTING\.(md|txt)$"
+               color="78909C"
+               icon="/icons/files/github.svg"/>
         <regex fileNames="COMMIT_MESSAGE_CONVENTION.md"
-               name="Github COMMIT" pattern="^COMMIT_MESSAGE_CONVENTION\.(md|txt)$" icon="/icons/files/github.svg"/>
+               name="Github COMMIT"
+               pattern="^COMMIT_MESSAGE_CONVENTION\.(md|txt)$"
+               color="78909C"
+               icon="/icons/files/github.svg"/>
         <regex fileNames="TEMPLATE.md,TEMPLATE.txt"
-               name="Github TEMPLATE" pattern=".*TEMPLATE\.(md|txt)$" icon="/icons/files/github.svg"/>
+               name="Github TEMPLATE"
+               pattern=".*TEMPLATE\.(md|txt)$"
+               color="78909C"
+               icon="/icons/files/github.svg"/>
         <regex fileNames="README.md,README.txt"
-               name="README" pattern="^(README|readme)(\.(md|txt))?$" icon="/icons/files/readme.svg"/>
+               name="README"
+               pattern="^(README|readme)(\.(md|txt))?$"
+               color="78909C"
+               icon="/icons/files/readme.svg"/>
 
         <regex fileNames="plugin.xml"
-               name="Plugin" pattern="^plugin.xml$" icon="/icons/files/plugin.svg"/>
+               name="Plugin"
+               pattern="^plugin.xml$"
+               color="66BB6A"
+               icon="/icons/files/plugin.svg"/>
         <regex fileNames="*.pref,*.prefs"
-               name="Prefs" pattern=".*\.prefs$" icon="/icons/files/config.svg"/>
-        <type name="Images" type="Images" icon="/icons/files/image.svg"/>
+               name="Prefs"
+               pattern=".*\.prefs$"
+               color="1E88E5"
+               icon="/icons/files/config.svg"/>
+        <type name="Images" type="Images"
+              color="92AC5A"
+              icon="/icons/files/image.svg"/>
         <regex fileNames="*.jpg,*.jpeg,*.png,*.gif,*.bmp"
-               name="Images" pattern=".*\.(jpg|png|jpeg|gif|bmp)" icon="/icons/files/image.svg"/>
+               name="Images"
+               pattern=".*\.(jpg|png|jpeg|gif|bmp)"
+               color="92AC5A"
+               icon="/icons/files/image.svg"/>
         <regex fileNames="*.webp"
-               name="webp" pattern=".*\.webp$" icon="/icons/files/image.svg"/>
-        <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
+               name="webp"
+               pattern=".*\.webp$"
+               color="92AC5A"
+               icon="/icons/files/image.svg"/>
+        <type name="SVG" type="SVG"
+              color="FFB62C"
+              icon="/icons/files/svg.svg"/>
         <regex fileNames="*.svg"
-               name="SVG" pattern=".*\.svg" icon="/icons/files/svg.svg"/>
+               name="SVG"
+               pattern=".*\.svg"
+               color="FFB62C"
+               icon="/icons/files/svg.svg"/>
 
         <regex fileNames="*.bsl,*.mdo,*.sbsl,*.os"
-               name="1C" pattern=".*\.(bsl|sdbl|os|mdo)" icon="/icons/files/1c.svg"/>
+               name="1C"
+               color="FFB74D"
+               pattern=".*\.(bsl|sdbl|os|mdo)"
+               icon="/icons/files/1c.svg"/>
         <regex fileNames="*.stl,*.obj,*.dae,*.3ds,*.dxf,*.ac"
-               name="3D" pattern=".*\.(stl|obj|dae|3ds|dxf|ac)" icon="/icons/files/3d.svg"/>
+               name="3D"
+               color="29b6f6"
+               pattern=".*\.(stl|obj|dae|3ds|dxf|ac)"
+               icon="/icons/files/3d.svg"/>
         <regex fileNames="*.adn,*.accdb,*.accdr,*.accdt,*.accda,*.mdw,*.accde,*.mam,*.maq,*.mar,*.mat,*.maf,*.laccdb"
-               name="Access" pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
+               name="Access"
+               pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
+               color="D52A29"
                icon="/icons/files/access.svg"/>
         <regex fileNames="*.abp"
-               name="ABAP" pattern=".*\.abp$" icon="/icons/files/abap.svg"/>
+               name="ABAP"
+               color="E57373"
+               pattern=".*\.abp$"
+               icon="/icons/files/abap.svg"/>
         <regex fileNames="*.abif,*.ab1,*.fsa"
-               name="ABIF" pattern=".*\.(abif|ab1|fsa)$" icon="/icons/files/abif.svg"/>
+               name="ABIF"
+               color="FF7043"
+               pattern=".*\.(abif|ab1|fsa)$"
+               icon="/icons/files/abif.svg"/>
         <regex fileNames="acre.config"
-               name="Acre" pattern="acre\.config$" icon="/icons/files/acre.svg"/>
+               name="Acre"
+               color="5C6BC0"
+               pattern="acre\.config$"
+               icon="/icons/files/acre.svg"/>
         <regex fileNames="*.as"
-               name="ActionScript" pattern=".*\.as$" icon="/icons/files/actionscript.svg"/>
+               name="ActionScript"
+               color="EA3D3C"
+               pattern=".*\.as$"
+               icon="/icons/files/actionscript.svg"/>
         <regex fileNames="*.aep,*.aet"
-               name="Adobe Elements" pattern=".*\.ae(p|t)$" icon="/icons/files/ae.svg"/>
+               name="Adobe Elements"
+               color="7963E6"
+               pattern=".*\.ae(p|t)$"
+               icon="/icons/files/ae.svg"/>
         <regex fileNames="*.ai,*.ait"
-               name="Adobe Illustrator" pattern=".*\.(ai|ait)$" icon="/icons/files/ai.svg"/>
+               name="Adobe Illustrator"
+               color="EA7130"
+               pattern=".*\.(ai|ait)$"
+               icon="/icons/files/ai.svg"/>
         <regex fileNames="*.ada,*.adb,*.ads"
-               name="Ada" pattern=".*\.(ada|adb|ads)$" icon="/icons/files/ada.svg"/>
+               name="Ada"
+               color="7A8387"
+               pattern=".*\.(ada|adb|ads)$"
+               icon="/icons/files/ada.svg"/>
         <regex fileNames="*.prw,*.ahu,*.aph,*.tlpp"
-               name="AdvPL" pattern=".*\.(prw|ahu|aph|tlpp)$" icon="/icons/files/advpl.svg"/>
+               name="AdvPL"
+               color="4FC3F7"
+               pattern=".*\.(prw|ahu|aph|tlpp)$"
+               icon="/icons/files/advpl.svg"/>
         <regex fileNames="*.affect"
-               name="AffectScript" pattern=".*\.affect$" icon="/icons/files/affectscript.svg"/>
+               name="AffectScript"
+               color="F06292"
+               pattern=".*\.affect$"
+               icon="/icons/files/affectscript.svg"/>
         <regex fileNames="*.afdesign,*.afphoto,*.afpub"
-               name="Affinity Designer" pattern=".*\.(afdesign|afphoto|afpub)$" icon="/icons/files/affinity.svg"/>
+               name="Affinity Designer"
+               color="FF8A65"
+               pattern=".*\.(afdesign|afphoto|afpub)$"
+               icon="/icons/files/affinity.svg"/>
         <regex fileNames="*.akka"
-               name="Akka" pattern=".*\.akka$" icon="/icons/files/akka.svg"/>
+               name="Akka"
+               color="26A2C1"
+               pattern=".*\.akka$"
+               icon="/icons/files/akka.svg"/>
         <regex fileNames="alacritty.yml"
-               name="Alacritty" pattern="\.?alacritty\.yml$" icon="/icons/files/alacritty.svg"/>
+               name="Alacritty"
+               color="EF5350"
+               pattern="\.?alacritty\.yml$"
+               icon="/icons/files/alacritty.svg"/>
         <regex fileNames=".alexrc,.alexignore"
-               name="Alex" pattern="\.alex(rc|ignore)$" icon="/icons/files/alex.svg"/>
+               name="Alex"
+               color="EC407A"
+               pattern="\.alex(rc|ignore)$"
+               icon="/icons/files/alex.svg"/>
         <regex fileNames="*.als"
-               name="Alloy" pattern=".*\.als$" icon="/icons/files/alloy.svg"/>
+               name="Alloy"
+               color="9575CD"
+               pattern=".*\.als$"
+               icon="/icons/files/alloy.svg"/>
         <regex fileNames="*.ampl"
-               name="AMPL" pattern=".*\.ampl$" icon="/icons/files/ampl.svg"/>
+               name="AMPL"
+               color="8D6E63"
+               pattern=".*\.ampl$"
+               icon="/icons/files/ampl.svg"/>
         <regex fileNames="*.muse"
-               name="AmuseWiki" pattern=".*\.muse" icon="/icons/files/amusewiki.svg"/>
+               name="AmuseWiki"
+               color="EF5350"
+               pattern=".*\.muse"
+               icon="/icons/files/amusewiki.svg"/>
         <regex fileNames="AndroidManifest.xml"
-               name="Android Manifest" pattern="^AndroidManifest\.xml$" icon="/icons/files/android.svg"/>
+               name="Android Manifest"
+               color="6AAB20"
+               pattern="^AndroidManifest\.xml$"
+               icon="/icons/files/android.svg"/>
         <regex fileNames="MainActivity.java"
-               name="Android Main" pattern="^MainActivity\.java$" icon="/icons/files/android.svg"/>
+               name="Android Main"
+               color="6AAB20"
+               pattern="^MainActivity\.java$"
+               icon="/icons/files/android.svg"/>
         <regex fileNames="*.smali,*.rsh"
-               name="Android Smali" pattern=".*\.(smali|rsh)$" icon="/icons/files/android.svg"/>
+               name="Android Smali"
+               color="6AAB20"
+               pattern=".*\.(smali|rsh)$"
+               icon="/icons/files/android.svg"/>
         <regex fileNames="*.acs,*.angelscript"
-               name="AngelScript" pattern=".*\.(acs|angelscript)$" icon="/icons/files/angelscript.svg"/>
+               name="AngelScript"
+               color="F06292"
+               pattern=".*\.(acs|angelscript)$"
+               icon="/icons/files/angelscript.svg"/>
         <regex fileNames="angular.json,angular-cli.json"
-               name="Angular-CLI" pattern="^angular(-cli)?\.json$" icon="/icons/files/angular.svg"/>
+               name="Angular-CLI"
+               color="E53935"
+               pattern="^angular(-cli)?\.json$"
+               icon="/icons/files/angular.svg"/>
         <regex fileNames="angular.js,angular.min.js"
-               name="AngularJS" pattern="^angular\.(min\.)?js$" icon="/icons/files/angular.svg"/>
+               name="AngularJS"
+               color="E53935"
+               pattern="^angular\.(min\.)?js$"
+               icon="/icons/files/angular.svg"/>
         <regex fileNames="*.ng.html,*.ng.js,*.module.ts,*.module.js,*.ng-template"
-               name="Angular" pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$"
+               name="Angular"
+               color="E53935"
+               pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$"
                icon="/icons/files/angular.svg"/>
         <regex fileNames="*.component.js,*.component.ts"
-               name="Angular Component" pattern=".*\.component\.[tj]s$" icon="/icons/files/angularcomponent.svg"/>
+               name="Angular Component"
+               color="0288D1"
+               pattern=".*\.component\.[tj]s$"
+               icon="/icons/files/angularcomponent.svg"/>
         <regex fileNames="*.controller.js,*.controller.ts"
-               name="Angular Controller" pattern=".*\.controller\.[tj]s$" icon="/icons/files/angularcomponent.svg"/>
+               name="Angular Controller"
+               color="0288D1"
+               pattern=".*\.controller\.[tj]s$"
+               icon="/icons/files/angularcomponent.svg"/>
         <regex fileNames="*.directive.js,*.directive.ts"
-               name="Angular Directive" pattern=".*\.directive\.[tj]s$" icon="/icons/files/angulardirective.svg"/>
+               name="Angular Directive"
+               color="AB47BC"
+               pattern=".*\.directive\.[tj]s$"
+               icon="/icons/files/angulardirective.svg"/>
         <regex fileNames="*.guard.js,*.guard.ts"
-               name="Angular Guard" pattern=".*\.guard\.[tj]s$" icon="/icons/files/angularguard.svg"/>
+               name="Angular Guard"
+               color="43A047"
+               pattern=".*\.guard\.[tj]s$"
+               icon="/icons/files/angularguard.svg"/>
         <regex fileNames="*.service.js,*.service.ts"
-               name="Angular Service" pattern=".*\.service\.[tj]s$" icon="/icons/files/angularservice.svg"/>
+               name="Angular Service"
+               color="FDD835"
+               pattern=".*\.service\.[tj]s$"
+               icon="/icons/files/angularservice.svg"/>
         <regex fileNames="*.pipe.js,*.pipe.ts"
-               name="Angular Pipe" pattern=".*\.pipe\.[tj]s$" icon="/icons/files/angularpipe.svg"/>
+               name="Angular Pipe"
+               color="00897B"
+               pattern=".*\.pipe\.[tj]s$"
+               icon="/icons/files/angularpipe.svg"/>
         <regex fileNames="*.routing.js,*.routing.ts"
-               name="Angular Routing" pattern=".*\.routing\.[tj]s$" icon="/icons/files/angularrouting.svg"/>
+               name="Angular Routing"
+               color="43A047"
+               pattern=".*\.routing\.[tj]s$"
+               icon="/icons/files/angularrouting.svg"/>
         <regex fileNames="*.resolver.js,*.resolver.ts"
-               name="Angular Resolver" pattern=".*\.resolver\.[tj]s$" icon="/icons/files/angularresolver.svg"/>
+               name="Angular Resolver"
+               color="43A047"
+               pattern=".*\.resolver\.[tj]s$"
+               icon="/icons/files/angularresolver.svg"/>
         <regex fileNames="*.anime,*.animestudio"
-               name="Anime Studio" pattern=".*\.anime.*$" icon="/icons/files/animestudio.svg"/>
+               name="Anime Studio"
+               pattern=".*\.anime.*$"
+               color="BA68C8"
+               icon="/icons/files/animestudio.svg"/>
         <regex fileNames="ansible.yml,site.yml"
-               name="Ansible" pattern="^(ansible|site)\.yml$" icon="/icons/files/ansible.svg"/>
+               name="Ansible"
+               color="FF5370"
+               pattern="^(ansible|site)\.yml$"
+               icon="/icons/files/ansible.svg"/>
         <regex fileNames="ant.xml,.ant"
-               name="Ant" pattern="(ant\.xml$|\.ant)" icon="/icons/files/ant.svg"/>
+               name="Ant"
+               color="EF5350"
+               pattern="(ant\.xml$|\.ant)"
+               icon="/icons/files/ant.svg"/>
         <regex fileNames="*.g4"
-               name="ANTLR" pattern=".*\.g4$" icon="/icons/files/antlr.svg"/>
+               name="ANTLR"
+               color="FF8A65"
+               pattern=".*\.g4$"
+               icon="/icons/files/antlr.svg"/>
         <regex fileNames="*.any"
-               name="AnyScript" pattern=".*\.any" icon="/icons/files/any.svg"/>
+               name="AnyScript"
+               color="FFA000"
+               pattern=".*\.any"
+               icon="/icons/files/any.svg"/>
         <regex fileNames="apache.conf,apache2.conf,httpd.conf"
-               name="Apache Conf" pattern="(apache2?|httpd).*\.conf$" icon="/icons/files/apache.svg"/>
+               name="Apache Conf"
+               color="F44336"
+               pattern="(apache2?|httpd).*\.conf$"
+               icon="/icons/files/apache.svg"/>
         <regex fileNames=".apacheconf"
-               name="Apache Conf-" pattern=".apacheconf$" icon="/icons/files/apache.svg"/>
+               name="Apache Conf-"
+               color="F44336"
+               pattern=".apacheconf$"
+               icon="/icons/files/apache.svg"/>
         <regex fileNames="*.vhost,*.thrift"
-               name="Apache" pattern=".*\.(vhost|thrift)$" icon="/icons/files/apache.svg"/>
+               name="Apache"
+               color="F44336"
+               pattern=".*\.(vhost|thrift)$"
+               icon="/icons/files/apache.svg"/>
         <regex fileNames="*.apib"
-               name="API Blueprint" pattern=".*\.apib$" icon="/icons/files/apib.svg"/>
+               name="API Blueprint"
+               color="009688"
+               pattern=".*\.apib$"
+               icon="/icons/files/apib.svg"/>
         <regex fileNames="*.apk"
-               name="APK" pattern=".*\.apk$" icon="/icons/files/android.svg"/>
+               name="APK"
+               color="6AAB20"
+               pattern=".*\.apk$"
+               icon="/icons/files/android.svg"/>
         <regex fileNames="*.apl,*.apla,*.aplc,*.aplf,*.apli,*.apln,*.aplo"
-               name="APL" pattern=".*\.(apl|apla|aplc|aplf|apli|apln|aplo)$" icon="/icons/files/apl.svg"/>
+               name="APL"
+               color="4DD0E1"
+               pattern=".*\.(apl|apla|aplc|aplf|apli|apln|aplo)$"
+               icon="/icons/files/apl.svg"/>
         <regex fileNames="appcelerator.js,appcelerator.ts"
-               name="Appcelerator" pattern="^appcelerator\.(js|ts)$" icon="/icons/files/appcelerator.svg"/>
+               name="Appcelerator"
+               color="66BB6A"
+               pattern="^appcelerator\.(js|ts)$"
+               icon="/icons/files/appcelerator.svg"/>
         <regex fileNames=".appveyor.yml"
-               name="Appveyor" pattern="^\.?appveyor\.yml$" icon="/icons/files/appveyor.svg"/>
+               name="Appveyor"
+               color="3F51B5"
+               pattern="^\.?appveyor\.yml$"
+               icon="/icons/files/appveyor.svg"/>
         <regex fileNames="*.applescript"
-               name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.svg"/>
+               name="AppleScript"
+               color="7A8387"
+               pattern=".*\.applescript$"
+               icon="/icons/files/applescript.svg"/>
         <regex fileNames="*.arc"
-               name="Arc" pattern=".*\.arc$" icon="/icons/files/arc.svg"/>
+               name="Arc"
+               color="8D6E63"
+               pattern=".*\.arc$"
+               icon="/icons/files/arc.svg"/>
         <regex fileNames=".install,.SRCINFO,PKGBUILD,.yaourtrc"
-               name="Arch Linux" pattern="(\.install|\.SRCINFO|PKGBUILD|\.yaourtrc)$"
+               name="Arch Linux"
+               pattern="(\.install|\.SRCINFO|PKGBUILD|\.yaourtrc)$"
+               color="FFCA28"
                icon="/icons/files/archlinux.svg"/>
         <regex fileNames="pacman.conf,pamac.conf"
-               name="Arch Linux Pacman" pattern="(pacman\.conf|pamac\.conf)$" icon="/icons/files/archlinux.svg"/>
+               name="Arch Linux Pacman"
+               color="FFCA28"
+               pattern="(pacman\.conf|pamac\.conf)$"
+               icon="/icons/files/archlinux.svg"/>
         <regex fileNames="*.ino"
-               name="Arduino" pattern=".*\.ino$" icon="/icons/files/arduino.svg"/>
+               name="Arduino"
+               color="00979c"
+               pattern=".*\.ino$"
+               icon="/icons/files/arduino.svg"/>
         <regex fileNames="*.ad,*.adoc,*.asciidoc"
-               name="Asciidoc" pattern=".*\.(ad|adoc|asciidoc)$" icon="/icons/files/asciidoc.svg"/>
+               name="Asciidoc"
+               color="f44336"
+               pattern=".*\.(ad|adoc|asciidoc)$"
+               icon="/icons/files/asciidoc.svg"/>
         <regex fileNames="*.aj"
-               name="AspectJ" pattern=".*\.aj$" icon="/icons/files/eclipse.svg"/>
+               name="AspectJ"
+               color="7963E6"
+               pattern=".*\.aj$"
+               icon="/icons/files/eclipse.svg"/>
         <regex fileNames="*.asm,*.nasm,*.inc,*.ms,*.agc,*.aes,*.aea,*.argus,*.mitigus"
-               name="ASM" pattern=".*\.(asm|nasm|inc|ms|agc|aes|aea|argus|mitigus)$" icon="/icons/files/asm.svg"/>
+               name="ASM"
+               color="ff6e40"
+               pattern=".*\.(asm|nasm|inc|ms|agc|aes|aea|argus|mitigus)$"
+               icon="/icons/files/asm.svg"/>
         <regex fileNames="*.asp,*.asa,*.aspx,*.asax,*.ascx,*.ashx,*.asmx,*.axd"
-               name="ASP" pattern=".*\.(asp|asa|aspx|asax|ascx|ashx|asmx|axd)$" icon="/icons/files/asp.svg"/>
+               name="ASP"
+               color="1E9CEF"
+               pattern=".*\.(asp|asa|aspx|asax|ascx|ashx|asmx|axd)$"
+               icon="/icons/files/asp.svg"/>
         <regex fileNames="*.asy"
-               name="Asymptote" pattern=".*\.(asy)$" icon="/icons/files/asymptote.svg"/>
+               name="Asymptote"
+               color="7986CB"
+               pattern=".*\.(asy)$"
+               icon="/icons/files/asymptote.svg"/>
         <regex fileNames="*.atom.config"
-               name="Atom" pattern=".*\.atom.*$" icon="/icons/files/atom.svg"/>
+               name="Atom"
+               color="689F38"
+               pattern=".*\.atom.*$"
+               icon="/icons/files/atom.svg"/>
         <regex fileNames="*.atoum.php"
-               name="Atoum" pattern=".*\.atoum.*\.php$" icon="/icons/files/atoum.svg"/>
+               name="Atoum"
+               color="9E9D24"
+               pattern=".*\.atoum.*\.php$"
+               icon="/icons/files/atoum.svg"/>
         <regex fileNames="*.dats,*.hats,*.sats"
-               name="ATS" pattern=".*\.(dats|hats|sats)$" icon="/icons/files/ats.svg"/>
+               name="ATS"
+               color="FF9800"
+               pattern=".*\.(dats|hats|sats)$"
+               icon="/icons/files/ats.svg"/>
         <regex fileNames="*.aup"
-               name="Audacity" pattern=".*\.aup$" icon="/icons/files/audacity.svg"/>
+               name="Audacity"
+               color="FFCA28"
+               pattern=".*\.aup$"
+               icon="/icons/files/audacity.svg"/>
         <regex fileNames="*.aug"
-               name="Augeas" pattern=".*\.aug$" icon="/icons/files/augeas.svg"/>
+               name="Augeas"
+               color="FF8A65"
+               pattern=".*\.aug$"
+               icon="/icons/files/augeas.svg"/>
         <regex fileNames="aurelia.js,aurelia.json,aureliafile.json"
-               name="Aurelia" pattern="^aurelia(file)?\.js(on)?$" icon="/icons/files/aurelia.svg"/>
+               name="Aurelia"
+               color="F13C6F"
+               pattern="^aurelia(file)?\.js(on)?$"
+               icon="/icons/files/aurelia.svg"/>
         <regex fileNames="AUTHORS,AUTHORS.md,AUTHORS.txt"
-               name="Authors" pattern="^(AUTHORS|authors)(\.(md|txt))?" icon="/icons/files/authors.svg"/>
+               name="Authors"
+               color="F78AE0"
+               pattern="^(AUTHORS|authors)(\.(md|txt))?"
+               icon="/icons/files/authors.svg"/>
         <regex fileNames="*.ahk,*.ahkl"
-               name="AutoHotKey" pattern=".*\.ahkl?$" icon="/icons/files/ahk.svg"/>
+               name="AutoHotKey"
+               color="6AAB20"
+               pattern=".*\.ahkl?$"
+               icon="/icons/files/ahk.svg"/>
         <regex fileNames="*.au3"
-               name="AutoIt" pattern=".*\.au3" icon="/icons/files/autoit.svg"/>
+               name="AutoIt"
+               color="1976d2"
+               pattern=".*\.au3"
+               icon="/icons/files/autoit.svg"/>
         <regex fileNames="*.avcs,*.avsc,*.avdl"
-               name="Avro" pattern=".*\.(avcs|avsc|avdl)" icon="/icons/files/avro.svg"/>
+               name="Avro"
+               color="1E88E5"
+               pattern=".*\.(avcs|avsc|avdl)"
+               icon="/icons/files/avro.svg"/>
         <regex fileNames="*.azcli"
-               name="Azure" pattern=".*\.azcli$" icon="/icons/files/azure.svg"/>
+               name="Azure"
+               color="64b5f6"
+               pattern=".*\.azcli$"
+               icon="/icons/files/azure.svg"/>
         <regex fileNames="azure-pipelines.yml"
-               name="Azure Pipelines" pattern="azure-pipelines\.yml$" icon="/icons/files/azure.svg"/>
+               name="Azure Pipelines"
+               color="64b5f6"
+               pattern="azure-pipelines\.yml$"
+               icon="/icons/files/azure.svg"/>
 
         <regex fileNames=".babelrc,babel.json"
-               name="Babel" pattern="^(\.babelrc|babel\.json)$" icon="/icons/files/babel.svg"/>
+               name="Babel"
+               pattern="^(\.babelrc|babel\.json)$"
+               icon="/icons/files/babel.svg"/>
         <regex fileNames="backbone.js"
-               name="Backbone" pattern="^backbone.*\.js$" icon="/icons/files/backbone.svg"/>
+               name="Backbone"
+               pattern="^backbone.*\.js$"
+               icon="/icons/files/backbone.svg"/>
         <regex fileNames="*.bak,*.old,*.orig"
-               name="Backup" pattern=".*\.(bak|old|orig)$" icon="/icons/files/backup.svg"/>
+               name="Backup"
+               pattern=".*\.(bak|old|orig)$"
+               icon="/icons/files/backup.svg"/>
         <regex fileNames="*.bal,*.balx"
-               name="Ballerina" pattern=".*\.balx?$" icon="/icons/files/ballerina.svg"/>
+               name="Ballerina"
+               pattern=".*\.balx?$"
+               icon="/icons/files/ballerina.svg"/>
         <regex fileNames="*.bas,*.vb,*.vbs"
-               name="Basic" pattern=".*\.(bas|vb|vbs)$" icon="/icons/files/vs.svg"/>
+               name="Basic"
+               pattern=".*\.(bas|vb|vbs)$"
+               icon="/icons/files/vs.svg"/>
         <regex fileNames="*.bzl,*.bazel"
-               name="Bazel" pattern=".*\.(bzl|bazel)$" icon="/icons/files/bazel.svg"/>
+               name="Bazel"
+               pattern=".*\.(bzl|bazel)$"
+               icon="/icons/files/bazel.svg"/>
         <regex fileNames=".bazelrc,bazel.rc"
-               name="Bazel Config" pattern="(\.bazelrc|bazel\.rc)$" icon="/icons/files/bazel.svg"/>
+               name="Bazel Config"
+               pattern="(\.bazelrc|bazel\.rc)$"
+               icon="/icons/files/bazel.svg"/>
         <regex fileNames="javaBean.java,javabean.java"
-               name="Bean" pattern=".*(b|B)ean\.java$" icon="/icons/files/bean.svg"/>
+               name="Bean"
+               pattern=".*(b|B)ean\.java$"
+               icon="/icons/files/bean.svg"/>
         <regex fileNames="*.feature,*.feature.php"
-               name="Behat" pattern=".*\.feature(\.php)?$" icon="/icons/files/behat.svg"/>
+               name="Behat"
+               pattern=".*\.feature(\.php)?$"
+               icon="/icons/files/behat.svg"/>
         <regex fileNames="behat.yml,behat.config.yml"
-               name="Behat Config" pattern="behat(\..*)*\.yml$" icon="/icons/files/behat.svg"/>
+               name="Behat Config"
+               pattern="behat(\..*)*\.yml$"
+               icon="/icons/files/behat.svg"/>
         <regex fileNames=".bemjson,.bemjson.js"
-               name="BEM" pattern="\.bemjson(\.js)?$" icon="/icons/files/bem.svg"/>
+               name="BEM"
+               pattern="\.bemjson(\.js)?$"
+               icon="/icons/files/bem.svg"/>
         <regex fileNames="*.cbx,*.bbx,*.bib,*.bst"
-               name="BibTex" pattern=".*\.(cbx|bbx|bib|bst)$" icon="/icons/files/bibtex.svg"/>
+               name="BibTex"
+               pattern=".*\.(cbx|bbx|bib|bst)$"
+               icon="/icons/files/bibtex.svg"/>
         <regex fileNames="*.bim"
-               name="Biml" pattern=".*\.biml$" icon="/icons/files/biml.svg"/>
+               name="Biml"
+               pattern=".*\.biml$"
+               icon="/icons/files/biml.svg"/>
         <regex fileNames=".bintray.json"
-               name="BinTray" pattern="\.bintray\.json$" icon="/icons/files/bintray.svg"/>
+               name="BinTray"
+               pattern="\.bintray\.json$"
+               icon="/icons/files/bintray.svg"/>
         <regex fileNames="*.bison,*.yacc"
-               name="Bison" pattern=".*\.(bison|yacc)$" icon="/icons/files/gnu.svg"/>
+               name="Bison"
+               pattern=".*\.(bison|yacc)$"
+               icon="/icons/files/gnu.svg"/>
         <regex fileNames=".bithoundrc"
-               name="BitHound" pattern="\.bithoundrc$" icon="/icons/files/bithound.svg"/>
+               name="BitHound"
+               pattern="\.bithoundrc$"
+               icon="/icons/files/bithound.svg"/>
         <regex fileNames="bitbucket-pipelines.yml"
-               name="Bitbucket Pipelines" pattern="^bitbucket-pipelines\.yml$" icon="/icons/files/bitbucket.svg"/>
+               name="Bitbucket Pipelines"
+               pattern="^bitbucket-pipelines\.yml$"
+               icon="/icons/files/bitbucket.svg"/>
         <regex fileNames="*.blade,*.blade.php"
-               name="Blade" pattern=".*\.blade(\.php)?$" icon="/icons/files/blade.svg"/>
+               name="Blade"
+               pattern=".*\.blade(\.php)?$"
+               icon="/icons/files/blade.svg"/>
         <regex fileNames="*.blend,*.bphys"
-               name="Blender" pattern=".*\.(blend|bphys)$" icon="/icons/files/blender.svg"/>
+               name="Blender"
+               pattern=".*\.(blend|bphys)$"
+               icon="/icons/files/blender.svg"/>
         <regex fileNames="*.bsv,*.bspec"
-               name="BlueSpec" pattern=".*\.(bsv|bspec)$" icon="/icons/files/bluespec.svg"/>
+               name="BlueSpec"
+               pattern=".*\.(bsv|bspec)$"
+               icon="/icons/files/bluespec.svg"/>
         <regex fileNames="*.blink"
-               name="Blink" pattern=".*\.blink$" icon="/icons/files/blink.svg"/>
+               name="Blink"
+               pattern=".*\.blink$"
+               icon="/icons/files/blink.svg"/>
         <regex fileNames="*.bnf,*.ebnf,*.abnf"
-               name="BNF" pattern=".*\.(bnf|abnf|ebnf)$" icon="/icons/files/bnf.svg"/>
+               name="BNF"
+               pattern=".*\.(bnf|abnf|ebnf)$"
+               icon="/icons/files/bnf.svg"/>
         <regex fileNames="*.boo,*.boo.unity"
-               name="Boo" pattern=".*\.boo(\.unity)?$" icon="/icons/files/boo.svg"/>
+               name="Boo"
+               pattern=".*\.boo(\.unity)?$"
+               icon="/icons/files/boo.svg"/>
         <regex fileNames="bootstrap.js,bootstrap.ts,custom.bootstrap.js"
-               name="Bootstrap" pattern="^(custom\.)?bootstrap\.(js|ts)$" icon="/icons/files/bootstrap.svg"/>
+               name="Bootstrap"
+               pattern="^(custom\.)?bootstrap\.(js|ts)$"
+               icon="/icons/files/bootstrap.svg"/>
         <regex fileNames=".bowerrc,bower.json"
-               name="Bower" pattern="^(\.bowerrc|bower\.json)$" icon="/icons/files/bower.svg"/>
+               name="Bower"
+               pattern="^(\.bowerrc|bower\.json)$"
+               icon="/icons/files/bower.svg"/>
         <regex fileNames="*.bf,*.b"
-               name="Brainfuck" pattern=".*\.(b|bf)$" icon="/icons/files/brainfuck.svg"/>
+               name="Brainfuck"
+               pattern=".*\.(b|bf)$"
+               icon="/icons/files/brainfuck.svg"/>
         <regex fileNames="brakeman.yml"
-               name="Brakeman" pattern="brakeman\.yml$" icon="/icons/files/brakeman.svg"/>
+               name="Brakeman"
+               pattern="brakeman\.yml$"
+               icon="/icons/files/brakeman.svg"/>
         <regex fileNames="*.bro"
-               name="Bro" pattern=".*\.bro$" icon="/icons/files/bro.svg"/>
+               name="Bro"
+               pattern=".*\.bro$"
+               icon="/icons/files/bro.svg"/>
         <regex fileNames="Brocfile"
-               name="Broccoli" pattern="Brocfile$" icon="/icons/files/broccoli.svg"/>
+               name="Broccoli"
+               pattern="Brocfile$"
+               icon="/icons/files/broccoli.svg"/>
         <regex fileNames="*.br"
-               name="Brotli" pattern=".*\.br" icon="/icons/files/brotli.svg"/>
+               name="Brotli"
+               pattern=".*\.br"
+               icon="/icons/files/brotli.svg"/>
         <regex fileNames=".browserslist,.browserslistrc"
-               name="Browserslist" pattern="\.browserslist(rc)?$" icon="/icons/files/browserslist.svg"/>
+               name="Browserslist"
+               pattern="\.browserslist(rc)?$"
+               icon="/icons/files/browserslist.svg"/>
         <regex fileNames="bs-config.js,bs-config.json,browser-sync.js,browser-sync.json"
-               name="Browsersync" pattern="^(bs-config|browser-sync)\.(js|json)$" icon="/icons/files/browsersync.svg"/>
+               name="Browsersync"
+               pattern="^(bs-config|browser-sync)\.(js|json)$"
+               icon="/icons/files/browsersync.svg"/>
         <regex fileNames="brunch-config.js,brunch-config.coffee,brunch-config.ts"
-               name="Brunch" pattern="^brunch-config\.(js|coffee|ts)$" icon="/icons/files/brunch.svg"/>
+               name="Brunch"
+               pattern="^brunch-config\.(js|coffee|ts)$"
+               icon="/icons/files/brunch.svg"/>
         <regex fileNames="*.cmj"
-               name="BuckleScript" pattern=".*\.cmj$" icon="/icons/files/bucklescript.svg"/>
+               name="BuckleScript"
+               pattern=".*\.cmj$"
+               icon="/icons/files/bucklescript.svg"/>
         <regex fileNames="buildkite.yml,buildkite.yaml"
-               name="BuildKite" pattern="^buildkite\.(yml|yaml)$" icon="/icons/files/buildkite.svg"/>
+               name="BuildKite"
+               pattern="^buildkite\.(yml|yaml)$"
+               icon="/icons/files/buildkite.svg"/>
         <regex fileNames="Gemfile"
-               name="Bundler" pattern="^Gemfile$" icon="/icons/files/bundle.svg"/>
+               name="Bundler"
+               pattern="^Gemfile$"
+               icon="/icons/files/bundle.svg"/>
         <regex fileNames="*.dm"
-               name="Byond" pattern=".*\.dm$" icon="/icons/files/byond.svg"/>
+               name="Byond"
+               pattern=".*\.dm$"
+               icon="/icons/files/byond.svg"/>
 
         <regex fileNames="*.c,*.objc"
-               name="C" pattern=".*\.(c|objc)$" icon="/icons/files/c.svg"/>
+               name="C"
+               pattern=".*\.(c|objc)$"
+               icon="/icons/files/c.svg"/>
         <regex fileNames="*.cabal"
-               name="Cabal" pattern=".*\.cabal$" icon="/icons/files/cabal.svg"/>
+               name="Cabal"
+               pattern=".*\.cabal$"
+               icon="/icons/files/cabal.svg"/>
         <regex fileNames="cabal.project"
-               name="Cabal Project" pattern="^cabal\.project$" icon="/icons/files/cabal.svg"/>
+               name="Cabal Project"
+               pattern="^cabal\.project$"
+               icon="/icons/files/cabal.svg"/>
         <regex fileNames="*.cake"
-               name="CakePHP" pattern=".*\.cake$" icon="/icons/files/cakephp.svg"/>
+               name="CakePHP"
+               pattern=".*\.cake$"
+               icon="/icons/files/cakephp.svg"/>
         <regex fileNames="cargo.toml,cargo.lock"
-               name="Cargo" pattern="cargo\.(toml|lock)$" icon="/icons/files/cargo.svg"/>
+               name="Cargo"
+               pattern="cargo\.(toml|lock)$"
+               icon="/icons/files/cargo.svg"/>
         <regex fileNames="*.crt,*.cert,*.x509,*.pks"
-               name="Certificate" pattern=".*\.(crt|cert|x509|pks)$" icon="/icons/files/certificate.svg"/>
+               name="Certificate"
+               pattern=".*\.(crt|cert|x509|pks)$"
+               icon="/icons/files/certificate.svg"/>
         <regex fileNames="*.cfc,*.cfm,*.cfml,*.lucee"
-               name="CFC" pattern=".*\.(cfc|cfm|cfml|lucee)$" icon="/icons/files/cfc.svg"/>
+               name="CFC"
+               pattern=".*\.(cfc|cfm|cfml|lucee)$"
+               icon="/icons/files/cfc.svg"/>
         <regex fileNames="CHANGELOG,CHANGELOG.md,changelog.md,CHANGELOG.txt"
-               name="Changelog" pattern="^(CHANGELOG|changelog)(\.(md|txt))?" icon="/icons/files/log.svg"/>
+               name="Changelog"
+               pattern="^(CHANGELOG|changelog)(\.(md|txt))?"
+               icon="/icons/files/log.svg"/>
         <regex fileNames="knife.rb"
-               name="Chef Knife" pattern="^knife.rb$" icon="/icons/files/chef.svg"/>
+               name="Chef Knife"
+               pattern="^knife.rb$"
+               icon="/icons/files/chef.svg"/>
         <regex fileNames="Berksfile"
-               name="Chef Berksfile" pattern="^Berksfile$" icon="/icons/files/chef.svg"/>
+               name="Chef Berksfile"
+               pattern="^Berksfile$"
+               icon="/icons/files/chef.svg"/>
         <regex fileNames=".circleci"
-               name="CircleCI" pattern="^\.circleci$" icon="/icons/files/circleci.svg"/>
+               name="CircleCI"
+               pattern="^\.circleci$"
+               icon="/icons/files/circleci.svg"/>
         <regex fileNames="circle.yml,config.yml"
-               name="CircleCI Conf" pattern="^(circle|config)\.yml$" icon="/icons/files/circleci.svg"/>
+               name="CircleCI Conf"
+               pattern="^(circle|config)\.yml$"
+               icon="/icons/files/circleci.svg"/>
         <regex fileNames="*.class,*.o"
-               name="Class" pattern=".*\.(class|o)$" icon="/icons/files/class.svg"/>
+               name="Class"
+               pattern=".*\.(class|o)$"
+               icon="/icons/files/class.svg"/>
         <regex fileNames="*.cljs,*.clj,*.cljc,*.clojure"
-               name="Clojure" pattern=".*\.(cljs|clj|cljc|clojure)$" icon="/icons/files/clojure.svg"/>
+               name="Clojure"
+               pattern=".*\.(cljs|clj|cljc|clojure)$"
+               icon="/icons/files/clojure.svg"/>
         <regex fileNames="*.cmake"
-               name="CMake" pattern=".*\.cmake$" icon="/icons/files/cmake.svg"/>
+               name="CMake"
+               pattern=".*\.cmake$"
+               icon="/icons/files/cmake.svg"/>
         <regex fileNames="CMakeLists"
-               name="CMakelists" pattern="^CMakeLists" icon="/icons/files/cmake.svg"/>
+               name="CMakelists"
+               pattern="^CMakeLists"
+               icon="/icons/files/cmake.svg"/>
         <regex fileNames="CNAME"
-               name="CNAME" pattern="^CNAME$" icon="/icons/files/cname.svg"/>
+               name="CNAME"
+               pattern="^CNAME$"
+               icon="/icons/files/cname.svg"/>
         <regex fileNames="*.cobol,*.cbl"
-               name="Cobol" pattern=".*\.(cobol|cbl)$" icon="/icons/files/cobol.svg"/>
+               name="Cobol"
+               pattern=".*\.(cobol|cbl)$"
+               icon="/icons/files/cobol.svg"/>
         <regex fileNames="*.codecov.yml"
-               name="Codecov" pattern="^.*codecov\.yml$" icon="/icons/files/codecov.svg"/>
+               name="Codecov"
+               pattern="^.*codecov\.yml$"
+               icon="/icons/files/codecov.svg"/>
         <regex fileNames="codeowners"
-               name="Codeowners" pattern="^codeowners$" icon="/icons/files/codeowners.svg"/>
+               name="Codeowners"
+               pattern="^codeowners$"
+               icon="/icons/files/codeowners.svg"/>
         <regex fileNames="*.coffee,*.iced"
-               name="CoffeeScript" pattern=".*\.(coffee|iced)$" icon="/icons/files/coffeescript.svg"/>
+               name="CoffeeScript"
+               pattern=".*\.(coffee|iced)$"
+               icon="/icons/files/coffeescript.svg"/>
         <regex fileNames="*.cf"
-               name="ColdFusion" pattern=".*\.cf$" icon="/icons/files/cf.svg"/>
+               name="ColdFusion"
+               pattern=".*\.cf$"
+               icon="/icons/files/cf.svg"/>
         <regex fileNames=".commitlintrc,.commitlintrc.js,.commitlintrc.json,.commitlintrc.yml"
-               name="Commitlint" pattern=".*\.commitlintrc\.(js(on)?|yml)$" icon="/icons/files/commitlint.svg"/>
+               name="Commitlint"
+               pattern=".*\.commitlintrc\.(js(on)?|yml)$"
+               icon="/icons/files/commitlint.svg"/>
         <regex fileNames="commitlint.config.js"
-               name="Commitlint Config" pattern="^commitlint\.config\.js$" icon="/icons/files/commitlint.svg"/>
+               name="Commitlint Config"
+               pattern="^commitlint\.config\.js$"
+               icon="/icons/files/commitlint.svg"/>
         <regex fileNames="config.rb"
-               name="Compass" pattern="^config\.rb$" icon="/icons/files/compass.svg"/>
+               name="Compass"
+               pattern="^config\.rb$"
+               icon="/icons/files/compass.svg"/>
         <regex fileNames="composer.json"
-               name="Composer" pattern="^composer\.json$" icon="/icons/files/composer.svg"/>
+               name="Composer"
+               pattern="^composer\.json$"
+               icon="/icons/files/composer.svg"/>
         <regex fileNames="composer.phar"
-               name="Composer Phar" pattern="^composer\.phar$" icon="/icons/files/composer.svg"/>
+               name="Composer Phar"
+               pattern="^composer\.phar$"
+               icon="/icons/files/composer.svg"/>
         <regex fileNames="cordova"
-               name="Cordova" pattern="^cordova" icon="/icons/files/cordova.svg"/>
+               name="Cordova"
+               pattern="^cordova"
+               icon="/icons/files/cordova.svg"/>
         <regex fileNames="CREDITS,CREDITS.md,CREDITS.txt,credits"
-               name="Credits" pattern="(CREDITS|credits).*" icon="/icons/files/credits.svg"/>
+               name="Credits"
+               pattern="(CREDITS|credits).*"
+               icon="/icons/files/credits.svg"/>
         <regex fileNames="*.cr,*.ecr"
-               name="Crystal" pattern=".*\.(cr|ecr)$" icon="/icons/files/crystal.svg"/>
+               name="Crystal"
+               pattern=".*\.(cr|ecr)$"
+               icon="/icons/files/crystal.svg"/>
         <regex fileNames="*.css"
-               name="CSS" pattern=".*\.css$" icon="/icons/files/css.svg"/>
+               name="CSS"
+               pattern=".*\.css$"
+               icon="/icons/files/css.svg"/>
         <regex fileNames="*.css.map"
-               name="CSS Map" pattern=".*\.css\.map$" icon="/icons/files/cssmap.svg"/>
+               name="CSS Map"
+               pattern=".*\.css\.map$"
+               icon="/icons/files/cssmap.svg"/>
         <regex fileNames="*.csv,*.tsv"
-               name="CSV" pattern=".*\.(csv|tsv)$" icon="/icons/files/csv.svg"/>
+               name="CSV"
+               pattern=".*\.(csv|tsv)$"
+               icon="/icons/files/csv.svg"/>
         <regex fileNames="*.feature.rb"
-               name="Cucumber" pattern=".*\.feature\.rb$" icon="/icons/files/cucumber.svg"/>
+               name="Cucumber"
+               pattern=".*\.feature\.rb$"
+               icon="/icons/files/cucumber.svg"/>
         <regex fileNames="*.pyx,*.pxd"
-               name="Cython" pattern="^.*\.(pyx|pxd)$" icon="/icons/files/cython.svg"/>
+               name="Cython"
+               pattern="^.*\.(pyx|pxd)$"
+               icon="/icons/files/cython.svg"/>
         <regex fileNames="cypress.json"
-               name="Cypress" pattern="^cypress\.json$" icon="/icons/files/cypress.svg"/>
+               name="Cypress"
+               pattern="^cypress\.json$"
+               icon="/icons/files/cypress.svg"/>
         <regex fileNames="*.cpp,*.cc,*.cp,*.ii,*.mii,*.cxx"
-               name="C++" pattern=".*\.(cpp|cc|cp|ii|mii|cxx)$" icon="/icons/files/cpp.svg"/>
+               name="C++"
+               pattern=".*\.(cpp|cc|cp|ii|mii|cxx)$"
+               icon="/icons/files/cpp.svg"/>
         <regex fileNames="*.csx,*.cs"
-               name="C#" pattern=".*\.csx?$" icon="/icons/files/csharp.svg"/>
+               name="C#"
+               pattern=".*\.csx?$"
+               icon="/icons/files/csharp.svg"/>
 
         <regex fileNames="*.dart"
-               name="Dart" pattern=".*\.dart$" icon="/icons/files/dart.svg"/>
+               name="Dart"
+               pattern=".*\.dart$"
+               icon="/icons/files/dart.svg"/>
         <regex fileNames="*.db,*.ddl"
-               name="DB" pattern=".*\.(db|ddl)$" icon="/icons/files/db.svg"/>
+               name="DB"
+               pattern=".*\.(db|ddl)$"
+               icon="/icons/files/db.svg"/>
         <regex fileNames="*.delphi"
-               name="Delphi" pattern=".*\.delphi$" icon="/icons/files/delphi.svg"/>
+               name="Delphi"
+               pattern=".*\.delphi$"
+               icon="/icons/files/delphi.svg"/>
         <regex fileNames="*.d"
-               name="DLang" pattern=".*\.d$" icon="/icons/files/dlang.svg"/>
+               name="DLang"
+               pattern=".*\.d$"
+               icon="/icons/files/dlang.svg"/>
         <regex fileNames="*.diff"
-               name="Diff" pattern=".*\.diff$" icon="/icons/files/diff.svg"/>
+               name="Diff"
+               pattern=".*\.diff$"
+               icon="/icons/files/diff.svg"/>
         <regex fileNames="*.flake8,*.djt"
-               name="Django" pattern=".*\.(flake8|djt)$" icon="/icons/files/django.svg"/>
+               name="Django"
+               pattern=".*\.(flake8|djt)$"
+               icon="/icons/files/django.svg"/>
         <regex fileNames="*.dll,*.dlc"
-               name="DLL" pattern=".*\.(dll|dlc)$" icon="/icons/files/dylib.svg"/>
+               name="DLL"
+               pattern=".*\.(dll|dlc)$"
+               icon="/icons/files/dylib.svg"/>
         <regex fileNames="*.do"
-               name="Do" pattern=".*\.do$" icon="/icons/files/tomcat.svg"/>
+               name="Do"
+               pattern=".*\.do$"
+               icon="/icons/files/tomcat.svg"/>
         <regex fileNames="Dockerfile,dockerfile,dev.dockerfile,prodDockerfile"
-               name="Docker" pattern=".*\.?(d|D)ockerfile$" icon="/icons/files/docker.svg"/>
+               name="Docker"
+               pattern=".*\.?(d|D)ockerfile$"
+               icon="/icons/files/docker.svg"/>
         <regex fileNames="docker-compose.yml,docker-compose.yaml,docker-compose.dev.yml"
-               name="DockerCompose" pattern="^docker-compose(.*)\.(yml|yaml)$" icon="/icons/files/docker.svg"/>
+               name="DockerCompose"
+               pattern="^docker-compose(.*)\.(yml|yaml)$"
+               icon="/icons/files/docker.svg"/>
         <regex fileNames="*.def,*.dot,*.jst"
-               name="Dot" pattern=".*\.(def|dot|jst)$" icon="/icons/files/dotjs.svg"/>
+               name="Dot"
+               pattern=".*\.(def|dot|jst)$"
+               icon="/icons/files/dotjs.svg"/>
         <regex fileNames="*.xaml,*.csproj,*.vbproj"
-               name="DotNET" pattern=".*\.(xaml|csproj|vbproj)$" icon="/icons/files/dotnet.svg"/>
+               name="DotNET"
+               pattern=".*\.(xaml|csproj|vbproj)$"
+               icon="/icons/files/dotnet.svg"/>
         <regex fileNames="Doxyfile,doxyfile"
-               name="Doxygen" pattern="^(D|d)oxyfile$" icon="/icons/files/doxygen.svg"/>
+               name="Doxygen"
+               pattern="^(D|d)oxyfile$"
+               icon="/icons/files/doxygen.svg"/>
         <regex fileNames="*.drupal"
-               name="Drupal" pattern=".*\.drupal$" icon="/icons/files/drupal.svg"/>
+               name="Drupal"
+               pattern=".*\.drupal$"
+               icon="/icons/files/drupal.svg"/>
         <regex fileNames="*.dylib"
-               name="Dylib" pattern=".*\.dylib$" icon="/icons/files/dylib.svg"/>
+               name="Dylib"
+               pattern=".*\.dylib$"
+               icon="/icons/files/dylib.svg"/>
 
         <regex fileNames="*.eclipse"
-               name="Eclipse" pattern=".*\.eclipse" icon="/icons/files/eclipse.svg"/>
+               name="Eclipse"
+               pattern=".*\.eclipse"
+               icon="/icons/files/eclipse.svg"/>
         <regex fileNames="*.edge"
-               name="Edge" pattern=".*\.edge$" icon="/icons/files/adonis.svg"/>
+               name="Edge"
+               color="FB2F51"
+               pattern=".*\.edge$"
+               icon="/icons/files/adonis.svg"/>
         <regex fileNames=".editorconfig"
-               name="EditorConfig" pattern="^\.editorconfig$" icon="/icons/files/editorconfig.svg"/>
+               name="EditorConfig"
+               pattern="^\.editorconfig$"
+               icon="/icons/files/editorconfig.svg"/>
         <regex fileNames="*.e"
-               name="Eiffel" pattern=".*\.e$" icon="/icons/files/eiffel.svg"/>
+               name="Eiffel"
+               pattern=".*\.e$"
+               icon="/icons/files/eiffel.svg"/>
         <regex fileNames=".emacs.conf,.emacsconfig,.emacsrc"
-               name="Emacs" pattern="^\.emacs.*$" icon="/icons/files/emacs.svg"/>
+               name="Emacs"
+               pattern="^\.emacs.*$"
+               icon="/icons/files/emacs.svg"/>
         <regex fileNames="*.el,*.elc"
-               name="Emacs Lisp" pattern="^.*\.(el|elc)$" icon="/icons/files/emacs.svg"/>
+               name="Emacs Lisp"
+               pattern="^.*\.(el|elc)$"
+               icon="/icons/files/emacs.svg"/>
         <regex fileNames=".ember-cli"
-               name="Ember CLI" pattern="^\.ember-cli$" icon="/icons/files/ember.svg"/>
+               name="Ember CLI"
+               pattern="^\.ember-cli$"
+               icon="/icons/files/ember.svg"/>
         <regex fileNames=".ember.json"
-               name="Ember" pattern="^\.ember\.json$" icon="/icons/files/ember.svg"/>
+               name="Ember"
+               pattern="^\.ember\.json$"
+               icon="/icons/files/ember.svg"/>
         <regex fileNames="*.ejs"
-               name="EJS" pattern=".*\.(ejs)$" icon="/icons/files/ejs.svg"/>
+               name="EJS"
+               pattern=".*\.(ejs)$"
+               icon="/icons/files/ejs.svg"/>
         <regex fileNames="*.ex,*.eex,*.exs,*.elixir,*.leex"
-               name="Elixir" pattern=".*\.(ex|eex|exs|elixir|leex)$" icon="/icons/files/ex.svg"/>
+               name="Elixir"
+               pattern=".*\.(ex|eex|exs|elixir|leex)$"
+               icon="/icons/files/ex.svg"/>
         <regex fileNames="*.elm"
-               name="Elm" pattern=".*\.elm$" icon="/icons/files/elm.svg"/>
+               name="Elm"
+               pattern=".*\.elm$"
+               icon="/icons/files/elm.svg"/>
         <regex fileNames=".eslintrc,.eslintrc.js,.eslintrc.json,.eslintrc.yml"
-               name="ESLint" pattern=".*\.eslintrc(\.js(on)?|\.y(a)?ml)?$" icon="/icons/files/eslint.svg"/>
+               name="ESLint"
+               pattern=".*\.eslintrc(\.js(on)?|\.y(a)?ml)?$"
+               icon="/icons/files/eslint.svg"/>
         <regex fileNames="*.erb,*.ru"
-               name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/files/erb.svg"/>
+               name="ERB"
+               pattern=".*\.(erb|ru)$"
+               icon="/icons/files/erb.svg"/>
         <regex fileNames="*.erc,*.erl,*.erlang"
-               name="ErLang" pattern=".*\.(erc|erl|erlang)$" icon="/icons/files/erlang.svg"/>
+               name="ErLang"
+               pattern=".*\.(erc|erl|erlang)$"
+               icon="/icons/files/erlang.svg"/>
         <regex fileNames="*.xls,*.xlsx,*.xlm,*.xlt,*.xlsb,*.odx"
-               name="Excel" pattern=".*\.(xls|xlsx|xlm|xlt|xlsb|odx)$" icon="/icons/files/excel.svg"/>
+               name="Excel"
+               pattern=".*\.(xls|xlsx|xlm|xlt|xlsb|odx)$"
+               icon="/icons/files/excel.svg"/>
 
         <regex fileNames="favicon.ico,favicon.png,favicon.jpg"
-               name="Favicon" pattern="^favicon\.(ico|png|jpg)$" icon="/icons/files/favicon.svg"/>
+               name="Favicon"
+               pattern="^favicon\.(ico|png|jpg)$"
+               icon="/icons/files/favicon.svg"/>
         <regex fileNames="._MACOSX,.__MACOSX"
-               name="Finder" pattern="^\._*?MACOSX$" icon="/icons/files/finder.svg"/>
+               name="Finder"
+               pattern="^\._*?MACOSX$"
+               icon="/icons/files/finder.svg"/>
         <regex fileNames="*.firebaserc"
-               name="Firebase" pattern=".*\.(firebaserc)$" icon="/icons/files/firebase.svg"/>
+               name="Firebase"
+               pattern=".*\.(firebaserc)$"
+               icon="/icons/files/firebase.svg"/>
         <regex fileNames="firebase.json"
-               name="Firebase JSON" pattern="^firebase\.json$" icon="/icons/files/firebase.svg"/>
+               name="Firebase JSON"
+               pattern="^firebase\.json$"
+               icon="/icons/files/firebase.svg"/>
         <regex fileNames="*.swf,*.flash"
-               name="Flash" pattern=".*\.(swf|flash)$" icon="/icons/files/flash.svg"/>
+               name="Flash"
+               pattern=".*\.(swf|flash)$"
+               icon="/icons/files/flash.svg"/>
         <regex fileNames="*.flow,*.flowconfig"
-               name="Flow" pattern=".*\.(flow|flowconfig)$" icon="/icons/files/flow.svg"/>
+               name="Flow"
+               pattern=".*\.(flow|flowconfig)$"
+               icon="/icons/files/flow.svg"/>
         <regex fileNames="*.f77,*.f90"
-               name="Fortran" pattern=".*\.(f77|f90)$" icon="/icons/files/fortran.svg"/>
+               name="Fortran"
+               pattern=".*\.(f77|f90)$"
+               icon="/icons/files/fortran.svg"/>
         <regex fileNames="*.ftl,*.freemarker"
-               name="FreeMarker" pattern=".*\.(ftl|freemarker)$" icon="/icons/files/freemarker.svg"/>
+               name="FreeMarker"
+               pattern=".*\.(ftl|freemarker)$"
+               icon="/icons/files/freemarker.svg"/>
         <regex fileNames="*.fs,*.fsi,*.fsx,*.fsproj"
-               name="FSharp" pattern=".*\.(fs|fsi|fsx|fsproj)$" icon="/icons/files/fsharp.svg"/>
+               name="FSharp"
+               pattern=".*\.(fs|fsi|fsx|fsproj)$"
+               icon="/icons/files/fsharp.svg"/>
 
         <regex fileNames="gatsby.js,gatsby.config.js,gatsby.ts"
-               name="Gatsby" pattern="^gatsby.*\.(js|ts)" icon="/icons/files/gatsby.svg"/>
+               name="Gatsby"
+               pattern="^gatsby.*\.(js|ts)"
+               icon="/icons/files/gatsby.svg"/>
         <regex fileNames="*.ghostscript"
-               name="GhostScript" pattern=".*\.ghostscript$" icon="/icons/files/ghostscript.svg"/>
+               name="GhostScript"
+               pattern=".*\.ghostscript$"
+               icon="/icons/files/ghostscript.svg"/>
         <regex fileNames="Gemfile.lock,gemfile.lock"
-               name="Gemfile" pattern="^(G|g)emfile\.lock$" icon="/icons/files/gemfile.svg"/>
+               name="Gemfile"
+               pattern="^(G|g)emfile\.lock$"
+               icon="/icons/files/gemfile.svg"/>
         <regex fileNames=".gitlab-ci.yml"
-               name="GitLab CI" pattern="^\.gitlab-ci\.yml$" icon="/icons/files/gitlab.svg"/>
+               name="GitLab CI"
+               pattern="^\.gitlab-ci\.yml$"
+               icon="/icons/files/gitlab.svg"/>
         <regex fileNames=".git,.git-submodules,.gitignore,.gitrc"
-               name="Git" pattern="^\.git.*" icon="/icons/files/git.svg"/>
+               name="Git"
+               pattern="^\.git.*"
+               icon="/icons/files/git.svg"/>
         <regex fileNames="*.go,*.gohtml"
-               name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/files/go.svg"/>
+               name="Go"
+               pattern=".*\.(go|gohtml)$"
+               icon="/icons/files/go.svg"/>
         <regex fileNames="*.gd,*.godot,*.tres,*.tscn"
-               name="Godot" pattern=".*\.(gd|godot|tres|tscn)$" icon="/icons/files/godot.svg"/>
+               name="Godot"
+               pattern=".*\.(gd|godot|tres|tscn)$"
+               icon="/icons/files/godot.svg"/>
         <regex fileNames="*.gradle"
-               name="Gradle" pattern=".*\.gradle$" icon="/icons/files/gradle.svg"/>
+               name="Gradle"
+               pattern=".*\.gradle$"
+               icon="/icons/files/gradle.svg"/>
         <regex fileNames="gradlew"
-               name="Gradlew" pattern="gradlew$" icon="/icons/files/gradle.svg"/>
+               name="Gradlew"
+               pattern="gradlew$"
+               icon="/icons/files/gradle.svg"/>
         <regex fileNames="*.graphcool"
-               name="Graphcool" pattern=".*\.(graphcool)$" icon="/icons/files/graphcool.svg"/>
+               name="Graphcool"
+               pattern=".*\.(graphcool)$"
+               icon="/icons/files/graphcool.svg"/>
         <regex fileNames="*.gql,*.graphql"
-               name="GraphQL" pattern=".*\.(gql|graphql)$" icon="/icons/files/graphql.svg"/>
+               name="GraphQL"
+               pattern=".*\.(gql|graphql)$"
+               icon="/icons/files/graphql.svg"/>
         <regex fileNames=".graphqlconfig"
-               name="GraphQL Config" pattern="\.graphqlconfig$" icon="/icons/files/graphql.svg"/>
+               name="GraphQL Config"
+               pattern="\.graphqlconfig$"
+               icon="/icons/files/graphql.svg"/>
         <regex fileNames="*.dot,*.graphviz"
-               name="Graphviz" pattern=".*\.(dot|graphviz)$" icon="/icons/files/graphviz.svg"/>
+               name="Graphviz"
+               pattern=".*\.(dot|graphviz)$"
+               icon="/icons/files/graphviz.svg"/>
         <regex fileNames="gridsome.config.js,gridsome.server.js"
-               name="Gridsome" pattern="^gridsome\.(config|server)\.js$" icon="/icons/files/gridsome.svg"/>
+               name="Gridsome"
+               pattern="^gridsome\.(config|server)\.js$"
+               icon="/icons/files/gridsome.svg"/>
         <regex fileNames="*.gy,*.gdsl,*.groovy"
-               name="Groovy" pattern=".*\.(gy|gdsl|groovy)$" icon="/icons/files/groovy.svg"/>
+               name="Groovy"
+               pattern=".*\.(gy|gdsl|groovy)$"
+               icon="/icons/files/groovy.svg"/>
         <regex fileNames="gruntfile,Gruntfile,gruntfile.js,Gruntfile.ts"
-               name="Grunt" pattern="(g|G)runtfile.*" icon="/icons/files/gruntfile.svg"/>
+               name="Grunt"
+               pattern="(g|G)runtfile.*"
+               icon="/icons/files/gruntfile.svg"/>
         <regex fileNames="gulpfile,Gulpfile,gulpfile.js,Gulpfile.ts"
-               name="Gulp" pattern="(g|G)ulpfile.*" icon="/icons/files/gulpfile.svg"/>
+               name="Gulp"
+               pattern="(g|G)ulpfile.*"
+               icon="/icons/files/gulpfile.svg"/>
 
         <regex fileNames="*.objh,*.h,*.hp,*.hpp,*.tcc,*.hxx"
-               name="H" pattern=".*\.(objh|h|hp|hpp|tcc|hxx)$" icon="/icons/files/hh.svg"/>
+               name="H"
+               pattern=".*\.(objh|h|hp|hpp|tcc|hxx)$"
+               icon="/icons/files/hh.svg"/>
         <regex fileNames="*.hhconfig,*.hh"
-               name="Hack" pattern=".*\.(hhconfig|hh)$" icon="/icons/files/hack.svg"/>
+               name="Hack"
+               pattern=".*\.(hhconfig|hh)$"
+               icon="/icons/files/hack.svg"/>
         <regex fileNames="*.haml"
-               name="HAML" pattern=".*\.haml$" icon="/icons/files/haml.svg"/>
+               name="HAML"
+               pattern=".*\.haml$"
+               icon="/icons/files/haml.svg"/>
         <regex fileNames="*.hcl"
-               name="Hashicorp" pattern=".*\.hcl$" icon="/icons/files/hcl.svg"/>
+               name="Hashicorp"
+               pattern=".*\.hcl$"
+               icon="/icons/files/hcl.svg"/>
         <regex fileNames="*.haskell,*.hs"
-               name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/files/haskell.svg"/>
+               name="Haskell"
+               pattern=".*\.(haskell|hs)$"
+               icon="/icons/files/haskell.svg"/>
         <regex fileNames="*.haxe,*.hx"
-               name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.svg"/>
+               name="Haxe"
+               pattern=".*\.(haxe|hx)$"
+               icon="/icons/files/haxe.svg"/>
         <regex fileNames="*.helm,*.helmignore"
-               name="Helm" pattern=".*\.(helm|helmignore)" icon="/icons/files/helm.svg"/>
+               name="Helm"
+               pattern=".*\.(helm|helmignore)"
+               icon="/icons/files/helm.svg"/>
         <regex fileNames="Procfile,Procfile.windows,.slugignore"
-               name="Heroku" pattern="^((P|p)rocfile(\.windows)?|\.slugignore)$" icon="/icons/files/heroku.svg"/>
+               name="Heroku"
+               pattern="^((P|p)rocfile(\.windows)?|\.slugignore)$"
+               icon="/icons/files/heroku.svg"/>
         <regex fileNames="history,history.txt,historyfile"
-               name="History" pattern="history.*$" icon="/icons/files/history.svg"/>
+               name="History"
+               pattern="history.*$"
+               icon="/icons/files/history.svg"/>
         <regex fileNames="*.vfl,*.hip,*.pic,*.geo"
-               name="Houdini" pattern=".*\.(vfl|hip|pic|geo)$" icon="/icons/files/houdini.svg"/>
+               name="Houdini"
+               pattern=".*\.(vfl|hip|pic|geo)$"
+               icon="/icons/files/houdini.svg"/>
         <regex fileNames="*.htaccess,*.htpasswd"
-               name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.svg"/>
+               name="HTAccess"
+               pattern=".*\.(htaccess|htpasswd)$"
+               icon="/icons/files/htaccess.svg"/>
         <regex fileNames="*.html,*.htm"
-               name="HTML" pattern=".*\.(html|htm)$" icon="/icons/files/html.svg"/>
+               name="HTML"
+               pattern=".*\.(html|htm)$"
+               icon="/icons/files/html.svg"/>
         <regex fileNames="*.http,*.rest"
-               name="HTTP" pattern=".*\.(http|rest)$" icon="/icons/files/http.svg"/>
+               name="HTTP"
+               pattern=".*\.(http|rest)$"
+               icon="/icons/files/http.svg"/>
         <regex fileNames=".huskyrc,.huskyrc.js,.huskyrc.json"
-               name="Husky" pattern=".*\.huskyrc(.js(on)?)?$" icon="/icons/files/husky.svg"/>
+               name="Husky"
+               pattern=".*\.huskyrc(.js(on)?)?$"
+               icon="/icons/files/husky.svg"/>
 
         <regex fileNames="*.pot,*.po,*.mo"
-               name="i18n" pattern=".*\.(pot|po|mo)$" icon="/icons/files/i18n.svg"/>
+               name="i18n"
+               pattern=".*\.(pot|po|mo)$"
+               icon="/icons/files/i18n.svg"/>
         <regex fileNames="*.iml,*.icls"
-               name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.svg"/>
+               name="IDEA"
+               pattern=".*\.(iml|icls)$"
+               icon="/icons/files/idea.svg"/>
         <regex fileNames="*.idr,*.idris"
-               name="Idris" pattern=".*\.(idr|idris)$" icon="/icons/files/idris.svg"/>
+               name="Idris"
+               pattern=".*\.(idr|idris)$"
+               icon="/icons/files/idris.svg"/>
         <regex fileNames="*.id,*.indd,*.indl,*.indt,*.indb,*.idml"
-               name="InDesign" pattern=".*\.(id|indd|indl|indt|indb|idml)$" icon="/icons/files/indesign.svg"/>
+               name="InDesign"
+               pattern=".*\.(id|indd|indl|indt|indb|idml)$"
+               icon="/icons/files/indesign.svg"/>
         <regex fileNames="*.nycrc.json,*.nycrc"
-               name="Istanbul" pattern=".*\.nycrc(\.json)?$" icon="/icons/files/istanbul.svg"/>
+               name="Istanbul"
+               pattern=".*\.nycrc(\.json)?$"
+               icon="/icons/files/istanbul.svg"/>
         <regex fileNames="*.io"
-               name="IO" pattern=".*\.(io)$" icon="/icons/files/io.svg"/>
+               name="IO"
+               pattern=".*\.(io)$"
+               icon="/icons/files/io.svg"/>
         <regex fileNames="*.ionic.config"
-               name="Ionic" pattern=".*\.ionic\.config$" icon="/icons/files/ionic.svg"/>
+               name="Ionic"
+               pattern=".*\.ionic\.config$"
+               icon="/icons/files/ionic.svg"/>
 
         <regex fileNames="*.ijs"
-               name="J" pattern=".*\.(ijs)$" icon="/icons/files/j.svg"/>
+               name="J"
+               pattern=".*\.(ijs)$"
+               icon="/icons/files/j.svg"/>
         <regex fileNames="*.jade,*.pug"
-               name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/files/pug.svg"/>
+               name="Jade/Pug"
+               pattern=".*\.(jade|pug)$"
+               icon="/icons/files/pug.svg"/>
         <regex fileNames="_config.yml"
-               name="Jekyll" pattern="^_config\.yml$" icon="/icons/files/jekyll.svg"/>
+               name="Jekyll"
+               pattern="^_config\.yml$"
+               icon="/icons/files/jekyll.svg"/>
         <regex fileNames="jenkinsfile,Jenkinsfile.groovy"
-               name="Jenkins" pattern="^(j|J)enkinsfile.*" icon="/icons/files/jenkins.svg"/>
+               name="Jenkins"
+               pattern="^(j|J)enkinsfile.*"
+               icon="/icons/files/jenkins.svg"/>
         <regex fileNames="jest.config.js,jest.setup.js,jest.teardown.js"
-               name="Jest" pattern="^jest\.(config|setup|teardown).*" icon="/icons/files/jest.svg"/>
+               name="Jest"
+               pattern="^jest\.(config|setup|teardown).*"
+               icon="/icons/files/jest.svg"/>
         <regex fileNames=".jestrc,.jestrc.js,.jestrc.json"
-               name="Jestrc" pattern="^\.jestrc.*" icon="/icons/files/jest.svg"/>
+               name="Jestrc"
+               pattern="^\.jestrc.*"
+               icon="/icons/files/jest.svg"/>
         <regex fileNames="*.theme.json"
-               name="JetBrains theme" pattern=".*\.theme\.json" icon="/icons/files/theme.svg"/>
+               name="JetBrains theme"
+               pattern=".*\.theme\.json"
+               icon="/icons/files/theme.svg"/>
         <regex fileNames="*.jinja,*.jinja2,*.j2,*.jnj,*.jnj2"
-               name="Jinja" pattern=".*\.(jinja2?|j2|jnj2?)$" icon="/icons/files/jinja.svg"/>
+               name="Jinja"
+               pattern=".*\.(jinja2?|j2|jnj2?)$"
+               icon="/icons/files/jinja.svg"/>
         <regex fileNames="*.smarty"
-               name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
+               name="Joomla"
+               pattern=".*\.smarty$"
+               icon="/icons/files/joomla.svg"/>
         <regex fileNames="jquery.js,jquery.min.js"
-               name="jQuery" pattern="jquery.*\.js" icon="/icons/files/jquery.svg"/>
+               name="jQuery"
+               pattern="jquery.*\.js"
+               icon="/icons/files/jquery.svg"/>
         <regex fileNames="*.js.map"
-               name="JS Map" pattern=".*\.js\.map$" icon="/icons/files/jsmap.svg"/>
+               name="JS Map"
+               pattern=".*\.js\.map$"
+               icon="/icons/files/jsmap.svg"/>
         <regex fileNames="*.jsp,*.jsf,*.jspx"
-               name="JSP" pattern=".*\.(jsp|jsf|jspx)" icon="/icons/files/jsp.svg"/>
+               name="JSP"
+               pattern=".*\.(jsp|jsf|jspx)"
+               icon="/icons/files/jsp.svg"/>
         <regex fileNames="*.julia,*.jl"
-               name="Julia" pattern=".*\.(julia|jl)$" icon="/icons/files/julia.svg"/>
+               name="Julia"
+               pattern=".*\.(julia|jl)$"
+               icon="/icons/files/julia.svg"/>
         <regex fileNames="*.ipynb"
-               name="Jupyter Notebook" pattern=".*\.ipynb$" icon="/icons/files/jupyter.svg"/>
+               name="Jupyter Notebook"
+               pattern=".*\.ipynb$"
+               icon="/icons/files/jupyter.svg"/>
 
         <regex fileNames="karma.conf.js,karma.conf.ts"
-               name="Karma" pattern="^karma\.conf.*" icon="/icons/files/karma.svg"/>
+               name="Karma"
+               pattern="^karma\.conf.*"
+               icon="/icons/files/karma.svg"/>
         <regex fileNames="*.key,*.pem,*.gpg,*.pub"
-               name="Key" pattern=".*\.(key|pem|gpg|pub)" icon="/icons/files/key.svg"/>
+               name="Key"
+               pattern=".*\.(key|pem|gpg|pub)"
+               icon="/icons/files/key.svg"/>
         <regex fileNames="*.kv"
-               name="Kivy" pattern=".*\.kv$" icon="/icons/files/kivy.svg"/>
+               name="Kivy"
+               pattern=".*\.kv$"
+               icon="/icons/files/kivy.svg"/>
         <regex fileNames="*.kl"
-               name="KL" pattern=".*\.kl$" icon="/icons/files/kl.svg"/>
+               name="KL"
+               pattern=".*\.kl$"
+               icon="/icons/files/kl.svg"/>
         <regex fileNames="*.knockout,*.ko"
-               name="Knockout" pattern=".*\.(knockout|ko)$" icon="/icons/files/knockout.svg"/>
+               name="Knockout"
+               pattern=".*\.(knockout|ko)$"
+               icon="/icons/files/knockout.svg"/>
         <regex fileNames="*.kt,*.kts,*.kotlin"
-               name="Kotlin" pattern=".*\.(kt|kts|kotlin)$" icon="/icons/files/kotlin.svg"/>
+               name="Kotlin"
+               pattern=".*\.(kt|kts|kotlin)$"
+               icon="/icons/files/kotlin.svg"/>
 
         <regex fileNames="lerna.json"
-               name="Lerna" pattern="^lerna\.json$" icon="/icons/files/lerna.svg"/>
+               name="Lerna"
+               pattern="^lerna\.json$"
+               icon="/icons/files/lerna.svg"/>
         <regex fileNames="*.less"
-               name="Less" pattern=".*\.less$" icon="/icons/files/less.svg"/>
+               name="Less"
+               pattern=".*\.less$"
+               icon="/icons/files/less.svg"/>
         <regex fileNames="*.lib,*.bib,*.s"
-               name="Lib" pattern=".*\.(lib|bib|s)$" icon="/icons/files/lib.svg"/>
+               name="Lib"
+               pattern=".*\.(lib|bib|s)$"
+               icon="/icons/files/lib.svg"/>
         <regex fileNames="license,LICENSE,LICENSE.md,license.md"
-               name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/files/license.svg"/>
+               name="LICENSE"
+               pattern="^(license|LICENSE).*"
+               icon="/icons/files/license.svg"/>
         <regex fileNames="licence,LICENCE,LICENCE.md,licence.md"
-               name="LICENCE" pattern="^(licence|LICENCE).*" icon="/icons/files/license.svg"/>
+               name="LICENCE"
+               pattern="^(licence|LICENCE).*"
+               icon="/icons/files/license.svg"/>
         <regex fileNames="*.lintstagedrc.json,*.lintstagedrc.yml"
-               name="Lint Staged" pattern=".*\.lintstagedrc\.(json|yml)$" icon="/icons/files/lint-staged.svg"/>
+               name="Lint Staged"
+               pattern=".*\.lintstagedrc\.(json|yml)$"
+               icon="/icons/files/lint-staged.svg"/>
         <regex fileNames="lint-staged.config.js"
-               name="Lint Staged Config" pattern="^lint-staged\.config\.js$" icon="/icons/files/lint-staged.svg"/>
+               name="Lint Staged Config"
+               pattern="^lint-staged\.config\.js$"
+               icon="/icons/files/lint-staged.svg"/>
         <regex fileNames="*.ls"
-               name="LiveScript" pattern=".*\.ls$" icon="/icons/files/livescript.svg"/>
+               name="LiveScript"
+               pattern=".*\.ls$"
+               icon="/icons/files/livescript.svg"/>
         <regex fileNames="*.liquid"
-               name="Liquid" pattern=".*\.liquid$" icon="/icons/files/liquid.svg"/>
+               name="Liquid"
+               pattern=".*\.liquid$"
+               icon="/icons/files/liquid.svg"/>
         <regex fileNames="*.lisp"
-               name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.svg"/>
+               name="LISP"
+               pattern=".*\.lisp$"
+               icon="/icons/files/lisp.svg"/>
         <regex fileNames="*.log,*.log.0,*.log.9"
-               name="Log" pattern=".*\.log\.([0-9])?" icon="/icons/files/log.svg"/>
+               name="Log"
+               pattern=".*\.log\.([0-9])?"
+               icon="/icons/files/log.svg"/>
         <regex fileNames="*.lsl"
-               name="LSL" pattern=".*\.lsl" icon="/icons/files/lsl.svg"/>
+               name="LSL"
+               pattern=".*\.lsl"
+               icon="/icons/files/lsl.svg"/>
         <regex fileNames="*.lua"
-               name="Lua" pattern=".*\.lua$" icon="/icons/files/lua.svg"/>
+               name="Lua"
+               pattern=".*\.lua$"
+               icon="/icons/files/lua.svg"/>
 
         <regex fileNames="*.mage"
-               name="Magento" pattern=".*\.mage$" icon="/icons/files/magento.svg"/>
+               name="Magento"
+               pattern=".*\.mage$"
+               icon="/icons/files/magento.svg"/>
         <regex fileNames="*.marko"
-               name="MarkoJS" pattern=".*\.marko$" icon="/icons/files/marko.svg"/>
+               name="MarkoJS"
+               pattern=".*\.marko$"
+               icon="/icons/files/marko.svg"/>
         <regex fileNames="Makefile,*.makefile"
-               name="Makefile" pattern=".*\.?(m|M)akefile$" icon="/icons/files/makefile.svg"/>
+               name="Makefile"
+               pattern=".*\.?(m|M)akefile$"
+               icon="/icons/files/makefile.svg"/>
         <regex fileNames="*.man,*.man1,*.man8"
-               name="Manpage" pattern=".*\.man([1-8])?$" icon="/icons/files/manpage.svg"/>
+               name="Manpage"
+               pattern=".*\.man([1-8])?$"
+               icon="/icons/files/manpage.svg"/>
         <regex fileNames="manifest.json"
-               name="Manifest" pattern="manifest\.json$" icon="/icons/files/manifest.svg"/>
+               name="Manifest"
+               pattern="manifest\.json$"
+               icon="/icons/files/manifest.svg"/>
         <regex fileNames="*.md,*.markdown,*.mson"
-               name="Markdown" pattern=".*\.(md|markdown|mson)$" icon="/icons/files/markdown.svg"/>
+               name="Markdown"
+               pattern=".*\.(md|markdown|mson)$"
+               icon="/icons/files/markdown.svg"/>
         <regex fileNames="*.shtml,*.dhtml,*.dtd"
-               name="Markup" pattern=".*\.(shtml|dhtml|dtd)$" icon="/icons/files/markup.svg"/>
+               name="Markup"
+               pattern=".*\.(shtml|dhtml|dtd)$"
+               icon="/icons/files/markup.svg"/>
         <regex fileNames="*.ma,*.mb,*.cdf,*.nb"
-               name="Mathematica" pattern=".*\.(nb|ma|mb|cdf)$" icon="/icons/files/mathematica.svg"/>
+               name="Mathematica"
+               pattern=".*\.(nb|ma|mb|cdf)$"
+               icon="/icons/files/mathematica.svg"/>
         <regex fileNames="*.matlab"
-               name="Matlab" pattern=".*\.matlab$" icon="/icons/files/matlab.svg"/>
+               name="Matlab"
+               pattern=".*\.matlab$"
+               icon="/icons/files/matlab.svg"/>
         <regex fileNames="pom.xml"
-               name="Maven" pattern="^pom\.xml$" icon="/icons/files/maven.svg"/>
+               name="Maven"
+               pattern="^pom\.xml$"
+               icon="/icons/files/maven.svg"/>
         <regex fileNames="*.maya,*.mel"
-               name="Maya" pattern=".*\.(maya|mel)$" icon="/icons/files/maya.svg"/>
+               name="Maya"
+               pattern=".*\.(maya|mel)$"
+               icon="/icons/files/maya.svg"/>
         <regex fileNames="*.mdx"
-               name="MDX" pattern=".*\.(mdx)$" icon="/icons/files/mdx.svg"/>
+               name="MDX"
+               pattern=".*\.(mdx)$"
+               icon="/icons/files/mdx.svg"/>
         <regex fileNames="*.hg"
-               name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.svg"/>
+               name="Mercurial"
+               pattern=".*\.hg$"
+               icon="/icons/files/mercurial.svg"/>
         <regex fileNames="*.merlin"
-               name="Merlin" pattern=".*\.merlin$" icon="/icons/files/merlin.svg"/>
+               name="Merlin"
+               pattern=".*\.merlin$"
+               icon="/icons/files/merlin.svg"/>
         <regex fileNames="*.meteor"
-               name="Meteor" pattern=".*\.meteor$" icon="/icons/files/meteor.svg"/>
+               name="Meteor"
+               pattern=".*\.meteor$"
+               icon="/icons/files/meteor.svg"/>
         <regex fileNames="*.mint"
-               name="Mint" pattern=".*\.mint" icon="/icons/files/mint.svg"/>
+               name="Mint"
+               pattern=".*\.mint"
+               icon="/icons/files/mint.svg"/>
         <regex fileNames="*.mjml"
-               name="MJML" pattern=".*\.mjml$" icon="/icons/files/mjml.svg"/>
+               name="MJML"
+               pattern=".*\.mjml$"
+               icon="/icons/files/mjml.svg"/>
         <regex fileNames="*.moon"
-               name="Moonscript" pattern=".*\.moon$" icon="/icons/files/moonscript.svg"/>
+               name="Moonscript"
+               pattern=".*\.moon$"
+               icon="/icons/files/moonscript.svg"/>
         <regex fileNames="mocha.opts,.mocharc"
-               name="Mocha" pattern="^(mocha\.opts|\.mocharc)$" icon="/icons/files/mocha.svg"/>
+               name="Mocha"
+               pattern="^(mocha\.opts|\.mocharc)$"
+               icon="/icons/files/mocha.svg"/>
         <regex fileNames=".mocha.js,.mocha.json,.mocha.yml"
-               name="Mocha JSON" pattern="^\.mocha\.(js|json|yml)$" icon="/icons/files/mocha.svg"/>
+               name="Mocha JSON"
+               pattern="^\.mocha\.(js|json|yml)$"
+               icon="/icons/files/mocha.svg"/>
         <regex fileNames="*.mongodb,*.bson"
-               name="Mongodb" pattern=".*\.(mongodb|bson)$" icon="/icons/files/mongodb.svg"/>
+               name="Mongodb"
+               pattern=".*\.(mongodb|bson)$"
+               icon="/icons/files/mongodb.svg"/>
         <regex fileNames="*.mustache,*.handlebars,*.hbs,*.hamlbars"
-               name="Mustache" pattern=".*\.(mustache|handlebars|hbs|hamlbars)$" icon="/icons/files/mustache.svg"/>
+               name="Mustache"
+               pattern=".*\.(mustache|handlebars|hbs|hamlbars)$"
+               icon="/icons/files/mustache.svg"/>
         <regex fileNames="*.mxml"
-               name="MXML" pattern=".*\.mxml$" icon="/icons/files/mxml.svg"/>
+               name="MXML"
+               pattern=".*\.mxml$"
+               icon="/icons/files/mxml.svg"/>
 
         <regex fileNames=".nest-cli.json"
-               name="Nest" pattern="\.?nest-cli\.json" icon="/icons/files/nest.svg"/>
+               name="Nest"
+               pattern="\.?nest-cli\.json"
+               icon="/icons/files/nest.svg"/>
         <regex fileNames=".nestconfig.json"
-               name="Nest Config" pattern="\.?nestconfig\.json" icon="/icons/files/nest.svg"/>
+               name="Nest Config"
+               pattern="\.?nestconfig\.json"
+               icon="/icons/files/nest.svg"/>
         <regex fileNames="netlify.toml"
-               name="Netlify" pattern="^netlify\.toml$" icon="/icons/files/netlify.svg"/>
+               name="Netlify"
+               pattern="^netlify\.toml$"
+               icon="/icons/files/netlify.svg"/>
         <regex fileNames="_headers"
-               name="Netlify headers" pattern="^_headers$" icon="/icons/files/netlify_headers.svg"/>
+               name="Netlify headers"
+               pattern="^_headers$"
+               icon="/icons/files/netlify_headers.svg"/>
         <regex fileNames="_redirects"
-               name="Netlify redirects" pattern="^_redirects$" icon="/icons/files/netlify_redirects.svg"/>
+               name="Netlify redirects"
+               pattern="^_redirects$"
+               icon="/icons/files/netlify_redirects.svg"/>
         <regex fileNames="*.nginx,*.conf"
-               name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.svg"/>
+               name="nginx"
+               pattern=".*\.(nginx|conf)$"
+               icon="/icons/files/nginx.svg"/>
         <regex fileNames="*.nib"
-               name="Nib" pattern=".*\.nib$" icon="/icons/files/nib.svg"/>
+               name="Nib"
+               pattern=".*\.nib$"
+               icon="/icons/files/nib.svg"/>
         <regex fileNames="*.nim,*.nimble"
-               name="Nimble" pattern=".*\.(nim|nimble)$" icon="/icons/files/nim.svg"/>
+               name="Nimble"
+               pattern=".*\.(nim|nimble)$"
+               icon="/icons/files/nim.svg"/>
         <regex fileNames="server.js,server.ts,app.js,app.ts,app.es6"
-               name="Node" pattern="^(server|app)\.(js|ts|es6)$" icon="/icons/files/nodejs.svg"/>
+               name="Node"
+               pattern="^(server|app)\.(js|ts|es6)$"
+               icon="/icons/files/nodejs.svg"/>
         <regex fileNames=".node-version"
-               name="Node Version" pattern="^\.node-version$" icon="/icons/files/nodejs.svg"/>
+               name="Node Version"
+               pattern="^\.node-version$"
+               icon="/icons/files/nodejs.svg"/>
         <regex fileNames="*.nodemon.js,*.nodemon.json"
-               name="Nodemon" pattern=".*\.nodemon\.(js|json)$" icon="/icons/files/nodemon.svg"/>
+               name="Nodemon"
+               pattern=".*\.nodemon\.(js|json)$"
+               icon="/icons/files/nodemon.svg"/>
         <regex fileNames="*.scratch,*.note"
-               name="Note" pattern=".*\.(scratch|note)$" icon="/icons/files/note.svg"/>
+               name="Note"
+               pattern=".*\.(scratch|note)$"
+               icon="/icons/files/note.svg"/>
         <regex fileNames="now.json"
-               name="Now" pattern="now\.json$" icon="/icons/files/now.svg"/>
+               name="Now"
+               pattern="now\.json$"
+               icon="/icons/files/now.svg"/>
         <regex fileNames=".nowignore"
-               name="Nowignore" pattern="\.nowignore$" icon="/icons/files/now.svg"/>
+               name="Nowignore"
+               pattern="\.nowignore$"
+               icon="/icons/files/now.svg"/>
         <regex fileNames="package.json"
-               name="NPM" pattern="^package\.json$" icon="/icons/files/npm.svg"/>
+               name="NPM"
+               pattern="^package\.json$"
+               icon="/icons/files/npm.svg"/>
         <regex fileNames="package-lock.json"
-               name="NPM lock" pattern="^package-lock\.json$" icon="/icons/files/lock.svg"/>
+               name="NPM lock"
+               pattern="^package-lock\.json$"
+               icon="/icons/files/lock.svg"/>
         <regex fileNames=".npmignore,.npmrc"
-               name="NPMFiles" pattern="^\.(npmignore|npmrc)$" icon="/icons/files/npm.svg"/>
+               name="NPMFiles"
+               pattern="^\.(npmignore|npmrc)$"
+               icon="/icons/files/npm.svg"/>
         <regex fileNames="*.nsis"
-               name="NSIS" pattern=".*\.nsis?$" icon="/icons/files/nsis.svg"/>
+               name="NSIS"
+               pattern=".*\.nsis?$"
+               icon="/icons/files/nsis.svg"/>
         <regex fileNames="*.nvmrc,*.esmrc"
-               name="NVM" pattern=".*\.(nvmrc|esmrc)$" icon="/icons/files/nodejs.svg"/>
+               name="NVM"
+               pattern=".*\.(nvmrc|esmrc)$"
+               icon="/icons/files/nodejs.svg"/>
         <regex fileNames="*.nuclide"
-               name="Nuclide" pattern=".*\.nuclide$" icon="/icons/files/nuclide.svg"/>
+               name="Nuclide"
+               pattern=".*\.nuclide$"
+               icon="/icons/files/nuclide.svg"/>
         <regex fileNames="*.nuspec"
-               name="NuGet" pattern=".*\.nuspec$" icon="/icons/files/nuget.svg"/>
+               name="NuGet"
+               pattern=".*\.nuspec$"
+               icon="/icons/files/nuget.svg"/>
         <regex fileNames="*.njk,*.nunjucks"
-               name="Nunjucks" pattern=".*\.(njk|nunjucks)$" icon="/icons/files/nunjucks.svg"/>
+               name="Nunjucks"
+               pattern=".*\.(njk|nunjucks)$"
+               icon="/icons/files/nunjucks.svg"/>
         <regex fileNames="nuxt.config.js,nuxt.config.ts"
-               name="Nuxt" pattern=".*nuxt\.config\.(js|ts)" icon="/icons/files/nuxt.svg"/>
+               name="Nuxt"
+               pattern=".*nuxt\.config\.(js|ts)"
+               icon="/icons/files/nuxt.svg"/>
 
         <regex fileNames="*.mm,*.m"
-               name="Objective-C" pattern=".*\.mm?$" icon="/icons/files/objc.svg"/>
+               name="Objective-C"
+               pattern=".*\.mm?$"
+               icon="/icons/files/objc.svg"/>
         <regex fileNames="*.ocaml,*.ml,*.mli,*.cmx,*.ocamllex,*.ocamlyacc"
-               name="OCaml" pattern=".*\.(ocaml|ml|mli|cmx|ocamllex|ocamlyacc)$" icon="/icons/files/ocaml.svg"/>
+               name="OCaml"
+               pattern=".*\.(ocaml|ml|mli|cmx|ocamllex|ocamlyacc)$"
+               icon="/icons/files/ocaml.svg"/>
         <regex fileNames="*.one,*.onenote"
-               name="OneNote" pattern=".*\.(one|onenote)$" icon="/icons/files/onenote.svg"/>
+               name="OneNote"
+               pattern=".*\.(one|onenote)$"
+               icon="/icons/files/onenote.svg"/>
         <regex fileNames="*.odf,*.ods"
-               name="OpenOffice" pattern=".*\.(odf|ods)$" icon="/icons/files/openoffice.svg"/>
+               name="OpenOffice"
+               pattern=".*\.(odf|ods)$"
+               icon="/icons/files/openoffice.svg"/>
 
         <regex fileNames="*.pas,*.pascal"
-               name="Pascal" pattern=".*\.(pas|pascal)$" icon="/icons/files/pascal.svg"/>
+               name="Pascal"
+               pattern=".*\.(pas|pascal)$"
+               icon="/icons/files/pascal.svg"/>
         <regex fileNames="*.patch,*.meld"
-               name="Patch" pattern=".*\.(patch|meld)$" icon="/icons/files/patch.svg"/>
+               name="Patch"
+               pattern=".*\.(patch|meld)$"
+               icon="/icons/files/patch.svg"/>
         <regex fileNames="*.pdf"
-               name="PDF" pattern=".*\.pdf$" icon="/icons/files/pdf.svg"/>
+               name="PDF"
+               pattern=".*\.pdf$"
+               icon="/icons/files/pdf.svg"/>
         <regex fileNames="*.perl,*.pl,*.pm"
-               name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/files/perl.svg"/>
+               name="Perl"
+               pattern=".*\.(perl|pl|pm)$"
+               icon="/icons/files/perl.svg"/>
         <regex fileNames=".p4ignore"
-               name="Perforce" pattern="^\.p4ignore$" icon="/icons/files/p4.svg"/>
+               name="Perforce"
+               pattern="^\.p4ignore$"
+               icon="/icons/files/p4.svg"/>
         <regex fileNames="*.volt"
-               name="Phalcon" pattern=".*\.volt$" icon="/icons/files/phalcon.svg"/>
+               name="Phalcon"
+               pattern=".*\.volt$"
+               icon="/icons/files/phalcon.svg"/>
         <regex fileNames="*.psb,*.psd"
-               name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.svg"/>
+               name="Photoshop"
+               pattern=".*\.(psb|psd)$"
+               icon="/icons/files/psd.svg"/>
         <regex fileNames="my.test.php,myTest.php"
-               name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/files/phpunit.svg"/>
+               name="PHPUnit"
+               pattern=".*(t|T)est\.php$"
+               icon="/icons/files/phpunit.svg"/>
         <regex fileNames="*.phtml"
-               name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.svg"/>
+               name="PHTML"
+               pattern=".*\.phtml$"
+               icon="/icons/files/phtml.svg"/>
         <regex fileNames="Pipfile"
-               name="Pipfile" pattern="Pipfile$" icon="/icons/files/pipfile.svg"/>
+               name="Pipfile"
+               pattern="Pipfile$"
+               icon="/icons/files/pipfile.svg"/>
         <regex fileNames="Pipfile.lock"
-               name="Pipfile.lock" pattern="Pipfile\.lock$" icon="/icons/files/lock.svg"/>
+               name="Pipfile.lock"
+               pattern="Pipfile\.lock$"
+               icon="/icons/files/lock.svg"/>
         <regex fileNames="*.play"
-               name="Play" pattern=".*\.play$" icon="/icons/files/play.svg"/>
+               name="Play"
+               pattern=".*\.play$"
+               icon="/icons/files/play.svg"/>
         <regex fileNames="*.plist"
-               name="PList" pattern=".*\.plist$" icon="/icons/files/plist.svg"/>
+               name="PList"
+               pattern=".*\.plist$"
+               icon="/icons/files/plist.svg"/>
         <regex fileNames="pnpm-lock.yaml,pnpm-workspace.yaml,pnpm-debug.yaml"
-               name="Pnpm" pattern="^pnpm-(lock|workspace|debug)\.yaml" icon="/icons/files/pnpm.svg"/>
+               name="Pnpm"
+               pattern="^pnpm-(lock|workspace|debug)\.yaml"
+               icon="/icons/files/pnpm.svg"/>
         <regex fileNames="pnpmfile.js"
-               name="Pnpmfile" pattern="^pnpmfile\.js" icon="/icons/files/pnpm.svg"/>
+               name="Pnpmfile"
+               pattern="^pnpmfile\.js"
+               icon="/icons/files/pnpm.svg"/>
         <regex fileNames="*.pcss,*.postcss,*.sss"
-               name="PostCSS" pattern=".*\.(pcss|postcss|sss)$" icon="/icons/files/postcss.svg"/>
+               name="PostCSS"
+               pattern=".*\.(pcss|postcss|sss)$"
+               icon="/icons/files/postcss.svg"/>
         <regex fileNames=".postcssrc,postcss.config.js,postcss.config.json"
-               name="PostCSS Config" pattern="^(\.postcssrc|postcss\.config\.js(on)?)$"
+               name="PostCSS Config"
+               pattern="^(\.postcssrc|postcss\.config\.js(on)?)$"
+
                icon="/icons/files/postcss.svg"/>
         <regex fileNames=".posthtmlrc,posthtml.config.yml,.posthtmlrc.json,posthtml.config.json"
-               name="PostHTML" pattern="^(\.posthtmlrc|posthtml\.config\.(yml|js|json))$"
+               name="PostHTML"
+               pattern="^(\.posthtmlrc|posthtml\.config\.(yml|js|json))$"
+
                icon="/icons/files/posthtml.svg"/>
         <regex fileNames="*.ps,*.eps"
-               name="PostScript" pattern=".*\.(ps|eps)$" icon="/icons/files/postscript.svg"/>
+               name="PostScript"
+               pattern=".*\.(ps|eps)$"
+               icon="/icons/files/postscript.svg"/>
         <regex fileNames="polymer.json"
-               name="Polymer" pattern="^polymer\.json" icon="/icons/files/polymer.svg"/>
+               name="Polymer"
+               pattern="^polymer\.json"
+               icon="/icons/files/polymer.svg"/>
         <regex fileNames="*.ppt,*.pptx,*.pps,*.ppsx,*.pot,*.potx,*.ppa,*.ppam"
-               name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx|pot|potx|ppa|ppam)$"
+               name="Powerpoint"
+               pattern=".*\.(ppt|pptx|pps|ppsx|pot|potx|ppa|ppam)$"
+
                icon="/icons/files/powerpoint.svg"/>
         <regex fileNames="*.powershell,*.ps1,*.psd1,*.psc1,*.pssc,*.cmd"
-               name="PowerShell" pattern=".*\.(powershell|ps1|psd1|psc1|pssc|cmd)$" icon="/icons/files/powershell.svg"/>
+               name="PowerShell"
+               pattern=".*\.(powershell|ps1|psd1|psc1|pssc|cmd)$"
+               icon="/icons/files/powershell.svg"/>
         <regex fileNames="*.prel,*.prproj,*.psq"
-               name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.svg"/>
+               name="Premiere"
+               pattern=".*\.(prel|prproj|psq)$"
+               icon="/icons/files/premiere.svg"/>
         <regex fileNames=".prettierrc.js,.prettierrc.json,.prettierrc.yml"
-               name="Prettier" pattern="^\.prettierrc(\.js(on)?|\.y(a)?ml)?$" icon="/icons/files/prettier.svg"/>
+               name="Prettier"
+               pattern="^\.prettierrc(\.js(on)?|\.y(a)?ml)?$"
+               icon="/icons/files/prettier.svg"/>
         <regex fileNames="prettier.config.js"
-               name="Prettier Config" pattern="^prettier\.config\.js$" icon="/icons/files/prettier.svg"/>
+               name="Prettier Config"
+               pattern="^prettier\.config\.js$"
+               icon="/icons/files/prettier.svg"/>
         <regex fileNames="prisma.yml"
-               name="Prisma" pattern="prisma\.yml" icon="/icons/files/prisma.svg"/>
+               name="Prisma"
+               pattern="prisma\.yml"
+               icon="/icons/files/prisma.svg"/>
         <regex fileNames="*.pde"
-               name="Processing" pattern=".*\.pde$" icon="/icons/files/processing.svg"/>
+               name="Processing"
+               pattern=".*\.pde$"
+               icon="/icons/files/processing.svg"/>
         <regex fileNames="*.pro,*.prolog"
-               name="Prolog" pattern=".*\.(pro|prolog)$" icon="/icons/files/prolog.svg"/>
+               name="Prolog"
+               pattern=".*\.(pro|prolog)$"
+               icon="/icons/files/prolog.svg"/>
         <regex fileNames="*.properties"
-               name="Properties" pattern=".*\.properties$" icon="/icons/files/source.svg"/>
+               name="Properties"
+               pattern=".*\.properties$"
+               icon="/icons/files/source.svg"/>
         <regex fileNames="protractor.js,protractor.json"
-               name="Protractor" pattern="^protractor\.js(on)?$" icon="/icons/files/protractor.svg"/>
+               name="Protractor"
+               pattern="^protractor\.js(on)?$"
+               icon="/icons/files/protractor.svg"/>
         <regex fileNames="*.puppet,*.pp,*.epp"
-               name="Puppet" pattern=".*\.(puppet|pp|epp)$" icon="/icons/files/puppet.svg"/>
+               name="Puppet"
+               pattern=".*\.(puppet|pp|epp)$"
+               icon="/icons/files/puppet.svg"/>
         <regex fileNames="*.purescript,*.purs,*.pure"
-               name="PureScript" pattern=".*\.(purescript|purs|pure)$" icon="/icons/files/purescript.svg"/>
+               name="PureScript"
+               pattern=".*\.(purescript|purs|pure)$"
+               icon="/icons/files/purescript.svg"/>
 
         <regex fileNames="*.r,*.rmd"
-               name="R" pattern=".*\.(r|rmd)$" icon="/icons/files/r.svg"/>
+               name="R"
+               pattern=".*\.(r|rmd)$"
+               icon="/icons/files/r.svg"/>
         <regex fileNames="*.rkt"
-               name="Racket" pattern=".*\.rkt" icon="/icons/files/racket.svg"/>
+               name="Racket"
+               pattern=".*\.rkt"
+               icon="/icons/files/racket.svg"/>
         <regex fileNames="*.raml"
-               name="Raml" pattern=".*\.raml$" icon="/icons/files/raml.svg"/>
+               name="Raml"
+               pattern=".*\.raml$"
+               icon="/icons/files/raml.svg"/>
         <regex fileNames="rails"
-               name="Rails" pattern="^rails$" icon="/icons/files/rails.svg"/>
+               name="Rails"
+               pattern="^rails$"
+               icon="/icons/files/rails.svg"/>
         <regex fileNames="*.rake"
-               name="Rake" pattern=".*rake$" icon="/icons/files/rake.svg"/>
+               name="Rake"
+               pattern=".*rake$"
+               icon="/icons/files/rake.svg"/>
         <regex fileNames="Rakefile"
-               name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.svg"/>
+               name="Rakefile"
+               pattern="Rakefile"
+               icon="/icons/files/rake.svg"/>
         <regex fileNames="*.cshtml,*.vbhtml"
-               name="Razor" pattern=".*\.(cshtml|vbhtml)$" icon="/icons/files/razor.svg"/>
+               name="Razor"
+               pattern=".*\.(cshtml|vbhtml)$"
+               icon="/icons/files/razor.svg"/>
         <regex fileNames="*.rdoc"
-               name="RDoc" pattern=".*\.rdoc$" icon="/icons/files/rdoc.svg"/>
+               name="RDoc"
+               pattern=".*\.rdoc$"
+               icon="/icons/files/rdoc.svg"/>
         <regex fileNames="*.rql,*.restql"
-               name="RestQL" pattern=".*\.(rql|restql)$" icon="/icons/files/restql.svg"/>
+               name="RestQL"
+               pattern=".*\.(rql|restql)$"
+               icon="/icons/files/restql.svg"/>
         <regex fileNames="*.react-cli"
-               name="React" pattern=".*\.react-cli$" icon="/icons/files/react.svg"/>
+               name="React"
+               pattern=".*\.react-cli$"
+               icon="/icons/files/react.svg"/>
         <regex fileNames="*.re,*.rei"
-               name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.svg"/>
+               name="ReasonML"
+               pattern=".*\.rei?"
+               icon="/icons/files/reason.svg"/>
         <regex fileNames="*.red"
-               name="Red" pattern=".*\.red" icon="/icons/files/red.svg"/>
+               name="Red"
+               pattern=".*\.red"
+               icon="/icons/files/red.svg"/>
         <regex fileNames="redis,redis-config.yml"
-               name="Redis" pattern="^redis.*" icon="/icons/files/redis.svg"/>
+               name="Redis"
+               pattern="^redis.*"
+               icon="/icons/files/redis.svg"/>
         <regex fileNames="action.js,actions.ts,myAction.js,myActions.js,my-actions.js"
-               name="Redux Action" pattern=".*(a|A)ctions?\.(js|ts)$" icon="/icons/files/redux-action.svg"/>
+               name="Redux Action"
+               pattern=".*(a|A)ctions?\.(js|ts)$"
+               icon="/icons/files/redux-action.svg"/>
         <regex fileNames="reducer.js,reducer.ts,myReducer.js,myReducers.js,my-reducers.js"
-               name="Redux Reducer" pattern=".*(r|R)educer\.(js|ts)$" icon="/icons/files/redux-reducer.svg"/>
+               name="Redux Reducer"
+               pattern=".*(r|R)educer\.(js|ts)$"
+               icon="/icons/files/redux-reducer.svg"/>
         <regex fileNames="store.js,store.ts,myStore.js,myStores.js,my-stores.js"
-               name="Redux Store" pattern=".*(s|S)tore\.(js|ts)$" icon="/icons/files/redux-store.svg"/>
+               name="Redux Store"
+               pattern=".*(s|S)tore\.(js|ts)$"
+               icon="/icons/files/redux-store.svg"/>
         <regex fileNames="*.rst"
-               name="Restructured" pattern=".*\.rst$" icon="/icons/files/rst.svg"/>
+               name="Restructured"
+               pattern=".*\.rst$"
+               icon="/icons/files/rst.svg"/>
         <regex fileNames="*.riot,*.tag"
-               name="Riot" pattern=".*\.(riot|tag)$" icon="/icons/files/riot.svg"/>
+               name="Riot"
+               pattern=".*\.(riot|tag)$"
+               icon="/icons/files/riot.svg"/>
         <regex fileNames="*.robot"
-               name="Robot" pattern=".*\.robot$" icon="/icons/files/robot.svg"/>
+               name="Robot"
+               pattern=".*\.robot$"
+               icon="/icons/files/robot.svg"/>
         <regex fileNames="rollup.js,rollup.conf.js,rollup.ts"
-               name="Rollup" pattern="^rollup.*" icon="/icons/files/rollup.svg"/>
+               name="Rollup"
+               pattern="^rollup.*"
+               icon="/icons/files/rollup.svg"/>
         <regex fileNames="routing.js,routes.js,routes.jsx,routing.ts,routes.tsx"
-               name="Routes" pattern="(routing|routes)\.(js|jsx|ts|tsx)$" icon="/icons/files/angularrouting.svg"/>
+               name="Routes"
+               pattern="(routing|routes)\.(js|jsx|ts|tsx)$"
+               icon="/icons/files/angularrouting.svg"/>
         <regex fileNames="controller_spec.rb,model_spec.rb"
-               name="RSpec" pattern=".*_spec\.rb$" icon="/icons/files/rspec.svg"/>
+               name="RSpec"
+               pattern=".*_spec\.rb$"
+               icon="/icons/files/rspec.svg"/>
         <regex fileNames="*.rspec"
-               name="RSpec Config" pattern=".*\.rspec$" icon="/icons/files/rspec.svg"/>
+               name="RSpec Config"
+               pattern=".*\.rspec$"
+               icon="/icons/files/rspec.svg"/>
         <regex fileNames="*.rubocop.yml"
-               name="Rubocop" pattern=".*\.rubocop.*\.yml$" icon="/icons/files/rubocop.svg"/>
+               name="Rubocop"
+               pattern=".*\.rubocop.*\.yml$"
+               icon="/icons/files/rubocop.svg"/>
         <regex fileNames=".ruby-gemset"
-               name="Ruby Gemset" pattern="^\.ruby-gemset$" icon="/icons/files/gemfile.svg"/>
+               name="Ruby Gemset"
+               pattern="^\.ruby-gemset$"
+               icon="/icons/files/gemfile.svg"/>
         <regex fileNames=".ruby-version"
-               name="Ruby Version" pattern="^\.ruby-version$" icon="/icons/files/ruby.svg"/>
+               name="Ruby Version"
+               pattern="^\.ruby-version$"
+               icon="/icons/files/ruby.svg"/>
         <regex fileNames="*.rs,*.rust"
-               name="Rust" pattern=".*\.(rs|rust)$" icon="/icons/files/rust.svg"/>
+               name="Rust"
+               pattern=".*\.(rs|rust)$"
+               icon="/icons/files/rust.svg"/>
         <regex fileNames=".rvmrc"
-               name="RVM" pattern="^\.rvmrc$" icon="/icons/files/ruby.svg"/>
+               name="RVM"
+               pattern="^\.rvmrc$"
+               icon="/icons/files/ruby.svg"/>
 
         <regex fileNames="*.san"
-               name="San" pattern=".*\.san$" icon="/icons/files/san.svg"/>
+               name="San"
+               pattern=".*\.san$"
+               icon="/icons/files/san.svg"/>
         <regex fileNames="*.sass"
-               name="SASS" pattern=".*\.sass$" icon="/icons/files/sass.svg"/>
+               name="SASS"
+               pattern=".*\.sass$"
+               icon="/icons/files/sass.svg"/>
         <regex fileNames="sapper.js"
-               name="Sapper" pattern="sapper\.js$" icon="/icons/files/sapper.svg"/>
+               name="Sapper"
+               pattern="sapper\.js$"
+               icon="/icons/files/sapper.svg"/>
         <regex fileNames="*.sbt"
-               name="SBT" pattern=".*\.sbt$" icon="/icons/files/sbt.svg"/>
+               name="SBT"
+               pattern=".*\.sbt$"
+               icon="/icons/files/sbt.svg"/>
         <regex fileNames="*.scala"
-               name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.svg"/>
+               name="Scala"
+               pattern=".*\.scala$"
+               icon="/icons/files/scala.svg"/>
         <regex fileNames="*.scss"
-               name="SCSS" pattern=".*\.scss$" icon="/icons/files/sass.svg"/>
+               name="SCSS"
+               pattern=".*\.scss$"
+               icon="/icons/files/sass.svg"/>
         <regex fileNames="*.scheme,*.scm"
-               name="Scheme" pattern=".*\.(scheme|scm)$" icon="/icons/files/scheme.svg"/>
+               name="Scheme"
+               pattern=".*\.(scheme|scm)$"
+               icon="/icons/files/scheme.svg"/>
         <regex fileNames=".releaserc,.releaserc.js,.releaserc.json,.releaserc.yml"
-               name="Semantic Release" pattern=".*\.releaserc(.js(on)?|.y(a)?ml)?$"
+               name="Semantic Release"
+               pattern=".*\.releaserc(.js(on)?|.y(a)?ml)?$"
+
                icon="/icons/files/semantic-release.svg"/>
         <regex fileNames="release.config.js"
-               name="Semantic Release Config" pattern="^release\.config\.js$" icon="/icons/files/semantic-release.svg"/>
+               name="Semantic Release Config"
+               pattern="^release\.config\.js$"
+               icon="/icons/files/semantic-release.svg"/>
         <regex fileNames="*.setting,*.settings,*.option,*.options,*.opt,*.opts"
-               name="Settings" pattern=".*\.(settings?|options?|opts?)$" icon="/icons/files/settings.svg"/>
+               name="Settings"
+               pattern=".*\.(settings?|options?|opts?)$"
+               icon="/icons/files/settings.svg"/>
         <regex fileNames=".sequelizerc"
-               name="Sequelize" pattern="\.sequelizerc$" icon="/icons/files/sequelize.svg"/>
+               name="Sequelize"
+               pattern="\.sequelizerc$"
+               icon="/icons/files/sequelize.svg"/>
         <regex fileNames="*.sh,*.zsh,*.fish,*.bash,.fishrc,.zshrc,.bashrc,.tcsh"
-               name="Shell" pattern=".*\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc|tcsh)$" icon="/icons/files/shell.svg"/>
+               name="Shell"
+               pattern=".*\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc|tcsh)$"
+               icon="/icons/files/shell.svg"/>
         <regex fileNames="*.ss"
-               name="SilverStripe" pattern=".*\.ss$" icon="/icons/files/silverstripe.svg"/>
+               name="SilverStripe"
+               pattern=".*\.ss$"
+               icon="/icons/files/silverstripe.svg"/>
         <regex fileNames="*.sketch"
-               name="Sketch" pattern=".*\.sketch$" icon="/icons/files/sketch.svg"/>
+               name="Sketch"
+               pattern=".*\.sketch$"
+               icon="/icons/files/sketch.svg"/>
         <regex fileNames="*.slim"
-               name="Slim" pattern=".*\.slim$" icon="/icons/files/slim.svg"/>
+               name="Slim"
+               pattern=".*\.slim$"
+               icon="/icons/files/slim.svg"/>
         <regex fileNames="*.tpl"
-               name="Smarty" pattern=".*\.tpl$" icon="/icons/files/smarty.svg"/>
+               name="Smarty"
+               pattern=".*\.tpl$"
+               icon="/icons/files/smarty.svg"/>
         <regex fileNames="*.snap"
-               name="Snapshots" pattern=".*\.snap$" icon="/icons/files/snapshot.svg"/>
+               name="Snapshots"
+               pattern=".*\.snap$"
+               icon="/icons/files/snapshot.svg"/>
         <regex fileNames="*.sol"
-               name="Solidity" pattern=".*\.sol$" icon="/icons/files/solidity.svg"/>
+               name="Solidity"
+               pattern=".*\.sol$"
+               icon="/icons/files/solidity.svg"/>
         <regex fileNames="*.sonarrc"
-               name="Sonar" pattern=".*\.sonarrc$" icon="/icons/files/sonar.svg"/>
+               name="Sonar"
+               pattern=".*\.sonarrc$"
+               icon="/icons/files/sonar.svg"/>
         <regex fileNames="*.spring"
-               name="Spring" pattern=".*\.spring$" icon="/icons/files/spring.svg"/>
+               name="Spring"
+               pattern=".*\.spring$"
+               icon="/icons/files/spring.svg"/>
         <regex fileNames="*.sql,*.pdb,*.pgsql,*.mysql,*.hql,*.qml,*.psql,*.pkb"
-               name="SQL" pattern=".*\.(sql|pdb|pgsql|mysql|hql|qml|psql|pkb)$" icon="/icons/files/sql.svg"/>
+               name="SQL"
+               pattern=".*\.(sql|pdb|pgsql|mysql|hql|qml|psql|pkb)$"
+               icon="/icons/files/sql.svg"/>
         <regex fileNames="*.sqlite,*.sqlite3"
-               name="SQLite" pattern=".*\.sqlite3?$" icon="/icons/files/sqlite.svg"/>
+               name="SQLite"
+               pattern=".*\.sqlite3?$"
+               icon="/icons/files/sqlite.svg"/>
         <regex fileNames="*.stata"
-               name="Stata" pattern=".*\.stata$" icon="/icons/files/stata.svg"/>
+               name="Stata"
+               pattern=".*\.stata$"
+               icon="/icons/files/stata.svg"/>
         <regex fileNames="stencil.config.js,stencil.config.ts"
-               name="Stencil" pattern="^stencil\.config\.(js|ts)$" icon="/icons/files/stencil.svg"/>
+               name="Stencil"
+               pattern="^stencil\.config\.(js|ts)$"
+               icon="/icons/files/stencil.svg"/>
         <regex fileNames="*.story.js,*.stories.js,*.story.jsx,*.stories.ts,*.stories.tsx"
-               name="Storybook" pattern=".*\.(story|stories)\.(jsx?|tsx?)$" icon="/icons/files/storybook.svg"/>
+               name="Storybook"
+               pattern=".*\.(story|stories)\.(jsx?|tsx?)$"
+               icon="/icons/files/storybook.svg"/>
         <regex fileNames=".stylelintrc,stylelint.config.js,stylelint.config.json"
-               name="Stylelint" pattern="^(\.stylelintrc|stylelint\.config\.js(on)?)$"
+               name="Stylelint"
+               pattern="^(\.stylelintrc|stylelint\.config\.js(on)?)$"
+
                icon="/icons/files/stylelint.svg"/>
         <regex fileNames="*.styl"
-               name="Stylus" pattern=".*\.styl$" icon="/icons/files/stylus.svg"/>
+               name="Stylus"
+               pattern=".*\.styl$"
+               icon="/icons/files/stylus.svg"/>
         <regex fileNames="*.sublime-workspace,*.sublime-package"
-               name="Sublime" pattern=".*\.sublime-.*" icon="/icons/files/sublime.svg"/>
+               name="Sublime"
+               pattern=".*\.sublime-.*"
+               icon="/icons/files/sublime.svg"/>
         <regex fileNames="*.scd"
-               name="SuperCollider" pattern=".*\.scd$" icon="/icons/files/scd.svg"/>
+               name="SuperCollider"
+               pattern=".*\.scd$"
+               icon="/icons/files/scd.svg"/>
         <regex fileNames="*.svelte"
-               name="Svelte" pattern=".*\.svelte" icon="/icons/files/svelte.svg"/>
+               name="Svelte"
+               pattern=".*\.svelte"
+               icon="/icons/files/svelte.svg"/>
         <regex fileNames="svelte.config.js,svelte.config.json"
-               name="Svelte Config" pattern="svelte\.config\.js(on)?" icon="/icons/files/svelte.svg"/>
+               name="Svelte Config"
+               pattern="svelte\.config\.js(on)?"
+               icon="/icons/files/svelte.svg"/>
         <regex fileNames=".svn"
-               name="SVN" pattern="^\.svn" icon="/icons/files/svn.svg"/>
+               name="SVN"
+               pattern="^\.svn"
+               icon="/icons/files/svn.svg"/>
         <regex fileNames="*.swagger,*.swag"
-               name="Swagger" pattern=".*\.(swagger|swag)$" icon="/icons/files/swagger.svg"/>
+               name="Swagger"
+               pattern=".*\.(swagger|swag)$"
+               icon="/icons/files/swagger.svg"/>
         <regex fileNames="swagger.yml,swagger.yaml,swagger.json,api.yml,api.yaml,api.json"
-               name="Swagger Config" pattern="((swagger|api)\.(yml|yaml|json))$"
+               name="Swagger Config"
+               pattern="((swagger|api)\.(yml|yaml|json))$"
+
                icon="/icons/files/swagger.svg"/>
         <regex fileNames="*.swc"
-               name="SWC" pattern=".*\.swc$" icon="/icons/files/swc.svg"/>
+               name="SWC"
+               pattern=".*\.swc$"
+               icon="/icons/files/swc.svg"/>
         <regex fileNames="*.swift"
-               name="Swift" pattern=".*\.swift$" icon="/icons/files/swift.svg"/>
+               name="Swift"
+               pattern=".*\.swift$"
+               icon="/icons/files/swift.svg"/>
         <regex fileNames="*.swig"
-               name="Swig" pattern=".*\.swig$" icon="/icons/files/swig.svg"/>
+               name="Swig"
+               pattern=".*\.swig$"
+               icon="/icons/files/swig.svg"/>
         <regex fileNames="*.symfony"
-               name="Symfony" pattern=".*\.symfony" icon="/icons/files/symfony.svg"/>
+               name="Symfony"
+               pattern=".*\.symfony"
+               icon="/icons/files/symfony.svg"/>
 
         <regex fileNames="tailwind.js,tailwind.conf.js,tailwind.conf.ts"
-               name="Tailwind CSS Config" pattern="^tailwind.*\.[jt]s$" icon="/icons/files/tailwindcss.svg"/>
+               name="Tailwind CSS Config"
+               pattern="^tailwind.*\.[jt]s$"
+               icon="/icons/files/tailwindcss.svg"/>
         <regex fileNames="*.tcl"
-               name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.svg"/>
+               name="TCL"
+               pattern=".*\.tcl$"
+               icon="/icons/files/tcl.svg"/>
         <regex fileNames="*.tf,*.tfstate,*.tfvars"
-               name="TerraForm" pattern=".*\.(tf|tfstate|tfvars)$" icon="/icons/files/terraform.svg"/>
+               name="TerraForm"
+               pattern=".*\.(tf|tfstate|tfvars)$"
+               icon="/icons/files/terraform.svg"/>
         <regex fileNames="*.tex,*.cls,*.sty,*.dtx,*.ltx"
-               name="TeX" pattern=".*\.(tex|cls|sty|dtx|ltx)$" icon="/icons/files/tex.svg"/>
+               name="TeX"
+               pattern=".*\.(tex|cls|sty|dtx|ltx)$"
+               icon="/icons/files/tex.svg"/>
         <regex fileNames="*.tern-config,*.tern-project"
-               name="Tern" pattern=".*\.tern-(config|project)$" icon="/icons/files/tern.svg"/>
+               name="Tern"
+               pattern=".*\.tern-(config|project)$"
+               icon="/icons/files/tern.svg"/>
         <regex fileNames=".ternconfig"
-               name="Tern Config" pattern="^\.ternconfig$" icon="/icons/files/tern.svg"/>
+               name="Tern Config"
+               pattern="^\.ternconfig$"
+               icon="/icons/files/tern.svg"/>
         <regex fileNames="MyTest.java,myTest.java,mytest.java"
-               name="Test Java" pattern="(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
+               name="Test Java"
+               pattern="(t|T)est\.java$"
+               icon="/icons/files/testjava.svg"/>
         <regex fileNames="*.test.js,*.spec.js,*.test.es6,*.spec.es6"
-               name="Test JS" pattern=".*\.?(test|spec)\.(js|es6)$" icon="/icons/files/testjs.svg"/>
+               name="Test JS"
+               pattern=".*\.?(test|spec)\.(js|es6)$"
+               icon="/icons/files/testjs.svg"/>
         <regex fileNames="*.test.jsx,*.spec.jsx,*.test.tsx,*.spec.tsx"
-               name="Test React" pattern=".*\.?(test|spec)\.(jsx|tsx)$" icon="/icons/files/testreact.svg"/>
+               name="Test React"
+               pattern=".*\.?(test|spec)\.(jsx|tsx)$"
+               icon="/icons/files/testreact.svg"/>
         <regex fileNames="*.test.py,*.spec.py"
-               name="Test Python" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
+               name="Test Python"
+               pattern=".*\.(test|spec)\.py$"
+               icon="/icons/files/testpy.svg"/>
         <regex fileNames="my_test.rb,controller_spec.rb"
-               name="Test Ruby" pattern="_(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
+               name="Test Ruby"
+               pattern="_(test|spec)\.rb$"
+               icon="/icons/files/testruby.svg"/>
         <regex fileNames="*.test.ts,*.spec.ts"
-               name="Test TypeScript" pattern=".*\.?(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
+               name="Test TypeScript"
+               pattern=".*\.?(test|spec)\.ts$"
+               icon="/icons/files/testts.svg"/>
         <regex fileNames="*.textile"
-               name="Textile" pattern=".*\.textile$" icon="/icons/files/textile.svg"/>
+               name="Textile"
+               pattern=".*\.textile$"
+               icon="/icons/files/textile.svg"/>
         <regex fileNames="*.tmPreferences,*.tmTheme,*.tmLanguage"
-               name="Textmate" pattern=".*\.(tmPreferences|tmTheme|tmLanguage)" icon="/icons/files/textmate.svg"/>
+               name="Textmate"
+               pattern=".*\.(tmPreferences|tmTheme|tmLanguage)"
+               icon="/icons/files/textmate.svg"/>
         <regex fileNames="tomcat.conf,tomcat.java"
-               name="Tomcat" pattern="^tomcat.*" icon="/icons/files/tomcat.svg"/>
+               name="Tomcat"
+               pattern="^tomcat.*"
+               icon="/icons/files/tomcat.svg"/>
         <regex fileNames="*.toml"
-               name="TOML" pattern=".*\.toml$" icon="/icons/files/toml.svg"/>
+               name="TOML"
+               pattern=".*\.toml$"
+               icon="/icons/files/toml.svg"/>
         <regex fileNames="TODO,todo,TODO.md,todo.js,TODO.java"
-               name="TODO" pattern="^(TODO|todo).*" icon="/icons/files/todo.svg"/>
+               name="TODO"
+               pattern="^(TODO|todo).*"
+               icon="/icons/files/todo.svg"/>
         <regex fileNames="tsconfig.js,tsconfig.json,.tsconfig.js,.tsconfig.json"
-               name="TSConfig" pattern="\.?tsconfig.*\.(js|json)$" icon="/icons/files/tslint.svg"/>
+               name="TSConfig"
+               pattern="\.?tsconfig.*\.(js|json)$"
+               icon="/icons/files/tslint.svg"/>
         <regex fileNames="tslint.js,tslint.json,.tslint.js,.tslint.json"
-               name="TSLint" pattern="\.?tslint.*\.(js|json)$" icon="/icons/files/tslint.svg"/>
+               name="TSLint"
+               pattern="\.?tslint.*\.(js|json)$"
+               icon="/icons/files/tslint.svg"/>
         <regex fileNames="*.travis.yml"
-               name="Travis" pattern=".*\.travis\.yml$" icon="/icons/files/travis.svg"/>
+               name="Travis"
+               pattern=".*\.travis\.yml$"
+               icon="/icons/files/travis.svg"/>
         <regex fileNames="*.t"
-               name="Turing" pattern=".*\.t$" icon="/icons/files/turing.svg"/>
+               name="Turing"
+               pattern=".*\.t$"
+               icon="/icons/files/turing.svg"/>
         <regex fileNames="*.twig"
-               name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.svg"/>
+               name="Twig"
+               pattern=".*\.twig$"
+               icon="/icons/files/twig.svg"/>
         <regex fileNames="*.d.ts"
-               name="Typescript Defs" pattern=".*\.d\.ts$" icon="/icons/files/dts.svg"/>
+               name="Typescript Defs"
+               pattern=".*\.d\.ts$"
+               icon="/icons/files/dts.svg"/>
         <regex fileNames="typings.json"
-               name="Typings" pattern="^typings\.json$" icon="/icons/files/typings.svg"/>
+               name="Typings"
+               pattern="^typings\.json$"
+               icon="/icons/files/typings.svg"/>
 
         <regex fileNames="*.uml,*.iuml,*.puml,*.pu,*.plantuml,*.wsd"
-               name="UML" pattern=".*\.(uml|iuml|puml|pu|plantuml|wsd)" icon="/icons/files/uml.svg"/>
+               name="UML"
+               pattern=".*\.(uml|iuml|puml|pu|plantuml|wsd)"
+               icon="/icons/files/uml.svg"/>
         <regex fileNames="*.unity,*.unity3d,*.fbx"
-               name="Unity" pattern=".*\.(unity|unity3d|fbx)" icon="/icons/files/unity.svg"/>
+               name="Unity"
+               pattern=".*\.(unity|unity3d|fbx)"
+               icon="/icons/files/unity.svg"/>
         <regex fileNames="*.u,*.unr,*.utx,*.umx,*.uax,*.ukx,*.uz,*.upkg,*.uc,*.upl,*.asc,*.lwo"
-               name="Unreal" pattern=".*\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|asc|lwo)$"
+               name="Unreal"
+               pattern=".*\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|asc|lwo)$"
+
                icon="/icons/files/unreal.svg"/>
 
         <regex fileNames="Vagrantfile,vagrantfile"
-               name="Vagrant" pattern="^(V|v)agrantfile$" icon="/icons/files/vagrant.svg"/>
+               name="Vagrant"
+               pattern="^(V|v)agrantfile$"
+               icon="/icons/files/vagrant.svg"/>
         <regex fileNames="*.vala"
-               name="Vala" pattern=".*\.vala$" icon="/icons/files/vala.svg"/>
+               name="Vala"
+               pattern=".*\.vala$"
+               icon="/icons/files/vala.svg"/>
         <regex fileNames="*.vm,*.vtl,*.fhtml"
-               name="Velocity" pattern=".*\.(vm|vtl|fhtml)" icon="/icons/files/velocity.svg"/>
+               name="Velocity"
+               pattern=".*\.(vm|vtl|fhtml)"
+               icon="/icons/files/velocity.svg"/>
         <regex fileNames="VERSION,version"
-               name="VERSION" pattern="^(VERSION|version)$" icon="/icons/files/version.svg"/>
+               name="VERSION"
+               pattern="^(VERSION|version)$"
+               icon="/icons/files/version.svg"/>
         <regex fileNames="*.v,*.vh"
-               name="V" pattern=".*\.(v|vh)$" icon="/icons/files/v.svg"/>
+               name="V"
+               pattern=".*\.(v|vh)$"
+               icon="/icons/files/v.svg"/>
         <regex fileNames="*.vhdl,*.vhd,*.sv"
-               name="VHDL" pattern=".*\.(vhdl|vhd|sv)$" icon="/icons/files/vhdl.svg"/>
+               name="VHDL"
+               pattern=".*\.(vhdl|vhd|sv)$"
+               icon="/icons/files/vhdl.svg"/>
         <regex fileNames="*.vim,*.viml,*.vimrc,*.gvimrc"
-               name="Vim" pattern=".*\.(vim|viml|vimrc|gvimrc)$" icon="/icons/files/vim.svg"/>
+               name="Vim"
+               pattern=".*\.(vim|viml|vimrc|gvimrc)$"
+               icon="/icons/files/vim.svg"/>
         <regex fileNames="*.visio"
-               name="Visio" pattern=".*\.visio$" icon="/icons/files/visio.svg"/>
+               name="Visio"
+               pattern=".*\.visio$"
+               icon="/icons/files/visio.svg"/>
         <regex fileNames="*.vscode,*.vssettings,*.vsix,*.sln,*.suo"
-               name="Visual Studio" pattern=".*\.(vscode|vssettings|vsix|sln|suo)$" icon="/icons/files/vs.svg"/>
+               name="Visual Studio"
+               pattern=".*\.(vscode|vssettings|vsix|sln|suo)$"
+               icon="/icons/files/vs.svg"/>
         <regex fileNames="*.vbox,*.vdi,*.vmware"
-               name="VM" pattern=".*\.(vbox|vdi|vmware)$" icon="/icons/files/vm.svg"/>
+               name="VM"
+               pattern=".*\.(vbox|vdi|vmware)$"
+               icon="/icons/files/vm.svg"/>
         <regex fileNames="*.vue"
-               name="Vue" pattern=".*\.vue$" icon="/icons/files/vue.svg"/>
+               name="Vue"
+               pattern=".*\.vue$"
+               icon="/icons/files/vue.svg"/>
         <regex fileNames="*.vuex"
-               name="Vuex" pattern=".*\.vuex$" icon="/icons/files/vuex.svg"/>
+               name="Vuex"
+               pattern=".*\.vuex$"
+               icon="/icons/files/vuex.svg"/>
 
         <regex fileNames="wallaby.js,wallaby.ts"
-               name="Wallaby" pattern="^wallaby.*" icon="/icons/files/wallaby.svg"/>
+               name="Wallaby"
+               pattern="^wallaby.*"
+               icon="/icons/files/wallaby.svg"/>
         <regex fileNames="*.wat,*.wasm"
-               name="WebAssembly" pattern=".*\.(wat|wasm)$" icon="/icons/files/webassembly.svg"/>
+               name="WebAssembly"
+               pattern=".*\.(wat|wasm)$"
+               icon="/icons/files/webassembly.svg"/>
         <regex fileNames="webpack.common.js,webpack.config.js,webpack.dev.js,webpack.prod.js,webpack.config.ts,webpack.config.es6,webpack.dev.coffee"
-               name="Webpack" pattern="^webpack\.(common|config|dev|prod)\.(js|es|es6|coffee|ts)$"
+               name="Webpack"
+               pattern="^webpack\.(common|config|dev|prod)\.(js|es|es6|coffee|ts)$"
+
                icon="/icons/files/webpack.svg"/>
         <regex fileNames="*.hintrc"
-               name="Webhint" pattern=".*\.hintrc$" icon="/icons/files/webhint.svg"/>
+               name="Webhint"
+               pattern=".*\.hintrc$"
+               icon="/icons/files/webhint.svg"/>
         <regex fileNames="*.wpy"
-               name="WePy" pattern=".*\.wpy$" icon="/icons/files/wepy.svg"/>
+               name="WePy"
+               pattern=".*\.wpy$"
+               icon="/icons/files/wepy.svg"/>
         <regex fileNames="*.bat,*.exe,*.dos,*.ms,*.msi"
-               name="Windows" pattern=".*\.(bat|exe|dos|ms|msi)$" icon="/icons/files/windows.svg"/>
+               name="Windows"
+               pattern=".*\.(bat|exe|dos|ms|msi)$"
+               icon="/icons/files/windows.svg"/>
         <regex fileNames="*.doc,*.docx,*.docm,*.docxml,*.dotm,*.dotx,*.wri,*.odt,*.odtx"
-               name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.svg"/>
+               name="Word"
+               pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$"
+               icon="/icons/files/word.svg"/>
 
         <regex fileNames="*.xamarin"
-               name="Xamarin" pattern=".*\.xamarin" icon="/icons/files/xamarin.svg"/>
+               name="Xamarin"
+               pattern=".*\.xamarin"
+               icon="/icons/files/xamarin.svg"/>
         <regex fileNames="*.xcodeproj"
-               name="XCode" pattern=".*\.xcodeproj$" icon="/icons/files/appstore.svg"/>
+               name="XCode"
+               color="2196F3"
+               pattern=".*\.xcodeproj$"
+               icon="/icons/files/appstore.svg"/>
         <regex fileNames="*.xcplayground"
-               name="XCode Playground" pattern=".*\.xcplayground$" icon="/icons/files/appstore.svg"/>
+               name="XCode Playground"
+               color="2196F3"
+               pattern=".*\.xcplayground$"
+               icon="/icons/files/appstore.svg"/>
         <regex fileNames="*.xcworkspace"
-               name="XCode Workspace" pattern=".*\.xcworkspace$" icon="/icons/files/appstore.svg"/>
+               name="XCode Workspace"
+               color="2196F3"
+               pattern=".*\.xcworkspace$"
+               icon="/icons/files/appstore.svg"/>
         <regex fileNames="*.storyboard"
-               name="XCode Storyboard" pattern=".*\.storyboard$" icon="/icons/files/appstore.svg"/>
+               name="XCode Storyboard"
+               color="2196F3"
+               pattern=".*\.storyboard$"
+               icon="/icons/files/appstore.svg"/>
 
         <regex fileNames="*.yang"
-               name="Yang" pattern=".*\.yang$" icon="/icons/files/yang.svg"/>
+               name="Yang"
+               pattern=".*\.yang$"
+               icon="/icons/files/yang.svg"/>
         <regex fileNames=".yarnrc, yarn.json, yarn.js"
-               name="Yarn" pattern="(\.yarnrc|yarn.js(on)?)" icon="/icons/files/yarn.svg"/>
+               name="Yarn"
+               pattern="(\.yarnrc|yarn.js(on)?)"
+               icon="/icons/files/yarn.svg"/>
         <regex fileNames="yarn.lock"
-               name="Yarn Lock" pattern="^yarn\.lock$" icon="/icons/files/yarn.svg"/>
+               name="Yarn Lock"
+               pattern="^yarn\.lock$"
+               icon="/icons/files/yarn.svg"/>
         <regex fileNames=".yarnclean"
-               name="Yarn Clean" pattern="^\.yarnclean$" icon="/icons/files/yarn.svg"/>
+               name="Yarn Clean"
+               pattern="^\.yarnclean$"
+               icon="/icons/files/yarn.svg"/>
         <regex fileNames=".yvmrc"
-               name="YVM" pattern="^\.yvmrc" icon="/icons/files/yvmrc.svg"/>
+               name="YVM"
+               pattern="^\.yvmrc"
+               icon="/icons/files/yvmrc.svg"/>
 
         <!-- These take the least priority -->
         <regex fileNames="*.lds,*.ld,*.ini,*.config,*.env,*.cfg"
-               name="Preferences" pattern=".*\.(lds?|ini|config|env|cfg)$" icon="/icons/files/preferences.svg"/>
+               name="Preferences"
+               pattern=".*\.(lds?|ini|config|env|cfg)$"
+               icon="/icons/files/preferences.svg"/>
         <regex fileNames="*.env.dev,*.env.prod"
-               name="Envs" pattern=".*\.env\.(.*)$" icon="/icons/files/preferences.svg"/>
+               name="Envs"
+               pattern=".*\.env\.(.*)$"
+               icon="/icons/files/preferences.svg"/>
         <regex fileNames="ls,cd,myapp,run"
-               name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.svg"/>
+               name="Binary"
+               pattern="^[^.]+$"
+               icon="/icons/files/binary.svg"/>
 
         <regex fileNames="*.ttf,*.ttc,*.pfb,*.pfm,*.otf,*.dfont,*.pfa,*.afm,*.eot,*.woff,*.woff2"
-               name="Font" pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"
+               name="Font"
+               pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"
+
                icon="/icons/files/font.svg"/>
         <regex fileNames="*.lock"
-               name="Lockfiles" pattern=".*\.lock$" icon="/icons/files/lock.svg"/>
+               name="Lockfiles"
+               pattern=".*\.lock$"
+               icon="/icons/files/lock.svg"/>
         <regex fileNames="*.xml,*.xhtml,*.fxml,*.jrxml,*.jnlp,*.pom,*.rng,*.tld,*.wsdl,*.xsd,*.xsl,*.xslt,*.xul"
-               name="XML" pattern=".*\.(xml|xhtml|fxml|jrxml|jnlp|pom|rng|tld|wsdl|xsd|xsl|xslt|xul)$"
+               name="XML"
+               pattern=".*\.(xml|xhtml|fxml|jrxml|jnlp|pom|rng|tld|wsdl|xsd|xsl|xslt|xul)$"
+
                icon="/icons/files/xml.svg"/>
         <regex fileNames="*.yml,*.yaml,*.info"
-               name="YAML" pattern=".*\.(yml|yaml|info)$" icon="/icons/files/yaml.svg"/>
+               name="YAML"
+               pattern=".*\.(yml|yaml|info)$"
+               icon="/icons/files/yaml.svg"/>
 
         <regex fileNames="*.7z,*.7zip,*.gzip,*.zip,*.rar,*.tar,*.gz,*.pzip,*.saz,*.tgz,*.bz2,*.egg,*.xar,*.sit"
-               name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$"
+               name="Archive"
+               pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz|bz2|xar|egg|sit)$"
+               color="C792EA"
                icon="/icons/files/archive.svg"/>
         <regex fileNames="*.mp3,*.aac,*.aiff,*.au,*.flac,*.m4a,*.mpc,*.mp,*.mpp,*.ogg,*.oga,*.opus,*.ra,*.rm,*.wav,*.wma,*.snd,*.mid,*.cda"
                name="Audio"
+               color="D52A29"
                pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/files/audio.svg"/>
         <regex fileNames="*.avi,*.mp4,*.mpg,*.mpeg,*.mov,*.mkv,*.flv,*.h264,*.webm,*.wmv,*.ogv,*.3gp,*.m4v,*.3gpp,*.ogm,*.dvd,*.divx,*.qt,*.yuv"
                name="Video"
+
                pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx|qt|yuv)$"
+
                icon="/icons/files/video.svg"/>
 
         <regex fileNames="*.txt,*.rtf"
-               name="Text" pattern=".*\.(txt|rtf)$" icon="/icons/files/text.svg"/>
+               name="Text"
+               pattern=".*\.(txt|rtf)$"
+               icon="/icons/files/text.svg"/>
         <regex fileNames="*.min.js,*.min.es6,*.min.es,*.min.jsx,*.min.ts"
-               name="Javascript Minified" pattern=".*\.min\.(js|es6|es|jsx|ts)$" icon="/icons/files/jsmin.svg"/>
+               name="Javascript Minified"
+               pattern=".*\.min\.(js|es6|es|jsx|ts)$"
+               icon="/icons/files/jsmin.svg"/>
         <regex fileNames="*.java,*.jar,*.war"
-               name="Java" pattern=".*\.(java|jar|war)$" icon="/icons/files/java.svg"/>
+               name="Java"
+               pattern=".*\.(java|jar|war)$"
+               icon="/icons/files/java.svg"/>
         <regex fileNames="*.jsx,*.tsx"
-               name="JSX" pattern=".*\.(jsx|tsx)$" icon="/icons/files/jsx.svg"/>
+               name="JSX"
+               pattern=".*\.(jsx|tsx)$"
+               icon="/icons/files/jsx.svg"/>
         <regex fileNames="*.ts,*.tslint"
-               name="TypeScript" pattern=".*\.(ts|tslint)$" icon="/icons/files/typeScript.svg"/>
+               name="TypeScript"
+               pattern=".*\.(ts|tslint)$"
+               icon="/icons/files/typeScript.svg"/>
         <regex fileNames="*.js,*.es6,*.es,*.mjs"
-               name="Javascript" pattern=".*\.(js|es6|es|mjs)$" icon="/icons/files/js.svg"/>
+               name="Javascript"
+               pattern=".*\.(js|es6|es|mjs)$"
+               icon="/icons/files/js.svg"/>
         <regex fileNames="*.py,*.python,*.pyc,*.whl"
-               name="Python" pattern=".*\.(py|python|pyc|whl)$" icon="/icons/files/python.svg"/>
+               name="Python"
+               pattern=".*\.(py|python|pyc|whl)$"
+               icon="/icons/files/python.svg"/>
         <regex fileNames="*.rb"
-               name="Ruby" pattern=".*\.rb$" icon="/icons/files/ruby.svg"/>
+               name="Ruby"
+               pattern=".*\.rb$"
+               icon="/icons/files/ruby.svg"/>
         <!--<regex fileNames="*.php,*.phps"
- name="PHP" pattern=".*\.(php|phps)$" icon="/icons/files/php.svg"/>-->
+ name="PHP" 
+pattern=".*\.(php|phps)$" 
+icon="/icons/files/php.svg"/>-->
         <regex fileNames="*.json,*.cson"
-               name="JSON" pattern=".*\.(json|cson)$" icon="/icons/files/json.svg"/>
+               name="JSON"
+               pattern=".*\.(json|cson)$"
+               icon="/icons/files/json.svg"/>
         <!--<regex fileNames=""
- name="Any" pattern="" icon="/icons/files/default.svg"/>-->
+ name="Any" 
+pattern="" 
+icon="/icons/files/default.svg"/>-->
     </associations>
 </associations>

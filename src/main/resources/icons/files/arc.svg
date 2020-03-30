@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" width="16px" height="16px" fill="#8D6E63">
+    <g transform="scale(0.8) translate(64 64)">
     <rect x="198.1135864" y="256" width="115.7728271" height="200.185791"/>
     <path d="M0,0v512h512V0H0z M484.3464355,484.3464355H27.6535645V256h170.460022V55.814209h115.7728271V256h170.460022V484.3464355z"/>
+    </g>
 </svg>
