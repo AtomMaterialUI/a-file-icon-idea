@@ -1,6 +1,6 @@
 <svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
-    <g transform="matrix(.49799 0 0 .49799 -309.62 -27.09)" style="fill-rule:evenodd;fill:none;stroke:#cfd8dc">
-        <g transform="translate(628,63)" style="fill:none;stroke:#cfd8dc">
+    <g transform="matrix(.49799 0 0 .49799 -309.62 -27.09)" fill-rule="evenodd" fill="#cfd8dc" stroke="#cfd8dc">
+        <g transform="translate(628,63)">
             <g style="fill:none;stroke-width:2;stroke:#cfd8dc">
                 <polygon points="0 31.997 17.844 .046641 35.689 31.997" style="fill:none;stroke:#cfd8dc"/>
             </g>
