@@ -861,38 +861,47 @@
 
         <regex fileNames="favicon.ico,favicon.png,favicon.jpg"
                name="Favicon"
+               color="ffd54f"
                pattern="^favicon\.(ico|png|jpg)$"
                icon="/icons/files/favicon.svg"/>
         <regex fileNames="._MACOSX,.__MACOSX"
                name="Finder"
+               color="26A2C1"
                pattern="^\._*?MACOSX$"
                icon="/icons/files/finder.svg"/>
         <regex fileNames="*.firebaserc"
                name="Firebase"
+               color="fcca3f"
                pattern=".*\.(firebaserc)$"
                icon="/icons/files/firebase.svg"/>
         <regex fileNames="firebase.json"
                name="Firebase JSON"
+               color="fcca3f"
                pattern="^firebase\.json$"
                icon="/icons/files/firebase.svg"/>
         <regex fileNames="*.swf,*.flash"
                name="Flash"
+               color="d92f3c"
                pattern=".*\.(swf|flash)$"
                icon="/icons/files/flash.svg"/>
         <regex fileNames="*.flow,*.flowconfig"
                name="Flow"
+               color="91B859"
                pattern=".*\.(flow|flowconfig)$"
                icon="/icons/files/flow.svg"/>
         <regex fileNames="*.f77,*.f90"
                name="Fortran"
+               color="A1887F"
                pattern=".*\.(f77|f90)$"
                icon="/icons/files/fortran.svg"/>
         <regex fileNames="*.ftl,*.freemarker"
                name="FreeMarker"
+               color="497CE3"
                pattern=".*\.(ftl|freemarker)$"
                icon="/icons/files/freemarker.svg"/>
         <regex fileNames="*.fs,*.fsi,*.fsx,*.fsproj"
                name="FSharp"
+               color="1E9CEF"
                pattern=".*\.(fs|fsi|fsx|fsproj)$"
                icon="/icons/files/fsharp.svg"/>
 
@@ -2043,7 +2052,7 @@
         <regex fileNames="*.ttf,*.ttc,*.pfb,*.pfm,*.otf,*.dfont,*.pfa,*.afm,*.eot,*.woff,*.woff2"
                name="Font"
                pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"
-
+               color="7A8387"
                icon="/icons/files/font.svg"/>
         <regex fileNames="*.lock"
                name="Lockfiles"
