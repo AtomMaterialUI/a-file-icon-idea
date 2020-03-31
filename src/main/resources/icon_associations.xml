@@ -1961,36 +1961,43 @@
 
         <regex fileNames="wallaby.js,wallaby.ts"
                name="Wallaby"
+               color="4caf50"
                pattern="^wallaby.*"
                icon="/icons/files/wallaby.svg"/>
         <regex fileNames="*.wat,*.wasm"
                name="WebAssembly"
+               color="7c4dff"
                pattern=".*\.(wat|wasm)$"
                icon="/icons/files/webassembly.svg"/>
         <regex fileNames="webpack.common.js,webpack.config.js,webpack.dev.js,webpack.prod.js,webpack.config.ts,webpack.config.es6,webpack.dev.coffee"
                name="Webpack"
                pattern="^webpack\.(common|config|dev|prod)\.(js|es|es6|coffee|ts)$"
-
+               color="497CE3"
                icon="/icons/files/webpack.svg"/>
         <regex fileNames="*.hintrc"
                name="Webhint"
+               color="1e88e5"
                pattern=".*\.hintrc$"
                icon="/icons/files/webhint.svg"/>
         <regex fileNames="*.wpy"
                name="WePy"
+               color="4caf50"
                pattern=".*\.wpy$"
                icon="/icons/files/wepy.svg"/>
         <regex fileNames="*.bat,*.exe,*.dos,*.ms,*.msi"
                name="Windows"
+               color="82AAFF"
                pattern=".*\.(bat|exe|dos|ms|msi)$"
                icon="/icons/files/windows.svg"/>
         <regex fileNames="*.doc,*.docx,*.docm,*.docxml,*.dotm,*.dotx,*.wri,*.odt,*.odtx"
                name="Word"
+               color="497CE3"
                pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$"
                icon="/icons/files/word.svg"/>
 
         <regex fileNames="*.xamarin"
                name="Xamarin"
+               color="26A2C1"
                pattern=".*\.xamarin"
                icon="/icons/files/xamarin.svg"/>
         <regex fileNames="*.xcodeproj"
@@ -2016,22 +2023,26 @@
 
         <regex fileNames="*.yang"
                name="Yang"
+               color="42a5f5"
                pattern=".*\.yang$"
                icon="/icons/files/yang.svg"/>
         <regex fileNames=".yarnrc, yarn.json, yarn.js"
                name="Yarn"
+               color="1E9CEF"
                pattern="(\.yarnrc|yarn.js(on)?)"
                icon="/icons/files/yarn.svg"/>
         <regex fileNames="yarn.lock"
                name="Yarn Lock"
                pattern="^yarn\.lock$"
-               icon="/icons/files/yarn.svg"/>
+               icon="/icons/files/lock.svg"/>
         <regex fileNames=".yarnclean"
                name="Yarn Clean"
+               color="1E9CEF"
                pattern="^\.yarnclean$"
                icon="/icons/files/yarn.svg"/>
         <regex fileNames=".yvmrc"
                name="YVM"
+               color="FD1773"
                pattern="^\.yvmrc"
                icon="/icons/files/yvmrc.svg"/>
 
@@ -2061,10 +2072,11 @@
         <regex fileNames="*.xml,*.xhtml,*.fxml,*.jrxml,*.jnlp,*.pom,*.rng,*.tld,*.wsdl,*.xsd,*.xsl,*.xslt,*.xul"
                name="XML"
                pattern=".*\.(xml|xhtml|fxml|jrxml|jnlp|pom|rng|tld|wsdl|xsd|xsl|xslt|xul)$"
-
+               color="D14748"
                icon="/icons/files/xml.svg"/>
         <regex fileNames="*.yml,*.yaml,*.info"
                name="YAML"
+               color="F4c179"
                pattern=".*\.(yml|yaml|info)$"
                icon="/icons/files/yaml.svg"/>
 
