@@ -1,6 +1,6 @@
-<svg viewBox="0 0 50 50" width="16px" height="16px"
+<svg viewBox="0 0 50 50" width="16px" height="16px" fill="#00bfa5"
      xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-    <g transform="matrix(.87588 0 0 .87588 2.8421 3.1031)" style="fill:#00bfa5">
+    <g transform="matrix(.87588 0 0 .87588 2.8421 3.1031)">
         <polygon points="23.281 18.589 11.643 14.137 11.643 .237 23.281 .237"/>
         <polygon points="11.643 18.489 19.608 21.536 11.643 24.582"/>
         <polygon points="11.643 49.763 11.643 28.935 23.281 24.484 23.281 31.215 17.622 49.763"/>
