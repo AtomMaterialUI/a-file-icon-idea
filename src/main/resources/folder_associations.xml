@@ -27,304 +27,860 @@
 <associations>
     <associations>
         <regex folderNames="admin"
-               name="admin" pattern="^admin$" icon="/netlify.svg"/>
+               name="admin"
+               folderColor=""
+               iconColor=""
+               pattern="^admin$"
+               icon="/netlify.svg"/>
         <regex folderNames="android"
-               name="android" pattern="^android$" icon="/android.svg"/>
+               name="android"
+               folderColor="8bc34a"
+               iconColor="dcedc8"
+               pattern="^android$"
+               icon="/android.svg"/>
         <regex folderNames="animation,animations,anims,anim"
-               name="animations" pattern="^(animations?|anims?)$" icon="/animations.svg"/>
+               name="animations"
+               folderColor="ec407a"
+               iconColor="f8bbd0"
+               pattern="^(animations?|anims?)$"
+               icon="/animations.svg"/>
         <regex folderNames="api,apis,rest,swagger"
-               name="api" pattern="^(apis?|rest|swagger)$" icon="/api.svg"/>
+               name="api"
+               folderColor="FFF176"
+               iconColor="F57F17"
+               pattern="^(apis?|rest|swagger)$"
+               icon="/api.svg"/>
         <regex folderNames="mp3,wav,music,musics,audio,sound,sounds"
-               name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/audio.svg"/>
+               name="audio"
+               folderColor="ef5350"
+               iconColor="ffcdd2"
+               pattern="^(mp3|wav|musics?|audio|sounds?)$"
+               icon="/audio.svg"/>
         <regex folderNames="archive,archives,jar,jars,zip,zips,backups,backup"
-               name="archives" pattern="^(archives?|jars?|zips?|backups?)" icon="/archive.svg"/>
+               name="archives"
+               folderColor="795548"
+               iconColor="D7CCC8"
+               pattern="^(archives?|jars?|zips?|backups?)"
+               icon="/archive.svg"/>
         <regex folderNames="aws,.aws"
-               name="aws" pattern="^\.?aws$" icon="/aws.svg"/>
+               name="aws"
+               folderColor="FF8F00"
+               iconColor="ffecb3"
+               pattern="^\.?aws$"
+               icon="/aws.svg"/>
         <regex folderNames="azuredevops,azure-devops"
-               name="azuredevops" pattern="^(azuredevops?|azure-devops?)$" icon="/azure-devops.svg"/>
+               name="azuredevops"
+               folderColor="b3e5fc"
+               iconColor="0077db"
+               pattern="^(azuredevops?|azure-devops?)$"
+               icon="/azure-devops.svg"/>
 
         <regex folderNames="benchmark,benchmarks"
-               name="benchmark" pattern="^benchmarks?$" icon="/benchmark.svg"/>
+               name="benchmark"
+               folderColor="009688"
+               iconColor="B2DFDB"
+               pattern="^benchmarks?$"
+               icon="/benchmark.svg"/>
         <regex folderNames="bower_components"
-               name="bower" pattern="^bower_components$" icon="/bower.svg"/>
+               name="bower"
+               folderColor="F4511E"
+               iconColor="FFCCBC"
+               pattern="^bower_components$"
+               icon="/bower.svg"/>
 
         <regex folderNames="channel,channels"
-               name="channels" pattern="^(channels?)$" icon="/messages.svg"/>
+               name="channels"
+               folderColor=""
+               iconColor=""
+               pattern="^(channels?)$"
+               icon="/messages.svg"/>
         <regex folderNames="ci,integration,integrations"
-               name="ci" pattern="^(ci|integrations?)$" icon="/ci.svg"/>
+               name="ci"
+               folderColor=""
+               iconColor=""
+               pattern="^(ci|integrations?)$"
+               icon="/ci.svg"/>
         <regex folderNames=".circleci"
-               name="circleci" pattern="^\.?circleci$" icon="/circleci.svg"/>
+               name="circleci"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?circleci$"
+               icon="/circleci.svg"/>
         <regex folderNames="component,components,module,modules"
-               name="components" pattern="^(components?|modules?)$" icon="/components.svg"/>
+               name="components"
+               folderColor=""
+               iconColor=""
+               pattern="^(components?|modules?)$"
+               icon="/components.svg"/>
         <regex folderNames="config,conf,settings,.config,.conf,.settings"
-               name="config" pattern="^\.?(config|conf|settings)$" icon="/config.svg"/>
+               name="config"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?(config|conf|settings)$"
+               icon="/config.svg"/>
         <regex folderNames="container,containers"
-               name="containers" pattern="^(containers?)$" icon="/container.svg"/>
+               name="containers"
+               folderColor=""
+               iconColor=""
+               pattern="^(containers?)$"
+               icon="/container.svg"/>
         <regex folderNames="content,contents,cont"
-               name="content" pattern="^(contents?|cont)$" icon="/content.svg"/>
+               name="content"
+               folderColor=""
+               iconColor=""
+               pattern="^(contents?|cont)$"
+               icon="/content.svg"/>
         <regex folderNames="constant,constants,const"
-               name="constants" pattern="^(constants?|const)$" icon="/constants.svg"/>
+               name="constants"
+               folderColor=""
+               iconColor=""
+               pattern="^(constants?|const)$"
+               icon="/constants.svg"/>
         <regex folderNames="controller,controllers,ctrl,ctrls"
-               name="controllers" pattern="^(controllers?|ctrls?)$" icon="/controllers.svg"/>
+               name="controllers"
+               folderColor=""
+               iconColor=""
+               pattern="^(controllers?|ctrls?)$"
+               icon="/controllers.svg"/>
         <regex folderNames="bin,core,support"
-               name="core" pattern="^(bin|core|support)$" icon="/core.svg"/>
+               name="core"
+               folderColor=""
+               iconColor=""
+               pattern="^(bin|core|support)$"
+               icon="/core.svg"/>
         <regex folderNames="coverage"
-               name="coverage" pattern="^coverage$" icon="/coverage.svg"/>
+               name="coverage"
+               folderColor=""
+               iconColor=""
+               pattern="^coverage$"
+               icon="/coverage.svg"/>
         <regex folderNames="custom"
-               name="custom" pattern="^custom$" icon="/custom.svg"/>
+               name="custom"
+               folderColor=""
+               iconColor=""
+               pattern="^custom$"
+               icon="/custom.svg"/>
 
         <regex folderNames="db,migrate,database,repo,repos,repositories"
-               name="db" pattern="^(db|migrate|database|repos?|repositories)$" icon="/db.svg"/>
+               name="db"
+               folderColor=""
+               iconColor=""
+               pattern="^(db|migrate|database|repos?|repositories)$"
+               icon="/db.svg"/>
         <regex folderNames="debug,debugging"
-               name="debug" pattern="^(debug|debugging)$" icon="/debug.svg"/>
+               name="debug"
+               folderColor=""
+               iconColor=""
+               pattern="^(debug|debugging)$"
+               icon="/debug.svg"/>
         <regex folderNames="delta,deltas,diff"
-               name="delta" pattern="^(deltas?|diff)$" icon="/delta.svg"/>
+               name="delta"
+               folderColor=""
+               iconColor=""
+               pattern="^(deltas?|diff)$"
+               icon="/delta.svg"/>
         <regex folderNames="deploy"
-               name="deploy" pattern="^deploy$" icon="/aws.svg"/>
+               name="deploy"
+               folderColor=""
+               iconColor=""
+               pattern="^deploy$"
+               icon="/aws.svg"/>
         <regex folderNames="dist,out,build,release"
-               name="dist" pattern="^(dist|out|build|release)$" icon="/dist.svg"/>
+               name="dist"
+               folderColor=""
+               iconColor=""
+               pattern="^(dist|out|build|release)$"
+               icon="/dist.svg"/>
         <regex folderNames="docker,.docker"
-               name="docker" pattern="^\.?docker$" icon="/docker.svg"/>
+               name="docker"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?docker$"
+               icon="/docker.svg"/>
         <regex folderNames="doc,docs,documentation"
-               name="docs" pattern="^(docs?|documentation)$" icon="/docs.svg"/>
+               name="docs"
+               folderColor=""
+               iconColor=""
+               pattern="^(docs?|documentation)$"
+               icon="/docs.svg"/>
         <regex folderNames="download,downloads"
-               name="download" pattern="^downloads?$" icon="/download.svg"/>
+               name="download"
+               folderColor=""
+               iconColor=""
+               pattern="^downloads?$"
+               icon="/download.svg"/>
         <regex folderNames="dump,dumps,data"
-               name="dump" pattern="^(dumps?|data)$" icon="/dump.svg"/>
+               name="dump"
+               folderColor=""
+               iconColor=""
+               pattern="^(dumps?|data)$"
+               icon="/dump.svg"/>
 
         <regex folderNames="e2e,scenario,scenarios"
-               name="e2e" pattern="^(e2e|scenarios?)$" icon="/e2e.svg"/>
+               name="e2e"
+               folderColor=""
+               iconColor=""
+               pattern="^(e2e|scenarios?)$"
+               icon="/e2e.svg"/>
         <regex folderNames="env,envs,environment,environments"
-               name="env" pattern="^(envs?|environments?)$" icon="/env.svg"/>
+               name="env"
+               folderColor=""
+               iconColor=""
+               pattern="^(envs?|environments?)$"
+               icon="/env.svg"/>
         <regex folderNames="error,errors"
-               name="error" pattern="^(errors?)$" icon="/error.svg"/>
+               name="error"
+               folderColor=""
+               iconColor=""
+               pattern="^(errors?)$"
+               icon="/error.svg"/>
         <regex folderNames="event,events"
-               name="events" pattern="^(events?)$" icon="/events.svg"/>
+               name="events"
+               folderColor=""
+               iconColor=""
+               pattern="^(events?)$"
+               icon="/events.svg"/>
         <regex folderNames="example,examples,ex,exs"
-               name="example" pattern="^(examples?|exs?)$" icon="/examples.svg"/>
+               name="example"
+               folderColor=""
+               iconColor=""
+               pattern="^(examples?|exs?)$"
+               icon="/examples.svg"/>
         <regex folderNames="exclude,excludes,external"
-               name="exclude" pattern="^(excludes?|external)$" icon="/exclude.svg"/>
+               name="exclude"
+               folderColor=""
+               iconColor=""
+               pattern="^(excludes?|external)$"
+               icon="/exclude.svg"/>
         <regex folderNames=".expo,.expo-shared"
-               name="expo" pattern="^\.expo(-shared)?$" icon="/expo.svg"/>
+               name="expo"
+               folderColor=""
+               iconColor=""
+               pattern="^\.expo(-shared)?$"
+               icon="/expo.svg"/>
 
         <regex folderNames="feature,features,feat,feats"
-               name="features" pattern="^(features?|feats?)$" icon="/rules.svg"/>
+               name="features"
+               folderColor=""
+               iconColor=""
+               pattern="^(features?|feats?)$"
+               icon="/rules.svg"/>
         <regex folderNames="fixture,fixtures,fabricator,fabricators,factory,factories"
-               name="fixtures" pattern="^(fixtures?|fabricators?|factory|factories)$" icon="/fixtures.svg"/>
+               name="fixtures"
+               folderColor=""
+               iconColor=""
+               pattern="^(fixtures?|fabricators?|factory|factories)$"
+               icon="/fixtures.svg"/>
         <regex folderNames="flow,def,defs"
-               name="flow" pattern="^(flow|defs?)$" icon="/flow.svg"/>
+               name="flow"
+               folderColor=""
+               iconColor=""
+               pattern="^(flow|defs?)$"
+               icon="/flow.svg"/>
         <regex folderNames="font,fonts"
-               name="fonts" pattern="^fonts?$" icon="/fonts.svg"/>
+               name="fonts"
+               folderColor=""
+               iconColor=""
+               pattern="^fonts?$"
+               icon="/fonts.svg"/>
         <regex folderNames="function,functions,service,services,lambda,lambdas"
-               name="functions" pattern="^(functions?|services?|lambdas?)$" icon="/functions.svg"/>
+               name="functions"
+               folderColor=""
+               iconColor=""
+               pattern="^(functions?|services?|lambdas?)$"
+               icon="/functions.svg"/>
 
         <regex folderNames="gen,generated,auto"
-               name="generated" pattern="^(gen|generated|auto)$" icon="/generated.svg"/>
+               name="generated"
+               folderColor=""
+               iconColor=""
+               pattern="^(gen|generated|auto)$"
+               icon="/generated.svg"/>
         <regex folderNames=".git,.submodules"
-               name="git" pattern="^(\.git|\.submodules)$" icon="/git.svg"/>
+               name="git"
+               folderColor=""
+               iconColor=""
+               pattern="^(\.git|\.submodules)$"
+               icon="/git.svg"/>
         <regex folderNames="github,.github"
-               name="github" pattern="^\.?github$" icon="/github.svg"/>
+               name="github"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?github$"
+               icon="/github.svg"/>
         <regex folderNames="global"
-               name="global" pattern="^global$" icon="/global.svg"/>
+               name="global"
+               folderColor=""
+               iconColor=""
+               pattern="^global$"
+               icon="/global.svg"/>
         <regex folderNames=".gradle,gradle"
-               name="gradle" pattern="^\.?gradle$" icon="/gradle.svg"/>
+               name="gradle"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?gradle$"
+               icon="/gradle.svg"/>
         <regex folderNames="graphql,gql,schema,schemas"
-               name="graphql" pattern="^(graphql|gql|schemas?)$" icon="/graphql.svg"/>
+               name="graphql"
+               folderColor=""
+               iconColor=""
+               pattern="^(graphql|gql|schemas?)$"
+               icon="/graphql.svg"/>
         <regex folderNames="grunt"
-               name="grunt" pattern="^grunt$" icon="/grunt.svg"/>
+               name="grunt"
+               folderColor=""
+               iconColor=""
+               pattern="^grunt$"
+               icon="/grunt.svg"/>
         <regex folderNames="guard,guards"
-               name="guard" pattern="^guards?$" icon="/guard.svg"/>
+               name="guard"
+               folderColor=""
+               iconColor=""
+               pattern="^guards?$"
+               icon="/guard.svg"/>
         <regex folderNames="gulp"
-               name="gulp" pattern="^gulp$" icon="/gulp.svg"/>
+               name="gulp"
+               folderColor=""
+               iconColor=""
+               pattern="^gulp$"
+               icon="/gulp.svg"/>
 
         <regex folderNames="helper,helpers,help"
-               name="helper" pattern="^(helpers?|help)$" icon="/helper.svg"/>
+               name="helper"
+               folderColor=""
+               iconColor=""
+               pattern="^(helpers?|help)$"
+               icon="/helper.svg"/>
         <regex folderNames="hooks,hook,triggers,trigger"
-               name="hooks" pattern="^(hooks?|triggers?)" icon="/hook.svg"/>
+               name="hooks"
+               folderColor=""
+               iconColor=""
+               pattern="^(hooks?|triggers?)"
+               icon="/hook.svg"/>
 
         <regex folderNames="i18n,lang,langs,language,languages,localization,locale,locales,translation,translations"
-               name="i18n" pattern="^(i18n|langs?|languages?|localization|locales?|translations?)$" icon="/i18n.svg"/>
+               name="i18n"
+               folderColor=""
+               iconColor=""
+               pattern="^(i18n|langs?|languages?|localization|locales?|translations?)$"
+               icon="/i18n.svg"/>
         <regex folderNames="icon,icons,ico,svg,svgicon,svgicons"
-               name="icons" pattern="^(icons?|ico|svg|svgicons?)$" icon="/icons.svg"/>
+               name="icons"
+               folderColor=""
+               iconColor=""
+               pattern="^(icons?|ico|svg|svgicons?)$"
+               icon="/icons.svg"/>
         <regex folderNames=".idea"
-               name="idea" pattern="^\.idea$" icon="/idea.svg"/>
+               name="idea"
+               folderColor=""
+               iconColor=""
+               pattern="^\.idea$"
+               icon="/idea.svg"/>
         <regex folderNames=".xcodeproj,.xcworkspace"
-               name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/ios.svg"/>
+               name="ios"
+               folderColor=""
+               iconColor=""
+               pattern=".*\.xc(odeproj|workspace)"
+               icon="/ios.svg"/>
         <regex folderNames="image,images,img,medias,media"
-               name="images" pattern="^(images?|img|medias?)$" icon="/images.svg"/>
+               name="images"
+               folderColor=""
+               iconColor=""
+               pattern="^(images?|img|medias?)$"
+               icon="/images.svg"/>
         <regex folderNames="includes,include,import,imports,concerns,concern"
-               name="include" pattern="^(includes?|imports?|concerns?)$" icon="/include.svg"/>
+               name="include"
+               folderColor=""
+               iconColor=""
+               pattern="^(includes?|imports?|concerns?)$"
+               icon="/include.svg"/>
         <regex folderNames="init,initializers,initializer,startup"
-               name="init" pattern="^(init|initializers?|startup)$" icon="/hook.svg"/>
+               name="init"
+               folderColor=""
+               iconColor=""
+               pattern="^(init|initializers?|startup)$"
+               icon="/hook.svg"/>
 
         <regex folderNames="javascript,javascripts,js"
-               name="javascript" pattern="^(javascripts?|js)$" icon="/js.svg"/>
+               name="javascript"
+               folderColor=""
+               iconColor=""
+               pattern="^(javascripts?|js)$"
+               icon="/js.svg"/>
         <regex folderNames="jinja"
-               name="jinja" pattern="^jinja$" icon="/jinja.svg"/>
+               name="jinja"
+               folderColor=""
+               iconColor=""
+               pattern="^jinja$"
+               icon="/jinja.svg"/>
         <regex folderNames="jobs,job,resque"
-               name="jobs" pattern="^(jobs?|resque)$" icon="/job.svg"/>
+               name="jobs"
+               folderColor=""
+               iconColor=""
+               pattern="^(jobs?|resque)$"
+               icon="/job.svg"/>
         <regex folderNames="jsons,json"
-               name="json" pattern="^jsons?$" icon="/json.svg"/>
+               name="json"
+               folderColor=""
+               iconColor=""
+               pattern="^jsons?$"
+               icon="/json.svg"/>
 
         <regex folderNames="key,keys,cert,certs"
-               name="keys" pattern="^(keys?|certs?)$" icon="/keys.svg"/>
+               name="keys"
+               folderColor=""
+               iconColor=""
+               pattern="^(keys?|certs?)$"
+               icon="/keys.svg"/>
         <regex folderNames="kubernetes,k8s"
-               name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/kubernetes.svg"/>
+               name="kubernetes"
+               folderColor=""
+               iconColor=""
+               pattern="^(kubernetes|k8s)$"
+               icon="/kubernetes.svg"/>
 
         <regex folderNames="layout,layouts,_layout,_layouts"
-               name="layouts" pattern="^_?layouts?$" icon="/layouts.svg"/>
+               name="layouts"
+               folderColor=""
+               iconColor=""
+               pattern="^_?layouts?$"
+               icon="/layouts.svg"/>
         <regex folderNames="less"
-               name="less" pattern="^less$" icon="/less.svg"/>
+               name="less"
+               folderColor=""
+               iconColor=""
+               pattern="^less$"
+               icon="/less.svg"/>
         <regex folderNames="log,logs"
-               name="logs" pattern="^logs?$" icon="/logs.svg"/>
+               name="logs"
+               folderColor=""
+               iconColor=""
+               pattern="^logs?$"
+               icon="/logs.svg"/>
 
         <regex folderNames="mailer,mailers,email,emails,mail,mails"
-               name="mailers" pattern="^(mailers?|emails?|mails?)$" icon="/mailers.svg"/>
+               name="mailers"
+               folderColor=""
+               iconColor=""
+               pattern="^(mailers?|emails?|mails?)$"
+               icon="/mailers.svg"/>
         <regex folderNames="md,markdown"
-               name="markdown" pattern="^(md|markdown)$" icon="/markdown.svg"/>
+               name="markdown"
+               folderColor=""
+               iconColor=""
+               pattern="^(md|markdown)$"
+               icon="/markdown.svg"/>
         <regex folderNames="maven"
-               name="maven" pattern="^maven$" icon="/maven.svg"/>
+               name="maven"
+               folderColor=""
+               iconColor=""
+               pattern="^maven$"
+               icon="/maven.svg"/>
         <regex folderNames="map,maps,mapping,mappings,mapper,mappers"
-               name="maps" pattern="^(maps?|mappings?|mappers?)$" icon="/maps.svg"/>
+               name="maps"
+               folderColor=""
+               iconColor=""
+               pattern="^(maps?|mappings?|mappers?)$"
+               icon="/maps.svg"/>
         <regex folderNames="message,messages,msg,msgs"
-               name="messages" pattern="^(messages?|msgs?)$" icon="/messages.svg"/>
+               name="messages"
+               folderColor=""
+               iconColor=""
+               pattern="^(messages?|msgs?)$"
+               icon="/messages.svg"/>
         <regex folderNames="meta,META-INF"
-               name="meta" pattern="^(meta|META-INF)$" icon="/meta.svg"/>
+               name="meta"
+               folderColor=""
+               iconColor=""
+               pattern="^(meta|META-INF)$"
+               icon="/meta.svg"/>
         <regex folderNames="middleware,middlewares,thunk,thunks"
-               name="middlewares" pattern="^(middlewares?|thunks?)$" icon="/middleware.svg"/>
+               name="middlewares"
+               folderColor=""
+               iconColor=""
+               pattern="^(middlewares?|thunks?)$"
+               icon="/middleware.svg"/>
         <regex folderNames="mock,mocks,fake,fakes,stub,stubs"
-               name="mocks" pattern="^(mocks?|fakes?|stubs?)$" icon="/mocks.svg"/>
+               name="mocks"
+               folderColor=""
+               iconColor=""
+               pattern="^(mocks?|fakes?|stubs?)$"
+               icon="/mocks.svg"/>
         <regex folderNames="modal,modals,portal,portals"
-               name="modals" pattern="^(modals?|portals?)$" icon="/modals.svg"/>
+               name="modals"
+               folderColor=""
+               iconColor=""
+               pattern="^(modals?|portals?)$"
+               icon="/modals.svg"/>
         <regex folderNames="model,models,struct,structs,class,classes"
-               name="models" pattern="^(models?|structs?|class|classes)$" icon="/models.svg"/>
+               name="models"
+               folderColor=""
+               iconColor=""
+               pattern="^(models?|structs?|class|classes)$"
+               icon="/models.svg"/>
 
         <regex folderNames=".netlify"
-               name="netlify" pattern="^\.netlify" icon="/netlify.svg"/>
+               name="netlify"
+               folderColor=""
+               iconColor=""
+               pattern="^\.netlify"
+               icon="/netlify.svg"/>
         <regex folderNames="node_modules"
-               name="node_modules" pattern="^node_modules$" icon="/node.svg"/>
+               name="node_modules"
+               folderColor=""
+               iconColor=""
+               pattern="^node_modules$"
+               icon="/node.svg"/>
         <regex folderNames="notif,notification,notifications,flash"
-               name="notification" pattern="(notif|notifications?|flash)" icon="/notification.svg"/>
+               name="notification"
+               folderColor=""
+               iconColor=""
+               pattern="(notif|notifications?|flash)"
+               icon="/notification.svg"/>
         <regex folderNames="nuxt,.nuxt"
-               name="nuxt" pattern="(nuxt|.nuxt)" icon="/nuxt.svg"/>
+               name="nuxt"
+               folderColor=""
+               iconColor=""
+               pattern="(nuxt|.nuxt)"
+               icon="/nuxt.svg"/>
         <regex folderNames=".nyc"
-               name="nyc" pattern="^\.nyc" icon="/coverage.svg"/>
+               name="nyc"
+               folderColor=""
+               iconColor=""
+               pattern="^\.nyc"
+               icon="/coverage.svg"/>
 
         <regex folderNames="other,misc,extra,extras"
-               name="other" pattern="^(other|misc|extras?)$" icon="/other.svg"/>
+               name="other"
+               folderColor=""
+               iconColor=""
+               pattern="^(other|misc|extras?)$"
+               icon="/other.svg"/>
 
         <regex folderNames="package,packages"
-               name="packages" pattern="^packages?$" icon="/packages.svg"/>
+               name="packages"
+               folderColor=""
+               iconColor=""
+               pattern="^packages?$"
+               icon="/packages.svg"/>
         <regex folderNames="php"
-               name="php" pattern="^php$" icon="/php.svg"/>
+               name="php"
+               folderColor=""
+               iconColor=""
+               pattern="^php$"
+               icon="/php.svg"/>
         <regex folderNames="pipe,pipes,filter,filters"
-               name="pipe" pattern="^(pipes?|filters?)$" icon="/pipe.svg"/>
+               name="pipe"
+               folderColor=""
+               iconColor=""
+               pattern="^(pipes?|filters?)$"
+               icon="/pipe.svg"/>
         <regex folderNames="plugin,plugins,mu-plugins"
-               name="plugin" pattern="^(mu-)?plugins?$" icon="/plugin.svg"/>
+               name="plugin"
+               folderColor=""
+               iconColor=""
+               pattern="^(mu-)?plugins?$"
+               icon="/plugin.svg"/>
         <regex folderNames="post,posts"
-               name="posts" pattern="^posts?$" icon="/posts.svg"/>
+               name="posts"
+               folderColor=""
+               iconColor=""
+               pattern="^posts?$"
+               icon="/posts.svg"/>
         <regex folderNames=".prisma"
-               name="prisma" pattern="^\.prisma$" icon="/prisma.svg"/>
+               name="prisma"
+               folderColor=""
+               iconColor=""
+               pattern="^\.prisma$"
+               icon="/prisma.svg"/>
         <regex folderNames="private"
-               name="private" pattern="^private$" icon="/private.svg"/>
+               name="private"
+               folderColor=""
+               iconColor=""
+               pattern="^private$"
+               icon="/private.svg"/>
         <regex folderNames="provider,providers"
-               name="providers" pattern="^providers?$" icon="/providers.svg"/>
+               name="providers"
+               folderColor=""
+               iconColor=""
+               pattern="^providers?$"
+               icon="/providers.svg"/>
         <regex folderNames="python"
-               name="python" pattern="^python$" icon="/python.svg"/>
+               name="python"
+               folderColor=""
+               iconColor=""
+               pattern="^python$"
+               icon="/python.svg"/>
 
         <regex folderNames="react,react_components,react-scripts"
-               name="react" pattern="^react[_-]?.*" icon="/react.svg"/>
+               name="react"
+               folderColor=""
+               iconColor=""
+               pattern="^react[_-]?.*"
+               icon="/react.svg"/>
         <regex folderNames="action,actions"
-               name="redux-actions" pattern="^actions?$" icon="/redux-actions.svg"/>
+               name="redux-actions"
+               folderColor=""
+               iconColor=""
+               pattern="^actions?$"
+               icon="/redux-actions.svg"/>
         <regex folderNames="reducer,reducers"
-               name="redux-reducers" pattern="^reducers?$" icon="/redux-reducers.svg"/>
+               name="redux-reducers"
+               folderColor=""
+               iconColor=""
+               pattern="^reducers?$"
+               icon="/redux-reducers.svg"/>
         <regex folderNames="store,stores"
-               name="redux-stores" pattern="^stores?$" icon="/redux-stores.svg"/>
+               name="redux-stores"
+               folderColor=""
+               iconColor=""
+               pattern="^stores?$"
+               icon="/redux-stores.svg"/>
         <regex folderNames="relay"
-               name="relay" pattern="^relay$" icon="/relay.svg"/>
+               name="relay"
+               folderColor=""
+               iconColor=""
+               pattern="^relay$"
+               icon="/relay.svg"/>
         <regex folderNames="res,resource,resources,asset,assets"
-               name="resource" pattern="^(res|resources?|assets?)$" icon="/resource.svg"/>
+               name="resource"
+               folderColor=""
+               iconColor=""
+               pattern="^(res|resources?|assets?)$"
+               icon="/resource.svg"/>
         <regex folderNames=".xcassets"
-               name="resourceIOS" pattern=".*\.xcassets" icon="/resource.svg"/>
+               name="resourceIOS"
+               folderColor=""
+               iconColor=""
+               pattern=".*\.xcassets"
+               icon="/resource.svg"/>
         <regex folderNames="review,reviews"
-               name="reviews" pattern="^reviews?$" icon="/reviews.svg"/>
+               name="reviews"
+               folderColor=""
+               iconColor=""
+               pattern="^reviews?$"
+               icon="/reviews.svg"/>
         <regex folderNames="routes,router"
-               name="routes" pattern="^(routes|router)$" icon="/routes.svg"/>
+               name="routes"
+               folderColor=""
+               iconColor=""
+               pattern="^(routes|router)$"
+               icon="/routes.svg"/>
         <regex folderNames="validation,validations,validator,validators,rule,rules"
-               name="rules" pattern="^(validations?|validators?|rules?)$" icon="/rules.svg"/>
+               name="rules"
+               folderColor=""
+               iconColor=""
+               pattern="^(validations?|validators?|rules?)$"
+               icon="/rules.svg"/>
 
         <regex folderNames="sass,scss"
-               name="sass" pattern="^(sass|scss)$" icon="/sass.svg"/>
+               name="sass"
+               folderColor=""
+               iconColor=""
+               pattern="^(sass|scss)$"
+               icon="/sass.svg"/>
         <regex folderNames="screens,screen,screenshot,screenshots"
-               name="screens" pattern="^(screens?|screenshots?)$" icon="/screens.svg"/>
+               name="screens"
+               folderColor=""
+               iconColor=""
+               pattern="^(screens?|screenshots?)$"
+               icon="/screens.svg"/>
         <regex folderNames="script,scripts,selector,selectors"
-               name="scripts" pattern="^(scripts?|selectors?)$" icon="/scripts.svg"/>
+               name="scripts"
+               folderColor=""
+               iconColor=""
+               pattern="^(scripts?|selectors?)$"
+               icon="/scripts.svg"/>
         <regex folderNames="secure,security"
-               name="security" pattern="^(secure|security)$" icon="/security.svg"/>
+               name="security"
+               folderColor=""
+               iconColor=""
+               pattern="^(secure|security)$"
+               icon="/security.svg"/>
         <regex folderNames="server,http,request,requests,saga,sagas"
-               name="server" pattern="^(server|http|requests?|sagas?)$" icon="/server.svg"/>
+               name="server"
+               folderColor=""
+               iconColor=""
+               pattern="^(server|http|requests?|sagas?)$"
+               icon="/server.svg"/>
         <regex folderNames=".serverless,serverless"
-               name="serverless" pattern="^\.?serverless$" icon="/serverless.svg"/>
+               name="serverless"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?serverless$"
+               icon="/serverless.svg"/>
         <regex folderNames="shared"
-               name="shared" pattern="^shared$" icon="/shared.svg"/>
+               name="shared"
+               folderColor=""
+               iconColor=""
+               pattern="^shared$"
+               icon="/shared.svg"/>
         <regex folderNames="src,app"
-               name="sources" pattern="^(src|app)$" icon="/src.svg"/>
+               name="sources"
+               folderColor=""
+               iconColor=""
+               pattern="^(src|app)$"
+               icon="/src.svg"/>
         <regex folderNames="sql,mysql,pgsql"
-               name="sql" pattern="^(sql|mysql|pgsql)$" icon="/sql.svg"/>
+               name="sql"
+               folderColor=""
+               iconColor=""
+               pattern="^(sql|mysql|pgsql)$"
+               icon="/sql.svg"/>
         <regex folderNames="stack,stacks"
-               name="stack" pattern="^stacks?$" icon="/stack.svg"/>
+               name="stack"
+               folderColor=""
+               iconColor=""
+               pattern="^stacks?$"
+               icon="/stack.svg"/>
         <regex folderNames="stories,storybook,storybooks"
-               name="storybook" pattern="^(stories|storybooks?)$" icon="/storybook.svg"/>
+               name="storybook"
+               folderColor=""
+               iconColor=""
+               pattern="^(stories|storybooks?)$"
+               icon="/storybook.svg"/>
         <regex folderNames=".storybook"
-               name="storybookConfig" pattern="^\.storybook$" icon="/storybook.svg"/>
+               name="storybookConfig"
+               folderColor=""
+               iconColor=""
+               pattern="^\.storybook$"
+               icon="/storybook.svg"/>
         <regex folderNames="css,style,styles,stylesheet,stylesheets"
-               name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/styles.svg"/>
+               name="styles"
+               folderColor=""
+               iconColor=""
+               pattern="^(css|styles?|stylesheets?)$"
+               icon="/styles.svg"/>
         <regex folderNames="styl,stylus"
-               name="stylus" pattern="^(styl|stylus)$" icon="/stylus.svg"/>
+               name="stylus"
+               folderColor=""
+               iconColor=""
+               pattern="^(styl|stylus)$"
+               icon="/stylus.svg"/>
         <regex folderNames=".sublime"
-               name="sublime" pattern="^\.sublime$" icon="/sublime.svg"/>
+               name="sublime"
+               folderColor=""
+               iconColor=""
+               pattern="^\.sublime$"
+               icon="/sublime.svg"/>
         <regex folderNames="sync,synced"
-               name="sync" pattern="^(sync|synced)$" icon="/sync.svg"/>
+               name="sync"
+               folderColor=""
+               iconColor=""
+               pattern="^(sync|synced)$"
+               icon="/sync.svg"/>
         <regex folderNames="syntax,syntaxes,spellcheck"
-               name="syntax" pattern="^(syntax|syntaxes|spellcheck)$" icon="/syntax.svg"/>
+               name="syntax"
+               folderColor=""
+               iconColor=""
+               pattern="^(syntax|syntaxes|spellcheck)$"
+               icon="/syntax.svg"/>
 
         <regex folderNames="task,tasks"
-               name="tasks" pattern="^(tasks?)$" icon="/tasks.svg"/>
+               name="tasks"
+               folderColor=""
+               iconColor=""
+               pattern="^(tasks?)$"
+               icon="/tasks.svg"/>
         <regex folderNames="tmp,.tmp,temp,.temp,cache,.cache"
-               name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/temp.svg"/>
+               name="temp"
+               folderColor=""
+               iconColor=""
+               pattern="^(\.?tmp|\.?temp|\.?cache)$"
+               icon="/temp.svg"/>
         <regex folderNames="test,tests,spec,specs,unit,units"
-               name="tests" pattern="^(tests?|specs?|units?)$" icon="/tests.svg"/>
+               name="tests"
+               folderColor=""
+               iconColor=""
+               pattern="^(tests?|specs?|units?)$"
+               icon="/tests.svg"/>
         <regex folderNames="theme,themes,color,colors,scheme,schemes,skin,skins"
-               name="themes" pattern="^(themes?|colors?|schemes?|skins?)$" icon="/themes.svg"/>
+               name="themes"
+               folderColor=""
+               iconColor=""
+               pattern="^(themes?|colors?|schemes?|skins?)$"
+               icon="/themes.svg"/>
         <regex folderNames="typescript,typescripts,ts,interface,interfaces"
-               name="typescript" pattern="^(typescripts?|ts|interfaces?)$" icon="/ts.svg"/>
+               name="typescript"
+               folderColor=""
+               iconColor=""
+               pattern="^(typescripts?|ts|interfaces?)$"
+               icon="/ts.svg"/>
 
         <regex folderNames="upload,uploads"
-               name="upload" pattern="^uploads?$" icon="/upload.svg"/>
+               name="upload"
+               folderColor=""
+               iconColor=""
+               pattern="^uploads?$"
+               icon="/upload.svg"/>
         <regex folderNames="util,utils,tool,tools"
-               name="utils" pattern="^(utils?|tools?)$" icon="/tools.svg"/>
+               name="utils"
+               folderColor=""
+               iconColor=""
+               pattern="^(utils?|tools?)$"
+               icon="/tools.svg"/>
 
         <regex folderNames="vendor,vendors,lib,libs,Pod,Pods"
-               name="vendors" pattern="^(vendors?|libs?|Pods?)$" icon="/lib.svg"/>
+               name="vendors"
+               folderColor=""
+               iconColor=""
+               pattern="^(vendors?|libs?|Pods?)$"
+               icon="/lib.svg"/>
         <regex folderNames="videos,video,movie,movies"
-               name="video" pattern="^(videos?|movies?)$" icon="/video.svg"/>
+               name="video"
+               folderColor=""
+               iconColor=""
+               pattern="^(videos?|movies?)$"
+               icon="/video.svg"/>
         <regex folderNames="view,views,template,templates,page,pages"
-               name="views" pattern="^(views?|templates?|pages?)$" icon="/views.svg"/>
+               name="views"
+               folderColor=""
+               iconColor=""
+               pattern="^(views?|templates?|pages?)$"
+               icon="/views.svg"/>
         <regex folderNames="virtual,vm,vms,machine,machines"
-               name="vm" pattern="^(virtual|vms?|machines?)$" icon="/vm.svg"/>
+               name="vm"
+               folderColor=""
+               iconColor=""
+               pattern="^(virtual|vms?|machines?)$"
+               icon="/vm.svg"/>
         <regex folderNames="vscode,.vscode"
-               name="vscode" pattern="^\.?vscode$" icon="/vscode.svg"/>
+               name="vscode"
+               folderColor=""
+               iconColor=""
+               pattern="^\.?vscode$"
+               icon="/vscode.svg"/>
         <regex folderNames="vue"
-               name="vue" pattern="^vue$" icon="/vue.svg"/>
+               name="vue"
+               folderColor=""
+               iconColor=""
+               pattern="^vue$"
+               icon="/vue.svg"/>
         <regex folderNames="vuex"
-               name="vuex" pattern="^vuex$" icon="/vuex.svg"/>
+               name="vuex"
+               folderColor=""
+               iconColor=""
+               pattern="^vuex$"
+               icon="/vuex.svg"/>
 
         <regex folderNames="public,static,web,www,wwwroot"
-               name="web" pattern="^(public|static|web|www|wwwroot)$" icon="/web.svg"/>
+               name="web"
+               folderColor=""
+               iconColor=""
+               pattern="^(public|static|web|www|wwwroot)$"
+               icon="/web.svg"/>
         <regex folderNames="webpack"
-               name="webpack" pattern="^webpack$" icon="/webpack.svg"/>
+               name="webpack"
+               folderColor=""
+               iconColor=""
+               pattern="^webpack$"
+               icon="/webpack.svg"/>
         <regex folderNames="wp-admin,wp-content,wp-includes"
-               name="wordpress" pattern="^wp-(admin|content|includes)$" icon="/wordpress.svg"/>
+               name="wordpress"
+               folderColor=""
+               iconColor=""
+               pattern="^wp-(admin|content|includes)$"
+               icon="/wordpress.svg"/>
 
     </associations>
 </associations>
