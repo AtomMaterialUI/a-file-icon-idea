@@ -483,15 +483,21 @@
                icon="/icons/files/azure.svg"/>
         <!--endregion-->
 
-        <regex fileNames=".babelrc,babel.json"
+        <!--region B -->
+        <regex fileNames=".babelrc,.babelrc.js,.languagebabel,.babel"
                name="Babel"
                color="F59F29"
-               pattern="^(\.babelrc|babel\.json)$"
+               pattern="^\.(babelrc(\.js)?|languagebabel|babel)$"
                icon="/icons/files/babel.svg"/>
-        <regex fileNames="backbone.js"
+        <regex fileNames="babel.json,babel.config.json"
+               name="Babel Config"
+               color="F59F29"
+               pattern="^babel(\.[\w\-]+)?\.json$"
+               icon="/icons/files/babel.svg"/>
+        <regex fileNames="backbone.js,backbone.min.js"
                name="Backbone"
                color="2196F3"
-               pattern="^backbone.*\.js$"
+               pattern="^backbone([-.]min)?\.js$"
                icon="/icons/files/backbone.svg"/>
         <regex fileNames="*.bak,*.old,*.orig"
                name="Backup"
@@ -531,7 +537,7 @@
         <regex fileNames="behat.yml,behat.config.yml"
                name="Behat Config"
                color="39ADB5"
-               pattern="behat(\..*)*\.yml$"
+               pattern="behat(\..*)*\.ya?ml$"
                icon="/icons/files/behat.svg"/>
         <regex fileNames=".bemjson,.bemjson.js"
                name="BEM"
@@ -553,10 +559,10 @@
                color="81C784"
                pattern="\.bintray\.json$"
                icon="/icons/files/bintray.svg"/>
-        <regex fileNames="*.bison,*.yacc"
+        <regex fileNames="*.bison,*.y,*.yy,*.yacc"
                name="Bison"
                color="BF360C"
-               pattern=".*\.(bison|yacc)$"
+               pattern=".*\.(bison|yy?|yacc)$"
                icon="/icons/files/gnu.svg"/>
         <regex fileNames=".bithoundrc"
                name="BitHound"
@@ -566,7 +572,7 @@
         <regex fileNames="bitbucket-pipelines.yml"
                name="Bitbucket Pipelines"
                color="0052CC"
-               pattern="^bitbucket-pipelines\.yml$"
+               pattern="^bitbucket-pipelines\.ya?ml$"
                icon="/icons/files/bitbucket.svg"/>
         <regex fileNames="*.blade,*.blade.php"
                name="Blade"
@@ -598,20 +604,35 @@
                color="66BB6A"
                pattern=".*\.boo(\.unity)?$"
                icon="/icons/files/boo.svg"/>
-        <regex fileNames="bootstrap.js,bootstrap.ts,custom.bootstrap.js"
+        <regex fileNames="*.boot"
+               name="Build Boot"
+               color="ecc42f"
+               pattern=".*\.boot$"
+               icon="/icons/files/boot.svg"/>
+        <regex fileNames="bootstrap.js,bootstrap.ts,bootstrap.css,bootstrap.scss,custom.bootstrap.js"
                name="Bootstrap"
                color="7E57C2"
-               pattern="^(custom\.)?bootstrap\.(js|ts)$"
+               pattern="^(custom\.)?bootstrap\..+$"
+               icon="/icons/files/bootstrap.svg"/>
+        <regex fileNames=".bootstraprc"
+               name="Bootstrap RC"
+               color="7E57C2"
+               pattern="^\.bootstraprc$"
                icon="/icons/files/bootstrap.svg"/>
         <regex fileNames=".bowerrc,bower.json"
                name="Bower"
                color="E79627"
                pattern="^(\.bowerrc|bower\.json)$"
                icon="/icons/files/bower.svg"/>
+        <regex fileNames="Bowerfile,bowerfile"
+               name="Bowerfile"
+               color="E79627"
+               pattern="^[Bb]owerfile$"
+               icon="/icons/files/bower.svg"/>
         <regex fileNames="*.bf,*.b"
                name="Brainfuck"
                color="F06292"
-               pattern=".*\.(b|bf)$"
+               pattern=".*\.bf?$"
                icon="/icons/files/brainfuck.svg"/>
         <regex fileNames="brakeman.yml"
                name="Brakeman"
@@ -626,12 +647,12 @@
         <regex fileNames="Brocfile"
                name="Broccoli"
                color="26A69A"
-               pattern="Brocfile$"
+               pattern="^Brocfile$"
                icon="/icons/files/broccoli.svg"/>
         <regex fileNames="*.br"
                name="Brotli"
                color="FF7043"
-               pattern=".*\.br"
+               pattern=".*\.br$"
                icon="/icons/files/brotli.svg"/>
         <regex fileNames=".browserslist,.browserslistrc"
                name="Browserslist"
@@ -648,6 +669,11 @@
                color="26C6DA"
                pattern="^brunch-config\.(js|coffee|ts)$"
                icon="/icons/files/brunch.svg"/>
+        <regex fileNames="*.buckconfig"
+               name="Buck"
+               pattern=".*\.buckconfig$"
+               color="4DB6AC"
+               icon="/icons/files/buck.svg"/>
         <regex fileNames="*.cmj"
                name="BuckleScript"
                pattern=".*\.cmj$"
@@ -668,26 +694,28 @@
                color="42A5F5"
                pattern=".*\.dm$"
                icon="/icons/files/byond.svg"/>
+        <!--endregion-->
 
-        <regex fileNames="*.c,*.objc"
+        <!--region C -->
+        <regex fileNames="*.c,*.objc,*.idc,*.w,*.nc,*.upc,*.cats"
                name="C"
                color="E84140"
-               pattern=".*\.(c|objc)$"
+               pattern=".*\.(c|objc|idc|w|nc|upc|cats)$"
                icon="/icons/files/c.svg"/>
         <regex fileNames="*.cabal"
                name="Cabal"
                color="C792EA"
                pattern=".*\.cabal$"
                icon="/icons/files/cabal.svg"/>
-        <regex fileNames="cabal.project"
+        <regex fileNames="cabal.project,cabal.config"
                name="Cabal Project"
                color="C792EA"
-               pattern="^cabal\.project$"
+               pattern="^cabal\.(config|project)$"
                icon="/icons/files/cabal.svg"/>
-        <regex fileNames="*.cake"
+        <regex fileNames="*.cake,*.ctp"
                name="CakePHP"
                color="AB7967"
-               pattern=".*\.cake$"
+               pattern=".*\.(cake|ctp)$"
                icon="/icons/files/cakephp.svg"/>
         <regex fileNames="cargo.toml,cargo.lock"
                name="Cargo"
@@ -729,10 +757,10 @@
                color="7A8387"
                pattern="^(circle|config)\.yml$"
                icon="/icons/files/circleci.svg"/>
-        <regex fileNames="*.class,*.o"
+        <regex fileNames="*.class,*.o,*.out,*.ko,*.pyo,*.pyc"
                name="Class"
                color="7A8387"
-               pattern=".*\.(class|o)$"
+               pattern=".*\.(class|o|out|ko|py[oc])$"
                icon="/icons/files/class.svg"/>
         <regex fileNames="*.cljs,*.clj,*.cljc,*.clojure"
                name="Clojure"
@@ -854,16 +882,17 @@
                color="616161"
                pattern="^cypress\.json$"
                icon="/icons/files/cypress.svg"/>
-        <regex fileNames="*.cpp,*.cc,*.cp,*.ii,*.mii,*.cxx"
+        <regex fileNames="*.cpp,*.c++,*.cc,*.cp,*.ii,*.mii,*.cxx,*.ipp,*.hpp"
                name="C++"
                color="1E9CEF"
-               pattern=".*\.(cpp|cc|cp|ii|mii|cxx)$"
+               pattern=".*\.(cpp|c++|cc|cp|ii|mii|cxx|ipp|hpp)$"
                icon="/icons/files/cpp.svg"/>
         <regex fileNames="*.csx,*.cs"
                name="C#"
                color="0277bd"
                pattern=".*\.csx?$"
                icon="/icons/files/csharp.svg"/>
+        <!--endregion-->
 
         <regex fileNames="*.dart"
                name="Dart"
@@ -2604,11 +2633,24 @@
                color="E79627"
                pattern=".*\.env\.(.*)$"
                icon="/icons/files/preferences.svg"/>
+
+        <!--region Binaries -->
         <regex fileNames="ls,cd,myapp,run"
                name="Binary"
                color="7C95A1"
                pattern="^[^.]+$"
                icon="/icons/files/binary.svg"/>
+        <regex fileNames="*.axf,*.elf,*.la,*.objdump,*.bsdiff,*.bin,*.dat,*.pak"
+               name="Binary (2)"
+               color="7C95A1"
+               pattern=".*\.(axf|elf|la|objdump|bsdiff|bin|dat|pak)$"
+               icon="/icons/files/binary.svg"/>
+        <regex fileNames="*.gc,*.gco,*.gcode,*.cnc,*.dnc,*.hnc,*.knc,*.prx,*.swp,*.rnd"
+               name="Binary (3)"
+               color="7C95A1"
+               pattern=".*\.(gco?|gcode|[cdhk]nc|prx|swp|rnd)$"
+               icon="/icons/files/binary.svg"/>
+        <!--endregion-->
 
         <regex fileNames="*.ttf,*.ttc,*.pfb,*.pfm,*.otf,*.dfont,*.pfa,*.afm,*.eot,*.woff,*.woff2"
                name="Font"
