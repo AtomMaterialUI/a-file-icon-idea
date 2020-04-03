@@ -44,6 +44,12 @@
                iconColor="f8bbd0"
                pattern="^(animations?|anims?)$"
                icon="/animations.svg"/>
+        <regex folderNames="group_vars,host_vars,vars,roles"
+               name="ansible"
+               folderColor="ef5350"
+               iconColor="ffcdd2"
+               pattern="^(group_vars|host_vars|vars|roles)$"
+               icon="/ansible.svg"/>
         <regex folderNames="api,apis,rest,swagger"
                name="api"
                folderColor="FFF176"
