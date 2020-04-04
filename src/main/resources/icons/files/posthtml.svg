@@ -1,5 +1,4 @@
-<svg width="16px" height="16px" viewBox="0 0 1000 1000" version="1.1"
-     xmlns="http://www.w3.org/2000/svg">
+<svg width="16px" height="16px" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="PostHTML-Logo" transform="matrix(1,0,0,1,12,266)">
             <path d="M 489 63.8 C 421.8 63.8 368.1 49.6 311 24.2 C 279.9 10.3 240.3 1 206 1 C 92.2 1 0 93.2 0 207 C 0 320.8 92.2 413 206 413 C 240.2 413 282.4 404.7 310.8 389.9 C 363.3 362.7 421.8 350.2 489 350.2 C 556.2 350.2 606 364.5 663.3 390 C 694.2 403.8 737.8 413 772 413 C 885.8 413 978 320.8 978 207 C 978 93.2 885.8 1 772 1 C 737.8 1 691.5 9.3 663.1 24.1 C 610.7 51.3 556.2 63.8 489 63.8 Z"
