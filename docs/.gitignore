@@ -1,6 +1,0 @@
-node_modules
-examples/
-dist
-.DS_Store
-npm-debug.*
-deploy_key
