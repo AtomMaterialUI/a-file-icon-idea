@@ -48,8 +48,8 @@ import javax.swing.*;
  */
 public final class FileIconProvider extends IconProvider implements DumbAware {
 
-  private final Associations associations = AssociationsFactory.create("/icon_associations.xml");
-  private final Associations dirAssociations = AssociationsFactory.create("/folder_associations.xml");
+  private final Associations associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
+  private final Associations dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
 
   @Nullable
   @Override
@@ -113,7 +113,8 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     Icon icon = null;
 
     try {
-      icon = association.getIconForFile(file);
+      final String iconPath = association.getIcon();
+      icon = MTIcons.getFileIcon(iconPath);
     } catch (final RuntimeException e) {
       e.printStackTrace();
     }

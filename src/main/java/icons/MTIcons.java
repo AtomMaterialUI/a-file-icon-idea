@@ -35,8 +35,9 @@ import javax.swing.*;
 @SuppressWarnings("ALL")
 public final class MTIcons {
 
-  public static final String FOLDERS_PATH = "/icons/folders";
-  public static final String FOLDERS_OPEN_PATH = "/icons/foldersOpen";
+  public static final String FILES_PATH = "/iconGenerator/assets";
+  public static final String FOLDERS_PATH = "/iconGenerator/assets/icons/folders";
+  public static final String FOLDERS_OPEN_PATH = "/iconGenerator/assets/icons/foldersOpen";
   public static final Icon EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg");
   public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
   public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
@@ -50,6 +51,10 @@ public final class MTIcons {
 
   private MTIcons() {
 
+  }
+
+  public static Icon getFileIcon(String iconPath) {
+    return IconLoader.getIcon(FILES_PATH + iconPath);
   }
 
   public static DirIcon getFolderIcon(String iconPath) {
