@@ -13,10 +13,10 @@
 This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
 
 ## File Icons
-![File Icons](docs/files.png)
+![File Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
 
 ## Folder Icons
-![Folder Icons](docs/folders.png)
+![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
 
 
 ## Features
