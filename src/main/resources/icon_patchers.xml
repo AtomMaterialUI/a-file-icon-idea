@@ -27,6 +27,7 @@
 <iconPathPatchers>
     <iconPatchers>
         <patcher name="AllIcons" remove="" append="/icons"/>
+        <patcher name="Ant" remove="/icons" append="/icons/plugins/ant"/>
         <patcher name="AppCode" remove="/icons" append="/icons/plugins/appcode"/>
         <patcher name="AppEngine" remove="/icons/com/jetbrains/appengine" append="/icons/plugins/python/appengine"/>
         <patcher name="BuildTools" remove="/icons/buildTools" append="/icons/buildTools"/>
