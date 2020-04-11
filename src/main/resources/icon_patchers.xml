@@ -67,6 +67,7 @@
         <patcher name="Web2Py" remove="/icons/com/jetbrains/web2py" append="/icons/plugins/python/web2py"/>
         <patcher name="Web" remove="/images" append="/icons/webDeployment"/>
         <patcher name="Wizard" remove="/icons/plugins" append="/icons/plugins/wizard"/>
+        <patcher name="Other" remove="/icons" append="/icons/other"/>
 
     </iconPatchers>
     <glyphPatchers>
@@ -82,7 +83,6 @@
         <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/glyphs"/>
-        <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/glyphs"/>
         <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
         <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby/glyphs"/>
@@ -116,6 +116,7 @@
                  append="/icons/plugins/resharper/PsiXaml/glyphs"/>
         <patcher name="Resharper Xml" remove="/resharper/PsiXml"
                  append="/icons/plugins/resharper/PsiXml/glyphs"/>
+        <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
 
     </glyphPatchers>
     <filePatchers>
