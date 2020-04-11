@@ -35,6 +35,7 @@
         <patcher name="CLion" remove="" append="/icons/plugins/clion"/>
         <patcher name="Cython" remove="/icons/com/jetbrains/cython" append="/icons/plugins/python/cython"/>
         <patcher name="Database" remove="/icons" append="/icons/plugins/datagrip"/>
+        <patcher name="Dart" remove="/icons" append="/icons/dart"/>
         <patcher name="Debugger" remove="/icons" append="/icons/debugger"/>
         <patcher name="DataGrip" remove="" append="/icons/plugins/datagrip"/>
         <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
@@ -121,7 +122,8 @@
     </glyphPatchers>
     <filePatchers>
         <patcher name="AllIconFiles" remove="/fileTypes" append="/icons/plugins/fileTypes"/>
-        <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
+        <patcher name="Files" remove="/fileTypes" append="/icons/fileTypes"/>
+        <patcher name="Dart" remove="/icons" append="/icons/plugins/dart/files"/>
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
