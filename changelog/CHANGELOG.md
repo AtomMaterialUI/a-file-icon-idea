@@ -1,5 +1,18 @@
 # Changelog
 
+# 22.0
+- You can now preview icons at <https://github.com/mallowigi/a-file-icon-idea> !
+- You can now get the list of available associations at <http://www.material-theme.com/docs/reference/associations/> and <http://www.material-theme.com/docs/reference/folder_associations/> !
+- Extracted icons to its own repository so it can be used with multiple projects
+- Optimized icons (reduce icons size, set colors in paths, etc)
+    - Also the icons look much more like the Atom original plugin ones
+- Added fileNames in associations, to be used with the examples generator
+- Added colors in associations, for use with the font generator
+- Update UI Icons with latest icons
+- **New/Updated UI Icons**: Ant, Haml, Handlebars, DataGrip, JavaScript, Kotlin, DevKit, Dart, Docker
+- **New icons**: 4d, agda, alpine linux, analytica, adobe animate, ansible, antwar, aplus, buck, build boot, caddy, caffe, caffe2, cakefile, carthage, chai, chapel, chartjs, cheetah, chocolatey, cpp, csharp, cdf, chrome, chuck, circuit, cirru, clarion, clean, click, clips, closuretpl, cloudfoundry, cocoapods, codacy, codeclimate, cokekit, codeship, conan, conda, conll, coq, corel, coveralls, cp, cpan, credits, creole, crowdin, csound, cuneiform, curl, curry, cwl, collada, nvidia, fabric, factor, falcon, fancy, fantom, fexl, fbx, faust, fasta, finaldraft, firebase bolt, firefox, flask, flutter, flux, font bitmap, fontforge, fossa, fountain, fanca, frege, fuel ux, fusebox, futhark, Jetbrains Theme Files
+- *Update icon associations*: actionscript, ansible, antlr, applescript, asciidoc, asm, atom, atoum, babel, backbone, behat, bison, bootstrap, bower,  cabal, c, composer.lock, chef, credits, csharp, cypress, todo, finder, firebase, flash, fortran, gem, archives, audio, video
+
 # 21.0
 - Fix issue with Arrow Colors being black in Darcula
 - Fix issue with Plugins labels being black in Darcula
