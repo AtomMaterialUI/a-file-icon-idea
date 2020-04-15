@@ -78,6 +78,7 @@
         <patcher name="AOP" remove="/icons" append="/icons/plugins/aop/glyphs"/>
         <patcher name="AppCode" remove="/icons" append="/icons/plugins/appcode/glyphs"/>
         <patcher name="CLion" remove="/icons" append="/icons/plugins/clion/glyphs"/>
+        <patcher name="CSS" remove="/icons/css" append="/icons/css/glyphs"/>
         <patcher name="DataGrip" remove="/icons" append="/icons/plugins/datagrip/glyphs"/>
         <patcher name="Freemarker" remove="/icons" append="/icons/plugins/freemarker/glyphs"/>
         <patcher name="General" remove="/general" append="/icons/general/glyphs"/>
