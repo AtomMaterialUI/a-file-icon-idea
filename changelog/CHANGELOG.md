@@ -1,5 +1,13 @@
 # Changelog
 
+# 23.0
+- More icons: walt, watchman, wdl, webgl, owl, webvtt, wenyan, wget, wix, wordpress, workbox, wurst, x10, x11, xmos, xojo, xpages, xproc, xtend, yara, yorick, yui, yasm, zbrush, zeit, zenscript, zig, zilog, zimpl, zork, awk, bazaar, brewfile, hitachi, intel, vax, kerboscript, keybase, keynote, kicad, kitchenci, kml, knime, kotlin, knockout, krl, kubernetes, q, qasm, qlikview, qt, quasar
+- New angular icon: interceptor
+- New redux icons: saga and selector
+- New pattern: main.js is now associated with nodejs
+- Add cron/scheduler folder icons
+
+
 # 22.0
 - You can now preview icons at <https://github.com/mallowigi/a-file-icon-idea> !
 - You can now get the list of available associations at <http://www.material-theme.com/docs/reference/associations/> and <http://www.material-theme.com/docs/reference/folder_associations/> !
