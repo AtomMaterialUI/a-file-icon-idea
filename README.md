@@ -18,6 +18,8 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 ## Folder Icons
 ![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
 
+## Chrome Extension
+<https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc>
 
 ## Features
 
