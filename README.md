@@ -12,14 +12,9 @@
 
 This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
 
-## File Icons
-![File Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
-
-## Folder Icons
-![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
-
 ## Chrome Extension
 <https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc>
+
 
 ## Features
 
@@ -40,6 +35,13 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 - **Monochrome filter**: Set a filter to the whole UI
   - Ability to select the color
 - **Customizability**: Select which settings to apply in a Settings Page
+
+
+## File Icons
+![File Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
+
+## Folder Icons
+![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
 
 ### Settings
 ![settings.png](assets/settings.png)
