@@ -114,6 +114,8 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setArrowsStyle(form.getArrowsStyle());
 
     fireChanged();
+
+
   }
 
   /**
