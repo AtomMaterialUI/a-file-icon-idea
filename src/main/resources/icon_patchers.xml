@@ -62,6 +62,7 @@
         <patcher name="REST" remove="/com/intellij/ws/rest/client/icons" append="/icons/plugins/rest"/>
         <patcher name="Rider" remove="/rider" append="/icons/plugins/rider"/>
         <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby"/>
+        <patcher name="Scala" remove="" append="/icons/plugins/scala"/>
         <patcher name="Tasks" remove="/icons" append="/icons/tasks"/>
         <patcher name="Terminal" remove="/icons" append="/icons/terminal"/>
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml"/>
@@ -93,6 +94,7 @@
         <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
         <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby/glyphs"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass/glyphs"/>
+        <patcher name="Scala" remove="" append="/icons/plugins/scala/glyphs"/>
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml/glyphs"/>
 
         <patcher name="Resharper Sources" remove="/resharper/ExternalSources"
@@ -134,6 +136,7 @@
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
+        <patcher name="Scala" remove="" append="/icons/plugins/scala/files"/>
         <patcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/icons/plugins/haml/files"/>
         <patcher name="Handlebars" remove="/icons" append="/icons/plugins/handlebars/files"/>
 
