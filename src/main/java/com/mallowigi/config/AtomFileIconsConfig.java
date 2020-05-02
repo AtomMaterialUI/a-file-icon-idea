@@ -31,18 +31,22 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
+import com.intellij.util.ui.UIUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.ui.SettingsForm;
 import com.mallowigi.tree.arrows.ArrowsStyles;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("ClassWithTooManyMethods")
 @State(
   name = "AtomFileIconsConfig",
   storages = @Storage("a-file-icons.xml")
 )
-public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
+public final class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
   @Property
   private boolean enabledIcons = true;
   @Property
@@ -51,6 +55,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   private boolean enabledUIIcons = true;
   @Property
   private boolean monochromeIcons = false;
+  @NonNls
   @Property
   private String monochromeColor = "546E7A";
   @Property
@@ -58,9 +63,17 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   @Property
   private boolean hideFileIcons;
   @Property
-  boolean useHollowFolders = true;
+  private boolean useHollowFolders = true;
   @Property
-  ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  private ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  @NonNls
+  @Property
+  private String accentColor = getAccentColorFromTheme();
+
+  @NotNull
+  private static String getAccentColorFromTheme() {
+    return ColorUtil.toHex(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()));
+  }
 
   public AtomFileIconsConfig() {
   }
@@ -77,7 +90,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   /**
    * Get the state of MTConfig
    */
-  @Nullable
+  @NotNull
   @Override
   public AtomFileIconsConfig getState() {
     return this;
@@ -98,10 +111,12 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+      .configChanged(this);
   }
 
+  @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
+                      "FeatureEnvy"})
   void applySettings(final SettingsForm form) {
     setIsEnabledIcons(form.getIsEnabledIcons());
     setEnabledDirectories(form.getIsEnabledDirectories());
@@ -112,9 +127,9 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     setHideFileIcons(form.getIsHiddenFileIcons());
     setUseHollowFolders(form.getIsHollowFoldersEnabled());
     setArrowsStyle(form.getArrowsStyle());
+    setAccentColor(form.getAccentColor());
 
     fireChanged();
-
 
   }
 
@@ -131,6 +146,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
     hideFileIcons = false;
     useHollowFolders = true;
     arrowsStyle = ArrowsStyles.MATERIAL;
+    accentColor = getAccentColorFromTheme();
   }
 
   //region Enabled Icons
@@ -143,7 +159,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
   }
 
   public boolean isEnabledIconsChanged(final boolean isEnabledIcons) {
-    return isEnabledIcons() != isEnabledIcons;
+    return enabledIcons != isEnabledIcons;
   }
 
   public void toggleEnabledIcons() {
@@ -254,7 +270,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    *
    * @param useHollowFolders the useHollowFolders of this MTConfig object.
    */
-  public void setUseHollowFolders(final boolean useHollowFolders) {
+  private void setUseHollowFolders(final boolean useHollowFolders) {
     this.useHollowFolders = useHollowFolders;
   }
 
@@ -290,7 +306,7 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
    *
    * @param hideFileIcons the hideFileIcons of this MTConfig object.
    */
-  public void setHideFileIcons(final boolean hideFileIcons) {
+  private void setHideFileIcons(final boolean hideFileIcons) {
     this.hideFileIcons = hideFileIcons;
   }
 
@@ -320,6 +336,20 @@ public class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIco
 
   public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
     return this.arrowsStyle != arrowsStyle;
+  }
+  //endregion
+
+  //region accent color
+  public String getAccentColor() {
+    return accentColor;
+  }
+
+  private void setAccentColor(final String accentColor) {
+    this.accentColor = accentColor;
+  }
+
+  public boolean isAccentColorChanged(final String accentColor) {
+    return !this.accentColor.equals(accentColor);
   }
   //endregion
 }

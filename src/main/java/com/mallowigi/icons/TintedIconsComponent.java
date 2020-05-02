@@ -38,6 +38,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.ConfigNotifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -78,6 +79,7 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     initComponent();
   }
 
+  @SuppressWarnings("MissingRecentApi")
   @Override
   public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
     disposeComponent();
@@ -114,13 +116,13 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   private static ColorUIResource getTintedColor() {
-    return new ColorUIResource(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()));
+    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getAccentColor()));
   }
 
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-    "IfStatementWithTooManyBranches",
-    "DuplicateStringLiteralInspection",
-    "SyntheticAccessorCall"})
+                      "IfStatementWithTooManyBranches",
+                      "DuplicateStringLiteralInspection",
+                      "SyntheticAccessorCall"})
   private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
@@ -156,11 +158,14 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
 
           if ("true".equals(tint) || "fill".equals(tint)) {
             svg.setAttribute("fill", "#" + tintColor);
-          } else if ("stroke".equals(tint)) {
+          }
+          else if ("stroke".equals(tint)) {
             svg.setAttribute("stroke", "#" + tintColor);
-          } else if ("true".equals(themed) || "fill".equals(themed)) {
+          }
+          else if ("true".equals(themed) || "fill".equals(themed)) {
             svg.setAttribute("fill", "#" + hexColor);
-          } else if ("stroke".equals(themed)) {
+          }
+          else if ("stroke".equals(themed)) {
             svg.setAttribute("stroke", "#" + hexColor);
           }
 

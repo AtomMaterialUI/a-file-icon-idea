@@ -47,11 +47,14 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"FieldCanBeLocal",
-  "HardCodedStringLiteral",
-  "StringConcatenation",
-  "PublicMethodNotExposedInInterface",
-  "FeatureEnvy",
-  "BooleanMethodNameMustStartWithQuestion"})
+                    "HardCodedStringLiteral",
+                    "StringConcatenation",
+                    "PublicMethodNotExposedInInterface",
+                    "FeatureEnvy",
+                    "BooleanMethodNameMustStartWithQuestion",
+                    "ClassWithTooManyFields",
+                    "ClassWithTooManyMethods",
+                    "OverlyLongMethod"})
 public final class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
     initComponents();
@@ -75,12 +78,16 @@ public final class SettingsForm implements SettingsFormUI {
   private JCheckBox hideFileIconsCheckbox;
   private JLabel enablePSIIconsIcon2;
   private JCheckBox hollowFoldersCheckbox;
+  private JLabel enablePSIIconsIcon4;
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
+  private JLabel enablePSIIconsIcon5;
+  private JLabel accentColorLabel;
+  private ColorPanel accentColorChooser;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings({"Convert2MethodRef",
-    "LocalCanBeFinal"})
+                      "LocalCanBeFinal"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -101,8 +108,12 @@ public final class SettingsForm implements SettingsFormUI {
     hideFileIconsCheckbox = new JCheckBox();
     enablePSIIconsIcon2 = new JLabel();
     hollowFoldersCheckbox = new JCheckBox();
+    enablePSIIconsIcon4 = new JLabel();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
+    enablePSIIconsIcon5 = new JLabel();
+    accentColorLabel = new JLabel();
+    accentColorChooser = new ColorPanel();
 
     //======== content ========
     {
@@ -121,6 +132,7 @@ public final class SettingsForm implements SettingsFormUI {
           "[]" +
           "[]" +
           "[50]" +
+          "[]" +
           "[]"));
 
       //---- enableFileIconsIcon ----
@@ -154,7 +166,7 @@ public final class SettingsForm implements SettingsFormUI {
 
       //---- monoColorChooser ----
       monoColorChooser.setToolTipText(bundle.getString("SettingsForm.monoColorChooser.toolTipText"));
-      content.add(monoColorChooser, "cell 1 2,alignx right,growx 0");
+      content.add(monoColorChooser, "cell 2 2,alignx right,growx 0");
 
       //---- enableUIIconsIcon ----
       enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plugin@2x.png")));
@@ -192,6 +204,10 @@ public final class SettingsForm implements SettingsFormUI {
       hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText"));
       content.add(hollowFoldersCheckbox, "cell 1 6");
 
+      //---- enablePSIIconsIcon4 ----
+      enablePSIIconsIcon4.setIcon(new ImageIcon(getClass().getResource("/icons/settings/arrowRight@2x.png")));
+      content.add(enablePSIIconsIcon4, "cell 0 7");
+
       //---- arrowsStyleLabel ----
       arrowsStyleLabel.setText(bundle.getString("SettingsForm.arrowsStyleLabel.text"));
       arrowsStyleLabel.setToolTipText(bundle.getString("SettingsForm.arrowsStyleLabel.toolTipText"));
@@ -200,6 +216,19 @@ public final class SettingsForm implements SettingsFormUI {
       //---- arrowsStyleComboBox ----
       arrowsStyleComboBox.setToolTipText(bundle.getString("SettingsForm.arrowsStyleComboBox.toolTipText"));
       content.add(arrowsStyleComboBox, "cell 2 7,align right center,grow 0 0,width 120:120:120");
+
+      //---- enablePSIIconsIcon5 ----
+      enablePSIIconsIcon5.setIcon(new ImageIcon(getClass().getResource("/icons/settings/accentColor@2x.png")));
+      content.add(enablePSIIconsIcon5, "cell 0 8");
+
+      //---- accentColorLabel ----
+      accentColorLabel.setText(bundle.getString("SettingsForm.accentColorLabel.text"));
+      accentColorLabel.setToolTipText(bundle.getString("SettingsForm.accentColorLabel.toolTipText"));
+      content.add(accentColorLabel, "pad 0,cell 1 8,aligny center,grow 100 0");
+
+      //---- accentColorChooser ----
+      accentColorChooser.setToolTipText(bundle.getString("SettingsForm.accentColorChooser.toolTipText"));
+      content.add(accentColorChooser, "cell 2 8,alignx right,growx 0");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -238,6 +267,7 @@ public final class SettingsForm implements SettingsFormUI {
     setIsHiddenFileIcons(config.isHideFileIcons());
     setIsHollowFoldersEnabled(config.isUseHollowFolders());
     setArrowsStyle(config.getArrowsStyle());
+    setAccentColor(config.getAccentColor());
 
     afterStateSet();
   }
@@ -253,6 +283,7 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
     modified = modified || config.isUseHollowFoldersChanged(getIsHollowFoldersEnabled());
     modified = modified || config.isArrowsStyleChanged(getArrowsStyle());
+    modified = modified || config.isAccentColorChanged(getAccentColor());
 
     return modified;
   }
@@ -360,6 +391,16 @@ public final class SettingsForm implements SettingsFormUI {
 
   private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
     arrowsStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+  //endregion
+
+  //region accent color
+  public String getAccentColor() {
+    return ColorUtil.toHex(Objects.requireNonNull(accentColorChooser.getSelectedColor()));
+  }
+
+  private void setAccentColor(final String color) {
+    accentColorChooser.setSelectedColor(ColorUtil.fromHex(color));
   }
   //endregion
 }
