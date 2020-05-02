@@ -108,7 +108,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
   }
 
   @SuppressWarnings({"WeakerAccess",
-    "FeatureEnvy"})
+                      "FeatureEnvy"})
   void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
@@ -144,10 +144,10 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       }
     });
 
-    ApplicationManager.getApplication().invokeLater(() -> {
-      applyFilter();
-      LafManager.getInstance().updateUI();
-    });
+    //    ApplicationManager.getApplication().invokeLater(() -> {
+    //      applyFilter();
+    //      LafManager.getInstance().updateUI();
+    //    });
   }
 
   private void installPathPatchers() {
