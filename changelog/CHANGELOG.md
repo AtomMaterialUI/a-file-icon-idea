@@ -1,5 +1,20 @@
 # Changelog
 
+# 24.0
+- Added accent color selection in the settings
+- new UI/PSI icons: Scala, Ruby, Typescript
+- new redux icons: redux saga and redux epics, tweaked other colors too
+- new test icons: test dart, test go, test haskell, test perl, test rust
+- switched typescript and tslint icons
+- new icons:  icomoon, idl, igor, imba, index, inform, ink, inkscape, inno, ioke, isabelle, jake, jasmine, jison, jolie, json5, jsonld, jsonnet, junos
+- new/updated folders:  acre, agda, alacritty, app, appstore, arttext, atom, aurelia, bazaar, cabal, chef, client, cluster, container, content, controllers, coverage, cvs, messages
+- new folder icons: viewmodel, deno, dependabot, devcontainer, dropbox, gitlab, istanbul, yarn, ruby, mercurial, meteor, svn, textmate, vagrant, vim, svg, firebase, xcassets, glyph
+- Try to fix the weird border at start
+- Fix wrong associations
+
+More info about associations [here](http://www.material-theme.com/docs/reference/associations/) and [here](http://www.material-theme.com/docs/reference/folder-associations/)
+
+
 # 23.0
 - More icons: walt, watchman, wdl, webgl, owl, webvtt, wenyan, wget, wix, wordpress, workbox, wurst, x10, x11, xmos, xojo, xpages, xproc, xtend, yara, yorick, yui, yasm, zbrush, zeit, zenscript, zig, zilog, zimpl, zork, awk, bazaar, brewfile, hitachi, intel, vax, kerboscript, keybase, keynote, kicad, kitchenci, kml, knime, kotlin, knockout, krl, kubernetes, q, qasm, qlikview, qt, quasar
 - New angular icon: interceptor
