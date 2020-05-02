@@ -49,6 +49,11 @@ public final class TypeAssociation extends Association {
   }
 
   @Override
+  public String getMatcher() {
+    return type;
+  }
+
+  @Override
   public boolean matches(final FileInfo file) {
     return file.getFileType().equals(type);
   }

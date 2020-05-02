@@ -61,5 +61,7 @@ public abstract class Association implements Serializable {
     return name;
   }
 
+  abstract public String getMatcher();
+
   public abstract boolean matches(FileInfo file);
 }

@@ -48,8 +48,8 @@ import javax.swing.*;
  */
 public final class FileIconProvider extends IconProvider implements DumbAware {
 
-  private final Associations associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
-  private final Associations dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
+  private static final Associations associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
+  private static final Associations dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
 
   @Nullable
   @Override
@@ -58,14 +58,23 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
 
     if (element instanceof PsiDirectory) {
       icon = getDirectoryIcon(element);
-    } else if (element instanceof PsiFile) {
+    }
+    else if (element instanceof PsiFile) {
       icon = getFileIcon(element);
     }
 
     return icon;
   }
 
-  private Icon getFileIcon(final PsiElement psiElement) {
+  public static Associations getAssociations() {
+    return associations;
+  }
+
+  public static Associations getDirAssociations() {
+    return dirAssociations;
+  }
+
+  private static Icon getFileIcon(final PsiElement psiElement) {
     Icon icon = null;
     if (!AtomFileIconsConfig.getInstance().isEnabledIcons()) {
       return null;
@@ -79,7 +88,7 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     return icon;
   }
 
-  private DirIcon getDirectoryIcon(final PsiElement psiElement) {
+  private static DirIcon getDirectoryIcon(final PsiElement psiElement) {
     DirIcon icon = null;
     if (!AtomFileIconsConfig.getInstance().isEnabledDirectories()) {
       return null;
@@ -115,7 +124,8 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     try {
       final String iconPath = association.getIcon();
       icon = MTIcons.getFileIcon(iconPath);
-    } catch (final RuntimeException e) {
+    }
+    catch (final RuntimeException e) {
       e.printStackTrace();
     }
     return icon;
@@ -130,7 +140,8 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     try {
       final String iconPath = association.getIcon();
       icon = MTIcons.getFolderIcon(iconPath);
-    } catch (final RuntimeException e) {
+    }
+    catch (final RuntimeException e) {
       e.printStackTrace();
     }
     return icon;

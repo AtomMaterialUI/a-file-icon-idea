@@ -27,7 +27,7 @@
 package com.mallowigi.config;
 
 import com.intellij.openapi.options.SearchableConfigurable;
-import com.mallowigi.config.ui.SettingsForm;
+import com.mallowigi.config.ui.AssociationsForm;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,14 +36,14 @@ import java.util.Objects;
 /**
  * Service used to load and save settings from MTConfig
  */
-public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileIconsConfig> implements SearchableConfigurable {
+public final class AssocConfigurable extends ConfigurableBase<AssociationsForm, AtomFileIconsConfig> implements SearchableConfigurable {
 
   private static final String ID = "com.mallowigi.config";
 
   @Nls
   @Override
   public String getDisplayName() {
-    return SettingsBundle.message("settings.title");
+    return SettingsBundle.message("AssociationsForm.title");
   }
 
   @NotNull
@@ -58,22 +58,22 @@ public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileI
   }
 
   @Override
-  protected SettingsForm createForm() {
-    return new SettingsForm();
+  protected AssociationsForm createForm() {
+    return new AssociationsForm();
   }
 
   @Override
-  protected void setFormState(final SettingsForm form, final AtomFileIconsConfig config) {
+  protected void setFormState(final AssociationsForm form, final AtomFileIconsConfig config) {
     Objects.requireNonNull(form).setFormState(config);
   }
 
   @Override
-  protected void doApply(final SettingsForm form, final AtomFileIconsConfig config) {
-    config.applySettings(form);
+  protected void doApply(final AssociationsForm form, final AtomFileIconsConfig config) {
+    //    config.applySettings(form);
   }
 
   @Override
-  protected boolean checkModified(final SettingsForm form, final AtomFileIconsConfig config) {
+  protected boolean checkModified(final AssociationsForm form, final AtomFileIconsConfig config) {
     return checkFormModified(form, config);
   }
 
@@ -83,7 +83,8 @@ public final class Configurable extends ConfigurableBase<SettingsForm, AtomFileI
    * @param config the config
    * @return true if changed
    */
-  private static boolean checkFormModified(final SettingsForm form, final AtomFileIconsConfig config) {
-    return Objects.requireNonNull(form).isModified(config);
+  private static boolean checkFormModified(final AssociationsForm form, final AtomFileIconsConfig config) {
+    //    return Objects.requireNonNull(form).isModified(config);
+    return false;
   }
 }

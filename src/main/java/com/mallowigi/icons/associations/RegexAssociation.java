@@ -49,6 +49,11 @@ public final class RegexAssociation extends Association {
   }
 
   @Override
+  public String getMatcher() {
+    return pattern;
+  }
+
+  @Override
   public boolean matches(final FileInfo file) {
     if (compiledPattern == null) {
       compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);

@@ -1,0 +1,97 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "config"
+	"i18n.bundleName": "AtomFileIconsBundle"
+	"i18n.keyPrefix": "AssociationsForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[585,grow,fill]"
+			"$rowConstraints": "[]"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedContainer"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[]0"
+				} ) {
+					name: "fileIcons"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane2"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "fileIconsTable"
+							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+								add( new java.util.Vector {
+									add( "" )
+									add( null )
+									add( "" )
+								} )
+								add( new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+								} )
+							}, new java.util.Vector {
+								add( "Name" )
+								add( "Pattern" )
+								add( "Icon" )
+							}, new java.util.Vector {
+								add( class java.lang.String )
+								add( null )
+								add( null )
+							}, new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+							}, new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+							} )
+							"autoResizeMode": 3
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,growx"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "AssociationsForm.fileIcons.tab.title" )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 790, 515 )
+		} )
+		add( new FormNonVisual( "java.util.List" ) {
+			name: "fileAssociations"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.Association"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 935, 220 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "fileAssociations", null, "fileIconsTable", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "name", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_2" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "icon", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName.1" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "${matcher}", null, null ) {
+					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_3" )
+					"columnClass": "java.lang.String"
+				} ]
+			} )
+		} )
+	}
+}

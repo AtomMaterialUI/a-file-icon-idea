@@ -38,9 +38,12 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
-        <applicationConfigurable instance="com.mallowigi.config.Configurable"
+        <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
                                  groupId="appearance"
                                  id="com.mallowigi.config"/>
+        <applicationConfigurable instance="com.mallowigi.config.AssocConfigurable"
+                                 groupId="appearance"
+                                 id="com.mallowigi.config.assocConfigurable"/>
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first"
                       id="MTHiddenIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
