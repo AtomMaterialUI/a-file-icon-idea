@@ -80,17 +80,19 @@ new FormModel {
 			"name": "bindingGroup"
 			addBinding( new FormBinding( "fileAssociations", null, "fileIconsTable", "elements" ) {
 				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "name", null, null ) {
-					"sourcePathType": class java.lang.String
 					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_2" )
 					"columnClass": "java.lang.String"
+					"editable": false
 				}, new FormBinding( null, "icon", null, null ) {
-					"sourcePathType": class java.lang.String
 					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName.1" )
 					"columnClass": "java.lang.String"
+					"editable": false
 				}, new FormBinding( null, "${matcher}", null, null ) {
 					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_3" )
 					"columnClass": "java.lang.String"
+					"editable": false
 				} ]
+				"updateStrategy": enum org.jdesktop.beansbinding.AutoBinding$UpdateStrategy READ
 			} )
 		} )
 	}

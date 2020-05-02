@@ -4,8 +4,10 @@
 
 package com.mallowigi.config.ui;
 
+import com.intellij.util.ui.table.IconTableCellRenderer;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.FileIconProvider;
+import icons.MTIcons;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
@@ -13,6 +15,7 @@ import org.jdesktop.beansbinding.BindingGroup;
 import org.jdesktop.beansbinding.ELProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -130,21 +133,32 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
     //---- bindings ----
     bindingGroup = new BindingGroup();
     {
-      final JTableBinding binding = SwingBindings.createJTableBinding(UpdateStrategy.READ_WRITE,
+      final JTableBinding binding = SwingBindings.createJTableBinding(UpdateStrategy.READ,
                                                                       fileAssociations, fileIconsTable);
       binding.addColumnBinding(BeanProperty.create("name"))
         .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName_2"))
-        .setColumnClass(String.class);
+        .setColumnClass(String.class)
+        .setEditable(false);
       binding.addColumnBinding(BeanProperty.create("icon"))
         .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName.1"))
-        .setColumnClass(String.class);
+        .setColumnClass(String.class)
+        .setEditable(false);
       binding.addColumnBinding(ELProperty.create("${matcher}"))
         .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName_3"))
-        .setColumnClass(String.class);
+        .setColumnClass(String.class)
+        .setEditable(false);
       bindingGroup.addBinding(binding);
     }
     bindingGroup.bind();
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+    fileIconsTable.getColumnModel().getColumn(1).setCellRenderer(new IconTableCellRenderer<String>() {
+      @NotNull
+      @Override
+      protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
+        return MTIcons.getFileIcon(value);
+      }
+    });
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

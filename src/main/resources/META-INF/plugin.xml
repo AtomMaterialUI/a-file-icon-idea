@@ -41,9 +41,9 @@
         <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
                                  groupId="appearance"
                                  id="com.mallowigi.config"/>
-        <!--        <applicationConfigurable instance="com.mallowigi.config.AssocConfigurable"-->
-        <!--                                 groupId="appearance"-->
-        <!--                                 id="com.mallowigi.config.assocConfigurable"/>-->
+        <applicationConfigurable instance="com.mallowigi.config.AssocConfigurable"
+                                 groupId="appearance"
+                                 id="com.mallowigi.config.assocConfigurable"/>
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first"
                       id="MTHiddenIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
@@ -67,33 +67,21 @@
     </applicationListeners>
 
     <actions>
-        <group id="AtomFileIcons.Actions" text="Atom File Icon Settings" description="Atom file icon settings"
+        <group id="AtomFileIcons.Actions"
                popup="true" icon="/icons/actions/atom.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
-                    text="Enable File Icons"
-                    icon="/icons/settings/atom.svg"
-                    description="Enable file icons"/>
+                    icon="/icons/settings/atom.svg"/>
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
-                    text="Enable Directory Icons"
-                    icon="/icons/settings/compiledClassesFolder.svg"
-                    description="Enable directory icons"/>
+                    icon="/icons/settings/compiledClassesFolder.svg"/>
             <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
-                    text="Enable UI Icons"
-                    icon="/icons/settings/plugin.svg"
-                    description="Enable UI Icons"/>
+                    icon="/icons/settings/plugin.svg"/>
             <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
-                    text="Enable PSI Icons"
-                    icon="/icons/settings/psi.svg"
-                    description="Enable PSI Icons"/>
+                    icon="/icons/settings/psi.svg"/>
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
-                    text="Enable Monochrome Icons"
-                    icon="/icons/settings/monochrome.svg"
-                    description="Enable monochrome icons"/>
+                    icon="/icons/settings/monochrome.svg"/>
             <action class="com.mallowigi.actions.HideFileIcons" id="HideFileIcons"
-                    text="Hide File Icons"
-                    icon="/icons/settings/monochrome.svg"
-                    description="Hide file icons"/>
+                    icon="/icons/settings/monochrome.svg"/>
         </group>
 
     </actions>
