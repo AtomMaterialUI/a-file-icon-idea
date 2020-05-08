@@ -20,12 +20,12 @@ new FormModel {
 					"$columnConstraints": "[grow,fill]"
 					"$rowConstraints": "[]0"
 				} ) {
-					name: "fileIcons"
+					name: "customFileIcons"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane2"
+						name: "customFileIconsScrollpane"
 						add( new FormComponent( "javax.swing.JTable" ) {
-							name: "fileIconsTable"
-							"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							name: "customFileIconsTable"
+							"model": &SwingTableModel0 new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
 								add( new java.util.Vector {
 									add( "" )
 									add( null )
@@ -59,7 +59,64 @@ new FormModel {
 						"value": "cell 0 0,growx"
 					} )
 				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "AssociationsForm.customFileIcons.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[]0"
+				} ) {
+					name: "fileIcons"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "fileIconsScrollpane"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "fileIconsTable"
+							"model": #SwingTableModel0
+							"autoResizeMode": 3
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,growx"
+					} )
+				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "AssociationsForm.fileIcons.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[]0"
+				} ) {
+					name: "customFolderIcons"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "customFolderIconsScrollpane"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "customFolderIconsTable"
+							"model": #SwingTableModel0
+							"autoResizeMode": 3
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,growx"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "AssociationsForm.customFolderIcons.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[]0"
+				} ) {
+					name: "folderIcons"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "folderIconsScrollpane"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "folderIconsTable"
+							"model": #SwingTableModel0
+							"autoResizeMode": 3
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,growx"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "AssociationsForm.folderIcons.tab.title" )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
@@ -74,13 +131,38 @@ new FormModel {
 				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.Association"
 			}
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 935, 220 )
+			"location": new java.awt.Point( 160, 530 )
+		} )
+		add( new FormNonVisual( "java.util.List" ) {
+			name: "folderAssociations"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.Association"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 180, 595 )
+		} )
+		add( new FormNonVisual( "java.util.List" ) {
+			name: "customFileAssociations"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.RegexAssociation"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 531 )
+		} )
+		add( new FormNonVisual( "java.util.List" ) {
+			name: "customFolderAssociations"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.RegexAssociation"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 592 )
 		} )
 		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
 			"name": "bindingGroup"
 			addBinding( new FormBinding( "fileAssociations", null, "fileIconsTable", "elements" ) {
+				"updateStrategy": enum org.jdesktop.beansbinding.AutoBinding$UpdateStrategy READ
 				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "name", null, null ) {
-					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_2" )
+					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_3" )
 					"columnClass": "java.lang.String"
 					"editable": false
 				}, new FormBinding( null, "icon", null, null ) {
@@ -88,11 +170,56 @@ new FormModel {
 					"columnClass": "java.lang.String"
 					"editable": false
 				}, new FormBinding( null, "${matcher}", null, null ) {
-					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_3" )
+					"columnName": new FormMessage( null, "AssociationsForm.fileIconsTable.columnName_2" )
 					"columnClass": "java.lang.String"
 					"editable": false
 				} ]
+			} )
+			addBinding( new FormBinding( "folderAssociations", null, "folderIconsTable", "elements" ) {
 				"updateStrategy": enum org.jdesktop.beansbinding.AutoBinding$UpdateStrategy READ
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "icon", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.folderIconsTable.columnName.1" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "matcher", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.folderIconsTable.columnName_2" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "name", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.folderIconsTable.columnName_3" )
+					"columnClass": "java.lang.String"
+				} ]
+			} )
+			addBinding( new FormBinding( "customFileAssociations", null, "customFileIconsTable", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "icon", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFileIconsTable.columnName.1" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "matcher", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFileIconsTable.columnName_2" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "name", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFileIconsTable.columnName_3" )
+					"columnClass": "java.lang.String"
+				} ]
+			} )
+			addBinding( new FormBinding( "customFolderAssociations", null, "customFolderIconsTable", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "icon", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFolderIconsTable.columnName.1" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "matcher", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFolderIconsTable.columnName_2" )
+					"columnClass": "java.lang.String"
+				}, new FormBinding( null, "name", null, null ) {
+					"sourcePathType": class java.lang.String
+					"columnName": new FormMessage( null, "AssociationsForm.customFolderIconsTable.columnName_3" )
+					"columnClass": "java.lang.String"
+				} ]
 			} )
 		} )
 	}
