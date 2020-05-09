@@ -22,42 +22,21 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.associations;
+package com.mallowigi.config.associations.ui;
 
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.ui.table.JBTable;
 
-import javax.swing.*;
-import java.io.Serializable;
+public class FolderAssociationsTable extends JBTable {
+  public void addAssociation() {
 
-/**
- * Represent an association of a name with an icon
- */
-public abstract class Association implements Serializable {
-  @Property
-  protected String name;
-  @Property
-  protected String icon;
-
-  /**
-   * Get the icon for a given file info according
-   *
-   * @param file the file info
-   * @return the icon if found
-   */
-  public abstract Icon getIconForFile(FileInfo file);
-
-  public final String getIcon() {
-    return icon;
   }
 
-  @NonNls
-  public final String getName() {
-    return name;
+  public void removeSelectedAssociations() {
+
   }
 
-  abstract public String getMatcher();
+  public void editAssociation() {
 
-  public abstract boolean matches(FileInfo file);
+  }
+
 }

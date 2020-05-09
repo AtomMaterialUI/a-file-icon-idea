@@ -24,9 +24,9 @@
 package com.mallowigi.config.associations
 
 import com.intellij.openapi.options.SearchableConfigurable
+import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.ConfigurableBase
-import com.mallowigi.config.SettingsBundle
-import com.mallowigi.config.ui.AssociationsForm
+import com.mallowigi.config.associations.ui.AssociationsForm
 import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
 
@@ -36,13 +36,12 @@ import org.jetbrains.annotations.NonNls
 class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(),
                           SearchableConfigurable {
   @Nls
-  override fun getDisplayName() = SettingsBundle.message("AssociationsForm.title")
+  override fun getDisplayName() = AtomSettingsBundle.message("AssociationsForm.title")
 
   override fun getId(): String = ID
 
-  override fun getConfig(): AtomAssocConfig {
-    return AtomAssocConfig.instance;
-  }
+  override val config: AtomAssocConfig?
+    get() = AtomAssocConfig.instance;
 
   override fun createForm(): AssociationsForm {
     return AssociationsForm()

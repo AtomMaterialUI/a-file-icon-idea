@@ -31,21 +31,20 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.serialization.Property
 import com.intellij.util.xmlb.XmlSerializerUtil
-import com.mallowigi.config.ConfigNotifier
-import com.mallowigi.config.ui.AssociationsForm
+import com.mallowigi.config.associations.ui.AssociationsForm
+import com.mallowigi.config.listeners.AssocConfigNotifier
 import com.mallowigi.icons.associations.RegexAssociation
 import java.util.*
 import kotlin.collections.ArrayList
 
 @State(
   name = "Atom Icon Associations Config",
-  storages = [Storage("atom-icon-associations.xml")]
+  storages = [Storage("atom-icon-associations.xml")] // NON-NLS:
 )
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   @Property
-  var customFileAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100)
-    get() = field
+  var customFileAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100);
 
   @Property
   var customFolderAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100)
@@ -65,8 +64,8 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   private fun fireChanged() {
     ApplicationManager.getApplication().messageBus
-      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-      .associationsChanged(this)
+      .syncPublisher(AssocConfigNotifier.TOPIC)
+      .assocChanged(this)
   }
 
   fun isFileIconsModified(customFileAssociations: List<RegexAssociation>): Boolean {
@@ -78,6 +77,7 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
   }
 
   companion object {
+    @JvmStatic
     val instance: AtomAssocConfig
       get() = ServiceManager.getService(AtomAssocConfig::class.java)
   }

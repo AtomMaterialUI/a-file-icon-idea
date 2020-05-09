@@ -22,42 +22,16 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.associations;
+package com.mallowigi.config.listeners
 
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.util.messages.Topic
+import com.mallowigi.config.associations.AtomAssocConfig
 
-import javax.swing.*;
-import java.io.Serializable;
+interface AssocConfigNotifier {
+  fun assocChanged(config: AtomAssocConfig?)
 
-/**
- * Represent an association of a name with an icon
- */
-public abstract class Association implements Serializable {
-  @Property
-  protected String name;
-  @Property
-  protected String icon;
-
-  /**
-   * Get the icon for a given file info according
-   *
-   * @param file the file info
-   * @return the icon if found
-   */
-  public abstract Icon getIconForFile(FileInfo file);
-
-  public final String getIcon() {
-    return icon;
+  companion object {
+    @JvmField
+    val TOPIC = Topic.create("Atom Material Icons associations save", AssocConfigNotifier::class.java)
   }
-
-  @NonNls
-  public final String getName() {
-    return name;
-  }
-
-  abstract public String getMatcher();
-
-  public abstract boolean matches(FileInfo file);
 }

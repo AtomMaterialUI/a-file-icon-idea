@@ -21,40 +21,21 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config
 
-package com.mallowigi.config;
+import com.intellij.DynamicBundle
+import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.PropertyKey
 
-import com.intellij.util.messages.Topic;
-import com.mallowigi.config.associations.AtomAssocConfig;
-import org.jetbrains.annotations.NotNull;
+@NonNls
+private const val BUNDLE = "config.AtomFileIconsBundle"
 
-/**
- * Configuration Save Events
- */
-public interface ConfigNotifier {
-  /**
-   * Topic for Material Theme Settings changes
-   */
-  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Atom File Icons AtomFileIconsConfig save", ConfigNotifier.class);
+object AtomSettingsBundle : DynamicBundle(BUNDLE) {
 
-  /**
-   * Called when config is changed
-   */
-  void configChanged(AtomFileIconsConfig atomFileIconsConfig);
+  @JvmStatic
+  fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String = getMessage(key, *params)
 
-  void associationsChanged(@NotNull final AtomAssocConfig atomAssocConfig);
-
-  @SuppressWarnings("unused")
-  class Adapter implements ConfigNotifier {
-
-    @Override
-    public void configChanged(final AtomFileIconsConfig atomFileIconsConfig) {
-
-    }
-
-    @Override
-    public void associationsChanged(@NotNull final AtomAssocConfig atomAssocConfig) {
-
-    }
-  }
+  @JvmStatic
+  fun messagePointer(@PropertyKey(resourceBundle = BUNDLE) key: String,
+                     vararg params: Any): java.util.function.Supplier<String> = getLazyMessage(key, *params)
 }
