@@ -24,12 +24,10 @@
 
 package com.mallowigi.icons.associations;
 
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.FileInfo;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
 import java.util.regex.Pattern;
 
 /**
@@ -41,28 +39,23 @@ public final class RegexAssociation extends Association {
 
   private transient Pattern compiledPattern;
 
-  public RegexAssociation() {
-    name = "";
-    pattern = "";
-    icon = "";
-  }
-
   public RegexAssociation(@NotNull final String name,
                           @NotNull final String pattern,
                           @NotNull final String icon) {
-    this.name = name;
+    super(name, icon);
     this.pattern = pattern;
-    this.icon = icon;
   }
 
-  @Override
-  public Icon getIconForFile(final FileInfo file) {
-    return IconLoader.getIcon(getIcon());
-  }
-
+  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
   @Override
   public String getMatcher() {
-    return pattern;
+    return getPattern();
+  }
+
+  @SuppressWarnings("CallToSimpleSetterFromWithinClass")
+  @Override
+  public void setMatcher(final String value) {
+    setPattern(value);
   }
 
   @Override
@@ -73,26 +66,22 @@ public final class RegexAssociation extends Association {
     return compiledPattern.matcher(file.getName()).matches();
   }
 
-  public RegexAssociation apply(final RegexAssociation other) {
-    name = other.getName();
+  @Override
+  public void apply(final Association other) {
+    super.apply(other);
     pattern = other.getMatcher();
-    icon = other.getIcon();
-    return this;
   }
 
+  @Override
   public boolean isEmpty() {
-    return name.isEmpty() || pattern.isEmpty() || icon.isEmpty();
+    return super.isEmpty() || pattern.isEmpty();
   }
 
-  public void setIcon(final String value) {
-    icon = value;
+  public String getPattern() {
+    return pattern;
   }
 
-  public void setName(final String value) {
-    name = value;
-  }
-
-  public void setPattern(final String value) {
-    pattern = value;
+  public void setPattern(final String pattern) {
+    this.pattern = pattern;
   }
 }

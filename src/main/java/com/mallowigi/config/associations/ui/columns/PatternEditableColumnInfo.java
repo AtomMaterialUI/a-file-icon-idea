@@ -22,53 +22,24 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.associations;
+package com.mallowigi.config.associations.ui.columns;
 
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.util.ui.table.TableModelEditor;
+import com.mallowigi.config.AtomSettingsBundle;
+import com.mallowigi.icons.associations.Association;
 
-/**
- * Association for Types
- */
-public final class TypeAssociation extends Association {
-  @NonNls
-  @Property
-  private String type;
-
-  TypeAssociation(@NotNull final String name, @NotNull final String icon, @NotNull final String type) {
-    super(name, icon);
-    this.type = type;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(final String type) {
-    this.type = type;
+public final class PatternEditableColumnInfo extends TableModelEditor.EditableColumnInfo<Association, String> {
+  public PatternEditableColumnInfo() {
+    super(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.pattern"));
   }
 
   @Override
-  public boolean matches(final FileInfo file) {
-    return file.getFileType().equals(type);
-  }
-
-  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
-  @Override
-  public String getMatcher() {
-    return getType();
-  }
-
-  @SuppressWarnings("CallToSimpleSetterFromWithinClass")
-  @Override
-  public void setMatcher(final String value) {
-    setType(value);
+  public String valueOf(final Association item) {
+    return item.getMatcher();
   }
 
   @Override
-  public boolean isEmpty() {
-    return super.isEmpty() || type.isEmpty();
+  public void setValue(final Association item, final String value) {
+    item.setMatcher(value);
   }
 }

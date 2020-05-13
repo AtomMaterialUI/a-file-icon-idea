@@ -33,7 +33,7 @@ import com.intellij.serialization.Property
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.mallowigi.config.associations.ui.AssociationsForm
 import com.mallowigi.config.listeners.AssocConfigNotifier
-import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.icons.associations.Association
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -44,10 +44,10 @@ import kotlin.collections.ArrayList
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   @Property
-  var customFileAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100);
+  var customFileAssociations: List<Association> = ArrayList<Association>(100);
 
   @Property
-  var customFolderAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100)
+  var customFolderAssociations: List<Association> = ArrayList<Association>(100)
 
   override fun getState(): AtomAssocConfig? = this
 
@@ -68,11 +68,11 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
       .assocChanged(this)
   }
 
-  fun isFileIconsModified(customFileAssociations: List<RegexAssociation>): Boolean {
+  fun isFileIconsModified(customFileAssociations: List<Association>): Boolean {
     return !Objects.deepEquals(this.customFileAssociations, customFileAssociations);
   }
 
-  fun isFolderIconsModified(customFolderAssociations: List<RegexAssociation>): Boolean {
+  fun isFolderIconsModified(customFolderAssociations: List<Association>): Boolean {
     return !Objects.deepEquals(this.customFolderAssociations, customFolderAssociations);
   }
 

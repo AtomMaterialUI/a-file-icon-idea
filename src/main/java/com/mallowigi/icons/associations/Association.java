@@ -26,38 +26,53 @@ package com.mallowigi.icons.associations;
 
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.FileInfo;
-import org.jetbrains.annotations.NonNls;
 
-import javax.swing.*;
 import java.io.Serializable;
 
 /**
  * Represent an association of a name with an icon
  */
+@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public abstract class Association implements Serializable {
   @Property
-  protected String name;
+  private String name;
   @Property
-  protected String icon;
+  private String icon;
 
-  /**
-   * Get the icon for a given file info according
-   *
-   * @param file the file info
-   * @return the icon if found
-   */
-  public abstract Icon getIconForFile(FileInfo file);
+  Association(final String name, final String icon) {
+    this.name = name;
+    this.icon = icon;
+  }
+
+  public abstract boolean matches(FileInfo file);
+
+  public abstract String getMatcher();
+
+  public abstract void setMatcher(final String value);
+
+  public final String getName() {
+    return name;
+  }
+
+  public final void setName(final String name) {
+    this.name = name;
+  }
 
   public final String getIcon() {
     return icon;
   }
 
-  @NonNls
-  public final String getName() {
-    return name;
+  public final void setIcon(final String icon) {
+    this.icon = icon;
   }
 
-  abstract public String getMatcher();
+  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
+  public void apply(final Association other) {
+    name = other.getName();
+    icon = other.getIcon();
+  }
 
-  public abstract boolean matches(FileInfo file);
+  public boolean isEmpty() {
+    return name.isEmpty() || icon.isEmpty();
+  }
 }

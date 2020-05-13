@@ -22,53 +22,45 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.associations;
+package com.mallowigi.config.associations.ui.internal;
 
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.util.Function;
+import com.intellij.util.ui.table.TableModelEditor;
+import com.mallowigi.icons.associations.Association;
+import com.mallowigi.icons.associations.RegexAssociation;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Association for Types
- */
-public final class TypeAssociation extends Association {
-  @NonNls
-  @Property
-  private String type;
+public final class AssociationsTableItemEditor implements TableModelEditor.DialogItemEditor<Association> {
 
-  TypeAssociation(@NotNull final String name, @NotNull final String icon, @NotNull final String type) {
-    super(name, icon);
-    this.type = type;
+  @Override
+  public @NotNull Class getItemClass() {
+    return Association.class;
   }
 
-  public String getType() {
-    return type;
-  }
-
-  public void setType(final String type) {
-    this.type = type;
+  @SuppressWarnings("FeatureEnvy")
+  @Override
+  public Association clone(@NotNull final Association item, final boolean forInPlaceEditing) {
+    return new RegexAssociation(forInPlaceEditing ? item.getName() : "",
+                                forInPlaceEditing ? item.getMatcher() : "",
+                                forInPlaceEditing ? item.getIcon() : "");
   }
 
   @Override
-  public boolean matches(final FileInfo file) {
-    return file.getFileType().equals(type);
-  }
-
-  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
-  @Override
-  public String getMatcher() {
-    return getType();
-  }
-
-  @SuppressWarnings("CallToSimpleSetterFromWithinClass")
-  @Override
-  public void setMatcher(final String value) {
-    setType(value);
+  public void edit(@NotNull final Association item,
+                   @NotNull final Function<Association, Association> mutator,
+                   final boolean isAdd) {
+    final Association settings = clone(item, true);
+    mutator.fun(item).apply(settings);
   }
 
   @Override
-  public boolean isEmpty() {
-    return super.isEmpty() || type.isEmpty();
+  public void applyEdited(@NotNull final Association oldItem, @NotNull final Association newItem) {
+    oldItem.apply(newItem);
   }
+
+  @Override
+  public boolean isEditable(@NotNull final Association item) {
+    return !item.isEmpty();
+  }
+
 }

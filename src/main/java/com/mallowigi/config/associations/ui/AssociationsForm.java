@@ -28,114 +28,55 @@
 
 package com.mallowigi.config.associations.ui;
 
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.util.Function;
-import com.intellij.util.PathUtil;
 import com.intellij.util.ui.ColumnInfo;
-import com.intellij.util.ui.LocalPathCellEditor;
-import com.intellij.util.ui.table.IconTableCellRenderer;
 import com.intellij.util.ui.table.TableModelEditor;
+import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.AtomAssocConfig;
+import com.mallowigi.config.associations.ui.columns.FileIconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.FolderIconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
+import com.mallowigi.config.associations.ui.internal.AssociationsTableDataChangedListener;
+import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
 import com.mallowigi.icons.FileIconProvider;
-import com.mallowigi.icons.associations.RegexAssociation;
-import icons.MTIcons;
+import com.mallowigi.icons.associations.Association;
 import net.miginfocom.swing.MigLayout;
-import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
-import org.jdesktop.beansbinding.BeanProperty;
-import org.jdesktop.beansbinding.BindingGroup;
-import org.jdesktop.beansbinding.ELProperty;
-import org.jdesktop.swingbinding.JTableBinding;
-import org.jdesktop.swingbinding.SwingBindings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"UndesirableClassUsage",
-                    "PackageVisibleField",
-                    "WeakerAccess",
                     "FieldCanBeLocal",
                     "LocalCanBeFinal",
-                    "ClassWithTooManyFields",
-                    "OverlyLongMethod",
-                    "FeatureEnvy",
-                    "PublicMethodNotExposedInInterface",
-                    "ZeroLengthArrayAllocation",
-                    "UnqualifiedInnerClassAccess"})
+                    "PublicMethodNotExposedInInterface"
+                    ,
+                    "ClassWithTooManyFields"})
 public class AssociationsForm extends JPanel implements SettingsFormUI {
-  private static final FileChooserDescriptor APP_FILE_CHOOSER_DESCRIPTOR =
-    FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor();
 
-  private static final TableModelEditor.EditableColumnInfo<RegexAssociation, String> PATH_COLUMN_INFO =
-    new TableModelEditor.EditableColumnInfo<RegexAssociation, String>("Icon") {
-      @Override
-      public String valueOf(RegexAssociation item) {
-        return PathUtil.toSystemDependentName(item.getIcon());
-      }
+  private static final FileIconEditableColumnInfo FILE_ICON_COLUMN = new FileIconEditableColumnInfo();
+  private static final FolderIconEditableColumnInfo FOLDER_ICON_COLUMN = new FolderIconEditableColumnInfo();
 
-      @Override
-      public void setValue(RegexAssociation item, String value) {
-        item.setIcon(value);
-      }
+  private static final ColumnInfo[] FILE_COLUMNS = {
+    new NameEditableColumnInfo(),
+    new PatternEditableColumnInfo(),
+    FILE_ICON_COLUMN};
 
-      @Nullable
-      @Override
-      public TableCellEditor getEditor(RegexAssociation item) {
-        return new LocalPathCellEditor().fileChooserDescriptor(APP_FILE_CHOOSER_DESCRIPTOR).normalizePath(true);
-      }
-
-      @NotNull
-      @Override
-      public TableCellRenderer getRenderer(RegexAssociation item) {
-        return new IconTableCellRenderer<String>() {
-          @NotNull
-          @Override
-          protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-            return MTIcons.getFileIcon(value);
-          }
-        };
-      }
-    };
-
-  private static final ColumnInfo[] COLUMNS = {
-    new TableModelEditor.EditableColumnInfo<RegexAssociation, String>("Name") {
-      @Override
-      public String valueOf(RegexAssociation item) {
-        return item.getName();
-      }
-
-      @Override
-      public void setValue(RegexAssociation item, String value) {
-        item.setName(value);
-      }
-    },
-    new TableModelEditor.EditableColumnInfo<RegexAssociation, String>("Pattern") {
-      @Override
-      public String valueOf(RegexAssociation item) {
-        return item.getMatcher();
-      }
-
-      @Override
-      public void setValue(RegexAssociation item, String value) {
-        item.setPattern(value);
-      }
-    },
-    PATH_COLUMN_INFO};
+  private static final ColumnInfo[] FOLDER_COLUMNS = {
+    new NameEditableColumnInfo(),
+    new PatternEditableColumnInfo(),
+    FOLDER_ICON_COLUMN};
 
   public AssociationsForm() {
-    fileAssociations = FileIconProvider.getAssociations().getAssociations();
-    folderAssociations = FileIconProvider.getDirAssociations().getAssociations();
-
     initComponents();
+    createCustomTables();
+
+    defaultFileAssociationsEditor.reset(FileIconProvider.getAssociations().getAssociations());
+    defaultFolderAssociationsEditor.reset(FileIconProvider.getDirAssociations().getAssociations());
   }
 
   @Override
@@ -173,28 +114,24 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
   }
 
   @NotNull
-  public List<RegexAssociation> getFileAssociations() {
+  public List<Association> getFileAssociations() {
     return Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems());
   }
 
   @NotNull
-  public List<RegexAssociation> getFolderAssociations() {
+  public List<Association> getFolderAssociations() {
     return Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems());
   }
 
-  @SuppressWarnings("SerializableNonStaticInnerClassWithoutSerialVersionUID")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle"); //NON-NLS
     tabbedContainer = new JTabbedPane();
     customFileIconsNew = new JPanel();
+    customFolderIconsNew = new JPanel();
     fileIcons = new JPanel();
-    scrollPane1 = new JScrollPane();
-    fileIconsTable = new FileAssociationsTable();
     folderIcons = new JPanel();
-    scrollPane2 = new JScrollPane();
-    folderIconsTable = new FolderAssociationsTable();
 
     //======== this ========
     setLayout(new MigLayout(
@@ -218,6 +155,17 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
       }
       tabbedContainer.addTab(bundle.getString("AssociationsForm.customFileIconsNew.tab.title"), customFileIconsNew); //NON-NLS
 
+      //======== customFolderIconsNew ========
+      {
+        customFolderIconsNew.setLayout(new MigLayout(
+          "hidemode 3", //NON-NLS
+          // columns
+          "[grow,fill]", //NON-NLS
+          // rows
+          "[260,grow,fill]")); //NON-NLS
+      }
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.customFolderIconsNew.title"), customFolderIconsNew); //NON-NLS
+
       //======== fileIcons ========
       {
         fileIcons.setLayout(new MigLayout(
@@ -225,42 +173,9 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
           // columns
           "[grow,fill]", //NON-NLS
           // rows
-          "[300,fill]")); //NON-NLS
-
-        //======== scrollPane1 ========
-        {
-
-          //---- fileIconsTable ----
-          fileIconsTable.setModel(new DefaultTableModel(
-            new Object[][]{
-            },
-            new String[]{
-              "Name",
-              "Pattern",
-              "Icon"
-              //NON-NLS
-            }
-          ) {
-            Class<?>[] columnTypes = new Class<?>[]{
-              String.class,
-              Object.class,
-              Object.class
-            };
-
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-              return columnTypes[columnIndex];
-            }
-          });
-          fileIconsTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-          fileIconsTable.setBorder(null);
-          fileIconsTable.setFillsViewportHeight(false);
-          fileIconsTable.setStriped(true);
-          scrollPane1.setViewportView(fileIconsTable);
-        }
-        fileIcons.add(scrollPane1, "cell 0 0"); //NON-NLS
+          "[260,grow,fill]")); //NON-NLS
       }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.fileIcons.tab.title"), fileIcons); //NON-NLS
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.fileIcons.title"), fileIcons); //NON-NLS
 
       //======== folderIcons ========
       {
@@ -269,175 +184,92 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
           // columns
           "[grow,fill]", //NON-NLS
           // rows
-          "[300.,fill]")); //NON-NLS
-
-        //======== scrollPane2 ========
-        {
-
-          //---- folderIconsTable ----
-          folderIconsTable.setModel(new DefaultTableModel(
-            new Object[][]{
-            },
-            new String[]{
-              "Name",
-              "Pattern",
-              "Icon"
-              //NON-NLS
-            }
-          ) {
-            Class<?>[] columnTypes = new Class<?>[]{
-              String.class,
-              Object.class,
-              Object.class
-            };
-
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-              return columnTypes[columnIndex];
-            }
-          });
-          folderIconsTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-          folderIconsTable.setBorder(null);
-          folderIconsTable.setFillsViewportHeight(false);
-          scrollPane2.setViewportView(folderIconsTable);
-        }
-        folderIcons.add(scrollPane2, "cell 0 0"); //NON-NLS
+          "[260,grow,fill]")); //NON-NLS
       }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.folderIcons.tab.title"), folderIcons); //NON-NLS
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.folderIcons.title"), folderIcons); //NON-NLS
     }
     add(tabbedContainer, "cell 0 0"); //NON-NLS
-
-    //---- bindings ----
-    bindingGroup = new BindingGroup();
-    {
-      JTableBinding binding = SwingBindings.createJTableBinding(UpdateStrategy.READ_ONCE,
-                                                                fileAssociations, fileIconsTable);
-      binding.addColumnBinding(BeanProperty.create("name")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName_3")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      binding.addColumnBinding(BeanProperty.create("icon")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName.1")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      binding.addColumnBinding(ELProperty.create("${matcher}")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.fileIconsTable.columnName_2")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      bindingGroup.addBinding(binding);
-    }
-    {
-      JTableBinding binding = SwingBindings.createJTableBinding(UpdateStrategy.READ_ONCE,
-                                                                folderAssociations, folderIconsTable);
-      binding.addColumnBinding(BeanProperty.create("name")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.folderIconsTable.columnName_3")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      binding.addColumnBinding(BeanProperty.create("icon")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.folderIconsTable.columnName.1")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      binding.addColumnBinding(ELProperty.create("${matcher}")) //NON-NLS
-        .setColumnName(bundle.getString("AssociationsForm.folderIconsTable.columnName_2")) //NON-NLS
-        .setColumnClass(String.class)
-        .setEditable(false);
-      bindingGroup.addBinding(binding);
-    }
-    bindingGroup.bind();
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-    createUIComponents();
-    addIconCellRenderers();
-
   }
 
-  private void addIconCellRenderers() {
-    fileIconsTable.getColumnModel().getColumn(1).setCellRenderer(new IconTableCellRenderer<String>() {
-      @NotNull
-      @Override
-      protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-        return MTIcons.getFileIcon(value);
-      }
-    });
-    folderIconsTable.getColumnModel().getColumn(1).setCellRenderer(new IconTableCellRenderer<String>() {
-      @NotNull
-      @Override
-      protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-        return MTIcons.getFolderIcon(value);
-      }
-    });
+  /**
+   * Create the custom tables
+   */
+  private void createCustomTables() {
+    createCustomFileIconsTable();
+    createCustomFolderIconsTable();
+    createDefaultFileIconsTable();
+    createDefaultFolderIconsTable();
   }
 
-  private void createUIComponents() {
-    final TableModelEditor.DialogItemEditor<RegexAssociation> itemEditor = new TableModelEditor.DialogItemEditor<RegexAssociation>() {
-
-      @Override
-      public @NotNull Class getItemClass() {
-        return RegexAssociation.class;
-      }
-
-      @Override
-      public RegexAssociation clone(@NotNull final RegexAssociation item, final boolean forInPlaceEditing) {
-        return new RegexAssociation(forInPlaceEditing ? item.getName() : "",
-                                    forInPlaceEditing ? item.getMatcher() : "",
-                                    forInPlaceEditing ? item.getIcon() : "");
-      }
-
-      @Override
-      public void edit(@NotNull final RegexAssociation item,
-                       @NotNull final Function<RegexAssociation, RegexAssociation> mutator,
-                       final boolean isAdd) {
-        RegexAssociation settings = clone(item, true);
-        mutator.fun(item).apply(settings);
-      }
-
-      @Override
-      public void applyEdited(@NotNull final RegexAssociation oldItem, @NotNull final RegexAssociation newItem) {
-        oldItem.apply(newItem);
-      }
-
-      @Override
-      public boolean isEditable(@NotNull final RegexAssociation item) {
-        return !item.isEmpty();
-      }
-
-    };
-    customFileAssociationsEditor = new TableModelEditor<>(COLUMNS, itemEditor, "No custom file associations")
-      .modelListener(new TableModelEditor.DataChangedListener<RegexAssociation>() {
-        @Override
-        public void tableChanged(@NotNull TableModelEvent event) {
-          update();
-        }
-
-        @Override
-        public void dataChanged(@NotNull final ColumnInfo<RegexAssociation, ?> columnInfo, final int rowIndex) {
-          update();
-        }
-
-        private void update() {
-
-        }
-      });
+  /**
+   * Create the custom file icons
+   */
+  private void createCustomFileIconsTable() {
+    final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
+    customFileAssociationsEditor = new TableModelEditor<>(FILE_COLUMNS,
+                                                          itemEditor,
+                                                          AtomSettingsBundle.message("no.custom.file.associations"))
+      .modelListener(new AssociationsTableDataChangedListener());
     customFileIconsTable = customFileAssociationsEditor.createComponent();
-    customFileIconsNew.add(customFileIconsTable, "cell 0 0");
+    customFileIconsNew.add(customFileIconsTable, "cell 0 0"); //NON-NLS
+  }
+
+  /**
+   * Create the custom folder icons
+   */
+  private void createCustomFolderIconsTable() {
+    final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
+    customFolderAssociationsEditor = new TableModelEditor<>(FOLDER_COLUMNS,
+                                                            itemEditor,
+                                                            AtomSettingsBundle.message("no.custom.folder.associations"))
+      .modelListener(new AssociationsTableDataChangedListener());
+    customFolderIconsTable = customFolderAssociationsEditor.createComponent();
+    customFolderIconsNew.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
+  }
+
+  /**
+   * Create the default file icons
+   */
+  private void createDefaultFileIconsTable() {
+    final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
+    defaultFileAssociationsEditor = new TableModelEditor<>(FILE_COLUMNS,
+                                                           itemEditor,
+                                                           AtomSettingsBundle.message("no.default.file.associations"));
+    defaultFileAssociationsEditor.enabled(false);
+    defaultFileIconsTable = defaultFileAssociationsEditor.createComponent();
+    fileIcons.add(defaultFileIconsTable, "cell 0 0"); //NON-NLS
+  }
+
+  /**
+   * Create the default folder icons
+   */
+  private void createDefaultFolderIconsTable() {
+    final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
+    defaultFolderAssociationsEditor = new TableModelEditor<>(FOLDER_COLUMNS,
+                                                             itemEditor,
+                                                             AtomSettingsBundle.message("no.default.folder.associations"));
+    defaultFolderAssociationsEditor.enabled(false);
+    defaultFolderIconsTable = defaultFolderAssociationsEditor.createComponent();
+    folderIcons.add(defaultFolderIconsTable, "cell 0 0"); //NON-NLS
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JTabbedPane tabbedContainer;
   private JPanel customFileIconsNew;
+  private JPanel customFolderIconsNew;
   private JPanel fileIcons;
-  private JScrollPane scrollPane1;
-  private FileAssociationsTable fileIconsTable;
   private JPanel folderIcons;
-  private JScrollPane scrollPane2;
-  private FolderAssociationsTable folderIconsTable;
-  private List<com.mallowigi.icons.associations.Association> fileAssociations;
-  private List<com.mallowigi.icons.associations.Association> folderAssociations;
-  private BindingGroup bindingGroup;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
-  private @NotNull JComponent customFileIconsTable;
+  private JComponent customFileIconsTable;
+  private JComponent customFolderIconsTable;
+  private JComponent defaultFileIconsTable;
+  private JComponent defaultFolderIconsTable;
 
-  private TableModelEditor<RegexAssociation> customFileAssociationsEditor;
+  private TableModelEditor<Association> customFileAssociationsEditor;
+  private TableModelEditor<Association> customFolderAssociationsEditor;
+  private TableModelEditor<Association> defaultFileAssociationsEditor;
+  private TableModelEditor<Association> defaultFolderAssociationsEditor;
 
 }
