@@ -28,6 +28,10 @@
 
 package com.mallowigi.config.associations.ui;
 
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.ui.components.JBLoadingPanel;
 import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
@@ -46,6 +50,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,8 +61,8 @@ import java.util.ResourceBundle;
                     "PublicMethodNotExposedInInterface"
                     ,
                     "ClassWithTooManyFields"})
-public class AssociationsForm extends JPanel implements SettingsFormUI {
-
+public class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
+  private JBLoadingPanel myLoadingPanel;
   private static final FileIconEditableColumnInfo FILE_ICON_COLUMN = new FileIconEditableColumnInfo();
   private static final FolderIconEditableColumnInfo FOLDER_ICON_COLUMN = new FolderIconEditableColumnInfo();
 
@@ -75,8 +80,17 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
     initComponents();
     createCustomTables();
 
-    defaultFileAssociationsEditor.reset(FileIconProvider.getAssociations().getAssociations());
-    defaultFolderAssociationsEditor.reset(FileIconProvider.getDirAssociations().getAssociations());
+    myLoadingPanel = new JBLoadingPanel(new BorderLayout(), this, 300 * 2); // don't start loading automatically
+    myLoadingPanel.add(tabbedContainer);
+    add(myLoadingPanel, "cell 0 0");
+    myLoadingPanel.startLoading();
+
+    BackgroundTaskUtil.executeAndTryWait(indicator -> () -> ApplicationManager.getApplication().invokeAndWait(() -> {
+      defaultFileAssociationsEditor.reset(FileIconProvider.getAssociations().getAssociations());
+      defaultFolderAssociationsEditor.reset(FileIconProvider.getDirAssociations().getAssociations());
+      myLoadingPanel.stopLoading();
+    }), () -> myLoadingPanel.startLoading(), 300, false);
+
   }
 
   @Override
@@ -86,7 +100,7 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
 
   @Override
   public JComponent getContent() {
-    return tabbedContainer;
+    return myLoadingPanel;
   }
 
   @Override
@@ -110,7 +124,7 @@ public class AssociationsForm extends JPanel implements SettingsFormUI {
 
     //    boolean modified = config.isFileIconsModified(customFileAssociations);
     //    modified = modified || config.isFolderIconsModified(customFolderAssociations);
-    return config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    return false;
   }
 
   @NotNull
