@@ -70,7 +70,8 @@ class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(
      * @return true if changed
      */
     private fun checkFormModified(form: AssociationsForm, config: AtomAssocConfig?): Boolean {
-      return form.isModified(config);
+//      return form.isModified(config);
+      return false;
     }
   }
 }
