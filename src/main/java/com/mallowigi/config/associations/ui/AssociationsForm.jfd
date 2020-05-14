@@ -36,20 +36,29 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
 					"$columnConstraints": "[grow,fill]"
-					"$rowConstraints": "[260,grow,fill]"
+					"$rowConstraints": "[grow,fill]"
 				} ) {
-					name: "fileIcons"
+					name: "defaultFileIcons"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "defaultFileIconsTable"
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"selectionMode": 0
+							"showHorizontalLines": false
+							"showVerticalLines": false
+							"rowSelectionAllowed": false
+							"autoResizeMode": 3
+							"focusable": false
+							"requestFocusEnabled": false
+							"rowHeight": 22
+							"cellSelectionEnabled": true
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
+					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": new FormMessage( null, "AssociationsForm.fileIcons.title" )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[grow,fill]"
-					"$rowConstraints": "[260,grow,fill]"
-				} ) {
-					name: "folderIcons"
-				}, new FormLayoutConstraints( null ) {
-					"title": new FormMessage( null, "AssociationsForm.folderIcons.title" )
+					"title": "Default File Icons"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
@@ -58,6 +67,33 @@ new FormModel {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 790, 515 )
 		} )
+		add( new FormNonVisual( "java.util.List" ) {
+			name: "fileIcons"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "com.mallowigi.icons.associations.Association"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 805, 85 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "fileIcons", null, "defaultFileIconsTable", "elements" ) {
+				"updateStrategy": enum org.jdesktop.beansbinding.AutoBinding$UpdateStrategy READ_ONCE
+				"editable": false
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "name", null, null ) {
+					"columnName": new FormMessage( null, "AssociationsForm.defaultFileIconsTable.columnName_4" )
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "icon", null, null ) {
+					"columnName": new FormMessage( null, "AssociationsForm.defaultFileIconsTable.columnName_2" )
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "${matcher}", null, null ) {
+					"columnName": new FormMessage( null, "AssociationsForm.defaultFileIconsTable.columnName_3" )
+					"columnClass": "java.lang.String"
+					"editable": false
+				} ]
+			} )
+		} )
 	}
 }
-
