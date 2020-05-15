@@ -24,13 +24,28 @@
 
 package com.mallowigi.config.associations.ui.columns;
 
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.ui.ValidationInfo;
+import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor;
+import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper;
+import com.intellij.ui.components.fields.ExtendableTextField;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.icons.associations.Association;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+
+@SuppressWarnings("UnstableApiUsage")
 public final class NameEditableColumnInfo extends TableModelEditor.EditableColumnInfo<Association, String> {
-  public NameEditableColumnInfo() {
+  private final Disposable parent;
+
+  public NameEditableColumnInfo(final Disposable parent) {
     super(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.name"));
+    this.parent = parent;
   }
 
   @Override
@@ -42,4 +57,25 @@ public final class NameEditableColumnInfo extends TableModelEditor.EditableColum
   public void setValue(final Association item, final String value) {
     item.setName(value);
   }
+
+  @Override
+  public @NotNull TableCellEditor getEditor(final Association item) {
+    final ExtendableTextField cellEditor = new ExtendableTextField();
+
+    return new StatefulValidatingCellEditor(cellEditor, parent);
+  }
+
+  @Override
+  public @Nullable TableCellRenderer getRenderer(final Association item) {
+    return new ValidatingTableCellRendererWrapper(new DefaultTableCellRenderer())
+      .withCellValidator((value, row, column) -> {
+        if (value == null || value.equals("")) {
+          return new ValidationInfo(AtomSettingsBundle.message("you.must.enter.a.name"));
+        }
+        else {
+          return null;
+        }
+      });
+  }
+
 }

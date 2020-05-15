@@ -24,8 +24,11 @@
 
 package com.mallowigi.config.associations.ui.columns;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.fileTypes.FileTypeManager;
+import com.intellij.openapi.util.io.FileUtilRt;
 import com.intellij.util.PathUtil;
 import com.intellij.util.ui.LocalPathCellEditor;
 import com.intellij.util.ui.table.IconTableCellRenderer;
@@ -39,13 +42,16 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import java.io.IOException;
 
 public final class FileIconEditableColumnInfo extends TableModelEditor.EditableColumnInfo<Association, String> {
-  private static final FileChooserDescriptor APP_FILE_CHOOSER_DESCRIPTOR =
-    FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor();
+  private static final FileChooserDescriptor DESCRIPTOR =
+    FileChooserDescriptorFactory.createSingleFileDescriptor(FileTypeManager.getInstance().getStdFileType("SVG"));
+  private final Disposable parent;
 
-  public FileIconEditableColumnInfo() {
+  public FileIconEditableColumnInfo(final Disposable disposable) {
     super(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.icon"));
+    parent = disposable;
   }
 
   @Override
@@ -61,17 +67,28 @@ public final class FileIconEditableColumnInfo extends TableModelEditor.EditableC
   @Nullable
   @Override
   public TableCellEditor getEditor(final Association item) {
-    return new LocalPathCellEditor().fileChooserDescriptor(APP_FILE_CHOOSER_DESCRIPTOR).normalizePath(true);
+    return new LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true);
   }
 
-  @NotNull
   @Override
   public TableCellRenderer getRenderer(final Association item) {
+    if (item == null || item.getIcon().isEmpty() || !FileUtilRt.getExtension(item.getIcon()).equals("svg")) {
+      return null;
+    }
     return new IconTableCellRenderer<String>() {
-      @NotNull
       @Override
       protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-        return MTIcons.getFileIcon(value);
+        try {
+          return MTIcons.loadSVGIcon(value);
+        }
+        catch (final IOException e) {
+          return null;
+        }
+      }
+
+      @Override
+      public String getText() {
+        return PathUtil.getFileName(item.getIcon());
       }
     };
   }

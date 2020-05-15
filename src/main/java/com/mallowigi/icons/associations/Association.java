@@ -26,6 +26,7 @@ package com.mallowigi.icons.associations;
 
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.FileInfo;
+import org.jetbrains.annotations.NonNls;
 
 import java.io.Serializable;
 
@@ -34,6 +35,7 @@ import java.io.Serializable;
  */
 @SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public abstract class Association implements Serializable {
+  @NonNls
   @Property
   private String name;
   @Property

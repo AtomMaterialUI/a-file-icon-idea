@@ -56,20 +56,21 @@ import java.util.ResourceBundle;
                     "LocalCanBeFinal",
                     "PublicMethodNotExposedInInterface"
                     ,
-                    "ClassWithTooManyFields"})
-public class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
-  private static final FileIconEditableColumnInfo FILE_ICON_COLUMN = new FileIconEditableColumnInfo();
-  private static final FolderIconEditableColumnInfo FOLDER_ICON_COLUMN = new FolderIconEditableColumnInfo();
+                    "ClassWithTooManyFields",
+                    "OverlyLongMethod"})
+public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
+  private final FileIconEditableColumnInfo fileIconColumn = new FileIconEditableColumnInfo(this);
+  private final FolderIconEditableColumnInfo folderIconColumn = new FolderIconEditableColumnInfo(this);
 
-  private static final ColumnInfo[] FILE_COLUMNS = {
-    new NameEditableColumnInfo(),
-    new PatternEditableColumnInfo(),
-    FILE_ICON_COLUMN};
+  private final ColumnInfo[] fileColumns = {
+    new NameEditableColumnInfo(this),
+    new PatternEditableColumnInfo(this),
+    fileIconColumn};
 
-  private static final ColumnInfo[] FOLDER_COLUMNS = {
-    new NameEditableColumnInfo(),
-    new PatternEditableColumnInfo(),
-    FOLDER_ICON_COLUMN};
+  private final ColumnInfo[] folderColumns = {
+    new NameEditableColumnInfo(this),
+    new PatternEditableColumnInfo(this),
+    folderIconColumn};
 
   public AssociationsForm() {
     initComponents();
@@ -272,7 +273,7 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
    */
   private void createCustomFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    customFileAssociationsEditor = new TableModelEditor<>(FILE_COLUMNS,
+    customFileAssociationsEditor = new TableModelEditor<>(fileColumns,
                                                           itemEditor,
                                                           AtomSettingsBundle.message("no.custom.file.associations"))
       .modelListener(new AssociationsTableDataChangedListener());
@@ -285,7 +286,7 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
    */
   private void createCustomFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    customFolderAssociationsEditor = new TableModelEditor<>(FOLDER_COLUMNS,
+    customFolderAssociationsEditor = new TableModelEditor<>(folderColumns,
                                                             itemEditor,
                                                             AtomSettingsBundle.message("no.custom.folder.associations"))
       .modelListener(new AssociationsTableDataChangedListener());

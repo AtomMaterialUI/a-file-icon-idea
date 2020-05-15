@@ -24,6 +24,7 @@
 
 package com.mallowigi.config.associations.ui.columns;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.util.PathUtil;
@@ -43,9 +44,11 @@ import javax.swing.table.TableCellRenderer;
 public final class FolderIconEditableColumnInfo extends TableModelEditor.EditableColumnInfo<Association, String> {
   private static final FileChooserDescriptor APP_FILE_CHOOSER_DESCRIPTOR =
     FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor();
+  private final Disposable parent;
 
-  public FolderIconEditableColumnInfo() {
+  public FolderIconEditableColumnInfo(final Disposable disposable) {
     super(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.icon"));
+    parent = disposable;
   }
 
   @Override
