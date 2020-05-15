@@ -39,6 +39,10 @@ public final class RegexAssociation extends Association {
 
   private transient Pattern compiledPattern;
 
+  public RegexAssociation() {
+    this("", "", "");
+  }
+
   public RegexAssociation(@NotNull final String name,
                           @NotNull final String pattern,
                           @NotNull final String icon) {

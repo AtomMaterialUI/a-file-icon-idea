@@ -128,9 +128,13 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
     customFileIconsNew = new JPanel();
     customFolderIconsNew = new JPanel();
     defaultFileIcons = new JPanel();
-    panel1 = new JPanel();
+    defFileIconsPanel = new JPanel();
     fileIconsScrollPane = new JScrollPane();
     defaultFileIconsTable = new FileAssociationsTable();
+    defaultFolderIcons = new JPanel();
+    defFolderIconsPanel = new JPanel();
+    folderIconsScrollpane = new JScrollPane();
+    defaultFolderIconsTable = new FolderAssociationsTable();
 
     //======== this ========
     setLayout(new MigLayout(
@@ -174,10 +178,10 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
           // rows
           "[grow,fill]")); //NON-NLS
 
-        //======== panel1 ========
+        //======== defFileIconsPanel ========
         {
-          panel1.setBorder(null);
-          panel1.setLayout(new MigLayout(
+          defFileIconsPanel.setBorder(null);
+          defFileIconsPanel.setLayout(new MigLayout(
             "hidemode 3", //NON-NLS
             // columns
             "0[grow,fill]0", //NON-NLS
@@ -202,25 +206,57 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
             defaultFileIconsTable.setStriped(true);
             fileIconsScrollPane.setViewportView(defaultFileIconsTable);
           }
-          panel1.add(fileIconsScrollPane, "cell 0 0"); //NON-NLS
+          defFileIconsPanel.add(fileIconsScrollPane, "cell 0 0"); //NON-NLS
         }
-        defaultFileIcons.add(panel1, "cell 0 0"); //NON-NLS
+        defaultFileIcons.add(defFileIconsPanel, "cell 0 0"); //NON-NLS
       }
-      tabbedContainer.addTab("Default File Icons", defaultFileIcons); //NON-NLS
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.defaultFileIcons.tab.title"), defaultFileIcons); //NON-NLS
+
+      //======== defaultFolderIcons ========
+      {
+        defaultFolderIcons.setLayout(new MigLayout(
+          "hidemode 3", //NON-NLS
+          // columns
+          "[grow,fill]", //NON-NLS
+          // rows
+          "[grow,fill]")); //NON-NLS
+
+        //======== defFolderIconsPanel ========
+        {
+          defFolderIconsPanel.setBorder(null);
+          defFolderIconsPanel.setLayout(new MigLayout(
+            "hidemode 3", //NON-NLS
+            // columns
+            "0[grow,fill]0", //NON-NLS
+            // rows
+            "0[grow,fill]0")); //NON-NLS
+
+          //======== folderIconsScrollpane ========
+          {
+            folderIconsScrollpane.setBorder(new EtchedBorder());
+            folderIconsScrollpane.setViewportBorder(null);
+
+            //---- defaultFolderIconsTable ----
+            defaultFolderIconsTable.setBorder(null);
+            defaultFolderIconsTable.setShowHorizontalLines(false);
+            defaultFolderIconsTable.setShowVerticalLines(false);
+            defaultFolderIconsTable.setRowSelectionAllowed(false);
+            defaultFolderIconsTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+            defaultFolderIconsTable.setFocusable(false);
+            defaultFolderIconsTable.setRequestFocusEnabled(false);
+            defaultFolderIconsTable.setRowHeight(22);
+            defaultFolderIconsTable.setCellSelectionEnabled(true);
+            defaultFolderIconsTable.setStriped(true);
+            folderIconsScrollpane.setViewportView(defaultFolderIconsTable);
+          }
+          defFolderIconsPanel.add(folderIconsScrollpane, "cell 0 0"); //NON-NLS
+        }
+        defaultFolderIcons.add(defFolderIconsPanel, "cell 0 0"); //NON-NLS
+      }
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.defaultFolderIcons.tab.title"), defaultFolderIcons); //NON-NLS
     }
     add(tabbedContainer, "cell 0 0"); //NON-NLS
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    addIconCellRenderers();
-  }
-
-  private void addIconCellRenderers() {
-    //    folderIconsTable.getColumnModel().getColumn(1).setCellRenderer(new IconTableCellRenderer<String>() {
-    //      @NotNull
-    //      @Override
-    //      protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-    //        return MTIcons.getFolderIcon(value);
-    //      }
-    //    });
   }
 
   /**
@@ -263,9 +299,13 @@ public class AssociationsForm extends JPanel implements SettingsFormUI, Disposab
   private JPanel customFileIconsNew;
   private JPanel customFolderIconsNew;
   private JPanel defaultFileIcons;
-  private JPanel panel1;
+  private JPanel defFileIconsPanel;
   private JScrollPane fileIconsScrollPane;
   private FileAssociationsTable defaultFileIconsTable;
+  private JPanel defaultFolderIcons;
+  private JPanel defFolderIconsPanel;
+  private JScrollPane folderIconsScrollpane;
+  private FolderAssociationsTable defaultFolderIconsTable;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent customFileIconsTable;
   private JComponent customFolderIconsTable;

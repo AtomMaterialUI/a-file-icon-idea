@@ -44,11 +44,11 @@ new FormModel {
 						"$rowConstraints": "0[grow,fill]0"
 						"$layoutConstraints": "hidemode 3"
 					} ) {
-						name: "panel1"
+						name: "defFileIconsPanel"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "fileIconsScrollPane"
-							"border": new javax.swing.border.EtchedBorder( 1, null, null )
+							"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
 							"viewportBorder": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormComponent( "com.mallowigi.config.associations.ui.FileAssociationsTable" ) {
 								name: "defaultFileIconsTable"
@@ -70,7 +70,46 @@ new FormModel {
 						"value": "cell 0 0"
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "Default File Icons"
+					"title": new FormMessage( null, "AssociationsForm.defaultFileIcons.tab.title" )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[grow,fill]"
+				} ) {
+					name: "defaultFolderIcons"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$columnConstraints": "0[grow,fill]0"
+						"$rowConstraints": "0[grow,fill]0"
+						"$layoutConstraints": "hidemode 3"
+					} ) {
+						name: "defFolderIconsPanel"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "folderIconsScrollpane"
+							"border": #EtchedBorder0
+							"viewportBorder": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							add( new FormComponent( "com.mallowigi.config.associations.ui.FolderAssociationsTable" ) {
+								name: "defaultFolderIconsTable"
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"showHorizontalLines": false
+								"showVerticalLines": false
+								"rowSelectionAllowed": false
+								"autoResizeMode": 3
+								"focusable": false
+								"requestFocusEnabled": false
+								"rowHeight": 22
+								"cellSelectionEnabled": true
+								"striped": true
+							} )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": new FormMessage( null, "AssociationsForm.defaultFolderIcons.tab.title" )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"

@@ -34,7 +34,7 @@ public final class AssociationsTableItemEditor implements TableModelEditor.Dialo
 
   @Override
   public @NotNull Class getItemClass() {
-    return Association.class;
+    return RegexAssociation.class;
   }
 
   @SuppressWarnings("FeatureEnvy")
