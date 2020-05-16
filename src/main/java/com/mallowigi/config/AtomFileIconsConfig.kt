@@ -21,78 +21,107 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config
 
-package com.mallowigi.config;
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.ServiceManager
+import com.intellij.openapi.components.State
+import com.intellij.openapi.components.Storage
+import com.intellij.ui.ColorUtil
+import com.intellij.ui.JBColor
+import com.intellij.util.ui.UIUtil
+import com.intellij.util.xmlb.XmlSerializerUtil
+import com.intellij.util.xmlb.annotations.Property
+import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.config.ui.SettingsForm
+import com.mallowigi.tree.arrows.ArrowsStyles
+import org.jetbrains.annotations.NonNls
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
-import com.intellij.util.ui.UIUtil;
-import com.intellij.util.xmlb.XmlSerializerUtil;
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.config.listeners.AtomConfigNotifier;
-import com.mallowigi.config.ui.SettingsForm;
-import com.mallowigi.tree.arrows.ArrowsStyles;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+@State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
+class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
+  //region Enabled Icons
+  @Property
+  var isEnabledIcons = true
+    private set
 
-@SuppressWarnings("ClassWithTooManyMethods")
-@State(
-  name = "AtomFileIconsConfig",
-  storages = @Storage("a-file-icons.xml")
-)
-public final class AtomFileIconsConfig implements PersistentStateComponent<AtomFileIconsConfig> {
+  //endregion
+  //region Enabled directories
   @Property
-  private boolean enabledIcons = true;
+  var isEnabledDirectories = true
+    private set
+
+  //endregion
+  //region UI Icons
   @Property
-  private boolean enabledDirectories = true;
+  var isEnabledUIIcons = true
+    private set
+
+  //endregion
+  //region Monochrome icons
   @Property
-  private boolean enabledUIIcons = true;
-  @Property
-  private boolean monochromeIcons = false;
+  var isMonochromeIcons = false
+    private set
+
+  //endregion
+  //region monochrome color
   @NonNls
   @Property
-  private String monochromeColor = "546E7A";
-  @Property
-  private boolean enabledPsiIcons = true;
-  @Property
-  private boolean hideFileIcons;
-  @Property
-  private boolean useHollowFolders = true;
-  @Property
-  private ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
-  @NonNls
-  @Property
-  private String accentColor = getAccentColorFromTheme();
+  var monochromeColor = "546E7A"
+    private set
 
-  @NotNull
-  private static String getAccentColorFromTheme() {
-    return ColorUtil.toHex(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()));
-  }
-
-  public AtomFileIconsConfig() {
-  }
+  //endregion
+  // region psi icons
+  @Property
+  var isEnabledPsiIcons = true
+    private set
 
   /**
-   * Get instance of the config from the ServiceManager
+   * Returns the hideFileIcons of this MTConfig object.
    *
-   * @return the MTConfig instance
+   * @return the hideFileIcons (type boolean) of this MTConfig object.
    */
-  public static AtomFileIconsConfig getInstance() {
-    return ServiceManager.getService(AtomFileIconsConfig.class);
-  }
+  /**
+   * Sets the hideFileIcons of this MTConfig object.
+   *
+   * @param hideFileIcons the hideFileIcons of this MTConfig object.
+   */
+  @Property
+  var isHideFileIcons = false
+    private set
+
+  /**
+   * Returns the useHollowFolders of this MTConfig object.
+   *
+   * @return the useHollowFolders (type boolean) of this MTConfig object.
+   */
+  /**
+   * Sets the useHollowFolders of this MTConfig object.
+   *
+   * @param useHollowFolders the useHollowFolders of this MTConfig object.
+   */
+  @Property
+  var isUseHollowFolders = true
+    private set
+
+  //endregion
+  //region Arrows Styles
+  @Property
+  var arrowsStyle = ArrowsStyles.MATERIAL
+    private set
+
+  //endregion
+  //region accent color
+  @NonNls
+  @Property
+  var accentColor = accentColorFromTheme
+    private set
 
   /**
    * Get the state of MTConfig
    */
-  @NotNull
-  @Override
-  public AtomFileIconsConfig getState() {
-    return this;
+  override fun getState(): AtomFileIconsConfig {
+    return this
   }
 
   /**
@@ -100,178 +129,94 @@ public final class AtomFileIconsConfig implements PersistentStateComponent<AtomF
    *
    * @param state the MTConfig instance
    */
-  @Override
-  public void loadState(@NotNull final AtomFileIconsConfig state) {
-    XmlSerializerUtil.copyBean(state, this);
+  override fun loadState(state: AtomFileIconsConfig) {
+    XmlSerializerUtil.copyBean(state, this)
   }
 
   /**
    * Fire an event to the application bus that the settings have changed
    */
-  public void fireChanged() {
-    ApplicationManager.getApplication().getMessageBus()
+  fun fireChanged() {
+    ApplicationManager.getApplication().messageBus
       .syncPublisher(AtomConfigNotifier.TOPIC)
-      .configChanged(this);
+      .configChanged(this)
   }
 
-  @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
-                      "FeatureEnvy"})
-  void applySettings(final SettingsForm form) {
-    setIsEnabledIcons(form.getIsEnabledIcons());
-    setEnabledDirectories(form.getIsEnabledDirectories());
-    setEnabledUIIcons(form.getIsEnabledUIIcons());
-    setMonochromeIcons(form.getIsEnabledMonochromeIcons());
-    setMonochromeColor(form.getMonochromeColor());
-    setEnabledPsiIcons(form.getIsEnabledPsiIcons());
-    setHideFileIcons(form.getIsHiddenFileIcons());
-    setUseHollowFolders(form.getIsHollowFoldersEnabled());
-    setArrowsStyle(form.getArrowsStyle());
-    setAccentColor(form.getAccentColor());
-
-    fireChanged();
-
+  fun applySettings(form: SettingsForm) {
+    isEnabledIcons = form.isEnabledIcons
+    isEnabledDirectories = form.isEnabledDirectories
+    isEnabledUIIcons = form.isEnabledUIIcons
+    isMonochromeIcons = form.isEnabledMonochromeIcons
+    monochromeColor = form.monochromeColor
+    isEnabledPsiIcons = form.isEnabledPsiIcons
+    isHideFileIcons = form.isHiddenFileIcons
+    isUseHollowFolders = form.isHollowFoldersEnabled
+    arrowsStyle = form.arrowsStyle
+    accentColor = form.accentColor
+    fireChanged()
   }
 
   /**
    * Convenience method to reset settings
    */
-  public void resetSettings() {
-    enabledIcons = true;
-    enabledDirectories = true;
-    enabledUIIcons = true;
-    monochromeIcons = false;
-    monochromeColor = "546E7A";
-    enabledPsiIcons = true;
-    hideFileIcons = false;
-    useHollowFolders = true;
-    arrowsStyle = ArrowsStyles.MATERIAL;
-    accentColor = getAccentColorFromTheme();
+  fun resetSettings() {
+    isEnabledIcons = true
+    isEnabledDirectories = true
+    isEnabledUIIcons = true
+    isMonochromeIcons = false
+    monochromeColor = "546E7A" // NON-NLS
+    isEnabledPsiIcons = true
+    isHideFileIcons = false
+    isUseHollowFolders = true
+    arrowsStyle = ArrowsStyles.MATERIAL
+    accentColor = accentColorFromTheme
   }
 
-  //region Enabled Icons
-  public boolean isEnabledIcons() {
-    return enabledIcons;
+  fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean {
+    return this.isEnabledIcons != isEnabledIcons
   }
 
-  private void setIsEnabledIcons(final boolean enabledIcons) {
-    this.enabledIcons = enabledIcons;
+  fun toggleEnabledIcons() {
+    isEnabledIcons = !isEnabledIcons
   }
 
-  public boolean isEnabledIconsChanged(final boolean isEnabledIcons) {
-    return enabledIcons != isEnabledIcons;
+  fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean {
+    return this.isEnabledDirectories != isEnabledDirectories
   }
 
-  public void toggleEnabledIcons() {
-    enabledIcons = !enabledIcons;
-  }
-  //endregion
-
-  //region Enabled directories
-  public boolean isEnabledDirectories() {
-    return enabledDirectories;
+  fun toggleDirectoriesIcons() {
+    isEnabledDirectories = !isEnabledDirectories
   }
 
-  private void setEnabledDirectories(final boolean enabledDirectories) {
-    this.enabledDirectories = enabledDirectories;
+  fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean {
+    return isMonochromeIcons != isMonochrome
   }
 
-  public boolean isEnabledDirectoriesChanged(final boolean isEnabledDirectories) {
-    return enabledDirectories != isEnabledDirectories;
+  fun toggleMonochromeIcons() {
+    isMonochromeIcons = !isMonochromeIcons
   }
 
-  public void toggleDirectoriesIcons() {
-    enabledDirectories = !enabledDirectories;
-  }
-  //endregion
-
-  //region Monochrome icons
-  public boolean isMonochromeIcons() {
-    return monochromeIcons;
+  fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean {
+    return this.isEnabledUIIcons != isEnabledUIIcons
   }
 
-  private void setMonochromeIcons(final boolean monochromeIcons) {
-    this.monochromeIcons = monochromeIcons;
+  fun toggleUIIcons() {
+    isEnabledUIIcons = !isEnabledUIIcons
   }
 
-  public boolean isMonochromeIconsChanged(final boolean isMonochrome) {
-    return monochromeIcons != isMonochrome;
+  fun isMonochromeColorChanged(monochromeColor: String): Boolean {
+    return this.monochromeColor != monochromeColor
   }
 
-  public void toggleMonochromeIcons() {
-    monochromeIcons = !monochromeIcons;
+  fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean {
+    return this.isEnabledPsiIcons != isEnabledPsiIcons
+  }
+
+  fun togglePsiIcons() {
+    isEnabledPsiIcons = !isEnabledPsiIcons
   }
   //endregion
-
-  //region UI Icons
-  public boolean isEnabledUIIcons() {
-    return enabledUIIcons;
-  }
-
-  private void setEnabledUIIcons(final boolean enabledUIIcons) {
-    this.enabledUIIcons = enabledUIIcons;
-  }
-
-  public boolean isEnabledUIIconsChanged(final boolean isEnabledUIIcons) {
-    return enabledUIIcons != isEnabledUIIcons;
-  }
-
-  public void toggleUIIcons() {
-    enabledUIIcons = !enabledUIIcons;
-  }
-  //endregion
-
-  //region monochrome color
-  public String getMonochromeColor() {
-    return monochromeColor;
-  }
-
-  private void setMonochromeColor(final String monochromeColor) {
-    this.monochromeColor = monochromeColor;
-  }
-
-  public boolean isMonochromeColorChanged(final String monochromeColor) {
-    return !this.monochromeColor.equals(monochromeColor);
-  }
-  //endregion
-
-  // region psi icons
-  public boolean isEnabledPsiIcons() {
-    return enabledPsiIcons;
-  }
-
-  private void setEnabledPsiIcons(final boolean enabledPsiIcons) {
-    this.enabledPsiIcons = enabledPsiIcons;
-  }
-
-  public boolean isEnabledPsiIconsChanged(final boolean isEnabledPsiIcons) {
-    return enabledPsiIcons != isEnabledPsiIcons;
-  }
-
-  public void togglePsiIcons() {
-    enabledPsiIcons = !enabledPsiIcons;
-  }
-
-  //endregion
-
   //region Hollow Folders
-
-  /**
-   * Returns the useHollowFolders of this MTConfig object.
-   *
-   * @return the useHollowFolders (type boolean) of this MTConfig object.
-   */
-  public boolean isUseHollowFolders() {
-    return useHollowFolders;
-  }
-
-  /**
-   * Sets the useHollowFolders of this MTConfig object.
-   *
-   * @param useHollowFolders the useHollowFolders of this MTConfig object.
-   */
-  private void setUseHollowFolders(final boolean useHollowFolders) {
-    this.useHollowFolders = useHollowFolders;
-  }
 
   /**
    * ...
@@ -279,35 +224,15 @@ public final class AtomFileIconsConfig implements PersistentStateComponent<AtomF
    * @param useHollowFolders of type boolean
    * @return boolean
    */
-  public boolean isUseHollowFoldersChanged(final boolean useHollowFolders) {
-    return this.useHollowFolders != useHollowFolders;
+  fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean {
+    return isUseHollowFolders != useHollowFolders
   }
 
-  public void toggleUseHollowFolders() {
-    useHollowFolders = !useHollowFolders;
+  fun toggleUseHollowFolders() {
+    isUseHollowFolders = !isUseHollowFolders
   }
-
   //endregion
-
   //region Hide File Icons
-
-  /**
-   * Returns the hideFileIcons of this MTConfig object.
-   *
-   * @return the hideFileIcons (type boolean) of this MTConfig object.
-   */
-  public boolean isHideFileIcons() {
-    return hideFileIcons;
-  }
-
-  /**
-   * Sets the hideFileIcons of this MTConfig object.
-   *
-   * @param hideFileIcons the hideFileIcons of this MTConfig object.
-   */
-  private void setHideFileIcons(final boolean hideFileIcons) {
-    this.hideFileIcons = hideFileIcons;
-  }
 
   /**
    * ...
@@ -315,40 +240,33 @@ public final class AtomFileIconsConfig implements PersistentStateComponent<AtomF
    * @param hideFileIcons of type boolean
    * @return boolean
    */
-  public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
-    return this.hideFileIcons != hideFileIcons;
+  fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean {
+    return isHideFileIcons != hideFileIcons
   }
 
-  public void toggleHideFileIcons() {
-    hideFileIcons = !hideFileIcons;
-  }
-  //endregion
-
-  //region Arrows Styles
-  public ArrowsStyles getArrowsStyle() {
-    return arrowsStyle;
+  fun toggleHideFileIcons() {
+    isHideFileIcons = !isHideFileIcons
   }
 
-  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
-    this.arrowsStyle = arrowsStyle;
+  fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean {
+    return this.arrowsStyle != arrowsStyle
   }
 
-  public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
-    return this.arrowsStyle != arrowsStyle;
-  }
-  //endregion
+  fun isAccentColorChanged(accentColor: String): Boolean {
+    return this.accentColor != accentColor
+  } //endregion
 
-  //region accent color
-  public String getAccentColor() {
-    return accentColor;
-  }
+  companion object {
+    private val accentColorFromTheme: String
+      get() = ColorUtil.toHex(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()))
 
-  private void setAccentColor(final String accentColor) {
-    this.accentColor = accentColor;
+    /**
+     * Get instance of the config from the ServiceManager
+     *
+     * @return the MTConfig instance
+     */
+    @JvmStatic
+    val instance: AtomFileIconsConfig
+      get() = ServiceManager.getService(AtomFileIconsConfig::class.java)
   }
-
-  public boolean isAccentColorChanged(final String accentColor) {
-    return !this.accentColor.equals(accentColor);
-  }
-  //endregion
 }

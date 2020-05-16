@@ -21,67 +21,45 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config
 
-package com.mallowigi.config;
+import com.intellij.openapi.options.SearchableConfigurable
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.ui.SettingsForm
+import org.jetbrains.annotations.Nls
+import org.jetbrains.annotations.NonNls
+import java.util.*
 
-import com.intellij.openapi.options.SearchableConfigurable;
-import com.mallowigi.config.ui.SettingsForm;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>(),
+                         SearchableConfigurable {
+  override val config: AtomFileIconsConfig?
+    get() = AtomFileIconsConfig.instance
 
-import java.util.Objects;
+  override fun getDisplayName(): @Nls String? = message("settings.title")
 
-/**
- * Service used to load and save settings from MTConfig
- */
-public final class AtomConfigurable extends ConfigurableBase<SettingsForm, AtomFileIconsConfig> implements SearchableConfigurable {
+  override fun getId(): String = ID
 
-  private static final String ID = "com.mallowigi.config.atomConfig";
+  override fun createForm(): SettingsForm = SettingsForm()
 
-  @Nls
-  @Override
-  public String getDisplayName() {
-    return AtomSettingsBundle.message("settings.title");
+  protected override fun setFormState(form: SettingsForm?, config: AtomFileIconsConfig?) {
+    Objects.requireNonNull(form)!!.setFormState(config)
   }
 
-  @NotNull
-  @Override
-  public String getId() {
-    return ID;
+  protected override fun doApply(form: SettingsForm?, config: AtomFileIconsConfig?) {
+    config!!.applySettings(form!!)
   }
 
-  @Override
-  protected AtomFileIconsConfig getConfig() {
-    return AtomFileIconsConfig.getInstance();
+  protected override fun checkModified(form: SettingsForm?, config: AtomFileIconsConfig?): Boolean {
+    return checkFormModified(form, config!!)
   }
 
-  @Override
-  protected SettingsForm createForm() {
-    return new SettingsForm();
+  companion object {
+    @NonNls
+    private const val ID = "com.mallowigi.config.atomConfig"
+
+    private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean {
+      return Objects.requireNonNull(form)!!.isModified(config)
+    }
   }
 
-  @Override
-  protected void setFormState(final SettingsForm form, final AtomFileIconsConfig config) {
-    Objects.requireNonNull(form).setFormState(config);
-  }
-
-  @Override
-  protected void doApply(final SettingsForm form, final AtomFileIconsConfig config) {
-    config.applySettings(form);
-  }
-
-  @Override
-  protected boolean checkModified(final SettingsForm form, final AtomFileIconsConfig config) {
-    return checkFormModified(form, config);
-  }
-
-  /**
-   * Checks whether the form is modified by comparing to the config
-   *
-   * @param config the config
-   * @return true if changed
-   */
-  private static boolean checkFormModified(final SettingsForm form, final AtomFileIconsConfig config) {
-    return Objects.requireNonNull(form).isModified(config);
-  }
 }
