@@ -30,9 +30,7 @@ import com.mallowigi.icons.associations.RegexAssociation
 import org.jetbrains.annotations.NotNull
 
 class AssociationsTableItemEditor : DialogItemEditor<Association> {
-  override fun getItemClass(): @NotNull Class<out Association> {
-    return RegexAssociation::class.java
-  }
+  override fun getItemClass(): @NotNull Class<out Association> = RegexAssociation::class.java
 
   override fun clone(item: Association,
                      forInPlaceEditing: Boolean): Association {
@@ -53,7 +51,8 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
     oldItem.apply(newItem)
   }
 
-  override fun isEditable(item: Association): Boolean {
-    return !item.isEmpty
-  }
+  override fun isEditable(item: Association): Boolean = !item.isEmpty
+
+  override fun isEmpty(item: Association): Boolean = item.isEmpty
+
 }

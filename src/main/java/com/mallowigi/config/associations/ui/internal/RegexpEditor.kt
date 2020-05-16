@@ -39,10 +39,7 @@ class RegexpEditor : AbstractCellEditor(), TableCellEditor {
                                            isSelected: Boolean,
                                            row: Int,
                                            column: Int): Component {
-    val editorTextField = EditorTextField(
-      value.toString(),
-      ProjectManager.getInstance().defaultProject,
-      RegExpFileType.INSTANCE)
+    val editorTextField = EditorTextField(value.toString(), ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
     myDocument = editorTextField.document
     return editorTextField
   }
