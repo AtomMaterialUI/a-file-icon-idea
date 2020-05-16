@@ -24,43 +24,59 @@
 package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.ui.ValidationInfo
-import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
-import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
-import com.intellij.ui.components.fields.ExtendableTextField
+import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
+import com.intellij.openapi.fileTypes.FileTypeManager
+import com.intellij.openapi.util.io.FileUtilRt
+import com.intellij.util.PathUtil
+import com.intellij.util.ui.LocalPathCellEditor
+import com.intellij.util.ui.table.IconTableCellRenderer
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
+import icons.MTIcons
 import org.jetbrains.annotations.Nullable
-import javax.swing.table.DefaultTableCellRenderer
+import java.io.IOException
+import javax.swing.Icon
+import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
-@Suppress("UnstableApiUsage")
-class NameEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
+class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
   override fun valueOf(item: Association?): @Nullable String? {
-    return item?.name
+    return PathUtil.toSystemDependentName(item?.icon)
   }
 
   override fun setValue(item: Association?, value: String?) {
-    item?.name = value
+    item?.icon = value
   }
 
   override fun getEditor(item: Association?): @Nullable TableCellEditor? {
-    val cellEditor = ExtendableTextField()
-    return StatefulValidatingCellEditor(cellEditor, parent)
+    return LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
   }
 
   override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
-    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int ->
-        if (value == null || value == "") {
-          return@withCellValidator ValidationInfo(message("you.must.enter.a.name"))
+    return if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
+      null
+    }
+    else object : IconTableCellRenderer<String>() {
+      override fun getIcon(value: String, table: JTable, row: Int): Icon? {
+        return try {
+          MTIcons.loadSVGIcon(value)
         }
-        else {
-          return@withCellValidator null
+        catch (e: IOException) {
+          null
         }
       }
+
+      override fun getText(): String {
+        return PathUtil.getFileName(item.icon)
+      }
+    }
+  }
+
+  companion object {
+    private val DESCRIPTOR = FileChooserDescriptorFactory.createSingleFileDescriptor(FileTypeManager.getInstance()
+      .getStdFileType("SVG"))
   }
 
 }

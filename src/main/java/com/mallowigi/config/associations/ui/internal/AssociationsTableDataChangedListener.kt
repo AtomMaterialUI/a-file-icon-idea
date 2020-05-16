@@ -21,28 +21,22 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui.internal
 
-package com.mallowigi.config.associations.ui.internal;
+import com.intellij.util.ui.ColumnInfo
+import com.intellij.util.ui.table.TableModelEditor.DataChangedListener
+import com.mallowigi.icons.associations.Association
+import javax.swing.event.TableModelEvent
 
-import com.intellij.util.ui.ColumnInfo;
-import com.intellij.util.ui.table.TableModelEditor;
-import com.mallowigi.icons.associations.Association;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.event.TableModelEvent;
-
-public final class AssociationsTableDataChangedListener extends TableModelEditor.DataChangedListener<Association> {
-  @Override
-  public void tableChanged(@NotNull final TableModelEvent e) {
-    update();
+class AssociationsTableDataChangedListener : DataChangedListener<Association?>() {
+  override fun tableChanged(e: TableModelEvent) {
+    update()
   }
 
-  @Override
-  public void dataChanged(@NotNull final ColumnInfo<Association, ?> columnInfo, final int rowIndex) {
-    update();
+  override fun dataChanged(columnInfo: ColumnInfo<Association?, *>,
+                           rowIndex: Int) {
+    update()
   }
 
-  private void update() {
-
-  }
+  private fun update() {}
 }

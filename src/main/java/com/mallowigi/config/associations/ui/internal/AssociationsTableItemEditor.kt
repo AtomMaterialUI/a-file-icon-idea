@@ -21,46 +21,39 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui.internal
 
-package com.mallowigi.config.associations.ui.internal;
+import com.intellij.util.Function
+import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
+import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.RegexAssociation
+import org.jetbrains.annotations.NotNull
 
-import com.intellij.util.Function;
-import com.intellij.util.ui.table.TableModelEditor;
-import com.mallowigi.icons.associations.Association;
-import com.mallowigi.icons.associations.RegexAssociation;
-import org.jetbrains.annotations.NotNull;
-
-public final class AssociationsTableItemEditor implements TableModelEditor.DialogItemEditor<Association> {
-
-  @Override
-  public @NotNull Class getItemClass() {
-    return RegexAssociation.class;
+class AssociationsTableItemEditor : DialogItemEditor<Association> {
+  override fun getItemClass(): @NotNull Class<out Association> {
+    return RegexAssociation::class.java
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public Association clone(@NotNull final Association item, final boolean forInPlaceEditing) {
-    return new RegexAssociation(forInPlaceEditing ? item.getName() : "",
-                                forInPlaceEditing ? item.getMatcher() : "",
-                                forInPlaceEditing ? item.getIcon() : "");
+  override fun clone(item: Association,
+                     forInPlaceEditing: Boolean): Association {
+    return RegexAssociation(if (forInPlaceEditing) item.name else "",
+      if (forInPlaceEditing) item.matcher else "",
+      if (forInPlaceEditing) item.icon else "")
   }
 
-  @Override
-  public void edit(@NotNull final Association item,
-                   @NotNull final Function<Association, Association> mutator,
-                   final boolean isAdd) {
-    final Association settings = clone(item, true);
-    mutator.fun(item).apply(settings);
+  override fun edit(item: Association,
+                    mutator: Function<Association, Association>,
+                    isAdd: Boolean) {
+    val settings = clone(item, true)
+    mutator.`fun`(item).apply(settings)
   }
 
-  @Override
-  public void applyEdited(@NotNull final Association oldItem, @NotNull final Association newItem) {
-    oldItem.apply(newItem);
+  override fun applyEdited(oldItem: Association,
+                           newItem: Association) {
+    oldItem.apply(newItem)
   }
 
-  @Override
-  public boolean isEditable(@NotNull final Association item) {
-    return !item.isEmpty();
+  override fun isEditable(item: Association): Boolean {
+    return !item.isEmpty
   }
-
 }

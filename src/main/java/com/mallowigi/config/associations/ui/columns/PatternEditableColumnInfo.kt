@@ -21,74 +21,62 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui.columns
 
-package com.mallowigi.config.associations.ui.columns;
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.ui.ValidationInfo
+import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
+import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.ui.internal.RegexpEditor
+import com.mallowigi.icons.associations.Association
+import org.jetbrains.annotations.Nullable
+import java.util.regex.Pattern
+import javax.swing.table.DefaultTableCellRenderer
+import javax.swing.table.TableCellEditor
+import javax.swing.table.TableCellRenderer
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.ui.ValidationInfo;
-import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper;
-import com.intellij.util.ui.table.TableModelEditor;
-import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.config.associations.ui.internal.RegexpEditor;
-import com.mallowigi.icons.associations.Association;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import java.util.regex.Pattern;
-
-@SuppressWarnings("UnstableApiUsage")
-public final class PatternEditableColumnInfo extends TableModelEditor.EditableColumnInfo<Association, String> {
-  private final Disposable parent;
-
-  public PatternEditableColumnInfo(final Disposable disposable) {
-    super(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.pattern"));
-    parent = disposable;
+@Suppress("UnstableApiUsage")
+class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
+  override fun valueOf(item: Association?): @Nullable String? {
+    return item?.matcher
   }
 
-  private static ValidationInfo validate(final Object value, final int row, final int column) {
-    if (value == null || value.equals("")) {
-      return new ValidationInfo(AtomSettingsBundle.message("you.must.enter.a.name"));
+  override fun setValue(item: Association?, value: String?) {
+    item?.matcher = value
+  }
+
+  override fun getEditor(item: Association?): @Nullable TableCellEditor? {
+    return RegexpEditor()
+  }
+
+  override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
+    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
+      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
+  }
+
+  companion object {
+    private fun validate(value: Any?): ValidationInfo? {
+      return if (value == null || value == "") {
+        ValidationInfo(message("you.must.enter.a.name"))
+      }
+      else if (!isValidPattern(value.toString())) {
+        ValidationInfo(message("please.enter.a.valid.pattern"))
+      }
+      else {
+        null
+      }
     }
-    else if (!isValidPattern(value.toString())) {
-      return new ValidationInfo(AtomSettingsBundle.message("please.enter.a.valid.pattern"));
+
+    private fun isValidPattern(pattern: String): Boolean {
+      return try {
+        Pattern.compile(pattern)
+        true
+      }
+      catch (e: RuntimeException) {
+        false
+      }
     }
-    else {
-      return null;
-    }
-  }
-
-  @Override
-  public String valueOf(final Association item) {
-    return item.getMatcher();
-  }
-
-  @Override
-  public void setValue(final Association item, final String value) {
-    item.setMatcher(value);
-  }
-
-  @Override
-  public @NotNull TableCellEditor getEditor(final Association item) {
-    return new RegexpEditor();
-  }
-
-  private static boolean isValidPattern(final String pattern) {
-    try {
-      Pattern.compile(pattern);
-      return true;
-    }
-    catch (final RuntimeException e) {
-      return false;
-    }
-  }
-
-  @Override
-  public @Nullable TableCellRenderer getRenderer(final Association item) {
-    return new ValidatingTableCellRendererWrapper(new DefaultTableCellRenderer())
-      .withCellValidator(PatternEditableColumnInfo::validate);
   }
 
 }

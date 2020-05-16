@@ -21,37 +21,33 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui.internal
 
-package com.mallowigi.config.associations.ui.internal;
+import com.intellij.openapi.editor.Document
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.ui.EditorTextField
+import org.intellij.lang.regexp.RegExpFileType
+import java.awt.Component
+import javax.swing.AbstractCellEditor
+import javax.swing.JTable
+import javax.swing.table.TableCellEditor
 
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.ui.EditorTextField;
-import org.intellij.lang.regexp.RegExpFileType;
-
-import javax.swing.*;
-import javax.swing.table.TableCellEditor;
-import java.awt.*;
-
-public final class RegexpEditor extends AbstractCellEditor implements TableCellEditor {
-  private Document myDocument;
-
-  @Override
-  public Component getTableCellEditorComponent(final JTable table,
-                                               final Object value,
-                                               final boolean isSelected,
-                                               final int row,
-                                               final int column) {
-    final EditorTextField editorTextField = new EditorTextField(value.toString(),
-                                                                ProjectManager.getInstance().getDefaultProject(),
-                                                                RegExpFileType.INSTANCE);
-    myDocument = editorTextField.getDocument();
-
-    return editorTextField;
+class RegexpEditor : AbstractCellEditor(), TableCellEditor {
+  private var myDocument: Document? = null
+  override fun getTableCellEditorComponent(table: JTable,
+                                           value: Any,
+                                           isSelected: Boolean,
+                                           row: Int,
+                                           column: Int): Component {
+    val editorTextField = EditorTextField(
+      value.toString(),
+      ProjectManager.getInstance().defaultProject,
+      RegExpFileType.INSTANCE)
+    myDocument = editorTextField.document
+    return editorTextField
   }
 
-  @Override
-  public Object getCellEditorValue() {
-    return myDocument.getText();
+  override fun getCellEditorValue(): Any {
+    return myDocument!!.text
   }
 }

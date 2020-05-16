@@ -21,128 +21,77 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui
 
-package com.mallowigi.config.associations.ui;
+import com.intellij.openapi.ui.StripeTable
+import com.intellij.ui.TableSpeedSearch
+import com.intellij.ui.table.JBTable
+import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.table.IconTableCellRenderer
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.icons.FileIconProvider
+import com.mallowigi.icons.associations.Association
+import icons.MTIcons
+import javax.swing.Icon
+import javax.swing.JTable
+import javax.swing.ListSelectionModel
+import javax.swing.event.TableModelListener
+import javax.swing.table.TableModel
 
-import com.intellij.openapi.ui.StripeTable;
-import com.intellij.ui.TableSpeedSearch;
-import com.intellij.ui.table.JBTable;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.table.IconTableCellRenderer;
-import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.icons.FileIconProvider;
-import com.mallowigi.icons.associations.Association;
-import icons.MTIcons;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-import java.util.List;
-
-final class FileAssociationsTable extends JBTable {
-  private static final int NAME_COLUMN = 0;
-  private static final int ICON_COLUMN = 1;
-  private static final int PATTERN_COLUMN = 2;
-
-  FileAssociationsTable() {
-    super(new MyTableModel(FileIconProvider.getAssociations().getAssociations()));
-    StripeTable.apply(this);
-    setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    new TableSpeedSearch(this);
-
-    setEnableAntialiasing(true);
-    setPreferredScrollableViewportSize(JBUI.size(200, -1));
-    initColumns();
+internal class FileAssociationsTable : JBTable(MyTableModel(FileIconProvider.getAssociations().associations)) {
+  private fun initColumns() {
+    val iconColumn = getColumnModel().getColumn(ICON_COLUMN)
+    iconColumn.cellRenderer = object : IconTableCellRenderer<String>() {
+      override fun getIcon(value: String, table: JTable, row: Int): Icon = MTIcons.getFileIcon(value)
+    }
   }
 
-  private void initColumns() {
-    final TableColumn iconColumn = getColumnModel().getColumn(ICON_COLUMN);
-    iconColumn.setCellRenderer(new IconTableCellRenderer<String>() {
-      @NotNull
-      @Override
-      protected Icon getIcon(@NotNull final String value, final JTable table, final int row) {
-        return MTIcons.getFileIcon(value);
+  private class MyTableModel(private val associations: List<Association>) : TableModel {
+    override fun getRowCount(): Int = associations.size
+
+    override fun getColumnCount(): Int = 3
+
+    override fun getColumnName(columnIndex: Int): String {
+      return when (columnIndex) {
+        NAME_COLUMN    -> message("AssociationsForm.folderIconsTable.columns.name")
+        ICON_COLUMN    -> message("AssociationsForm.folderIconsTable.columns.icon")
+        PATTERN_COLUMN -> message("AssociationsForm.folderIconsTable.columns.pattern")
+        else           -> ""
       }
-    });
+    }
+
+    override fun getColumnClass(columnIndex: Int): Class<*> = String::class.java
+
+    override fun isCellEditable(rowIndex: Int, columnIndex: Int): Boolean = false
+
+    override fun getValueAt(rowIndex: Int, columnIndex: Int): Any? {
+      val entry = associations[rowIndex] ?: return null
+      return when (columnIndex) {
+        NAME_COLUMN    -> entry.name
+        ICON_COLUMN    -> entry.icon
+        PATTERN_COLUMN -> entry.matcher
+        else           -> null
+      }
+    }
+
+    override fun setValueAt(aValue: Any, rowIndex: Int, columnIndex: Int) {}
+    override fun addTableModelListener(l: TableModelListener) {}
+    override fun removeTableModelListener(l: TableModelListener) {}
 
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  private static final class MyTableModel implements TableModel {
-    private final List<? extends Association> associations;
+  companion object {
+    private const val NAME_COLUMN = 0
+    private const val ICON_COLUMN = 1
+    private const val PATTERN_COLUMN = 2
+  }
 
-    private MyTableModel(final List<? extends Association> associations) {
-      this.associations = associations;
-    }
-
-    @Override
-    public int getRowCount() {
-      return associations.size();
-    }
-
-    @Override
-    public int getColumnCount() {
-      return 3;
-    }
-
-    @Override
-    public String getColumnName(final int columnIndex) {
-      switch (columnIndex) {
-        case NAME_COLUMN:
-          return AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.name");
-        case ICON_COLUMN:
-          return AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.icon");
-        case PATTERN_COLUMN:
-          return AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.pattern");
-        default:
-          return "";
-      }
-    }
-
-    @Override
-    public Class<?> getColumnClass(final int columnIndex) {
-      return String.class;
-    }
-
-    @Override
-    public boolean isCellEditable(final int rowIndex, final int columnIndex) {
-      return false;
-    }
-
-    @Override
-    public @Nullable Object getValueAt(final int rowIndex, final int columnIndex) {
-      final Association entry = associations.get(rowIndex);
-      if (entry == null) {
-        return null;
-      }
-      switch (columnIndex) {
-        case NAME_COLUMN:
-          return entry.getName();
-        case ICON_COLUMN:
-          return entry.getIcon();
-        case PATTERN_COLUMN:
-          return entry.getMatcher();
-        default:
-          return null;
-      }
-    }
-
-    @Override
-    public void setValueAt(final Object aValue, final int rowIndex, final int columnIndex) {
-
-    }
-
-    @Override
-    public void addTableModelListener(final TableModelListener l) {
-
-    }
-
-    @Override
-    public void removeTableModelListener(final TableModelListener l) {
-
-    }
+  init {
+    StripeTable.apply(this)
+    setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
+    TableSpeedSearch(this)
+    setEnableAntialiasing(true)
+    preferredScrollableViewportSize = JBUI.size(200, -1)
+    initColumns()
   }
 }

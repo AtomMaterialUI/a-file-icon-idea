@@ -33,8 +33,7 @@ import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.AtomAssocConfig;
-import com.mallowigi.config.associations.ui.columns.FileIconEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.FolderIconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableDataChangedListener;
@@ -59,27 +58,25 @@ import java.util.ResourceBundle;
                     "ClassWithTooManyFields",
                     "OverlyLongMethod"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
-  private final FileIconEditableColumnInfo fileIconColumn = new FileIconEditableColumnInfo(this);
-  private final FolderIconEditableColumnInfo folderIconColumn = new FolderIconEditableColumnInfo(this);
 
   private final ColumnInfo[] fileColumns = {
     new NameEditableColumnInfo(this),
     new PatternEditableColumnInfo(this),
-    fileIconColumn};
+    new IconEditableColumnInfo(this)};
 
   private final ColumnInfo[] folderColumns = {
     new NameEditableColumnInfo(this),
     new PatternEditableColumnInfo(this),
-    folderIconColumn};
+    new IconEditableColumnInfo(this)};
 
   public AssociationsForm() {
-    initComponents();
-    createCustomTables();
+
   }
 
   @Override
   public void init() {
-
+    initComponents();
+    createCustomTables();
   }
 
   @Override
@@ -98,6 +95,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   }
 
   public void setFormState(final AtomAssocConfig config) {
+    customFileAssociationsEditor.reset(config.getCustomFileAssociations());
+    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations());
     afterStateSet();
   }
 
