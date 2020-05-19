@@ -42,7 +42,7 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
   override fun createForm(): SettingsForm = SettingsForm()
 
   protected override fun setFormState(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    Objects.requireNonNull(form)!!.setFormState(config)
+    form?.setFormState(config)
   }
 
   protected override fun doApply(form: SettingsForm?, config: AtomFileIconsConfig?) {

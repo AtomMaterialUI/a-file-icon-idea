@@ -25,34 +25,33 @@ package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.util.Function
 import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
-import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import org.jetbrains.annotations.NotNull
 
-class AssociationsTableItemEditor : DialogItemEditor<Association> {
-  override fun getItemClass(): @NotNull Class<out Association> = RegexAssociation::class.java
+class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
+  override fun getItemClass(): @NotNull Class<out RegexAssociation> = RegexAssociation::class.java
 
-  override fun clone(item: Association,
-                     forInPlaceEditing: Boolean): Association {
+  override fun clone(item: RegexAssociation,
+                     forInPlaceEditing: Boolean): RegexAssociation {
     return RegexAssociation(if (forInPlaceEditing) item.name else "",
       if (forInPlaceEditing) item.matcher else "",
       if (forInPlaceEditing) item.icon else "")
   }
 
-  override fun edit(item: Association,
-                    mutator: Function<Association, Association>,
+  override fun edit(item: RegexAssociation,
+                    mutator: Function<RegexAssociation, RegexAssociation>,
                     isAdd: Boolean) {
     val settings = clone(item, true)
     mutator.`fun`(item).apply(settings)
   }
 
-  override fun applyEdited(oldItem: Association,
-                           newItem: Association) {
+  override fun applyEdited(oldItem: RegexAssociation,
+                           newItem: RegexAssociation) {
     oldItem.apply(newItem)
   }
 
-  override fun isEditable(item: Association): Boolean = !item.isEmpty
+  override fun isEditable(item: RegexAssociation): Boolean = !item.isEmpty
 
-  override fun isEmpty(item: Association): Boolean = item.isEmpty
+  override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
 
 }

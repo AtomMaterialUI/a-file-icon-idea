@@ -25,15 +25,15 @@ package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.util.ui.ColumnInfo
 import com.intellij.util.ui.table.TableModelEditor.DataChangedListener
-import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.RegexAssociation
 import javax.swing.event.TableModelEvent
 
-class AssociationsTableDataChangedListener : DataChangedListener<Association?>() {
+class AssociationsTableDataChangedListener : DataChangedListener<RegexAssociation?>() {
   override fun tableChanged(e: TableModelEvent) {
     update()
   }
 
-  override fun dataChanged(columnInfo: ColumnInfo<Association?, *>,
+  override fun dataChanged(columnInfo: ColumnInfo<RegexAssociation?, *>,
                            rowIndex: Int) {
     update()
   }

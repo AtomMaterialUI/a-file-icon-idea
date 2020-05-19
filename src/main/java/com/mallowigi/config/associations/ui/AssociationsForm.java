@@ -39,7 +39,7 @@ import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableDataChangedListener;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
-import com.mallowigi.icons.associations.Association;
+import com.mallowigi.icons.associations.RegexAssociation;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,8 +53,7 @@ import java.util.ResourceBundle;
 @SuppressWarnings({"UndesirableClassUsage",
                     "FieldCanBeLocal",
                     "LocalCanBeFinal",
-                    "PublicMethodNotExposedInInterface"
-                    ,
+                    "PublicMethodNotExposedInInterface",
                     "ClassWithTooManyFields",
                     "OverlyLongMethod"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
@@ -100,24 +99,24 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     afterStateSet();
   }
 
-  public static boolean isModified(@Nullable final AtomAssocConfig config) {
+  public boolean isModified(@Nullable final AtomAssocConfig config) {
     if (config == null) {
       return false;
     }
 
-    //    boolean modified = config.isFileIconsModified(customFileAssociations);
-    //    modified = modified || config.isFolderIconsModified(customFolderAssociations);
-    return false;
+    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    return modified;
   }
 
   @NotNull
-  public List<Association> getFileAssociations() {
+  public List<RegexAssociation> getFileAssociations() {
     return Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems());
   }
 
   @NotNull
-  public List<Association> getFolderAssociations() {
-    return Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems());
+  public List<RegexAssociation> getFolderAssociations() {
+    return Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems());
   }
 
   private void initComponents() {
@@ -310,7 +309,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private JComponent customFileIconsTable;
   private JComponent customFolderIconsTable;
 
-  private TableModelEditor<Association> customFileAssociationsEditor;
-  private TableModelEditor<Association> customFolderAssociationsEditor;
+  private TableModelEditor<RegexAssociation> customFileAssociationsEditor;
+  private TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
 
 }

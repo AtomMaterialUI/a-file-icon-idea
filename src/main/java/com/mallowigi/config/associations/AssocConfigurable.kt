@@ -29,23 +29,19 @@ import com.mallowigi.config.ConfigurableBase
 import com.mallowigi.config.associations.ui.AssociationsForm
 import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
+import java.util.*
 
-/**
- * Service used to load and save settings from MTConfig
- */
 class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(),
                           SearchableConfigurable {
+  override val config: AtomAssocConfig?
+    get() = AtomAssocConfig.instance;
+
   @Nls
   override fun getDisplayName() = AtomSettingsBundle.message("AssociationsForm.title")
 
   override fun getId(): String = ID
 
-  override val config: AtomAssocConfig?
-    get() = AtomAssocConfig.instance;
-
-  override fun createForm(): AssociationsForm {
-    return AssociationsForm()
-  }
+  override fun createForm(): AssociationsForm = AssociationsForm()
 
   protected override fun setFormState(form: AssociationsForm?, config: AtomAssocConfig?) {
     form?.setFormState(config)
@@ -63,15 +59,8 @@ class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(
     @NonNls
     private const val ID = "com.mallowigi.config.associations"
 
-    /**
-     * Checks whether the form is modified by comparing to the config
-     *
-     * @param config the config
-     * @return true if changed
-     */
     private fun checkFormModified(form: AssociationsForm, config: AtomAssocConfig?): Boolean {
-//      return form.isModified(config);
-      return false;
+      return Objects.requireNonNull(form)!!.isModified(config)
     }
   }
 }
