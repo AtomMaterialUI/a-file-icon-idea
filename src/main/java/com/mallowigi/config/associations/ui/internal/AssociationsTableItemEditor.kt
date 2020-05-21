@@ -34,9 +34,9 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
   override fun clone(item: RegexAssociation,
                      forInPlaceEditing: Boolean): RegexAssociation {
     return RegexAssociation(
-      if (forInPlaceEditing) item.name else "",
-      if (forInPlaceEditing) item.matcher else "",
-      if (forInPlaceEditing) item.icon else ""
+      item.name,
+      item.matcher,
+      item.icon
     )
   }
 

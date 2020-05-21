@@ -78,7 +78,7 @@ public final class Associations implements Serializable {
    * @param file file
    */
   @Nullable
-  public Association findAssociationForFile(final FileInfo file) {
+  public Association findAssociation(final FileInfo file) {
     final Association matching;
     // First check in custom assocs
     if (customAssociations != null) {

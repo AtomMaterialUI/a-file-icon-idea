@@ -23,144 +23,106 @@
  *
  *
  */
+package com.mallowigi.icons
 
-package com.mallowigi.icons;
-
-import com.intellij.ide.IconProvider;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.util.PsiUtilCore;
-import com.mallowigi.config.AtomFileIconsConfig;
-import com.mallowigi.config.associations.AtomAssocConfig;
-import com.mallowigi.icons.associations.Association;
-import com.mallowigi.icons.associations.Associations;
-import com.mallowigi.icons.associations.AssociationsFactory;
-import icons.MTIcons;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.Icon;
+import com.intellij.ide.IconProvider
+import com.intellij.openapi.project.DumbAware
+import com.intellij.psi.PsiDirectory
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
+import com.intellij.psi.util.PsiUtilCore
+import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.AssociationsFactory
+import icons.MTIcons
+import javax.swing.Icon
 
 /**
  * Provider for file icons
  */
-public final class FileIconProvider extends IconProvider implements DumbAware {
-  public static final Associations DEF_FILE_ASSOCIATIONS = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
-  public static final Associations DEF_FOLDER_ASSOCIATIONS = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
-  private static final Logger LOG = Logger.getInstance(FileIconProvider.class);
-
-  private static Icon getFileIcon(final PsiElement psiElement) {
-    if (!AtomFileIconsConfig.getInstance().isEnabledIcons()) {
-      return null;
+class FileIconProvider : IconProvider(), DumbAware {
+  override fun getIcon(element: PsiElement, flags: Int): Icon? {
+    var icon: Icon? = null
+    if (element is PsiDirectory) {
+      icon = getDirectoryIcon(element)
     }
-
-    Icon icon = null;
-    final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
-    if (virtualFile != null) {
-      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-      final Association fileAssociation = findFileAssociation(file);
-      icon = getIconForAssociation(file, fileAssociation);
+    else if (element is PsiFile) {
+      icon = getFileIcon(element)
     }
-    return icon;
+    return icon
   }
 
-  private static DirIcon getDirectoryIcon(final PsiElement psiElement) {
-    DirIcon icon = null;
-    if (!AtomFileIconsConfig.getInstance().isEnabledDirectories()) {
-      return null;
+  companion object {
+    val associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml")
+    val dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml")
+
+    private fun getFileIcon(psiElement: PsiElement): Icon? {
+      var icon: Icon? = null
+      if (!instance.isEnabledIcons) {
+        return null
+      }
+      val virtualFile = PsiUtilCore.getVirtualFile(psiElement)
+      if (virtualFile != null) {
+        val file: FileInfo = VirtualFileInfo(psiElement, virtualFile)
+        val associationForFile = associations.findAssociation(file)
+        icon = getIconForAssociation(file, associationForFile)
+      }
+      return icon
     }
 
-    final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
-    if (virtualFile != null) {
-      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-      icon = getDirectoryIconForAssociation(DEF_FOLDER_ASSOCIATIONS.findAssociationForFile(file));
-    }
-    return icon;
-  }
-
-  private static Icon getIconForAssociation(final FileInfo file, final Association association) {
-    final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadIcon(file, association);
-  }
-
-  private static DirIcon getDirectoryIconForAssociation(final Association association) {
-    final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadDirIcon(association);
-  }
-
-  /**
-   * Load the association's icon
-   */
-  private static Icon loadIcon(final FileInfo file, final Association association) {
-    Icon icon = null;
-
-    try {
-      final String iconPath = association.getIcon();
-      icon = MTIcons.getFileIcon(iconPath);
-    }
-    catch (final RuntimeException e) {
-      e.printStackTrace();
-    }
-    return icon;
-  }
-
-  /**
-   * Load the association's icon
-   */
-  private static DirIcon loadDirIcon(final Association association) {
-    DirIcon icon = null;
-
-    try {
-      final String iconPath = association.getIcon();
-      icon = MTIcons.getFolderIcon(iconPath);
-    }
-    catch (final RuntimeException e) {
-      e.printStackTrace();
-    }
-    return icon;
-  }
-
-  private static Association findFileAssociation(final FileInfo file) {
-    final Associations customFileAssociations = AtomAssocConfig.getInstance().getCustomFileAssociations();
-
-    Association result = customFileAssociations.findAssociationForFile(file);
-    if (result == null) {
-      result = DEF_FILE_ASSOCIATIONS.findAssociationForFile(file);
+    private fun getDirectoryIcon(psiElement: PsiElement): DirIcon? {
+      var icon: DirIcon? = null
+      if (!instance.isEnabledDirectories) {
+        return null
+      }
+      val virtualFile = PsiUtilCore.getVirtualFile(psiElement)
+      if (virtualFile != null) {
+        val file: FileInfo = VirtualFileInfo(psiElement, virtualFile)
+        icon = getDirectoryIconForAssociation(dirAssociations.findAssociation(file))
+      }
+      return icon
     }
 
-    return result;
-  }
-
-  private static Association findFolderAssociation(final FileInfo file) {
-    final Associations customFolderAssociations = AtomAssocConfig.getInstance().getCustomFolderAssociations();
-
-    Association result = customFolderAssociations.findAssociationForFile(file);
-    if (result == null) {
-      result = DEF_FOLDER_ASSOCIATIONS.findAssociationForFile(file);
+    private fun getIconForAssociation(file: FileInfo,
+                                      association: Association?): Icon? {
+      val isInputInvalid = association == null || association.icon == null
+      return if (isInputInvalid) null else loadIcon(file, association)
     }
 
-    return result;
-  }
-
-  @Nullable
-  @Override
-  public Icon getIcon(@NotNull final PsiElement element, final int flags) {
-    Icon icon = null;
-
-    if (element instanceof PsiDirectory) {
-      icon = getDirectoryIcon(element);
-    }
-    else if (element instanceof PsiFile) {
-      icon = getFileIcon(element);
-    }
-    else {
-      LOG.warn("unsupported element");
+    private fun getDirectoryIconForAssociation(association: Association?): DirIcon? {
+      val isInputInvalid = association == null || association.icon == null
+      return if (isInputInvalid) null else loadDirIcon(association)
     }
 
-    return icon;
+    /**
+     * Load the association's icon
+     */
+    private fun loadIcon(file: FileInfo,
+                         association: Association?): Icon? {
+      var icon: Icon? = null
+      try {
+        val iconPath = association!!.icon
+        icon = MTIcons.getFileIcon(iconPath)
+      }
+      catch (e: RuntimeException) {
+        e.printStackTrace()
+      }
+      return icon
+    }
+
+    /**
+     * Load the association's icon
+     */
+    private fun loadDirIcon(association: Association?): DirIcon? {
+      var icon: DirIcon? = null
+      try {
+        val iconPath = association!!.icon
+        icon = MTIcons.getFolderIcon(iconPath)
+      }
+      catch (e: RuntimeException) {
+        e.printStackTrace()
+      }
+      return icon
+    }
   }
 }

@@ -33,7 +33,7 @@ public final class VirtualFileInfo implements FileInfo {
   private final VirtualFile vFile;
   private final PsiElement psiElement;
 
-  VirtualFileInfo(final PsiElement psiElement, final VirtualFile vFile) {
+  public VirtualFileInfo(final PsiElement psiElement, final VirtualFile vFile) {
     this.psiElement = psiElement;
     this.vFile = vFile;
   }

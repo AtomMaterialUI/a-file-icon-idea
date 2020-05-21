@@ -45,11 +45,22 @@
                                  groupId="appearance"
                                  displayName="Atom Associations Config"
                                  id="com.mallowigi.config.assocConfigurable"/>
-        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first"
-                      id="MTHiddenIconProvider"/>
-        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>
-        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"
-                                  id="MTHollowFoldersDecorator"/>
+        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
+
+        <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
+                      order="after HiddenIconProvider"
+                      id="CustomFileIconProvider"/>
+        <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"
+                      id="CustomFolderIconProvider"
+                      order="after HiddenIconProvider"/>
+        <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
+                      order="after CustomFileIconProvider"
+                      id="DefaultFileIconProvider"/>
+        <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
+                      order="after CustomFolderIconProvider"
+                      id="DefaultFolderIconProvider"/>
+        <!--        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>-->
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
     </extensions>
 
     <applicationListeners>
