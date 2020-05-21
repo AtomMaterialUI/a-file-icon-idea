@@ -35,8 +35,7 @@ import icons.MTIcons
 import javax.swing.Icon
 import javax.swing.JTable
 import javax.swing.ListSelectionModel
-import javax.swing.event.TableModelListener
-import javax.swing.table.TableModel
+import javax.swing.table.AbstractTableModel
 
 internal class FolderAssociationsTable : JBTable(MyTableModel(FileIconProvider.getDirAssociations().associations)) {
   private fun initColumns() {
@@ -48,7 +47,7 @@ internal class FolderAssociationsTable : JBTable(MyTableModel(FileIconProvider.g
     }
   }
 
-  private class MyTableModel(private val associations: List<Association>) : TableModel {
+  private class MyTableModel(private val associations: List<Association>) : AbstractTableModel() {
     override fun getRowCount(): Int = associations.size
 
     override fun getColumnCount(): Int = 3
@@ -67,7 +66,7 @@ internal class FolderAssociationsTable : JBTable(MyTableModel(FileIconProvider.g
     override fun isCellEditable(rowIndex: Int, columnIndex: Int): Boolean = false
 
     override fun getValueAt(rowIndex: Int, columnIndex: Int): Any? {
-      val entry = associations[rowIndex] ?: return null
+      val entry = associations[rowIndex]
       return when (columnIndex) {
         NAME_COLUMN    -> entry.name
         ICON_COLUMN    -> entry.icon
@@ -75,10 +74,6 @@ internal class FolderAssociationsTable : JBTable(MyTableModel(FileIconProvider.g
         else           -> null
       }
     }
-
-    override fun setValueAt(aValue: Any, rowIndex: Int, columnIndex: Int) {}
-    override fun addTableModelListener(l: TableModelListener) {}
-    override fun removeTableModelListener(l: TableModelListener) {}
 
   }
 

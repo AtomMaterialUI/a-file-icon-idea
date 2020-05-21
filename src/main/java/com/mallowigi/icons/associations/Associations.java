@@ -26,8 +26,11 @@ package com.mallowigi.icons.associations;
 
 import com.google.common.collect.ImmutableSet;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.XCollection;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.icons.FileInfo;
 import org.jetbrains.annotations.NonNls;
@@ -37,35 +40,36 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Represents a list of association parsed from the XML
  */
 public final class Associations implements Serializable {
+  private static final Logger LOG = Logger.getInstance(Associations.class);
 
-  /**
-   * Image types
-   */
   @NonNls
   private static final Set<String> IMAGE_TYPES = ImmutableSet.of("Images", "SVG");
+  @Property
+  @XCollection
+  private final List<RegexAssociation> customAssociations;
+  private List<Association> associations;
 
-  /**
-   * Parsed associations
-   */
-  @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-  private List<? extends Association> associations;
+  public Associations() {
+    associations = Collections.emptyList();
+    customAssociations = Collections.emptyList();
+  }
 
-  /**
-   * Return parsed associations
-   */
+  public Associations(final List<RegexAssociation> associations) {
+    this.associations = Collections.emptyList();
+    customAssociations = Collections.unmodifiableList(associations);
+  }
+
   public List<Association> getAssociations() {
     return Collections.unmodifiableList(associations);
   }
 
-  @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
   public void setAssociations(final List<? extends Association> associations) {
-    this.associations = associations;
+    this.associations = Collections.unmodifiableList(associations);
   }
 
   /**
@@ -75,28 +79,44 @@ public final class Associations implements Serializable {
    */
   @Nullable
   public Association findAssociationForFile(final FileInfo file) {
-    final Association result = associations.stream()
-      .filter((Predicate<Association>) association -> association.matches(file))
-      .findAny()
-      .orElse(null);
+    final Association matching;
+    // First check in custom assocs
+    if (customAssociations != null) {
+      matching = customAssociations.stream()
+        .filter(association -> association.matches(file))
+        .findAny()
+        .orElse(null);
+    }
+    else {
+      matching = associations.stream()
+        .filter(association -> association.matches(file))
+        .findAny()
+        .orElse(null);
+    }
 
-    if (result != null && IMAGE_TYPES.contains(result.getName())) {
+    if (matching != null && IMAGE_TYPES.contains(matching.getName())) {
       try {
         // If those plugins are installed, let them handle the icon
-        final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId(AtomSettingsBundle.message("plugins.iconViewer")));
-        final IdeaPluginDescriptor plugin2 = PluginManager.getPlugin(
-          PluginId.getId(AtomSettingsBundle.message("plugins.imageIconViewer")));
+        final String pluginID = AtomSettingsBundle.message("plugins.iconViewer");
+        final String imageIconViewerID = AtomSettingsBundle.message("plugins.imageIconViewer");
+
+        final IdeaPluginDescriptor plugin = PluginManagerCore.getPlugin(PluginId.getId(pluginID));
+        final IdeaPluginDescriptor plugin2 = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID));
 
         if (plugin != null || plugin2 != null) {
           return null;
         }
       }
       catch (final RuntimeException e) {
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
 
-    return result;
+    return matching;
+  }
+
+  public List<RegexAssociation> getCustomAssociations() {
+    return Collections.unmodifiableList(customAssociations);
   }
 
 }

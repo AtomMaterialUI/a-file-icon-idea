@@ -41,7 +41,7 @@ import icons.MTIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 /**
  * Provider for file icons
@@ -50,21 +50,6 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
 
   private static final Associations associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
   private static final Associations dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
-
-  @Nullable
-  @Override
-  public Icon getIcon(@NotNull final PsiElement element, final int flags) {
-    Icon icon = null;
-
-    if (element instanceof PsiDirectory) {
-      icon = getDirectoryIcon(element);
-    }
-    else if (element instanceof PsiFile) {
-      icon = getFileIcon(element);
-    }
-
-    return icon;
-  }
 
   public static Associations getAssociations() {
     return associations;
@@ -83,7 +68,8 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
     if (virtualFile != null) {
       final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-      icon = getIconForAssociation(file, associations.findAssociationForFile(file));
+      final Association associationForFile = associations.findAssociationForFile(file);
+      icon = getIconForAssociation(file, associationForFile);
     }
     return icon;
   }
@@ -102,9 +88,6 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     return icon;
   }
 
-  /**
-   * Get the relevant icon for association
-   */
   private static Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
     return isInputInvalid ? null : loadIcon(file, association);
@@ -144,6 +127,21 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     catch (final RuntimeException e) {
       e.printStackTrace();
     }
+    return icon;
+  }
+
+  @Nullable
+  @Override
+  public Icon getIcon(@NotNull final PsiElement element, final int flags) {
+    Icon icon = null;
+
+    if (element instanceof PsiDirectory) {
+      icon = getDirectoryIcon(element);
+    }
+    else if (element instanceof PsiFile) {
+      icon = getFileIcon(element);
+    }
+
     return icon;
   }
 }

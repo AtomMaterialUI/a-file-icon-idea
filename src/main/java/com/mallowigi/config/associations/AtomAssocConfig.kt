@@ -31,13 +31,11 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Property
-import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.config.associations.ui.AssociationsForm
 import com.mallowigi.config.listeners.AssocConfigNotifier
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.icons.associations.Associations
 import java.util.*
-import kotlin.collections.ArrayList
 
 @State(
   name = "Atom Icon Associations Config",
@@ -46,12 +44,10 @@ import kotlin.collections.ArrayList
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   @Property
-  @XCollection
-  var customFileAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100);
+  var customFileAssociations: Associations = Associations()
 
   @Property
-  @XCollection
-  var customFolderAssociations: List<RegexAssociation> = ArrayList<RegexAssociation>(100)
+  var customFolderAssociations: Associations = Associations()
 
   override fun getState(): AtomAssocConfig? = this
 
@@ -59,9 +55,9 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
     XmlSerializerUtil.copyBean(state, this)
   }
 
-  fun applySettings(form: AssociationsForm?) {
-    customFileAssociations = form?.getFileAssociations() ?: listOf();
-    customFolderAssociations = form?.getFolderAssociations() ?: listOf();
+  fun applySettings(form: AssociationsForm) {
+    customFileAssociations = form.getFileAssociations()
+    customFolderAssociations = form.getFolderAssociations()
 
     fireChanged()
   }

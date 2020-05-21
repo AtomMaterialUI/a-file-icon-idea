@@ -33,7 +33,6 @@ import java.io.Serializable;
 /**
  * Represent an association of a name with an icon
  */
-@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public abstract class Association implements Serializable {
   @NonNls
   @Property

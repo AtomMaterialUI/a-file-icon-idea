@@ -48,7 +48,7 @@ class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(
   }
 
   protected override fun doApply(form: AssociationsForm?, config: AtomAssocConfig?) {
-    config?.applySettings(form);
+    config?.applySettings(form!!);
   }
 
   protected override fun checkModified(form: AssociationsForm?, config: AtomAssocConfig?): Boolean {

@@ -36,18 +36,16 @@ import com.mallowigi.config.associations.AtomAssocConfig;
 import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
-import com.mallowigi.config.associations.ui.internal.AssociationsTableDataChangedListener;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
+import com.mallowigi.icons.associations.Associations;
 import com.mallowigi.icons.associations.RegexAssociation;
 import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"UndesirableClassUsage",
@@ -67,6 +65,25 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     new NameEditableColumnInfo(this),
     new PatternEditableColumnInfo(this),
     new IconEditableColumnInfo(this)};
+
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JTabbedPane tabbedContainer;
+  private JPanel customFileIconsNew;
+  private JPanel customFolderIconsNew;
+  private JPanel defaultFileIcons;
+  private JPanel defFileIconsPanel;
+  private JScrollPane fileIconsScrollPane;
+  private FileAssociationsTable defaultFileIconsTable;
+  private JPanel defaultFolderIcons;
+  private JPanel defFolderIconsPanel;
+  private JScrollPane folderIconsScrollpane;
+  private FolderAssociationsTable defaultFolderIconsTable;
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
+  private JComponent customFileIconsTable;
+  private JComponent customFolderIconsTable;
+  private TableModelEditor<RegexAssociation> customFileAssociationsEditor;
+  private TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
 
   public AssociationsForm() {
 
@@ -94,8 +111,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   }
 
   public void setFormState(final AtomAssocConfig config) {
-    customFileAssociationsEditor.reset(config.getCustomFileAssociations());
-    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations());
+    customFileAssociationsEditor.reset(config.getCustomFileAssociations().getCustomAssociations());
+    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations().getCustomAssociations());
     afterStateSet();
   }
 
@@ -104,19 +121,18 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       return false;
     }
 
-    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
-    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
-    return modified;
+    //    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    //    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    //    return modified;
+    return true;
   }
 
-  @NotNull
-  public List<RegexAssociation> getFileAssociations() {
-    return Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems());
+  public Associations getFileAssociations() {
+    return new Associations(Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems()));
   }
 
-  @NotNull
-  public List<RegexAssociation> getFolderAssociations() {
-    return Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems());
+  public Associations getFolderAssociations() {
+    return new Associations(Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems()));
   }
 
   private void initComponents() {
@@ -273,8 +289,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     customFileAssociationsEditor = new TableModelEditor<>(fileColumns,
                                                           itemEditor,
-                                                          AtomSettingsBundle.message("no.custom.file.associations"))
-      .modelListener(new AssociationsTableDataChangedListener());
+                                                          AtomSettingsBundle.message("no.custom.file.associations"));
     customFileIconsTable = customFileAssociationsEditor.createComponent();
     customFileIconsNew.add(customFileIconsTable, "cell 0 0"); //NON-NLS
   }
@@ -286,30 +301,9 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     customFolderAssociationsEditor = new TableModelEditor<>(folderColumns,
                                                             itemEditor,
-                                                            AtomSettingsBundle.message("no.custom.folder.associations"))
-      .modelListener(new AssociationsTableDataChangedListener());
+                                                            AtomSettingsBundle.message("no.custom.folder.associations"));
     customFolderIconsTable = customFolderAssociationsEditor.createComponent();
     customFolderIconsNew.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
   }
-
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
-  private JTabbedPane tabbedContainer;
-  private JPanel customFileIconsNew;
-  private JPanel customFolderIconsNew;
-  private JPanel defaultFileIcons;
-  private JPanel defFileIconsPanel;
-  private JScrollPane fileIconsScrollPane;
-  private FileAssociationsTable defaultFileIconsTable;
-  private JPanel defaultFolderIcons;
-  private JPanel defFolderIconsPanel;
-  private JScrollPane folderIconsScrollpane;
-  private FolderAssociationsTable defaultFolderIconsTable;
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
-  private JComponent customFileIconsTable;
-  private JComponent customFolderIconsTable;
-
-  private TableModelEditor<RegexAssociation> customFileAssociationsEditor;
-  private TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
 
 }

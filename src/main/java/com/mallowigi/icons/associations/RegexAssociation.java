@@ -50,6 +50,21 @@ public final class RegexAssociation extends Association {
     this.pattern = pattern;
   }
 
+  public RegexAssociation(final Association association) {
+    this(association.getName(),
+         association.getMatcher(),
+         association.getIcon()
+    );
+  }
+
+  @Override
+  public boolean matches(final FileInfo file) {
+    if (compiledPattern == null) {
+      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+    }
+    return compiledPattern.matcher(file.getName()).matches();
+  }
+
   @SuppressWarnings("CallToSimpleGetterFromWithinClass")
   @Override
   public String getMatcher() {
@@ -60,14 +75,6 @@ public final class RegexAssociation extends Association {
   @Override
   public void setMatcher(final String value) {
     setPattern(value);
-  }
-
-  @Override
-  public boolean matches(final FileInfo file) {
-    if (compiledPattern == null) {
-      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-    }
-    return compiledPattern.matcher(file.getName()).matches();
   }
 
   @Override
