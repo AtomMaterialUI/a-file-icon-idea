@@ -27,6 +27,7 @@
 package com.mallowigi.icons;
 
 import com.intellij.ide.IconProvider;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -34,6 +35,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiUtilCore;
 import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.config.associations.AtomAssocConfig;
 import com.mallowigi.icons.associations.Association;
 import com.mallowigi.icons.associations.Associations;
 import com.mallowigi.icons.associations.AssociationsFactory;
@@ -47,29 +49,21 @@ import javax.swing.Icon;
  * Provider for file icons
  */
 public final class FileIconProvider extends IconProvider implements DumbAware {
-
-  private static final Associations associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
-  private static final Associations dirAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
-
-  public static Associations getAssociations() {
-    return associations;
-  }
-
-  public static Associations getDirAssociations() {
-    return dirAssociations;
-  }
+  public static final Associations DEF_FILE_ASSOCIATIONS = AssociationsFactory.create("/iconGenerator/icon_associations.xml");
+  public static final Associations DEF_FOLDER_ASSOCIATIONS = AssociationsFactory.create("/iconGenerator/folder_associations.xml");
+  private static final Logger LOG = Logger.getInstance(FileIconProvider.class);
 
   private static Icon getFileIcon(final PsiElement psiElement) {
-    Icon icon = null;
     if (!AtomFileIconsConfig.getInstance().isEnabledIcons()) {
       return null;
     }
 
+    Icon icon = null;
     final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
     if (virtualFile != null) {
       final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-      final Association associationForFile = associations.findAssociationForFile(file);
-      icon = getIconForAssociation(file, associationForFile);
+      final Association fileAssociation = findFileAssociation(file);
+      icon = getIconForAssociation(file, fileAssociation);
     }
     return icon;
   }
@@ -83,7 +77,7 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
     if (virtualFile != null) {
       final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-      icon = getDirectoryIconForAssociation(dirAssociations.findAssociationForFile(file));
+      icon = getDirectoryIconForAssociation(DEF_FOLDER_ASSOCIATIONS.findAssociationForFile(file));
     }
     return icon;
   }
@@ -130,6 +124,28 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     return icon;
   }
 
+  private static Association findFileAssociation(final FileInfo file) {
+    final Associations customFileAssociations = AtomAssocConfig.getInstance().getCustomFileAssociations();
+
+    Association result = customFileAssociations.findAssociationForFile(file);
+    if (result == null) {
+      result = DEF_FILE_ASSOCIATIONS.findAssociationForFile(file);
+    }
+
+    return result;
+  }
+
+  private static Association findFolderAssociation(final FileInfo file) {
+    final Associations customFolderAssociations = AtomAssocConfig.getInstance().getCustomFolderAssociations();
+
+    Association result = customFolderAssociations.findAssociationForFile(file);
+    if (result == null) {
+      result = DEF_FOLDER_ASSOCIATIONS.findAssociationForFile(file);
+    }
+
+    return result;
+  }
+
   @Nullable
   @Override
   public Icon getIcon(@NotNull final PsiElement element, final int flags) {
@@ -140,6 +156,9 @@ public final class FileIconProvider extends IconProvider implements DumbAware {
     }
     else if (element instanceof PsiFile) {
       icon = getFileIcon(element);
+    }
+    else {
+      LOG.warn("unsupported element");
     }
 
     return icon;

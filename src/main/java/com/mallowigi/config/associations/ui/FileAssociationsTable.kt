@@ -37,7 +37,7 @@ import javax.swing.JTable
 import javax.swing.ListSelectionModel
 import javax.swing.table.AbstractTableModel
 
-internal class FileAssociationsTable : JBTable(MyTableModel(FileIconProvider.getAssociations().associations)) {
+internal class FileAssociationsTable : JBTable(MyTableModel(FileIconProvider.DEF_FILE_ASSOCIATIONS.associations)) {
   private fun initColumns() {
     val iconColumn = getColumnModel().getColumn(ICON_COLUMN)
     iconColumn.cellRenderer = object : IconTableCellRenderer<String>() {
