@@ -47,15 +47,16 @@
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
-                      order="after HiddenIconProvider"
+                      order="first, after HiddenIconProvider"
                       id="CustomFileIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"
-                      id="CustomFolderIconProvider"
-                      order="after HiddenIconProvider"/>
+                      order="first, after HiddenIconProvider"
+                      id="CustomFolderIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
-                      order="after CustomFileIconProvider"
+                      order="first, after CustomFileIconProvider"
                       id="DefaultFileIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
+                      order="first, after CustomFolderIconProvider"
                       id="DefaultFolderIconProvider"/>
         <!--        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>-->
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
