@@ -1,6 +1,7 @@
 package com.mallowigi.icons.providers
 
 import com.intellij.psi.PsiDirectory
+import com.intellij.psi.PsiElement
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.Associations
 import com.mallowigi.icons.associations.AssociationsFactory
@@ -10,7 +11,7 @@ import javax.swing.Icon
 class DefaultFolderIconProvider : AbstractFileIconProvider() {
   override fun getIcon(iconPath: String): Icon? = MTIcons.getFolderIcon(iconPath)
 
-  override fun isOfType(element: Any): Boolean = element is PsiDirectory
+  override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
 

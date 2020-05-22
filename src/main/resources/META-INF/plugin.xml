@@ -38,13 +38,12 @@
         <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
         <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
                                  groupId="appearance" dynamic="true"
-                                 displayName="Atom Material Icons Config"
-                                 id="com.mallowigi.config.atomConfig"/>
+                                 id="AtomConfig"/>
         <applicationService serviceImplementation="com.mallowigi.config.associations.AtomAssocConfig"/>
         <applicationConfigurable instance="com.mallowigi.config.associations.AssocConfigurable"
-                                 groupId="appearance"
-                                 displayName="Atom Associations Config"
-                                 id="com.mallowigi.config.assocConfigurable"/>
+                                 groupId="appearance" dynamic="true"
+                                 id="AtomAssocConfig"/>
+
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
@@ -57,7 +56,6 @@
                       order="after CustomFileIconProvider"
                       id="DefaultFileIconProvider"/>
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
-                      order="after CustomFolderIconProvider"
                       id="DefaultFolderIconProvider"/>
         <!--        <iconProvider implementation="com.mallowigi.icons.FileIconProvider" order="first"/>-->
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>

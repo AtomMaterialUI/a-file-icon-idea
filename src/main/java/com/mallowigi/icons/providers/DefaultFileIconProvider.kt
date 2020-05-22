@@ -1,5 +1,6 @@
 package com.mallowigi.icons.providers
 
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.Associations
@@ -18,7 +19,7 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
 
   override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledIcons
 
-  override fun isOfType(element: Any): Boolean = element is PsiFile
+  override fun isOfType(element: PsiElement): Boolean = element is PsiFile
 
   companion object {
     val associations = AssociationsFactory.create("/iconGenerator/icon_associations.xml")

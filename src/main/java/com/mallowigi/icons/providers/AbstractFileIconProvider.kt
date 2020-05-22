@@ -21,8 +21,6 @@ abstract class AbstractFileIconProvider : IconProvider() {
     return null
   }
 
-  abstract fun isOfType(element: Any): Boolean
-
   private fun findIcon(element: PsiElement): Icon? {
     var icon: Icon? = null
     val virtualFile = PsiUtilCore.getVirtualFile(element)
@@ -35,16 +33,16 @@ abstract class AbstractFileIconProvider : IconProvider() {
     return icon
   }
 
-  private fun getIconForAssociation(fileAssociation: Association?): Icon? {
-    return fileAssociation.toOptional()
-      .map { loadIcon(fileAssociation) }
+  private fun getIconForAssociation(association: Association?): Icon? {
+    return association.toOptional()
+      .map { loadIcon(association) }
       .orElseGet { null }
   }
 
-  private fun loadIcon(fileAssociation: Association?): Icon? {
+  private fun loadIcon(association: Association?): Icon? {
     var icon: Icon? = null
     try {
-      val iconPath = fileAssociation!!.icon
+      val iconPath = association!!.icon
       icon = getIcon(iconPath)
     }
     catch (e: RuntimeException) {
@@ -56,6 +54,8 @@ abstract class AbstractFileIconProvider : IconProvider() {
   private fun findFileAssociation(file: FileInfo): @Nullable Association? {
     return getSource().findAssociation(file)
   }
+
+  abstract fun isOfType(element: PsiElement): Boolean
 
   abstract fun isNotAppliable(): Boolean
 

@@ -1,6 +1,7 @@
 package com.mallowigi.icons.providers
 
 import com.intellij.psi.PsiDirectory
+import com.intellij.psi.PsiElement
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.associations.AtomAssocConfig
 import icons.MTIcons
@@ -13,7 +14,7 @@ class CustomFolderIconProvider : AbstractFileIconProvider() {
 
   override fun isDefault(): Boolean = false
 
-  override fun isOfType(element: Any): Boolean = element is PsiDirectory
+  override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
   override fun getIcon(iconPath: String): Icon? = MTIcons.loadSVGIcon(iconPath)
 
