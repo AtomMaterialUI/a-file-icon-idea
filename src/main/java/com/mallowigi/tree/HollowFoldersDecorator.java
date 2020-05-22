@@ -32,7 +32,6 @@ import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
-import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.util.Disposer;
@@ -43,9 +42,12 @@ import com.intellij.util.PlatformIcons;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.icons.DirIcon;
 import icons.MTIcons;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
@@ -53,36 +55,12 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
   @Nullable
   private static volatile Icon directory = MTIcons.Nodes2.FolderOpen;
   private final boolean useHollowFolders;
+  private FileEditorManagerEx manager;
 
   public HollowFoldersDecorator() {
     useHollowFolders = AtomFileIconsConfig.getInstance().isUseHollowFolders();
   }
 
-  /**
-   * Try to mimic the "open or closed"  folder feature
-   */
-  @SuppressWarnings("MethodWithMultipleLoops")
-  private static void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
-    if (!file.isDirectory()) {
-      return;
-    }
-
-    ApplicationManager.getApplication().invokeLater(() -> {
-      if (!Disposer.isDisposed(project)) {
-        final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-        for (final EditorWindow editorWindow : manager.getWindows()) {
-          final VirtualFile[] files = editorWindow.getFiles();
-          for (final VirtualFile leaf : files) {
-            if (leaf.getPath().contains(file.getPath())) {
-              setOpenDirectoryIcon(data, file, project);
-            }
-          }
-        }
-      }
-    });
-  }
-
-  @SuppressWarnings("IfStatementWithTooManyBranches")
   private static void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     try {
       if (data.getIcon(true) instanceof DirIcon) {
@@ -128,10 +106,22 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
     final Project project = node.getProject();
 
     // Color file status
-    if (file != null) {
-      if (useHollowFolders) {
-        setOpenOrClosedIcon(data, file, project);
+    if (project != null && file != null && !Disposer.isDisposed(project)) {
+      if (!useHollowFolders || !file.isDirectory()) {
+        return;
       }
+      if (manager == null) {
+        manager = FileEditorManagerEx.getInstanceEx(project);
+      }
+
+      ApplicationManager.getApplication().invokeLater(() -> {
+        final List<@NotNull VirtualFile> openFiles = Arrays.asList(manager.getOpenFiles());
+
+        openFiles.stream()
+          .filter(virtualFile -> virtualFile.getPath().contains(file.getPath()))
+          .findFirst()
+          .ifPresent(virtualFile -> setOpenDirectoryIcon(data, virtualFile, project));
+      });
     }
   }
 
