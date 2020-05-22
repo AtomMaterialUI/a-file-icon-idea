@@ -26,6 +26,7 @@ package com.mallowigi.config.associations.ui.columns
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
+import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.associations.ui.internal.RegexpEditor
@@ -47,7 +48,9 @@ class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumn
   }
 
   override fun getEditor(item: Association?): @Nullable TableCellEditor? {
-    return RegexpEditor()
+    val cellEditor = ExtendableTextField()
+
+    return RegexpEditor(cellEditor, parent)
   }
 
   override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
@@ -58,10 +61,10 @@ class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumn
   companion object {
     private fun validate(value: Any?): ValidationInfo? {
       return if (value == null || value == "") {
-        ValidationInfo(message("you.must.enter.a.name"))
+        ValidationInfo(message("AtomAssocConfig.PatternEditor.empty"))
       }
       else if (!isValidPattern(value.toString())) {
-        ValidationInfo(message("please.enter.a.valid.pattern"))
+        ValidationInfo(message("AtomAssocConfig.PatternEditor.invalid"))
       }
       else {
         null

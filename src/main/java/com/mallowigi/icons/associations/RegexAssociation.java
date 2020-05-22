@@ -24,19 +24,21 @@
 
 package com.mallowigi.icons.associations;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.icons.FileInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Association for Regular Expressions
  */
 public final class RegexAssociation extends Association {
+  private static final Logger LOG = Logger.getInstance(RegexAssociation.class);
   @Property
   private String pattern;
-
   private transient Pattern compiledPattern;
 
   public RegexAssociation() {
@@ -59,10 +61,16 @@ public final class RegexAssociation extends Association {
 
   @Override
   public boolean matches(final FileInfo file) {
-    if (compiledPattern == null) {
-      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+    try {
+      if (compiledPattern == null) {
+        compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+      }
+      return compiledPattern.matcher(file.getName()).matches();
     }
-    return compiledPattern.matcher(file.getName()).matches();
+    catch (final PatternSyntaxException e) {
+      LOG.warn(e);
+      return false;
+    }
   }
 
   @SuppressWarnings("CallToSimpleGetterFromWithinClass")

@@ -55,7 +55,7 @@ class NameEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int ->
         if (value == null || value == "") {
-          return@withCellValidator ValidationInfo(message("you.must.enter.a.name"))
+          return@withCellValidator ValidationInfo(message("AtomAssocConfig.NameEditor.empty"))
         }
         else {
           return@withCellValidator null

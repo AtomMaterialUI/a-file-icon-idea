@@ -23,28 +23,119 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.openapi.Disposable
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.editor.event.DocumentEvent
+import com.intellij.openapi.editor.event.DocumentListener
 import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.ui.ComponentValidator
+import com.intellij.openapi.ui.ValidationInfo
+import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
+import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
+import com.intellij.openapi.util.Disposer
 import com.intellij.ui.EditorTextField
 import org.intellij.lang.regexp.RegExpFileType
 import java.awt.Component
-import javax.swing.AbstractCellEditor
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.awt.event.KeyEvent
+import java.util.function.Consumer
+import javax.swing.JComponent
 import javax.swing.JTable
+import javax.swing.JTextField
+import javax.swing.KeyStroke
 import javax.swing.table.TableCellEditor
 
-class RegexpEditor : AbstractCellEditor(), TableCellEditor {
+class RegexpEditor(textField: JTextField,
+                   parent: Disposable) : StatefulValidatingCellEditor(textField, parent), TableCellEditor {
+  private var editor: EditorTextField
   private var myDocument: Document? = null
+  private val stateUpdater = Consumer { _: ValidationInfo? -> }
+
+  init {
+    // Creates a regex editor
+    editor = EditorTextField(ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
+    editor.setOneLineMode(true)
+    // Register enter and escape keys
+    editor.registerKeyboardAction(ActionListener { _: ActionEvent? -> stopCellEditing() },
+      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+      JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+    editor.registerKeyboardAction(ActionListener { _: ActionEvent? -> cancelCellEditing() },
+      KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+      JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+
+    myDocument = editor.document
+    clickCountToStart = 2
+
+    // Install validations
+    ComponentValidator(parent).withValidator(this).installOn(editor)
+
+    // Reset validations when document changes but revalidates once blurreed
+    val dl: DocumentListener = object : DocumentListener {
+      override fun documentChanged(event: DocumentEvent) {
+        editor.putClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY, null)
+        ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
+      }
+    }
+
+    myDocument!!.addDocumentListener(dl)
+    Disposer.register(parent, Disposable { myDocument!!.removeDocumentListener(dl) })
+  }
+
   override fun getTableCellEditorComponent(table: JTable,
                                            value: Any,
                                            isSelected: Boolean,
                                            row: Int,
                                            column: Int): Component {
-    val editorTextField = EditorTextField(value.toString(), ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
-    myDocument = editorTextField.document
-    return editorTextField
+
+    editor.text = value.toString()
+    // Install validations on renderer
+    val renderer = table.getCellRenderer(row, column)
+      .getTableCellRendererComponent(table, value, isSelected, true, row, column) as JComponent
+
+    val validationProperty = renderer.getClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY)
+    if (validationProperty != null) {
+      val cellInfo = validationProperty as ValidationInfo
+      // Add validation info
+      editor.putClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY, cellInfo.forComponent(editor))
+
+      // Revalidates
+      ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
+    }
+    return editor
   }
 
   override fun getCellEditorValue(): Any {
     return myDocument!!.text
+  }
+
+  override fun stopCellEditing(): Boolean {
+    // Revalidates on blur
+    ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
+    fireEditingStopped()
+    return true
+  }
+
+  override fun cancelCellEditing() {
+    // Revalidates on cancel
+    ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
+    fireEditingCanceled()
+  }
+
+  /**
+   * Executes validations
+   */
+  override fun get(): ValidationInfo? {
+    val validationProperty = editor.getClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY)
+    if (validationProperty != null) {
+      val info = validationProperty as ValidationInfo
+      stateUpdater.accept(info)
+      return info
+    }
+    return null
+  }
+
+  override fun getComponent(): Component {
+    return editor
   }
 }
