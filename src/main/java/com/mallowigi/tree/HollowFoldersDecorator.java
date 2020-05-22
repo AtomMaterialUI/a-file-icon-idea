@@ -45,7 +45,7 @@ import com.mallowigi.icons.DirIcon;
 import icons.MTIcons;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.Icon;
 import java.util.Objects;
 
 public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
@@ -56,29 +56,6 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
 
   public HollowFoldersDecorator() {
     useHollowFolders = AtomFileIconsConfig.getInstance().isUseHollowFolders();
-  }
-
-  public static void resetCache() {
-    directory = null;
-  }
-
-  @Override
-  public void decorate(final PackageDependenciesNode node, final ColoredTreeCellRenderer cellRenderer) {
-
-  }
-
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public void decorate(final ProjectViewNode node, final PresentationData data) {
-    final VirtualFile file = node.getVirtualFile();
-    final Project project = node.getProject();
-
-    // Color file status
-    if (file != null) {
-      if (useHollowFolders) {
-        setOpenOrClosedIcon(data, file, project);
-      }
-    }
   }
 
   /**
@@ -111,21 +88,28 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
       if (data.getIcon(true) instanceof DirIcon) {
         final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
         data.setIcon(new DirIcon(openedIcon));
-      } else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+      }
+      else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
         data.setIcon(MTIcons.EXCLUDED);
-      } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+      }
+      else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
         data.setIcon(MTIcons.MODULE);
-      } else if (ProjectRootsUtil.isInSource(file, project)) {
+      }
+      else if (ProjectRootsUtil.isInSource(file, project)) {
         data.setIcon(MTIcons.SOURCE);
-      } else if (ProjectRootsUtil.isInTestSource(file, project)) {
+      }
+      else if (ProjectRootsUtil.isInTestSource(file, project)) {
         data.setIcon(MTIcons.TEST);
-      } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
+      }
+      else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
         //      Looks like an open directory anyway
         data.setIcon(PlatformIcons.PACKAGE_ICON);
-      } else {
+      }
+      else {
         data.setIcon(getDirectoryIcon());
       }
-    } catch (Exception e) {
+    }
+    catch (final Exception e) {
     }
   }
 
@@ -136,5 +120,23 @@ public final class HollowFoldersDecorator implements ProjectViewNodeDecorator {
     }
 
     return directory;
+  }
+
+  @Override
+  public void decorate(final ProjectViewNode node, final PresentationData data) {
+    final VirtualFile file = node.getVirtualFile();
+    final Project project = node.getProject();
+
+    // Color file status
+    if (file != null) {
+      if (useHollowFolders) {
+        setOpenOrClosedIcon(data, file, project);
+      }
+    }
+  }
+
+  @Override
+  public void decorate(final PackageDependenciesNode node, final ColoredTreeCellRenderer cellRenderer) {
+
   }
 }

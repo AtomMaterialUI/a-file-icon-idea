@@ -1,79 +1,55 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2020 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
+package com.mallowigi.tree.arrows
 
-package com.mallowigi.tree.arrows;
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.util.IconLoader
+import org.jetbrains.annotations.NonNls
+import javax.swing.Icon
 
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.util.IconLoader;
-import org.jetbrains.annotations.NonNls;
+enum class ArrowsStyles(@param:NonNls private val type: String, private val arrowsStyle: ArrowsStyle) {
+  MATERIAL("Material", MaterialArrowsStyle()),
+  DARCULA("Darcula", DarculaArrowsStyle()),
+  PLUSMINUS("Plus-Minus", PlusMinusArrowsStyle()),
+  ARROWS("Arrows", ArrowsArrowsStyle()),
+  NONE("None", NoneArrowsStyle());
 
-import javax.swing.*;
+  override fun toString(): String = type
 
-@SuppressWarnings("NonSerializableFieldInSerializableClass")
-public enum ArrowsStyles {
-  MATERIAL("Material", new MaterialArrowsStyle()),
-  DARCULA("Darcula", new DarculaArrowsStyle()),
-  PLUSMINUS("Plus-Minus", new PlusMinusArrowsStyle()),
-  ARROWS("Arrows", new ArrowsArrowsStyle()),
-  NONE("None", new NoneArrowsStyle());
+  val expandIcon: Icon?
+    get() = arrowsStyle.expandIcon
 
-  private final String type;
-  private final ArrowsStyle arrowsStyle;
+  val collapseIcon: Icon?
+    get() = arrowsStyle.collapseIcon
 
-  ArrowsStyles(@NonNls final String type, final ArrowsStyle arrowsStyle) {
-    this.type = type;
-    this.arrowsStyle = arrowsStyle;
-  }
+  val selectedExpandIcon: Icon?
+    get() = arrowsStyle.selectedExpandIcon
 
-  @Override
-  public String toString() {
-    return type;
-  }
+  val selectedCollapseIcon: Icon?
+    get() = arrowsStyle.selectedCollapseIcon
 
-  public Icon getExpandIcon() {
-    return arrowsStyle.getExpandIcon();
-  }
+  val icon: Icon
+    get() = expandIcon ?: IconLoader.getTransparentIcon(AllIcons.Ide.Link, 0.0f)
 
-  public Icon getCollapseIcon() {
-    return arrowsStyle.getCollapseIcon();
-  }
-
-  public Icon getSelectedExpandIcon() {
-    return arrowsStyle.getSelectedExpandIcon();
-  }
-
-  public Icon getSelectedCollapseIcon() {
-    return arrowsStyle.getSelectedCollapseIcon();
-  }
-
-  public Icon getIcon() {
-    final Icon icon = getExpandIcon();
-    if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Ide.Link, 0.0f);
-    }
-    return icon;
-  }
 }

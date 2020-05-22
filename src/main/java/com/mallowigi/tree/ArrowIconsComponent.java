@@ -39,7 +39,9 @@ import com.mallowigi.tree.arrows.ArrowsStyles;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
 public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleListener {
   private final MessageBusConnection connect;
