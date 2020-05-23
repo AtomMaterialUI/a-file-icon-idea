@@ -32,7 +32,7 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.XCollection;
 import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.icons.FileInfo;
+import com.mallowigi.models.FileInfo;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 

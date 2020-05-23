@@ -26,7 +26,7 @@ package com.mallowigi.icons.associations;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
+import com.mallowigi.models.FileInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Pattern;
@@ -65,7 +65,7 @@ public final class RegexAssociation extends Association {
       if (compiledPattern == null) {
         compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
       }
-      return compiledPattern.matcher(file.getName()).matches();
+      return compiledPattern.matcher(file.name).matches();
     }
     catch (final PatternSyntaxException e) {
       LOG.warn(e);

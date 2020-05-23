@@ -29,12 +29,12 @@ import com.intellij.openapi.util.Ref;
 import com.intellij.ui.scale.ScaleContext;
 import com.intellij.util.IconUtil;
 import com.intellij.util.SVGLoader;
-import com.mallowigi.icons.DirIcon;
+import com.mallowigi.icons.models.DirIcon;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,6 +74,19 @@ public final class MTIcons {
     return IconLoader.findIcon(path);
   }
 
+  @NotNull
+  public static Icon loadSVGIcon(final String canonicalPath) throws IOException {
+    final Ref<URL> url = Ref.create();
+    try {
+      url.set(new File(canonicalPath).toURI().toURL());
+    }
+    catch (final MalformedURLException ex) {
+    }
+    final Image bufferedImage = SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), ScaleContext.create());
+
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), 16, 16);
+  }
+
   public static final class Arrows {
     public static Icon MaterialDownSelected = load("/icons/mac/material/down_selected.svg");
     public static Icon MaterialRightSelected = load("/icons/mac/material/right_selected.svg");
@@ -96,19 +109,6 @@ public final class MTIcons {
 
   public static final class Nodes2 {
     public static final Icon FolderOpen = load("/icons/nodes/folderOpen.svg");
-  }
-
-  @NotNull
-  public static Icon loadSVGIcon(final String canonicalPath) throws IOException {
-    final Ref<URL> url = Ref.create();
-    try {
-      url.set(new File(canonicalPath).toURI().toURL());
-    }
-    catch (final MalformedURLException ex) {
-    }
-    final Image bufferedImage = SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), ScaleContext.create());
-
-    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), 16, 16);
   }
 
 }

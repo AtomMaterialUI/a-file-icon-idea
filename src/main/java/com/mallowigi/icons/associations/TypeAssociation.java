@@ -25,7 +25,7 @@
 package com.mallowigi.icons.associations;
 
 import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.icons.FileInfo;
+import com.mallowigi.models.FileInfo;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +52,7 @@ public final class TypeAssociation extends Association {
 
   @Override
   public boolean matches(final FileInfo file) {
-    return file.getFileType().equals(type);
+    return file.fileType.equals(type);
   }
 
   @SuppressWarnings("CallToSimpleGetterFromWithinClass")

@@ -21,16 +21,55 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.models;
 
-package com.mallowigi.icons;
+import icons.MTIcons;
 
-import com.intellij.psi.PsiElement;
+import javax.swing.Icon;
+import java.awt.Component;
+import java.awt.Graphics;
 
-public interface FileInfo {
+public class DirIcon implements Icon {
 
-  String getName();
+  private final Icon closedIcon;
+  private final Icon openedIcon;
 
-  String getFileType();
+  @SuppressWarnings("unused")
+  DirIcon() {
+    this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen);
+  }
 
-  PsiElement getPsiElement();
+  @SuppressWarnings("unused")
+  public DirIcon(final Icon icon) {
+    this(icon, icon);
+  }
+
+  public DirIcon(final Icon closedIcon, final Icon openedIcon) {
+    this.closedIcon = closedIcon;
+    this.openedIcon = openedIcon;
+  }
+
+  @Override
+  public final void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+    closedIcon.paintIcon(c, g, x, y);
+  }
+
+  @Override
+  public final int getIconWidth() {
+    return closedIcon.getIconWidth();
+  }
+
+  @Override
+  public final int getIconHeight() {
+    return closedIcon.getIconHeight();
+  }
+
+  @SuppressWarnings("unused")
+  public final Icon getClosedIcon() {
+    return closedIcon;
+  }
+
+  public final Icon getOpenedIcon() {
+    return openedIcon;
+  }
 }

@@ -27,10 +27,10 @@ package com.mallowigi.icons.providers
 import com.intellij.ide.IconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
-import com.mallowigi.icons.FileInfo
-import com.mallowigi.icons.VirtualFileInfo
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
+import com.mallowigi.models.FileInfo
+import com.mallowigi.models.VirtualFileInfo
 import com.mallowigi.services.toOptional
 import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
