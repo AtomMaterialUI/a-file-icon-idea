@@ -31,7 +31,7 @@ import com.mallowigi.icons.FileInfo
 import com.mallowigi.icons.VirtualFileInfo
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
-import com.mallowigi.toOptional
+import com.mallowigi.services.toOptional
 import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
 

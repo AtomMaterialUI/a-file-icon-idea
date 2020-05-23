@@ -22,7 +22,7 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi
+package com.mallowigi.services
 
 import com.intellij.ui.ColorUtil
 import java.awt.Color
