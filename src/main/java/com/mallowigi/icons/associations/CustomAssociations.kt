@@ -21,28 +21,41 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.associations
 
-package com.mallowigi.icons.providers
+import com.google.common.collect.ImmutableSet
+import com.intellij.openapi.diagnostic.Logger
+import com.intellij.util.xmlb.annotations.Property
+import com.intellij.util.xmlb.annotations.XCollection
+import com.mallowigi.models.FileInfo
+import org.jetbrains.annotations.NonNls
+import java.util.List.copyOf
 
-import com.intellij.psi.PsiDirectory
-import com.intellij.psi.PsiElement
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.associations.AtomAssocConfig
-import com.mallowigi.icons.associations.CustomAssociations
-import icons.MTIcons
-import javax.swing.Icon
+class CustomAssociations : Associations {
+  @Property
+  @XCollection
+  private val customAssociations: List<RegexAssociation>
 
-class CustomFolderIconProvider : AbstractFileIconProvider() {
-  override fun getSource(): CustomAssociations = AtomAssocConfig.instance.customFolderAssociations
+  constructor() {
+    customAssociations = emptyList()
+  }
 
-  override fun getType(): IconType = IconType.FOLDER
+  constructor(associations: List<RegexAssociation>) {
+    customAssociations = copyOf(associations)
+  }
 
-  override fun isDefault(): Boolean = false
+  override fun findMatchingAssociation(file: FileInfo?): Association? =
+    customAssociations.stream()
+      .filter { association: RegexAssociation -> association.matches(file!!) }
+      .findAny()
+      .orElse(null)
 
-  override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
+  override fun getTheAssociations() = customAssociations
 
-  override fun getIcon(iconPath: String): Icon? = MTIcons.loadSVGIcon(iconPath)
+  companion object {
+    private val LOG = Logger.getInstance(CustomAssociations::class.java)
 
-  override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledDirectories
-
+    @NonNls
+    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
+  }
 }

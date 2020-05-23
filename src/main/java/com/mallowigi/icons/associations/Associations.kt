@@ -27,46 +27,16 @@ import com.google.common.collect.ImmutableSet
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.extensions.PluginId
-import com.intellij.util.xmlb.annotations.Property
-import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.models.FileInfo
 import org.jetbrains.annotations.NonNls
 import java.io.Serializable
-import java.util.List.copyOf
 
-class Associations : Serializable {
-  @Property
-  @XCollection
-  private val customAssociations: List<RegexAssociation>?
-
-  var associations: List<Association>
-
-  constructor() {
-    associations = emptyList()
-    customAssociations = emptyList()
-  }
-
-  constructor(associations: List<RegexAssociation>) {
-    this.associations = emptyList()
-    customAssociations = copyOf(associations)
-  }
-
+abstract class Associations : Serializable {
   fun findAssociation(file: FileInfo?): Association? {
     val matching: Association?
     // First check in custom assocs
-    matching = if (customAssociations != null) {
-      customAssociations.stream()
-        .filter { association: RegexAssociation -> association.matches(file!!) }
-        .findAny()
-        .orElse(null)
-    }
-    else {
-      associations.stream()
-        .filter { association: Association -> association.matches(file!!) }
-        .findAny()
-        .orElse(null)
-    }
+    matching = findMatchingAssociation(file);
     // Specific plugin handling
     if (matching != null && IMAGE_TYPES.contains(matching.name)) {
       try {
@@ -85,9 +55,9 @@ class Associations : Serializable {
     return matching
   }
 
-  fun getCustomAssociations(): List<RegexAssociation>? {
-    return customAssociations
-  }
+  abstract fun findMatchingAssociation(file: FileInfo?): Association?
+
+  abstract fun getTheAssociations(): List<Association>;
 
   companion object {
     private val LOG = Logger.getInstance(Associations::class.java)
@@ -95,4 +65,5 @@ class Associations : Serializable {
     @NonNls
     private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
   }
+
 }

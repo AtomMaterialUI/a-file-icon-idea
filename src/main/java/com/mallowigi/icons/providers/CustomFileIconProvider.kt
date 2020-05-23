@@ -28,11 +28,12 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.associations.AtomAssocConfig
+import com.mallowigi.icons.associations.CustomAssociations
 import icons.MTIcons
 import javax.swing.Icon
 
 class CustomFileIconProvider : AbstractFileIconProvider() {
-  override fun getSource() = AtomAssocConfig.instance.customFileAssociations
+  override fun getSource(): CustomAssociations = AtomAssocConfig.instance.customFileAssociations
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiFile
 

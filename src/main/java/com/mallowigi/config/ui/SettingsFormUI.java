@@ -26,9 +26,6 @@ package com.mallowigi.config.ui;
 
 import javax.swing.JComponent;
 
-/**
- * Created by helio on 24/03/2017.
- */
 public interface SettingsFormUI {
   void init();
 

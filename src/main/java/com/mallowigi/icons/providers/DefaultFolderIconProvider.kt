@@ -31,7 +31,7 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.icons.special.DirIcon
 import icons.MTIcons
@@ -46,7 +46,7 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
 
-  override fun getSource(): Associations = associations
+  override fun getSource(): DefaultAssociations = associations
 
   override fun getType(): IconType = IconType.FOLDER
 

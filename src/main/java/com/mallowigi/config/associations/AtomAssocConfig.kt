@@ -34,7 +34,7 @@ import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.config.associations.ui.AssociationsForm
 import com.mallowigi.config.listeners.AssocConfigNotifier
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.CustomAssociations
 import java.util.*
 
 @State(
@@ -44,10 +44,10 @@ import java.util.*
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   @Property
-  var customFileAssociations: Associations = Associations()
+  var customFileAssociations: CustomAssociations = CustomAssociations()
 
   @Property
-  var customFolderAssociations: Associations = Associations()
+  var customFolderAssociations: CustomAssociations = CustomAssociations()
 
   override fun getState(): AtomAssocConfig? = this
 

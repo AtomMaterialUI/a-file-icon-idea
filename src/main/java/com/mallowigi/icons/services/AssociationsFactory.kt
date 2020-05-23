@@ -24,7 +24,7 @@
 package com.mallowigi.icons.services
 
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.TypeAssociation
 import com.thoughtworks.xstream.XStream
@@ -34,26 +34,27 @@ import org.jetbrains.annotations.NonNls
 @NonNls
 object AssociationsFactory {
 
-  fun create(associationsFile: String?): Associations {
+  fun create(associationsFile: String?): DefaultAssociations {
     val associationsXml = AssociationsFactory::class.java.getResource(associationsFile)
     @NonNls val xStream = XStream()
 
     xStream.run {
       XStream.setupDefaultSecurity(this)
       allowTypesByWildcard(arrayOf("com.mallowigi.icons.associations.*")) // NON-NLS
-      alias("associations", Associations::class.java)
+      alias("associations", DefaultAssociations::class.java)
       alias("regex", RegexAssociation::class.java)
       alias("type", TypeAssociation::class.java)
+      useAttributeFor(DefaultAssociations::class.java, "associations")
       useAttributeFor(Association::class.java, "icon")
       useAttributeFor(Association::class.java, "name")
       useAttributeFor(RegexAssociation::class.java, "pattern")
       useAttributeFor(TypeAssociation::class.java, "type")
     }
     return try {
-      xStream.fromXML(associationsXml) as Associations
+      xStream.fromXML(associationsXml) as DefaultAssociations
     }
     catch (e: RuntimeException) {
-      Associations()
+      DefaultAssociations()
     }
   }
 }

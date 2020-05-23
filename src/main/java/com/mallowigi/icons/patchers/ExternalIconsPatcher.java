@@ -26,9 +26,6 @@ package com.mallowigi.icons.patchers;
 import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Konstantin Bulenkov
- */
 public class ExternalIconsPatcher extends AbstractIconPatcher {
   @Property
   private String append;

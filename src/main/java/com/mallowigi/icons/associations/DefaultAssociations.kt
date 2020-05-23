@@ -21,22 +21,34 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.associations
 
-package com.mallowigi.config.ui;
+import com.google.common.collect.ImmutableSet
+import com.intellij.openapi.diagnostic.Logger
+import com.intellij.util.xmlb.annotations.Property
+import com.mallowigi.models.FileInfo
+import org.jetbrains.annotations.NonNls
 
-import com.intellij.openapi.util.IconLoader;
-import org.jdesktop.beansbinding.Converter;
+class DefaultAssociations : Associations {
+  @Property
+  var associations: List<Association>
 
-import javax.swing.Icon;
-
-public final class StringToIconConverter extends Converter<String, Icon> {
-  @Override
-  public Icon convertForward(final String value) {
-    return IconLoader.getIcon(value);
+  constructor() {
+    associations = emptyList()
   }
 
-  @Override
-  public String convertReverse(final Icon value) {
-    return value.toString();
+  override fun findMatchingAssociation(file: FileInfo?): Association? =
+    associations.stream()
+      .filter { association: Association -> association.matches(file!!) }
+      .findAny()
+      .orElse(null)
+
+  override fun getTheAssociations(): List<Association> = associations
+
+  companion object {
+    private val LOG = Logger.getInstance(DefaultAssociations::class.java)
+
+    @NonNls
+    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
   }
 }

@@ -38,7 +38,7 @@ import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
-import com.mallowigi.icons.associations.Associations;
+import com.mallowigi.icons.associations.CustomAssociations;
 import com.mallowigi.icons.associations.RegexAssociation;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
@@ -111,8 +111,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   }
 
   public void setFormState(final AtomAssocConfig config) {
-    customFileAssociationsEditor.reset(config.getCustomFileAssociations().getCustomAssociations());
-    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations().getCustomAssociations());
+    customFileAssociationsEditor.reset(config.getCustomFileAssociations().getTheAssociations());
+    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations().getTheAssociations());
     afterStateSet();
   }
 
@@ -121,18 +121,17 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       return false;
     }
 
-    //    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
-    //    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
-    //    return modified;
-    return true;
+    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    return modified;
   }
 
-  public Associations getFileAssociations() {
-    return new Associations(Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems()));
+  public CustomAssociations getFileAssociations() {
+    return new CustomAssociations(Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems()));
   }
 
-  public Associations getFolderAssociations() {
-    return new Associations(Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems()));
+  public CustomAssociations getFolderAssociations() {
+    return new CustomAssociations(Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems()));
   }
 
   private void initComponents() {
