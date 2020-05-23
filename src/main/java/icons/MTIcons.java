@@ -29,7 +29,7 @@ import com.intellij.openapi.util.Ref;
 import com.intellij.ui.scale.ScaleContext;
 import com.intellij.util.IconUtil;
 import com.intellij.util.SVGLoader;
-import com.mallowigi.icons.models.DirIcon;
+import com.mallowigi.icons.special.DirIcon;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

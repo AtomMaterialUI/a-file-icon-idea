@@ -21,55 +21,24 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.icons.models;
+package com.mallowigi.icons.special
 
-import icons.MTIcons;
+import icons.MTIcons
+import java.awt.Component
+import java.awt.Graphics
+import javax.swing.Icon
 
-import javax.swing.Icon;
-import java.awt.Component;
-import java.awt.Graphics;
+class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
+  internal constructor() : this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen) {}
 
-public class DirIcon implements Icon {
+  constructor(icon: Icon) : this(icon, icon) {}
 
-  private final Icon closedIcon;
-  private final Icon openedIcon;
-
-  @SuppressWarnings("unused")
-  DirIcon() {
-    this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen);
+  override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+    closedIcon.paintIcon(c, g, x, y)
   }
 
-  @SuppressWarnings("unused")
-  public DirIcon(final Icon icon) {
-    this(icon, icon);
-  }
+  override fun getIconWidth(): Int = closedIcon.iconWidth
 
-  public DirIcon(final Icon closedIcon, final Icon openedIcon) {
-    this.closedIcon = closedIcon;
-    this.openedIcon = openedIcon;
-  }
+  override fun getIconHeight(): Int = closedIcon.iconHeight
 
-  @Override
-  public final void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-    closedIcon.paintIcon(c, g, x, y);
-  }
-
-  @Override
-  public final int getIconWidth() {
-    return closedIcon.getIconWidth();
-  }
-
-  @Override
-  public final int getIconHeight() {
-    return closedIcon.getIconHeight();
-  }
-
-  @SuppressWarnings("unused")
-  public final Icon getClosedIcon() {
-    return closedIcon;
-  }
-
-  public final Icon getOpenedIcon() {
-    return openedIcon;
-  }
 }
