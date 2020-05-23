@@ -21,94 +21,84 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package icons
 
-package icons;
+import com.intellij.openapi.util.IconLoader
+import com.intellij.openapi.util.Ref
+import com.intellij.ui.scale.ScaleContext
+import com.intellij.util.IconUtil
+import com.intellij.util.SVGLoader
+import com.mallowigi.icons.special.DirIcon
+import org.jetbrains.annotations.NonNls
+import java.awt.Image
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
+import java.net.MalformedURLException
+import java.net.URL
+import java.util.logging.Logger
+import javax.swing.Icon
 
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.Ref;
-import com.intellij.ui.scale.ScaleContext;
-import com.intellij.util.IconUtil;
-import com.intellij.util.SVGLoader;
-import com.mallowigi.icons.special.DirIcon;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+object MTIcons {
+  const val FILES_PATH = "/iconGenerator/assets"
+  const val FOLDERS_PATH = "/iconGenerator/assets/icons/folders"
+  const val FOLDERS_OPEN_PATH = "/iconGenerator/assets/icons/foldersOpen"
+  val EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg")
+  val MODULE = load("/icons/mt/modules/ModuleOpen.svg")
+  val SOURCE = load("/icons/mt/modules/sourceRootOpen.svg")
+  val TEST = load("/icons/mt/modules/testRootOpen.svg")
+  val SEARCH_WITH_HISTORY_HOVERED = load("/icons/actions/searchWithHistoryHovered.svg")
+  val SEARCH_WITH_HISTORY = load("/icons/actions/searchWithHistory.svg")
+  val SEARCH = load("/icons/actions/search.svg")
+  val CLEAR = load("/icons/actions/clear.svg")
+  val EYE_ON = load("/icons/mt/eye.svg")
+  val EYE_OFF = load("/icons/mt/eyeOff.svg")
 
-import javax.swing.Icon;
-import java.awt.Image;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-@SuppressWarnings("ALL")
-public final class MTIcons {
-
-  public static final String FILES_PATH = "/iconGenerator/assets";
-  public static final String FOLDERS_PATH = "/iconGenerator/assets/icons/folders";
-  public static final String FOLDERS_OPEN_PATH = "/iconGenerator/assets/icons/foldersOpen";
-  public static final Icon EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg");
-  public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
-  public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
-  public static final Icon TEST = load("/icons/mt/modules/testRootOpen.svg");
-  public static final Icon SEARCH_WITH_HISTORY_HOVERED = load("/icons/actions/searchWithHistoryHovered.svg");
-  public static final Icon SEARCH_WITH_HISTORY = load("/icons/actions/searchWithHistory.svg");
-  public static final Icon SEARCH = load("/icons/actions/search.svg");
-  public static final Icon CLEAR = load("/icons/actions/clear.svg");
-  public static final Icon EYE_ON = load("/icons/mt/eye.svg");
-  public static final Icon EYE_OFF = load("/icons/mt/eyeOff.svg");
-
-  private MTIcons() {
-
+  fun getFileIcon(iconPath: String): Icon {
+    return IconLoader.getIcon(FILES_PATH + iconPath)
   }
 
-  public static Icon getFileIcon(String iconPath) {
-    return IconLoader.getIcon(FILES_PATH + iconPath);
+  fun getFolderIcon(iconPath: String): DirIcon {
+    return DirIcon(IconLoader.getIcon(FOLDERS_PATH + iconPath), IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath))
   }
 
-  public static DirIcon getFolderIcon(String iconPath) {
-    return new DirIcon(IconLoader.getIcon(FOLDERS_PATH + iconPath), IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath));
+  private fun load(@NonNls path: String): Icon {
+    return IconLoader.findIcon(path)!!
   }
 
-  private static Icon load(@NonNls final String path) {
-    return IconLoader.findIcon(path);
-  }
-
-  @NotNull
-  public static Icon loadSVGIcon(final String canonicalPath) throws IOException {
-    final Ref<URL> url = Ref.create();
+  @Throws(IOException::class)
+  fun loadSVGIcon(canonicalPath: String): Icon {
+    val url = Ref.create<URL>()
     try {
-      url.set(new File(canonicalPath).toURI().toURL());
+      url.set(File(canonicalPath).toURI().toURL())
     }
-    catch (final MalformedURLException ex) {
+    catch (e: MalformedURLException) {
+      Logger.getAnonymousLogger().info(e.message)
     }
-    final Image bufferedImage = SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), ScaleContext.create());
-
-    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), 16, 16);
+    val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), 16, 16)
   }
 
-  public static final class Arrows {
-    public static Icon MaterialDownSelected = load("/icons/mac/material/down_selected.svg");
-    public static Icon MaterialRightSelected = load("/icons/mac/material/right_selected.svg");
-    public static Icon DarculaDownSelected = load("/icons/mac/darcula/down_selected.svg");
-    public static Icon DarculaRightSelected = load("/icons/mac/darcula/right_selected.svg");
-    public static Icon PlusSelected = load("/icons/mac/plusminus/plus_selected.svg");
-    public static Icon MinusSelected = load("/icons/mac/plusminus/minus_selected.svg");
-    public static Icon DownSelected = load("/icons/mac/arrow/down_selected.svg");
-    public static Icon RightSelected = load("/icons/mac/arrow/right_selected.svg");
-
-    public static Icon MaterialDown = load("/icons/mac/material/down.svg");
-    public static Icon MaterialRight = load("/icons/mac/material/right.svg");
-    public static Icon DarculaDown = load("/icons/mac/darcula/down.svg");
-    public static Icon DarculaRight = load("/icons/mac/darcula/right.svg");
-    public static Icon Plus = load("/icons/mac/plusminus/plus.svg");
-    public static Icon Minus = load("/icons/mac/plusminus/minus.svg");
-    public static Icon Down = load("/icons/mac/arrow/down.svg");
-    public static Icon Right = load("/icons/mac/arrow/right.svg");
+  object Arrows {
+    var MaterialDownSelected = load("/icons/mac/material/down_selected.svg")
+    var MaterialRightSelected = load("/icons/mac/material/right_selected.svg")
+    var DarculaDownSelected = load("/icons/mac/darcula/down_selected.svg")
+    var DarculaRightSelected = load("/icons/mac/darcula/right_selected.svg")
+    var PlusSelected = load("/icons/mac/plusminus/plus_selected.svg")
+    var MinusSelected = load("/icons/mac/plusminus/minus_selected.svg")
+    var DownSelected = load("/icons/mac/arrow/down_selected.svg")
+    var RightSelected = load("/icons/mac/arrow/right_selected.svg")
+    var MaterialDown = load("/icons/mac/material/down.svg")
+    var MaterialRight = load("/icons/mac/material/right.svg")
+    var DarculaDown = load("/icons/mac/darcula/down.svg")
+    var DarculaRight = load("/icons/mac/darcula/right.svg")
+    var Plus = load("/icons/mac/plusminus/plus.svg")
+    var Minus = load("/icons/mac/plusminus/minus.svg")
+    var Down = load("/icons/mac/arrow/down.svg")
+    var Right = load("/icons/mac/arrow/right.svg")
   }
 
-  public static final class Nodes2 {
-    public static final Icon FolderOpen = load("/icons/nodes/folderOpen.svg");
+  object Nodes2 {
+    val FolderOpen = load("/icons/nodes/folderOpen.svg")
   }
-
 }
