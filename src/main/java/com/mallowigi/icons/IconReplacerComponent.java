@@ -48,9 +48,9 @@ import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
+import com.mallowigi.icons.patchers.AbstractIconPatcher;
 import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
-import com.mallowigi.icons.patchers.MTIconPatcher;
 import com.mallowigi.icons.services.IconFilterManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -107,7 +107,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
   @SuppressWarnings({"WeakerAccess",
                       "FeatureEnvy"})
   void updateIcons() {
-    MTIconPatcher.clearCache();
+    AbstractIconPatcher.clearCache();
     removePathPatchers();
 
     final AtomFileIconsConfig atomFileIconsConfig = AtomFileIconsConfig.getInstance();
@@ -178,7 +178,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
   }
 
   private void disposeComponent() {
-    MTIconPatcher.clearCache();
+    AbstractIconPatcher.clearCache();
     connect.disconnect();
   }
 

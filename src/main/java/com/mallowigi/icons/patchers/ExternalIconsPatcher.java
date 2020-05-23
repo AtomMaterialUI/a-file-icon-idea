@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Konstantin Bulenkov
  */
-public class ExternalIconsPatcher extends MTIconPatcher {
+public class ExternalIconsPatcher extends AbstractIconPatcher {
   @Property
   private String append;
 

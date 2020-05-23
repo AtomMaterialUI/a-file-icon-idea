@@ -36,13 +36,17 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class MTIconPatcher extends IconPathPatcher {
+public abstract class AbstractIconPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>(100);
   private static final Pattern PNG = Pattern.compile(".png", Pattern.LITERAL);
   private static final Pattern SVG = Pattern.compile(".svg", Pattern.LITERAL);
   private static final Pattern GIF = Pattern.compile(".gif", Pattern.LITERAL);
 
   private AtomFileIconsConfig instance = AtomFileIconsConfig.getInstance();
+
+  public static void clearCache() {
+    CACHE.clear();
+  }
 
   /**
    * @return The string to append to the final path
@@ -58,14 +62,41 @@ public abstract class MTIconPatcher extends IconPathPatcher {
   @NotNull
   protected abstract String getPathToRemove();
 
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
+  @Nullable
+  @Override
+  public final String patchPath(final String path, final ClassLoader classLoader) {
+    if (getInstance() == null || !getInstance().isEnabledUIIcons()) {
+      return null;
+    }
+
+    if (CACHE.containsKey(path)) {
+      return CACHE.get(path);
+    }
+    // First try the svg version of the resource
+    if (getSVG(path) != null) {
+      CACHE.put(path, getReplacement(path));
+      return CACHE.get(path);
+    }
+    // Then try the png version
+    if (getPNG(path) != null) {
+      CACHE.put(path, getReplacement(path));
+      return CACHE.get(path);
+    }
+    return null;
+  }
+
   @Nullable
   @Override
   public final ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
     return getClass().getClassLoader();
   }
 
-  public static void clearCache() {
-    CACHE.clear();
+  public final AtomFileIconsConfig getInstance() {
+    if (instance == null) {
+      instance = AtomFileIconsConfig.getInstance();
+    }
+    return instance;
   }
 
   /**
@@ -92,36 +123,5 @@ public abstract class MTIconPatcher extends IconPathPatcher {
       finalPath = GIF.matcher(path).replaceAll(Matcher.quoteReplacement(".png")); // NON-NLS
     }
     return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
-  }
-
-  @SuppressWarnings("MethodWithMultipleReturnPoints")
-  @Nullable
-  @Override
-  public final String patchPath(final String path, final ClassLoader classLoader) {
-    if (getInstance() == null || !getInstance().isEnabledUIIcons()) {
-      return null;
-    }
-
-    if (CACHE.containsKey(path)) {
-      return CACHE.get(path);
-    }
-    // First try the svg version of the resource
-    if (getSVG(path) != null) {
-      CACHE.put(path, getReplacement(path));
-      return CACHE.get(path);
-    }
-    // Then try the png version
-    if (getPNG(path) != null) {
-      CACHE.put(path, getReplacement(path));
-      return CACHE.get(path);
-    }
-    return null;
-  }
-
-  public final AtomFileIconsConfig getInstance() {
-    if (instance == null) {
-      instance = AtomFileIconsConfig.getInstance();
-    }
-    return instance;
   }
 }
