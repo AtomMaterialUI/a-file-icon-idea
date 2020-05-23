@@ -23,26 +23,23 @@
  *
  *
  */
+package com.mallowigi.actions
 
-package com.mallowigi.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.ToggleAction
+import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
-import com.mallowigi.config.AtomFileIconsConfig;
-import org.jetbrains.annotations.NotNull;
-
-public final class EnableUIIconsAction extends ToggleAction {
-
-  private static final AtomFileIconsConfig CONFIG = AtomFileIconsConfig.getInstance();
-
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return CONFIG.isEnabledUIIcons();
+class EnableUIIconsAction : ToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean {
+    return CONFIG.isEnabledUIIcons
   }
 
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    CONFIG.toggleUIIcons();
-    CONFIG.fireChanged();
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    CONFIG.toggleUIIcons()
+    CONFIG.fireChanged()
+  }
+
+  companion object {
+    private val CONFIG = instance
   }
 }

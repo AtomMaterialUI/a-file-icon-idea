@@ -27,13 +27,13 @@ abstract class AbstractFileIconProvider : IconProvider() {
 
     if (virtualFile != null) {
       val file: FileInfo = VirtualFileInfo(element, virtualFile)
-      val fileAssociation = findFileAssociation(file)
-      icon = getIconForAssociation(fileAssociation)
+      val association = findAssociation(file)
+      icon = getIconForAssociation(association)
     }
     return icon
   }
 
-  private fun getIconForAssociation(association: Association?): Icon? {
+  protected fun getIconForAssociation(association: Association?): Icon? {
     return association.toOptional()
       .map { loadIcon(association) }
       .orElseGet { null }
@@ -51,7 +51,7 @@ abstract class AbstractFileIconProvider : IconProvider() {
     return icon
   }
 
-  private fun findFileAssociation(file: FileInfo): @Nullable Association? {
+  protected fun findAssociation(file: FileInfo): @Nullable Association? {
     return getSource().findAssociation(file)
   }
 
