@@ -18,9 +18,16 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
 					"$columnConstraints": "[grow,fill]"
-					"$rowConstraints": "[260,grow,fill]"
+					"$rowConstraints": "[260,grow,fill][]"
 				} ) {
 					name: "customFileIconsNew"
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "explanation"
+						"text": new FormMessage( null, "AssociationsForm.explanation.text" )
+						"foreground": new com.jformdesigner.model.SwingColor( "MenuItem.acceleratorForeground" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "AssociationsForm.customFileIconsNew.tab.title" )
 				} )

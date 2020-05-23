@@ -70,6 +70,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   // Generated using JFormDesigner non-commercial license
   private JTabbedPane tabbedContainer;
   private JPanel customFileIconsNew;
+  private JTextPane explanation;
   private JPanel customFolderIconsNew;
   private JPanel defaultFileIcons;
   private JPanel defFileIconsPanel;
@@ -140,6 +141,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle"); //NON-NLS
     tabbedContainer = new JTabbedPane();
     customFileIconsNew = new JPanel();
+    explanation = new JTextPane();
     customFolderIconsNew = new JPanel();
     defaultFileIcons = new JPanel();
     defFileIconsPanel = new JPanel();
@@ -168,7 +170,13 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
           // columns
           "[grow,fill]", //NON-NLS
           // rows
-          "[260,grow,fill]")); //NON-NLS
+          "[260,grow,fill]" + //NON-NLS
+            "[]")); //NON-NLS
+
+        //---- explanation ----
+        explanation.setText(bundle.getString("AssociationsForm.explanation.text")); //NON-NLS
+        explanation.setForeground(UIManager.getColor("MenuItem.acceleratorForeground")); //NON-NLS
+        customFileIconsNew.add(explanation, "cell 0 1"); //NON-NLS
       }
       tabbedContainer.addTab(bundle.getString("AssociationsForm.customFileIconsNew.tab.title"), customFileIconsNew); //NON-NLS
 

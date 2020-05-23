@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.7" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -36,6 +36,7 @@ new FormModel {
 				name: "enableDirectoryIconsCheckbox"
 				"text": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.text" )
 				"toolTipText": new FormMessage( null, "SettingsForm.enableDirectoryIconsCheckbox.toolTipText" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enableDirectoryIconsCheckboxActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 1"
 			} )
@@ -70,6 +71,7 @@ new FormModel {
 				name: "enableUIIconsCheckbox"
 				"text": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.text" )
 				"toolTipText": new FormMessage( null, "SettingsForm.enableUIIconsCheckbox.toolTipText" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enableUIIconsCheckboxActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 3"
 			} )
@@ -87,7 +89,7 @@ new FormModel {
 				"value": "cell 1 4"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "enablePSIIconsIcon3"
+				name: "hideFileIconsIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/hideFileAction@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 5"
@@ -100,7 +102,7 @@ new FormModel {
 				"value": "cell 1 5"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "enablePSIIconsIcon2"
+				name: "hollowFoldersIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/folderOpen@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 6"
@@ -113,7 +115,7 @@ new FormModel {
 				"value": "cell 1 6"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "enablePSIIconsIcon4"
+				name: "arrowsStyleIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/arrowRight@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 7"
@@ -135,7 +137,7 @@ new FormModel {
 				"value": "cell 2 7,align right center,grow 0 0,width 120:120:120"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "enablePSIIconsIcon5"
+				name: "accentColorIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/accentColor@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 8"
