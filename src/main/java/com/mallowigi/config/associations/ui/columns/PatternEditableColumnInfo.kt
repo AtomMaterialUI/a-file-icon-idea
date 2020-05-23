@@ -44,7 +44,7 @@ class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumn
   }
 
   override fun setValue(item: Association?, value: String?) {
-    item?.matcher = value
+    item?.matcher = value!!
   }
 
   override fun getEditor(item: Association?): @Nullable TableCellEditor? {

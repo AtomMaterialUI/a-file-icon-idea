@@ -30,14 +30,14 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.table.IconTableCellRenderer
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.providers.DefaultFileIconProvider
+import com.mallowigi.icons.providers.DefaultFolderIconProvider
 import icons.MTIcons
 import javax.swing.Icon
 import javax.swing.JTable
 import javax.swing.ListSelectionModel
 import javax.swing.table.AbstractTableModel
 
-internal class FolderAssociationsTable : JBTable(MyTableModel(DefaultFileIconProvider.associations.associations)) {
+internal class FolderAssociationsTable : JBTable(MyTableModel(DefaultFolderIconProvider.associations.associations)) {
   private fun initColumns() {
     val iconColumn = getColumnModel().getColumn(ICON_COLUMN)
     iconColumn.cellRenderer = object : IconTableCellRenderer<String>() {

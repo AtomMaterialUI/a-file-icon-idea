@@ -46,4 +46,7 @@ abstract class Association internal constructor(@field:Property @field:NonNls va
   open val isEmpty: Boolean
     get() = name.isEmpty() || icon.isEmpty()
 
+  override fun toString(): String {
+    return "$name $matcher"
+  }
 }

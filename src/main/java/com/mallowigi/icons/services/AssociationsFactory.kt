@@ -21,47 +21,39 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.services
 
-package com.mallowigi.icons.services;
+import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.icons.associations.TypeAssociation
+import com.thoughtworks.xstream.XStream
+import org.jetbrains.annotations.NonNls
 
-import com.mallowigi.icons.associations.Association;
-import com.mallowigi.icons.associations.Associations;
-import com.mallowigi.icons.associations.RegexAssociation;
-import com.mallowigi.icons.associations.TypeAssociation;
-import com.thoughtworks.xstream.XStream;
-import org.jetbrains.annotations.NonNls;
-
-import java.net.URL;
-
+@Suppress("HardCodedStringLiteral")
 @NonNls
-public enum AssociationsFactory {
-  DEFAULT;
+object AssociationsFactory {
 
-  /**
-   * Parse icon_associations.xml to build the list of Associations
-   */
-  @SuppressWarnings("CastToConcreteClass")
-  public static Associations create(final String associationsFile) {
-    final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
-    @NonNls final XStream xStream = new XStream();
-    XStream.setupDefaultSecurity(xStream);
-    xStream.allowTypesByWildcard(new String[]{"com.mallowigi.icons.associations.*"});
+  fun create(associationsFile: String?): Associations {
+    val associationsXml = AssociationsFactory::class.java.getResource(associationsFile)
+    @NonNls val xStream = XStream()
 
-    xStream.alias("associations", Associations.class);
-    xStream.alias("regex", RegexAssociation.class);
-    xStream.alias("type", TypeAssociation.class);
-
-    xStream.useAttributeFor(Association.class, "icon");
-    xStream.useAttributeFor(Association.class, "name");
-    xStream.useAttributeFor(RegexAssociation.class, "pattern");
-    xStream.useAttributeFor(TypeAssociation.class, "type");
-
-    try {
-      return (Associations) xStream.fromXML(associationsXml);
+    xStream.run {
+      XStream.setupDefaultSecurity(this)
+      allowTypesByWildcard(arrayOf("com.mallowigi.icons.associations.*")) // NON-NLS
+      alias("associations", Associations::class.java)
+      alias("regex", RegexAssociation::class.java)
+      alias("type", TypeAssociation::class.java)
+      useAttributeFor(Association::class.java, "icon")
+      useAttributeFor(Association::class.java, "name")
+      useAttributeFor(RegexAssociation::class.java, "pattern")
+      useAttributeFor(TypeAssociation::class.java, "type")
     }
-    catch (final RuntimeException e) {
-      return new Associations();
+    return try {
+      xStream.fromXML(associationsXml) as Associations
+    }
+    catch (e: RuntimeException) {
+      Associations()
     }
   }
-
 }

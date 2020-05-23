@@ -40,7 +40,7 @@ class Associations : Serializable {
   @XCollection
   private val customAssociations: List<RegexAssociation>?
 
-  private var associations: List<Association>
+  var associations: List<Association>
 
   constructor() {
     associations = emptyList()
@@ -50,14 +50,6 @@ class Associations : Serializable {
   constructor(associations: List<RegexAssociation>) {
     this.associations = emptyList()
     customAssociations = copyOf(associations)
-  }
-
-  fun getAssociations(): List<Association> {
-    return associations
-  }
-
-  fun setAssociations(associations: List<Association>) {
-    this.associations = copyOf(associations)
   }
 
   fun findAssociation(file: FileInfo?): Association? {

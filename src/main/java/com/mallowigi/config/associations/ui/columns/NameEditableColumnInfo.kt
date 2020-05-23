@@ -43,7 +43,7 @@ class NameEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
   }
 
   override fun setValue(item: Association?, value: String?) {
-    item?.name = value
+    item?.name = value!!
   }
 
   override fun getEditor(item: Association?): @Nullable TableCellEditor? {
