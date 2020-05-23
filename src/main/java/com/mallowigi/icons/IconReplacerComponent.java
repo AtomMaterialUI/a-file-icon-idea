@@ -51,13 +51,12 @@ import com.mallowigi.config.listeners.AtomConfigNotifier;
 import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.patchers.MTIconPatcher;
+import com.mallowigi.icons.services.IconFilterManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
-
-import static com.mallowigi.icons.IconManager.applyFilter;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
@@ -81,7 +80,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
       app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
 
-      applyFilter();
+      IconFilterManager.INSTANCE.applyFilter();
     }, ModalityState.NON_MODAL);
   }
 
@@ -126,7 +125,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
 
   private void initComponent() {
     updateIcons();
-    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> applyFilter());
+    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
     connect.subscribe(AtomConfigNotifier.TOPIC, this::onSettingsChanged);
     connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
@@ -142,10 +141,10 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       }
     });
 
-    //    ApplicationManager.getApplication().invokeLater(() -> {
-    //      applyFilter();
-    //      LafManager.getInstance().updateUI();
-    //    });
+    ApplicationManager.getApplication().invokeLater(() -> {
+      IconFilterManager.INSTANCE.applyFilter();
+      LafManager.getInstance().updateUI();
+    });
   }
 
   private void installPathPatchers() {

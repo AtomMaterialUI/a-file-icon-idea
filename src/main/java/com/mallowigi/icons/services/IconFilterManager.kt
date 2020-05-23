@@ -21,23 +21,18 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.services
 
-package com.mallowigi.icons;
+import com.intellij.openapi.util.IconLoader
+import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.icons.filters.MonochromeFilter
 
-import com.intellij.openapi.util.IconLoader;
-import com.mallowigi.config.AtomFileIconsConfig;
-import com.mallowigi.icons.filters.MonochromeFilter;
-
-public enum IconManager {
-  DEFAULT,
-  MONOCHROME;
-
-  public static void applyFilter() {
-    final boolean monochromeIcons = AtomFileIconsConfig.getInstance().isMonochromeIcons();
-    if (monochromeIcons) {
-      IconLoader.setFilter(new MonochromeFilter());
-    } else {
-      IconLoader.setFilter(null);
+object IconFilterManager {
+  fun applyFilter() {
+    val monochromeIcons = instance.isMonochromeIcons
+    when {
+      monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
+      else            -> IconLoader.setFilter(null)
     }
   }
 }

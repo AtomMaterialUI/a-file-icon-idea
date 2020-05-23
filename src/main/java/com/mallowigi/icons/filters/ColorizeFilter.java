@@ -27,19 +27,16 @@ package com.mallowigi.icons.filters;
 import java.awt.Color;
 import java.awt.image.RGBImageFilter;
 
-public class ColorizeFilter extends RGBImageFilter {
-  private final Color color;
+public abstract class ColorizeFilter extends RGBImageFilter {
 
-  ColorizeFilter(final Color color) {
-    this.color = color;
-  }
+  abstract Color getColor();
 
   @Override
   public final int filterRGB(final int x, final int y, final int rgb) {
-    final float[] myBase = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+    final float[] myBase = Color.RGBtoHSB(getColor().getRed(), getColor().getGreen(), getColor().getBlue(), null);
     // Get color components
-    final int r = rgb >> 16 & 0xFF;
-    final int g = rgb >> 8 & 0xFF;
+    final int r = (rgb >> 16) & 0xFF;
+    final int g = (rgb >> 8) & 0xFF;
     final int b = rgb & 0xFF;
     final float[] hsb = new float[3];
     Color.RGBtoHSB(r, g, b, hsb);
