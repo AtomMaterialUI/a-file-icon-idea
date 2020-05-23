@@ -21,86 +21,59 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.associations
 
-package com.mallowigi.icons.associations;
-
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.models.FileInfo;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
+import com.intellij.openapi.diagnostic.Logger
+import com.intellij.util.xmlb.annotations.Property
+import com.mallowigi.models.FileInfo
+import java.util.regex.Pattern
+import java.util.regex.PatternSyntaxException
 
 /**
  * Association for Regular Expressions
  */
-public final class RegexAssociation extends Association {
-  private static final Logger LOG = Logger.getInstance(RegexAssociation.class);
-  @Property
-  private String pattern;
-  private transient Pattern compiledPattern;
+class RegexAssociation @JvmOverloads constructor(name: String = "",
+                                                 icon: String = "",
+                                                 @field:Property var pattern: String = "") : Association(name, icon) {
 
-  public RegexAssociation() {
-    this("", "", "");
-  }
+  @Transient
+  private var compiledPattern: Pattern? = null
 
-  public RegexAssociation(@NotNull final String name,
-                          @NotNull final String pattern,
-                          @NotNull final String icon) {
-    super(name, icon);
-    this.pattern = pattern;
-  }
+  constructor(association: Association) : this(
+    name = association.name,
+    icon = association.matcher,
+    pattern = association.icon
+  )
 
-  public RegexAssociation(final Association association) {
-    this(association.getName(),
-         association.getMatcher(),
-         association.getIcon()
-    );
-  }
-
-  @Override
-  public boolean matches(final FileInfo file) {
-    try {
+  override fun matches(file: FileInfo): Boolean {
+    return try {
       if (compiledPattern == null) {
-        compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+        compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE)
       }
-      return compiledPattern.matcher(file.name).matches();
+      compiledPattern!!.matcher(file.name).matches()
     }
-    catch (final PatternSyntaxException e) {
-      LOG.warn(e);
-      return false;
+    catch (e: PatternSyntaxException) {
+      LOG.warn(e)
+      false
     }
   }
 
-  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
-  @Override
-  public String getMatcher() {
-    return getPattern();
+  override var matcher: String
+    get() = pattern
+    set(matcher) {
+      pattern = matcher
+    }
+
+  override fun apply(other: Association) {
+    super.apply(other)
+    pattern = other.matcher
   }
 
-  @SuppressWarnings("CallToSimpleSetterFromWithinClass")
-  @Override
-  public void setMatcher(final String value) {
-    setPattern(value);
+  override val isEmpty: Boolean
+    get() = super.isEmpty || pattern.isEmpty()
+
+  companion object {
+    private val LOG = Logger.getInstance(RegexAssociation::class.java)
   }
 
-  @Override
-  public void apply(final Association other) {
-    super.apply(other);
-    pattern = other.getMatcher();
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return super.isEmpty() || pattern.isEmpty();
-  }
-
-  public String getPattern() {
-    return pattern;
-  }
-
-  public void setPattern(final String pattern) {
-    this.pattern = pattern;
-  }
 }

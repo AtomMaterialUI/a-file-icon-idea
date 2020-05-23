@@ -28,7 +28,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.Associations
-import com.mallowigi.icons.associations.AssociationsFactory
+import com.mallowigi.icons.services.AssociationsFactory
 import icons.MTIcons
 import javax.swing.Icon
 

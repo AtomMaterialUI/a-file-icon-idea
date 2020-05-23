@@ -31,8 +31,8 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.AssociationsFactory
 import com.mallowigi.icons.models.DirIcon
+import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.VirtualFileInfo
 import icons.MTIcons

@@ -21,59 +21,29 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.associations
 
-package com.mallowigi.icons.associations;
-
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.models.FileInfo;
-import org.jetbrains.annotations.NonNls;
-
-import java.io.Serializable;
+import com.intellij.util.xmlb.annotations.Property
+import com.mallowigi.models.FileInfo
+import org.jetbrains.annotations.NonNls
+import java.io.Serializable
 
 /**
  * Represent an association of a name with an icon
  */
-public abstract class Association implements Serializable {
-  @NonNls
-  @Property
-  private String name;
-  @Property
-  private String icon;
+abstract class Association internal constructor(@field:Property @field:NonNls var name: String,
+                                                @field:Property var icon: String) : Serializable {
 
-  Association(final String name, final String icon) {
-    this.name = name;
-    this.icon = icon;
+  abstract fun matches(file: FileInfo): Boolean
+
+  abstract var matcher: String
+
+  open fun apply(other: Association) {
+    name = other.name
+    icon = other.icon
   }
 
-  public abstract boolean matches(FileInfo file);
+  open val isEmpty: Boolean
+    get() = name.isEmpty() || icon.isEmpty()
 
-  public abstract String getMatcher();
-
-  public abstract void setMatcher(final String value);
-
-  public final String getName() {
-    return name;
-  }
-
-  public final void setName(final String name) {
-    this.name = name;
-  }
-
-  public final String getIcon() {
-    return icon;
-  }
-
-  public final void setIcon(final String icon) {
-    this.icon = icon;
-  }
-
-  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
-  public void apply(final Association other) {
-    name = other.getName();
-    icon = other.getIcon();
-  }
-
-  public boolean isEmpty() {
-    return name.isEmpty() || icon.isEmpty();
-  }
 }

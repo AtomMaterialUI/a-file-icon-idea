@@ -22,8 +22,12 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.associations;
+package com.mallowigi.icons.services;
 
+import com.mallowigi.icons.associations.Association;
+import com.mallowigi.icons.associations.Associations;
+import com.mallowigi.icons.associations.RegexAssociation;
+import com.mallowigi.icons.associations.TypeAssociation;
 import com.thoughtworks.xstream.XStream;
 import org.jetbrains.annotations.NonNls;
 
@@ -36,8 +40,7 @@ public enum AssociationsFactory {
   /**
    * Parse icon_associations.xml to build the list of Associations
    */
-  @SuppressWarnings({"CastToConcreteClass",
-      "StaticMethodOnlyUsedInOneClass"})
+  @SuppressWarnings("CastToConcreteClass")
   public static Associations create(final String associationsFile) {
     final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
     @NonNls final XStream xStream = new XStream();
@@ -55,7 +58,8 @@ public enum AssociationsFactory {
 
     try {
       return (Associations) xStream.fromXML(associationsXml);
-    } catch (final RuntimeException e) {
+    }
+    catch (final RuntimeException e) {
       return new Associations();
     }
   }

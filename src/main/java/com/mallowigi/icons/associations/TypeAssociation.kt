@@ -21,54 +21,30 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.associations
 
-package com.mallowigi.icons.associations;
-
-import com.intellij.util.xmlb.annotations.Property;
-import com.mallowigi.models.FileInfo;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.util.xmlb.annotations.Property
+import com.mallowigi.models.FileInfo
+import org.jetbrains.annotations.NonNls
 
 /**
  * Association for Types
  */
-public final class TypeAssociation extends Association {
-  @NonNls
-  @Property
-  private String type;
+class TypeAssociation internal constructor(name: String,
+                                           icon: String,
+                                           @field:Property @field:NonNls var type: String) : Association(name, icon) {
 
-  TypeAssociation(@NotNull final String name, @NotNull final String icon, @NotNull final String type) {
-    super(name, icon);
-    this.type = type;
+  override fun matches(file: FileInfo): Boolean {
+    return file.fileType.equals(type)
   }
 
-  public String getType() {
-    return type;
-  }
+  override var matcher: String
+    get() = type
+    set(matcher) {
+      type = matcher
+    }
 
-  public void setType(final String type) {
-    this.type = type;
-  }
+  override val isEmpty: Boolean
+    get() = super.isEmpty || type.isEmpty()
 
-  @Override
-  public boolean matches(final FileInfo file) {
-    return file.fileType.equals(type);
-  }
-
-  @SuppressWarnings("CallToSimpleGetterFromWithinClass")
-  @Override
-  public String getMatcher() {
-    return getType();
-  }
-
-  @SuppressWarnings("CallToSimpleSetterFromWithinClass")
-  @Override
-  public void setMatcher(final String value) {
-    setType(value);
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return super.isEmpty() || type.isEmpty();
-  }
 }
