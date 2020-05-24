@@ -1,28 +1,31 @@
-<!--
-  ~ The MIT License (MIT)
-  ~
-  ~  Copyright (c) 2020 Elior "Mallowigi" Boukhobza
-  ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
-  ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
-  ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
-  -->
-
-<h1>Changelog</h1><h1>24.0</h1>
+<h1>Changelog</h1><h1>25.0</h1>
+<ul>
+    <li>The finally awaited <strong>Custom Icon Associations</strong> is here! This is an alpha version so it can
+        contain bugs :)
+        <ul>
+            <li>Assign custom file associations and folder associations from the Settings</li>
+            <li>Preview Default File and Folder Associations from the Settings</li>
+            <li>Assign icons from your file system</li>
+            <li><strong>Important note</strong>: most of the settings won't be applied to custom icons, so use them
+                sparingly!
+            </li>
+        </ul>
+    </li>
+    <li>The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)</li>
+    <li>Fix issue with monospace colors not being persisted</li>
+    <li>Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons</li>
+    <li>Now the <em>PSI Icons setting</em> is dependent on the <em>UI Icons setting</em>, as this wouldn't work without
+        it.
+    </li>
+    <li>And the <em>Hollow Folders Setting</em> is dependent on the <em>Folder Decorations Setting</em> as well.</li>
+    <li><strong>New folder associations</strong>: widgets, elements, users, members, partners, friends, projects, ui,
+        dev, staging, qa, prod, serializers, types, io, stdlib, deps
+    </li>
+    <li>New file associations: <code>*_test.go</code>, <code>*_spec.go</code>, <code>Chart.yaml</code>, <code>values.yaml</code>,
+        <code>helmfile.yaml</code>, scala test files
+    </li>
+    <li>Added <code>jsconfig</code> and <code>tsconfig</code></li>
+</ul><h1>24.0</h1>
 <ul>
     <li>Added accent color selection in the settings</li>
     <li>new UI/PSI icons: Scala, Ruby, Typescript</li>
@@ -35,31 +38,56 @@
     <li>new/updated folders:  acre, agda, alacritty, app, appstore, arttext, atom, aurelia, bazaar, cabal, chef, client,
         cluster, container, content, controllers, coverage, cvs, messages
     </li>
-    <li>new folder icons: viewmodel, deno, dependabot, devcontainer, dropbox, gitlab, istanbul, yarn, ruby, mercurial, meteor, svn, textmate, vagrant, vim, svg, firebase, xcassets, glyph</li>
+    <li>new folder icons: viewmodel, deno, dependabot, devcontainer, dropbox, gitlab, istanbul, yarn, ruby, mercurial,
+        meteor, svn, textmate, vagrant, vim, svg, firebase, xcassets, glyph
+    </li>
     <li>Try to fix the weird border at start</li>
     <li>Fix wrong associations</li>
-</ul><p>More info about associations <a href="http://www.material-theme.com/docs/reference/associations/">here</a> and <a href="http://www.material-theme.com/docs/reference/folder-associations/">here</a></p><h1>23.0</h1>
+</ul><p>More info about associations <a href="http://www.material-theme.com/docs/reference/associations/">here</a> and
+    <a href="http://www.material-theme.com/docs/reference/folder-associations/">here</a></p><h1>23.0</h1>
 <ul>
-    <li>More icons: walt, watchman, wdl, webgl, owl, webvtt, wenyan, wget, wix, wordpress, workbox, wurst, x10, x11, xmos, xojo, xpages, xproc, xtend, yara, yorick, yui, yasm, zbrush, zeit, zenscript, zig, zilog, zimpl, zork, awk, bazaar, brewfile, hitachi, intel, vax, kerboscript, keybase, keynote, kicad, kitchenci, kml, knime, kotlin, knockout, krl, kubernetes, q, qasm, qlikview, qt, quasar</li>
+    <li>More icons: walt, watchman, wdl, webgl, owl, webvtt, wenyan, wget, wix, wordpress, workbox, wurst, x10, x11,
+        xmos, xojo, xpages, xproc, xtend, yara, yorick, yui, yasm, zbrush, zeit, zenscript, zig, zilog, zimpl, zork,
+        awk, bazaar, brewfile, hitachi, intel, vax, kerboscript, keybase, keynote, kicad, kitchenci, kml, knime, kotlin,
+        knockout, krl, kubernetes, q, qasm, qlikview, qt, quasar
+    </li>
     <li>New angular icon: interceptor</li>
     <li>New redux icons: saga and selector</li>
     <li>New pattern: main.js is now associated with nodejs</li>
     <li>Add cron/scheduler folder icons</li>
 </ul><h1>22.0</h1>
 <ul>
-    <li>You can now preview icons at <a href="https://github.com/mallowigi/a-file-icon-idea">https://github.com/mallowigi/a-file-icon-idea</a> !</li>
-    <li>You can now get the list of available associations at <a href="http://www.material-theme.com/docs/reference/associations/">http://www.material-theme.com/docs/reference/associations/</a> and <a href="http://www.material-theme.com/docs/reference/folder_associations/">http://www.material-theme.com/docs/reference/folder_associations/</a> !</li>
+    <li>You can now preview icons at <a href="https://github.com/mallowigi/a-file-icon-idea">https://github.com/mallowigi/a-file-icon-idea</a>
+        !
+    </li>
+    <li>You can now get the list of available associations at <a
+        href="http://www.material-theme.com/docs/reference/associations/">http://www.material-theme.com/docs/reference/associations/</a>
+        and <a href="http://www.material-theme.com/docs/reference/folder_associations/">http://www.material-theme.com/docs/reference/folder_associations/</a>
+        !
+    </li>
     <li>Extracted icons to its own repository so it can be used with multiple projects</li>
     <li>Optimized icons (reduce icons size, set colors in paths, etc)
         <ul>
             <li>Also the icons look much more like the Atom original plugin ones</li>
-        </ul></li>
+        </ul>
+    </li>
     <li>Added fileNames in associations, to be used with the examples generator</li>
     <li>Added colors in associations, for use with the font generator</li>
     <li>Update UI Icons with latest icons</li>
-    <li><strong>New/Updated UI Icons</strong>: Ant, Haml, Handlebars, DataGrip, JavaScript, Kotlin, DevKit, Dart, Docker</li>
-    <li><strong>New icons</strong>: 4d, agda, alpine linux, analytica, adobe animate, ansible, antwar, aplus, buck, build boot, caddy, caffe, caffe2, cakefile, carthage, chai, chapel, chartjs, cheetah, chocolatey, cpp, csharp, cdf, chrome, chuck, circuit, cirru, clarion, clean, click, clips, closuretpl, cloudfoundry, cocoapods, codacy, codeclimate, cokekit, codeship, conan, conda, conll, coq, corel, coveralls, cp, cpan, credits, creole, crowdin, csound, cuneiform, curl, curry, cwl, collada, nvidia, fabric, factor, falcon, fancy, fantom, fexl, fbx, faust, fasta, finaldraft, firebase bolt, firefox, flask, flutter, flux, font bitmap, fontforge, fossa, fountain, fanca, frege, fuel ux, fusebox, futhark, Jetbrains Theme Files</li>
-    <li><em>Update icon associations</em>: actionscript, ansible, antlr, applescript, asciidoc, asm, atom, atoum, babel, backbone, behat, bison, bootstrap, bower,  cabal, c, composer.lock, chef, credits, csharp, cypress, todo, finder, firebase, flash, fortran, gem, archives, audio, video</li>
+    <li><strong>New/Updated UI Icons</strong>: Ant, Haml, Handlebars, DataGrip, JavaScript, Kotlin, DevKit, Dart, Docker
+    </li>
+    <li><strong>New icons</strong>: 4d, agda, alpine linux, analytica, adobe animate, ansible, antwar, aplus, buck,
+        build boot, caddy, caffe, caffe2, cakefile, carthage, chai, chapel, chartjs, cheetah, chocolatey, cpp, csharp,
+        cdf, chrome, chuck, circuit, cirru, clarion, clean, click, clips, closuretpl, cloudfoundry, cocoapods, codacy,
+        codeclimate, cokekit, codeship, conan, conda, conll, coq, corel, coveralls, cp, cpan, credits, creole, crowdin,
+        csound, cuneiform, curl, curry, cwl, collada, nvidia, fabric, factor, falcon, fancy, fantom, fexl, fbx, faust,
+        fasta, finaldraft, firebase bolt, firefox, flask, flutter, flux, font bitmap, fontforge, fossa, fountain, fanca,
+        frege, fuel ux, fusebox, futhark, Jetbrains Theme Files
+    </li>
+    <li><em>Update icon associations</em>: actionscript, ansible, antlr, applescript, asciidoc, asm, atom, atoum, babel,
+        backbone, behat, bison, bootstrap, bower,  cabal, c, composer.lock, chef, credits, csharp, cypress, todo,
+        finder, firebase, flash, fortran, gem, archives, audio, video
+    </li>
 </ul><h1>21.0</h1>
 <ul>
     <li>Fix issue with Arrow Colors being black in Darcula</li>
@@ -68,7 +96,9 @@
     <li>Add folder associations: bin and units</li>
 </ul><h1>20.0</h1>
 <ul>
-    <li>Restore the "Accent Color" function to colorize icons with the Accent color (defined from Material Theme, or from the current active tab indicator color)</li>
+    <li>Restore the "Accent Color" function to colorize icons with the Accent color (defined from Material Theme, or
+        from the current active tab indicator color)
+    </li>
     <li>Fix issue where arrows style were not persisted</li>
     <li>Add sql/mysql/pgsql folder</li>
     <li>Fix Kotlin icons being unaffected by PSI File Icons setting</li>
@@ -86,14 +116,20 @@
 </ul><h1>17.0</h1>
 <ul>
     <li>New Icons:</li>
-    <li>1c, 3dmodel, 3dsmax, abap, abif, acre, advpl, affectscript, affinity, alacritty, alex, alloy, ampl, amusewiki, angelscript, animestudio, ant</li>
+    <li>1c, 3dmodel, 3dsmax, abap, abif, acre, advpl, affectscript, affinity, alacritty, alex, alloy, ampl, amusewiki,
+        angelscript, animestudio, ant
+    </li>
     <li>apache, apl, appcelerator, arc, archlinux, asymptote, atoum, ats, audacity, augeas, avro, backbone, bnf</li>
-    <li>bem, bibtext, biml, bintray, blender, bluespec, boo, bootstrap, brakeman, broccoli, brotli, browsersync, brunch, byond, gnu</li>
+    <li>bem, bibtext, biml, bintray, blender, bluespec, boo, bootstrap, brakeman, broccoli, brotli, browsersync, brunch,
+        byond, gnu
+    </li>
     <li>New Feature: Hide File Icons</li>
     <li>New Feature: Hollow Directories</li>
 </ul><h1>16.0</h1>
 <ul>
-    <li>New icons: Cargo, Codecov, codeowners, cypress, cython, gridsome, netlify, pnpm, posthtml, sapper, svelte-config, uml, v, vala</li>
+    <li>New icons: Cargo, Codecov, codeowners, cypress, cython, gridsome, netlify, pnpm, posthtml, sapper,
+        svelte-config, uml, v, vala
+    </li>
     <li>New folders: events, gulp, json, netlify, relay</li>
     <li>Sync with new UI Icons</li>
 </ul><h1>15.0</h1>
@@ -104,7 +140,9 @@
     <li>New File Icons:</li>
     <li>edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history</li>
     <li>graphcool, helm, istanbul, key, kivy, lib, livescript, markojs, mdx, merlin, mint, moonscript, mxml, nest</li>
-    <li>houdini, now, nunjucks, prisma, processing, restql, san, sequelize, swc, unity, velocity, vm, webassembly, webhint, wepy, yang</li>
+    <li>houdini, now, nunjucks, prisma, processing, restql, san, sequelize, swc, unity, velocity, vm, webassembly,
+        webhint, wepy, yang
+    </li>
     <li>New Folder Icons:</li>
     <li>ci, class, container, content, css, delta, dump, error, examples, flow, helper, modals, maps</li>
     <li>pipe, prisma, private, stack, utils, vm</li>
@@ -125,7 +163,9 @@
     <li>Fix errors</li>
 </ul><h1>10.0</h1>
 <ul>
-    <li>New setting: <strong>PSI Icons</strong>. Replaces icons about program structure: classes, interfaces, methods, enums etc.</li>
+    <li>New setting: <strong>PSI Icons</strong>. Replaces icons about program structure: classes, interfaces, methods,
+        enums etc.
+    </li>
     <li>Import last set of UI Icons from the Material Theme</li>
     <li>Update for 2019.1</li>
 </ul><h1>9.0</h1>
@@ -135,11 +175,17 @@
     <li>Fix settings not being persisted</li>
     <li>Add more contrast to monochrome icons</li>
     <li>Fix some directories icons' contrast between the directory and the icon</li>
-    <li>Add more directories: guard, providers, animations, grunt, icons, e2e, custom, rules, screens, storybook, stylus, syntax, security, meta-inf, fixtures, channels, concerns, support, features, fabricators, nyc, reviews</li>
-    <li>Add more files: ANTLR, brainfuck, cobol, delphi, eiffel, fortran, idris, io, j, lerna, postscript, prolog, racket, red, supercollider, scheme, terraform, test-react, turing, toml</li>
+    <li>Add more directories: guard, providers, animations, grunt, icons, e2e, custom, rules, screens, storybook,
+        stylus, syntax, security, meta-inf, fixtures, channels, concerns, support, features, fabricators, nyc, reviews
+    </li>
+    <li>Add more files: ANTLR, brainfuck, cobol, delphi, eiffel, fortran, idris, io, j, lerna, postscript, prolog,
+        racket, red, supercollider, scheme, terraform, test-react, turing, toml
+    </li>
 </ul><h1>8.0</h1>
 <ul>
-    <li>Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons</li>
+    <li>Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material
+        Icons
+    </li>
     <li>New Option: Monochrome Icons</li>
 </ul><h1>7.0</h1>
 <ul>
@@ -147,11 +193,20 @@
 </ul><h1>6.0</h1>
 <ul>
     <li>Added new <strong>file icons</strong>: Jenkins, Rspec, Rubocop</li>
-    <li>Added new <strong>folder icons</strong>: android, deploy, api, archives, config, constants, core, download, env, exclude, functions, generated, hooks, ios, include, jinja, job, keys, layouts, mailers, meta, middleware, notification, other, packages, posts, react, resourceIOS, routes, scripts, server, serverless, shared, sublime, tasks, themes, utils, upload, vendors, views, vue</li>
+    <li>Added new <strong>folder icons</strong>: android, deploy, api, archives, config, constants, core, download, env,
+        exclude, functions, generated, hooks, ios, include, jinja, job, keys, layouts, mailers, meta, middleware,
+        notification, other, packages, posts, react, resourceIOS, routes, scripts, server, serverless, shared, sublime,
+        tasks, themes, utils, upload, vendors, views, vue
+    </li>
 </ul><h1>5.0</h1>
 <ul>
-    <li>Added new <strong>file icons</strong>: Arduino, Assembly, Authors, Ballerina, Crystal, CSSMap, Dotjs, DTS, Favicon, Firebase, Flash, Gatsby, Gemfile, Po, JSMap, MJML, Nimble, Raml, Razor, Redux Actions/Stores/Reducers, Smarty, Solidity, Sonar, Stencil, Storybook, Wallaby</li>
-    <li>Added new <strong>folder icons</strong>: benchmarks, coverage, controllers, debug, excluded, expo, jinja, less, maven, messages, models, plugin, python, react, redux, routes, scripts, sublime, sync, tasks</li>
+    <li>Added new <strong>file icons</strong>: Arduino, Assembly, Authors, Ballerina, Crystal, CSSMap, Dotjs, DTS,
+        Favicon, Firebase, Flash, Gatsby, Gemfile, Po, JSMap, MJML, Nimble, Raml, Razor, Redux Actions/Stores/Reducers,
+        Smarty, Solidity, Sonar, Stencil, Storybook, Wallaby
+    </li>
+    <li>Added new <strong>folder icons</strong>: benchmarks, coverage, controllers, debug, excluded, expo, jinja, less,
+        maven, messages, models, plugin, python, react, redux, routes, scripts, sublime, sync, tasks
+    </li>
 </ul><h1>4.0</h1>
 <ul>
     <li>Convert icons to SVG</li>

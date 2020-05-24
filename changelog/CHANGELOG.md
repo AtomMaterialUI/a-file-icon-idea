@@ -7,7 +7,7 @@
     - Assign icons from your file system
     - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
 - The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)
-- Fix issue with monospace colors not being persisted (at the cost of the bug with the blue border at start reappearing)
+- Fix issue with monospace colors not being persisted
 - Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons
 - Now the _PSI Icons setting_ is dependent on the _UI Icons setting_, as this wouldn't work without it.
 - And the _Hollow Folders Setting_ is dependent on the _Folder Decorations Setting_ as well.
