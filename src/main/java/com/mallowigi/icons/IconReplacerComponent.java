@@ -143,7 +143,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
 
     ApplicationManager.getApplication().invokeLater(() -> {
       IconFilterManager.INSTANCE.applyFilter();
-      LafManager.getInstance().updateUI();
+      //      LafManager.getInstance().updateUI();
     });
   }
 
