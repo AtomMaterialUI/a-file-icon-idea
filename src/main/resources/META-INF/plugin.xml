@@ -59,8 +59,10 @@
                       order="first, after CustomFolderIconProvider"
                       id="DefaultFolderIconProvider"/>
 
-        <iconProvider implementation="com.mallowigi.tree.SpecialFoldersIconProvider" id="SpecialFoldersIconProvider"
-                      order="first, after CustomFolderIconProvider"/>
+        <!--        <iconProvider implementation="com.mallowigi.tree.SpecialFoldersIconProvider" id="SpecialFoldersIconProvider"-->
+        <!--                      order="first, after CustomFolderIconProvider"/>-->
+
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
     </extensions>
 
     <applicationListeners>
