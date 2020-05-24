@@ -32,9 +32,26 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
   - Toolbar icons (actions)
   - Gutter icons (debugger)
   - Node icons (folders)...
-- **Monochrome filter**: Set a filter to the whole UI
+- **Monochrome filter**: Set a monochrome filter to the whole UI
   - Ability to select the color
-- **Customizability**: Select which settings to apply in a Settings Page
+- **Arrows Style**: Customize the look of the arrows in Tree components
+  - Material: Chevron-like arrows
+  - Darcula: Regular triangle arrows
+  - Plus-Minus: Plus and Minus signs
+  - Arrows: Simple Arrows
+  - None: No arrows
+- **Hollow Folders**: Add custom decorations on folders contianing opened files
+- **Accent Color**: Change the color of specific icons
+  - Closing tab button
+  - Highlighted arrows
+  - Loading indicator...
+- **Customizability**: Custom Settings
+  - Settings Pages
+  - Toolbar Action Buttons 
+- **Custom File and Directory associations** (NEW): Customize your own associations 
+  - File associations by Regex
+  - Folder associations
+  - Preview default icons
 
 
 ## File Icons
@@ -42,12 +59,6 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 
 ## Folder Icons
 ![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
-
-### Settings
-![settings.png](assets/settings.png)
-
-### Menu
-![menu.png](assets/menu.png)
 
 ## Credits
 
