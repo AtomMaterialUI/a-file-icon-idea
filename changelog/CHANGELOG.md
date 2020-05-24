@@ -1,5 +1,20 @@
 # Changelog
 
+# 25.0
+- The finally awaited **Custom Icon Associations** is here! This is an alpha version so it can contain bugs :)
+    - Assign custom file associations and folder associations from the Settings
+    - Preview Default File and Folder Associations from the Settings
+    - Assign icons from your file system
+    - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
+- The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)
+- Fix issue with monospace colors not being persisted (at the cost of the bug with the blue border at start reappearing)
+- Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons
+- Now the _PSI Icons setting_ is dependent on the _UI Icons setting_, as this wouldn't work without it.
+- And the _Hollow Folders Setting_ is dependent on the _Folder Decorations Setting_ as well.
+- **New folder associations**: widgets, elements, users, members, partners, friends, projects, ui, dev, staging, qa, prod, serializers, types, io, stdlib, deps
+- New file associations: `*_test.go`, `*_spec.go`, `Chart.yaml`, `values.yaml`, `helmfile.yaml`, scala test files
+- Added `jsconfig` and `tsconfig`
+
 # 24.0
 - Added accent color selection in the settings
 - new UI/PSI icons: Scala, Ruby, Typescript
