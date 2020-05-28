@@ -27,9 +27,8 @@
     <name>Atom Material Icons</name>
     <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Elior Boukhobza (Mallowigi)</vendor>
-    <category>Icons</category>
 
-    <idea-version since-build="201.2935"/>
+    <idea-version since-build="202"/>
 
     <depends>com.intellij.modules.lang</depends>
 

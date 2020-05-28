@@ -1,5 +1,11 @@
 # Changelog
 
+# 25.2
+- Support for 2020.2 EAP
+
+# 25.1
+- Fix Psi Icons for PHP files
+
 # 25.0
 - The finally awaited **Custom Icon Associations** is here! This is an alpha version so it can contain bugs :)
     - Assign custom file associations and folder associations from the Settings
