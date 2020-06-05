@@ -22,28 +22,22 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.providers
+package com.mallowigi.icons.special
 
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiFile
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.associations.AtomAssocConfig
-import com.mallowigi.icons.associations.CustomAssociations
-import com.mallowigi.icons.special.CustomFileIcon
-import icons.MTIcons
+import com.intellij.util.ui.EmptyIcon
+import java.awt.Component
+import java.awt.Graphics
 import javax.swing.Icon
 
-class CustomFileIconProvider : AbstractFileIconProvider() {
-  override fun getSource(): CustomAssociations = AtomAssocConfig.instance.customFileAssociations
+class CustomFileIcon(val realIcon: Icon) : Icon {
+  internal constructor() : this(EmptyIcon.create(16)) {}
 
-  override fun isOfType(element: PsiElement): Boolean = element is PsiFile
+  override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+    realIcon.paintIcon(c, g, x, y)
+  }
 
-  override fun getType(): IconType = IconType.FILE
+  override fun getIconWidth(): Int = realIcon.iconWidth
 
-  override fun isDefault(): Boolean = false
-
-  override fun getIcon(iconPath: String): Icon? = CustomFileIcon(MTIcons.loadSVGIcon(iconPath))
-
-  override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledIcons
+  override fun getIconHeight(): Int = realIcon.iconHeight
 
 }

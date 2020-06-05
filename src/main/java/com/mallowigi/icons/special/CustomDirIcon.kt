@@ -22,28 +22,9 @@
  *  SOFTWARE.
  */
 
-package com.mallowigi.icons.providers
+package com.mallowigi.icons.special
 
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiFile
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.associations.AtomAssocConfig
-import com.mallowigi.icons.associations.CustomAssociations
-import com.mallowigi.icons.special.CustomFileIcon
-import icons.MTIcons
 import javax.swing.Icon
 
-class CustomFileIconProvider : AbstractFileIconProvider() {
-  override fun getSource(): CustomAssociations = AtomAssocConfig.instance.customFileAssociations
-
-  override fun isOfType(element: PsiElement): Boolean = element is PsiFile
-
-  override fun getType(): IconType = IconType.FILE
-
-  override fun isDefault(): Boolean = false
-
-  override fun getIcon(iconPath: String): Icon? = CustomFileIcon(MTIcons.loadSVGIcon(iconPath))
-
-  override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledIcons
-
+class CustomDirIcon(icon: Icon) : DirIcon(icon) {
 }

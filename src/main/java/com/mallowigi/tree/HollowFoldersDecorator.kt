@@ -38,6 +38,7 @@ import com.intellij.packageDependencies.ui.PackageDependenciesNode
 import com.intellij.ui.ColoredTreeCellRenderer
 import com.intellij.util.PlatformIcons
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
 import icons.MTIcons
 import java.util.*
@@ -60,7 +61,10 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      if (data.getIcon(true) is DirIcon) {
+      if (data.getIcon(true) is CustomDirIcon) {
+        return;
+      }
+      else if (data.getIcon(true) is DirIcon) {
         val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
         data.setIcon(DirIcon(openedIcon))
       }

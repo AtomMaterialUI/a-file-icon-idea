@@ -28,7 +28,7 @@ import java.awt.Component
 import java.awt.Graphics
 import javax.swing.Icon
 
-class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
+open class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
   internal constructor() : this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen) {}
 
   constructor(icon: Icon) : this(icon, icon) {}
