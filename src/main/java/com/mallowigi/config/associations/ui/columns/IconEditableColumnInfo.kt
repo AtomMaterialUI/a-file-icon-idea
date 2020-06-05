@@ -47,7 +47,7 @@ class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
   }
 
   override fun setValue(item: Association?, value: String?) {
-    item?.icon = value!!
+    if (value != null) item?.icon = value
   }
 
   override fun getEditor(item: Association?): @Nullable TableCellEditor? {

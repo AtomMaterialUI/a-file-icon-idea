@@ -41,8 +41,8 @@ class RegexAssociation @JvmOverloads constructor(name: String = "",
 
   constructor(association: Association) : this(
     name = association.name,
-    icon = association.matcher,
-    pattern = association.icon
+    icon = association.icon,
+    pattern = association.matcher
   )
 
   override fun matches(file: FileInfo): Boolean {

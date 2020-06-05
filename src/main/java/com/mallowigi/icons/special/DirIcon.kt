@@ -33,7 +33,7 @@ open class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
 
   constructor(icon: Icon) : this(icon, icon) {}
 
-  override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+  override fun paintIcon(c: Component?, g: Graphics, x: Int, y: Int) {
     closedIcon.paintIcon(c, g, x, y)
   }
 

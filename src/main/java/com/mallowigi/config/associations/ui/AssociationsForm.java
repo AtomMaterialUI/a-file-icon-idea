@@ -83,8 +83,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent customFileIconsTable;
   private JComponent customFolderIconsTable;
-  private TableModelEditor<RegexAssociation> customFileAssociationsEditor;
-  private TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
+  private @Nullable TableModelEditor<RegexAssociation> customFileAssociationsEditor;
+  private @Nullable TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
 
   public AssociationsForm() {
 
@@ -108,7 +108,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   @Override
   public void dispose() {
-
+    customFileAssociationsEditor = null;
+    customFolderAssociationsEditor = null;
   }
 
   public void setFormState(final AtomAssocConfig config) {
