@@ -1,5 +1,8 @@
 # Changelog
 
+# 25.3
+- Fixes many issues with custom associations
+
 # 25.2
 - Support for 2020.2 EAP
 
