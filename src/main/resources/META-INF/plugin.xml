@@ -43,6 +43,7 @@
         <applicationConfigurable instance="com.mallowigi.config.associations.AssocConfigurable"
                                  groupId="appearance" dynamic="true"
                                  id="AtomAssocConfig"/>
+        <applicationService serviceImplementation="com.mallowigi.icons.IconReplacerComponent"/>
 
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
 
@@ -66,9 +67,9 @@
     </extensions>
 
     <applicationListeners>
-        <listener class="com.mallowigi.icons.IconReplacerComponent"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <!--        <listener class="com.mallowigi.icons.IconReplacerComponent"-->
+        <!--                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>-->
+        <!--        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener"/>-->
 
         <listener class="com.mallowigi.icons.TintedIconsComponent"
                   topic="com.intellij.ide.plugins.DynamicPluginListener"/>

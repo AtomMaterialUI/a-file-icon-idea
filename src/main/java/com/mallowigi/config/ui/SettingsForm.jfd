@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.7" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.7" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -142,12 +142,13 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 8"
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "accentColorLabel"
-				"text": new FormMessage( null, "SettingsForm.accentColorLabel.text" )
-				"toolTipText": new FormMessage( null, "SettingsForm.accentColorLabel.toolTipText" )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "accentColorCheckbox"
+				"text": new FormMessage( null, "SettingsForm.accentColorCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.accentColorCheckbox.toolTipText" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentColorCheckboxActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "pad 0,cell 1 8,aligny center,grow 100 0"
+				"value": "cell 1 8"
 			} )
 			add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 				name: "accentColorChooser"
