@@ -219,6 +219,13 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   }
   //endregion
 
+  fun getCurrentAccentColor(): String {
+    if (isAccentColorEnabled) {
+      return accentColor
+    }
+    return accentColorFromTheme
+  }
+
   companion object {
     private val accentColorFromTheme: String
       get() {

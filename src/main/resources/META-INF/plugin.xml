@@ -44,6 +44,7 @@
                                  groupId="appearance" dynamic="true"
                                  id="AtomAssocConfig"/>
         <applicationService serviceImplementation="com.mallowigi.icons.IconReplacerComponent"/>
+        <applicationService serviceImplementation="com.mallowigi.icons.TintedIconsComponent"/>
 
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
 
