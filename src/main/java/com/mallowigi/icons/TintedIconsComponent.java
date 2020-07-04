@@ -77,7 +77,6 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     initComponent();
   }
 
-  @SuppressWarnings("MissingRecentApi")
   @Override
   public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
     disposeComponent();

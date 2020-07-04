@@ -27,6 +27,7 @@ package com.mallowigi.tree;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -92,6 +93,7 @@ public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleL
       }
     });
 
+    connect.subscribe(LafManagerListener.TOPIC, source -> replaceTree());
   }
 
   private void disposeComponent() {
