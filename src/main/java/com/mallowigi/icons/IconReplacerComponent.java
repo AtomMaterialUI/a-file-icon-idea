@@ -33,7 +33,6 @@ import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -54,12 +53,12 @@ import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
 import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.services.IconFilterManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-@SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class IconReplacerComponent implements DumbAware {
+public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
   private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
@@ -68,11 +67,6 @@ public final class IconReplacerComponent implements DumbAware {
 
   public IconReplacerComponent() {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    initComponent();
-  }
-
-  public static IconReplacerComponent getInstance() {
-    return ServiceManager.getService(IconReplacerComponent.class);
   }
 
   private static void removePathPatcher(final IconPathPatcher patcher) {
@@ -89,8 +83,26 @@ public final class IconReplacerComponent implements DumbAware {
     }, ModalityState.NON_MODAL);
   }
 
-  @SuppressWarnings({"WeakerAccess",
-    "FeatureEnvy"})
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
+    initComponent();
+  }
+
+  @Override
+  public void appClosing() {
+    disposeComponent();
+  }
+
+  @Override
+  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
+    initComponent();
+  }
+
+  @Override
+  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
+    disposeComponent();
+  }
+
   void updateIcons() {
     AbstractIconPatcher.clearCache();
     removePathPatchers();
@@ -110,20 +122,6 @@ public final class IconReplacerComponent implements DumbAware {
 
   private void initComponent() {
     updateIcons();
-    connect.subscribe(AppLifecycleListener.TOPIC, new AppLifecycleListener() {
-      @Override
-      public void appClosing() {
-        disposeComponent();
-      }
-    });
-
-    connect.subscribe(DynamicPluginListener.TOPIC, new DynamicPluginListener() {
-      @Override
-      public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-        disposeComponent();
-      }
-    });
-
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
     connect.subscribe(AtomConfigNotifier.TOPIC, this::onSettingsChanged);

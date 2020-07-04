@@ -28,76 +28,74 @@
     <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Elior Boukhobza (Mallowigi)</vendor>
 
-    <idea-version since-build="202"/>
+    <idea-version since-build="202" />
 
     <depends>com.intellij.modules.lang</depends>
 
     <resource-bundle>config.AtomFileIconsBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
+        <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig" />
         <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
                                  groupId="appearance" dynamic="true"
-                                 id="AtomConfig"/>
-        <applicationService serviceImplementation="com.mallowigi.config.associations.AtomAssocConfig"/>
+                                 id="AtomConfig" />
+        <applicationService serviceImplementation="com.mallowigi.config.associations.AtomAssocConfig" />
         <applicationConfigurable instance="com.mallowigi.config.associations.AssocConfigurable"
                                  groupId="appearance" dynamic="true"
-                                 id="AtomAssocConfig"/>
-        <applicationService serviceImplementation="com.mallowigi.icons.IconReplacerComponent"/>
-        <applicationService serviceImplementation="com.mallowigi.icons.TintedIconsComponent"/>
+                                 id="AtomAssocConfig" />
 
-        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
+        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
                       order="first, after HiddenIconProvider"
-                      id="CustomFileIconProvider"/>
+                      id="CustomFileIconProvider" />
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"
                       order="first, after HiddenIconProvider"
-                      id="CustomFolderIconProvider"/>
+                      id="CustomFolderIconProvider" />
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
                       order="first, after CustomFileIconProvider"
-                      id="DefaultFileIconProvider"/>
+                      id="DefaultFileIconProvider" />
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
                       order="first, after CustomFolderIconProvider"
-                      id="DefaultFolderIconProvider"/>
+                      id="DefaultFolderIconProvider" />
 
         <!--        <iconProvider implementation="com.mallowigi.tree.SpecialFoldersIconProvider" id="SpecialFoldersIconProvider"-->
         <!--                      order="first, after CustomFolderIconProvider"/>-->
 
-        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
     </extensions>
 
     <applicationListeners>
-        <!--        <listener class="com.mallowigi.icons.IconReplacerComponent"-->
-        <!--                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>-->
-        <!--        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener"/>-->
+        <listener class="com.mallowigi.icons.IconReplacerComponent"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener" />
+        <listener class="com.mallowigi.icons.IconReplacerComponent" topic="com.intellij.ide.AppLifecycleListener" />
 
         <listener class="com.mallowigi.icons.TintedIconsComponent"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-        <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+                  topic="com.intellij.ide.plugins.DynamicPluginListener" />
+        <listener class="com.mallowigi.icons.TintedIconsComponent" topic="com.intellij.ide.AppLifecycleListener" />
 
-        <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.tree.ArrowIconsComponent"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+                  topic="com.intellij.ide.plugins.DynamicPluginListener" />
 
     </applicationListeners>
 
     <actions>
         <group id="AtomFileIcons.Actions"
                popup="true" icon="/icons/actions/atom.svg">
-            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="last" />
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
-                    icon="/icons/settings/atom.svg"/>
+                    icon="/icons/settings/atom.svg" />
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
-                    icon="/icons/settings/compiledClassesFolder.svg"/>
+                    icon="/icons/settings/compiledClassesFolder.svg" />
             <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
-                    icon="/icons/settings/plugin.svg"/>
+                    icon="/icons/settings/plugin.svg" />
             <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
-                    icon="/icons/settings/psi.svg"/>
+                    icon="/icons/settings/psi.svg" />
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
-                    icon="/icons/settings/monochrome.svg"/>
+                    icon="/icons/settings/monochrome.svg" />
             <action class="com.mallowigi.actions.HideFileIcons" id="HideFileIcons"
-                    icon="/icons/settings/monochrome.svg"/>
+                    icon="/icons/settings/monochrome.svg" />
         </group>
 
     </actions>

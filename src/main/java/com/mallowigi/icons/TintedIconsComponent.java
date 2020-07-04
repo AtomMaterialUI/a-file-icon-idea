@@ -29,8 +29,8 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.SVGLoader;
@@ -53,37 +53,37 @@ import java.util.Random;
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
-@SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public final class TintedIconsComponent implements DumbAware {
+public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
   private TintedColorPatcher colorPatcher;
   private final MessageBusConnection connect;
 
   public TintedIconsComponent() {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
+  }
+
+  @Override
+  public void appStarting(@Nullable final Project projectFromCommandLine) {
     initComponent();
   }
 
-  public static TintedIconsComponent getInstance() {
-    return ServiceManager.getService(TintedIconsComponent.class);
+  @Override
+  public void appClosing() {
+    disposeComponent();
+  }
+
+  @Override
+  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
+    initComponent();
+  }
+
+  @Override
+  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
+    disposeComponent();
   }
 
   private void initComponent() {
     colorPatcher = new TintedColorPatcher();
     SVGLoader.setColorPatcherProvider(colorPatcher);
-
-    connect.subscribe(AppLifecycleListener.TOPIC, new AppLifecycleListener() {
-      @Override
-      public void appClosing() {
-        disposeComponent();
-      }
-    });
-
-    connect.subscribe(DynamicPluginListener.TOPIC, new DynamicPluginListener() {
-      @Override
-      public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-        disposeComponent();
-      }
-    });
 
     // Listen for changes on the settings
     connect.subscribe(LafManagerListener.TOPIC, source -> {
@@ -115,10 +115,6 @@ public final class TintedIconsComponent implements DumbAware {
     return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentAccentColor()));
   }
 
-  @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-    "IfStatementWithTooManyBranches",
-    "DuplicateStringLiteralInspection",
-    "SyntheticAccessorCall"})
   private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
@@ -184,7 +180,6 @@ public final class TintedIconsComponent implements DumbAware {
       return ColorUtil.toHex(color);
     }
 
-    @SuppressWarnings("UnsecureRandomNumberGeneration")
     private static Color getRandomColor() {
       //to get rainbow, pastel colors
       final Random random = new Random();
