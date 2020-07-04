@@ -78,6 +78,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var arrowsStyle = ArrowsStyles.MATERIAL
     private set
 
+  @Property
+  var isAccentColorEnabled = false
+    private set
+
   @NonNls
   @Property
   var accentColor = accentColorFromTheme
@@ -107,6 +111,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isHideFileIcons = form.isHiddenFileIcons
     isUseHollowFolders = form.isHollowFoldersEnabled
     arrowsStyle = form.arrowsStyle
+    isAccentColorEnabled = form.isAccentColorEnabled
     accentColor = form.accentColor
     fireChanged()
   }
@@ -121,9 +126,11 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isHideFileIcons = false
     isUseHollowFolders = true
     arrowsStyle = ArrowsStyles.MATERIAL
+    isAccentColorEnabled = false
     accentColor = accentColorFromTheme
   }
 
+  //region File Icons
   fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean {
     return this.isEnabledIcons != isEnabledIcons
   }
@@ -131,7 +138,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun toggleEnabledIcons() {
     isEnabledIcons = !isEnabledIcons
   }
+  //endregion
 
+  //region Directory Icons
   fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean {
     return this.isEnabledDirectories != isEnabledDirectories
   }
@@ -139,7 +148,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun toggleDirectoriesIcons() {
     isEnabledDirectories = !isEnabledDirectories
   }
+  //endregion
 
+  //region Monochrome Icons
   fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean {
     return isMonochromeIcons != isMonochrome
   }
@@ -148,6 +159,12 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isMonochromeIcons = !isMonochromeIcons
   }
 
+  fun isMonochromeColorChanged(monochromeColor: String): Boolean {
+    return this.monochromeColor != monochromeColor
+  }
+  //endregion
+
+  //region UI Icons
   fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean {
     return this.isEnabledUIIcons != isEnabledUIIcons
   }
@@ -155,11 +172,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun toggleUIIcons() {
     isEnabledUIIcons = !isEnabledUIIcons
   }
+  //endregion
 
-  fun isMonochromeColorChanged(monochromeColor: String): Boolean {
-    return this.monochromeColor != monochromeColor
-  }
-
+  //region PSI Icons
   fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean {
     return this.isEnabledPsiIcons != isEnabledPsiIcons
   }
@@ -167,7 +182,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
   }
+  //endregion
 
+  //region Hollow Folders
   fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean {
     return isUseHollowFolders != useHollowFolders
   }
@@ -175,7 +192,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun toggleUseHollowFolders() {
     isUseHollowFolders = !isUseHollowFolders
   }
+  //endregion
 
+  //region Hide File Icons
   fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean {
     return isHideFileIcons != hideFileIcons
   }
@@ -183,13 +202,29 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun toggleHideFileIcons() {
     isHideFileIcons = !isHideFileIcons
   }
+  //endregion
 
+  //region Arrows Style
   fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean {
     return this.arrowsStyle != arrowsStyle
   }
+  //endregion
 
+  //region Accent Color
   fun isAccentColorChanged(accentColor: String): Boolean {
     return this.accentColor != accentColor
+  }
+
+  fun isAccentColorEnabledChanged(enabled: Boolean): Boolean {
+    return this.isAccentColorEnabled != enabled
+  }
+  //endregion
+
+  fun getCurrentAccentColor(): String {
+    if (isAccentColorEnabled) {
+      return accentColor
+    }
+    return accentColorFromTheme
   }
 
   companion object {
