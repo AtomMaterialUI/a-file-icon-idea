@@ -38,8 +38,7 @@ public enum IconPatchersFactory {
   @NonNls
   private static final String ICON_PATCHERS_XML = "/icon_patchers.xml";
 
-  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
-  static IconPathPatchers create() {
+  public static IconPathPatchers create() {
     final URL xml = IconPatchersFactory.class.getResource(ICON_PATCHERS_XML);
     @NonNls final XStream xStream = new XStream();
     XStream.setupDefaultSecurity(xStream);

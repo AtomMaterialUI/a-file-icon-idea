@@ -156,9 +156,23 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 8,alignx right,growx 0"
 			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "themedColorCheckbox"
+				"text": new FormMessage( null, "SettingsForm.themedColorCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.themedColorCheckbox.toolTipText" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "themedColorCheckboxActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 9"
+			} )
+			add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+				name: "themedColorChooser"
+				"toolTipText": new FormMessage( null, "SettingsForm.themedColorChooser.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 9,alignx right,growx 0"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 370 )
+			"size": new java.awt.Dimension( 440, 470 )
 		} )
 	}
 }

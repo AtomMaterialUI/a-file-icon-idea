@@ -29,58 +29,28 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.ui.GuiUtils;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
 import com.mallowigi.icons.patchers.AbstractIconPatcher;
-import com.mallowigi.icons.patchers.CheckStyleIconPatcher;
-import com.mallowigi.icons.patchers.IconPathPatchers;
 import com.mallowigi.icons.services.IconFilterManager;
+import com.mallowigi.icons.services.IconPatchersManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.HashSet;
-
 public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
-  @Property
-  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
-  private final Collection<IconPathPatcher> installedPatchers = new HashSet<>(100);
-  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
   private final MessageBusConnection connect;
 
   public IconReplacerComponent() {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-  }
-
-  private static void removePathPatcher(final IconPathPatcher patcher) {
-    IconLoader.removePathPatcher(patcher);
-  }
-
-  private static void updateFileIcons() {
-    GuiUtils.invokeLaterIfNeeded(() -> {
-      final Application app = ApplicationManager.getApplication();
-      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
-
-      IconFilterManager.INSTANCE.applyFilter();
-    }, ModalityState.NON_MODAL);
   }
 
   @Override
@@ -103,38 +73,21 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     disposeComponent();
   }
 
-  void updateIcons() {
-    AbstractIconPatcher.clearCache();
-    removePathPatchers();
-
-    final AtomFileIconsConfig atomFileIconsConfig = AtomFileIconsConfig.getInstance();
-    if (atomFileIconsConfig.isEnabledUIIcons()) {
-      IconLoader.installPathPatcher(checkStyleIconPatcher);
-      installPathPatchers();
-    }
-    if (atomFileIconsConfig.isEnabledPsiIcons()) {
-      installPSIPatchers();
-    }
-    if (atomFileIconsConfig.isEnabledIcons()) {
-      installFileIconsPatchers();
-    }
-  }
-
   private void initComponent() {
-    updateIcons();
+    IconPatchersManager.INSTANCE.updateIcons();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
-    connect.subscribe(AtomConfigNotifier.TOPIC, this::onSettingsChanged);
+    connect.subscribe(AtomConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);
     connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
       @Override
       public void fileTypesChanged(@NotNull final FileTypeEvent event) {
-        updateIcons();
+        IconPatchersManager.INSTANCE.updateIcons();
       }
     });
     connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
       @Override
       public void projectOpened(@NotNull final Project project) {
-        updateIcons();
+        IconPatchersManager.INSTANCE.updateIcons();
       }
     });
 
@@ -144,44 +97,14 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     });
   }
 
-  private void installPathPatchers() {
-    for (final IconPathPatcher externalPatcher : iconPathPatchers.getIconPatchers()) {
-      installPathPatcher(externalPatcher);
-    }
-  }
-
-  private void installPSIPatchers() {
-    for (final IconPathPatcher externalPatcher : iconPathPatchers.getGlyphPatchers()) {
-      installPathPatcher(externalPatcher);
-    }
-  }
-
-  private void installFileIconsPatchers() {
-    for (final IconPathPatcher externalPatcher : iconPathPatchers.getFilePatchers()) {
-      installPathPatcher(externalPatcher);
-    }
-  }
-
-  private void removePathPatchers() {
-    for (final IconPathPatcher iconPathPatcher : installedPatchers) {
-      removePathPatcher(iconPathPatcher);
-    }
-    installedPatchers.clear();
-  }
-
-  private void installPathPatcher(final IconPathPatcher patcher) {
-    installedPatchers.add(patcher);
-    IconLoader.installPathPatcher(patcher);
-  }
-
   private void disposeComponent() {
     AbstractIconPatcher.clearCache();
     connect.disconnect();
   }
 
-  private void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
-    updateFileIcons();
-    updateIcons();
+  private static void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
+    IconPatchersManager.INSTANCE.updateFileIcons();
+    IconPatchersManager.INSTANCE.updateIcons();
     LafManager.getInstance().updateUI();
   }
 

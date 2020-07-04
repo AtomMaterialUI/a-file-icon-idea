@@ -32,10 +32,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.UIUtil;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
 import org.jetbrains.annotations.NonNls;
@@ -48,7 +46,6 @@ import org.w3c.dom.NodeList;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.net.URL;
-import java.util.Random;
 
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
@@ -107,8 +104,7 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   private static ColorUIResource getThemedColor() {
-    final JBColor caretForeground = JBColor.namedColor("Tree.foreground", UIUtil.getTreeForeground());
-    return new ColorUIResource(caretForeground);
+    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentThemedColor()));
   }
 
   private static ColorUIResource getTintedColor() {
@@ -180,13 +176,5 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       return ColorUtil.toHex(color);
     }
 
-    private static Color getRandomColor() {
-      //to get rainbow, pastel colors
-      final Random random = new Random();
-      final float hue = random.nextFloat();
-      final float saturation = 0.9f;//1.0 for brilliant, 0.0 for dull
-      final float luminance = 1.0f; //1.0 for brighter, 0.0 for black
-      return Color.getHSBColor(hue, saturation, luminance);
-    }
   }
 }

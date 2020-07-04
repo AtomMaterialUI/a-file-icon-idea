@@ -87,6 +87,15 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var accentColor = accentColorFromTheme
     private set
 
+  @Property
+  var isThemedColorEnabled = false
+    private set
+
+  @NonNls
+  @Property
+  var themedColor = themedColorFromTheme
+    private set
+
   override fun getState(): AtomFileIconsConfig {
     return this
   }
@@ -113,6 +122,8 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     arrowsStyle = form.arrowsStyle
     isAccentColorEnabled = form.isAccentColorEnabled
     accentColor = form.accentColor
+    isThemedColorEnabled = form.isThemedColorEnabled
+    themedColor = form.themedColor
     fireChanged()
   }
 
@@ -128,6 +139,8 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     arrowsStyle = ArrowsStyles.MATERIAL
     isAccentColorEnabled = false
     accentColor = accentColorFromTheme
+    isThemedColorEnabled = false
+    themedColor = themedColorFromTheme
   }
 
   //region File Icons
@@ -160,7 +173,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   }
 
   fun isMonochromeColorChanged(monochromeColor: String): Boolean {
-    return this.monochromeColor != monochromeColor
+    return this.monochromeColor.toLowerCase() != monochromeColor.toLowerCase()
   }
   //endregion
 
@@ -212,11 +225,21 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   //region Accent Color
   fun isAccentColorChanged(accentColor: String): Boolean {
-    return this.accentColor != accentColor
+    return this.accentColor.toLowerCase() != accentColor.toLowerCase()
   }
 
   fun isAccentColorEnabledChanged(enabled: Boolean): Boolean {
     return this.isAccentColorEnabled != enabled
+  }
+  //endregion
+
+  //region Themed Color
+  fun isThemedColorChanged(themedColor: String): Boolean {
+    return this.themedColor.toLowerCase() != themedColor.toLowerCase()
+  }
+
+  fun isThemedColorEnabledChanged(enabled: Boolean): Boolean {
+    return this.isThemedColorEnabled != enabled
   }
   //endregion
 
@@ -227,6 +250,13 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     return accentColorFromTheme
   }
 
+  fun getCurrentThemedColor(): String {
+    if (isThemedColorEnabled) {
+      return themedColor
+    }
+    return themedColorFromTheme
+  }
+
   companion object {
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()
@@ -235,11 +265,12 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       get() = getThemedFromTheme()
 
     private fun getAccentFromTheme(): @NotNull String {
-      return ColorUtil.toHex(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()))
+      val namedColor = JBColor.namedColor("Link.activeForeground", UIUtil.getButtonSelectColor())
+      return ColorUtil.toHex(ColorUtil.brighter(namedColor, 2))
     }
 
     private fun getThemedFromTheme(): @NotNull String {
-      return ColorUtil.toHex(JBColor.namedColor("DefaultTabs.underlineColor", UIUtil.getButtonSelectColor()))
+      return ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
     }
 
     @JvmStatic

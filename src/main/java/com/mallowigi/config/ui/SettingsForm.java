@@ -43,13 +43,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
-  "StringConcatenation",
-  "PublicMethodNotExposedInInterface",
-  "FeatureEnvy",
-  "BooleanMethodNameMustStartWithQuestion",
-  "ClassWithTooManyFields",
-  "ClassWithTooManyMethods",
-  "OverlyLongMethod"})
+    "StringConcatenation",
+    "PublicMethodNotExposedInInterface",
+    "FeatureEnvy",
+    "BooleanMethodNameMustStartWithQuestion",
+    "ClassWithTooManyFields",
+    "ClassWithTooManyMethods",
+    "OverlyLongMethod",
+    "unused"})
 public final class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
   }
@@ -64,6 +65,10 @@ public final class SettingsForm implements SettingsFormUI {
 
   private void monochromeCheckboxStateChanged(final ChangeEvent e) {
     monoColorChooser.setEnabled(monochromeCheckbox.isSelected());
+  }
+
+  private void themedColorCheckboxActionPerformed(final ActionEvent e) {
+    themedColorChooser.setEnabled(themedColorCheckbox.isSelected());
   }
 
   private void accentColorCheckboxActionPerformed(final ActionEvent e) {
@@ -94,10 +99,12 @@ public final class SettingsForm implements SettingsFormUI {
   private JLabel accentColorIcon;
   private JCheckBox accentColorCheckbox;
   private ColorPanel accentColorChooser;
+  private JCheckBox themedColorCheckbox;
+  private ColorPanel themedColorChooser;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings({"Convert2MethodRef",
-    "LocalCanBeFinal"})
+      "LocalCanBeFinal"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -124,26 +131,28 @@ public final class SettingsForm implements SettingsFormUI {
     accentColorIcon = new JLabel();
     accentColorCheckbox = new JCheckBox();
     accentColorChooser = new ColorPanel();
+    themedColorCheckbox = new JCheckBox();
+    themedColorChooser = new ColorPanel();
 
     //======== content ========
     {
       content.setLayout(new MigLayout(
-        "hidemode 3",
-        // columns
-        "[fill]" +
-          "[::600,fill]" +
-          "[fill]",
-        // rows
-        "[]" +
+          "hidemode 3",
+          // columns
+          "[fill]" +
+              "[::600,fill]" +
+              "[fill]",
+          // rows
           "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[50]" +
-          "[]" +
-          "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[50]" +
+              "[]" +
+              "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
@@ -242,6 +251,16 @@ public final class SettingsForm implements SettingsFormUI {
       //---- accentColorChooser ----
       accentColorChooser.setToolTipText(bundle.getString("SettingsForm.accentColorChooser.toolTipText"));
       content.add(accentColorChooser, "cell 2 8,alignx right,growx 0");
+
+      //---- themedColorCheckbox ----
+      themedColorCheckbox.setText(bundle.getString("SettingsForm.themedColorCheckbox.text"));
+      themedColorCheckbox.setToolTipText(bundle.getString("SettingsForm.themedColorCheckbox.toolTipText"));
+      themedColorCheckbox.addActionListener(e -> themedColorCheckboxActionPerformed(e));
+      content.add(themedColorCheckbox, "cell 1 9");
+
+      //---- themedColorChooser ----
+      themedColorChooser.setToolTipText(bundle.getString("SettingsForm.themedColorChooser.toolTipText"));
+      content.add(themedColorChooser, "cell 2 9,alignx right,growx 0");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -277,6 +296,8 @@ public final class SettingsForm implements SettingsFormUI {
     setArrowsStyle(config.getArrowsStyle());
     setAccentColorEnabled(config.isAccentColorEnabled());
     setAccentColor(config.getAccentColor());
+    setThemedColorEnabled(config.isThemedColorEnabled());
+    setThemedColor(config.getThemedColor());
 
     afterStateSet();
   }
@@ -292,7 +313,10 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
     modified = modified || config.isUseHollowFoldersChanged(getIsHollowFoldersEnabled());
     modified = modified || config.isArrowsStyleChanged(getArrowsStyle());
+    modified = modified || config.isAccentColorEnabledChanged(getIsAccentColorEnabled());
     modified = modified || config.isAccentColorChanged(getAccentColor());
+    modified = modified || config.isThemedColorEnabledChanged(getIsThemedColorEnabled());
+    modified = modified || config.isThemedColorChanged(getThemedColor());
 
     return modified;
   }
@@ -307,6 +331,9 @@ public final class SettingsForm implements SettingsFormUI {
     enableUIIconsCheckboxActionPerformed(null);
     enableDirectoryIconsCheckboxActionPerformed(null);
     monochromeCheckboxStateChanged(null);
+    accentColorCheckboxActionPerformed(null);
+    themedColorCheckboxActionPerformed(null);
+
   }
 
   @Override
@@ -420,6 +447,24 @@ public final class SettingsForm implements SettingsFormUI {
 
   private void setAccentColorEnabled(final boolean enabled) {
     accentColorCheckbox.setSelected(enabled);
+  }
+  //endregion
+
+  //region accent color
+  public String getThemedColor() {
+    return ColorUtil.toHex(Objects.requireNonNull(themedColorChooser.getSelectedColor()));
+  }
+
+  private void setThemedColor(final String color) {
+    themedColorChooser.setSelectedColor(ColorUtil.fromHex(color));
+  }
+
+  public boolean getIsThemedColorEnabled() {
+    return themedColorCheckbox.isSelected();
+  }
+
+  private void setThemedColorEnabled(final boolean enabled) {
+    themedColorCheckbox.setSelected(enabled);
   }
   //endregion
 }
