@@ -42,6 +42,7 @@
         <applicationService serviceImplementation="com.mallowigi.config.associations.AtomAssocConfig" />
         <applicationConfigurable instance="com.mallowigi.config.associations.AssocConfigurable"
                                  groupId="appearance" dynamic="true"
+                                 parentId="AtomConfig"
                                  id="AtomAssocConfig" />
 
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />

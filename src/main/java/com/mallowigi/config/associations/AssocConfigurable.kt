@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NonNls
 import java.util.*
 
 class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(),
-                          SearchableConfigurable {
+    SearchableConfigurable {
   override val config: AtomAssocConfig?
     get() = AtomAssocConfig.instance;
 
@@ -43,15 +43,15 @@ class AssocConfigurable : ConfigurableBase<AssociationsForm?, AtomAssocConfig?>(
 
   override fun createForm(): AssociationsForm = AssociationsForm()
 
-  protected override fun setFormState(form: AssociationsForm?, config: AtomAssocConfig?) {
+  override fun setFormState(form: AssociationsForm?, config: AtomAssocConfig?) {
     form?.setFormState(config)
   }
 
-  protected override fun doApply(form: AssociationsForm?, config: AtomAssocConfig?) {
+  override fun doApply(form: AssociationsForm?, config: AtomAssocConfig?) {
     config?.applySettings(form!!);
   }
 
-  protected override fun checkModified(form: AssociationsForm?, config: AtomAssocConfig?): Boolean {
+  override fun checkModified(form: AssociationsForm?, config: AtomAssocConfig?): Boolean {
     return checkFormModified(form!!, config)
   }
 
