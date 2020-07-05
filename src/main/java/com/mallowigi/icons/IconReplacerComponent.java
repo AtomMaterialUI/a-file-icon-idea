@@ -43,6 +43,7 @@ import com.mallowigi.config.listeners.AtomConfigNotifier;
 import com.mallowigi.icons.patchers.AbstractIconPatcher;
 import com.mallowigi.icons.services.IconFilterManager;
 import com.mallowigi.icons.services.IconPatchersManager;
+import com.mallowigi.utils.UiUtilsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -91,10 +92,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       }
     });
 
-    ApplicationManager.getApplication().invokeLater(() -> {
-      IconFilterManager.INSTANCE.applyFilter();
-      //      LafManager.getInstance().updateUI();
-    });
+    ApplicationManager.getApplication().invokeLater(IconFilterManager.INSTANCE::applyFilter);
   }
 
   private void disposeComponent() {
@@ -106,6 +104,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     IconPatchersManager.INSTANCE.updateFileIcons();
     IconPatchersManager.INSTANCE.updateIcons();
     LafManager.getInstance().updateUI();
+    UiUtilsKt.refreshOpenedProjects();
   }
 
 }

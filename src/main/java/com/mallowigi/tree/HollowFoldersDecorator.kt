@@ -36,7 +36,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.packageDependencies.ui.PackageDependenciesNode
 import com.intellij.ui.ColoredTreeCellRenderer
 import com.intellij.util.PlatformIcons
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
 import icons.MTIcons
@@ -44,14 +44,13 @@ import java.util.*
 import javax.swing.Icon
 
 class HollowFoldersDecorator : ProjectViewNodeDecorator {
-  private val useHollowFolders: Boolean = instance.isUseHollowFolders
 
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val file = node.virtualFile
     val project = node.project
 
     if (project != null && file != null && !Disposer.isDisposed(project)) {
-      if (!useHollowFolders || !file.isDirectory) return
+      if (!AtomFileIconsConfig.instance.isUseHollowFolders || !file.isDirectory) return
 
       if (isFolderContainingOpenFiles(project, file)) setOpenDirectoryIcon(data, file, project)
     }
@@ -86,7 +85,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
   private fun isFolderContainingOpenFiles(project: Project,
                                           virtualFile: VirtualFile): Boolean {
     val openFiles = FileEditorManager.getInstance(project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.getPath().toString()) }
+    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.getPath()) }
   }
 
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {}

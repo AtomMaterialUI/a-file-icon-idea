@@ -23,6 +23,7 @@
  */
 package com.mallowigi.config
 
+import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.ServiceManager
@@ -265,8 +266,14 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       get() = getThemedFromTheme()
 
     private fun getAccentFromTheme(): @NotNull String {
-      val namedColor = JBColor.namedColor("Link.activeForeground", UIUtil.getButtonSelectColor())
-      return ColorUtil.toHex(ColorUtil.brighter(namedColor, 2))
+      val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
+        "Light" -> "Button.select"
+        "Darcula" -> "Button.select"
+        else -> "Link.activeForeground"
+      }
+
+      val namedColor = JBColor.namedColor(namedKey, UIUtil.getButtonSelectColor())
+      return ColorUtil.toHex(namedColor)
     }
 
     private fun getThemedFromTheme(): @NotNull String {
