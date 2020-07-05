@@ -27,11 +27,8 @@ import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.ProjectViewNodeDecorator
 import com.intellij.ide.projectView.impl.ProjectRootsUtil
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileEditor.FileEditorManager
-import com.intellij.openapi.fileEditor.FileEditorManagerListener
-import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.util.Disposer
@@ -46,17 +43,8 @@ import icons.MTIcons
 import java.util.*
 import javax.swing.Icon
 
-class HollowFoldersDecorator() : ProjectViewNodeDecorator {
+class HollowFoldersDecorator : ProjectViewNodeDecorator {
   private val useHollowFolders: Boolean = instance.isUseHollowFolders
-
-  init {
-    ApplicationManager.getApplication().getMessageBus().connect()
-        .subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, object : FileEditorManagerListener {
-          override fun fileOpened(source: FileEditorManager, file: VirtualFile) {
-            FileTypeManagerEx.getInstanceEx().fireFileTypesChanged()
-          }
-        })
-  }
 
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val file = node.virtualFile

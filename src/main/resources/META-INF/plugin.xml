@@ -78,6 +78,8 @@
         <listener class="com.mallowigi.tree.ArrowIconsComponent"
                   topic="com.intellij.ide.plugins.DynamicPluginListener" />
 
+        <listener class="com.mallowigi.tree.RefreshTreeListener" topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+
     </applicationListeners>
 
     <actions>
