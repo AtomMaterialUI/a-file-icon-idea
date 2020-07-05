@@ -32,7 +32,7 @@
 
     <depends>com.intellij.modules.lang</depends>
 
-    <resource-bundle>config.AtomFileIconsBundle</resource-bundle>
+    <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig" />
