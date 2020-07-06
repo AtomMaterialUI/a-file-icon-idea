@@ -139,7 +139,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("config.AtomFileIconsBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle");
     tabbedContainer = new JTabbedPane();
     customFileIconsNew = new JPanel();
     explanation = new JTextPane();

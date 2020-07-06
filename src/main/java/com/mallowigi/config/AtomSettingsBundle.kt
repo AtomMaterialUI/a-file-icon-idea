@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 
 @NonNls
-private const val BUNDLE = "config.AtomFileIconsBundle"
+private const val BUNDLE = "messages.AtomFileIconsBundle"
 
 object AtomSettingsBundle : DynamicBundle(BUNDLE) {
 
