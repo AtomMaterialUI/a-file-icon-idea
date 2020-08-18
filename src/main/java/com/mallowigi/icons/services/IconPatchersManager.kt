@@ -1,5 +1,6 @@
 package com.mallowigi.icons.services
 
+import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ModalityState
@@ -63,6 +64,8 @@ object IconPatchersManager {
       removePathPatcher(iconPathPatcher)
     }
     installedPatchers.clear()
+    IconLoader.clearCache()
+    LafManager.getInstance().updateUI()
   }
 
   private fun installPathPatcher(patcher: IconPathPatcher) {

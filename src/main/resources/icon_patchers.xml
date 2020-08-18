@@ -132,7 +132,7 @@
         <patcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin" />
         <patcher name="PHP" remove="/icons" append="/files/plugins/php" />
-        <patcher name="Sass" remove="/resources/icons" append="/files/plugins/sass" />
+        <patcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
         <patcher name="Scala" remove="" append="/files/plugins/scala" />
         <patcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
         <patcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
