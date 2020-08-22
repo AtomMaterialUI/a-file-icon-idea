@@ -63,6 +63,7 @@
         <patcher name="Scala" remove="" append="/icons/plugins/scala" />
         <patcher name="Tasks" remove="/icons" append="/icons/tasks" />
         <patcher name="Terminal" remove="/icons" append="/icons/terminal" />
+        <patcher name="TypeScript" remove="/icons/typescript" append="/icons/plugins/typescript" />
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml" />
         <patcher name="VCS" remove="/icons" append="/icons/plugins/vcs" />
         <patcher name="Web2Py" remove="/icons/com/jetbrains/web2py" append="/icons/plugins/python/web2py" />

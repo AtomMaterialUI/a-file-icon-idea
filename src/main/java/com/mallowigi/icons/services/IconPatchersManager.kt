@@ -1,6 +1,5 @@
 package com.mallowigi.icons.services
 
-import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ModalityState
@@ -20,10 +19,6 @@ object IconPatchersManager {
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
   private val checkStyleIconPatcher = CheckStyleIconPatcher()
-
-  private fun removePathPatcher(patcher: IconPathPatcher) {
-    IconLoader.removePathPatcher(patcher)
-  }
 
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
@@ -65,7 +60,10 @@ object IconPatchersManager {
     }
     installedPatchers.clear()
     IconLoader.clearCache()
-    LafManager.getInstance().updateUI()
+  }
+
+  private fun removePathPatcher(patcher: IconPathPatcher) {
+    IconLoader.removePathPatcher(patcher)
   }
 
   private fun installPathPatcher(patcher: IconPathPatcher) {
