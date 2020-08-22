@@ -66,7 +66,7 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
   @Nullable
   @Override
   public final String patchPath(final String path, final ClassLoader classLoader) {
-    if (getInstance() == null || !getInstance().isEnabledUIIcons()) {
+    if (getInstance() == null) {
       return null;
     }
 
@@ -88,8 +88,13 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
 
   @Nullable
   @Override
-  public final ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
-    return getClass().getClassLoader();
+  public final ClassLoader getContextClassLoader(final @NotNull String path, final ClassLoader originalClassLoader) {
+    final ClassLoader classLoader = getClass().getClassLoader();
+    final String newPath = patchPath(path, classLoader);
+    if (newPath != null && classLoader.getResource(newPath) != null) {
+      return classLoader;
+    }
+    return originalClassLoader;
   }
 
   public final AtomFileIconsConfig getInstance() {
