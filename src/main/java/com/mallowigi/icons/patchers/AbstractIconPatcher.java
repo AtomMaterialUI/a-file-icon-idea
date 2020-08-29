@@ -38,11 +38,14 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractIconPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>(100);
+  private static final Map<String, ClassLoader> CL_CACHE = new HashMap<>(100);
+
   private static final Pattern PNG = Pattern.compile(".png", Pattern.LITERAL);
   private static final Pattern SVG = Pattern.compile(".svg", Pattern.LITERAL);
   private static final Pattern GIF = Pattern.compile(".gif", Pattern.LITERAL);
 
   private AtomFileIconsConfig instance = AtomFileIconsConfig.getInstance();
+  public boolean enabled;
 
   public static void clearCache() {
     CACHE.clear();
@@ -65,11 +68,33 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
   @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Nullable
   @Override
-  public final String patchPath(final String path, final ClassLoader classLoader) {
-    if (getInstance() == null) {
+  public final String patchPath(final @NotNull String path, final ClassLoader classLoader) {
+    if (getInstance() == null || !enabled) {
       return null;
     }
+    return getPatchedPath(path);
+  }
 
+  @Nullable
+  @Override
+  public final ClassLoader getContextClassLoader(final @NotNull String path, final ClassLoader originalClassLoader) {
+    final ClassLoader classLoader = getClass().getClassLoader();
+    if (!CL_CACHE.containsKey(path)) {
+      CL_CACHE.put(path, originalClassLoader);
+    }
+    final ClassLoader cachedClassLoader = CL_CACHE.get(path);
+    return enabled ? classLoader : cachedClassLoader;
+  }
+
+  public final AtomFileIconsConfig getInstance() {
+    if (instance == null) {
+      instance = AtomFileIconsConfig.getInstance();
+    }
+    return instance;
+  }
+
+  @Nullable
+  private String getPatchedPath(final String path) {
     if (CACHE.containsKey(path)) {
       return CACHE.get(path);
     }
@@ -84,24 +109,6 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
       return CACHE.get(path);
     }
     return null;
-  }
-
-  @Nullable
-  @Override
-  public final ClassLoader getContextClassLoader(final @NotNull String path, final ClassLoader originalClassLoader) {
-    final ClassLoader classLoader = getClass().getClassLoader();
-    final String newPath = patchPath(path, classLoader);
-    if (newPath != null && classLoader.getResource(newPath) != null) {
-      return classLoader;
-    }
-    return originalClassLoader;
-  }
-
-  public final AtomFileIconsConfig getInstance() {
-    if (instance == null) {
-      instance = AtomFileIconsConfig.getInstance();
-    }
-    return instance;
   }
 
   /**
