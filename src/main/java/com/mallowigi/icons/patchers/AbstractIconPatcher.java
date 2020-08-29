@@ -134,9 +134,11 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
   @NonNls
   @NotNull
   private String getReplacement(final String path) {
-    String finalPath = path;
+    final String finalPath;
     if (path.contains(".gif")) { // NON-NLS
-      finalPath = GIF.matcher(path).replaceAll(Matcher.quoteReplacement(".png")); // NON-NLS
+      finalPath = GIF.matcher(path).replaceAll(Matcher.quoteReplacement(".svg")); // NON-NLS
+    } else {
+      finalPath = path.replace(".png", ".svg");
     }
     return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
