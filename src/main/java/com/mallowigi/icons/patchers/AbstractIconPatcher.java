@@ -69,10 +69,14 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
   @Nullable
   @Override
   public final String patchPath(final @NotNull String path, final ClassLoader classLoader) {
-    if (getInstance() == null || !enabled) {
+    if (getInstance() == null) {
       return null;
     }
-    return getPatchedPath(path);
+    final String patchedPath = getPatchedPath(path);
+    if (!enabled && patchedPath != null) {
+      return classLoader == null ? path : null;
+    }
+    return patchedPath;
   }
 
   @Nullable
