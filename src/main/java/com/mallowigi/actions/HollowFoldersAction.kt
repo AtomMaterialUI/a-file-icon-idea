@@ -26,13 +26,13 @@ package com.mallowigi.actions
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 
-class EnableUIIconsAction : IconToggleAction() {
+class HollowFoldersAction : IconToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean {
-    return CONFIG.isEnabledUIIcons
+    return CONFIG.isUseHollowFolders
   }
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleUIIcons()
+    CONFIG.toggleUseHollowFolders()
     CONFIG.fireChanged()
   }
 

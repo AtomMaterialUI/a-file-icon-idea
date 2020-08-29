@@ -97,8 +97,38 @@
                     icon="/icons/settings/psi.svg" />
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
                     icon="/icons/settings/monochrome.svg" />
-            <action class="com.mallowigi.actions.HideFileIcons" id="HideFileIcons"
-                    icon="/icons/settings/monochrome.svg" />
+            <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
+                    icon="/icons/settings/hideFileAction.svg" />
+            <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
+                    icon="/icons/settings/folderOpen.svg" />
+            <separator></separator>
+
+            <group id="arrowsStyles" text="Arrow Styles" popup="true">
+                <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
+                        id="MTMaterialArrows"
+                        text="Set Material Arrows Style"
+                        icon="/icons/actions/arrows/material.svg"
+                        description="Set material arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
+                        id="MTDarculaArrows"
+                        text="Set Darcula Arrows Style"
+                        icon="/icons/actions/arrows/darcula.svg"
+                        description="Set darcula arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
+                        id="MTPlusMinusArrows"
+                        text="Set Plus-Minus Arrows Style"
+                        icon="/icons/actions/arrows/plusminus.svg"
+                        description="Set plus-minus arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
+                        id="MTArrowsArrows"
+                        text="Set Regular Arrows Style"
+                        icon="/icons/actions/arrows/arrows.svg"
+                        description="Set regular arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTNoneArrows"
+                        id="MTNoneArrows"
+                        text="Set No Arrows Style"
+                        description="Remove all arrows in trees" />
+            </group>
         </group>
 
     </actions>

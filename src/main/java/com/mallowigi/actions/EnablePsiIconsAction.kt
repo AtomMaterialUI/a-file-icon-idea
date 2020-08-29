@@ -24,10 +24,9 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.ToggleAction
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 
-class EnablePsiIconsAction : ToggleAction() {
+class EnablePsiIconsAction : IconToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean {
     return CONFIG.isEnabledPsiIcons
   }

@@ -77,7 +77,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   @Property
   var arrowsStyle = ArrowsStyles.MATERIAL
-    private set
 
   @Property
   var isAccentColorEnabled = false
