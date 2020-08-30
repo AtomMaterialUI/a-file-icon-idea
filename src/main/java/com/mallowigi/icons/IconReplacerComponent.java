@@ -37,6 +37,8 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ex.ToolWindowManagerListener;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
@@ -89,6 +91,14 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       @Override
       public void projectOpened(@NotNull final Project project) {
         IconPatchersManager.INSTANCE.updateIcons();
+
+        // Fix issue where toolwindows would appear with icons with a black dot
+        project.getMessageBus().connect().subscribe(ToolWindowManagerListener.TOPIC, new ToolWindowManagerListener() {
+          @Override
+          public void toolWindowShown(@NotNull final String id, @NotNull final ToolWindow toolWindow) {
+            AtomFileIconsConfig.getInstance().fireChanged();
+          }
+        });
       }
     });
 
