@@ -1,5 +1,12 @@
 # Changelog
 
+# 27.0
+- Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
+  - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93> and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
+- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons. As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
+- Add icons to the **Atom Material Settings Toolbar Menu**.
+- Add actions for switching between **Arrow Styles**
+
 # 26.0
 - New Option: "**Folder Color**" to customize Folder Colors from the current theme.
 - Better detection of the current theme's accent color
