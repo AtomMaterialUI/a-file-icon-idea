@@ -92,6 +92,8 @@
         <group id="AtomFileIcons.Actions"
                popup="true" icon="/icons/actions/atom.svg">
             <add-to-group group-id="MainToolBar" anchor="last" />
+            <add-to-group group-id="ToolsMenu" />
+            <add-to-group group-id="ChangeScheme" anchor="last" />
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
                     icon="/icons/settings/atom.svg" />
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
