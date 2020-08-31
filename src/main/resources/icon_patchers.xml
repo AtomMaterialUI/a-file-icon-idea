@@ -27,18 +27,13 @@
         <patcher name="AllIcons" remove="" append="/icons" />
         <patcher name="Ant" remove="/icons" append="/icons/plugins/ant" />
         <patcher name="AppCode" remove="/icons" append="/icons/plugins/appcode" />
-        <patcher name="AppEngine" remove="/icons/com/jetbrains/appengine" append="/icons/plugins/python/appengine" />
         <patcher name="BuildTools" remove="/icons/buildTools" append="/icons/buildTools" />
-        <patcher name="Chameleon" remove="/icons/com/jetbrains/chameleon" append="/icons/plugins/python/chameleon" />
         <patcher name="CLion" remove="" append="/icons/plugins/clion" />
-        <patcher name="Cython" remove="/icons/com/jetbrains/cython" append="/icons/plugins/python/cython" />
         <patcher name="Database" remove="/icons" append="/icons/plugins/datagrip" />
         <patcher name="Dart" remove="/icons" append="/icons/plugins/dart" />
         <patcher name="Debugger" remove="/icons" append="/icons/debugger" />
         <patcher name="DataGrip" remove="" append="/icons/plugins/datagrip" />
-        <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django" />
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker" />
-        <patcher name="Flask" remove="/icons/com/jetbrains/flask" append="/icons/plugins/python/flask" />
         <patcher name="Goland" remove="/icons" append="/icons/plugins/goland" />
         <patcher name="Github" remove="/org/jetbrains/plugins/github" append="/icons/plugins/github" />
         <patcher name="Gradle" remove="/icons" append="/icons/plugins/gradle" />
@@ -46,15 +41,12 @@
         <patcher name="Handlebars" remove="/icons" append="/icons/plugins/handlebars" />
         <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images" />
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript" />
-        <patcher name="Jinja" remove="/icons/com/jetbrains/jinja2" append="/icons/plugins/python/jinja" />
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin" />
-        <patcher name="Mako" remove="/icons/com/jetbrains/mako" append="/icons/plugins/python/mako" />
         <patcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown" />
         <patcher name="Maven" remove="/images" append="/icons/plugins/maven" />
         <patcher name="MultiMarkdown" remove="/icons/layout" append="/icons/plugins/markdown" />
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php" />
-        <patcher name="PyQt" remove="/icons/com/jetbrains/pyqt" append="/icons/plugins/python/pyqt" />
-        <patcher name="Python" remove="/icons/com/jetbrains/python" append="/icons/plugins/python" />
+        <patcher name="Python" remove="/icons/com/jetbrains" append="/icons/plugins/python" />
         <patcher name="Remote" remove="/icons" append="/icons/remote" />
         <patcher name="Resharper" remove="/resharper" append="/icons/plugins/resharper" />
         <patcher name="REST" remove="/com/intellij/ws/rest/client/icons" append="/icons/plugins/rest" />
@@ -66,7 +58,6 @@
         <patcher name="TypeScript" remove="/icons/typescript" append="/icons/plugins/typescript" />
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml" />
         <patcher name="VCS" remove="/icons" append="/icons/plugins/vcs" />
-        <patcher name="Web2Py" remove="/icons/com/jetbrains/web2py" append="/icons/plugins/python/web2py" />
         <patcher name="Web" remove="/images" append="/icons/webDeployment" />
         <patcher name="Wizard" remove="/icons/plugins" append="/icons/plugins/wizard" />
         <patcher name="Other" remove="/icons" append="/icons/other" />
@@ -90,7 +81,7 @@
         <patcher name="JavaScript PSI 2" remove="/icons/members" append="/glyphs/plugins/javascript" />
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/glyphs/plugins/kotlin" />
         <patcher name="PHP" remove="/icons" append="/glyphs/plugins/php" />
-        <patcher name="Python" remove="/icons" append="/glyphs/plugins/python" />
+        <patcher name="Python" remove="/icons/com/jetbrains/python" append="/glyphs/plugins/python" />
         <patcher name="Ruby" remove="/icons" append="/glyphs/plugins/ruby" />
         <patcher name="Sass" remove="/resources/icons" append="/glyphs/plugins/sass" />
         <patcher name="Scala" remove="" append="/glyphs/plugins/scala" />
@@ -134,6 +125,7 @@
         <patcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin" />
         <patcher name="PHP" remove="/icons" append="/files/plugins/php" />
+        <patcher name="Python" remove="/icons/com/jetbrains" append="/files/plugins/python" />
         <patcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
         <patcher name="Scala" remove="" append="/files/plugins/scala" />
         <patcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
