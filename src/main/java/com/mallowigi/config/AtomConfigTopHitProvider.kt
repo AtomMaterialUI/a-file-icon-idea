@@ -50,15 +50,15 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
   companion object {
     @NonNls
     private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(listOf(
-        option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setIsAccentColorEnabled"),
-        option(getText("SettingsForm.enableDirectoryIconsCheckbox.text"), "isEnabledDirectories", "setIsEnabledDirectories"),
-        option(getText("SettingsForm.enableFileIconsCheckbox.text"), "isEnabledIcons", "setIsEnabledIcons"),
-        option(getText("SettingsForm.enablePSIIconsCheckbox.text"), "isEnabledPsiIcons", "setIsEnabledPsiIcons"),
-        option(getText("SettingsForm.enableUIIconsCheckbox.text"), "isEnabledUIIcons", "setIsEnabledUIIcons"),
-        option(getText("SettingsForm.hideFileIconsCheckbox.text"), "isHideFileIcons", "setIsHideFileIcons"),
-        option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setIsUseHollowFolders"),
-        option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setIsMonochromeIcons"),
-        option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setIsThemedColorEnabled")
+        option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setAccentColorEnabled"),
+        option(getText("SettingsForm.enableDirectoryIconsCheckbox.text"), "isEnabledDirectories", "setEnabledDirectories"),
+        option(getText("SettingsForm.enableFileIconsCheckbox.text"), "isEnabledIcons", "setEnabledIcons"),
+        option(getText("SettingsForm.enablePSIIconsCheckbox.text"), "isEnabledPsiIcons", "setEnabledPsiIcons"),
+        option(getText("SettingsForm.enableUIIconsCheckbox.text"), "isEnabledUIIcons", "setEnabledUIIcons"),
+        option(getText("SettingsForm.hideFileIconsCheckbox.text"), "isHideFileIcons", "setHideFileIcons"),
+        option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setUseHollowFolders"),
+        option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
+        option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled")
     ))
 
     private fun getText(property: String): String {

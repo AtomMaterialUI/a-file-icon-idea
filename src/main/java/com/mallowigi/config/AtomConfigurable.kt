@@ -55,7 +55,7 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
 
   companion object {
     @NonNls
-    public const val ID = "com.mallowigi.config.atomConfig"
+    public const val ID = "AtomConfig"
 
     private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean {
       return Objects.requireNonNull(form)!!.isModified(config)
