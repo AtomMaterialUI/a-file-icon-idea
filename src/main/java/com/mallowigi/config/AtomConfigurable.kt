@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NonNls
 import java.util.*
 
 class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>(),
-                         SearchableConfigurable {
+    SearchableConfigurable {
   override val config: AtomFileIconsConfig?
     get() = AtomFileIconsConfig.instance
 
@@ -55,7 +55,7 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
 
   companion object {
     @NonNls
-    private const val ID = "com.mallowigi.config.atomConfig"
+    public const val ID = "com.mallowigi.config.atomConfig"
 
     private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean {
       return Objects.requireNonNull(form)!!.isModified(config)

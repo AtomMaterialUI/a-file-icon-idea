@@ -45,6 +45,9 @@
                                  parentId="AtomConfig"
                                  id="AtomAssocConfig" />
 
+        <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
+                               id="AtomConfigTopHitProvider" />
+
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
