@@ -129,6 +129,9 @@
                         text="Set No Arrows Style"
                         description="Remove all arrows in trees" />
             </group>
+            <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
+                    icon="/icons/actions/refresh.svg" />
+            <separator></separator>
         </group>
 
     </actions>
