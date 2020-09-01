@@ -21,30 +21,25 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.icons.patchers;
+package com.mallowigi.icons.patchers
 
-import com.intellij.util.xmlb.annotations.Property;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.util.xmlb.annotations.Property
 
-public class ExternalIconsPatcher extends AbstractIconPatcher {
+open class ExternalIconsPatcher : AbstractIconPatcher() {
   @Property
-  private String append;
-
-  @Property
-  private String remove;
+  private val append: String? = null
 
   @Property
-  private String name;
+  private val remove: String? = null
 
-  @Override
-  @NotNull
-  public final String getPathToAppend() {
-    return append;
+  @Property
+  private val name: String? = null
+  
+  public override fun getPathToAppend(): String {
+    return append!!
   }
 
-  @Override
-  @NotNull
-  public final String getPathToRemove() {
-    return remove;
+  public override fun getPathToRemove(): String {
+    return remove!!
   }
 }

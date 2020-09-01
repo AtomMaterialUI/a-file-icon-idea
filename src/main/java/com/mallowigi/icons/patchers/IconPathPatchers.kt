@@ -21,34 +21,21 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons.patchers
 
-package com.mallowigi.icons.patchers;
+import com.intellij.util.xmlb.annotations.Property
+import java.util.*
 
-import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.util.xmlb.annotations.Property;
-
-import java.util.Collections;
-import java.util.Set;
-
-public final class IconPathPatchers {
+class IconPathPatchers {
   @Property
-  private Set<IconPathPatcher> iconPatchers;
+  val iconPatchers: Set<UIIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
 
   @Property
-  private Set<IconPathPatcher> glyphPatchers;
+  val glyphPatchers: Set<GlyphIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
 
   @Property
-  private Set<IconPathPatcher> filePatchers;
-
-  public Set<IconPathPatcher> getIconPatchers() {
-    return Collections.unmodifiableSet(iconPatchers);
-  }
-
-  public Set<IconPathPatcher> getGlyphPatchers() {
-    return Collections.unmodifiableSet(glyphPatchers);
-  }
-
-  public Set<IconPathPatcher> getFilePatchers() {
-    return Collections.unmodifiableSet(filePatchers);
-  }
+  val filePatchers: Set<FileIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
 }
