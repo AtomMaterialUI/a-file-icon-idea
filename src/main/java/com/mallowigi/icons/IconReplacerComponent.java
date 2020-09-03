@@ -89,14 +89,6 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
       @Override
       public void projectOpened(@NotNull final Project project) {
         IconPatchersManager.INSTANCE.updateIcons();
-
-        // Fix issue where toolwindows would appear with icons with a black dot
-        //        project.getMessageBus().connect().subscribe(ToolWindowManagerListener.TOPIC, new ToolWindowManagerListener() {
-        //          @Override
-        //          public void toolWindowShown(@NotNull final String id, @NotNull final ToolWindow toolWindow) {
-        //            AtomFileIconsConfig.getInstance().fireChanged();
-        //          }
-        //        });
       }
     });
 
