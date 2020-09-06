@@ -388,7 +388,7 @@ Files are sorted by priority.
 | Stata               | *.stata                                                    | stata             |
 | Stencil             | stencil.config.js, stencil.config.ts                       | stencil           |
 | Storybook           | *.story.(js,ts), *.stories.(jsx,tsx)                       | storybook         |
-| Stylelint           | .stylelintrc, stylelint.config.(js,json)                   | stylelint         |
+| Stylelint           | .stylelintrc(.js,json,yaml), stylelint.config.(js,json)                   | stylelint         |
 | Stylus              | *.styl                                                     | stylus            |
 | Sublime             | *.sublime, *.sublime-package, *.sublime-workspace          | sublime           |
 | SuperCollider       | *.scd                                                      | scd               |
