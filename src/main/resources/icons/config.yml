@@ -4557,7 +4557,7 @@ fileIcons:
 		icon: "stylelint"
 		priority: 2
 		match: [
-			[/\.stylelintrc(\.(js|json|ya?ml))?$/i, "medium-purple"]
+			[/^\.stylelintrc(\.(js|json|ya?ml))?$/i, "medium-purple"]
 			[/^stylelint\.config\.js$/i, "auto-yellow"]
 			[/\.stylelint(ignore|cache)$/i, "dark-blue"]
 		]
