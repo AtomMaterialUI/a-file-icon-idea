@@ -21,45 +21,32 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.config
+package com.mallowigi.icons.patchers
 
-import com.intellij.openapi.options.SearchableConfigurable
-import com.mallowigi.config.AtomSettingsBundle.message
-import com.mallowigi.config.ui.SettingsForm
-import org.jetbrains.annotations.Nls
+import com.intellij.openapi.util.IconPathPatcher
 import org.jetbrains.annotations.NonNls
 import java.util.*
 
-class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>(),
-    SearchableConfigurable {
-  override val config: AtomFileIconsConfig?
-    get() = AtomFileIconsConfig.instance
-
-  override fun getDisplayName(): @Nls String? = message("settings.title")
-
-  override fun getId(): String = ID
-
-  override fun createForm(): SettingsForm = SettingsForm()
-
-  protected override fun setFormState(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    form?.setFormState(config)
-  }
-
-  protected override fun doApply(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    config!!.applySettings(form!!)
-  }
-
-  protected override fun checkModified(form: SettingsForm?, config: AtomFileIconsConfig?): Boolean {
-    return checkFormModified(form, config!!)
-  }
-
+class CheckStyleIconPatcher : IconPathPatcher() {
   companion object {
     @NonNls
-    public const val ID = "AtomConfig"
+    private val REPLACEMENTS: MutableMap<String, String> = HashMap()
 
-    private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean {
-      return Objects.requireNonNull(form)!!.isModified(config)
+    init {
+      REPLACEMENTS["/general/autoscrollToSource.png"] = "AllIcons.General.AutoscrollToSource"
+      REPLACEMENTS["/actions/expandall.png"] = "AllIcons.Actions.Expandall"
+      REPLACEMENTS["/actions/collapseall.png"] = "AllIcons.Actions.Collapseall"
+      REPLACEMENTS["/actions/cancel.png"] = "AllIcons.Actions.Cancel"
+      REPLACEMENTS["/actions/suspend.png"] = "AllIcons.Actions.Suspend"
+      REPLACEMENTS["/actions/execute.png"] = "AllIcons.Actions.Execute"
+      REPLACEMENTS["/modules/modulesNode.png"] = "AllIcons.Nodes.ModuleGroup"
+      REPLACEMENTS["/general/projectTab.png"] = "AllIcons.General.ProjectTab"
+      REPLACEMENTS["/general/toolWindowChanges.png"] = "AllIcons.Toolwindows.ToolWindowChanges"
+      REPLACEMENTS["/general/smallConfigurableVcs.png"] = "AllIcons.Actions.ShowAsTree"
     }
   }
 
+  override fun patchPath(path: String, classLoader: ClassLoader): String? {
+    return REPLACEMENTS[path]
+  }
 }

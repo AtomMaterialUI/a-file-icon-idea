@@ -75,7 +75,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
   }
 
   private void initComponent() {
-    IconPatchersManager.INSTANCE.updateIcons();
+    IconPatchersManager.INSTANCE.init();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
     connect.subscribe(AtomConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);

@@ -24,8 +24,7 @@
 
 package com.mallowigi.icons;
 
-import com.mallowigi.icons.patchers.ExternalIconsPatcher;
-import com.mallowigi.icons.patchers.IconPathPatchers;
+import com.mallowigi.icons.patchers.*;
 import com.thoughtworks.xstream.XStream;
 import org.jetbrains.annotations.NonNls;
 
@@ -49,7 +48,9 @@ public enum IconPatchersFactory {
     xStream.alias("glyphPatchers", Set.class);
     xStream.alias("filePatchers", Set.class);
 
-    xStream.alias("patcher", ExternalIconsPatcher.class);
+    xStream.alias("filePatcher", FileIconsPatcher.class);
+    xStream.alias("iconPatcher", UIIconsPatcher.class);
+    xStream.alias("glyphPatcher", GlyphIconsPatcher.class);
 
     xStream.useAttributeFor(ExternalIconsPatcher.class, "append");
     xStream.useAttributeFor(ExternalIconsPatcher.class, "remove");

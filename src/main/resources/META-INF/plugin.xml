@@ -45,6 +45,11 @@
                                  parentId="AtomConfig"
                                  id="AtomAssocConfig" />
 
+        <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
+                               id="AtomConfigTopHitProvider" />
+        <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"
+                                  id="AtomOptionContributor" />
+
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
@@ -64,6 +69,7 @@
         <!--                      order="first, after CustomFolderIconProvider"/>-->
 
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
     </extensions>
 
     <applicationListeners>
@@ -87,6 +93,8 @@
         <group id="AtomFileIcons.Actions"
                popup="true" icon="/icons/actions/atom.svg">
             <add-to-group group-id="MainToolBar" anchor="last" />
+            <add-to-group group-id="ToolsMenu" />
+            <add-to-group group-id="ChangeScheme" anchor="last" />
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
                     icon="/icons/settings/atom.svg" />
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
@@ -97,8 +105,41 @@
                     icon="/icons/settings/psi.svg" />
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
                     icon="/icons/settings/monochrome.svg" />
-            <action class="com.mallowigi.actions.HideFileIcons" id="HideFileIcons"
-                    icon="/icons/settings/monochrome.svg" />
+            <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
+                    icon="/icons/settings/hideFileAction.svg" />
+            <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
+                    icon="/icons/settings/folderOpen.svg" />
+            <separator></separator>
+
+            <group id="arrowsStyles" text="Arrow Styles" popup="true">
+                <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
+                        id="MTMaterialArrows"
+                        text="Set Material Arrows Style"
+                        icon="/icons/actions/arrows/material.svg"
+                        description="Set material arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
+                        id="MTDarculaArrows"
+                        text="Set Darcula Arrows Style"
+                        icon="/icons/actions/arrows/darcula.svg"
+                        description="Set darcula arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
+                        id="MTPlusMinusArrows"
+                        text="Set Plus-Minus Arrows Style"
+                        icon="/icons/actions/arrows/plusminus.svg"
+                        description="Set plus-minus arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
+                        id="MTArrowsArrows"
+                        text="Set Regular Arrows Style"
+                        icon="/icons/actions/arrows/arrows.svg"
+                        description="Set regular arrows style" />
+                <action class="com.mallowigi.actions.arrows.MTNoneArrows"
+                        id="MTNoneArrows"
+                        text="Set No Arrows Style"
+                        description="Remove all arrows in trees" />
+            </group>
+            <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
+                    icon="/icons/actions/refresh.svg" />
+            <separator></separator>
         </group>
 
     </actions>

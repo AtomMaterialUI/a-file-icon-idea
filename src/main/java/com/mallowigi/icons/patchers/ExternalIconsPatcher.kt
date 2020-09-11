@@ -21,12 +21,25 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.models
+package com.mallowigi.icons.patchers
 
-import com.intellij.psi.PsiElement
+import com.intellij.util.xmlb.annotations.Property
 
-interface FileInfo {
-  val name: String
-  val fileType: String
-  val psiElement: PsiElement?
+open class ExternalIconsPatcher : AbstractIconPatcher() {
+  @Property
+  private val append: String? = null
+
+  @Property
+  private val remove: String? = null
+
+  @Property
+  private val name: String? = null
+  
+  public override fun getPathToAppend(): String {
+    return append!!
+  }
+
+  public override fun getPathToRemove(): String {
+    return remove!!
+  }
 }

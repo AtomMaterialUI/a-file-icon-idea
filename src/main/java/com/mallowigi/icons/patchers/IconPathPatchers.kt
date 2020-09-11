@@ -21,12 +21,21 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.models
+package com.mallowigi.icons.patchers
 
-import com.intellij.psi.PsiElement
+import com.intellij.util.xmlb.annotations.Property
+import java.util.*
 
-interface FileInfo {
-  val name: String
-  val fileType: String
-  val psiElement: PsiElement?
+class IconPathPatchers {
+  @Property
+  val iconPatchers: Set<UIIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
+
+  @Property
+  val glyphPatchers: Set<GlyphIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
+
+  @Property
+  val filePatchers: Set<FileIconsPatcher>? = null
+    get() = Collections.unmodifiableSet(field)
 }

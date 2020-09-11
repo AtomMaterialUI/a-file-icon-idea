@@ -20,41 +20,56 @@ object IconPatchersManager {
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
   private val checkStyleIconPatcher = CheckStyleIconPatcher()
 
-  private fun removePathPatcher(patcher: IconPathPatcher) {
-    IconLoader.removePathPatcher(patcher)
+  fun init() {
+    val atomFileIconsConfig = instance
+//    IconLoader.installPathPatcher(checkStyleIconPatcher)
+
+    installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
+    installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
+    installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
 
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
-    removePathPatchers()
     val atomFileIconsConfig = instance
-    if (atomFileIconsConfig.isEnabledUIIcons) {
-      IconLoader.installPathPatcher(checkStyleIconPatcher)
-      installPathPatchers()
-    }
-    if (atomFileIconsConfig.isEnabledPsiIcons) {
-      installPSIPatchers()
-    }
-    if (atomFileIconsConfig.isEnabledIcons) {
-      installFileIconsPatchers()
+    updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
+    updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
+    updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
+  }
+
+  private fun installPathPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.iconPatchers!!) {
+      installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
-  private fun installPathPatchers() {
-    for (externalPatcher in iconPathPatchers.iconPatchers) {
-      installPathPatcher(externalPatcher)
+  private fun installPSIPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.glyphPatchers!!) {
+      installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
-  private fun installPSIPatchers() {
-    for (externalPatcher in iconPathPatchers.glyphPatchers) {
-      installPathPatcher(externalPatcher)
+  private fun installFileIconsPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.filePatchers!!) {
+      installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
-  private fun installFileIconsPatchers() {
-    for (externalPatcher in iconPathPatchers.filePatchers) {
-      installPathPatcher(externalPatcher)
+  private fun updatePathPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.iconPatchers!!) {
+      updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
+    }
+  }
+
+  private fun updatePSIPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.glyphPatchers!!) {
+      updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
+    }
+  }
+
+  private fun updateFileIconsPatchers(enabled: Boolean) {
+    for (externalPatcher in iconPathPatchers.filePatchers!!) {
+      updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
@@ -62,12 +77,23 @@ object IconPatchersManager {
     for (iconPathPatcher in installedPatchers) {
       removePathPatcher(iconPathPatcher)
     }
+//    removePathPatcher(checkStyleIconPatcher)
     installedPatchers.clear()
+    IconLoader.clearCache()
   }
 
-  private fun installPathPatcher(patcher: IconPathPatcher) {
+  private fun removePathPatcher(patcher: IconPathPatcher) {
+    IconLoader.removePathPatcher(patcher)
+  }
+
+  private fun installPathPatcher(patcher: AbstractIconPatcher, enabled: Boolean) {
     installedPatchers.add(patcher)
     IconLoader.installPathPatcher(patcher)
+    patcher.enabled = enabled;
+  }
+
+  private fun updatePathPatcher(patcher: AbstractIconPatcher, enabled: Boolean) {
+    patcher.enabled = enabled;
   }
 
   fun updateFileIcons() {

@@ -44,19 +44,15 @@ import org.jetbrains.annotations.NotNull
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   @Property
   var isEnabledIcons = true
-    private set
 
   @Property
   var isEnabledDirectories = true
-    private set
 
   @Property
   var isEnabledUIIcons = true
-    private set
 
   @Property
   var isMonochromeIcons = false
-    private set
 
   @NonNls
   @Property
@@ -65,23 +61,18 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   @Property
   var isEnabledPsiIcons = true
-    private set
 
   @Property
   var isHideFileIcons = false
-    private set
 
   @Property
   var isUseHollowFolders = true
-    private set
 
   @Property
   var arrowsStyle = ArrowsStyles.MATERIAL
-    private set
 
   @Property
   var isAccentColorEnabled = false
-    private set
 
   @NonNls
   @Property
@@ -90,7 +81,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   @Property
   var isThemedColorEnabled = false
-    private set
 
   @NonNls
   @Property

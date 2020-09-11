@@ -21,12 +21,22 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.models
+package com.mallowigi.actions
 
-import com.intellij.psi.PsiElement
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 
-interface FileInfo {
-  val name: String
-  val fileType: String
-  val psiElement: PsiElement?
+class HollowFoldersAction : IconToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean {
+    return CONFIG.isUseHollowFolders
+  }
+
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    CONFIG.toggleUseHollowFolders()
+    CONFIG.fireChanged()
+  }
+
+  companion object {
+    private val CONFIG = instance
+  }
 }

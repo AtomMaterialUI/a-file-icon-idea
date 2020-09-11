@@ -34,9 +34,8 @@ import java.io.Serializable
 
 abstract class Associations : Serializable {
   fun findAssociation(file: FileInfo?): Association? {
-    val matching: Association?
     // First check in custom assocs
-    matching = findMatchingAssociation(file);
+    val matching: Association? = findMatchingAssociation(file);
     // Specific plugin handling
     if (matching != null && IMAGE_TYPES.contains(matching.name)) {
       try {
@@ -47,10 +46,12 @@ abstract class Associations : Serializable {
         val plugin2 = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
 
         if (plugin != null || plugin2 != null) return null
-      }
-      catch (e: RuntimeException) {
+      } catch (e: RuntimeException) {
         LOG.error(e)
       }
+      // PHP Plugin
+    } else if (matching != null && IGNORED.contains(matching.name)) {
+      return null;
     }
     return matching
   }
@@ -64,6 +65,8 @@ abstract class Associations : Serializable {
 
     @NonNls
     private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
+
+    private val IGNORED: Set<String> = ImmutableSet.of("PHP");
   }
 
 }
