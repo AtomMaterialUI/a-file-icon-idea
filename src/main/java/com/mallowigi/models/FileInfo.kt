@@ -28,5 +28,5 @@ import com.intellij.psi.PsiElement
 interface FileInfo {
   val name: String
   val fileType: String
-  val psiElement: PsiElement
+  val psiElement: PsiElement?
 }

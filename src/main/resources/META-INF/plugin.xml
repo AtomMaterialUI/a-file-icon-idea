@@ -69,6 +69,7 @@
         <!--                      order="first, after CustomFolderIconProvider"/>-->
 
         <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
+        <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
     </extensions>
 
     <applicationListeners>
