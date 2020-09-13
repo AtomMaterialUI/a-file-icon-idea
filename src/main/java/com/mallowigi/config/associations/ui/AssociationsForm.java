@@ -56,12 +56,12 @@ import java.util.ResourceBundle;
     "OverlyLongMethod"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
-  private final ColumnInfo[] fileColumns = {
+  private final transient ColumnInfo[] fileColumns = {
       new NameEditableColumnInfo(this),
       new PatternEditableColumnInfo(this),
       new IconEditableColumnInfo(this)};
 
-  private final ColumnInfo[] folderColumns = {
+  private final transient ColumnInfo[] folderColumns = {
       new NameEditableColumnInfo(this),
       new PatternEditableColumnInfo(this),
       new IconEditableColumnInfo(this)};
@@ -87,7 +87,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private @Nullable TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
 
   public AssociationsForm() {
-
+    // empty ctor
   }
 
   @Override
@@ -103,7 +103,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   @Override
   public void afterStateSet() {
-
+    // add after state set
   }
 
   @Override
@@ -113,8 +113,12 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   }
 
   public void setFormState(final AtomAssocConfig config) {
-    customFileAssociationsEditor.reset(config.getCustomFileAssociations().getTheAssociations());
-    customFolderAssociationsEditor.reset(config.getCustomFolderAssociations().getTheAssociations());
+    if (customFileAssociationsEditor != null) {
+      customFileAssociationsEditor.reset(config.getCustomFileAssociations().getTheAssociations());
+    }
+    if (customFolderAssociationsEditor != null) {
+      customFolderAssociationsEditor.reset(config.getCustomFolderAssociations().getTheAssociations());
+    }
     afterStateSet();
   }
 
@@ -123,16 +127,23 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       return false;
     }
 
-    boolean modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
-    modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    boolean modified = false;
+    if (customFileAssociationsEditor != null) {
+      modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    }
+    if (customFolderAssociationsEditor != null) {
+      modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    }
     return modified;
   }
 
   public CustomAssociations getFileAssociations() {
+    assert customFileAssociationsEditor != null;
     return new CustomAssociations(Collections.unmodifiableList(customFileAssociationsEditor.getModel().getItems()));
   }
 
   public CustomAssociations getFolderAssociations() {
+    assert customFolderAssociationsEditor != null;
     return new CustomAssociations(Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems()));
   }
 
@@ -242,7 +253,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
             // columns
             "[grow,fill]",
             // rows
-            "[grow,fill]"));
+            "[171,grow,fill]"));
 
         //======== defFolderIconsPanel ========
         {

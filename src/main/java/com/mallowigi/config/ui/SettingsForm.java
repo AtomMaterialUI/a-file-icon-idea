@@ -53,6 +53,7 @@ import java.util.ResourceBundle;
     "unused"})
 public final class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
+    // empty ctor
   }
 
   private void enableUIIconsCheckboxActionPerformed(final ActionEvent e) {
@@ -338,7 +339,7 @@ public final class SettingsForm implements SettingsFormUI {
 
   @Override
   public void dispose() {
-
+    // empty
   }
 
   //region File Icons
@@ -450,7 +451,7 @@ public final class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
-  //region accent color
+  //region themed color
   public String getThemedColor() {
     return ColorUtil.toHex(Objects.requireNonNull(themedColorChooser.getSelectedColor()));
   }

@@ -1,8 +1,8 @@
-JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.7" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.2.4.305" Java: "11.0.8" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
-	"i18n.bundlePackage": "config"
+	"i18n.bundlePackage": "messages"
 	"i18n.bundleName": "AtomFileIconsBundle"
 	"i18n.keyPrefix": "SettingsForm"
 	contentType: "form/swing"
