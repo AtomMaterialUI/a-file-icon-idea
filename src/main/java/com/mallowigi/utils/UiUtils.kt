@@ -8,9 +8,11 @@ import com.intellij.openapi.project.ProjectManager
 fun refresh(project: Project?) {
   if (project != null) {
     val view = ProjectView.getInstance(project)
-    view.refresh()
-    if (view.currentProjectViewPane != null) {
-      view.currentProjectViewPane.updateFromRoot(true)
+    if (view != null) {
+      view.refresh()
+      if (view.currentProjectViewPane != null) {
+        view.currentProjectViewPane.updateFromRoot(true)
+      }
     }
   }
 }
