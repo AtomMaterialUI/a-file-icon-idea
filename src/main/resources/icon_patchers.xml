@@ -29,6 +29,7 @@
         <iconPatcher name="AppCode" remove="/icons" append="/icons/plugins/appcode" />
         <iconPatcher name="BuildTools" remove="/icons/buildTools" append="/icons/buildTools" />
         <iconPatcher name="CLion" remove="" append="/icons/plugins/clion" />
+        <filePatcher name="Coffeescript" remove="/org/coffeescript/images" append="/icons/plugins/coffee" />
         <iconPatcher name="Database" remove="/icons" append="/icons/plugins/datagrip" />
         <iconPatcher name="Dart" remove="/icons" append="/icons/plugins/dart" />
         <iconPatcher name="Debugger" remove="/icons" append="/icons/debugger" />
@@ -120,6 +121,7 @@
     </glyphPatchers>
     <filePatchers>
         <filePatcher name="Files" remove="/fileTypes" append="/files/fileTypes" />
+        <filePatcher name="Coffeescript" remove="/org/coffeescript/images" append="/files/plugins/coffee" />
         <filePatcher name="Dart" remove="/icons" append="/files/plugins/dart" />
         <filePatcher name="Freemarker" remove="/icons" append="/files/plugins/freemarker" />
         <filePatcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
@@ -130,6 +132,7 @@
         <filePatcher name="Scala" remove="" append="/files/plugins/scala" />
         <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
         <filePatcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
+        <filePatcher name="Other" remove="/icons" append="/files/other" />
 
     </filePatchers>
 
