@@ -75,7 +75,7 @@
         <glyphPatcher name="Freemarker" remove="/icons" append="/glyphs/plugins/freemarker" />
         <glyphPatcher name="General" remove="/general" append="/glyphs/general" />
         <glyphPatcher name="Goland" remove="/icons" append="/glyphs/plugins/goland" />
-        <glyphPatcher name="Groovy" remove="/icons" append="/glyphs/plugins/groovy" />
+        <glyphPatcher name="Groovy" remove="/icons/groovy" append="/glyphs/plugins/groovy" />
         <glyphPatcher name="Gutter" remove="/gutter" append="/glyphs/gutter" />
         <glyphPatcher name="JavaScript" remove="/icons" append="/glyphs/plugins/javascript" />
         <glyphPatcher name="JavaScript PSI" remove="/icons/classes" append="/glyphs/plugins/javascript" />
@@ -124,6 +124,7 @@
         <filePatcher name="Coffeescript" remove="/org/coffeescript/images" append="/files/plugins/coffee" />
         <filePatcher name="Dart" remove="/icons" append="/files/plugins/dart" />
         <filePatcher name="Freemarker" remove="/icons" append="/files/plugins/freemarker" />
+        <filePatcher name="Groovy" remove="/icons/groovy" append="/files/plugins/groovy" />
         <filePatcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
         <filePatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin" />
         <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
