@@ -51,6 +51,7 @@
         <iconPatcher name="PHP" remove="/icons" append="/icons/plugins/php" />
         <iconPatcher name="PostCSS" remove="/org/intellij/plugins/postcss" append="/icons/plugins/postcss" />
         <iconPatcher name="Python" remove="/icons/com/jetbrains" append="/icons/plugins/python" />
+        <filePatcher name="R" remove="/icons" append="/icons/plugins/r" />
         <iconPatcher name="Remote" remove="/icons" append="/icons/remote" />
         <iconPatcher name="Resharper" remove="/resharper" append="/icons/plugins/resharper" />
         <iconPatcher name="REST" remove="/com/intellij/ws/rest/client/icons" append="/icons/plugins/rest" />
@@ -136,6 +137,9 @@
         <filePatcher name="Less" remove="/org/jetbrains/plugins/less" append="/files/plugins/less" />
         <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
         <filePatcher name="Python" remove="/icons/com/jetbrains" append="/files/plugins/python" />
+        <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
+        <filePatcher name="R" remove="/icons/fileTypes" append="/files/plugins/r" />
+        <filePatcher name="Rails" remove="/icons/rails" append="/files/plugins/rails" />
         <filePatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
         <filePatcher name="Scala" remove="" append="/files/plugins/scala" />
         <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
