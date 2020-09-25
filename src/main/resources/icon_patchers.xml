@@ -48,8 +48,8 @@
         <iconPatcher name="Maven" remove="/images" append="/icons/plugins/maven" />
         <iconPatcher name="MultiMarkdown" remove="/icons/layout" append="/icons/plugins/markdown" />
         <iconPatcher name="NodeJS" remove="/com/jetbrains/nodejs/icons" append="/icons/plugins/nodejs" />
-
         <iconPatcher name="PHP" remove="/icons" append="/icons/plugins/php" />
+        <iconPatcher name="PostCSS" remove="/org/intellij/plugins/postcss" append="/icons/plugins/postcss" />
         <iconPatcher name="Python" remove="/icons/com/jetbrains" append="/icons/plugins/python" />
         <iconPatcher name="Remote" remove="/icons" append="/icons/remote" />
         <iconPatcher name="Resharper" remove="/resharper" append="/icons/plugins/resharper" />
@@ -86,6 +86,7 @@
         <glyphPatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/glyphs/plugins/kotlin" />
         <glyphPatcher name="Less" remove="/org/jetbrains/plugins/less" append="/glyphs/plugins/less" />
         <glyphPatcher name="PHP" remove="/icons" append="/glyphs/plugins/php" />
+        <glyphPatcher name="PostCSS" remove="/org/intellij/plugins/postcss" append="/glyphs/plugins/postcss" />
         <glyphPatcher name="Python" remove="/icons/com/jetbrains/python" append="/glyphs/plugins/python" />
         <glyphPatcher name="Ruby" remove="/icons" append="/glyphs/plugins/ruby" />
         <glyphPatcher name="Sass" remove="/resources/icons" append="/glyphs/plugins/sass" />
