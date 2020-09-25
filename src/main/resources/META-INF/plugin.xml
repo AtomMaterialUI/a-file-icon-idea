@@ -85,13 +85,14 @@
         <listener class="com.mallowigi.tree.ArrowIconsComponent"
                   topic="com.intellij.ide.plugins.DynamicPluginListener" />
 
-        <listener class="com.mallowigi.tree.RefreshTreeListener" topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+        <listener class="com.mallowigi.tree.RefreshTreeListener"
+                  topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
 
     </applicationListeners>
 
     <actions>
-        <group id="AtomFileIcons.Actions"
-               popup="true" icon="/icons/actions/atom.svg">
+        <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
+               class="com.mallowigi.actions.ActionGroup">
             <add-to-group group-id="MainToolBar" anchor="last" />
             <add-to-group group-id="ToolsMenu" />
             <add-to-group group-id="ChangeScheme" anchor="last" />
