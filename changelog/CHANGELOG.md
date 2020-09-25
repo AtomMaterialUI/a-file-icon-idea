@@ -1,5 +1,9 @@
 # Changelog
 
+# 28.0
+- Support for 2020.3
+- Support for more UI icons
+
 # 27.0
 - Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
   - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93> and <https://github.com/mallowigi/a-file-icon-idea/issues/79>

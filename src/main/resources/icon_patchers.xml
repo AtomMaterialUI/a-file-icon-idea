@@ -29,7 +29,7 @@
         <iconPatcher name="AppCode" remove="/icons" append="/icons/plugins/appcode" />
         <iconPatcher name="BuildTools" remove="/icons/buildTools" append="/icons/buildTools" />
         <iconPatcher name="CLion" remove="" append="/icons/plugins/clion" />
-        <filePatcher name="Coffeescript" remove="/org/coffeescript/images" append="/icons/plugins/coffee" />
+        <iconPatcher name="Coffeescript" remove="/org/coffeescript/images" append="/icons/plugins/coffee" />
         <iconPatcher name="Database" remove="/icons" append="/icons/plugins/datagrip" />
         <iconPatcher name="Dart" remove="/icons" append="/icons/plugins/dart" />
         <iconPatcher name="Debugger" remove="/icons" append="/icons/debugger" />
@@ -51,7 +51,7 @@
         <iconPatcher name="PHP" remove="/icons" append="/icons/plugins/php" />
         <iconPatcher name="PostCSS" remove="/org/intellij/plugins/postcss" append="/icons/plugins/postcss" />
         <iconPatcher name="Python" remove="/icons/com/jetbrains" append="/icons/plugins/python" />
-        <filePatcher name="R" remove="/icons" append="/icons/plugins/r" />
+        <iconPatcher name="R" remove="/icons" append="/icons/plugins/r" />
         <iconPatcher name="Remote" remove="/icons" append="/icons/remote" />
         <iconPatcher name="Resharper" remove="/resharper" append="/icons/plugins/resharper" />
         <iconPatcher name="REST" remove="/com/intellij/ws/rest/client/icons" append="/icons/plugins/rest" />
