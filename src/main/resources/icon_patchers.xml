@@ -47,6 +47,8 @@
         <iconPatcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown" />
         <iconPatcher name="Maven" remove="/images" append="/icons/plugins/maven" />
         <iconPatcher name="MultiMarkdown" remove="/icons/layout" append="/icons/plugins/markdown" />
+        <iconPatcher name="NodeJS" remove="/com/jetbrains/nodejs/icons" append="/icons/plugins/nodejs" />
+
         <iconPatcher name="PHP" remove="/icons" append="/icons/plugins/php" />
         <iconPatcher name="Python" remove="/icons/com/jetbrains" append="/icons/plugins/python" />
         <iconPatcher name="Remote" remove="/icons" append="/icons/remote" />
@@ -82,6 +84,7 @@
         <glyphPatcher name="JavaScript PSI" remove="/icons/classes" append="/glyphs/plugins/javascript" />
         <glyphPatcher name="JavaScript PSI 2" remove="/icons/members" append="/glyphs/plugins/javascript" />
         <glyphPatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/glyphs/plugins/kotlin" />
+        <glyphPatcher name="Less" remove="/org/jetbrains/plugins/less" append="/glyphs/plugins/less" />
         <glyphPatcher name="PHP" remove="/icons" append="/glyphs/plugins/php" />
         <glyphPatcher name="Python" remove="/icons/com/jetbrains/python" append="/glyphs/plugins/python" />
         <glyphPatcher name="Ruby" remove="/icons" append="/glyphs/plugins/ruby" />
@@ -126,8 +129,10 @@
         <filePatcher name="Dart" remove="/icons" append="/files/plugins/dart" />
         <filePatcher name="Freemarker" remove="/icons" append="/files/plugins/freemarker" />
         <filePatcher name="Groovy" remove="/icons/groovy" append="/files/plugins/groovy" />
+        <filePatcher name="I18n" remove="/icons/com/jetbrains/localization" append="/files/plugins/i18n" />
         <filePatcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
         <filePatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin" />
+        <filePatcher name="Less" remove="/org/jetbrains/plugins/less" append="/files/plugins/less" />
         <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
         <filePatcher name="Python" remove="/icons/com/jetbrains" append="/files/plugins/python" />
         <filePatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
