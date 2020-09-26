@@ -61,6 +61,7 @@
         <iconPatcher name="Spring" remove="/icons" append="/icons/plugins/spring" />
         <iconPatcher name="Swift" remove="/icons" append="/icons/plugins/swift" />
         <iconPatcher name="Tasks" remove="/icons" append="/icons/tasks" />
+        <iconPatcher name="Tapestry" remove="/com/intellij/tapestry/core/icons" append="/icons/plugins/tapestry" />
         <iconPatcher name="Terminal" remove="/icons" append="/icons/terminal" />
         <iconPatcher name="TypeScript" remove="/icons/typescript" append="/icons/plugins/typescript" />
         <iconPatcher name="UML" remove="/resources/icons" append="/icons/plugins/uml" />
@@ -97,6 +98,7 @@
         <glyphPatcher name="Spring" remove="/icons" append="/glyphs/plugins/spring" />
         <glyphPatcher name="Stylus" remove="/org/jetbrains/plugins/stylus" append="/glyphs/plugins/stylus" />
         <glyphPatcher name="Swift" remove="/icons" append="/glyphs/plugins/swift" />
+        <glyphPatcher name="Tapestry" remove="/com/intellij/tapestry/core/icons" append="/glyphs/plugins/tapestry" />
         <glyphPatcher name="UML" remove="/resources/icons" append="/glyphs/plugins/uml" />
 
         <glyphPatcher name="Resharper Sources" remove="/resharper/ExternalSources"
@@ -136,10 +138,13 @@
         <filePatcher name="Dart" remove="/icons" append="/files/plugins/dart" />
         <filePatcher name="Freemarker" remove="/icons" append="/files/plugins/freemarker" />
         <filePatcher name="Groovy" remove="/icons/groovy" append="/files/plugins/groovy" />
+        <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
+        <filePatcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
         <filePatcher name="I18n" remove="/icons/com/jetbrains/localization" append="/files/plugins/i18n" />
         <filePatcher name="JavaScript" remove="/icons/fileTypes" append="/files/plugins/javascript" />
         <filePatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin" />
         <filePatcher name="Less" remove="/org/jetbrains/plugins/less" append="/files/plugins/less" />
+        <filePatcher name="Other" remove="/icons" append="/files/other" />
         <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
         <filePatcher name="Python" remove="/icons/com/jetbrains" append="/files/plugins/python" />
         <filePatcher name="PHP" remove="/icons" append="/files/plugins/php" />
@@ -150,10 +155,6 @@
         <filePatcher name="Slim" remove="/org/jetbrains/plugins/slim" append="/files/plugins/slim" />
         <filePatcher name="Stylus" remove="/org/jetbrains/plugins/stylus" append="/files/plugins/stylus" />
         <filePatcher name="Swift" remove="/icons" append="/files/plugins/swift" />
-        <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
-        <filePatcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
-        <filePatcher name="Other" remove="/icons" append="/files/other" />
-
     </filePatchers>
 
 </iconPathPatchers>
