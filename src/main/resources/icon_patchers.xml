@@ -58,6 +58,7 @@
         <iconPatcher name="Rider" remove="/rider" append="/icons/plugins/rider" />
         <iconPatcher name="Ruby" remove="/icons" append="/icons/plugins/ruby" />
         <iconPatcher name="Scala" remove="" append="/icons/plugins/scala" />
+        <iconPatcher name="Spring" remove="/icons" append="/icons/plugins/spring" />
         <iconPatcher name="Tasks" remove="/icons" append="/icons/tasks" />
         <iconPatcher name="Terminal" remove="/icons" append="/icons/terminal" />
         <iconPatcher name="TypeScript" remove="/icons/typescript" append="/icons/plugins/typescript" />
@@ -92,6 +93,7 @@
         <glyphPatcher name="Ruby" remove="/icons" append="/glyphs/plugins/ruby" />
         <glyphPatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/glyphs/plugins/sass" />
         <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala" />
+        <glyphPatcher name="Spring" remove="/icons" append="/glyphs/plugins/spring" />
         <glyphPatcher name="UML" remove="/resources/icons" append="/glyphs/plugins/uml" />
 
         <glyphPatcher name="Resharper Sources" remove="/resharper/ExternalSources"
@@ -141,6 +143,7 @@
         <filePatcher name="R" remove="/icons/fileTypes" append="/files/plugins/r" />
         <filePatcher name="Rails" remove="/icons/rails" append="/files/plugins/rails" />
         <filePatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
+        <filePatcher name="Slim" remove="/org/jetbrains/plugins/slim" append="/files/plugins/slim" />
         <filePatcher name="Scala" remove="" append="/files/plugins/scala" />
         <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
         <filePatcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
