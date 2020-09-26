@@ -43,7 +43,7 @@
         <iconPatcher name="Images" remove="/org/intellij/images/icons" append="/icons/images" />
         <iconPatcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript" />
         <iconPatcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin" />
-        <iconPatcher name="Kubernetes" remove="/icons" append="/glyphs/plugins/kubernetes" />
+        <iconPatcher name="Kubernetes" remove="/icons" append="/icons/plugins/kubernetes" />
         <iconPatcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown" />
         <iconPatcher name="Maven" remove="/images" append="/icons/plugins/maven" />
         <iconPatcher name="MultiMarkdown" remove="/icons/layout" append="/icons/plugins/markdown" />
@@ -90,7 +90,7 @@
         <glyphPatcher name="PostCSS" remove="/org/intellij/plugins/postcss" append="/glyphs/plugins/postcss" />
         <glyphPatcher name="Python" remove="/icons/com/jetbrains/python" append="/glyphs/plugins/python" />
         <glyphPatcher name="Ruby" remove="/icons" append="/glyphs/plugins/ruby" />
-        <glyphPatcher name="Sass" remove="/resources/icons" append="/glyphs/plugins/sass" />
+        <glyphPatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/glyphs/plugins/sass" />
         <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala" />
         <glyphPatcher name="UML" remove="/resources/icons" append="/glyphs/plugins/uml" />
 
