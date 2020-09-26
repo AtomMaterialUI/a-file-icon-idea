@@ -94,6 +94,7 @@
         <glyphPatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/glyphs/plugins/sass" />
         <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala" />
         <glyphPatcher name="Spring" remove="/icons" append="/glyphs/plugins/spring" />
+        <glyphPatcher name="Stylus" remove="/org/jetbrains/plugins/stylus" append="/glyphs/plugins/stylus" />
         <glyphPatcher name="UML" remove="/resources/icons" append="/glyphs/plugins/uml" />
 
         <glyphPatcher name="Resharper Sources" remove="/resharper/ExternalSources"
@@ -143,8 +144,9 @@
         <filePatcher name="R" remove="/icons/fileTypes" append="/files/plugins/r" />
         <filePatcher name="Rails" remove="/icons/rails" append="/files/plugins/rails" />
         <filePatcher name="Sass" remove="/org/jetbrains/plugins/sass" append="/files/plugins/sass" />
-        <filePatcher name="Slim" remove="/org/jetbrains/plugins/slim" append="/files/plugins/slim" />
         <filePatcher name="Scala" remove="" append="/files/plugins/scala" />
+        <filePatcher name="Slim" remove="/org/jetbrains/plugins/slim" append="/files/plugins/slim" />
+        <filePatcher name="Stylus" remove="/org/jetbrains/plugins/stylus" append="/files/plugins/stylus" />
         <filePatcher name="Haml" remove="/org/jetbrains/plugins/haml" append="/files/plugins/haml" />
         <filePatcher name="Handlebars" remove="/icons" append="/files/plugins/handlebars" />
         <filePatcher name="Other" remove="/icons" append="/files/other" />
