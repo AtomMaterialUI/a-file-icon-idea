@@ -73,8 +73,8 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
       return null;
     }
     final String patchedPath = getPatchedPath(path);
-    if (!enabled && patchedPath != null) {
-      return classLoader == null ? path : null;
+    if (!enabled) {
+      return path;
     }
     return patchedPath;
   }
@@ -99,6 +99,9 @@ public abstract class AbstractIconPatcher extends IconPathPatcher {
 
   @Nullable
   private String getPatchedPath(final String path) {
+    if (!enabled) {
+      return null;
+    }
     if (CACHE.containsKey(path)) {
       return CACHE.get(path);
     }
