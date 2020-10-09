@@ -25,6 +25,8 @@ package com.mallowigi.icons.patchers
 
 import com.intellij.openapi.util.IconPathPatcher
 import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.NotNull
+import org.jetbrains.annotations.Nullable
 import java.util.*
 
 class CheckStyleIconPatcher : IconPathPatcher() {
@@ -46,7 +48,7 @@ class CheckStyleIconPatcher : IconPathPatcher() {
     }
   }
 
-  override fun patchPath(path: String, classLoader: ClassLoader): String? {
+  override fun patchPath(path: @NotNull String, classLoader: @Nullable ClassLoader?): @Nullable String? {
     return REPLACEMENTS[path]
   }
 }

@@ -55,11 +55,14 @@ object MTIcons {
   val EYE_OFF = load("/icons/mt/eyeOff.svg")
 
   fun getFileIcon(iconPath: String): Icon {
-    return IconLoader.getIcon(FILES_PATH + iconPath)
+    return IconLoader.getIcon(FILES_PATH + iconPath, MTIcons.javaClass)
   }
 
   fun getFolderIcon(iconPath: String): DirIcon {
-    return DirIcon(IconLoader.getIcon(FOLDERS_PATH + iconPath), IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath))
+    return DirIcon(
+      IconLoader.getIcon(FOLDERS_PATH + iconPath, MTIcons.javaClass),
+      IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath, MTIcons.javaClass)
+    )
   }
 
   private fun load(@NonNls path: String): Icon {
@@ -71,8 +74,7 @@ object MTIcons {
     val url = Ref.create<URL>()
     try {
       url.set(File(canonicalPath).toURI().toURL())
-    }
-    catch (e: MalformedURLException) {
+    } catch (e: MalformedURLException) {
       Logger.getAnonymousLogger().info(e.message)
     }
     val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
