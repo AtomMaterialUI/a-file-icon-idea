@@ -21,25 +21,22 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package com.mallowigi.icons
+package com.mallowigi.actions
 
-import com.intellij.icons.AllIcons
-import com.intellij.ide.IconProvider
-import com.intellij.openapi.util.IconLoader
-import com.intellij.psi.PsiDirectory
-import com.intellij.psi.PsiElement
+import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-import javax.swing.Icon
 
-class HiddenIconProvider : IconProvider() {
-  override fun getIcon(element: PsiElement, flags: Int): Icon? {
-    // If hide file icons is not activated, skip
-    if (!instance.isHideFileIcons) {
-      return null
-    }
-    return if (element is PsiDirectory) {
-      null
-    }
-    else IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0.0f)
+class HideFolderIconsAction : IconToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean {
+    return CONFIG.isHideFolderIcons
+  }
+
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    CONFIG.toggleHideFolderIcons()
+    CONFIG.fireChanged()
+  }
+
+  companion object {
+    private val CONFIG = instance
   }
 }

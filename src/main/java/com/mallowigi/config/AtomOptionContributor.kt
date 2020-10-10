@@ -46,6 +46,7 @@ class AtomOptionContributor : SearchableOptionContributor() {
         message("SettingsForm.enablePSIIconsCheckbox.text"),
         message("SettingsForm.enableUIIconsCheckbox.text"),
         message("SettingsForm.hideFileIconsCheckbox.text"),
+        message("SettingsForm.hideFolderIconsCheckbox.text"),
         message("SettingsForm.hollowFoldersCheckbox.text"),
         message("SettingsForm.monochromeCheckbox.text"),
         message("SettingsForm.themedColorCheckbox.text")

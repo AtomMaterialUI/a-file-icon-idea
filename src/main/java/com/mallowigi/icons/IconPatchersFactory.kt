@@ -21,45 +21,40 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.icons
 
-package com.mallowigi.icons;
+import com.mallowigi.icons.IconPatchersFactory
+import com.mallowigi.icons.patchers.*
+import com.thoughtworks.xstream.XStream
+import org.jetbrains.annotations.NonNls
 
-import com.mallowigi.icons.patchers.*;
-import com.thoughtworks.xstream.XStream;
-import org.jetbrains.annotations.NonNls;
-
-import java.net.URL;
-import java.util.Set;
-
-public enum IconPatchersFactory {
+enum class IconPatchersFactory {
   PATCH_PATCH;
 
-  @NonNls
-  private static final String ICON_PATCHERS_XML = "/icon_patchers.xml";
-
-  public static IconPathPatchers create() {
-    final URL xml = IconPatchersFactory.class.getResource(ICON_PATCHERS_XML);
-    @NonNls final XStream xStream = new XStream();
-    XStream.setupDefaultSecurity(xStream);
-    xStream.allowTypesByWildcard(new String[]{"com.mallowigi.icons.patchers.*"});
-
-    xStream.alias("iconPathPatchers", IconPathPatchers.class);
-    xStream.alias("iconPatchers", Set.class);
-    xStream.alias("glyphPatchers", Set.class);
-    xStream.alias("filePatchers", Set.class);
-
-    xStream.alias("filePatcher", FileIconsPatcher.class);
-    xStream.alias("iconPatcher", UIIconsPatcher.class);
-    xStream.alias("glyphPatcher", GlyphIconsPatcher.class);
-
-    xStream.useAttributeFor(ExternalIconsPatcher.class, "append");
-    xStream.useAttributeFor(ExternalIconsPatcher.class, "remove");
-    xStream.useAttributeFor(ExternalIconsPatcher.class, "name");
-
-    try {
-      return (IconPathPatchers) xStream.fromXML(xml);
-    } catch (final RuntimeException e) {
-      return new IconPathPatchers();
+  companion object {
+    @NonNls
+    private val ICON_PATCHERS_XML = "/icon_patchers.xml"
+    
+    fun create(): IconPathPatchers {
+      val xml = IconPatchersFactory::class.java.getResource(ICON_PATCHERS_XML)
+      @NonNls val xStream = XStream()
+      XStream.setupDefaultSecurity(xStream)
+      xStream.allowTypesByWildcard(arrayOf("com.mallowigi.icons.patchers.*"))
+      xStream.alias("iconPathPatchers", IconPathPatchers::class.java)
+      xStream.alias("iconPatchers", MutableSet::class.java)
+      xStream.alias("glyphPatchers", MutableSet::class.java)
+      xStream.alias("filePatchers", MutableSet::class.java)
+      xStream.alias("filePatcher", FileIconsPatcher::class.java)
+      xStream.alias("iconPatcher", UIIconsPatcher::class.java)
+      xStream.alias("glyphPatcher", GlyphIconsPatcher::class.java)
+      xStream.useAttributeFor(ExternalIconsPatcher::class.java, "append")
+      xStream.useAttributeFor(ExternalIconsPatcher::class.java, "remove")
+      xStream.useAttributeFor(ExternalIconsPatcher::class.java, "name")
+      return try {
+        xStream.fromXML(xml) as IconPathPatchers
+      } catch (e: RuntimeException) {
+        IconPathPatchers()
+      }
     }
   }
 }

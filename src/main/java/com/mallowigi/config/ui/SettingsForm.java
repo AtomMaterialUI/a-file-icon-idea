@@ -43,14 +43,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
-    "StringConcatenation",
-    "PublicMethodNotExposedInInterface",
-    "FeatureEnvy",
-    "BooleanMethodNameMustStartWithQuestion",
-    "ClassWithTooManyFields",
-    "ClassWithTooManyMethods",
-    "OverlyLongMethod",
-    "unused"})
+  "StringConcatenation",
+  "PublicMethodNotExposedInInterface",
+  "FeatureEnvy",
+  "BooleanMethodNameMustStartWithQuestion",
+  "ClassWithTooManyFields",
+  "ClassWithTooManyMethods",
+  "OverlyLongMethod",
+  "unused"})
 public final class SettingsForm implements SettingsFormUI {
   public SettingsForm() {
     // empty ctor
@@ -92,6 +92,8 @@ public final class SettingsForm implements SettingsFormUI {
   private JCheckBox enablePSIIconsCheckbox;
   private JLabel hideFileIconsIcon;
   private JCheckBox hideFileIconsCheckbox;
+  private JLabel hideFolderIconsIcon;
+  private JCheckBox hideFolderIconsCheckbox;
   private JLabel hollowFoldersIcon;
   private JCheckBox hollowFoldersCheckbox;
   private JLabel arrowsStyleIcon;
@@ -105,7 +107,7 @@ public final class SettingsForm implements SettingsFormUI {
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings({"Convert2MethodRef",
-      "LocalCanBeFinal"})
+    "LocalCanBeFinal"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -124,6 +126,8 @@ public final class SettingsForm implements SettingsFormUI {
     enablePSIIconsCheckbox = new JCheckBox();
     hideFileIconsIcon = new JLabel();
     hideFileIconsCheckbox = new JCheckBox();
+    hideFolderIconsIcon = new JLabel();
+    hideFolderIconsCheckbox = new JCheckBox();
     hollowFoldersIcon = new JLabel();
     hollowFoldersCheckbox = new JCheckBox();
     arrowsStyleIcon = new JLabel();
@@ -138,22 +142,24 @@ public final class SettingsForm implements SettingsFormUI {
     //======== content ========
     {
       content.setLayout(new MigLayout(
-          "hidemode 3",
-          // columns
-          "[fill]" +
-              "[::600,fill]" +
-              "[fill]",
-          // rows
-          "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[50]" +
-              "[]" +
-              "[]"));
+        "hidemode 3",
+        // columns
+        "[fill]" +
+        "[::600,fill]" +
+        "[fill]",
+        // rows
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[50]" +
+        "[]" +
+        "[]" +
+        "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
@@ -217,51 +223,60 @@ public final class SettingsForm implements SettingsFormUI {
       hideFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFileIconsCheckbox.toolTipText"));
       content.add(hideFileIconsCheckbox, "cell 1 5");
 
+      //---- hideFolderIconsIcon ----
+      hideFolderIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFolderAction@2x.png")));
+      content.add(hideFolderIconsIcon, "cell 0 6");
+
+      //---- hideFolderIconsCheckbox ----
+      hideFolderIconsCheckbox.setText(bundle.getString("SettingsForm.hideFolderIconsCheckbox.text"));
+      hideFolderIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFolderIconsCheckbox.toolTipText"));
+      content.add(hideFolderIconsCheckbox, "cell 1 6");
+
       //---- hollowFoldersIcon ----
       hollowFoldersIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/folderOpen@2x.png")));
-      content.add(hollowFoldersIcon, "cell 0 6");
+      content.add(hollowFoldersIcon, "cell 0 7");
 
       //---- hollowFoldersCheckbox ----
       hollowFoldersCheckbox.setText(bundle.getString("SettingsForm.hollowFoldersCheckbox.text"));
       hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText"));
-      content.add(hollowFoldersCheckbox, "cell 1 6");
+      content.add(hollowFoldersCheckbox, "cell 1 7");
 
       //---- arrowsStyleIcon ----
       arrowsStyleIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/arrowRight@2x.png")));
-      content.add(arrowsStyleIcon, "cell 0 7");
+      content.add(arrowsStyleIcon, "cell 0 8");
 
       //---- arrowsStyleLabel ----
       arrowsStyleLabel.setText(bundle.getString("SettingsForm.arrowsStyleLabel.text"));
       arrowsStyleLabel.setToolTipText(bundle.getString("SettingsForm.arrowsStyleLabel.toolTipText"));
-      content.add(arrowsStyleLabel, "pad 0,cell 1 7,aligny center,grow 100 0");
+      content.add(arrowsStyleLabel, "pad 0,cell 1 8,aligny center,grow 100 0");
 
       //---- arrowsStyleComboBox ----
       arrowsStyleComboBox.setToolTipText(bundle.getString("SettingsForm.arrowsStyleComboBox.toolTipText"));
-      content.add(arrowsStyleComboBox, "cell 2 7,align right center,grow 0 0,width 120:120:120");
+      content.add(arrowsStyleComboBox, "cell 2 8,align right center,grow 0 0,width 120:120:120");
 
       //---- accentColorIcon ----
       accentColorIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/accentColor@2x.png")));
-      content.add(accentColorIcon, "cell 0 8");
+      content.add(accentColorIcon, "cell 0 9");
 
       //---- accentColorCheckbox ----
       accentColorCheckbox.setText(bundle.getString("SettingsForm.accentColorCheckbox.text"));
       accentColorCheckbox.setToolTipText(bundle.getString("SettingsForm.accentColorCheckbox.toolTipText"));
       accentColorCheckbox.addActionListener(e -> accentColorCheckboxActionPerformed(e));
-      content.add(accentColorCheckbox, "cell 1 8");
+      content.add(accentColorCheckbox, "cell 1 9");
 
       //---- accentColorChooser ----
       accentColorChooser.setToolTipText(bundle.getString("SettingsForm.accentColorChooser.toolTipText"));
-      content.add(accentColorChooser, "cell 2 8,alignx right,growx 0");
+      content.add(accentColorChooser, "cell 2 9,alignx right,growx 0");
 
       //---- themedColorCheckbox ----
       themedColorCheckbox.setText(bundle.getString("SettingsForm.themedColorCheckbox.text"));
       themedColorCheckbox.setToolTipText(bundle.getString("SettingsForm.themedColorCheckbox.toolTipText"));
       themedColorCheckbox.addActionListener(e -> themedColorCheckboxActionPerformed(e));
-      content.add(themedColorCheckbox, "cell 1 9");
+      content.add(themedColorCheckbox, "cell 1 10");
 
       //---- themedColorChooser ----
       themedColorChooser.setToolTipText(bundle.getString("SettingsForm.themedColorChooser.toolTipText"));
-      content.add(themedColorChooser, "cell 2 9,alignx right,growx 0");
+      content.add(themedColorChooser, "cell 2 10,alignx right,growx 0");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -293,6 +308,7 @@ public final class SettingsForm implements SettingsFormUI {
     setMonochromeColor(config.getMonochromeColor());
     setIsEnabledPsiIcons(config.isEnabledPsiIcons());
     setIsHiddenFileIcons(config.isHideFileIcons());
+    setIsHiddenFolderIcons(config.isHideFolderIcons());
     setIsHollowFoldersEnabled(config.isUseHollowFolders());
     setArrowsStyle(config.getArrowsStyle());
     setAccentColorEnabled(config.isAccentColorEnabled());
@@ -312,6 +328,7 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isMonochromeColorChanged(getMonochromeColor());
     modified = modified || config.isEnabledPsiIconsChanged(getIsEnabledPsiIcons());
     modified = modified || config.isHideFileIconsChanged(getIsHiddenFileIcons());
+    modified = modified || config.isHideFolderIconsChanged(getIsHiddenFolderIcons());
     modified = modified || config.isUseHollowFoldersChanged(getIsHollowFoldersEnabled());
     modified = modified || config.isArrowsStyleChanged(getArrowsStyle());
     modified = modified || config.isAccentColorEnabledChanged(getIsAccentColorEnabled());
@@ -410,6 +427,17 @@ public final class SettingsForm implements SettingsFormUI {
   @SuppressWarnings("NegativelyNamedBooleanVariable")
   private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
     hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
+  }
+  //endregion
+
+  //region hidden folder icons
+  public boolean getIsHiddenFolderIcons() {
+    return hideFolderIconsCheckbox.isSelected();
+  }
+
+  @SuppressWarnings("NegativelyNamedBooleanVariable")
+  private void setIsHiddenFolderIcons(final boolean isHiddenFolderIcons) {
+    hideFolderIconsCheckbox.setSelected(isHiddenFolderIcons);
   }
   //endregion
 

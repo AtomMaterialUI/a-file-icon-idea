@@ -66,6 +66,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var isHideFileIcons = false
 
   @Property
+  var isHideFolderIcons = false
+
+  @Property
   var isUseHollowFolders = true
 
   @Property
@@ -109,6 +112,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     monochromeColor = form.monochromeColor
     isEnabledPsiIcons = form.isEnabledPsiIcons
     isHideFileIcons = form.isHiddenFileIcons
+    isHideFolderIcons = form.isHiddenFolderIcons
     isUseHollowFolders = form.isHollowFoldersEnabled
     arrowsStyle = form.arrowsStyle
     isAccentColorEnabled = form.isAccentColorEnabled
@@ -126,6 +130,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     monochromeColor = "546E7A" // NON-NLS
     isEnabledPsiIcons = true
     isHideFileIcons = false
+    isHideFolderIcons = false
     isUseHollowFolders = true
     arrowsStyle = ArrowsStyles.MATERIAL
     isAccentColorEnabled = false
@@ -205,6 +210,16 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   fun toggleHideFileIcons() {
     isHideFileIcons = !isHideFileIcons
+  }
+  //endregion
+
+  //region Hide Folder Icons
+  fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean {
+    return isHideFolderIcons != hideFolderIcons
+  }
+
+  fun toggleHideFolderIcons() {
+    isHideFolderIcons = !isHideFolderIcons
   }
   //endregion
 

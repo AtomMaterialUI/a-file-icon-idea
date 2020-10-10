@@ -56,6 +56,7 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
         option(getText("SettingsForm.enablePSIIconsCheckbox.text"), "isEnabledPsiIcons", "setEnabledPsiIcons"),
         option(getText("SettingsForm.enableUIIconsCheckbox.text"), "isEnabledUIIcons", "setEnabledUIIcons"),
         option(getText("SettingsForm.hideFileIconsCheckbox.text"), "isHideFileIcons", "setHideFileIcons"),
+        option(getText("SettingsForm.hideFolderIconsCheckbox.text"), "isHideFolderIcons", "setHideFolderIcons"),
         option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setUseHollowFolders"),
         option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
         option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled")
@@ -67,7 +68,7 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
 
     private fun option(@NonNls option: String, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(message("option.prefix") + option,
-          AtomConfigurable.ID, getter, setter) {
+                                                         AtomConfigurable.ID, getter, setter) {
         override fun getInstance(): Any {
           return AtomFileIconsConfig.instance
         }

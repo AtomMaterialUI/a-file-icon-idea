@@ -23,23 +23,22 @@
  */
 package com.mallowigi.icons
 
-import com.intellij.icons.AllIcons
 import com.intellij.ide.IconProvider
-import com.intellij.openapi.util.IconLoader
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
+import com.intellij.util.ui.EmptyIcon
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import javax.swing.Icon
 
-class HiddenIconProvider : IconProvider() {
+class HiddenFolderIconProvider : IconProvider() {
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     // If hide file icons is not activated, skip
-    if (!instance.isHideFileIcons) {
+    if (!instance.isHideFolderIcons) {
       return null
     }
-    return if (element is PsiDirectory) {
+    return if (element !is PsiDirectory) {
       null
     }
-    else IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0.0f)
+    else EmptyIcon.ICON_0;
   }
 }

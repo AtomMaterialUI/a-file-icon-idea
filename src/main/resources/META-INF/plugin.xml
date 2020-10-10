@@ -51,12 +51,14 @@
                                   id="AtomOptionContributor" />
 
         <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
+        <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
+                      id="HiddenFolderIconProvider" />
 
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
                       order="first, after HiddenIconProvider"
                       id="CustomFileIconProvider" />
         <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"
-                      order="first, after HiddenIconProvider"
+                      order="first, after HiddenFolderIconProvider"
                       id="CustomFolderIconProvider" />
         <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
                       order="first, after CustomFileIconProvider"
@@ -108,6 +110,8 @@
                     icon="/icons/settings/monochrome.svg" />
             <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
                     icon="/icons/settings/hideFileAction.svg" />
+            <action class="com.mallowigi.actions.HideFolderIconsAction" id="HideFolderIcons"
+                    icon="/icons/settings/hideFolderAction.svg" />
             <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
                     icon="/icons/settings/folderOpen.svg" />
             <separator></separator>
