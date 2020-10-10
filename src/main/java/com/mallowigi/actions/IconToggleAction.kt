@@ -24,11 +24,25 @@
  */
 package com.mallowigi.actions
 
+import com.intellij.execution.runners.ExecutionUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.ToggleAction
+import com.intellij.openapi.actionSystem.Toggleable
+import com.intellij.openapi.actionSystem.ex.CheckboxAction
+import java.awt.Color
+import javax.swing.Icon
 
-abstract class IconToggleAction : ToggleAction() {
+abstract class IconToggleAction : CheckboxAction() {
+  private var originalIcon: Icon? = null
+
+
   override fun update(e: AnActionEvent) {
-    // Override ToggleAction so we can display an icon
+    val selected = isSelected(e)
+    val presentation = e.presentation
+    val icon = e.presentation.icon
+    Toggleable.setSelected(presentation, selected)
+
+    if (selected) e.presentation.icon = ExecutionUtil.getIndicator(icon, 16, 16, Color.RED)
+
   }
+
 }
