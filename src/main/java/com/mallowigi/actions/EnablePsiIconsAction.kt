@@ -39,4 +39,11 @@ class EnablePsiIconsAction : IconToggleAction() {
   companion object {
     private val CONFIG = instance
   }
+
+  override fun update(e: AnActionEvent) {
+    super.update(e)
+    if (!CONFIG.isEnabledUIIcons) {
+      e.presentation.isEnabled = false
+    }
+  }
 }

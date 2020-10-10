@@ -24,12 +24,18 @@
  */
 package com.mallowigi.actions
 
-import com.intellij.execution.runners.ExecutionUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.Toggleable
 import com.intellij.openapi.actionSystem.ex.CheckboxAction
-import java.awt.Color
+import com.intellij.ui.LayeredIcon
+import com.intellij.util.IconUtil
+import com.intellij.util.ui.GraphicsUtil
+import com.intellij.util.ui.JBUI
+import java.awt.Component
+import java.awt.Graphics
+import java.awt.Graphics2D
 import javax.swing.Icon
+import javax.swing.UIManager
 
 abstract class IconToggleAction : CheckboxAction() {
   private var originalIcon: Icon? = null
@@ -41,8 +47,41 @@ abstract class IconToggleAction : CheckboxAction() {
     val icon = e.presentation.icon
     Toggleable.setSelected(presentation, selected)
 
-    if (selected) e.presentation.icon = ExecutionUtil.getIndicator(icon, 16, 16, Color.RED)
+    val fallbackIcon = selectedFallbackIcon()
+    val actionButtonIcon = UIManager.getIcon("ActionButton.backgroundIcon") ?: fallbackIcon
 
+    // Recreate the action button look
+    if (selected) {
+      e.presentation.icon = LayeredIcon(actionButtonIcon, regularIcon(icon))
+    }
+    else {
+      e.presentation.icon = regularIcon(icon)
+    }
+  }
+
+  protected fun regularIcon(icon: Icon?) = IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(17))
+
+  private fun selectedFallbackIcon() = object : Icon {
+    override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+      val g2d = g.create() as Graphics2D
+
+      try {
+        GraphicsUtil.setupAAPainting(g2d)
+        g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
+        g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
+      } finally {
+        g2d.dispose()
+      }
+    }
+
+
+    override fun getIconWidth(): Int {
+      return JBUI.scale(18)
+    }
+
+    override fun getIconHeight(): Int {
+      return JBUI.scale(18)
+    }
   }
 
 }
