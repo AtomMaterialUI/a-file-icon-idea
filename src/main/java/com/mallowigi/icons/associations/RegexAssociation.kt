@@ -39,20 +39,13 @@ class RegexAssociation @JvmOverloads constructor(name: String = "",
   @Transient
   private var compiledPattern: Pattern? = null
 
-  constructor(association: Association) : this(
-    name = association.name,
-    icon = association.icon,
-    pattern = association.matcher
-  )
-
   override fun matches(file: FileInfo): Boolean {
     return try {
       if (compiledPattern == null) {
         compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE)
       }
       compiledPattern!!.matcher(file.name).matches()
-    }
-    catch (e: PatternSyntaxException) {
+    } catch (e: PatternSyntaxException) {
       LOG.warn(e)
       false
     }

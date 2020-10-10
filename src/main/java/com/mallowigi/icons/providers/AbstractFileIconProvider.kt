@@ -25,6 +25,9 @@
 package com.mallowigi.icons.providers
 
 import com.intellij.ide.IconProvider
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vcs.FilePath
+import com.intellij.openapi.vcs.changes.FilePathIconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.icons.associations.Association
@@ -35,7 +38,7 @@ import com.mallowigi.utils.toOptional
 import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
 
-abstract class AbstractFileIconProvider : IconProvider() {
+abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     if (isNotAppliable()) {
       return null;
@@ -45,22 +48,38 @@ abstract class AbstractFileIconProvider : IconProvider() {
     return null
   }
 
+  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
+    return this.findIcon(filePath)
+  }
+
   private fun findIcon(element: PsiElement): Icon? {
     var icon: Icon? = null
     val virtualFile = PsiUtilCore.getVirtualFile(element)
 
     if (virtualFile != null) {
-      val file: FileInfo = VirtualFileInfo(element, virtualFile)
+      val file: FileInfo = VirtualFileInfo(virtualFile)
       val association = findAssociation(file)
       icon = getIconForAssociation(association)
     }
     return icon
   }
 
-  protected fun getIconForAssociation(association: Association?): Icon? {
+  private fun findIcon(filePath: FilePath): Icon? {
+    var icon: Icon? = null
+    val virtualFile = filePath.virtualFile
+
+    if (virtualFile != null) {
+      val file: FileInfo = VirtualFileInfo(virtualFile)
+      val association = findAssociation(file)
+      icon = getIconForAssociation(association)
+    }
+    return icon
+  }
+
+  private fun getIconForAssociation(association: Association?): Icon? {
     return association.toOptional()
-      .map { loadIcon(association) }
-      .orElseGet { null }
+        .map { loadIcon(association) }
+        .orElseGet { null }
   }
 
   private fun loadIcon(association: Association?): Icon? {
@@ -68,14 +87,13 @@ abstract class AbstractFileIconProvider : IconProvider() {
     try {
       val iconPath = association!!.icon
       icon = getIcon(iconPath)
-    }
-    catch (e: RuntimeException) {
+    } catch (e: RuntimeException) {
       e.printStackTrace()
     }
     return icon
   }
 
-  protected fun findAssociation(file: FileInfo): @Nullable Association? {
+  private fun findAssociation(file: FileInfo): @Nullable Association? {
     return getSource().findAssociation(file)
   }
 

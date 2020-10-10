@@ -27,15 +27,12 @@ import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
 import org.jetbrains.annotations.NonNls
 
-/**
- * Association for Types
- */
 class TypeAssociation internal constructor(name: String,
                                            icon: String,
                                            @field:Property @field:NonNls var type: String) : Association(name, icon) {
 
   override fun matches(file: FileInfo): Boolean {
-    return file.fileType.equals(type)
+    return file.fileType == type
   }
 
   override var matcher: String

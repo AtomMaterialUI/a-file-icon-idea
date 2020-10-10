@@ -23,12 +23,9 @@
  */
 package com.mallowigi.icons.associations
 
-import com.google.common.collect.ImmutableSet
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.models.FileInfo
-import org.jetbrains.annotations.NonNls
 import java.util.List.copyOf
 
 class CustomAssociations : Associations {
@@ -45,17 +42,11 @@ class CustomAssociations : Associations {
   }
 
   override fun findMatchingAssociation(file: FileInfo?): Association? =
-    customAssociations.stream()
-      .filter { association: RegexAssociation -> association.matches(file!!) }
-      .findAny()
-      .orElse(null)
+      customAssociations.stream()
+          .filter { association: RegexAssociation -> association.matches(file!!) }
+          .findAny()
+          .orElse(null)
 
   override fun getTheAssociations() = customAssociations
 
-  companion object {
-    private val LOG = Logger.getInstance(CustomAssociations::class.java)
-
-    @NonNls
-    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
-  }
 }

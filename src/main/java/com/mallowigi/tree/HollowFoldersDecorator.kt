@@ -51,6 +51,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
     if (project != null && file != null && !Disposer.isDisposed(project)) {
       if (!AtomFileIconsConfig.instance.isUseHollowFolders || !file.isDirectory) return
+      if (AtomFileIconsConfig.instance.isHideFolderIcons) return
 
       if (isFolderContainingOpenFiles(project, file)) setOpenDirectoryIcon(data, file, project)
     }
@@ -58,24 +59,31 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      if (data.getIcon(true) is CustomDirIcon) {
-        return;
-      } else if (data.getIcon(true) is DirIcon) {
-        val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
-        data.setIcon(DirIcon(openedIcon))
-      } else if (ProjectRootManager.getInstance(project).fileIndex.isExcluded(file)) {
-        data.setIcon(MTIcons.EXCLUDED)
-      } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
-        data.setIcon(MTIcons.MODULE)
-      } else if (ProjectRootsUtil.isInSource(file, project)) {
-        data.setIcon(MTIcons.SOURCE)
-      } else if (ProjectRootsUtil.isInTestSource(file, project)) {
-        data.setIcon(MTIcons.TEST)
-      } else if (data.getIcon(false) == PlatformIcons.PACKAGE_ICON) {
-        //      Looks like an open directory anyway
-        data.setIcon(PlatformIcons.PACKAGE_ICON)
-      } else {
-        data.setIcon(directoryIcon)
+      when {
+        data.getIcon(true) is CustomDirIcon -> return
+        data.getIcon(true) is DirIcon -> {
+          val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
+          data.setIcon(DirIcon(openedIcon))
+        }
+        ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> {
+          data.setIcon(MTIcons.EXCLUDED)
+        }
+        ProjectRootsUtil.isModuleContentRoot(file, project) -> {
+          data.setIcon(MTIcons.MODULE)
+        }
+        ProjectRootsUtil.isInSource(file, project) -> {
+          data.setIcon(MTIcons.SOURCE)
+        }
+        ProjectRootsUtil.isInTestSource(file, project) -> {
+          data.setIcon(MTIcons.TEST)
+        }
+        data.getIcon(false) == PlatformIcons.PACKAGE_ICON -> {
+          //      Looks like an open directory anyway
+          data.setIcon(PlatformIcons.PACKAGE_ICON)
+        }
+        else -> {
+          data.setIcon(directoryIcon)
+        }
       }
     } catch (e: Exception) {
       LOG.warn(e.message)
@@ -85,7 +93,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
   private fun isFolderContainingOpenFiles(project: Project,
                                           virtualFile: VirtualFile): Boolean {
     val openFiles = FileEditorManager.getInstance(project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.getPath()) }
+    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {}

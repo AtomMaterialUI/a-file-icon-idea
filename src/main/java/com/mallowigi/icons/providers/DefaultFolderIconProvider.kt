@@ -24,7 +24,6 @@
 
 package com.mallowigi.icons.providers
 
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
@@ -36,8 +35,6 @@ import icons.MTIcons
 import javax.swing.Icon
 
 class DefaultFolderIconProvider : AbstractFileIconProvider() {
-  private val LOG = Logger.getInstance(DefaultFolderIconProvider::class.java)
-
   override fun getIcon(iconPath: String): Icon? = MTIcons.getFolderIcon(iconPath)
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory

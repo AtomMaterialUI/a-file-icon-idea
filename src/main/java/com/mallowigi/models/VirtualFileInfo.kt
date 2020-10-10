@@ -24,9 +24,8 @@
 package com.mallowigi.models
 
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.psi.PsiElement
 
-class VirtualFileInfo(override val psiElement: PsiElement?, private val vFile: VirtualFile) : FileInfo {
+class VirtualFileInfo(private val vFile: VirtualFile) : FileInfo {
   override val name: String
     get() = vFile.name
 

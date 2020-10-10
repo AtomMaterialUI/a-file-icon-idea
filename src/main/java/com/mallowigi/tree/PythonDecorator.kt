@@ -17,7 +17,7 @@ class PythonDecorator : ProjectViewNodeDecorator {
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val virtualFile = node.virtualFile ?: return
     val extensions = listOf("py", "pt", "pyx", "webpy", "pyc", "mako")
-    
+
     if (!AtomFileIconsConfig.instance.isEnabledIcons) return
     if (virtualFile.extension !in extensions) return
 
@@ -26,7 +26,7 @@ class PythonDecorator : ProjectViewNodeDecorator {
   }
 
   private fun matchDefaultAssociation(virtualFile: VirtualFile, data: PresentationData) {
-    val fileInfo = VirtualFileInfo(null, virtualFile)
+    val fileInfo = VirtualFileInfo(virtualFile)
     val associations = DefaultFileIconProvider.associations
 
     val matchingAssociation = associations.findMatchingAssociation(fileInfo)
@@ -36,7 +36,7 @@ class PythonDecorator : ProjectViewNodeDecorator {
   }
 
   private fun matchCustomAssociation(virtualFile: VirtualFile, data: PresentationData) {
-    val fileInfo = VirtualFileInfo(null, virtualFile)
+    val fileInfo = VirtualFileInfo(virtualFile)
     val customFileAssociations = AtomAssocConfig.instance.customFileAssociations
 
     val matchingAssociation = customFileAssociations.findMatchingAssociation(fileInfo)
