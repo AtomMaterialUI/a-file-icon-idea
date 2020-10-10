@@ -1,5 +1,15 @@
 # Changelog
 
+# 29.0
+- Add new **icon sets**: Spring, Kubernetes, Slim, Swagger, Sass, Swift, Rider, PostCSS, XSLT
+- New **icons**: ngrx, RxJs, Protobuf, R, Swagger, Tapestry
+- Add more UI Icons
+- Fix: regression issue with UI icons not disabling
+- Fix: popup menus: restore active indicator
+- Feature: **Hide Folders**
+- Feature: Show Custom and Default file icons in the Commit Window and Panel
+- **New associations**: command, console folders, public_html, entities, effects, stylelintrc
+
 # 28.0
 - Support for 2020.3
 - Support for more UI icons
