@@ -37,6 +37,7 @@
         <iconPatcher name="Docker" remove="/icons" append="/icons/plugins/docker" />
         <iconPatcher name="Goland" remove="/icons" append="/icons/plugins/goland" />
         <iconPatcher name="Github" remove="/org/jetbrains/plugins/github" append="/icons/plugins/github" />
+        <iconPatcher name="Github2" remove="/com.intellij.codeReview" append="/icons/plugins/github" />
         <iconPatcher name="Gradle" remove="/icons" append="/icons/plugins/gradle" />
         <iconPatcher name="Groovy" remove="/icons/groovy" append="/icons/plugins/groovy" />
         <iconPatcher name="Handlebars" remove="/icons" append="/icons/plugins/handlebars" />
