@@ -1,3 +1,9 @@
+# IMPORTANT IMPORTANT IMPORTANT
+
+### Please do not upgrade your IDE to EAP versions 203.5419+ The plugin is completely broken and I don't know when I'll be able to fix these issues. You have been warned.
+
+-------
+
 # Atom Material Icons Plugin for JetBrains
 
 <h1 align="center">
