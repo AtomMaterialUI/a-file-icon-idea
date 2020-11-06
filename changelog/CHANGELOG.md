@@ -1,5 +1,10 @@
 # Changelog
 
+# 30.0
+- New icons and folder associations: public_html, redis db
+- New UI Icons: Checkboxes, Inlay icons, CodeWithMe, Emoji Picker, Tool Window Analyze...
+- Pseudo-fix: Add leading slash relatively to new EAP refactor
+
 # 29.0
 - Add new **icon sets**: Spring, Kubernetes, Slim, Swagger, Sass, Swift, Rider, PostCSS, XSLT
 - New **icons**: ngrx, RxJs, Protobuf, R, Swagger, Tapestry
