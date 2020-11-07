@@ -31,6 +31,7 @@
     <idea-version since-build="202" />
 
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.chrisrm.idea.MaterialThemeUI</depends>
 
     <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
