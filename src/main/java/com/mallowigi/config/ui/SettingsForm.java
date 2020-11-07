@@ -202,6 +202,7 @@ public final class SettingsForm implements SettingsFormUI {
       //---- enableUIIconsCheckbox ----
       enableUIIconsCheckbox.setText(bundle.getString("SettingsForm.enableUIIconsCheckbox.text"));
       enableUIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableUIIconsCheckbox.toolTipText"));
+      enableUIIconsCheckbox.setEnabled(false);
       enableUIIconsCheckbox.addActionListener(e -> enableUIIconsCheckboxActionPerformed(e));
       content.add(enableUIIconsCheckbox, "cell 1 3");
 
@@ -212,6 +213,7 @@ public final class SettingsForm implements SettingsFormUI {
       //---- enablePSIIconsCheckbox ----
       enablePSIIconsCheckbox.setText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.text"));
       enablePSIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.toolTipText"));
+      enablePSIIconsCheckbox.setEnabled(false);
       content.add(enablePSIIconsCheckbox, "cell 1 4");
 
       //---- hideFileIconsIcon ----

@@ -34,9 +34,9 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.intellij' version '0.4.21'
+    id 'org.jetbrains.intellij' version '0.6.2'
     id "de.undercouch.download" version "4.0.2"
-    id "org.jetbrains.kotlin.jvm" version "1.3.72"
+    id "org.jetbrains.kotlin.jvm" version "1.4.20-RC"
     id "idea"
 }
 
@@ -90,21 +90,19 @@ intellij {
     pluginName 'Atom File Icons IDEA'
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
-//    sameSinceUntilBuild true
     alternativeIdePath idePath
     updateSinceUntilBuild = true
+    plugins 'com.chrisrm.idea.MaterialThemeUI:5.5.0'
 
     patchPluginXml {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
         changeNotes file("$projectDir/changelog/CHANGELOG.html").text
-//        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
     publishPlugin {
         token file("$projectDir/publishToken").text ?: System.getenv("publishToken") ?: publishToken
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
-//        channels = ['eap']
     }
 }
