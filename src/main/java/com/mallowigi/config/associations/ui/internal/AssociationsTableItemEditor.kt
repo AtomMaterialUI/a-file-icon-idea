@@ -26,17 +26,16 @@ package com.mallowigi.config.associations.ui.internal
 import com.intellij.util.Function
 import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
 import com.mallowigi.icons.associations.RegexAssociation
-import org.jetbrains.annotations.NotNull
 
 class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
-  override fun getItemClass(): @NotNull Class<out RegexAssociation> = RegexAssociation::class.java
+  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
 
   override fun clone(item: RegexAssociation,
                      forInPlaceEditing: Boolean): RegexAssociation {
     return RegexAssociation(
-      item.name,
-      item.matcher,
-      item.icon
+        item.name,
+        item.matcher,
+        item.icon
     )
   }
 

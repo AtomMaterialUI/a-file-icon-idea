@@ -34,7 +34,6 @@ import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
 import icons.MTIcons
-import org.jetbrains.annotations.Nullable
 import java.io.IOException
 import javax.swing.Icon
 import javax.swing.JTable
@@ -42,7 +41,7 @@ import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
-  override fun valueOf(item: Association?): @Nullable String? {
+  override fun valueOf(item: Association?): String? {
     return PathUtil.toSystemDependentName(item?.icon)
   }
 
@@ -50,11 +49,11 @@ class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
     if (value != null) item?.icon = value
   }
 
-  override fun getEditor(item: Association?): @Nullable TableCellEditor? {
+  override fun getEditor(item: Association?): TableCellEditor? {
     return LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
   }
 
-  override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
+  override fun getRenderer(item: Association?): TableCellRenderer? {
     return if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
       null
     }
@@ -62,8 +61,7 @@ class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
       override fun getIcon(value: String, table: JTable, row: Int): Icon? {
         return try {
           MTIcons.loadSVGIcon(value)
-        }
-        catch (e: IOException) {
+        } catch (e: IOException) {
           null
         }
       }
@@ -76,7 +74,7 @@ class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
 
   companion object {
     private val DESCRIPTOR = FileChooserDescriptorFactory.createSingleFileDescriptor(FileTypeManager.getInstance()
-      .getStdFileType("SVG"))
+                                                                                         .getStdFileType("SVG"))
   }
 
 }

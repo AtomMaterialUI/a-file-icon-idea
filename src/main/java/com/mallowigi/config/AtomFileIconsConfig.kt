@@ -38,7 +38,6 @@ import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
 import org.jetbrains.annotations.NonNls
-import org.jetbrains.annotations.NotNull
 
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
@@ -270,7 +269,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
 
-    private fun getAccentFromTheme(): @NotNull String {
+    private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
         "Light" -> "Button.select"
         "Darcula" -> "Button.select"
@@ -281,7 +280,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       return ColorUtil.toHex(namedColor)
     }
 
-    private fun getThemedFromTheme(): @NotNull String {
+    private fun getThemedFromTheme(): String {
       return ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
     }
 

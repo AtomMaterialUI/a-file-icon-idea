@@ -31,7 +31,6 @@ import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.associations.ui.internal.RegexpEditor
 import com.mallowigi.icons.associations.Association
-import org.jetbrains.annotations.Nullable
 import java.util.regex.Pattern
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
@@ -39,7 +38,7 @@ import javax.swing.table.TableCellRenderer
 
 @Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  override fun valueOf(item: Association?): @Nullable String? {
+  override fun valueOf(item: Association?): String? {
     return item?.matcher
   }
 
@@ -47,15 +46,15 @@ class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumn
     item?.matcher = value!!
   }
 
-  override fun getEditor(item: Association?): @Nullable TableCellEditor? {
+  override fun getEditor(item: Association?): TableCellEditor {
     val cellEditor = ExtendableTextField()
 
     return RegexpEditor(cellEditor, parent)
   }
 
-  override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
+  override fun getRenderer(item: Association?): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
+        .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
   }
 
   companion object {
@@ -75,8 +74,7 @@ class PatternEditableColumnInfo(private val parent: Disposable) : EditableColumn
       return try {
         Pattern.compile(pattern)
         true
-      }
-      catch (e: RuntimeException) {
+      } catch (e: RuntimeException) {
         false
       }
     }

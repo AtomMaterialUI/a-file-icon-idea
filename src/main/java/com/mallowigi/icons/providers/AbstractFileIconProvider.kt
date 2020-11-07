@@ -35,13 +35,12 @@ import com.mallowigi.icons.associations.Associations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.VirtualFileInfo
 import com.mallowigi.utils.toOptional
-import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
 
 abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     if (isNotAppliable()) {
-      return null;
+      return null
     }
 
     if (isOfType(element)) return findIcon(element)
@@ -93,7 +92,7 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
     return icon
   }
 
-  private fun findAssociation(file: FileInfo): @Nullable Association? {
+  private fun findAssociation(file: FileInfo): Association? {
     return getSource().findAssociation(file)
   }
 

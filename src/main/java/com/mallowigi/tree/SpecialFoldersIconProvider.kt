@@ -35,7 +35,6 @@ import com.intellij.psi.util.PsiUtilCore
 import com.intellij.util.PlatformIcons
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import icons.MTIcons
-import org.jetbrains.annotations.NotNull
 import javax.swing.Icon
 
 class SpecialFoldersIconProvider : IconProvider() {
@@ -47,23 +46,23 @@ class SpecialFoldersIconProvider : IconProvider() {
     val project = element.project
 
     return when {
-      ProjectRootManager.getInstance(project).fileIndex.isExcluded(virtualFile!!)    -> MTIcons.EXCLUDED
+      ProjectRootManager.getInstance(project).fileIndex.isExcluded(virtualFile!!) -> MTIcons.EXCLUDED
       ProjectRootsUtil.findUnloadedModuleByContentRoot(virtualFile, project) != null -> AllIcons.Modules.UnloadedModule
-      ProjectRootsUtil.isModuleContentRoot(virtualFile, project)                     -> MTIcons.MODULE
-      isValidPackage(element, project)                                               -> PlatformIcons.PACKAGE_ICON
-      ProjectRootsUtil.isInSource(virtualFile, project)                              -> MTIcons.SOURCE
-      ProjectRootsUtil.isInTestSource(virtualFile, project)                          -> MTIcons.TEST
-      else                                                                           -> directoryIcon
+      ProjectRootsUtil.isModuleContentRoot(virtualFile, project) -> MTIcons.MODULE
+      isValidPackage(element, project) -> PlatformIcons.PACKAGE_ICON
+      ProjectRootsUtil.isInSource(virtualFile, project) -> MTIcons.SOURCE
+      ProjectRootsUtil.isInTestSource(virtualFile, project) -> MTIcons.TEST
+      else -> directoryIcon
     }
   }
 
   private fun isValidPackage(directory: PsiElement,
-                             project: @NotNull Project): Boolean {
+                             project: Project): Boolean {
     val factory = if (project.isDisposed) null else PsiDirectoryFactory.getInstance(project)
     return factory != null &&
-      directory is PsiDirectory &&
-      factory.isPackage(directory) &&
-      factory.isValidPackageName(factory.getQualifiedName(directory, false))
+        directory is PsiDirectory &&
+        factory.isPackage(directory) &&
+        factory.isValidPackageName(factory.getQualifiedName(directory, false))
   }
 
   companion object {

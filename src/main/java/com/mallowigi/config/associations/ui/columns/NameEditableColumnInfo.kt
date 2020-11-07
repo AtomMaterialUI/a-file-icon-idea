@@ -31,14 +31,13 @@ import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
-import org.jetbrains.annotations.Nullable
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 @Suppress("UnstableApiUsage")
 class NameEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
-  override fun valueOf(item: Association?): @Nullable String? {
+  override fun valueOf(item: Association?): String? {
     return item?.name
   }
 
@@ -46,21 +45,21 @@ class NameEditableColumnInfo(private val parent: Disposable) : EditableColumnInf
     item?.name = value!!
   }
 
-  override fun getEditor(item: Association?): @Nullable TableCellEditor? {
+  override fun getEditor(item: Association?): TableCellEditor {
     val cellEditor = ExtendableTextField()
     return StatefulValidatingCellEditor(cellEditor, parent)
   }
 
-  override fun getRenderer(item: Association?): @Nullable TableCellRenderer? {
+  override fun getRenderer(item: Association?): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int ->
-        if (value == null || value == "") {
-          return@withCellValidator ValidationInfo(message("AtomAssocConfig.NameEditor.empty"))
+        .withCellValidator { value: Any?, _: Int, _: Int ->
+          if (value == null || value == "") {
+            return@withCellValidator ValidationInfo(message("AtomAssocConfig.NameEditor.empty"))
+          }
+          else {
+            return@withCellValidator null
+          }
         }
-        else {
-          return@withCellValidator null
-        }
-      }
   }
 
 }
