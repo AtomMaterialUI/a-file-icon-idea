@@ -108,10 +108,10 @@
                     icon="/icons/settings/atom.svg" />
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
                     icon="/icons/settings/compiledClassesFolder.svg" />
-            <!--            <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"-->
-            <!--                    icon="/icons/settings/plugin.svg" />-->
-            <!--            <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"-->
-            <!--                    icon="/icons/settings/psi.svg" />-->
+            <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
+                    icon="/icons/settings/plugin.svg" />
+            <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
+                    icon="/icons/settings/psi.svg" />
             <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
                     icon="/icons/settings/monochrome.svg" />
             <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
