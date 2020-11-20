@@ -31,9 +31,14 @@
     <idea-version since-build="202" />
 
     <depends>com.intellij.modules.lang</depends>
-    <depends>com.chrisrm.idea.MaterialThemeUI</depends>
 
     <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
+
+    <application-components>
+        <component>
+            <implementation-class>com.mallowigi.utils.HackComponent</implementation-class>
+        </component>
+    </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig" />
