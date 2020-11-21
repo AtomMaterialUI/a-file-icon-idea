@@ -75,6 +75,9 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
   }
 
   private void initComponent() {
+    if (connect == null) {
+      return;
+    }
     IconPatchersManager.INSTANCE.init();
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
