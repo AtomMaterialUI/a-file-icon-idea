@@ -1,5 +1,13 @@
 # Changelog
 
+# 31.0
+- Remove dependency to the Material Theme and add Javassist to fix the IconLoader issue.
+- Fix possible NPE
+- New file icons: UIKit, Unibeautify, Uno, Urweb, Paket, Pan, Papyrus, Parrot, Pascal, Patreon, Pawn, PCD, Pegjs, Phoenix, Oracle, Phrase, Pickle, Pico8, Picolisp, Pike, Pinescript, Platform.IO, PM2, Pod, PgSQL, PogoScript, Pony, Povray, Powwerbuilder, Precommit, Propellet, PROS, Proselint, Pullapprove, Pure, PHP2, LabView, Lasso, Leaflet, Lean, Lefthook, Leiningen, Lekto, Lex, LFE, Lightwave, Lilypond, Link, Lime, Lisp, LLVM, LogTalk, Lolcode, LSL, Lua, Livescript, alexignore, boringignore, D3, darcsignore, darcs, deps, dockerignore, fossaignore, gitignore, helmignore, herokuignore, dashboard, dataweave, dbase, debian, devcontainer, devicetree, dhall, Dia, Digdag, DNS, Docbook, Doclets, Docpad, Docz, Dogescript, Dojo, Dosbox, Doxygen, Dragula, Drone, Dyalog
+- Add `index.scss`, `index.css` and `index.html` to the index family
+- Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache
+- Recolored some icons
+
 # 30.0
 - New icons and folder associations: public_html, redis db
 - New UI Icons: Checkboxes, Inlay icons, CodeWithMe, Emoji Picker, Tool Window Analyze...
