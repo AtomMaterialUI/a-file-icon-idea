@@ -276,7 +276,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
         else -> "Link.activeForeground"
       }
 
-      val namedColor = JBColor.namedColor(namedKey, UIUtil.getButtonSelectColor())
+      val namedColor = JBColor.namedColor(
+        namedKey,
+        UIUtil.getButtonSelectColor() ?: UIUtil.getListSelectionForeground(true)
+      )
       return ColorUtil.toHex(namedColor)
     }
 
