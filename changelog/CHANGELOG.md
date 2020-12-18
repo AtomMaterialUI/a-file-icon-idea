@@ -1,5 +1,11 @@
 # Changelog
 
+# 32.0
+- Add ios, iosApp, androidApp, backend, desktop, buildSrc, repository, exception, usecase
+- Add django associations and eslintignore
+- Add the ability to disable associations
+- Fix the bug with Edit/Clone associations
+
 # 31.0
 - Remove dependency to the Material Theme and add Javassist to fix the IconLoader issue.
 - Fix possible NPE
