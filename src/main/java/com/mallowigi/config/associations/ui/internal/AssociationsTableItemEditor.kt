@@ -34,8 +34,8 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
                      forInPlaceEditing: Boolean): RegexAssociation {
     return RegexAssociation(
         item.name,
-        item.matcher,
-        item.icon
+        item.icon,
+        item.matcher
     )
   }
 

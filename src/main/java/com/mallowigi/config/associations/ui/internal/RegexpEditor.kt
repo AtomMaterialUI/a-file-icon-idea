@@ -36,8 +36,6 @@ import com.intellij.openapi.util.Disposer
 import com.intellij.ui.EditorTextField
 import org.intellij.lang.regexp.RegExpFileType
 import java.awt.Component
-import java.awt.event.ActionEvent
-import java.awt.event.ActionListener
 import java.awt.event.KeyEvent
 import java.util.function.Consumer
 import javax.swing.JComponent
@@ -48,21 +46,20 @@ import javax.swing.table.TableCellEditor
 
 class RegexpEditor(textField: JTextField,
                    parent: Disposable) : StatefulValidatingCellEditor(textField, parent), TableCellEditor {
-  private var editor: EditorTextField
+  private var editor: EditorTextField = EditorTextField(ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
   private var myDocument: Document? = null
   private val stateUpdater = Consumer { _: ValidationInfo? -> }
 
   init {
     // Creates a regex editor
-    editor = EditorTextField(ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
     editor.setOneLineMode(true)
     // Register enter and escape keys
-    editor.registerKeyboardAction(ActionListener { _: ActionEvent? -> stopCellEditing() },
-      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-      JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
-    editor.registerKeyboardAction(ActionListener { _: ActionEvent? -> cancelCellEditing() },
-      KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
-      JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+    editor.registerKeyboardAction({ stopCellEditing() },
+                                  KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                                  JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+    editor.registerKeyboardAction({ cancelCellEditing() },
+                                  KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+                                  JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
 
     myDocument = editor.document
     clickCountToStart = 2
@@ -70,7 +67,7 @@ class RegexpEditor(textField: JTextField,
     // Install validations
     ComponentValidator(parent).withValidator(this).installOn(editor)
 
-    // Reset validations when document changes but revalidates once blurreed
+    // Reset validations when document changes but revalidates once blurred
     val dl: DocumentListener = object : DocumentListener {
       override fun documentChanged(event: DocumentEvent) {
         editor.putClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY, null)
@@ -79,7 +76,7 @@ class RegexpEditor(textField: JTextField,
     }
 
     myDocument!!.addDocumentListener(dl)
-    Disposer.register(parent, Disposable { myDocument!!.removeDocumentListener(dl) })
+    Disposer.register(parent, { myDocument!!.removeDocumentListener(dl) })
   }
 
   override fun getTableCellEditorComponent(table: JTable,
@@ -91,7 +88,7 @@ class RegexpEditor(textField: JTextField,
     editor.text = value.toString()
     // Install validations on renderer
     val renderer = table.getCellRenderer(row, column)
-      .getTableCellRendererComponent(table, value, isSelected, true, row, column) as JComponent
+        .getTableCellRendererComponent(table, value, isSelected, true, row, column) as JComponent
 
     val validationProperty = renderer.getClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY)
     if (validationProperty != null) {

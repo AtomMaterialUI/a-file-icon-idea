@@ -49,22 +49,22 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"UndesirableClassUsage",
-    "FieldCanBeLocal",
-    "LocalCanBeFinal",
-    "PublicMethodNotExposedInInterface",
-    "ClassWithTooManyFields",
-    "OverlyLongMethod"})
+  "FieldCanBeLocal",
+  "LocalCanBeFinal",
+  "PublicMethodNotExposedInInterface",
+  "ClassWithTooManyFields",
+  "OverlyLongMethod"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
-      new NameEditableColumnInfo(this),
-      new PatternEditableColumnInfo(this),
-      new IconEditableColumnInfo(this)};
+    new NameEditableColumnInfo(this),
+    new PatternEditableColumnInfo(this),
+    new IconEditableColumnInfo()};
 
   private final transient ColumnInfo[] folderColumns = {
-      new NameEditableColumnInfo(this),
-      new PatternEditableColumnInfo(this),
-      new IconEditableColumnInfo(this)};
+    new NameEditableColumnInfo(this),
+    new PatternEditableColumnInfo(this),
+    new IconEditableColumnInfo()};
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -166,11 +166,11 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
     //======== this ========
     setLayout(new MigLayout(
-        "hidemode 3",
-        // columns
-        "[585,grow,fill]",
-        // rows
-        "[183,fill]"));
+      "hidemode 3",
+      // columns
+      "[585,grow,fill]",
+      // rows
+      "[183,fill]"));
 
     //======== tabbedContainer ========
     {
@@ -178,12 +178,12 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       //======== customFileIconsNew ========
       {
         customFileIconsNew.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[260,grow,fill]" +
-                "[]"));
+          "hidemode 3",
+          // columns
+          "[grow,fill]",
+          // rows
+          "[260,grow,fill]" +
+            "[]"));
 
         //---- explanation ----
         explanation.setText(bundle.getString("AssociationsForm.explanation.text"));
@@ -195,32 +195,32 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       //======== customFolderIconsNew ========
       {
         customFolderIconsNew.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[260,grow,fill]"));
+          "hidemode 3",
+          // columns
+          "[grow,fill]",
+          // rows
+          "[260,grow,fill]"));
       }
       tabbedContainer.addTab(bundle.getString("AssociationsForm.customFolderIconsNew.title"), customFolderIconsNew);
 
       //======== defaultFileIcons ========
       {
         defaultFileIcons.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[grow,fill]"));
+          "hidemode 3",
+          // columns
+          "[grow,fill]",
+          // rows
+          "[grow,fill]"));
 
         //======== defFileIconsPanel ========
         {
           defFileIconsPanel.setBorder(null);
           defFileIconsPanel.setLayout(new MigLayout(
-              "hidemode 3",
-              // columns
-              "0[grow,fill]0",
-              // rows
-              "0[grow,fill]0"));
+            "hidemode 3",
+            // columns
+            "0[grow,fill]0",
+            // rows
+            "0[grow,fill]0"));
 
           //======== fileIconsScrollPane ========
           {
@@ -249,21 +249,21 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       //======== defaultFolderIcons ========
       {
         defaultFolderIcons.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[171,grow,fill]"));
+          "hidemode 3",
+          // columns
+          "[grow,fill]",
+          // rows
+          "[171,grow,fill]"));
 
         //======== defFolderIconsPanel ========
         {
           defFolderIconsPanel.setBorder(null);
           defFolderIconsPanel.setLayout(new MigLayout(
-              "hidemode 3",
-              // columns
-              "0[grow,fill]0",
-              // rows
-              "0[grow,fill]0"));
+            "hidemode 3",
+            // columns
+            "0[grow,fill]0",
+            // rows
+            "0[grow,fill]0"));
 
           //======== folderIconsScrollpane ========
           {
@@ -307,8 +307,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private void createCustomFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     customFileAssociationsEditor = new TableModelEditor<>(fileColumns,
-        itemEditor,
-        AtomSettingsBundle.message("no.custom.file.associations"));
+      itemEditor,
+      AtomSettingsBundle.message("no.custom.file.associations"));
     customFileIconsTable = customFileAssociationsEditor.createComponent();
     customFileIconsNew.add(customFileIconsTable, "cell 0 0"); //NON-NLS
   }
@@ -319,8 +319,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private void createCustomFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     customFolderAssociationsEditor = new TableModelEditor<>(folderColumns,
-        itemEditor,
-        AtomSettingsBundle.message("no.custom.folder.associations"));
+      itemEditor,
+      AtomSettingsBundle.message("no.custom.folder.associations"));
     customFolderIconsTable = customFolderAssociationsEditor.createComponent();
     customFolderIconsNew.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
   }

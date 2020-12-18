@@ -23,7 +23,6 @@
  */
 package com.mallowigi.config.associations.ui.columns
 
-import com.intellij.openapi.Disposable
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.util.io.FileUtilRt
@@ -40,7 +39,7 @@ import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
-class IconEditableColumnInfo(private val parent: Disposable) : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
+class IconEditableColumnInfo : EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
   override fun valueOf(item: Association?): String? {
     return PathUtil.toSystemDependentName(item?.icon)
   }
