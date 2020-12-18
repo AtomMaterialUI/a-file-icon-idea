@@ -39,7 +39,7 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
 
   override fun getSource(): DefaultAssociations = associations
 
-  override fun getIcon(iconPath: String): Icon? = MTIcons.getFileIcon(iconPath)
+  override fun getIcon(iconPath: String): Icon = MTIcons.getFileIcon(iconPath)
 
   override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledIcons
 

@@ -33,6 +33,7 @@ import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.AtomAssocConfig;
+import com.mallowigi.config.associations.ui.columns.EnabledColumnInfo;
 import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
@@ -59,12 +60,16 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   private final transient ColumnInfo[] fileColumns = {
     new NameEditableColumnInfo(this),
     new PatternEditableColumnInfo(this),
-    new IconEditableColumnInfo()};
+    new IconEditableColumnInfo(),
+    new EnabledColumnInfo()
+  };
 
   private final transient ColumnInfo[] folderColumns = {
     new NameEditableColumnInfo(this),
     new PatternEditableColumnInfo(this),
-    new IconEditableColumnInfo()};
+    new IconEditableColumnInfo(),
+    new EnabledColumnInfo()
+  };
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -168,7 +173,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     setLayout(new MigLayout(
       "hidemode 3",
       // columns
-      "[585,grow,fill]",
+      "[550,grow,fill]",
       // rows
       "[183,fill]"));
 
@@ -183,7 +188,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
           "[grow,fill]",
           // rows
           "[260,grow,fill]" +
-            "[]"));
+          "[]"));
 
         //---- explanation ----
         explanation.setText(bundle.getString("AssociationsForm.explanation.text"));

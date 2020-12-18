@@ -22,7 +22,7 @@ object IconPatchersManager {
 
   fun init() {
     val atomFileIconsConfig = instance
-//    IconLoader.installPathPatcher(checkStyleIconPatcher)
+    IconLoader.installPathPatcher(checkStyleIconPatcher)
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
@@ -98,10 +98,10 @@ object IconPatchersManager {
 
   fun updateFileIcons() {
     GuiUtils.invokeLaterIfNeeded({
-      val app = ApplicationManager.getApplication()
-      app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-      app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
-      applyFilter()
-    }, ModalityState.NON_MODAL)
+                                   val app = ApplicationManager.getApplication()
+                                   app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
+                                   app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
+                                   applyFilter()
+                                 }, ModalityState.NON_MODAL)
   }
 }

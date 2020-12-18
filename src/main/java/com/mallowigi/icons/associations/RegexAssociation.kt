@@ -34,7 +34,8 @@ import java.util.regex.PatternSyntaxException
  */
 class RegexAssociation @JvmOverloads constructor(name: String = "",
                                                  icon: String = "",
-                                                 @field:Property var pattern: String = "") : Association(name, icon) {
+                                                 enabled: Boolean = true,
+                                                 @field:Property var pattern: String = "") : Association(name, icon, enabled) {
 
   @Transient
   private var compiledPattern: Pattern? = null

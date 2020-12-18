@@ -67,7 +67,7 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
   private fun isFolderContainingOpenFiles(element: PsiElement,
                                           virtualFile: VirtualFile): Boolean {
     val openFiles = FileEditorManager.getInstance(element.project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.getPath().toString()) }
+    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
   companion object {

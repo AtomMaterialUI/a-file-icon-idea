@@ -27,9 +27,10 @@ import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
 import org.jetbrains.annotations.NonNls
 
-class TypeAssociation internal constructor(name: String,
-                                           icon: String,
-                                           @field:Property @field:NonNls var type: String) : Association(name, icon) {
+class TypeAssociation internal constructor(name: String = "",
+                                           icon: String = "",
+                                           enabled: Boolean = true,
+                                           @field:Property @field:NonNls var type: String) : Association(name, icon, enabled) {
 
   override fun matches(file: FileInfo): Boolean {
     return file.fileType == type

@@ -43,7 +43,7 @@ class CustomAssociations : Associations {
 
   override fun findMatchingAssociation(file: FileInfo?): Association? =
       customAssociations.stream()
-          .filter { association: RegexAssociation -> association.matches(file!!) }
+          .filter { association: RegexAssociation -> association.enabled && association.matches(file!!) }
           .findAny()
           .orElse(null)
 

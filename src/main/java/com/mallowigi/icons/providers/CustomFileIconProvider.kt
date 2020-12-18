@@ -42,7 +42,7 @@ class CustomFileIconProvider : AbstractFileIconProvider() {
 
   override fun isDefault(): Boolean = false
 
-  override fun getIcon(iconPath: String): Icon? = CustomFileIcon(MTIcons.loadSVGIcon(iconPath))
+  override fun getIcon(iconPath: String): Icon = CustomFileIcon(MTIcons.loadSVGIcon(iconPath))
 
   override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledIcons
 

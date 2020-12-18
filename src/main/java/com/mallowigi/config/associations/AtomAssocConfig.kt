@@ -38,8 +38,8 @@ import com.mallowigi.icons.associations.CustomAssociations
 import java.util.*
 
 @State(
-  name = "Atom Icon Associations Config",
-  storages = [Storage("atom-icon-associations.xml")] // NON-NLS:
+    name = "Atom Icon Associations Config",
+    storages = [Storage("atom-icon-associations.xml")] // NON-NLS:
 )
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
@@ -49,31 +49,31 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
   @Property
   var customFolderAssociations: CustomAssociations = CustomAssociations()
 
-  override fun getState(): AtomAssocConfig? = this
+  override fun getState(): AtomAssocConfig = this
 
   override fun loadState(state: AtomAssocConfig) {
     XmlSerializerUtil.copyBean(state, this)
   }
 
   fun applySettings(form: AssociationsForm) {
-    customFileAssociations = form.getFileAssociations()
-    customFolderAssociations = form.getFolderAssociations()
+    customFileAssociations = form.fileAssociations
+    customFolderAssociations = form.folderAssociations
 
     fireChanged()
   }
 
   private fun fireChanged() {
     ApplicationManager.getApplication().messageBus
-      .syncPublisher(AssocConfigNotifier.TOPIC)
-      .assocChanged(this)
+        .syncPublisher(AssocConfigNotifier.TOPIC)
+        .assocChanged(this)
   }
 
   fun isFileIconsModified(customFileAssociations: List<Association>): Boolean {
-    return !Objects.deepEquals(this.customFileAssociations, customFileAssociations);
+    return !Objects.deepEquals(this.customFileAssociations, customFileAssociations)
   }
 
   fun isFolderIconsModified(customFolderAssociations: List<Association>): Boolean {
-    return !Objects.deepEquals(this.customFolderAssociations, customFolderAssociations);
+    return !Objects.deepEquals(this.customFolderAssociations, customFolderAssociations)
   }
 
   companion object {

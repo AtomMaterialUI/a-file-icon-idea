@@ -35,6 +35,7 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
     return RegexAssociation(
         item.name,
         item.icon,
+        item.enabled,
         item.matcher
     )
   }

@@ -30,6 +30,7 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -38,7 +39,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.util.messages.MessageBusConnection;
-import com.mallowigi.config.AtomFileIconsConfig;
+import com.mallowigi.config.listeners.AssocConfigNotifier;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
 import com.mallowigi.icons.patchers.AbstractIconPatcher;
 import com.mallowigi.icons.services.IconFilterManager;
@@ -82,6 +83,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
     connect.subscribe(AtomConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);
+    connect.subscribe(AssocConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);
     connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
       @Override
       public void fileTypesChanged(@NotNull final FileTypeEvent event) {
@@ -103,7 +105,7 @@ public final class IconReplacerComponent implements DynamicPluginListener, AppLi
     connect.disconnect();
   }
 
-  private static void onSettingsChanged(final AtomFileIconsConfig atomFileIconsConfig) {
+  private static void onSettingsChanged(final PersistentStateComponent config) {
     IconPatchersManager.INSTANCE.updateFileIcons();
     IconPatchersManager.INSTANCE.updateIcons();
     LafManager.getInstance().updateUI();

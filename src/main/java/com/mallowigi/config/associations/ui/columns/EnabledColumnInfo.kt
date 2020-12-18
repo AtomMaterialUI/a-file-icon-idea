@@ -21,29 +21,30 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package com.mallowigi.config.associations.ui.columns
 
-package com.mallowigi.icons.providers
+import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.icons.associations.Association
+import javax.swing.DefaultCellEditor
+import javax.swing.JCheckBox
+import javax.swing.table.TableCellEditor
 
-import com.intellij.psi.PsiDirectory
-import com.intellij.psi.PsiElement
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.associations.AtomAssocConfig
-import com.mallowigi.icons.associations.CustomAssociations
-import com.mallowigi.icons.special.CustomDirIcon
-import icons.MTIcons
-import javax.swing.Icon
+class EnabledColumnInfo : EditableColumnInfo<Association?, Boolean>(message("AssociationsForm.folderIconsTable.columns.enabled")) {
+  override fun valueOf(item: Association?): Boolean? {
+    return item?.enabled
+  }
 
-class CustomFolderIconProvider : AbstractFileIconProvider() {
-  override fun getSource(): CustomAssociations = AtomAssocConfig.instance.customFolderAssociations
+  override fun setValue(item: Association?, value: Boolean?) {
+    if (value != null) item?.enabled = value
+  }
 
-  override fun getType(): IconType = IconType.FOLDER
+  override fun getEditor(item: Association?): TableCellEditor {
+    return DefaultCellEditor(JCheckBox())
+  }
 
-  override fun isDefault(): Boolean = false
-
-  override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
-
-  override fun getIcon(iconPath: String): Icon = CustomDirIcon(MTIcons.loadSVGIcon(iconPath))
-
-  override fun isNotAppliable() = !AtomFileIconsConfig.instance.isEnabledDirectories
+  override fun getColumnClass(): Class<Boolean> {
+    return Boolean::class.java
+  }
 
 }
