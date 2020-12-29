@@ -1,5 +1,8 @@
 # Changelog
 
+# 33.0
+- fix init.py, add eclipselang, eagle, easybuild, ec, ecere, eleectron, email, emberscript, eq, esdoc, extjs
+
 # 32.0
 - Add ios, iosApp, androidApp, backend, desktop, buildSrc, repository, exception, usecase
 - Add django associations and eslintignore
