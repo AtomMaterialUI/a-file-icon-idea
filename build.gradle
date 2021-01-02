@@ -92,6 +92,11 @@ intellij {
     alternativeIdePath idePath
     updateSinceUntilBuild = true
 
+    buildSearchableOptions {
+        enabled false
+    }
+
+
     patchPluginXml {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP

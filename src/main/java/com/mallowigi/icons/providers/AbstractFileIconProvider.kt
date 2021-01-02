@@ -25,9 +25,7 @@
 package com.mallowigi.icons.providers
 
 import com.intellij.ide.IconProvider
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.vcs.FilePath
-import com.intellij.openapi.vcs.changes.FilePathIconProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.icons.associations.Association
@@ -37,7 +35,7 @@ import com.mallowigi.models.VirtualFileInfo
 import com.mallowigi.utils.toOptional
 import javax.swing.Icon
 
-abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
+abstract class AbstractFileIconProvider : IconProvider() {
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     if (isNotAppliable()) {
       return null
@@ -47,9 +45,9 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
     return null
   }
 
-  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
-    return this.findIcon(filePath)
-  }
+//  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
+//    return this.findIcon(filePath)
+//  }
 
   private fun findIcon(element: PsiElement): Icon? {
     var icon: Icon? = null
