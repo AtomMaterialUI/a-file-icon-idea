@@ -1,5 +1,10 @@
 # Changelog
 
+# 34.0
+- add mapbox, markdownlint, materialize, mathjax, max, mdx, mediawiki, mercury, nano, nanoc
+- add MS infopath, lync, visio, publisher, outlook, project, meson, metal, minecraft, minizinc, mirah, mirc, mkdocs, modelica, modernizr, modo, moho, modula2, modula3, moleculer, moment, monkey
+- add reasonstudios, rebol, red2, redhat, reek, rneovate, requirejs, rexx, rhino3d, riemann, ring, riot2, robot2, rss, rstudio
+
 # 33.0
 - fix init.py, add eclipselang, eagle, easybuild, ec, ecere, eleectron, email, emberscript, eq, esdoc, extjs
 
