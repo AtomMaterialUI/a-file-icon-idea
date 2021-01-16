@@ -31,7 +31,6 @@
     <idea-version since-build="202" />
 
     <depends>com.intellij.modules.lang</depends>
-    <depends optional="true" config-file="git.xml"></depends>
 
     <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
@@ -74,10 +73,10 @@
                       order="first, after CustomFolderIconProvider"
                       id="DefaultFolderIconProvider" />
 
-        <!--        <openapi.vcs.changes.ui.filePathIconProvider-->
-        <!--                implementation="com.mallowigi.icons.providers.CustomFileIconProvider" />-->
-        <!--        <openapi.vcs.changes.ui.filePathIconProvider-->
-        <!--                implementation="com.mallowigi.icons.providers.DefaultFileIconProvider" />-->
+        <openapi.vcs.changes.ui.filePathIconProvider
+                implementation="com.mallowigi.icons.providers.CustomFileIconProvider" />
+        <openapi.vcs.changes.ui.filePathIconProvider
+                implementation="com.mallowigi.icons.providers.DefaultFileIconProvider" />
 
         <!--        <iconProvider implementation="com.mallowigi.tree.SpecialFoldersIconProvider" id="SpecialFoldersIconProvider"-->
         <!--                      order="first, after CustomFolderIconProvider"/>-->
