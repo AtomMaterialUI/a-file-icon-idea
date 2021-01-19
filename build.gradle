@@ -99,6 +99,10 @@ intellij {
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
+    buildSearchableOptions {
+        enabled false
+    }
+
     publishPlugin {
         token file("$projectDir/publishToken").text ?: System.getenv("publishToken") ?: publishToken
         username System.getenv("publishUsername") ?: publishUsername
