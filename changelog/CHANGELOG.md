@@ -1,5 +1,10 @@
 # Changelog
 
+# 35.0
+- Add genstat, gentoo, gimp, gitcommit, gitmerge, glade, glide, gltf, gnome, golo, gauss, grammatical framework, glyphs, gn, gnuplot, gosu, gravit, greenkeeper, pointwise, snowpack
+- Fix bundle size
+- Fix bad associations
+
 # 34.0
 - add mapbox, markdownlint, materialize, mathjax, max, mdx, mediawiki, mercury, nano, nanoc
 - add MS infopath, lync, visio, publisher, outlook, project, meson, metal, minecraft, minizinc, mirah, mirc, mkdocs, modelica, modernizr, modo, moho, modula2, modula3, moleculer, moment, monkey
