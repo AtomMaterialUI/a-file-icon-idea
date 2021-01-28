@@ -28,7 +28,7 @@
     <version>@version</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Elior Boukhobza (Mallowigi)</vendor>
 
-    <idea-version since-build="202" />
+    <idea-version since-build="211" />
 
     <depends>com.intellij.modules.lang</depends>
 
