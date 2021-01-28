@@ -1,5 +1,8 @@
 # Changelog
 
+# 36.0
+- Support for 2021.1
+
 # 35.0
 - Add genstat, gentoo, gimp, gitcommit, gitmerge, glade, glide, gltf, gnome, golo, gauss, grammatical framework, glyphs, gn, gnuplot, gosu, gravit, greenkeeper, pointwise, snowpack
 - Fix bundle size
