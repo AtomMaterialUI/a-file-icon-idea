@@ -40,13 +40,6 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
     )
   }
 
-  override fun edit(item: RegexAssociation,
-                    mutator: Function<RegexAssociation, RegexAssociation>,
-                    isAdd: Boolean) {
-    val settings = clone(item, true)
-    mutator.`fun`(item).apply(settings)
-  }
-
   override fun applyEdited(oldItem: RegexAssociation,
                            newItem: RegexAssociation) {
     oldItem.apply(newItem)
@@ -55,5 +48,10 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
   override fun isEditable(item: RegexAssociation): Boolean = !item.isEmpty
 
   override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
+
+  override fun edit(item: RegexAssociation, mutator: Function<in RegexAssociation, out RegexAssociation>, isAdd: Boolean) {
+    val settings = clone(item, true)
+    mutator.`fun`(item).apply(settings)
+  }
 
 }
