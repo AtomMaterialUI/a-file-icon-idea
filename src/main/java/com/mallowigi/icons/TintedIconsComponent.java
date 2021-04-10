@@ -29,6 +29,7 @@ import com.intellij.ide.plugins.DynamicPluginListener;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
@@ -51,6 +52,7 @@ import java.net.URL;
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
  */
 public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
+  private static final PluginId PLUGIN_ID = PluginId.getId("com.mallowigi");
   private TintedColorPatcher colorPatcher;
   private final MessageBusConnection connect;
 
@@ -75,6 +77,8 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
 
   @Override
   public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
+    if(!PLUGIN_ID.equals(pluginDescriptor.getPluginId())) return;
+
     disposeComponent();
   }
 
