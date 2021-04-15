@@ -53,7 +53,6 @@ import java.net.URL;
  */
 public final class TintedIconsComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
   private static final PluginId PLUGIN_ID = PluginId.getId("com.mallowigi");
-  private TintedColorPatcher colorPatcher;
   private final MessageBusConnection connect;
 
   public TintedIconsComponent() {
@@ -83,20 +82,17 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
   }
 
   private void initComponent() {
-    colorPatcher = new TintedColorPatcher();
-    SVGLoader.setColorPatcherProvider(colorPatcher);
+    SVGLoader.setColorPatcherProvider(new TintedColorPatcher(SvgLoaderHacker.collectOtherPatcher()));
 
     // Listen for changes on the settings
     connect.subscribe(LafManagerListener.TOPIC, source -> {
-      SVGLoader.setColorPatcherProvider(null);
-      SVGLoader.setColorPatcherProvider(colorPatcher);
+      SVGLoader.setColorPatcherProvider(new TintedColorPatcher(SvgLoaderHacker.collectOtherPatcher()));
 
       TintedColorPatcher.refreshThemeColor(getThemedColor());
       TintedColorPatcher.refreshAccentColor(getTintedColor());
     });
     connect.subscribe(AtomConfigNotifier.TOPIC, atomFileIconsConfig -> {
-      SVGLoader.setColorPatcherProvider(null);
-      SVGLoader.setColorPatcherProvider(colorPatcher);
+      SVGLoader.setColorPatcherProvider(new TintedColorPatcher(SvgLoaderHacker.collectOtherPatcher()));
 
       TintedColorPatcher.refreshThemeColor(getThemedColor());
       TintedColorPatcher.refreshAccentColor(getTintedColor());
@@ -115,12 +111,14 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentAccentColor()));
   }
 
-  private static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
+  protected static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
     private static ColorUIResource tintedColor = getTintedColor();
+    private final SVGLoader.SvgElementColorPatcherProvider otherPatcherProvider;
 
-    private TintedColorPatcher() {
+    private TintedColorPatcher(SVGLoader.SvgElementColorPatcherProvider otherPatcherProvider) {
+      this.otherPatcherProvider = otherPatcherProvider;
       refreshColors();
     }
 
@@ -139,10 +137,20 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
 
     @NotNull
     @Override
-    public SVGLoader.SvgElementColorPatcher forURL(@Nullable final URL url) {
+    public SVGLoader.SvgElementColorPatcher forPath(@Nullable String path) {
+      return createPatcher(otherPatcherProvider.forPath(path));
+    }
+
+    @NotNull
+    private SVGLoader.SvgElementColorPatcher createPatcher(
+        final @Nullable SVGLoader.SvgElementColorPatcher otherPatcher
+    ) {
       return new SVGLoader.SvgElementColorPatcher() {
         @Override
         public void patchColors(@NonNls final Element svg) {
+          if(otherPatcher != null) {
+            otherPatcher.patchColors(svg);
+          }
           @NonNls final String tint = svg.getAttribute("tint");
           @NonNls final String themed = svg.getAttribute("themed");
           final String hexColor = getColorHex(themedColor);
