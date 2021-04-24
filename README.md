@@ -1,6 +1,6 @@
 # Atom Material Icons Plugin for JetBrains
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <h1 align="center">
@@ -86,6 +86,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://unthrottled.io"><img src="https://avatars.githubusercontent.com/u/15972415?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Simons</b></sub></a><br /><a href="#infra-Unthrottled" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/mallowigi/a-file-icon-idea/commits?author=Unthrottled" title="Code">💻</a> <a href="#plugin-Unthrottled" title="Plugin/utility libraries">🔌</a></td>
+    <td align="center"><a href="https://Joristdh.web.app"><img src="https://avatars.githubusercontent.com/u/6518350?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joris te Dorsthorst</b></sub></a><br /><a href="#ideas-Joristdh" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
