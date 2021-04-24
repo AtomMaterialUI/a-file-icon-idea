@@ -24,6 +24,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "godfather1103",
+      "name": "Jack Chu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11797964?v=4",
+      "profile": "https://github.com/godfather1103",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
