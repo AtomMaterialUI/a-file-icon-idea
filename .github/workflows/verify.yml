@@ -1,0 +1,44 @@
+name: Verify plugin
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/verify.yml
+      - src/main/java/**/*
+jobs:
+  verify:
+    name: Verify plugin compatibility
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        java: [ '8', '11' ]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ matrix.java }}
+
+      - name: Build the plugin using Gradle
+        run: ./gradlew buildPlugin
+        env:
+          pluginUntilBuild: "212.*"
+          pluginVersion: "37"
+          javaVersion: ${{ matrix.java }}
+
+      - name: Verify Plugin on IntelliJ Platforms
+        id: verify
+        uses: chriscarini/intellij-platform-plugin-verifier-action@latest
+        with:
+          ide-versions: |
+            ideaIC:2021.1
+            ideaIC:2020.3
+            ideaIC:LATEST-EAP-SNAPSHOT
+
+      - name: Get log file path and print contents
+        run: |
+          echo "The verifier log file [${{steps.verify.outputs.verification-output-log-filename}}] contents : " ;
+          cat ${{steps.verify.outputs.verification-output-log-filename}}
