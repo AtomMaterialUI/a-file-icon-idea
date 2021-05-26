@@ -33,6 +33,7 @@ import com.intellij.openapi.util.text.StringUtil
 import com.mallowigi.config.AtomSettingsBundle.message
 import org.jetbrains.annotations.NonNls
 import java.util.*
+import java.util.function.Supplier
 
 /**
  * Provide commands for Search Everything Top Hit commands
@@ -49,9 +50,14 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
 
   companion object {
     @NonNls
-    private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(listOf(
+    private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(
+      listOf(
         option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setAccentColorEnabled"),
-        option(getText("SettingsForm.enableDirectoryIconsCheckbox.text"), "isEnabledDirectories", "setEnabledDirectories"),
+        option(
+          getText("SettingsForm.enableDirectoryIconsCheckbox.text"),
+          "isEnabledDirectories",
+          "setEnabledDirectories"
+        ),
         option(getText("SettingsForm.enableFileIconsCheckbox.text"), "isEnabledIcons", "setEnabledIcons"),
         option(getText("SettingsForm.enablePSIIconsCheckbox.text"), "isEnabledPsiIcons", "setEnabledPsiIcons"),
         option(getText("SettingsForm.enableUIIconsCheckbox.text"), "isEnabledUIIcons", "setEnabledUIIcons"),
@@ -60,7 +66,8 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
         option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setUseHollowFolders"),
         option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
         option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled")
-    ))
+      )
+    )
 
     private fun getText(property: String): String {
       return StringUtil.stripHtml(message(property), false)
@@ -68,7 +75,7 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
 
     private fun option(@NonNls option: String, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(message("option.prefix") + option,
-                                                         AtomConfigurable.ID, getter, setter) {
+        AtomConfigurable.ID, getter, setter, Supplier { AtomFileIconsConfig.instance }) {
         override fun getInstance(): Any {
           return AtomFileIconsConfig.instance
         }

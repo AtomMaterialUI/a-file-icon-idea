@@ -29,12 +29,11 @@
 package com.mallowigi.config.ui;
 
 import com.intellij.openapi.ui.ComboBox;
-import com.intellij.ui.ColorPanel;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.*;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.tree.arrows.ArrowsStyles;
 import net.miginfocom.swing.MigLayout;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -162,7 +161,7 @@ public final class SettingsForm implements SettingsFormUI {
         "[]"));
 
       //---- enableFileIconsIcon ----
-      enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
+      enableFileIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/atom@2x.png"))));
       content.add(enableFileIconsIcon, "cell 0 0");
 
       //---- enableFileIconsCheckbox ----
@@ -171,7 +170,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(enableFileIconsCheckbox, "cell 1 0");
 
       //---- enableDirectoryIconsIcon ----
-      enableDirectoryIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/compiledClassesFolder@2x.png")));
+      enableDirectoryIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/compiledClassesFolder@2x.png"))));
       content.add(enableDirectoryIconsIcon, "cell 0 1");
 
       //---- enableDirectoryIconsCheckbox ----
@@ -181,7 +180,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(enableDirectoryIconsCheckbox, "cell 1 1");
 
       //---- monochromeIcon ----
-      monochromeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/monochrome@2x.png")));
+      monochromeIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/monochrome@2x.png"))));
       content.add(monochromeIcon, "cell 0 2");
 
       //---- monochromeCheckbox ----
@@ -196,7 +195,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(monoColorChooser, "cell 2 2,alignx right,growx 0");
 
       //---- enableUIIconsIcon ----
-      enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plugin@2x.png")));
+      enableUIIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/plugin@2x.png"))));
       content.add(enableUIIconsIcon, "cell 0 3");
 
       //---- enableUIIconsCheckbox ----
@@ -206,7 +205,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(enableUIIconsCheckbox, "cell 1 3");
 
       //---- enablePSIIconsIcon ----
-      enablePSIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/psiIcons@2x.png")));
+      enablePSIIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/psiIcons@2x.png"))));
       content.add(enablePSIIconsIcon, "cell 0 4");
 
       //---- enablePSIIconsCheckbox ----
@@ -215,7 +214,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(enablePSIIconsCheckbox, "cell 1 4");
 
       //---- hideFileIconsIcon ----
-      hideFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFileAction@2x.png")));
+      hideFileIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/hideFileAction@2x.png"))));
       content.add(hideFileIconsIcon, "cell 0 5");
 
       //---- hideFileIconsCheckbox ----
@@ -224,7 +223,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(hideFileIconsCheckbox, "cell 1 5");
 
       //---- hideFolderIconsIcon ----
-      hideFolderIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFolderAction@2x.png")));
+      hideFolderIconsIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/hideFolderAction@2x.png"))));
       content.add(hideFolderIconsIcon, "cell 0 6");
 
       //---- hideFolderIconsCheckbox ----
@@ -233,7 +232,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(hideFolderIconsCheckbox, "cell 1 6");
 
       //---- hollowFoldersIcon ----
-      hollowFoldersIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/folderOpen@2x.png")));
+      hollowFoldersIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/folderOpen@2x.png"))));
       content.add(hollowFoldersIcon, "cell 0 7");
 
       //---- hollowFoldersCheckbox ----
@@ -242,7 +241,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(hollowFoldersCheckbox, "cell 1 7");
 
       //---- arrowsStyleIcon ----
-      arrowsStyleIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/arrowRight@2x.png")));
+      arrowsStyleIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/arrowRight@2x.png"))));
       content.add(arrowsStyleIcon, "cell 0 8");
 
       //---- arrowsStyleLabel ----
@@ -255,7 +254,7 @@ public final class SettingsForm implements SettingsFormUI {
       content.add(arrowsStyleComboBox, "cell 2 8,align right center,grow 0 0,width 120:120:120");
 
       //---- accentColorIcon ----
-      accentColorIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/accentColor@2x.png")));
+      accentColorIcon.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/settings/accentColor@2x.png"))));
       content.add(accentColorIcon, "cell 0 9");
 
       //---- accentColorCheckbox ----
@@ -282,9 +281,9 @@ public final class SettingsForm implements SettingsFormUI {
 
     // Arrows
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
-    arrowsStyleComboBox.setRenderer(new ListCellRendererWrapper<ArrowsStyles>() {
+    arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<ArrowsStyles>() {
       @Override
-      public void customize(final JList list, final ArrowsStyles value, final int index, final boolean selected, final boolean hasFocus) {
+      public void customize(final @NotNull JList list, final ArrowsStyles value, final int index, final boolean selected, final boolean hasFocus) {
         final Icon baseIcon;
         if (value == null) {
           return;
