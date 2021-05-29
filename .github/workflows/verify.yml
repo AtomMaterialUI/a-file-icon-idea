@@ -1,0 +1,34 @@
+name: Verify plugin
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/verify.yml
+      - src/main/java/**/*
+jobs:
+  verify:
+    name: Verify plugin compatibility
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        ideVersion: [ '11' ]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: adopt
+
+      - name: Build the plugin using Gradle
+        run: ./gradlew buildPlugin
+        env:
+          pluginUntilBuild: "212.*"
+          pluginVersion: "37"
+          javaVersion: ${{ matrix.java }}
+
+      - name: Verify Plugin on IntelliJ Platforms
+        run: ./gradlew verifyPlugin

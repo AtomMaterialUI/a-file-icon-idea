@@ -1,5 +1,11 @@
 # Changelog
 
+# 37.0
+
+- Support for 2021.2
+- Java version update to 11
+- Verification automated workflow with Github Actions
+
 # 36.0
 - Support for 2021.1
 
