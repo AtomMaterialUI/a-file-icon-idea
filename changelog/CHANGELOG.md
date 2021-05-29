@@ -5,6 +5,7 @@
 - Support for 2021.2
 - Java version update to 11
 - Verification automated workflow with Github Actions
+- Fix selected checkbox size
 
 # 36.0
 - Support for 2021.1
@@ -68,7 +69,7 @@
 - Add Checkboxes to **Accent Color** and **Folder Color** to allow customizing such colors instead of picking them from the theme
 - Improve Hollow Folders opened files detection
 - Put "Custom file associations" under the "Atom File Icon Settings"
-- New Icons: brew, harbour, holyc, hjson, hoplon, houndci, hp, hy, hyper, question 
+- New Icons: brew, harbour, holyc, hjson, hoplon, houndci, hp, hy, hyper, question
 
 # 25.3
 - Fixes many issues with custom associations
