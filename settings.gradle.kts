@@ -22,5 +22,5 @@
  *  SOFTWARE.
  */
 
-rootProject.name = 'a-file-icon-idea'
+rootProject.name = "a-file-icon-idea"
 
