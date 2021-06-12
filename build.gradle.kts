@@ -48,17 +48,14 @@ version = properties("pluginVersion")
 repositories {
   mavenCentral()
   maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-  maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
-  maven(url = "https://repo.eclipse.org/content/groups/releases/")
   maven(url = "https://www.jetbrains.com/intellij-repository/releases")
   maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
   implementation("com.thoughtworks.xstream:xstream:1.4.16")
   implementation("org.javassist:javassist:3.27.0-GA")
-  implementation("com.mixpanel:mixpanel-java:1.5.0")
   implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.10")
 }
 
@@ -77,13 +74,15 @@ intellij {
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
-//changelog {
-//  path = "${project.projectDir}/docs/CHANGELOG.md"
-//  version = properties("pluginVersion")
-//  keepUnreleasedSection = true
-//  unreleasedTerm = "Changelog"
-//  groups = emptyList()
-//}
+changelog {
+  path = "${project.projectDir}/docs/CHANGELOG.md"
+  version = properties("pluginVersion")
+  header = closure { version }
+  itemPrefix = "-"
+  keepUnreleasedSection = true
+  unreleasedTerm = "Changelog"
+  groups = listOf("Features", "Fixes", "Removals", "Other")
+}
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
@@ -128,15 +127,9 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-//    changeNotes(
-//        closure {
-//          File(projectDir, "docs/CHANGELOG.md")
-//              .readText()
-//              .lines()
-//              .joinToString("\n")
-//              .run { markdownToHTML(this) }
-//        }
-//    )
+    changeNotes.set(
+      changelog.getLatest().toHTML()
+    )
   }
 
   runPluginVerifier {

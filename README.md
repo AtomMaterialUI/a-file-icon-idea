@@ -5,9 +5,9 @@
 
 <h1 align="center">
   <br>
-    <img src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/src/main/resources/META-INF/pluginIcon.svg?sanitize=true" alt="logo" width="200">
+    <img src="src/main/resources/META-INF/pluginIcon.svg" alt="logo" width="320" height="320">
   <br><br>
-  Atom Material File Icons
+  Atom Material Icons
   <br>
   <br>
 </h1>
@@ -50,8 +50,8 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
   - Loading indicator...
 - **Customizability**: Custom Settings
   - Settings Pages
-  - Toolbar Action Buttons 
-- **Custom File and Directory associations** (NEW): Customize your own associations 
+  - Toolbar Action Buttons
+- **Custom File and Directory associations** (NEW): Customize your own associations
   - File associations by Regex
   - Folder associations
   - Preview default icons
