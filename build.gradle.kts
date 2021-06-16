@@ -1,28 +1,4 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
- */
+import org.jetbrains.changelog.closure;
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -50,6 +26,7 @@ repositories {
   maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
   maven(url = "https://www.jetbrains.com/intellij-repository/releases")
   maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+  maven(url = "https://cache-redirector.jetbrains.com/intellij-dependencies")
 }
 
 dependencies {
@@ -75,7 +52,7 @@ intellij {
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path = "${project.projectDir}/docs/CHANGELOG.md"
+  path = "${project.projectDir}/changelog/CHANGELOG.md"
   version = properties("pluginVersion")
   header = closure { version }
   itemPrefix = "-"
@@ -127,9 +104,9 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-    changeNotes.set(
-      changelog.getLatest().toHTML()
-    )
+//    changeNotes.set(
+//      changelog.getLatest().toHTML()
+//    )
   }
 
   runPluginVerifier {
