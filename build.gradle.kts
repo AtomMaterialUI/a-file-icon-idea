@@ -88,7 +88,12 @@ tasks {
   }
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
+    isEnabled = false
     jvmTarget = "1.8"
+  }
+
+  withType<org.gradle.api.tasks.Copy>() {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
   }
 
   sourceSets {
