@@ -103,6 +103,7 @@
     <glyphPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/glyphs/plugins/tapestry/" />
     <glyphPatcher name="UML" remove="resources/icons" append="/glyphs/plugins/uml/" />
 
+    <glyphPatcher name="Rider" remove="rider" append="/glyphs/plugins/rider/"/>
     <glyphPatcher name="Resharper" remove="resharper" append="/glyphs/plugins/resharper/" />
     <glyphPatcher name="Other" remove="icons" append="/glyphs/other/" />
 
@@ -125,6 +126,7 @@
     <filePatcher name="PHP" remove="icons" append="/files/plugins/php/" />
     <filePatcher name="R" remove="icons/fileTypes" append="/files/plugins/r/" />
     <filePatcher name="Rails" remove="icons/rails" append="/files/plugins/rails/" />
+    <filePatcher name="Rider" remove="rider" append="/files/plugins/rider/"/>
     <filePatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/files/plugins/sass/" />
     <filePatcher name="Scala" remove="" append="/files/plugins/scala/" />
     <filePatcher name="Slim" remove="org/jetbrains/plugins/slim" append="/files/plugins/slim/" />
