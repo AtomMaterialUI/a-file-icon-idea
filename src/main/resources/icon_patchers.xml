@@ -58,6 +58,7 @@
     <iconPatcher name="REST" remove="com/intellij/ws/rest/client/icons" append="/icons/plugins/rest/" />
     <iconPatcher name="Rider" remove="rider" append="/icons/plugins/rider/" />
     <iconPatcher name="Ruby" remove="icons" append="/icons/plugins/ruby/" />
+    <iconPatcher name="Rust" remove="" append="/icons/plugins/rust/"/>
     <iconPatcher name="Scala" remove="" append="/icons/plugins/scala/" />
     <iconPatcher name="Spring" remove="icons" append="/icons/plugins/spring/" />
     <iconPatcher name="Swift" remove="icons" append="/icons/plugins/swift/" />
@@ -95,6 +96,7 @@
     <glyphPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/glyphs/plugins/postcss/" />
     <glyphPatcher name="Python" remove="icons/com/jetbrains/python" append="/glyphs/plugins/python/" />
     <glyphPatcher name="Ruby" remove="icons" append="/glyphs/plugins/ruby/" />
+    <glyphPatcher name="Rust" remove="" append="/glyphs/plugins/rust/"/>
     <glyphPatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/glyphs/plugins/sass/" />
     <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala/" />
     <glyphPatcher name="Spring" remove="icons" append="/glyphs/plugins/spring/" />
@@ -127,6 +129,7 @@
     <filePatcher name="R" remove="icons/fileTypes" append="/files/plugins/r/" />
     <filePatcher name="Rails" remove="icons/rails" append="/files/plugins/rails/" />
     <filePatcher name="Rider" remove="rider" append="/files/plugins/rider/"/>
+    <filePatcher name="Rust" remove="" append="/files/plugins/rust/"/>
     <filePatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/files/plugins/sass/" />
     <filePatcher name="Scala" remove="" append="/files/plugins/scala/" />
     <filePatcher name="Slim" remove="org/jetbrains/plugins/slim" append="/files/plugins/slim/" />
