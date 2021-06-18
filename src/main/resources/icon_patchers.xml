@@ -60,7 +60,9 @@
     <iconPatcher name="Ruby" remove="icons" append="/icons/plugins/ruby/" />
     <iconPatcher name="Rust" remove="" append="/icons/plugins/rust/"/>
     <iconPatcher name="Scala" remove="" append="/icons/plugins/scala/" />
+    <iconPatcher name="Space" remove="icons" append="/icons/plugins/space/"/>
     <iconPatcher name="Spring" remove="icons" append="/icons/plugins/spring/" />
+    <iconPatcher name="Swagger" remove="icons" append="/icons/plugins/swagger/"/>
     <iconPatcher name="Swift" remove="icons" append="/icons/plugins/swift/" />
     <iconPatcher name="Tasks" remove="icons" append="/icons/tasks/" />
     <iconPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/icons/plugins/tapestry/" />
