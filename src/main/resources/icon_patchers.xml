@@ -24,119 +24,120 @@
 
 <iconPathPatchers>
   <iconPatchers>
-    <iconPatcher name="AllIcons" remove="" append="/icons/" />
-    <iconPatcher name="Ant" remove="icons" append="/icons/plugins/ant/" />
-    <iconPatcher name="AppCode" remove="icons" append="/icons/plugins/appcode/" />
-    <iconPatcher name="BuildTools" remove="icons/buildTools" append="/icons/buildTools/" />
-    <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/" />
-    <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/" />
-    <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/" />
-    <iconPatcher name="Dart" remove="icons" append="/icons/plugins/dart/" />
-    <iconPatcher name="Debugger" remove="icons" append="/icons/debugger/" />
-    <iconPatcher name="DataGrip" remove="" append="/icons/plugins/datagrip/" />
-    <iconPatcher name="Docker" remove="icons" append="/icons/plugins/docker/" />
-    <iconPatcher name="Goland" remove="icons" append="/icons/plugins/goland/" />
-    <iconPatcher name="Github" remove="org/jetbrains/plugins/github" append="/icons/plugins/github/" />
-    <iconPatcher name="Github2" remove="com.intellij.codeReview" append="/icons/plugins/github/" />
-    <iconPatcher name="Gradle" remove="icons" append="/icons/plugins/gradle/" />
-    <iconPatcher name="Groovy" remove="icons/groovy" append="/icons/plugins/groovy/" />
-    <iconPatcher name="Handlebars" remove="icons" append="/icons/plugins/handlebars/" />
-    <iconPatcher name="Images" remove="org/intellij/images/icons" append="/icons/images/" />
-    <iconPatcher name="JavaScript" remove="icons" append="/icons/plugins/javascript/" />
-    <iconPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/" />
-    <iconPatcher name="Kubernetes" remove="icons" append="/icons/plugins/kubernetes/" />
-    <iconPatcher name="Markdown" remove="icons/editor_actions" append="/icons/plugins/markdown/" />
-    <iconPatcher name="Maven" remove="images" append="/icons/plugins/maven/" />
-    <iconPatcher name="MultiMarkdown" remove="icons/layout" append="/icons/plugins/markdown/" />
-    <iconPatcher name="NodeJS" remove="com/jetbrains/nodejs/icons" append="/icons/plugins/nodejs/" />
-    <iconPatcher name="PHP" remove="icons" append="/icons/plugins/php/" />
-    <iconPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/icons/plugins/postcss/" />
-    <iconPatcher name="Python" remove="icons/com/jetbrains" append="/icons/plugins/python/" />
-    <iconPatcher name="R" remove="icons" append="/icons/plugins/r/" />
-    <iconPatcher name="Remote" remove="icons" append="/icons/remote/" />
-    <iconPatcher name="Resharper" remove="resharper" append="/icons/plugins/resharper/" />
-    <iconPatcher name="REST" remove="com/intellij/ws/rest/client/icons" append="/icons/plugins/rest/" />
-    <iconPatcher name="Rider" remove="rider" append="/icons/plugins/rider/" />
-    <iconPatcher name="Ruby" remove="icons" append="/icons/plugins/ruby/" />
+    <iconPatcher name="AllIcons" remove="" append="/icons/"/>
+    <iconPatcher name="Ant" remove="icons" append="/icons/plugins/ant/"/>
+    <iconPatcher name="AppCode" remove="icons" append="/icons/plugins/appcode/"/>
+    <iconPatcher name="BuildTools" remove="icons/buildTools" append="/icons/buildTools/"/>
+    <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/"/>
+    <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/"/>
+    <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/"/>
+    <iconPatcher name="Dart" remove="icons" append="/icons/plugins/dart/"/>
+    <iconPatcher name="Debugger" remove="icons" append="/icons/debugger/"/>
+    <iconPatcher name="DataGrip" remove="" append="/icons/plugins/datagrip/"/>
+    <iconPatcher name="Docker" remove="icons" append="/icons/plugins/docker/"/>
+    <iconPatcher name="Goland" remove="icons" append="/icons/plugins/goland/"/>
+    <iconPatcher name="Github" remove="org/jetbrains/plugins/github" append="/icons/plugins/github/"/>
+    <iconPatcher name="Github2" remove="com.intellij.codeReview" append="/icons/plugins/github/"/>
+    <iconPatcher name="Gradle" remove="icons" append="/icons/plugins/gradle/"/>
+    <iconPatcher name="Groovy" remove="icons/groovy" append="/icons/plugins/groovy/"/>
+    <iconPatcher name="Handlebars" remove="icons" append="/icons/plugins/handlebars/"/>
+    <iconPatcher name="Images" remove="org/intellij/images/icons" append="/icons/images/"/>
+    <iconPatcher name="JavaScript" remove="icons" append="/icons/plugins/javascript/"/>
+    <iconPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/"/>
+    <iconPatcher name="Kubernetes" remove="icons" append="/icons/plugins/kubernetes/"/>
+    <iconPatcher name="Markdown" remove="icons/editor_actions" append="/icons/plugins/markdown/"/>
+    <iconPatcher name="Maven" remove="images" append="/icons/plugins/maven/"/>
+    <iconPatcher name="MultiMarkdown" remove="icons/layout" append="/icons/plugins/markdown/"/>
+    <iconPatcher name="NodeJS" remove="com/jetbrains/nodejs/icons" append="/icons/plugins/nodejs/"/>
+    <iconPatcher name="PHP" remove="icons" append="/icons/plugins/php/"/>
+    <iconPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/icons/plugins/postcss/"/>
+    <iconPatcher name="Python" remove="icons/com/jetbrains" append="/icons/plugins/python/"/>
+    <iconPatcher name="R" remove="icons" append="/icons/plugins/r/"/>
+    <iconPatcher name="Remote" remove="icons" append="/icons/remote/"/>
+    <iconPatcher name="Resharper" remove="resharper" append="/icons/plugins/resharper/"/>
+    <iconPatcher name="REST" remove="com/intellij/ws/rest/client/icons" append="/icons/plugins/rest/"/>
+    <iconPatcher name="Rider" remove="rider" append="/icons/plugins/rider/"/>
+    <iconPatcher name="Ruby" remove="icons" append="/icons/plugins/ruby/"/>
     <iconPatcher name="Rust" remove="" append="/icons/plugins/rust/"/>
-    <iconPatcher name="Scala" remove="" append="/icons/plugins/scala/" />
+    <iconPatcher name="Scala" remove="" append="/icons/plugins/scala/"/>
     <iconPatcher name="Space" remove="icons" append="/icons/plugins/space/"/>
-    <iconPatcher name="Spring" remove="icons" append="/icons/plugins/spring/" />
+    <iconPatcher name="Spring" remove="icons" append="/icons/plugins/spring/"/>
     <iconPatcher name="Swagger" remove="icons" append="/icons/plugins/swagger/"/>
-    <iconPatcher name="Swift" remove="icons" append="/icons/plugins/swift/" />
-    <iconPatcher name="Tasks" remove="icons" append="/icons/tasks/" />
-    <iconPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/icons/plugins/tapestry/" />
-    <iconPatcher name="Terminal" remove="icons" append="/icons/terminal/" />
-    <iconPatcher name="TypeScript" remove="icons/typescript" append="/icons/plugins/typescript/" />
-    <iconPatcher name="UML" remove="resources/icons" append="/icons/plugins/uml/" />
-    <iconPatcher name="VCS" remove="icons" append="/icons/plugins/vcs/" />
-    <iconPatcher name="Web" remove="images" append="/icons/webDeployment/" />
-    <iconPatcher name="Wizard" remove="icons/plugins" append="/icons/plugins/wizard/" />
-    <iconPatcher name="Other" remove="icons" append="/icons/other/" />
-    <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="/icons/mt/checkboxes/" />
+    <iconPatcher name="Swift" remove="icons" append="/icons/plugins/swift/"/>
+    <iconPatcher name="Tasks" remove="icons" append="/icons/tasks/"/>
+    <iconPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/icons/plugins/tapestry/"/>
+    <iconPatcher name="Terminal" remove="icons" append="/icons/terminal/"/>
+    <iconPatcher name="TypeScript" remove="icons/typescript" append="/icons/plugins/typescript/"/>
+    <iconPatcher name="UML" remove="resources/icons" append="/icons/plugins/uml/"/>
+    <iconPatcher name="VCS" remove="icons" append="/icons/plugins/vcs/"/>
+    <iconPatcher name="Web" remove="images" append="/icons/webDeployment/"/>
+    <iconPatcher name="Wizard" remove="icons/plugins" append="/icons/plugins/wizard/"/>
+    <iconPatcher name="Other" remove="icons" append="/icons/other/"/>
+    <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="/icons/mt/checkboxes/"/>
 
+    <iconPatcher name="Logos" remove="artwork" append="/icons/logos/"/>
   </iconPatchers>
   <glyphPatchers>
-    <glyphPatcher name="Glyphs" remove="nodes" append="/glyphs/nodes/" />
-    <glyphPatcher name="Actions" remove="actions" append="/glyphs/actions/" />
-    <glyphPatcher name="AOP" remove="icons" append="/glyphs/plugins/aop/" />
-    <glyphPatcher name="AppCode" remove="icons" append="/glyphs/plugins/appcode/" />
-    <glyphPatcher name="CLion" remove="icons" append="/glyphs/plugins/clion/" />
-    <glyphPatcher name="CSS" remove="icons/css" append="/glyphs/css/" />
-    <glyphPatcher name="DataGrip" remove="icons" append="/glyphs/plugins/datagrip/" />
-    <glyphPatcher name="Freemarker" remove="icons" append="/glyphs/plugins/freemarker/" />
-    <glyphPatcher name="General" remove="general" append="/glyphs/general/" />
-    <glyphPatcher name="Goland" remove="icons" append="/glyphs/plugins/goland/" />
-    <glyphPatcher name="Groovy" remove="icons/groovy" append="/glyphs/plugins/groovy/" />
-    <glyphPatcher name="Gutter" remove="gutter" append="/glyphs/gutter/" />
-    <glyphPatcher name="JavaScript" remove="icons" append="/glyphs/plugins/javascript/" />
-    <glyphPatcher name="JavaScript PSI" remove="icons/classes" append="/glyphs/plugins/javascript/" />
-    <glyphPatcher name="JavaScript PSI 2" remove="icons/members" append="/glyphs/plugins/javascript/" />
-    <glyphPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/glyphs/plugins/kotlin/" />
-    <glyphPatcher name="Less" remove="org/jetbrains/plugins/less" append="/glyphs/plugins/less/" />
-    <glyphPatcher name="PHP" remove="icons" append="/glyphs/plugins/php/" />
-    <glyphPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/glyphs/plugins/postcss/" />
-    <glyphPatcher name="Python" remove="icons/com/jetbrains/python" append="/glyphs/plugins/python/" />
-    <glyphPatcher name="Ruby" remove="icons" append="/glyphs/plugins/ruby/" />
+    <glyphPatcher name="Glyphs" remove="nodes" append="/glyphs/nodes/"/>
+    <glyphPatcher name="Actions" remove="actions" append="/glyphs/actions/"/>
+    <glyphPatcher name="AOP" remove="icons" append="/glyphs/plugins/aop/"/>
+    <glyphPatcher name="AppCode" remove="icons" append="/glyphs/plugins/appcode/"/>
+    <glyphPatcher name="CLion" remove="icons" append="/glyphs/plugins/clion/"/>
+    <glyphPatcher name="CSS" remove="icons/css" append="/glyphs/css/"/>
+    <glyphPatcher name="DataGrip" remove="icons" append="/glyphs/plugins/datagrip/"/>
+    <glyphPatcher name="Freemarker" remove="icons" append="/glyphs/plugins/freemarker/"/>
+    <glyphPatcher name="General" remove="general" append="/glyphs/general/"/>
+    <glyphPatcher name="Goland" remove="icons" append="/glyphs/plugins/goland/"/>
+    <glyphPatcher name="Groovy" remove="icons/groovy" append="/glyphs/plugins/groovy/"/>
+    <glyphPatcher name="Gutter" remove="gutter" append="/glyphs/gutter/"/>
+    <glyphPatcher name="JavaScript" remove="icons" append="/glyphs/plugins/javascript/"/>
+    <glyphPatcher name="JavaScript PSI" remove="icons/classes" append="/glyphs/plugins/javascript/"/>
+    <glyphPatcher name="JavaScript PSI 2" remove="icons/members" append="/glyphs/plugins/javascript/"/>
+    <glyphPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/glyphs/plugins/kotlin/"/>
+    <glyphPatcher name="Less" remove="org/jetbrains/plugins/less" append="/glyphs/plugins/less/"/>
+    <glyphPatcher name="PHP" remove="icons" append="/glyphs/plugins/php/"/>
+    <glyphPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/glyphs/plugins/postcss/"/>
+    <glyphPatcher name="Python" remove="icons/com/jetbrains/python" append="/glyphs/plugins/python/"/>
+    <glyphPatcher name="Ruby" remove="icons" append="/glyphs/plugins/ruby/"/>
     <glyphPatcher name="Rust" remove="" append="/glyphs/plugins/rust/"/>
-    <glyphPatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/glyphs/plugins/sass/" />
-    <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala/" />
-    <glyphPatcher name="Spring" remove="icons" append="/glyphs/plugins/spring/" />
-    <glyphPatcher name="Stylus" remove="org/jetbrains/plugins/stylus" append="/glyphs/plugins/stylus/" />
-    <glyphPatcher name="Swift" remove="icons" append="/glyphs/plugins/swift/" />
-    <glyphPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/glyphs/plugins/tapestry/" />
-    <glyphPatcher name="UML" remove="resources/icons" append="/glyphs/plugins/uml/" />
+    <glyphPatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/glyphs/plugins/sass/"/>
+    <glyphPatcher name="Scala" remove="" append="/glyphs/plugins/scala/"/>
+    <glyphPatcher name="Spring" remove="icons" append="/glyphs/plugins/spring/"/>
+    <glyphPatcher name="Stylus" remove="org/jetbrains/plugins/stylus" append="/glyphs/plugins/stylus/"/>
+    <glyphPatcher name="Swift" remove="icons" append="/glyphs/plugins/swift/"/>
+    <glyphPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/glyphs/plugins/tapestry/"/>
+    <glyphPatcher name="UML" remove="resources/icons" append="/glyphs/plugins/uml/"/>
 
     <glyphPatcher name="Rider" remove="rider" append="/glyphs/plugins/rider/"/>
-    <glyphPatcher name="Resharper" remove="resharper" append="/glyphs/plugins/resharper/" />
-    <glyphPatcher name="Other" remove="icons" append="/glyphs/other/" />
+    <glyphPatcher name="Resharper" remove="resharper" append="/glyphs/plugins/resharper/"/>
+    <glyphPatcher name="Other" remove="icons" append="/glyphs/other/"/>
 
   </glyphPatchers>
   <filePatchers>
-    <filePatcher name="Files" remove="fileTypes" append="/files/fileTypes/" />
-    <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="/files/plugins/coffee/" />
-    <filePatcher name="Dart" remove="icons" append="/files/plugins/dart/" />
-    <filePatcher name="Freemarker" remove="icons" append="/files/plugins/freemarker/" />
-    <filePatcher name="Groovy" remove="icons/groovy" append="/files/plugins/groovy/" />
-    <filePatcher name="Haml" remove="org/jetbrains/plugins/haml" append="/files/plugins/haml/" />
-    <filePatcher name="Handlebars" remove="icons" append="/files/plugins/handlebars/" />
-    <filePatcher name="I18n" remove="icons/com/jetbrains/localization" append="/files/plugins/i18n/" />
-    <filePatcher name="JavaScript" remove="icons/fileTypes" append="/files/plugins/javascript/" />
-    <filePatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin/" />
-    <filePatcher name="Less" remove="org/jetbrains/plugins/less" append="/files/plugins/less/" />
-    <filePatcher name="Other" remove="icons" append="/files/other/" />
-    <filePatcher name="PHP" remove="icons" append="/files/plugins/php/" />
-    <filePatcher name="Python" remove="icons/com/jetbrains" append="/files/plugins/python/" />
-    <filePatcher name="PHP" remove="icons" append="/files/plugins/php/" />
-    <filePatcher name="R" remove="icons/fileTypes" append="/files/plugins/r/" />
-    <filePatcher name="Rails" remove="icons/rails" append="/files/plugins/rails/" />
+    <filePatcher name="Files" remove="fileTypes" append="/files/fileTypes/"/>
+    <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="/files/plugins/coffee/"/>
+    <filePatcher name="Dart" remove="icons" append="/files/plugins/dart/"/>
+    <filePatcher name="Freemarker" remove="icons" append="/files/plugins/freemarker/"/>
+    <filePatcher name="Groovy" remove="icons/groovy" append="/files/plugins/groovy/"/>
+    <filePatcher name="Haml" remove="org/jetbrains/plugins/haml" append="/files/plugins/haml/"/>
+    <filePatcher name="Handlebars" remove="icons" append="/files/plugins/handlebars/"/>
+    <filePatcher name="I18n" remove="icons/com/jetbrains/localization" append="/files/plugins/i18n/"/>
+    <filePatcher name="JavaScript" remove="icons/fileTypes" append="/files/plugins/javascript/"/>
+    <filePatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="/files/plugins/kotlin/"/>
+    <filePatcher name="Less" remove="org/jetbrains/plugins/less" append="/files/plugins/less/"/>
+    <filePatcher name="Other" remove="icons" append="/files/other/"/>
+    <filePatcher name="PHP" remove="icons" append="/files/plugins/php/"/>
+    <filePatcher name="Python" remove="icons/com/jetbrains" append="/files/plugins/python/"/>
+    <filePatcher name="PHP" remove="icons" append="/files/plugins/php/"/>
+    <filePatcher name="R" remove="icons/fileTypes" append="/files/plugins/r/"/>
+    <filePatcher name="Rails" remove="icons/rails" append="/files/plugins/rails/"/>
     <filePatcher name="Rider" remove="rider" append="/files/plugins/rider/"/>
     <filePatcher name="Rust" remove="" append="/files/plugins/rust/"/>
-    <filePatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/files/plugins/sass/" />
-    <filePatcher name="Scala" remove="" append="/files/plugins/scala/" />
-    <filePatcher name="Slim" remove="org/jetbrains/plugins/slim" append="/files/plugins/slim/" />
-    <filePatcher name="Stylus" remove="org/jetbrains/plugins/stylus" append="/files/plugins/stylus/" />
-    <filePatcher name="Swift" remove="icons" append="/files/plugins/swift/" />
+    <filePatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/files/plugins/sass/"/>
+    <filePatcher name="Scala" remove="" append="/files/plugins/scala/"/>
+    <filePatcher name="Slim" remove="org/jetbrains/plugins/slim" append="/files/plugins/slim/"/>
+    <filePatcher name="Stylus" remove="org/jetbrains/plugins/stylus" append="/files/plugins/stylus/"/>
+    <filePatcher name="Swift" remove="icons" append="/files/plugins/swift/"/>
   </filePatchers>
 
 </iconPathPatchers>
