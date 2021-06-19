@@ -1,4 +1,4 @@
-import org.jetbrains.changelog.closure;
+import org.jetbrains.changelog.closure
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -58,7 +58,7 @@ changelog {
   itemPrefix = "-"
   keepUnreleasedSection = true
   unreleasedTerm = "Changelog"
-  groups = listOf("Features", "Fixes", "Removals", "Other")
+  groups = listOf("Features", "Fixes", "Removals", "Additions", "Other")
 }
 
 // Configure detekt plugin.
@@ -92,7 +92,7 @@ tasks {
     jvmTarget = "1.8"
   }
 
-  withType<org.gradle.api.tasks.Copy>() {
+  withType<Copy> {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
   }
 
@@ -109,9 +109,9 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-//    changeNotes.set(
-//      changelog.getLatest().toHTML()
-//    )
+    changeNotes.set(
+      changelog.getLatest().toHTML()
+    )
   }
 
   runPluginVerifier {

@@ -1,4 +1,25 @@
-# Changelog
+## Changelog
+----
+## 38.0 (4.0.0)
+
+### Additions
+- Add many more missing **UI Icons**:
+  - Resharper/Rider
+  - Ruby
+  - Rust
+  - Tailwind
+  - Space
+  - Swagger
+  - Swift
+  - Lombok
+  - JavaEE
+  - CodeWithMe
+- Replace JetBrains logos :)
+
+### Other
+- Migrate to gradle.kts
+- Rewrite changelog to suit the changelog standard (<https://keepachangelog.com/en/1.0.0/>)
+
 
 ## 37.0 (3.12.2)
 ### Other
@@ -721,7 +742,7 @@
   - byond
   - gnu
 
-## Features
+### Features
 - New Feature: **Hide File Icons**
 - New Feature: **Hollow Directories**
 
