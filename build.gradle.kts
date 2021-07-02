@@ -1,3 +1,29 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
 import org.jetbrains.changelog.closure
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -8,7 +34,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.5.20"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.0"
+  id("org.jetbrains.intellij") version "1.1.2"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.1.2"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -24,16 +50,17 @@ version = properties("pluginVersion")
 repositories {
   mavenCentral()
   maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
+  maven(url = "https://repo.eclipse.org/content/groups/releases/")
   maven(url = "https://www.jetbrains.com/intellij-repository/releases")
   maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
-  maven(url = "https://cache-redirector.jetbrains.com/intellij-dependencies")
 }
 
 dependencies {
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
   implementation("com.thoughtworks.xstream:xstream:1.4.16")
   implementation("org.javassist:javassist:3.27.0-GA")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.20")
+  implementation("com.mixpanel:mixpanel-java:1.5.0")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20")
 }
 
 // Configure gradle-intellij-plugin plugin.
@@ -45,7 +72,6 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
-//  localPath.set(properties("idePath"))
 
 }
 
@@ -82,13 +108,10 @@ tasks {
   }
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs += "-Xskip-runtime-version-check"
-    kotlinOptions.languageVersion = properties("kotlinLangVersion")
-    kotlinOptions.apiVersion = properties("kotlinApiVersion")
+    kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check")
   }
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
-    isEnabled = false
     jvmTarget = "1.8"
   }
 
