@@ -1,25 +1,27 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
  */
 package com.mallowigi.config
 
@@ -39,54 +41,60 @@ import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
 import org.jetbrains.annotations.NonNls
 
+/**
+ * Atom file icons config
+ *
+ * @constructor Create empty Atom file icons config
+ */
+@Suppress("TooManyFunctions")
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   @Property
-  var isEnabledIcons = true
+  var isEnabledIcons: Boolean = true
 
   @Property
-  var isEnabledDirectories = true
+  var isEnabledDirectories: Boolean = true
 
   @Property
-  var isEnabledUIIcons = true
+  var isEnabledUIIcons: Boolean = true
 
   @Property
-  var isMonochromeIcons = false
+  var isMonochromeIcons: Boolean = false
 
   @NonNls
   @Property
-  var monochromeColor = "546E7A"
+  var monochromeColor: String = "546E7A"
     private set
 
   @Property
-  var isEnabledPsiIcons = true
+  var isEnabledPsiIcons: Boolean = true
 
   @Property
-  var isHideFileIcons = false
+  var isHideFileIcons: Boolean = false
 
   @Property
-  var isHideFolderIcons = false
+  var isHideFolderIcons: Boolean = false
 
   @Property
-  var isUseHollowFolders = true
+  var isUseHollowFolders: Boolean = true
 
   @Property
-  var arrowsStyle = ArrowsStyles.MATERIAL
+  var arrowsStyle: ArrowsStyles = ArrowsStyles.MATERIAL
 
   @Property
-  var isAccentColorEnabled = false
+  var isAccentColorEnabled: Boolean = false
 
   @NonNls
   @Property
-  var accentColor = accentColorFromTheme
+  var accentColor: String = accentColorFromTheme
     private set
 
   @Property
-  var isThemedColorEnabled = false
+  var isThemedColorEnabled: Boolean = false
 
   @NonNls
   @Property
-  var themedColor = themedColorFromTheme
+  var themedColor: String = themedColorFromTheme
     private set
 
   override fun getState(): AtomFileIconsConfig {
@@ -97,12 +105,21 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     XmlSerializerUtil.copyBean(state, this)
   }
 
+  /**
+   * Fire event when settings are changed
+   *
+   */
   fun fireChanged() {
     ApplicationManager.getApplication().messageBus
-        .syncPublisher(AtomConfigNotifier.TOPIC)
-        .configChanged(this)
+      .syncPublisher(AtomConfigNotifier.TOPIC)
+      .configChanged(this)
   }
 
+  /**
+   * Apply settings
+   *
+   * @param form
+   */
   fun applySettings(form: SettingsForm) {
     isEnabledIcons = form.isEnabledIcons
     isEnabledDirectories = form.isEnabledDirectories
@@ -121,6 +138,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     fireChanged()
   }
 
+  /**
+   * Reset settings
+   *
+   */
   fun resetSettings() {
     isEnabledIcons = true
     isEnabledDirectories = true
@@ -139,130 +160,230 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   }
 
   //region File Icons
-  fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean {
-    return this.isEnabledIcons != isEnabledIcons
-  }
+  /**
+   * Is enabled icons changed
+   *
+   * @param isEnabledIcons
+   * @return
+   */
+  fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean = this.isEnabledIcons != isEnabledIcons
 
+  /**
+   * Toggle enabled icons
+   *
+   */
   fun toggleEnabledIcons() {
     isEnabledIcons = !isEnabledIcons
   }
   //endregion
 
   //region Directory Icons
-  fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean {
-    return this.isEnabledDirectories != isEnabledDirectories
-  }
+  /**
+   * Is enabled directories changed
+   *
+   * @param isEnabledDirectories
+   * @return
+   */
+  fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean =
+    this.isEnabledDirectories != isEnabledDirectories
 
+  /**
+   * Toggle directories icons
+   *
+   */
   fun toggleDirectoriesIcons() {
     isEnabledDirectories = !isEnabledDirectories
   }
   //endregion
 
   //region Monochrome Icons
-  fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean {
-    return isMonochromeIcons != isMonochrome
-  }
+  /**
+   * Is monochrome icons changed
+   *
+   * @param isMonochrome
+   * @return
+   */
+  fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean = isMonochromeIcons != isMonochrome
 
+  /**
+   * Toggle monochrome icons
+   *
+   */
   fun toggleMonochromeIcons() {
     isMonochromeIcons = !isMonochromeIcons
   }
 
-  fun isMonochromeColorChanged(monochromeColor: String): Boolean {
-    return this.monochromeColor.toLowerCase() != monochromeColor.toLowerCase()
-  }
+  /**
+   * Is monochrome color changed
+   *
+   * @param monochromeColor
+   * @return
+   */
+  fun isMonochromeColorChanged(monochromeColor: String): Boolean =
+    this.monochromeColor.lowercase() != monochromeColor.lowercase()
   //endregion
 
   //region UI Icons
-  fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean {
-    return this.isEnabledUIIcons != isEnabledUIIcons
-  }
+  /**
+   * Is enabled ui icons changed
+   *
+   * @param isEnabledUIIcons
+   * @return
+   */
+  fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
 
+  /**
+   * Toggle ui icons
+   *
+   */
   fun toggleUIIcons() {
     isEnabledUIIcons = !isEnabledUIIcons
   }
   //endregion
 
   //region PSI Icons
-  fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean {
-    return this.isEnabledPsiIcons != isEnabledPsiIcons
-  }
+  /**
+   * Is enabled psi icons changed
+   *
+   * @param isEnabledPsiIcons
+   * @return
+   */
+  fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean = this.isEnabledPsiIcons != isEnabledPsiIcons
 
+  /**
+   * Toggle psi icons
+   *
+   */
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
   }
   //endregion
 
   //region Hollow Folders
-  fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean {
-    return isUseHollowFolders != useHollowFolders
-  }
+  /**
+   * Is use hollow folders changed
+   *
+   * @param useHollowFolders
+   * @return
+   */
+  fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean = isUseHollowFolders != useHollowFolders
 
+  /**
+   * Toggle use hollow folders
+   *
+   */
   fun toggleUseHollowFolders() {
     isUseHollowFolders = !isUseHollowFolders
   }
   //endregion
 
   //region Hide File Icons
-  fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean {
-    return isHideFileIcons != hideFileIcons
-  }
+  /**
+   * Is hide file icons changed
+   *
+   * @param hideFileIcons
+   * @return
+   */
+  fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean = isHideFileIcons != hideFileIcons
 
+  /**
+   * Toggle hide file icons
+   *
+   */
   fun toggleHideFileIcons() {
     isHideFileIcons = !isHideFileIcons
   }
   //endregion
 
   //region Hide Folder Icons
-  fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean {
-    return isHideFolderIcons != hideFolderIcons
-  }
+  /**
+   * Is hide folder icons changed
+   *
+   * @param hideFolderIcons
+   * @return
+   */
+  fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean = isHideFolderIcons != hideFolderIcons
 
+  /**
+   * Toggle hide folder icons
+   *
+   */
   fun toggleHideFolderIcons() {
     isHideFolderIcons = !isHideFolderIcons
   }
   //endregion
 
   //region Arrows Style
-  fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean {
-    return this.arrowsStyle != arrowsStyle
-  }
+  /**
+   * Is arrows style changed
+   *
+   * @param arrowsStyle
+   * @return
+   */
+  fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean = this.arrowsStyle != arrowsStyle
   //endregion
 
   //region Accent Color
-  fun isAccentColorChanged(accentColor: String): Boolean {
-    return this.accentColor.toLowerCase() != accentColor.toLowerCase()
-  }
+  /**
+   * Is accent color changed
+   *
+   * @param accentColor
+   * @return
+   */
+  fun isAccentColorChanged(accentColor: String): Boolean = this.accentColor.lowercase() != accentColor.lowercase()
 
-  fun isAccentColorEnabledChanged(enabled: Boolean): Boolean {
-    return this.isAccentColorEnabled != enabled
-  }
+  /**
+   * Is accent color enabled changed
+   *
+   * @param enabled
+   * @return
+   */
+  fun isAccentColorEnabledChanged(enabled: Boolean): Boolean = this.isAccentColorEnabled != enabled
   //endregion
 
   //region Themed Color
-  fun isThemedColorChanged(themedColor: String): Boolean {
-    return this.themedColor.toLowerCase() != themedColor.toLowerCase()
-  }
+  /**
+   * Is themed color changed
+   *
+   * @param themedColor
+   * @return
+   */
+  fun isThemedColorChanged(themedColor: String): Boolean = this.themedColor.lowercase() != themedColor.lowercase()
 
-  fun isThemedColorEnabledChanged(enabled: Boolean): Boolean {
-    return this.isThemedColorEnabled != enabled
-  }
+  /**
+   * Is themed color enabled changed
+   *
+   * @param enabled
+   * @return
+   */
+  fun isThemedColorEnabledChanged(enabled: Boolean): Boolean = this.isThemedColorEnabled != enabled
   //endregion
 
+  /**
+   * Get current accent color
+   *
+   * @return
+   */
   fun getCurrentAccentColor(): String {
-    if (isAccentColorEnabled) {
-      return accentColor
-    }
+    if (isAccentColorEnabled) return accentColor
     return accentColorFromTheme
   }
 
+  /**
+   * Get current themed color
+   *
+   * @return
+   */
   fun getCurrentThemedColor(): String {
-    if (isThemedColorEnabled) {
-      return themedColor
-    }
+    if (isThemedColorEnabled) return themedColor
     return themedColorFromTheme
   }
 
   companion object {
+    @JvmStatic
+    val instance: AtomFileIconsConfig
+      get() = ServiceManager.getService(AtomFileIconsConfig::class.java)
+
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()
 
@@ -283,12 +404,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       return ColorUtil.toHex(namedColor)
     }
 
-    private fun getThemedFromTheme(): String {
-      return ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
-    }
-
-    @JvmStatic
-    val instance: AtomFileIconsConfig
-      get() = ServiceManager.getService(AtomFileIconsConfig::class.java)
+    private fun getThemedFromTheme(): String =
+      ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
   }
 }

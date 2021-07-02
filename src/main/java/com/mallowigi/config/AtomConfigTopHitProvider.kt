@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import com.intellij.ide.ui.search.OptionDescription
 import com.intellij.openapi.util.text.StringUtil
 import com.mallowigi.config.AtomSettingsBundle.message
 import org.jetbrains.annotations.NonNls
-import java.util.*
+import java.util.Collections
 import java.util.function.Supplier
 
 /**
@@ -40,13 +40,9 @@ import java.util.function.Supplier
  */
 class AtomConfigTopHitProvider : ApplicationLevelProvider {
   @NonNls
-  override fun getId(): String {
-    return "atomconfig"
-  }
+  override fun getId(): String = "atomconfig"
 
-  override fun getOptions(): Collection<OptionDescription> {
-    return OPTION_DESCRIPTIONS
-  }
+  override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS
 
   companion object {
     @NonNls
@@ -69,20 +65,17 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
       )
     )
 
-    private fun getText(property: String): String {
-      return StringUtil.stripHtml(message(property), false)
-    }
+    private fun getText(property: String): String = StringUtil.stripHtml(message(property), false)
 
     private fun option(@NonNls option: String, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(message("option.prefix") + option,
-        AtomConfigurable.ID, getter, setter, Supplier { AtomFileIconsConfig.instance }) {
-        override fun getInstance(): Any {
-          return AtomFileIconsConfig.instance
-        }
+                                                         AtomConfigurable.ID,
+                                                         getter,
+                                                         setter,
+                                                         Supplier { AtomFileIconsConfig.instance }) {
+        override fun getInstance(): AtomFileIconsConfig = AtomFileIconsConfig.instance
 
-        override fun fireUpdated() {
-          AtomFileIconsConfig.instance.fireChanged()
-        }
+        override fun fireUpdated() = AtomFileIconsConfig.instance.fireChanged()
       }
     }
   }

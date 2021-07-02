@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,12 @@ import com.mallowigi.actions.IconToggleAction
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.tree.arrows.ArrowsStyles
 
+/**
+ * Abstract base class for arrows action
+ */
 abstract class MTAbstractArrowsAction : IconToggleAction() {
 
-  override fun isSelected(e: AnActionEvent): Boolean {
-    return CONFIG.arrowsStyle === arrowsStyle
-  }
+  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.arrowsStyle === arrowsStyle
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.arrowsStyle = this.arrowsStyle

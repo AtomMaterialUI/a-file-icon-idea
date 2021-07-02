@@ -23,23 +23,3 @@
  *
  *
  */
-package com.mallowigi.actions
-
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-
-/**
- * Enable monochrome icons action
- */
-class EnableMonochromeIconsAction : IconToggleAction() {
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isMonochromeIcons
-
-  override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleMonochromeIcons()
-    CONFIG.fireChanged()
-  }
-
-  companion object {
-    private val CONFIG = instance
-  }
-}

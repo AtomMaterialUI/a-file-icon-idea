@@ -7,12 +7,15 @@
         <option value="noActionIfCompileErrors" />
         <option value="organizeImports" />
         <option value="reformatChangedCode" />
+        <option value="rearrange" />
         <option value="fieldCanBeFinal" />
         <option value="localCanBeFinal" />
         <option value="methodMayBeStatic" />
         <option value="missingOverrideAnnotation" />
         <option value="useBlocks" />
+        <option value="finalPrivateMethod" />
         <option value="explicitTypeCanBeDiamond" />
+        <option value="unnecessarySemicolon" />
       </set>
     </option>
     <option name="configurationPath" value="" />

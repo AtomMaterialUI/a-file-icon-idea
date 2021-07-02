@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,19 +38,19 @@ class AtomOptionContributor : SearchableOptionContributor() {
     val configurable: Configurable = AtomConfigurable()
     val displayName = configurable.displayName
     val strings = listOf(
-        //region Strings
-        message("SettingsForm.accentColorCheckbox.text"),
-        message("SettingsForm.arrowsStyleLabel.text"),
-        message("SettingsForm.enableDirectoryIconsCheckbox.text"),
-        message("SettingsForm.enableFileIconsCheckbox.text"),
-        message("SettingsForm.enablePSIIconsCheckbox.text"),
-        message("SettingsForm.enableUIIconsCheckbox.text"),
-        message("SettingsForm.hideFileIconsCheckbox.text"),
-        message("SettingsForm.hideFolderIconsCheckbox.text"),
-        message("SettingsForm.hollowFoldersCheckbox.text"),
-        message("SettingsForm.monochromeCheckbox.text"),
-        message("SettingsForm.themedColorCheckbox.text")
-        //endregion
+      //region Strings
+      message("SettingsForm.accentColorCheckbox.text"),
+      message("SettingsForm.arrowsStyleLabel.text"),
+      message("SettingsForm.enableDirectoryIconsCheckbox.text"),
+      message("SettingsForm.enableFileIconsCheckbox.text"),
+      message("SettingsForm.enablePSIIconsCheckbox.text"),
+      message("SettingsForm.enableUIIconsCheckbox.text"),
+      message("SettingsForm.hideFileIconsCheckbox.text"),
+      message("SettingsForm.hideFolderIconsCheckbox.text"),
+      message("SettingsForm.hollowFoldersCheckbox.text"),
+      message("SettingsForm.monochromeCheckbox.text"),
+      message("SettingsForm.themedColorCheckbox.text")
+      //endregion
     )
     for (s in strings) {
       processor.addOptions(s, null, displayName, AtomConfigurable.ID, displayName, true)

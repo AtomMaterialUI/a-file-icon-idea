@@ -23,23 +23,20 @@
  *
  *
  */
+
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.DefaultActionGroup
 
 /**
- * Enable monochrome icons action
+ * Overrides default action group to have icons on menus
  */
-class EnableMonochromeIconsAction : IconToggleAction() {
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isMonochromeIcons
-
-  override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleMonochromeIcons()
-    CONFIG.fireChanged()
-  }
-
-  companion object {
-    private val CONFIG = instance
+class ActionGroup : DefaultActionGroup() {
+  override fun update(event: AnActionEvent) {
+    val p = event.presentation
+    val hasProject = event.getData(CommonDataKeys.PROJECT) != null
+    p.isVisible = hasProject
   }
 }
