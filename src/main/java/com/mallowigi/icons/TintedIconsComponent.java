@@ -1,25 +1,27 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
  */
 
 package com.mallowigi.icons;
@@ -46,7 +48,6 @@ import org.w3c.dom.NodeList;
 
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.net.URL;
 
 /**
  * Apply a tint to the icons. This is used either for accented icons and themed icons.
@@ -57,6 +58,14 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
 
   public TintedIconsComponent() {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
+  }
+
+  private static ColorUIResource getThemedColor() {
+    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentThemedColor()));
+  }
+
+  private static ColorUIResource getTintedColor() {
+    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentAccentColor()));
   }
 
   @Override
@@ -76,7 +85,9 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
 
   @Override
   public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-    if(!PLUGIN_ID.equals(pluginDescriptor.getPluginId())) return;
+    if (!PLUGIN_ID.equals(pluginDescriptor.getPluginId())) {
+      return;
+    }
 
     disposeComponent();
   }
@@ -103,21 +114,13 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     connect.disconnect();
   }
 
-  private static ColorUIResource getThemedColor() {
-    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentThemedColor()));
-  }
-
-  private static ColorUIResource getTintedColor() {
-    return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentAccentColor()));
-  }
-
   protected static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
     private static ColorUIResource tintedColor = getTintedColor();
     private final SVGLoader.SvgElementColorPatcherProvider otherPatcherProvider;
 
-    private TintedColorPatcher(SVGLoader.SvgElementColorPatcherProvider otherPatcherProvider) {
+    private TintedColorPatcher(final SVGLoader.SvgElementColorPatcherProvider otherPatcherProvider) {
       this.otherPatcherProvider = otherPatcherProvider;
       refreshColors();
     }
@@ -135,20 +138,18 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       themedColor = getThemedColor();
     }
 
-    @NotNull
-    @Override
-    public SVGLoader.SvgElementColorPatcher forPath(@Nullable String path) {
-      return createPatcher(otherPatcherProvider.forPath(path));
+    private static String getColorHex(final Color color) {
+      return ColorUtil.toHex(color);
     }
 
     @NotNull
-    private SVGLoader.SvgElementColorPatcher createPatcher(
-        final @Nullable SVGLoader.SvgElementColorPatcher otherPatcher
+    private static SVGLoader.SvgElementColorPatcher createPatcher(
+      final @Nullable SVGLoader.SvgElementColorPatcher otherPatcher
     ) {
       return new SVGLoader.SvgElementColorPatcher() {
         @Override
         public void patchColors(@NonNls final Element svg) {
-          if(otherPatcher != null) {
+          if (otherPatcher != null) {
             otherPatcher.patchColors(svg);
           }
           @NonNls final String tint = svg.getAttribute("tint");
@@ -184,8 +185,10 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
       };
     }
 
-    private static String getColorHex(final Color color) {
-      return ColorUtil.toHex(color);
+    @NotNull
+    @Override
+    public SVGLoader.SvgElementColorPatcher forPath(@Nullable final String path) {
+      return createPatcher(otherPatcherProvider.forPath(path));
     }
 
   }

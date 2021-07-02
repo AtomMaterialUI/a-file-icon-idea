@@ -1,25 +1,27 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
  */
 package com.mallowigi.icons.associations
 
@@ -32,10 +34,21 @@ import com.mallowigi.models.FileInfo
 import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
+/**
+ * Associations
+ *
+ * @constructor Create empty Associations
+ */
 abstract class Associations : Serializable {
-  fun findAssociation(file: FileInfo?): Association? {
+  /**
+   * Find the association which matches the file
+   *
+   * @param fileInfo the file information
+   * @return
+   */
+  fun findAssociation(fileInfo: FileInfo?): Association? {
     // First check in custom assocs
-    val matching: Association? = findMatchingAssociation(file);
+    val matching: Association? = findMatchingAssociation(fileInfo)
     // Specific plugin handling
     if (matching != null && IMAGE_TYPES.contains(matching.name)) {
       try {
@@ -51,22 +64,34 @@ abstract class Associations : Serializable {
       }
       // PHP Plugin
     } else if (matching != null && IGNORED.contains(matching.name)) {
-      return null;
+      return null
     }
     return matching
   }
 
+  /**
+   * Find matching association
+   *
+   * @param file
+   * @return
+   */
   abstract fun findMatchingAssociation(file: FileInfo?): Association?
 
-  abstract fun getTheAssociations(): List<Association>;
+  /**
+   * Return the associations
+   *
+   * @return
+   */
+  abstract fun getTheAssociations(): List<Association>
 
   companion object {
+    private const val serialVersionUID: Long = -1L
     private val LOG = Logger.getInstance(Associations::class.java)
 
     @NonNls
     private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
 
-    private val IGNORED: Set<String> = ImmutableSet.of("PHP");
+    private val IGNORED: Set<String> = ImmutableSet.of("PHP")
   }
 
 }
