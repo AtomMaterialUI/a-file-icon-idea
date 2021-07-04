@@ -73,6 +73,13 @@ intellij {
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
 
+  plugins.set(
+    listOf(
+      "java",
+      "com.intellij.CloudConfig",
+      "Git4Idea",
+    )
+  )
 }
 
 // Configure gradle-changelog-plugin plugin.
