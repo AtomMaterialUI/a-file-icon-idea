@@ -28,7 +28,6 @@ package com.mallowigi.config
 import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.ui.ColorUtil
@@ -382,7 +381,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   companion object {
     @JvmStatic
     val instance: AtomFileIconsConfig
-      get() = ServiceManager.getService(AtomFileIconsConfig::class.java)
+      get() = ApplicationManager.getApplication().getService(AtomFileIconsConfig::class.java)
 
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()

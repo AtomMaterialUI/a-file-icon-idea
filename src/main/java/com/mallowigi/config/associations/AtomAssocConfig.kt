@@ -28,7 +28,6 @@ package com.mallowigi.config.associations
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
@@ -101,6 +100,6 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
   companion object {
     @JvmStatic
     val instance: AtomAssocConfig
-      get() = ServiceManager.getService(AtomAssocConfig::class.java)
+      get() = ApplicationManager.getApplication().getService(AtomAssocConfig::class.java)
   }
 }
