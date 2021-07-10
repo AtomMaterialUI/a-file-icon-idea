@@ -30,6 +30,7 @@
     <iconPatcher name="Ant" remove="icons" append="/icons/plugins/ant/" />
     <iconPatcher name="AppCode" remove="icons" append="/icons/plugins/appcode/" />
     <iconPatcher name="BuildTools" remove="icons/buildTools" append="/icons/buildTools/" />
+    <iconPatcher name="BigData" remove="" append="/icons/plugins/bigdata/" />
     <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/" />
     <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/" />
     <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/" />
