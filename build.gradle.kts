@@ -72,6 +72,8 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
+  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
+
 
   plugins.set(
     listOf(
@@ -155,5 +157,9 @@ tasks {
   publishPlugin {
 //    dependsOn("patchChangelog")
     token.set(file("./publishToken").readText())
+  }
+
+  runIde {
+    ideDir.set(File("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app/Contents"))
   }
 }

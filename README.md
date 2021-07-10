@@ -66,7 +66,6 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 ## Credits
 
 Special credits to:
-- The [Material Theme UI plugin](https://www.material-theme.com) for the implementation
 - [Atom File Icons](https://github.com/file-icons/atom) and [Sublime Text A File Icon](https://github.com/SublimeText/AFileIcon) for the idea
 - [Scientifics Study Vectors](https://www.svgrepo.com/svg/121720/atom) for the plugin icon
 - [File-Icons](https://github.com/file-icons/source/blob/master/charmap.md)
@@ -75,6 +74,8 @@ Special credits to:
 - [Devicons](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)
 - [Octicons](https://octicons.github.com/)
 - [Material Design Icons](https://materialdesignicons.com/)
+- [The Noun Project](https://thenounproject.com/)
+- [Icongram](https://icongr.am/)
 
 ## Contributors ✨
 

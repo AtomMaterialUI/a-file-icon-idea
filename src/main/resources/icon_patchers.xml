@@ -30,7 +30,7 @@
     <iconPatcher name="Ant" remove="icons" append="/icons/plugins/ant/" />
     <iconPatcher name="AppCode" remove="icons" append="/icons/plugins/appcode/" />
     <iconPatcher name="BuildTools" remove="icons/buildTools" append="/icons/buildTools/" />
-    <iconPatcher name="BigData" remove="" append="/icons/plugins/bigdata/" />
+    <iconPatcher name="BigData" remove="icons" append="/icons/plugins/bigdata/" />
     <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/" />
     <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/" />
     <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/" />
@@ -66,6 +66,7 @@
     <iconPatcher name="Rust" remove="" append="/icons/plugins/rust/" />
     <iconPatcher name="Scala" remove="" append="/icons/plugins/scala/" />
     <iconPatcher name="Space" remove="icons" append="/icons/plugins/space/" />
+    <iconPatcher name="Spark" remove="com/jetbrains/spark" append="/icons/plugins/bigdata/" />
     <iconPatcher name="Spring" remove="icons" append="/icons/plugins/spring/" />
     <iconPatcher name="Swagger" remove="icons" append="/icons/plugins/swagger/" />
     <iconPatcher name="Swift" remove="icons" append="/icons/plugins/swift/" />
@@ -114,7 +115,6 @@
     <glyphPatcher name="Swift" remove="icons" append="/glyphs/plugins/swift/" />
     <glyphPatcher name="Tapestry" remove="com/intellij/tapestry/core/icons" append="/glyphs/plugins/tapestry/" />
     <glyphPatcher name="UML" remove="resources/icons" append="/glyphs/plugins/uml/" />
-
     <glyphPatcher name="Rider" remove="rider" append="/glyphs/plugins/rider/" />
     <glyphPatcher name="Resharper" remove="resharper" append="/glyphs/plugins/resharper/" />
     <glyphPatcher name="Other" remove="icons" append="/glyphs/other/" />
@@ -122,6 +122,7 @@
   </glyphPatchers>
   <filePatchers>
     <filePatcher name="Files" remove="fileTypes" append="/files/fileTypes/" />
+    <filePatcher name="BigData" remove="icons" append="/files/plugins/bigdata/" />
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="/files/plugins/coffee/" />
     <filePatcher name="Dart" remove="icons" append="/files/plugins/dart/" />
     <filePatcher name="Freemarker" remove="icons" append="/files/plugins/freemarker/" />
