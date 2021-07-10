@@ -1,9 +1,16 @@
 ## Changelog
 ----
-## 38.0 (4.0.0)
+## 38.0 (3.13.0)
+
+### Features
+- Support for **Sync Settings** plugin. Now you can finally sync your settings between IDEs
 
 ### Additions
-- Add many more missing **UI Icons**:
+- Added many many more **UI Icons**:
+  - Big Data Tools
+  - UI Designer
+  - Package Search
+  - ColdFusion
   - Resharper/Rider
   - Ruby
   - Rust
@@ -14,7 +21,43 @@
   - Lombok
   - JavaEE
   - CodeWithMe
-- Replace JetBrains logos :)
+  - Chooser
+  - Thumbnail Viewer
+  - JetBrains Logos
+  - Project Analysis
+- New _file icons_:
+  - CoffeelintIgnore
+  - Csslint
+  - htmlhint
+  - jsbeautify
+  - jscs
+  - jshint
+  - pythonconfig
+  - yard
+  - nant
+  - nasm
+  - ndepend
+  - neko
+  - neo4j
+  - nessus
+  - netlinx
+  - netlogo
+  - newrelic
+  - nextflow
+  - nextjs
+  - nickle
+  - nightwatch
+  - nimble
+  - nimrod
+  - nit
+  - nmap
+  - nodemonignore
+  - ninja
+- New _folder icons_:
+  - cypress
+
+### Fixes
+- Fix the fatal error when triggering the actions from the "Tools" menu
 
 ### Other
 - Migrate to gradle.kts
