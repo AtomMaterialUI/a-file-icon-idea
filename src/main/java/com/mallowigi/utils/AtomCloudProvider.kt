@@ -23,47 +23,34 @@
  *
  *
  */
-package com.mallowigi.config
+package com.mallowigi.utils
 
-import com.intellij.openapi.options.SearchableConfigurable
+import com.intellij.cloudConfig.CloudConfigAppender
+import com.intellij.util.containers.ContainerUtil
+import com.mallowigi.config.AtomConfigurable
+import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle.message
-import com.mallowigi.config.ui.SettingsForm
-import org.jetbrains.annotations.NonNls
-import java.util.Objects
+import com.mallowigi.config.associations.AtomAssocConfig
 
 /**
- * Configurable for the Atom Settings
+ * Atom cloud provider
  *
+ * @constructor Create empty Atom cloud provider
  */
-class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>(),
-  SearchableConfigurable {
+class AtomCloudProvider : CloudConfigAppender {
+  override fun appendClassesToStream(): List<Class<*>> =
+    ContainerUtil.newArrayList<Class<*>>(
+      AtomAssocConfig::class.java,
+      AtomFileIconsConfig::class.java
+    )
 
-  override val config: AtomFileIconsConfig
-    get() = AtomFileIconsConfig.instance
-
-  override fun getDisplayName(): String = message("settings.title")
-
-  override fun getId(): String = ID
-
-  override fun createForm(): SettingsForm = SettingsForm()
-
-  override fun setFormState(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    form?.setFormState(config)
+  override fun getConfigDescription(clazz: Class<*>): String {
+    return if (AtomConfigurable.ID == clazz.simpleName) {
+      message("settings.titles.prefix", message("settings.titles.main"))
+    } else {
+      message(
+        "settings.titles.prefix", message("settings.titles.customAssociations")
+      )
+    }
   }
-
-  override fun doApply(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    config!!.applySettings(form!!)
-  }
-
-  override fun checkModified(form: SettingsForm?, config: AtomFileIconsConfig?): Boolean =
-    checkFormModified(form, config!!)
-
-  companion object {
-    @NonNls
-    const val ID: String = "AtomFileIconsConfig"
-
-    private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean =
-      Objects.requireNonNull(form)!!.isModified(config)
-  }
-
 }

@@ -34,6 +34,7 @@
 
   <depends>com.intellij.modules.lang</depends>
   <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
+  <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
 
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
@@ -125,31 +126,21 @@
               icon="/icons/settings/folderOpen.svg" />
       <separator></separator>
 
-      <group id="arrowsStyles" text="Arrow Styles" popup="true">
+      <group id="arrowsStyles" popup="true">
         <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
                 id="MTMaterialArrows"
-                text="Set Material Arrows Style"
-                icon="/icons/actions/arrows/material.svg"
-                description="Set material arrows style" />
+                icon="/icons/actions/arrows/material.svg" />
         <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
                 id="MTDarculaArrows"
-                text="Set Darcula Arrows Style"
-                icon="/icons/actions/arrows/darcula.svg"
-                description="Set darcula arrows style" />
+                icon="/icons/actions/arrows/darcula.svg" />
         <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
                 id="MTPlusMinusArrows"
-                text="Set Plus-Minus Arrows Style"
-                icon="/icons/actions/arrows/plusminus.svg"
-                description="Set plus-minus arrows style" />
+                icon="/icons/actions/arrows/plusminus.svg" />
         <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
                 id="MTArrowsArrows"
-                text="Set Regular Arrows Style"
-                icon="/icons/actions/arrows/arrows.svg"
-                description="Set regular arrows style" />
+                icon="/icons/actions/arrows/arrows.svg" />
         <action class="com.mallowigi.actions.arrows.MTNoneArrows"
-                id="MTNoneArrows"
-                text="Set No Arrows Style"
-                description="Remove all arrows in trees" />
+                id="MTNoneArrows" />
       </group>
       <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
               icon="/icons/actions/refresh.svg" />
