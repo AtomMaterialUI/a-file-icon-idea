@@ -73,6 +73,7 @@
     <iconPatcher name="Terminal" remove="icons" append="/icons/terminal/" />
     <iconPatcher name="TypeScript" remove="icons/typescript" append="/icons/plugins/typescript/" />
     <iconPatcher name="UML" remove="resources/icons" append="/icons/plugins/uml/" />
+    <iconPatcher name="UIDesigner" remove="com/intellij/uiDesigner/icons" append="/icons/plugins/ui/" />
     <iconPatcher name="VCS" remove="icons" append="/icons/plugins/vcs/" />
     <iconPatcher name="Web" remove="images" append="/icons/webDeployment/" />
     <iconPatcher name="Wizard" remove="icons/plugins" append="/icons/plugins/wizard/" />
