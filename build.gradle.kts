@@ -28,6 +28,8 @@ import org.jetbrains.changelog.closure
 
 fun properties(key: String) = project.findProperty(key).toString()
 
+fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
+
 plugins {
   // Java support
   id("java")
@@ -160,6 +162,6 @@ tasks {
   }
 
   runIde {
-    ideDir.set(File("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app/Contents"))
+    ideDir.set(fileProperties("idePath"))
   }
 }
