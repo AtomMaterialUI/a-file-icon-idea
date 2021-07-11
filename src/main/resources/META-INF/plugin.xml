@@ -150,11 +150,13 @@
   </actions>
 
   <description><![CDATA[
-    <h1 align="center">Atom Material File Icons</h1>
-    <h2 align="center">Custom File and IDE Icons for improved visual grepping</h2>
-    <div><a href="https://www.material-theme.com">
+    <h1>Atom Material File Icons</h1>
+    <h2>Custom File and IDE Icons for improved visual grepping</h2>
+    <div><a href="https://www.material-theme.com/docs/configuration/icons-settings/#atom-material-icons-plugin"
+            style="outline: none;">
       <img width="64" height="64"
-           src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/src/main/resources/META-INF/pluginIcon.svg?sanitize=true"></a>
+           alt="logo"
+           src="https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/icon.png"></a>
     </div>
     <hr>
     <p>This plugin is a port of the <a href="https://github.com/file-icons/atom">Atom File Icons</a> and the icons
@@ -164,6 +166,9 @@
     <hr>
     <h2 id="chrome-extension">Chrome Extension</h2>
     <p><a href="https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc">https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
+    </p>
+    <h2 id="firefox-extension">Firefox Extension</h2>
+    <p><a href="https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/">https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
     </p>
     <h2 id="features">Features</h2>
     <ul>

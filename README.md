@@ -18,6 +18,9 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
 ## Chrome Extension
 <https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc>
 
+## Firefox Extension
+<https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/>
+
 
 ## Features
 
