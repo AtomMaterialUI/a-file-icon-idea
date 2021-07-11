@@ -1,8 +1,9 @@
 ## Changelog
 ----
-## 38.0 (3.13.0)
+## 38.0 (4.0.0)
 
 ### Features
+- New Setting: **Bigger Icons**
 - Support for **Sync Settings** plugin. Now you can finally sync your settings between IDEs
 
 ### Additions
