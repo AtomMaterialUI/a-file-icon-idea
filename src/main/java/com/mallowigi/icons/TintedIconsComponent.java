@@ -68,6 +68,10 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     return new ColorUIResource(ColorUtil.fromHex(AtomFileIconsConfig.getInstance().getCurrentAccentColor()));
   }
 
+  private static boolean hasBigIcons() {
+    return AtomFileIconsConfig.getInstance().getHasBigIcons();
+  }
+
   @Override
   public void appStarting(@Nullable final Project projectFromCommandLine) {
     initComponent();
@@ -152,6 +156,26 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
           if (otherPatcher != null) {
             otherPatcher.patchColors(svg);
           }
+          patchTints(svg);
+
+          patchSizes(svg);
+
+          final NodeList nodes = svg.getChildNodes();
+          final int length = nodes.getLength();
+          for (int i = 0; i < length; i++) {
+            final Node item = nodes.item(i);
+            if (item instanceof Element) {
+              patchColors((Element) item);
+            }
+          }
+        }
+
+        @Override
+        public byte @Nullable [] digest() {
+          return null;
+        }
+
+        private void patchTints(final @NonNls Element svg) {
           @NonNls final String tint = svg.getAttribute("tint");
           @NonNls final String themed = svg.getAttribute("themed");
           final String hexColor = getColorHex(themedColor);
@@ -166,21 +190,16 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
           } else if ("stroke".equals(themed)) {
             svg.setAttribute("stroke", "#" + hexColor);
           }
-
-          final NodeList nodes = svg.getChildNodes();
-          final int length = nodes.getLength();
-          for (int i = 0; i < length; i++) {
-            final Node item = nodes.item(i);
-            if (item instanceof Element) {
-              patchColors((Element) item);
-            }
-          }
         }
 
-        @Nullable
-        @Override
-        public byte[] digest() {
-          return null;
+        private void patchSizes(final @NonNls Element svg) {
+          @NonNls final String isBig = svg.getAttribute("big");
+          final String size = hasBigIcons() ? "20" : "16";
+
+          if ("true".equals(isBig)) {
+            svg.setAttribute("width", size);
+            svg.setAttribute("height", size);
+          }
         }
       };
     }

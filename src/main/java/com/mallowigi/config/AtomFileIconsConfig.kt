@@ -96,13 +96,12 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var themedColor: String = themedColorFromTheme
     private set
 
-  override fun getState(): AtomFileIconsConfig {
-    return this
-  }
+  @Property
+  var hasBigIcons: Boolean = false
 
-  override fun loadState(state: AtomFileIconsConfig) {
-    XmlSerializerUtil.copyBean(state, this)
-  }
+  override fun getState(): AtomFileIconsConfig = this
+
+  override fun loadState(state: AtomFileIconsConfig) = XmlSerializerUtil.copyBean(state, this)
 
   /**
    * Fire event when settings are changed
@@ -134,6 +133,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = form.accentColor
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
+    hasBigIcons = form.hasBigIcons
     fireChanged()
   }
 
@@ -156,6 +156,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = accentColorFromTheme
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
+    hasBigIcons = false
   }
 
   //region File Icons
@@ -338,6 +339,17 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    * @return
    */
   fun isAccentColorEnabledChanged(enabled: Boolean): Boolean = this.isAccentColorEnabled != enabled
+
+  /**
+   * Get current accent color
+   *
+   * @return
+   */
+  fun getCurrentAccentColor(): String {
+    if (isAccentColorEnabled) return accentColor
+    return accentColorFromTheme
+  }
+
   //endregion
 
   //region Themed Color
@@ -356,17 +368,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    * @return
    */
   fun isThemedColorEnabledChanged(enabled: Boolean): Boolean = this.isThemedColorEnabled != enabled
-  //endregion
-
-  /**
-   * Get current accent color
-   *
-   * @return
-   */
-  fun getCurrentAccentColor(): String {
-    if (isAccentColorEnabled) return accentColor
-    return accentColorFromTheme
-  }
 
   /**
    * Get current themed color
@@ -377,6 +378,26 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     if (isThemedColorEnabled) return themedColor
     return themedColorFromTheme
   }
+  //endregion
+
+  //region Big Icons
+  /**
+   * Is big icons changed
+   *
+   * @param bigIcons
+   * @return
+   */
+  fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasBigIcons != bigIcons
+
+  /**
+   * Toggle big icons
+   *
+   */
+  fun toggleBigIcons() {
+    hasBigIcons = !hasBigIcons
+  }
+  //endregion
+
 
   companion object {
     @JvmStatic
