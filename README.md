@@ -47,6 +47,7 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
   - Arrows: Simple Arrows
   - None: No arrows
 - **Hollow Folders**: Add custom decorations on folders contianing opened files
+- **Bigger Icons**: Increase the size of file and folder icons
 - **Accent Color**: Change the color of specific icons
   - Closing tab button
   - Highlighted arrows
