@@ -158,7 +158,7 @@ tasks {
 
   publishPlugin {
 //    dependsOn("patchChangelog")
-    token.set(file("./publishToken").readText())
+    token.set(file("./publishToken").readText().trim())
   }
 
   runIde {
