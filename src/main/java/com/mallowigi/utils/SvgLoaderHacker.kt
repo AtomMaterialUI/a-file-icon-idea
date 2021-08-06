@@ -27,7 +27,7 @@
 package com.mallowigi.utils
 
 import com.intellij.util.SVGLoader
-import com.mallowigi.icons.TintedColorPatcher
+import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import java.net.URL
 import java.util.Optional
 
@@ -51,7 +51,7 @@ object SvgLoaderHacker {
   fun collectOtherPatcher(): PatcherProvider =
     extractPatcher()
       .filter { it is PatcherProvider }
-      .filter { it !is TintedColorPatcher }
+      .filter { it !is MainSvgPatcher }
       .map {
         val otherPatcher = it as PatcherProvider
         collectedPatcherProvider = otherPatcher

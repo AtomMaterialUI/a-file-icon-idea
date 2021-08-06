@@ -55,6 +55,9 @@
                              parentId="AtomConfig"
                              id="AtomAssocConfig" />
 
+    <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />
+
+
     <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
                            id="AtomConfigTopHitProvider" />
     <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"

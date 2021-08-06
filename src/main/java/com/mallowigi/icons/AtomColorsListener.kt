@@ -35,6 +35,7 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.util.SVGLoader
 import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
 
 /**
@@ -57,7 +58,9 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
 
 
     private fun initComponent() {
-      SVGLoader.setColorPatcherProvider(TintedColorPatcher(collectOtherPatcher()))
+      val otherPatcher = collectOtherPatcher()
+      MainSvgPatcher.instance.addPatcher(otherPatcher)
+      SVGLoader.setColorPatcherProvider(MainSvgPatcher.instance)
 
       // Listen for changes on the settings
       val connect = ApplicationManager.getApplication().messageBus.connect()
@@ -66,9 +69,7 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
     }
 
     private fun refreshColors() {
-      SVGLoader.setColorPatcherProvider(TintedColorPatcher(collectOtherPatcher()))
-      TintedColorPatcher.refreshThemeColor()
-      TintedColorPatcher.refreshAccentColor()
+      MainSvgPatcher.instance.refreshColors()
     }
 
     private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
