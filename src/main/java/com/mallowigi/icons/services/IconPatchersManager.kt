@@ -34,7 +34,6 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.util.ModalityUiUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-import com.mallowigi.icons.IconPatchersFactory
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.patchers.CheckStyleIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter

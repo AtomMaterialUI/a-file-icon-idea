@@ -39,6 +39,7 @@ import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.config.listeners.AtomConfigNotifier;
+import com.mallowigi.utils.SvgLoaderHacker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -118,7 +119,7 @@ public final class TintedIconsComponent implements DynamicPluginListener, AppLif
     connect.disconnect();
   }
 
-  protected static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
+  public static final class TintedColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
     @NonNls
     private static ColorUIResource themedColor = getThemedColor();
     private static ColorUIResource tintedColor = getTintedColor();

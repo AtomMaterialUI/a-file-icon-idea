@@ -24,9 +24,10 @@
  *
  */
 
-package com.mallowigi.icons
+package com.mallowigi.utils
 
 import com.intellij.util.SVGLoader
+import com.mallowigi.icons.TintedIconsComponent
 import java.net.URL
 import java.util.Optional
 
