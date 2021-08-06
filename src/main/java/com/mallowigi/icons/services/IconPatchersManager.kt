@@ -32,7 +32,7 @@ import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
-import com.intellij.ui.GuiUtils
+import com.intellij.util.ModalityUiUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.IconPatchersFactory
 import com.mallowigi.icons.patchers.AbstractIconPatcher
@@ -114,11 +114,11 @@ object IconPatchersManager {
   }
 
   fun updateFileIcons() {
-    GuiUtils.invokeLaterIfNeeded({
-                                   val app = ApplicationManager.getApplication()
-                                   app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-                                   app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
-                                   applyFilter()
-                                 }, ModalityState.NON_MODAL)
+    ModalityUiUtil.invokeLaterIfNeeded({
+                                         val app = ApplicationManager.getApplication()
+                                         app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
+                                         app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
+                                         applyFilter()
+                                       }, ModalityState.NON_MODAL)
   }
 }

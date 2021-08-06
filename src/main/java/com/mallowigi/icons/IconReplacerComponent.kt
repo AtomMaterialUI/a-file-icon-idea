@@ -23,95 +23,88 @@
  *
  *
  */
+package com.mallowigi.icons
 
-package com.mallowigi.icons;
+import com.intellij.ide.AppLifecycleListener
+import com.intellij.ide.plugins.DynamicPluginListener
+import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.ui.LafManager
+import com.intellij.ide.ui.UISettingsListener
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.fileTypes.FileTypeEvent
+import com.intellij.openapi.fileTypes.FileTypeListener
+import com.intellij.openapi.fileTypes.FileTypeManager
+import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.project.ProjectManagerListener
+import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.associations.AtomAssocConfig
+import com.mallowigi.config.listeners.AssocConfigNotifier
+import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.icons.patchers.AbstractIconPatcher
+import com.mallowigi.icons.services.IconFilterManager.applyFilter
+import com.mallowigi.icons.services.IconPatchersManager.init
+import com.mallowigi.icons.services.IconPatchersManager.updateFileIcons
+import com.mallowigi.icons.services.IconPatchersManager.updateIcons
+import com.mallowigi.utils.refreshOpenedProjects
 
-import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.plugins.DynamicPluginListener;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.UISettingsListener;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.fileTypes.FileTypeEvent;
-import com.intellij.openapi.fileTypes.FileTypeListener;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.util.messages.MessageBusConnection;
-import com.mallowigi.config.listeners.AssocConfigNotifier;
-import com.mallowigi.config.listeners.AtomConfigNotifier;
-import com.mallowigi.icons.patchers.AbstractIconPatcher;
-import com.mallowigi.icons.services.IconFilterManager;
-import com.mallowigi.icons.services.IconPatchersManager;
-import com.mallowigi.utils.UiUtilsKt;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-public final class IconReplacerComponent implements DynamicPluginListener, AppLifecycleListener, DumbAware {
-  private final MessageBusConnection connect;
-
-  public IconReplacerComponent() {
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
+/**
+ * Component in charge of replacing icons and apply filters
+ *
+ */
+class IconReplacerComponent : DynamicPluginListener, AppLifecycleListener, DumbAware {
+  override fun appStarting(projectFromCommandLine: Project?) {
+    initComponent()
   }
 
-  private static void onSettingsChanged(final PersistentStateComponent config) {
-    IconPatchersManager.INSTANCE.updateFileIcons();
-    IconPatchersManager.INSTANCE.updateIcons();
-    LafManager.getInstance().updateUI();
-    UiUtilsKt.refreshOpenedProjects();
+  override fun appClosing() {
+    disposeComponent()
   }
 
-  @Override
-  public void appStarting(@Nullable final Project projectFromCommandLine) {
-    initComponent();
+  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor) {
+    initComponent()
   }
 
-  @Override
-  public void appClosing() {
-    disposeComponent();
+  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
+    disposeComponent()
   }
 
-  @Override
-  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
-    initComponent();
+  private fun onSettingsChanged() {
+    updateFileIcons()
+    updateIcons()
+    LafManager.getInstance().updateUI()
+    refreshOpenedProjects()
   }
 
-  @Override
-  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-    disposeComponent();
+  private fun disposeComponent() {
+    AbstractIconPatcher.clearCache()
+    ApplicationManager.getApplication().messageBus.connect().disconnect()
   }
 
-  private void initComponent() {
-    if (connect == null) {
-      return;
+  private fun initComponent() {
+    init()
+    val connect = ApplicationManager.getApplication().messageBus.connect()
+    with(connect) {
+      subscribe(UISettingsListener.TOPIC, UISettingsListener { applyFilter() })
+
+      subscribe(AtomConfigNotifier.TOPIC, object : AtomConfigNotifier {
+        override fun configChanged(atomFileIconsConfig: AtomFileIconsConfig?) = onSettingsChanged()
+      })
+
+      subscribe(AssocConfigNotifier.TOPIC, object : AssocConfigNotifier {
+        override fun assocChanged(config: AtomAssocConfig?) = onSettingsChanged()
+      })
+
+      subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
+        override fun fileTypesChanged(event: FileTypeEvent) = updateIcons()
+      })
+
+      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
+        override fun projectOpened(project: Project) = updateIcons()
+      })
     }
-    IconPatchersManager.INSTANCE.init();
-    connect.subscribe(UISettingsListener.TOPIC, uiSettings -> IconFilterManager.INSTANCE.applyFilter());
 
-    connect.subscribe(AtomConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);
-    connect.subscribe(AssocConfigNotifier.TOPIC, IconReplacerComponent::onSettingsChanged);
-    connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
-      @Override
-      public void fileTypesChanged(@NotNull final FileTypeEvent event) {
-        IconPatchersManager.INSTANCE.updateIcons();
-      }
-    });
-    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
-      @Override
-      public void projectOpened(@NotNull final Project project) {
-        IconPatchersManager.INSTANCE.updateIcons();
-      }
-    });
-
-    ApplicationManager.getApplication().invokeLater(IconFilterManager.INSTANCE::applyFilter);
+    ApplicationManager.getApplication().invokeLater { applyFilter() }
   }
-
-  private void disposeComponent() {
-    AbstractIconPatcher.clearCache();
-    connect.disconnect();
-  }
-
 }
