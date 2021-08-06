@@ -33,7 +33,7 @@ import com.mallowigi.config.AtomFileIconsConfig
  * Atom config notifier
  *
  */
-interface AtomConfigNotifier {
+fun interface AtomConfigNotifier {
   /**
    * Listener when settings change
    *
@@ -42,6 +42,7 @@ interface AtomConfigNotifier {
   fun configChanged(atomFileIconsConfig: AtomFileIconsConfig?)
 
   companion object {
+    @Topic.AppLevel
     @JvmField
     val TOPIC: Topic<AtomConfigNotifier> = Topic.create("Atom Material Icons save", AtomConfigNotifier::class.java)
   }

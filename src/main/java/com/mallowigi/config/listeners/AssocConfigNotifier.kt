@@ -33,7 +33,7 @@ import com.mallowigi.config.associations.AtomAssocConfig
  * Assoc config notifier
  *
  */
-interface AssocConfigNotifier {
+fun interface AssocConfigNotifier {
   /**
    * Listener for associations config changed
    *
@@ -42,6 +42,7 @@ interface AssocConfigNotifier {
   fun assocChanged(config: AtomAssocConfig?)
 
   companion object {
+    @Topic.AppLevel
     @JvmField
     val TOPIC: Topic<AssocConfigNotifier> =
       Topic.create("Atom Material Icons associations save", AssocConfigNotifier::class.java)

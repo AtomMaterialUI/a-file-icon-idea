@@ -38,41 +38,30 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.project.ProjectManagerListener
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.associations.AtomAssocConfig
+import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.listeners.AssocConfigNotifier
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
-import com.mallowigi.icons.services.IconFilterManager.applyFilter
-import com.mallowigi.icons.services.IconPatchersManager.init
-import com.mallowigi.icons.services.IconPatchersManager.updateFileIcons
-import com.mallowigi.icons.services.IconPatchersManager.updateIcons
+import com.mallowigi.icons.services.IconFilterManager
+import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.utils.refreshOpenedProjects
 
 /**
  * Component in charge of replacing icons and apply filters
  *
  */
-class IconReplacerComponent : DynamicPluginListener, AppLifecycleListener, DumbAware {
-  override fun appStarting(projectFromCommandLine: Project?) {
-    initComponent()
-  }
+class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
+  override fun appStarting(projectFromCommandLine: Project?): Unit = initComponent()
 
-  override fun appClosing() {
-    disposeComponent()
-  }
+  override fun appClosing(): Unit = disposeComponent()
 
-  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor) {
-    initComponent()
-  }
+  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
-  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
-    disposeComponent()
-  }
+  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
 
   private fun onSettingsChanged() {
-    updateFileIcons()
-    updateIcons()
+    IconPatchersManager.updateFileIcons()
+    IconPatchersManager.updateIcons()
     LafManager.getInstance().updateUI()
     refreshOpenedProjects()
   }
@@ -83,28 +72,24 @@ class IconReplacerComponent : DynamicPluginListener, AppLifecycleListener, DumbA
   }
 
   private fun initComponent() {
-    init()
+    IconPatchersManager.init()
     val connect = ApplicationManager.getApplication().messageBus.connect()
     with(connect) {
-      subscribe(UISettingsListener.TOPIC, UISettingsListener { applyFilter() })
+      subscribe(UISettingsListener.TOPIC, UISettingsListener { IconFilterManager.applyFilter() })
 
-      subscribe(AtomConfigNotifier.TOPIC, object : AtomConfigNotifier {
-        override fun configChanged(atomFileIconsConfig: AtomFileIconsConfig?) = onSettingsChanged()
-      })
+      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { onSettingsChanged() })
 
-      subscribe(AssocConfigNotifier.TOPIC, object : AssocConfigNotifier {
-        override fun assocChanged(config: AtomAssocConfig?) = onSettingsChanged()
-      })
+      subscribe(AssocConfigNotifier.TOPIC, AssocConfigNotifier { onSettingsChanged() })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
-        override fun fileTypesChanged(event: FileTypeEvent) = updateIcons()
+        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
       })
 
       subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
-        override fun projectOpened(project: Project) = updateIcons()
+        override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
       })
     }
 
-    ApplicationManager.getApplication().invokeLater { applyFilter() }
+    UIUtil.invokeLaterIfNeeded { IconFilterManager.applyFilter() }
   }
 }

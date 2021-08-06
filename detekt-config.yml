@@ -56,8 +56,6 @@ style:
     active: true
   ObjectLiteralToLambda:
     active: true
-  OptionalUnit:
-    active: true
   OptionalWhenBraces:
     active: true
   PreferToOverPairSyntax:
