@@ -45,6 +45,8 @@ class BigIconsPatcher : SvgPatcher {
     hasBigIcons = AtomFileIconsConfig.instance.hasBigIcons
   }
 
+  override fun priority(): Int = 97
+
   private fun patchSizes(svg: @NonNls Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
     val size = if (hasBigIcons) LARGE else REGULAR

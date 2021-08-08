@@ -47,6 +47,8 @@ class AccentColorPatcher : SvgPatcher {
     accentColor = getAccentColor()
   }
 
+  override fun priority(): Int = 99
+
   private fun getAccentColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentAccentColor()))
 
   private fun patchTints(svg: @NonNls Element) {

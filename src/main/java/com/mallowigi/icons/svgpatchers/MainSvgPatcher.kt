@@ -50,7 +50,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
    * Call refresh colors on all patchers
    */
   fun refreshColors() {
-    patchers.forEach { patcher -> patcher.refresh() }
+    patchers.forEach { it.refresh() }
   }
 
   /**
@@ -66,7 +66,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     return object : SvgElementColorPatcher {
       override fun patchColors(svg: @NonNls Element) {
         // for each of the internal patchers, patch Colors
-        patchers.forEach { patcher -> patcher.patch(svg, path) }
+        patchers.forEach { it.patch(svg, path) }
 
         val nodes = svg.childNodes
         val length = nodes.length

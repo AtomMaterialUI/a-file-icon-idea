@@ -47,6 +47,8 @@ class ThemeColorPatcher : SvgPatcher {
     themedColor = getThemedColor()
   }
 
+  override fun priority(): Int = 98
+
   private fun getThemedColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentThemedColor()))
 
   private fun patchTints(svg: @NonNls Element) {
