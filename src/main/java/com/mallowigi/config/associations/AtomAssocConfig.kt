@@ -57,9 +57,7 @@ class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 
   override fun getState(): AtomAssocConfig = this
 
-  override fun loadState(state: AtomAssocConfig) {
-    XmlSerializerUtil.copyBean(state, this)
-  }
+  override fun loadState(state: AtomAssocConfig): Unit = XmlSerializerUtil.copyBean(state, this)
 
   /**
    * Apply custom file and folder associations
