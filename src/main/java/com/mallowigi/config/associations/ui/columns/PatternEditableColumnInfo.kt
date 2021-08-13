@@ -44,7 +44,7 @@ import javax.swing.table.TableCellRenderer
  * @property parent
  */
 @Suppress("UnstableApiUsage")
-class PatternEditableColumnInfo(private val parent: Disposable) :
+class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
   override fun valueOf(item: Association?): String? = item?.matcher
 
@@ -62,6 +62,8 @@ class PatternEditableColumnInfo(private val parent: Disposable) :
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
   }
+
+  override fun isCellEditable(item: Association?): Boolean = editable
 
   companion object {
     private fun validate(value: Any?): ValidationInfo? {

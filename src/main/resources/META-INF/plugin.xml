@@ -54,6 +54,11 @@
                              groupId="appearance" dynamic="true"
                              parentId="AtomConfig"
                              id="AtomAssocConfig" />
+    <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig" />
+    <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
+                             groupId="appearance" dynamic="true"
+                             parentId="AtomConfig"
+                             id="AtomSelectConfig" />
 
 
     <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />

@@ -25,6 +25,7 @@
  */
 package com.mallowigi.config.associations.ui.columns
 
+import com.intellij.openapi.Disposable
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.util.io.FileUtilRt
@@ -46,7 +47,8 @@ import javax.swing.table.TableCellRenderer
  *
  * @constructor Create empty Icon editable column info
  */
-class IconEditableColumnInfo :
+@Suppress("unused")
+class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
 
   override fun valueOf(item: Association?): String? = PathUtil.toSystemDependentName(item?.icon)
@@ -59,10 +61,10 @@ class IconEditableColumnInfo :
     LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
 
   override fun getRenderer(item: Association?): TableCellRenderer? {
-    return if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
-      null
+    if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
+      return null
     } else {
-      object : IconTableCellRenderer<String>() {
+      return object : IconTableCellRenderer<String>() {
         override fun getIcon(value: String, table: JTable, row: Int): Icon? {
           return try {
             MTIcons.loadSVGIcon(value)
@@ -75,6 +77,8 @@ class IconEditableColumnInfo :
       }
     }
   }
+
+  override fun isCellEditable(item: Association?): Boolean = editable
 
   companion object {
     private val DESCRIPTOR = FileChooserDescriptorFactory.createSingleFileDescriptor(

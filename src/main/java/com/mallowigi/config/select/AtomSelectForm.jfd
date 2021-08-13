@@ -9,8 +9,8 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
-			"$columnConstraints": "[369,fill]"
-			"$rowConstraints": "[][270,fill][]"
+			"$columnConstraints": "[369,grow,fill]"
+			"$rowConstraints": "[][270,grow,fill][]"
 		} ) {
 			name: "this"
 			"border": new javax.swing.border.TitledBorder( null, "Associations Editor", 2, 2 )
@@ -18,16 +18,16 @@ new FormModel {
 				name: "explanation"
 				"text": "Use the following tables to disable unwanted associations"
 				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
-				"foreground": new com.jformdesigner.model.SwingColor( "textInactiveText" )
+				"foreground": new com.jformdesigner.model.SwingColor( "inactiveCaptionText" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
-				name: "tabbedPane1"
+				name: "tabbedPane"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[]"
+					"$columnConstraints": "0[grow,fill]0"
+					"$rowConstraints": "0[grow,fill]0"
 				} ) {
 					name: "fileAssociationsPanel"
 				}, new FormLayoutConstraints( null ) {
@@ -35,8 +35,8 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[]"
+					"$columnConstraints": "[grow,fill]"
+					"$rowConstraints": "[grow]"
 				} ) {
 					name: "folderAssociationsPanel"
 				}, new FormLayoutConstraints( null ) {

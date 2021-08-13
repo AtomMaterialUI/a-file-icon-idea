@@ -66,16 +66,16 @@ import java.util.ResourceBundle;
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
-    new NameEditableColumnInfo(this),
-    new PatternEditableColumnInfo(this),
-    new IconEditableColumnInfo(),
+    new NameEditableColumnInfo(this, true),
+    new PatternEditableColumnInfo(this, true),
+    new IconEditableColumnInfo(this, true),
     new EnabledColumnInfo()
   };
 
   private final transient ColumnInfo[] folderColumns = {
-    new NameEditableColumnInfo(this),
-    new PatternEditableColumnInfo(this),
-    new IconEditableColumnInfo(),
+    new NameEditableColumnInfo(this, true),
+    new PatternEditableColumnInfo(this, true),
+    new IconEditableColumnInfo(this, true),
     new EnabledColumnInfo()
   };
 

@@ -43,7 +43,7 @@ import javax.swing.table.TableCellRenderer
  * @property parent the Parent class
  */
 @Suppress("UnstableApiUsage")
-class NameEditableColumnInfo(private val parent: Disposable) :
+class NameEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
   override fun valueOf(item: Association?): String? = item?.name
 
@@ -67,4 +67,5 @@ class NameEditableColumnInfo(private val parent: Disposable) :
       }
   }
 
+  override fun isCellEditable(item: Association?): Boolean = editable
 }
