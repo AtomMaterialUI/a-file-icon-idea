@@ -55,6 +55,7 @@
                              parentId="AtomConfig"
                              id="AtomAssocConfig" />
 
+
     <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />
 
 

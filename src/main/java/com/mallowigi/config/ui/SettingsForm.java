@@ -58,29 +58,6 @@ import java.util.ResourceBundle;
   "ConstantConditions",
   "InstanceVariableMayNotBeInitialized"})
 public final class SettingsForm implements SettingsFormUI {
-  public SettingsForm() {
-    // empty ctor
-  }
-
-  private void enableUIIconsCheckboxActionPerformed(final ActionEvent e) {
-    enablePSIIconsCheckbox.setEnabled(enableUIIconsCheckbox.isSelected());
-  }
-
-  private void enableDirectoryIconsCheckboxActionPerformed(final ActionEvent e) {
-    hollowFoldersCheckbox.setEnabled(enableDirectoryIconsCheckbox.isSelected());
-  }
-
-  private void monochromeCheckboxStateChanged(final ChangeEvent e) {
-    monoColorChooser.setEnabled(monochromeCheckbox.isSelected());
-  }
-
-  private void themedColorCheckboxActionPerformed(final ActionEvent e) {
-    themedColorChooser.setEnabled(themedColorCheckbox.isSelected());
-  }
-
-  private void accentColorCheckboxActionPerformed(final ActionEvent e) {
-    accentColorChooser.setEnabled(accentColorCheckbox.isSelected());
-  }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -139,6 +116,11 @@ public final class SettingsForm implements SettingsFormUI {
     initComponents();
   }
 
+  //region big icons
+  public boolean getHasBigIcons() {
+    return biggerIconsCheckBox.isSelected();
+  }
+
   @SuppressWarnings("OverlyComplexMethod")
   public boolean isModified(final AtomFileIconsConfig config) {
     boolean modified = config.isEnabledIconsChanged(getIsEnabledIcons());
@@ -160,11 +142,6 @@ public final class SettingsForm implements SettingsFormUI {
     return modified;
   }
 
-  //region big icons
-  public boolean getHasBigIcons() {
-    return biggerIconsCheckBox.isSelected();
-  }
-
   @Override
   public JComponent getContent() {
     return content;
@@ -183,148 +160,6 @@ public final class SettingsForm implements SettingsFormUI {
   @Override
   public void dispose() {
     // empty
-  }
-
-  //region File Icons
-  public boolean getIsEnabledIcons() {
-    return enableFileIconsCheckbox.isSelected();
-  }
-
-  private void setIsEnabledIcons(final boolean enabledIcons) {
-    enableFileIconsCheckbox.setSelected(enabledIcons);
-  }
-  //endregion
-
-  //region Directory Icons
-  public boolean getIsEnabledDirectories() {
-    return enableDirectoryIconsCheckbox.isSelected();
-  }
-
-  private void setIsEnabledDirectories(final boolean enabledDirectories) {
-    enableDirectoryIconsCheckbox.setSelected(enabledDirectories);
-  }
-  //endregion
-
-  //region Monochrome Icons
-  public boolean getIsEnabledMonochromeIcons() {
-    return monochromeCheckbox.isSelected();
-  }
-
-  private void setIsEnabledMonochromeIcons(final boolean isEnabledMonochromeIcons) {
-    monochromeCheckbox.setSelected(isEnabledMonochromeIcons);
-  }
-  //endregion
-
-  //region UI Icons
-  public boolean getIsEnabledUIIcons() {
-    return enableUIIconsCheckbox.isSelected();
-  }
-
-  private void setIsEnabledUIIcons(final boolean enabledUIIcons) {
-    enableUIIconsCheckbox.setSelected(enabledUIIcons);
-  }
-  //endregion
-
-  //region mono color
-  public String getMonochromeColor() {
-    return ColorUtil.toHex(Objects.requireNonNull(monoColorChooser.getSelectedColor()));
-  }
-
-  private void setMonochromeColor(final String color) {
-    monoColorChooser.setSelectedColor(ColorUtil.fromHex(color));
-  }
-  //endregion
-
-  //region psi Icons
-  public boolean getIsEnabledPsiIcons() {
-    return enablePSIIconsCheckbox.isSelected();
-  }
-
-  private void setIsEnabledPsiIcons(final boolean enabledPsiIcons) {
-    enablePSIIconsCheckbox.setSelected(enabledPsiIcons);
-  }
-  //endregion
-
-  //region hidden file icons
-  public boolean getIsHiddenFileIcons() {
-    return hideFileIconsCheckbox.isSelected();
-  }
-
-  @SuppressWarnings("NegativelyNamedBooleanVariable")
-  private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
-    hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
-  }
-  //endregion
-
-  //region hidden folder icons
-  public boolean getIsHiddenFolderIcons() {
-    return hideFolderIconsCheckbox.isSelected();
-  }
-
-  @SuppressWarnings("NegativelyNamedBooleanVariable")
-  private void setIsHiddenFolderIcons(final boolean isHiddenFolderIcons) {
-    hideFolderIconsCheckbox.setSelected(isHiddenFolderIcons);
-  }
-  //endregion
-
-  //region hollow folders
-  public boolean getIsHollowFoldersEnabled() {
-    return hollowFoldersCheckbox.isSelected();
-  }
-
-  private void setIsHollowFoldersEnabled(final boolean isHollowFoldersEnabled) {
-    hollowFoldersCheckbox.setSelected(isHollowFoldersEnabled);
-  }
-  //endregion
-
-  //region arrows styles
-  public ArrowsStyles getArrowsStyle() {
-    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
-  }
-
-  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
-    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
-  }
-  //endregion
-
-  //region accent color
-  public String getAccentColor() {
-    return ColorUtil.toHex(Objects.requireNonNull(accentColorChooser.getSelectedColor()));
-  }
-
-  private void setAccentColor(final String color) {
-    accentColorChooser.setSelectedColor(ColorUtil.fromHex(color));
-  }
-
-  public boolean getIsAccentColorEnabled() {
-    return accentColorCheckbox.isSelected();
-  }
-
-  private void setAccentColorEnabled(final boolean enabled) {
-    accentColorCheckbox.setSelected(enabled);
-  }
-  //endregion
-
-  //region themed color
-  public String getThemedColor() {
-    return ColorUtil.toHex(Objects.requireNonNull(themedColorChooser.getSelectedColor()));
-  }
-
-  private void setThemedColor(final String color) {
-    themedColorChooser.setSelectedColor(ColorUtil.fromHex(color));
-  }
-
-  public boolean getIsThemedColorEnabled() {
-    return themedColorCheckbox.isSelected();
-  }
-
-  private void setThemedColorEnabled(final boolean enabled) {
-    themedColorCheckbox.setSelected(enabled);
-  }
-  //endregion
-
-  private void setHasBigIcons(final boolean isBigIconsEnabled) {
-    biggerIconsCheckBox.setSelected(isBigIconsEnabled);
   }
 
   @SuppressWarnings({"Convert2MethodRef",
@@ -531,5 +366,170 @@ public final class SettingsForm implements SettingsFormUI {
       }
     });
   }
+
+  //region Events
+  private void enableUIIconsCheckboxActionPerformed(final ActionEvent e) {
+    enablePSIIconsCheckbox.setEnabled(enableUIIconsCheckbox.isSelected());
+  }
+
+  private void enableDirectoryIconsCheckboxActionPerformed(final ActionEvent e) {
+    hollowFoldersCheckbox.setEnabled(enableDirectoryIconsCheckbox.isSelected());
+  }
+
+  private void monochromeCheckboxStateChanged(final ChangeEvent e) {
+    monoColorChooser.setEnabled(monochromeCheckbox.isSelected());
+  }
+
+  private void themedColorCheckboxActionPerformed(final ActionEvent e) {
+    themedColorChooser.setEnabled(themedColorCheckbox.isSelected());
+  }
   //endregion
+
+  //region File Icons
+  public boolean getIsEnabledIcons() {
+    return enableFileIconsCheckbox.isSelected();
+  }
+
+  private void setIsEnabledIcons(final boolean enabledIcons) {
+    enableFileIconsCheckbox.setSelected(enabledIcons);
+  }
+  //endregion
+
+  //region Directory Icons
+  public boolean getIsEnabledDirectories() {
+    return enableDirectoryIconsCheckbox.isSelected();
+  }
+
+  private void setIsEnabledDirectories(final boolean enabledDirectories) {
+    enableDirectoryIconsCheckbox.setSelected(enabledDirectories);
+  }
+  //endregion
+
+  //region Monochrome Icons
+  public boolean getIsEnabledMonochromeIcons() {
+    return monochromeCheckbox.isSelected();
+  }
+
+  private void setIsEnabledMonochromeIcons(final boolean isEnabledMonochromeIcons) {
+    monochromeCheckbox.setSelected(isEnabledMonochromeIcons);
+  }
+  //endregion
+
+  //region UI Icons
+  public boolean getIsEnabledUIIcons() {
+    return enableUIIconsCheckbox.isSelected();
+  }
+
+  private void setIsEnabledUIIcons(final boolean enabledUIIcons) {
+    enableUIIconsCheckbox.setSelected(enabledUIIcons);
+  }
+  //endregion
+
+  //region mono color
+  public String getMonochromeColor() {
+    return ColorUtil.toHex(Objects.requireNonNull(monoColorChooser.getSelectedColor()));
+  }
+
+  private void setMonochromeColor(final String color) {
+    monoColorChooser.setSelectedColor(ColorUtil.fromHex(color));
+  }
+  //endregion
+
+  //region psi Icons
+  public boolean getIsEnabledPsiIcons() {
+    return enablePSIIconsCheckbox.isSelected();
+  }
+
+  private void setIsEnabledPsiIcons(final boolean enabledPsiIcons) {
+    enablePSIIconsCheckbox.setSelected(enabledPsiIcons);
+  }
+  //endregion
+
+  //region hidden file icons
+  public boolean getIsHiddenFileIcons() {
+    return hideFileIconsCheckbox.isSelected();
+  }
+
+  @SuppressWarnings("NegativelyNamedBooleanVariable")
+  private void setIsHiddenFileIcons(final boolean isHiddenFileIcons) {
+    hideFileIconsCheckbox.setSelected(isHiddenFileIcons);
+  }
+  //endregion
+
+  //region hidden folder icons
+  public boolean getIsHiddenFolderIcons() {
+    return hideFolderIconsCheckbox.isSelected();
+  }
+
+  @SuppressWarnings("NegativelyNamedBooleanVariable")
+  private void setIsHiddenFolderIcons(final boolean isHiddenFolderIcons) {
+    hideFolderIconsCheckbox.setSelected(isHiddenFolderIcons);
+  }
+  //endregion
+
+  //region hollow folders
+  public boolean getIsHollowFoldersEnabled() {
+    return hollowFoldersCheckbox.isSelected();
+  }
+
+  private void setIsHollowFoldersEnabled(final boolean isHollowFoldersEnabled) {
+    hollowFoldersCheckbox.setSelected(isHollowFoldersEnabled);
+  }
+  //endregion
+
+  //region arrows styles
+  public ArrowsStyles getArrowsStyle() {
+    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
+  }
+
+  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+  //endregion
+
+  //region accent color
+  public String getAccentColor() {
+    return ColorUtil.toHex(Objects.requireNonNull(accentColorChooser.getSelectedColor()));
+  }
+
+  private void setAccentColor(final String color) {
+    accentColorChooser.setSelectedColor(ColorUtil.fromHex(color));
+  }
+
+  public boolean getIsAccentColorEnabled() {
+    return accentColorCheckbox.isSelected();
+  }
+
+  private void setAccentColorEnabled(final boolean enabled) {
+    accentColorCheckbox.setSelected(enabled);
+  }
+  //endregion
+
+  //region themed color
+  public String getThemedColor() {
+    return ColorUtil.toHex(Objects.requireNonNull(themedColorChooser.getSelectedColor()));
+  }
+
+  private void setThemedColor(final String color) {
+    themedColorChooser.setSelectedColor(ColorUtil.fromHex(color));
+  }
+
+  public boolean getIsThemedColorEnabled() {
+    return themedColorCheckbox.isSelected();
+  }
+
+  private void setThemedColorEnabled(final boolean enabled) {
+    themedColorCheckbox.setSelected(enabled);
+  }
+  //endregion
+
+  private void accentColorCheckboxActionPerformed(final ActionEvent e) {
+    accentColorChooser.setEnabled(accentColorCheckbox.isSelected());
+  }
+
+  private void setHasBigIcons(final boolean isBigIconsEnabled) {
+    biggerIconsCheckBox.setSelected(isBigIconsEnabled);
+  }
+  //endregion
+
 }

@@ -1,0 +1,53 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "AtomFileIconsBundle"
+	"i18n.keyPrefix": "SelectForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[369,fill]"
+			"$rowConstraints": "[][270,fill][]"
+		} ) {
+			name: "this"
+			"border": new javax.swing.border.TitledBorder( null, "Associations Editor", 2, 2 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "explanation"
+				"text": "Use the following tables to disable unwanted associations"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+				"foreground": new com.jformdesigner.model.SwingColor( "textInactiveText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[fill]"
+					"$rowConstraints": "[]"
+				} ) {
+					name: "fileAssociationsPanel"
+				}, new FormLayoutConstraints( null ) {
+					"title": "File Associations"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[fill]"
+					"$rowConstraints": "[]"
+				} ) {
+					name: "folderAssociationsPanel"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Folder Associations"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}
