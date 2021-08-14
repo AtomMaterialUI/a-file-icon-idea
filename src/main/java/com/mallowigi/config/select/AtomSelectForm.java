@@ -47,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -147,6 +148,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle");
     explanation = new JLabel();
     tabbedPane = new JTabbedPane();
     fileAssociationsPanel = new JPanel();
@@ -164,7 +166,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
         "[]"));
 
     //---- explanation ----
-    explanation.setText("Use the following tables to disable unwanted associations");
+    explanation.setText(bundle.getString("SelectForm.explanation.text"));
     explanation.setFont(explanation.getFont().deriveFont(explanation.getFont().getSize() - 1f));
     explanation.setForeground(UIManager.getColor("inactiveCaptionText"));
     add(explanation, "cell 0 0");
@@ -181,18 +183,18 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // rows
           "0[grow,fill]0"));
       }
-      tabbedPane.addTab("File Associations", fileAssociationsPanel);
+      tabbedPane.addTab(bundle.getString("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel);
 
       //======== folderAssociationsPanel ========
       {
         folderAssociationsPanel.setLayout(new MigLayout(
           "hidemode 3",
           // columns
-          "[grow,fill]",
+          "0[grow,fill]0",
           // rows
-          "[grow]"));
+          "0[grow,fill]0"));
       }
-      tabbedPane.addTab("Folder Associations", folderAssociationsPanel);
+      tabbedPane.addTab(bundle.getString("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel);
     }
     add(tabbedPane, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
