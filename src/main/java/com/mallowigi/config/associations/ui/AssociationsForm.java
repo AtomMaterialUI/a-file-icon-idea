@@ -66,21 +66,23 @@ import java.util.ResourceBundle;
   "StringConcatenation",
   "DuplicatedCode",
   "OverlyLongMethod",
-  "MethodOnlyUsedFromInnerClass"})
+  "MethodOnlyUsedFromInnerClass",
+  "unused",
+  "SyntheticAccessorCall"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
+    new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true),
-    new EnabledColumnInfo()
+    new IconEditableColumnInfo(this, true)
   };
 
   private final transient ColumnInfo[] folderColumns = {
+    new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true),
-    new EnabledColumnInfo()
+    new IconEditableColumnInfo(this, true)
   };
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

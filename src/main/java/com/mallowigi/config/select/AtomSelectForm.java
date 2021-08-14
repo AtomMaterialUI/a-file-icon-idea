@@ -31,13 +31,11 @@
 package com.mallowigi.config.select;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import com.intellij.util.ui.ColumnInfo;
-import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.ui.columns.*;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
+import com.mallowigi.config.associations.ui.internal.AssociationsTableModelEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
 import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.SelectedAssociations;
@@ -61,17 +59,17 @@ import java.util.ResourceBundle;
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
+    new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, false),
     new PatternEditableColumnInfo(this, true),
-    new FileIconEditableColumnInfo(this, true),
-    new EnabledColumnInfo()
+    new FileIconEditableColumnInfo(this, true)
   };
 
   private final transient ColumnInfo[] folderColumns = {
+    new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new FolderIconEditableColumnInfo(this, true),
-    new EnabledColumnInfo()
+    new FolderIconEditableColumnInfo(this, true)
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -82,8 +80,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
   private JComponent folderIconsTable;
-  private @Nullable TableModelEditor<RegexAssociation> fileAssociationsEditor;
-  private @Nullable TableModelEditor<RegexAssociation> folderAssociationsEditor;
+  private @Nullable AssociationsTableModelEditor<RegexAssociation> fileAssociationsEditor;
+  private @Nullable AssociationsTableModelEditor<RegexAssociation> folderAssociationsEditor;
 
   @Override
   public void init() {
@@ -201,10 +199,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   }
 
   private void createTables() {
-    ApplicationManager.getApplication().invokeLaterOnWriteThread(() -> {
-      createFileIconsTable();
-      createFolderIconsTable();
-    }, ModalityState.defaultModalityState());
+    createFileIconsTable();
+    createFolderIconsTable();
   }
 
   /**
@@ -212,7 +208,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
    */
   private void createFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    fileAssociationsEditor = new TableModelEditor<>(fileColumns,
+    fileAssociationsEditor = new AssociationsTableModelEditor<>(fileColumns,
       itemEditor,
       AtomSettingsBundle.message("no.file.associations"));
     fileIconsTable = fileAssociationsEditor.createComponent();
@@ -225,7 +221,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
    */
   private void createFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    folderAssociationsEditor = new TableModelEditor<>(folderColumns,
+    folderAssociationsEditor = new AssociationsTableModelEditor<>(folderColumns,
       itemEditor,
       AtomSettingsBundle.message("no.folder.associations"));
     folderIconsTable = folderAssociationsEditor.createComponent();
