@@ -34,10 +34,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.config.associations.ui.columns.EnabledColumnInfo;
-import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.*;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
 import com.mallowigi.icons.associations.RegexAssociation;
@@ -64,14 +61,14 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private final transient ColumnInfo[] fileColumns = {
     new NameEditableColumnInfo(this, false),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true),
+    new FileIconEditableColumnInfo(this, true),
     new EnabledColumnInfo()
   };
 
   private final transient ColumnInfo[] folderColumns = {
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true),
+    new FolderIconEditableColumnInfo(this, true),
     new EnabledColumnInfo()
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

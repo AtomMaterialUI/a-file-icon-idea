@@ -30,7 +30,9 @@
 
 package com.mallowigi.config.associations.ui;
 
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.Disposable;
+import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
@@ -47,7 +49,9 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -56,13 +60,13 @@ import java.util.ResourceBundle;
   "LocalCanBeFinal",
   "PublicMethodNotExposedInInterface",
   "ClassWithTooManyFields",
-  "OverlyLongMethod",
   "InstanceVariableMayNotBeInitialized",
   "TransientFieldNotInitialized",
   "DuplicateStringLiteralInspection",
   "StringConcatenation",
-  "MagicNumber",
-  "DuplicatedCode"})
+  "DuplicatedCode",
+  "OverlyLongMethod",
+  "MethodOnlyUsedFromInnerClass"})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
@@ -81,18 +85,14 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
+  private JLabel customExplanation;
+  private JLabel customExplanation2;
+  private LinkLabel link;
+  private JPanel vSpacer1;
   private JTabbedPane tabbedContainer;
-  private JPanel customFileIconsNew;
+  private JPanel customFileIcons;
   private JTextPane explanation;
-  private JPanel customFolderIconsNew;
-  private JPanel defaultFileIcons;
-  private JPanel defFileIconsPanel;
-  private JScrollPane fileIconsScrollPane;
-  private FileAssociationsTable defaultFileIconsTable;
-  private JPanel defaultFolderIcons;
-  private JPanel defFolderIconsPanel;
-  private JScrollPane folderIconsScrollpane;
-  private FolderAssociationsTable defaultFolderIconsTable;
+  private JPanel customFolderIcons;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent customFileIconsTable;
   private JComponent customFolderIconsTable;
@@ -105,9 +105,8 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     createCustomTables();
   }
 
-  @Override
-  public JComponent getContent() {
-    return tabbedContainer;
+  private static void linkMouseClicked(MouseEvent e) {
+    BrowserUtil.browse(AtomSettingsBundle.message("AssociationsForm.link.text"));
   }
 
   @Override
@@ -157,149 +156,96 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     return new CustomAssociations(Collections.unmodifiableList(customFolderAssociationsEditor.getModel().getItems()));
   }
 
+  @Override
+  public JComponent getContent() {
+    return this;
+  }
+
+  @SuppressWarnings("ConfusingFloatingPointLiteral")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle");
+    customExplanation = new JLabel();
+    customExplanation2 = new JLabel();
+    link = new LinkLabel();
+    vSpacer1 = new JPanel(null);
     tabbedContainer = new JTabbedPane();
-    customFileIconsNew = new JPanel();
+    customFileIcons = new JPanel();
     explanation = new JTextPane();
-    customFolderIconsNew = new JPanel();
-    defaultFileIcons = new JPanel();
-    defFileIconsPanel = new JPanel();
-    fileIconsScrollPane = new JScrollPane();
-    defaultFileIconsTable = new FileAssociationsTable();
-    defaultFolderIcons = new JPanel();
-    defFolderIconsPanel = new JPanel();
-    folderIconsScrollpane = new JScrollPane();
-    defaultFolderIconsTable = new FolderAssociationsTable();
+    customFolderIcons = new JPanel();
 
     //======== this ========
+    setBorder(new TitledBorder(null, bundle.getString("AssociationsForm.this.border"), TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
     setLayout(new MigLayout(
       "hidemode 3",
       // columns
-      "[550,grow,fill]",
+      "[369,grow,fill]",
       // rows
-      "[183,fill]"));
+      "[]" +
+        "[]" +
+        "[]" +
+        "[270,grow,fill]"));
+
+    //---- customExplanation ----
+    customExplanation.setText(bundle.getString("AssociationsForm.customExplanation.text"));
+    customExplanation.setFont(customExplanation.getFont().deriveFont(customExplanation.getFont().getSize() - 1f));
+    customExplanation.setForeground(UIManager.getColor("inactiveCaptionText"));
+    customExplanation.setLabelFor(explanation);
+    add(customExplanation, "cell 0 0");
+
+    //---- customExplanation2 ----
+    customExplanation2.setText(bundle.getString("AssociationsForm.customExplanation2.text"));
+    customExplanation2.setFont(customExplanation2.getFont().deriveFont(customExplanation2.getFont().getSize() - 1f));
+    customExplanation2.setForeground(UIManager.getColor("inactiveCaptionText"));
+    add(customExplanation2, "cell 0 1,alignx left,growx 0");
+
+    //---- link ----
+    link.setText(bundle.getString("AssociationsForm.link.text"));
+    link.setFont(link.getFont().deriveFont(link.getFont().getSize() - 1f));
+    link.setLabelFor(explanation);
+    link.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        linkMouseClicked(e);
+      }
+    });
+    add(link, "cell 0 1");
+    add(vSpacer1, "cell 0 2");
 
     //======== tabbedContainer ========
     {
 
-      //======== customFileIconsNew ========
+      //======== customFileIcons ========
       {
-        customFileIconsNew.setLayout(new MigLayout(
+        customFileIcons.setLayout(new MigLayout(
           "hidemode 3",
           // columns
-          "[grow,fill]",
+          "0[grow,fill]0",
           // rows
-          "[260,grow,fill]" +
+          "0[grow,fill]0" +
             "[]"));
 
         //---- explanation ----
         explanation.setText(bundle.getString("AssociationsForm.explanation.text"));
-        explanation.setForeground(UIManager.getColor("MenuItem.acceleratorForeground"));
-        customFileIconsNew.add(explanation, "cell 0 1");
+        explanation.setForeground(UIManager.getColor("inactiveCaptionText"));
+        explanation.setFont(explanation.getFont().deriveFont(explanation.getFont().getSize() - 1f));
+        customFileIcons.add(explanation, "cell 0 1");
       }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.customFileIconsNew.tab.title"), customFileIconsNew);
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.customFileIcons.tab.title"), customFileIcons);
 
-      //======== customFolderIconsNew ========
+      //======== customFolderIcons ========
       {
-        customFolderIconsNew.setLayout(new MigLayout(
+        customFolderIcons.setLayout(new MigLayout(
           "hidemode 3",
           // columns
-          "[grow,fill]",
+          "0[grow,fill]0",
           // rows
-          "[260,grow,fill]"));
+          "0[grow,fill]0"));
       }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.customFolderIconsNew.title"), customFolderIconsNew);
-
-      //======== defaultFileIcons ========
-      {
-        defaultFileIcons.setLayout(new MigLayout(
-          "hidemode 3",
-          // columns
-          "[grow,fill]",
-          // rows
-          "[grow,fill]"));
-
-        //======== defFileIconsPanel ========
-        {
-          defFileIconsPanel.setBorder(null);
-          defFileIconsPanel.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "0[grow,fill]0",
-            // rows
-            "0[grow,fill]0"));
-
-          //======== fileIconsScrollPane ========
-          {
-            fileIconsScrollPane.setBorder(new EtchedBorder());
-            fileIconsScrollPane.setViewportBorder(null);
-
-            //---- defaultFileIconsTable ----
-            defaultFileIconsTable.setBorder(null);
-            defaultFileIconsTable.setShowHorizontalLines(false);
-            defaultFileIconsTable.setShowVerticalLines(false);
-            defaultFileIconsTable.setRowSelectionAllowed(false);
-            defaultFileIconsTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-            defaultFileIconsTable.setFocusable(false);
-            defaultFileIconsTable.setRequestFocusEnabled(false);
-            defaultFileIconsTable.setRowHeight(22);
-            defaultFileIconsTable.setCellSelectionEnabled(true);
-            defaultFileIconsTable.setStriped(true);
-            fileIconsScrollPane.setViewportView(defaultFileIconsTable);
-          }
-          defFileIconsPanel.add(fileIconsScrollPane, "cell 0 0");
-        }
-        defaultFileIcons.add(defFileIconsPanel, "cell 0 0");
-      }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.defaultFileIcons.tab.title"), defaultFileIcons);
-
-      //======== defaultFolderIcons ========
-      {
-        defaultFolderIcons.setLayout(new MigLayout(
-          "hidemode 3",
-          // columns
-          "[grow,fill]",
-          // rows
-          "[171,grow,fill]"));
-
-        //======== defFolderIconsPanel ========
-        {
-          defFolderIconsPanel.setBorder(null);
-          defFolderIconsPanel.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "0[grow,fill]0",
-            // rows
-            "0[grow,fill]0"));
-
-          //======== folderIconsScrollpane ========
-          {
-            folderIconsScrollpane.setBorder(new EtchedBorder());
-            folderIconsScrollpane.setViewportBorder(null);
-
-            //---- defaultFolderIconsTable ----
-            defaultFolderIconsTable.setBorder(null);
-            defaultFolderIconsTable.setShowHorizontalLines(false);
-            defaultFolderIconsTable.setShowVerticalLines(false);
-            defaultFolderIconsTable.setRowSelectionAllowed(false);
-            defaultFolderIconsTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-            defaultFolderIconsTable.setFocusable(false);
-            defaultFolderIconsTable.setRequestFocusEnabled(false);
-            defaultFolderIconsTable.setRowHeight(22);
-            defaultFolderIconsTable.setCellSelectionEnabled(true);
-            defaultFolderIconsTable.setStriped(true);
-            folderIconsScrollpane.setViewportView(defaultFolderIconsTable);
-          }
-          defFolderIconsPanel.add(folderIconsScrollpane, "cell 0 0");
-        }
-        defaultFolderIcons.add(defFolderIconsPanel, "cell 0 0");
-      }
-      tabbedContainer.addTab(bundle.getString("AssociationsForm.defaultFolderIcons.tab.title"), defaultFolderIcons);
+      tabbedContainer.addTab(bundle.getString("AssociationsForm.customFolderIcons.title"), customFolderIcons);
     }
-    add(tabbedContainer, "cell 0 0");
+    add(tabbedContainer, "cell 0 3");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
@@ -320,7 +266,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       itemEditor,
       AtomSettingsBundle.message("no.custom.file.associations"));
     customFileIconsTable = customFileAssociationsEditor.createComponent();
-    customFileIconsNew.add(customFileIconsTable, "cell 0 0"); //NON-NLS
+    customFileIcons.add(customFileIconsTable, "cell 0 0"); //NON-NLS
   }
 
   /**
@@ -332,7 +278,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       itemEditor,
       AtomSettingsBundle.message("no.custom.folder.associations"));
     customFolderIconsTable = customFolderAssociationsEditor.createComponent();
-    customFolderIconsNew.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
+    customFolderIcons.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
   }
 
 }
