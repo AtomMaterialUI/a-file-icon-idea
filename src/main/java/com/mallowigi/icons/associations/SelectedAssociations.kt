@@ -27,6 +27,7 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
+import com.mallowigi.models.FileInfo
 import java.util.Map.copyOf
 
 /**
@@ -35,7 +36,7 @@ import java.util.Map.copyOf
  * @constructor Create empty Custom associations
  */
 @Suppress("MemberNameEqualsClassName")
-class SelectedAssociations {
+class SelectedAssociations : Associations {
   @Property
   @XCollection
   private val myAssociations: MutableMap<String, RegexAssociation>
@@ -84,5 +85,15 @@ class SelectedAssociations {
    * @return
    */
   fun values(): List<RegexAssociation> = myAssociations.values.toList()
+
+  override fun findMatchingAssociation(file: FileInfo?): Association? =
+    values().stream()
+      .filter { association: Association -> association.matches(file!!) }
+      .findAny()
+      .orElse(null)
+
+
+  override fun getTheAssociations(): List<RegexAssociation> = values()
+
 
 }

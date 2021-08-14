@@ -47,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 /**
@@ -80,15 +81,15 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private JPanel fileAssociationsPanel;
   private JPanel folderAssociationsPanel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
-  private JComponent customFileIconsTable;
-  private JComponent customFolderIconsTable;
-  private @Nullable TableModelEditor<RegexAssociation> customFileAssociationsEditor;
-  private @Nullable TableModelEditor<RegexAssociation> customFolderAssociationsEditor;
+  private JComponent fileIconsTable;
+  private JComponent folderIconsTable;
+  private @Nullable TableModelEditor<RegexAssociation> fileAssociationsEditor;
+  private @Nullable TableModelEditor<RegexAssociation> folderAssociationsEditor;
 
   @Override
   public void init() {
     initComponents();
-    createCustomTables();
+    createTables();
   }
 
   @Override
@@ -98,21 +99,21 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   @Override
   public void afterStateSet() {
-    //    customFileAssociationsEditor = null;
-    //    customFolderAssociationsEditor = null;
+    // add after state set
   }
 
   @Override
   public void dispose() {
-    //empty
+    fileAssociationsEditor = null;
+    folderAssociationsEditor = null;
   }
 
   public void setFormState(final AtomSelectConfig config) {
-    if (customFileAssociationsEditor != null) {
-      customFileAssociationsEditor.reset(config.getSelectedFileAssociations().values());
+    if (fileAssociationsEditor != null) {
+      fileAssociationsEditor.reset(config.getSelectedFileAssociations().getTheAssociations());
     }
-    if (customFolderAssociationsEditor != null) {
-      customFolderAssociationsEditor.reset(config.getSelectedFolderAssociations().values());
+    if (folderAssociationsEditor != null) {
+      folderAssociationsEditor.reset(config.getSelectedFolderAssociations().getTheAssociations());
     }
     afterStateSet();
   }
@@ -125,23 +126,23 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     }
 
     boolean modified = false;
-    if (customFileAssociationsEditor != null) {
-      modified = config.isFileIconsModified(customFileAssociationsEditor.getModel().getItems());
+    if (fileAssociationsEditor != null) {
+      modified = config.isFileIconsModified(fileAssociationsEditor.getModel().getItems());
     }
-    if (customFolderAssociationsEditor != null) {
-      modified = modified || config.isFolderIconsModified(customFolderAssociationsEditor.getModel().getItems());
+    if (folderAssociationsEditor != null) {
+      modified = modified || config.isFolderIconsModified(folderAssociationsEditor.getModel().getItems());
     }
     return modified;
   }
 
   public SelectedAssociations getFileAssociations() {
-    assert customFileAssociationsEditor != null;
-    return new SelectedAssociations(customFileAssociationsEditor.getModel().getItems());
+    assert fileAssociationsEditor != null;
+    return new SelectedAssociations(Collections.unmodifiableList(fileAssociationsEditor.getModel().getItems()));
   }
 
   public SelectedAssociations getFolderAssociations() {
-    assert customFolderAssociationsEditor != null;
-    return new SelectedAssociations(customFolderAssociationsEditor.getModel().getItems());
+    assert folderAssociationsEditor != null;
+    return new SelectedAssociations(Collections.unmodifiableList(folderAssociationsEditor.getModel().getItems()));
   }
 
   @SuppressWarnings("ConfusingFloatingPointLiteral")
@@ -200,33 +201,33 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
-  private void createCustomTables() {
-    createCustomFileIconsTable();
-    createCustomFolderIconsTable();
+  private void createTables() {
+    createFileIconsTable();
+    createFolderIconsTable();
   }
 
   /**
    * Create the custom file icons
    */
-  private void createCustomFileIconsTable() {
+  private void createFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    customFileAssociationsEditor = new TableModelEditor<>(fileColumns,
+    fileAssociationsEditor = new TableModelEditor<>(fileColumns,
       itemEditor,
       AtomSettingsBundle.message("no.custom.file.associations"));
-    customFileIconsTable = customFileAssociationsEditor.createComponent();
-    fileAssociationsPanel.add(customFileIconsTable, "cell 0 0"); //NON-NLS
+    fileIconsTable = fileAssociationsEditor.createComponent();
+    fileAssociationsPanel.add(fileIconsTable, "cell 0 0"); //NON-NLS
 
   }
 
   /**
    * Create the custom folder icons
    */
-  private void createCustomFolderIconsTable() {
+  private void createFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    customFolderAssociationsEditor = new TableModelEditor<>(folderColumns,
+    folderAssociationsEditor = new TableModelEditor<>(folderColumns,
       itemEditor,
       AtomSettingsBundle.message("no.custom.folder.associations"));
-    customFolderIconsTable = customFolderAssociationsEditor.createComponent();
-    folderAssociationsPanel.add(customFolderIconsTable, "cell 0 0"); //NON-NLS
+    folderIconsTable = folderAssociationsEditor.createComponent();
+    folderAssociationsPanel.add(folderIconsTable, "cell 0 0"); //NON-NLS
   }
 }
