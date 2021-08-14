@@ -97,6 +97,7 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
       table.setTableHeader(null);
     }
 
+    table.getEmptyText().setFont(UIUtil.getLabelFont().deriveFont(24f));
     table.getEmptyText().setText(emptyText);
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this);
     toolbarDecorator.disableAddAction();

@@ -31,6 +31,7 @@
 package com.mallowigi.config.select;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.util.ui.ColumnInfo;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.ui.columns.*;
@@ -106,13 +107,15 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   }
 
   public void setFormState(final AtomSelectConfig config) {
-    if (fileAssociationsEditor != null) {
-      fileAssociationsEditor.reset(config.getSelectedFileAssociations().getTheAssociations());
-    }
-    if (folderAssociationsEditor != null) {
-      folderAssociationsEditor.reset(config.getSelectedFolderAssociations().getTheAssociations());
-    }
-    afterStateSet();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (fileAssociationsEditor != null) {
+        fileAssociationsEditor.reset(config.getSelectedFileAssociations().getTheAssociations());
+      }
+      if (folderAssociationsEditor != null) {
+        folderAssociationsEditor.reset(config.getSelectedFolderAssociations().getTheAssociations());
+      }
+      afterStateSet();
+    });
   }
 
   @SuppressWarnings({"SimplifiableIfStatement",
