@@ -31,6 +31,8 @@
 package com.mallowigi.config.select;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
@@ -199,31 +201,33 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   }
 
   private void createTables() {
-    createFileIconsTable();
-    createFolderIconsTable();
+    ApplicationManager.getApplication().invokeLaterOnWriteThread(() -> {
+      createFileIconsTable();
+      createFolderIconsTable();
+    }, ModalityState.defaultModalityState());
   }
 
   /**
-   * Create the custom file icons
+   * Create the file icons
    */
   private void createFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     fileAssociationsEditor = new TableModelEditor<>(fileColumns,
       itemEditor,
-      AtomSettingsBundle.message("no.custom.file.associations"));
+      AtomSettingsBundle.message("no.file.associations"));
     fileIconsTable = fileAssociationsEditor.createComponent();
     fileAssociationsPanel.add(fileIconsTable, "cell 0 0"); //NON-NLS
 
   }
 
   /**
-   * Create the custom folder icons
+   * Create the folder icons
    */
   private void createFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     folderAssociationsEditor = new TableModelEditor<>(folderColumns,
       itemEditor,
-      AtomSettingsBundle.message("no.custom.folder.associations"));
+      AtomSettingsBundle.message("no.folder.associations"));
     folderIconsTable = folderAssociationsEditor.createComponent();
     folderAssociationsPanel.add(folderIconsTable, "cell 0 0"); //NON-NLS
   }
