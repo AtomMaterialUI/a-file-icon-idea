@@ -28,6 +28,9 @@
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
   <component name="KubernetesApiPersistence">
     <option name="context" value="arn:aws:eks:us-east-1:884661243007:cluster/prod" />
     <option name="namespace" value="default" />
