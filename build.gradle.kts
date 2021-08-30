@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
   implementation("com.thoughtworks.xstream:xstream:1.4.18")
   implementation("org.javassist:javassist:3.27.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
