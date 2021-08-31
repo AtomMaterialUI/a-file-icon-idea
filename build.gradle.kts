@@ -72,8 +72,7 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
-  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
-
+//  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
 
   plugins.set(
     listOf(
