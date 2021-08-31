@@ -73,6 +73,10 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
 
     model = new MyListTableModel(columns, new ArrayList<>(items));
     table = new TableView<>(model);
+    table.setStriped(true);
+    table.setMaxItemsForSizeCalculation(20);
+    table.setIgnoreRepaint(true);
+    table.setFillsViewportHeight(true);
     table.setShowGrid(false);
     table.setDefaultEditor(Enum.class, ComboBoxTableCellEditor.INSTANCE);
     table.setEnableAntialiasing(true);
