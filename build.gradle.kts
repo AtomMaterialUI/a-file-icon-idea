@@ -24,8 +24,6 @@
  *
  */
 
-import org.jetbrains.changelog.closure
-
 fun properties(key: String) = project.findProperty(key).toString()
 
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
@@ -36,13 +34,13 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.5.30"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.1.4"
+  id("org.jetbrains.intellij") version "1.1.3"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.0"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
   id("io.gitlab.arturbosch.detekt") version "1.18.1"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
+  id("org.jlleitschuh.gradle.ktlint-idea") version "10.1.0"
 }
 
 group = properties("pluginGroup")
@@ -89,13 +87,13 @@ intellij {
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path = "${project.projectDir}/changelog/CHANGELOG.md"
-  version = properties("pluginVersion")
-  header = closure { version }
-  itemPrefix = "-"
-  keepUnreleasedSection = true
-  unreleasedTerm = "Changelog"
-  groups = listOf("Features", "Fixes", "Removals", "Additions", "Other")
+  path.set("${project.projectDir}/changelog/CHANGELOG.md")
+  version.set(properties("pluginVersion"))
+  header.set(provider { version.get() })
+  itemPrefix.set("-")
+  keepUnreleasedSection.set(true)
+  unreleasedTerm.set("Changelog")
+  groups.set(listOf("Features", "Fixes", "Removals", "Additions", "Other"))
 }
 
 // Configure detekt plugin.
