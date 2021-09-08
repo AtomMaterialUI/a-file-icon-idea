@@ -232,7 +232,6 @@
       <li><strong>Bigger Icons</strong>: Increase icons' size
         <ul>
           <li>20px icons instead of 16px</li>
-          <li>Only for File Icons and Directory Icon</li>
           <li>Doesn't work for custom icons (unless they specify the attribute `big="true"` on the svg tag)</li>
         </ul>
       </li>
