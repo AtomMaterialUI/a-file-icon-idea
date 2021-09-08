@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<!--
   - The MIT License (MIT)
   -
   - Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
@@ -24,11 +24,8 @@
   -
   -->
 
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     version="1.1" width="16px" height="16px"
-     viewBox="0 0 24 24">
-    <path fill="#ab7967"
-          d="M3,17V19H9V17H3M3,5V7H13V5H3M13,21V19H21V17H13V15H11V21H13M7,9V11H3V13H7V15H9V9H7M21,13V11H11V13H21M15,9H17V7H21V5H17V3H15V9Z"/>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px"
+     viewBox="-88 -48 608 608">
+  <path class="i-color" fill="#AB7967"
+        d="M196.129776,0.0783118C85.3945084-3.4777751,0,114.5564575,0,256.0455322c0,138.2882996,81.1239777,250.9154053,182.5795441,255.9377136C233.3747559,275.0162964,127.5741119,313.3545837,196.129776,0.0783118z M239.5184937,511.9841614C353.5866394,513.5592651,436,397.5265503,436,256.0374756c0-138.548172-81.3139343-251.33815-182.9344025-255.9606934C184.131897,298.0715637,283.2028809,266.048645,239.5184937,511.9841614z" />
 </svg>

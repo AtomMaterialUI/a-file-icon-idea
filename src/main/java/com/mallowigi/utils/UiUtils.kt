@@ -26,10 +26,13 @@
 
 package com.mallowigi.utils
 
+import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
-
+import com.mallowigi.config.AtomSettingsBundle
 
 /**
  * Refresh
@@ -57,4 +60,21 @@ fun refreshOpenedProjects() {
   for (project in projects) {
     refresh(project)
   }
+}
+
+/**
+ * Get plugin descriptor
+ *
+ * @return
+ */
+fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId("com.mallowigi"))
+
+/**
+ * Get current plugin version
+ *
+ * @return
+ */
+fun getVersion(): String {
+  val plugin: IdeaPluginDescriptor? = getPlugin()
+  return if (plugin != null) plugin.version else AtomSettingsBundle.message("plugin.version")
 }

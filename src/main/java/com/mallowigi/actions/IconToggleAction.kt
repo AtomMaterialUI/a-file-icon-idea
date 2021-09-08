@@ -23,72 +23,71 @@
  *
  *
  */
+package com.mallowigi.actions
 
-package com.mallowigi.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.ToggleAction
+import com.intellij.openapi.actionSystem.Toggleable
+import com.intellij.ui.LayeredIcon
+import com.intellij.util.IconUtil
+import com.intellij.util.ObjectUtils
+import com.intellij.util.ui.GraphicsUtil
+import com.intellij.util.ui.JBUI
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.utils.AtomNotifications.showSimple
+import java.awt.Component
+import java.awt.Graphics
+import java.text.MessageFormat
+import javax.swing.Icon
+import javax.swing.UIManager
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.actionSystem.ToggleAction;
-import com.intellij.openapi.actionSystem.Toggleable;
-import com.intellij.ui.LayeredIcon;
-import com.intellij.util.IconUtil;
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.JBUI;
-import org.jetbrains.annotations.NotNull;
+/**
+ * Icon toggle action
+ *
+ */
+abstract class IconToggleAction : ToggleAction() {
+  private val iconSize: Int = JBUI.scale(18)
 
-import javax.swing.*;
-import java.awt.*;
-
-public abstract class IconToggleAction extends ToggleAction {
-  @NotNull
-  private static Icon regularIcon(final Icon icon) {
-    return IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18));
-  }
-
-  private static Icon selectedFallbackIcon(final Icon icon) {
-    return new Icon() {
-      @Override
-      public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-        final Graphics g2d = g.create();
-
-        try {
-          GraphicsUtil.setupAAPainting(g2d);
-          g2d.setColor(JBUI.CurrentTheme.ActionButton.pressedBackground());
-          g2d.fillRoundRect(0, 0, getIconWidth(), getIconHeight(), 4, 4);
-        } finally {
-          g2d.dispose();
-        }
-      }
-
-      @Override
-      public int getIconWidth() {
-        return icon != null ? icon.getIconWidth() : JBUI.scale(18);
-      }
-
-      @Override
-      public int getIconHeight() {
-        return icon != null ? icon.getIconHeight() : JBUI.scale(18);
-      }
-    };
-  }
-
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    final boolean selected = isSelected(e);
-    final Presentation presentation = e.getPresentation();
-    final Icon icon = presentation.getIcon();
-    Toggleable.setSelected(presentation, selected);
-
-    final Icon fallbackIcon = selectedFallbackIcon(icon);
-    final Icon actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon);
+  @Suppress("UseIfInsteadOfWhen")
+  override fun update(e: AnActionEvent) {
+    val selected = isSelected(e)
+    val presentation = e.presentation
+    val icon = presentation.icon
+    Toggleable.setSelected(presentation, selected)
+    val fallbackIcon = selectedFallbackIcon(icon)
+    val actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon)
 
     // Recreate the action button look
-    if (selected) {
-      e.getPresentation().setIcon(new LayeredIcon(actionButtonIcon, regularIcon(icon)));
-    } else {
-      e.getPresentation().setIcon(regularIcon(icon));
+    when {
+      selected -> e.presentation.icon = LayeredIcon(actionButtonIcon, regularIcon(icon))
+      else     -> e.presentation.icon = regularIcon(icon)
     }
   }
 
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    val notificationMessage = e.presentation.text
+    val restText = message(if (state) "action.toggle.enabled" else "action.toggle.disabled")
+    showSimple(e.project!!, MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText))
+  }
+
+  private fun regularIcon(icon: Icon): Icon = IconUtil.toSize(icon, iconSize, iconSize)
+
+  private fun selectedFallbackIcon(icon: Icon?): Icon = object : Icon {
+    override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+      val g2d = g.create()
+      try {
+        GraphicsUtil.setupAAPainting(g2d)
+        g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
+
+        @Suppress("MagicNumber")
+        g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
+      } finally {
+        g2d.dispose()
+      }
+    }
+
+    override fun getIconWidth(): Int = icon?.iconWidth ?: iconSize
+
+    override fun getIconHeight(): Int = icon?.iconHeight ?: iconSize
+  }
 }
