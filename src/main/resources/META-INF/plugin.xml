@@ -133,9 +133,11 @@
               icon="/icons/settings/hideFolderAction.svg" />
       <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
               icon="/icons/settings/folderOpen.svg" />
+      <action class="com.mallowigi.actions.BiggerIconsAction" id="BiggerIconsAction"
+              icon="/icons/settings/plus.svg" />
       <separator></separator>
 
-      <group id="arrowsStyles" popup="true">
+      <group id="AtomFileIcons.ArrowStyles" popup="true">
         <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
                 id="MTMaterialArrows"
                 icon="/icons/actions/arrows/material.svg" />
@@ -149,6 +151,7 @@
                 id="MTArrowsArrows"
                 icon="/icons/actions/arrows/arrows.svg" />
         <action class="com.mallowigi.actions.arrows.MTNoneArrows"
+                icon="/icons/actions/arrows/none.svg"
                 id="MTNoneArrows" />
       </group>
       <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
@@ -227,6 +230,13 @@
           <li>Closing tab button</li>
           <li>Highlighted arrows</li>
           <li>Loading indicator...</li>
+        </ul>
+      </li>
+      <li><strong>Bigger Icons</strong>: Increase icons' size
+        <ul>
+          <li>20px icons instead of 16px</li>
+          <li>Only for File Icons and Directory Icon</li>
+          <li>Doesn't work for custom icons (unless they specify the attribute `big="true"` on the svg tag)</li>
         </ul>
       </li>
       <li><strong>Customizability</strong>: Custom Settings

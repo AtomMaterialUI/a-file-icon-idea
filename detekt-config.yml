@@ -38,6 +38,10 @@ style:
     values: [ ]
   MagicNumber:
     active: true
+    ignorePropertyDeclaration: true
+    ignoreAnnotation: true
+    ignoreRanges: true
+    ignoreEnums: true
   EqualsOnSignatureLine:
     active: true
   ExplicitCollectionElementAccessMethod:

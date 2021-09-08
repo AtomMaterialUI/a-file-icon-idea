@@ -1,3 +1,29 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -
+  -->
+
 <svg xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" viewBox="0 0 511.883 511.883">
     <path fill="#ccd1d9" d="M341.251 479.885H170.618l21.276-106.569 128.048-.031z"/>
     <path d="M511.883 383.909c0 5.905-4.781 10.653-10.67 10.653H10.654C4.78 394.561 0 389.814 0 383.908V42.651c0-5.889 4.78-10.653 10.654-10.653h490.559c5.889 0 10.67 4.764 10.67 10.653v341.258zm-170.632 95.976H170.618c-5.874 0-10.654-4.779-10.654-10.653 0-5.905 4.78-10.686 10.654-10.686h170.633c5.889 0 10.669 4.78 10.669 10.686 0 5.875-4.781 10.653-10.669 10.653z"
