@@ -25,15 +25,16 @@
   -->
 
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24" fill="#FF8A65">
-  <g transform="scale(1.5)">
-    <rect width="1" height="12" x="1" y="2" />
-    <rect width="2" height="1" x="2" y="2" />
-    <rect width="2" height="1" x="2" y="13" />
-    <rect width="1" height="12" x="14" y="2" />
-    <rect width="3" height="1" x="12" y="2" />
-    <rect width="2" height="1" x="12" y="13" />
-  </g>
-  <path fill="#FF8A65" transform="scale(0.75) translate(4 4)"
-        d="M4,18V20H8V18H4M4,14V16H14V14H4M10,18V20H14V18H10M16,14V16H20V14H16M16,18V20H20V18H16M2,22V8L7,12V8L12,12V8L17,12L18,2H21L22,12V22H2Z" />
+<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24"
+     fill="#FF8A65">
+    <g transform="scale(1.5)">
+        <rect width="1" height="12" x="1" y="2" />
+        <rect width="2" height="1" x="2" y="2" />
+        <rect width="2" height="1" x="2" y="13" />
+        <rect width="1" height="12" x="14" y="2" />
+        <rect width="3" height="1" x="12" y="2" />
+        <rect width="2" height="1" x="12" y="13" />
+    </g>
+    <path fill="#FF8A65" transform="scale(0.75) translate(4 4)"
+          d="M4,18V20H8V18H4M4,14V16H14V14H4M10,18V20H14V18H10M16,14V16H20V14H16M16,18V20H20V18H16M2,22V8L7,12V8L12,12V8L17,12L18,2H21L22,12V22H2Z" />
 </svg>

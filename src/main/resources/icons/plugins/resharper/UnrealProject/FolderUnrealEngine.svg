@@ -24,7 +24,8 @@
   -
   -->
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 24 24">
+<svg big="true" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px"
+     viewBox="0 0 24 24">
   <path d="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.097.903 2 2 2h16c1.097 0 2-.903 2-2V8a2 2 0 0 0-2-2h-8l-2-2z" fill="#D52A29"
         fill-rule="nonzero" />
   <g fill="#FFCDD2" transform="scale(0.03) translate(256 256)">

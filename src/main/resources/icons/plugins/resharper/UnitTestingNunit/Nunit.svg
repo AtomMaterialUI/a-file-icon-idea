@@ -24,7 +24,7 @@
   -
   -->
 
-<svg width='16px' height='16px' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'>
+<svg big="true" width='16px' height='16px' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'>
   <defs>
     <mask id="qunit">
       <circle fill='white' cx="8" cy="8" r="7"></circle>

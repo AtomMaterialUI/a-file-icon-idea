@@ -24,7 +24,7 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
   <rect id="frame" width="16" height="16" fill="none" />
   <g fill="#64B5F6" fill-opacity=".9" fill-rule="evenodd">
     <path

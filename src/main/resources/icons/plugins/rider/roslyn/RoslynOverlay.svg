@@ -24,7 +24,7 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-  <path fill="#F26522" fill-rule="evenodd" transform="translate(0 8) scale(0.5)"
-        d="M11.335 4L9.369 9.256 5.99 1 4.384 1 6.027 5.017 3 12 4.718 12 6.862 7.056 8.602 11.307 7.22 15 8.885 15 13 4z" />
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+    <path fill="#F26522" fill-rule="evenodd" transform="translate(0 8) scale(0.5)"
+          d="M11.335 4L9.369 9.256 5.99 1 4.384 1 6.027 5.017 3 12 4.718 12 6.862 7.056 8.602 11.307 7.22 15 8.885 15 13 4z" />
 </svg>

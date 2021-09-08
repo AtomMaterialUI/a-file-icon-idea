@@ -24,7 +24,7 @@
   -
   -->
 
-<svg ti:v='1' width='16' height='16' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'
+<svg big="true" ti:v='1' width='16' height='16' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'
      xmlns:ti='urn:schemas-jetbrains-com:tisvg'>
   <g>
     <path fill-rule='evenodd' d='M8,15L1,15L1,8L8,8L8,15Z' fill='#673AB7' />

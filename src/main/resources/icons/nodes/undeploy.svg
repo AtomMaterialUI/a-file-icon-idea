@@ -24,7 +24,7 @@
   -
   -->
 
-<svg version="1.1" class="has-solid " viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
+<svg big="true" version="1.1" class="has-solid " viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
      xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" width="16px" height="16px" fill="#66BB6A">
   <path d="M33,2H22.1a1,1,0,0,0,0,2h8.53l-8.82,9a1,1,0,1,0,1.43,1.4L32,5.46V13.9a1,1,0,0,0,2,0V3A1,1,0,0,0,33,2Z"
         transform="rotate(180 28 8)" />

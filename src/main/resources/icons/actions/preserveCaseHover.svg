@@ -25,7 +25,7 @@
   -->
 
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
   <circle r="12" cx="12" cy="12" tint="true" opacity="0.5"></circle>
 
   <path fill="#FFFFFF"

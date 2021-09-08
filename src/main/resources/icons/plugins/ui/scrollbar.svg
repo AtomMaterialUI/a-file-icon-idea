@@ -24,7 +24,8 @@
   -
   -->
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 32 32"
+<svg big="true" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px"
+     viewBox="0 0 32 32"
      xml:space="preserve">
   <g fill="none" stroke="#26A69A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
      stroke-width="2">

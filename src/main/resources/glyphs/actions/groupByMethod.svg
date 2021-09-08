@@ -25,7 +25,8 @@
   -->
 
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24" fill="#82AAFF">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24"
+     fill="#82AAFF">
   <g transform="scale(1.5)">
     <rect width="1" height="12" x="1" y="2" />
     <rect width="2" height="1" x="2" y="2" />

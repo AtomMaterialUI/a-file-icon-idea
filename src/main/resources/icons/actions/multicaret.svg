@@ -24,7 +24,7 @@
   -
   -->
 
-<svg width="16px" height="16px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<svg big="true" width="16px" height="16px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <g>
     <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1" />
   </g>

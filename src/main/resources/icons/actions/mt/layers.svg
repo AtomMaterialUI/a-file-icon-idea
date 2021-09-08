@@ -24,7 +24,7 @@
   -
   -->
 
-<svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<svg big="true" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <g>
     <rect fill="#FFCB6B" x="3.11886" y="3.01913" width="7.89807" height="10.19106" id="svg_2" />
     <rect fill="#C792EA" x="12.99903" y="2.96901" width="7.95444" height="5.96898" id="svg_3" />

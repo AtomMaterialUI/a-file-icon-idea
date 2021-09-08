@@ -25,7 +25,8 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0.344 0.198 31.58 31.302" width="16px" height="16px" fill="#90A4AE">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" viewBox="0.344 0.198 31.58 31.302" width="16px" height="16px"
+     fill="#90A4AE">
   <mask id="_mask_Fxcw0HwLgsyULfTBJbLwfjMgSatMevCN" x="-200%" y="-200%" width="400%" height="400%">
     <rect x="-200%" y="-200%" width="400%" height="400%" fill="white" />
     <path
