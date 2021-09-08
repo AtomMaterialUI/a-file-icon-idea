@@ -25,12 +25,14 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.util.SVGLoader.SvgElementColorPatcher
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
 import org.jetbrains.annotations.NonNls
 import org.w3c.dom.Element
 import java.util.SortedSet
+import javax.swing.SwingUtilities
 
 /**
  * Main svg patcher: run all registered svg patchers
@@ -45,12 +47,12 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     BigIconsPatcher()
   )
 
-
   /**
    * Call refresh colors on all patchers
    */
   fun refreshColors() {
     patchers.forEach { it.refresh() }
+    SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
 
   /**

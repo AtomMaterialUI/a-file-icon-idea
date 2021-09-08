@@ -65,6 +65,8 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
       val connect = ApplicationManager.getApplication().messageBus.connect()
       connect.subscribe(LafManagerListener.TOPIC, LafManagerListener { refreshColors() })
       connect.subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { refreshColors() })
+
+      refreshColors()
     }
 
     private fun refreshColors() = MainSvgPatcher.instance.refreshColors()
