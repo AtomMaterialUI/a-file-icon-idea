@@ -35,7 +35,7 @@ import com.intellij.util.ui.table.IconTableCellRenderer
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
-import icons.MTIcons
+import icons.AtomIcons
 import java.io.IOException
 import javax.swing.Icon
 import javax.swing.JTable
@@ -67,7 +67,7 @@ open class IconEditableColumnInfo(private val parent: Disposable, private val ed
       return object : IconTableCellRenderer<String>() {
         override fun getIcon(value: String, table: JTable, row: Int): Icon? {
           return try {
-            MTIcons.loadSVGIcon(value)
+            AtomIcons.loadSVGIcon(value)
           } catch (e: IOException) {
             null
           }

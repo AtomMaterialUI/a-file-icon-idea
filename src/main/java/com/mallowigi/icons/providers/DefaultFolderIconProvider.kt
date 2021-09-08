@@ -33,7 +33,7 @@ import com.intellij.psi.PsiElement
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.services.AssociationsFactory
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
 /**
@@ -42,7 +42,7 @@ import javax.swing.Icon
  * @constructor Create empty Default folder icon provider
  */
 class DefaultFolderIconProvider : AbstractFileIconProvider() {
-  override fun getIcon(iconPath: String): Icon? = MTIcons.getFolderIcon(iconPath)
+  override fun getIcon(iconPath: String): Icon? = AtomIcons.getFolderIcon(iconPath)
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
@@ -73,7 +73,7 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
 
   private fun isFolderContainingOpenFiles(
     element: PsiElement,
-    virtualFile: VirtualFile
+    virtualFile: VirtualFile,
   ): Boolean {
     val openFiles = FileEditorManager.getInstance(element.project).openFiles
     return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }

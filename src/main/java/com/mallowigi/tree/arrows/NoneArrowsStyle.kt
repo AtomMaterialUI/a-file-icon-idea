@@ -29,6 +29,10 @@ import com.intellij.icons.AllIcons
 import com.intellij.util.ui.EmptyIcon
 import javax.swing.Icon
 
+/**
+ * No arrows style
+ *
+ */
 class NoneArrowsStyle : ArrowsStyle {
   private val emptyIcon = EmptyIcon.create(AllIcons.General.ArrowUp)
   override val expandIcon: Icon

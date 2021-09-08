@@ -33,7 +33,7 @@ import com.intellij.util.ui.table.IconTableCellRenderer
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.providers.DefaultFolderIconProvider
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 import javax.swing.JTable
 import javax.swing.ListSelectionModel
@@ -49,7 +49,7 @@ internal class FolderAssociationsTable :
   private fun initColumns() {
     val iconColumn = getColumnModel().getColumn(ICON_COLUMN)
     iconColumn.cellRenderer = object : IconTableCellRenderer<String>() {
-      override fun getIcon(value: String, table: JTable, row: Int): Icon = MTIcons.getFolderIcon(value)
+      override fun getIcon(value: String, table: JTable, row: Int): Icon = AtomIcons.getFolderIcon(value)
     }
   }
 
@@ -60,10 +60,10 @@ internal class FolderAssociationsTable :
 
     override fun getColumnName(columnIndex: Int): String {
       return when (columnIndex) {
-        NAME_COLUMN -> message("AssociationsForm.folderIconsTable.columns.name")
-        ICON_COLUMN -> message("AssociationsForm.folderIconsTable.columns.icon")
+        NAME_COLUMN    -> message("AssociationsForm.folderIconsTable.columns.name")
+        ICON_COLUMN    -> message("AssociationsForm.folderIconsTable.columns.icon")
         PATTERN_COLUMN -> message("AssociationsForm.folderIconsTable.columns.pattern")
-        else -> ""
+        else           -> ""
       }
     }
 
@@ -74,10 +74,10 @@ internal class FolderAssociationsTable :
     override fun getValueAt(rowIndex: Int, columnIndex: Int): Any? {
       val entry = associations[rowIndex]
       return when (columnIndex) {
-        NAME_COLUMN -> entry.name
-        ICON_COLUMN -> entry.icon
+        NAME_COLUMN    -> entry.name
+        ICON_COLUMN    -> entry.icon
         PATTERN_COLUMN -> entry.matcher
-        else -> null
+        else           -> null
       }
     }
 

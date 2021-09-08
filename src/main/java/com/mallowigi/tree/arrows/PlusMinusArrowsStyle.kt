@@ -25,19 +25,23 @@
  */
 package com.mallowigi.tree.arrows
 
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
+/**
+ * Plus-minus arrows style
+ *
+ */
 class PlusMinusArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = MTIcons.Arrows.Plus
+    get() = AtomIcons.Arrows.Plus
 
   override val collapseIcon: Icon
-    get() = MTIcons.Arrows.Minus
+    get() = AtomIcons.Arrows.Minus
 
   override val selectedExpandIcon: Icon
-    get() = MTIcons.Arrows.PlusSelected
+    get() = AtomIcons.Arrows.PlusSelected
 
   override val selectedCollapseIcon: Icon
-    get() = MTIcons.Arrows.MinusSelected
+    get() = AtomIcons.Arrows.MinusSelected
 }

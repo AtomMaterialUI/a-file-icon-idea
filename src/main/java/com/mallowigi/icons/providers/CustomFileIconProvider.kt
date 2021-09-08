@@ -32,7 +32,7 @@ import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.associations.AtomAssocConfig
 import com.mallowigi.icons.associations.CustomAssociations
 import com.mallowigi.icons.special.CustomFileIcon
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
 /**
@@ -49,7 +49,7 @@ class CustomFileIconProvider : AbstractFileIconProvider() {
 
   override fun isDefault(): Boolean = false
 
-  override fun getIcon(iconPath: String): Icon = CustomFileIcon(MTIcons.loadSVGIcon(iconPath))
+  override fun getIcon(iconPath: String): Icon = CustomFileIcon(AtomIcons.loadSVGIcon(iconPath))
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledIcons
 

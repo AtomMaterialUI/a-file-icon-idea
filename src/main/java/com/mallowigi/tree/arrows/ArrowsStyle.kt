@@ -27,9 +27,13 @@ package com.mallowigi.tree.arrows
 
 import javax.swing.Icon
 
+/**
+ * Interface for arrow styles
+ *
+ */
 interface ArrowsStyle {
-  val expandIcon: Icon?
-  val collapseIcon: Icon?
-  val selectedExpandIcon: Icon?
-  val selectedCollapseIcon: Icon?
+  val expandIcon: Icon
+  val collapseIcon: Icon
+  val selectedExpandIcon: Icon
+  val selectedCollapseIcon: Icon
 }

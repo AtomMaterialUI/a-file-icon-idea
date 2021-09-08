@@ -25,11 +25,15 @@
  */
 package com.mallowigi.tree.arrows
 
-import com.intellij.icons.AllIcons
-import com.intellij.openapi.util.IconLoader
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
+/**
+ * Enum for arrow styles
+ *
+ * @property type description
+ * @property arrowsStyle enum value
+ */
 enum class ArrowsStyles(@param:NonNls private val type: String, private val arrowsStyle: ArrowsStyle) {
   MATERIAL("Material", MaterialArrowsStyle()),
   DARCULA("Darcula", DarculaArrowsStyle()),
@@ -37,21 +41,20 @@ enum class ArrowsStyles(@param:NonNls private val type: String, private val arro
   ARROWS("Arrows", ArrowsArrowsStyle()),
   NONE("None", NoneArrowsStyle());
 
-
-  val expandIcon: Icon?
+  val expandIcon: Icon
     get() = arrowsStyle.expandIcon
 
-  val collapseIcon: Icon?
+  val collapseIcon: Icon
     get() = arrowsStyle.collapseIcon
 
-  val selectedExpandIcon: Icon?
+  val selectedExpandIcon: Icon
     get() = arrowsStyle.selectedExpandIcon
 
-  val selectedCollapseIcon: Icon?
+  val selectedCollapseIcon: Icon
     get() = arrowsStyle.selectedCollapseIcon
 
   val icon: Icon
-    get() = expandIcon ?: IconLoader.getTransparentIcon(AllIcons.Ide.Link, 0.0f)
+    get() = expandIcon
 
   override fun toString(): String = type
 

@@ -31,7 +31,7 @@ import com.intellij.psi.PsiFile
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.services.AssociationsFactory
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
 /**
@@ -46,7 +46,7 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
 
   override fun getSource(): DefaultAssociations = associations
 
-  override fun getIcon(iconPath: String): Icon = MTIcons.getFileIcon(iconPath)
+  override fun getIcon(iconPath: String): Icon = AtomIcons.getFileIcon(iconPath)
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledIcons
 

@@ -23,80 +23,58 @@
  *
  *
  */
+package com.mallowigi.tree
 
-package com.mallowigi.tree;
+import com.intellij.ide.AppLifecycleListener
+import com.intellij.ide.plugins.DynamicPluginListener
+import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.ui.LafManagerListener
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.project.ProjectManagerListener
+import com.intellij.util.messages.MessageBusConnection
+import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.config.listeners.AtomConfigNotifier
+import javax.swing.SwingUtilities
+import javax.swing.UIManager
 
-import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.plugins.DynamicPluginListener;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.ui.LafManagerListener;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.util.messages.MessageBusConnection;
-import com.mallowigi.config.AtomFileIconsConfig;
-import com.mallowigi.config.listeners.AtomConfigNotifier;
-import com.mallowigi.tree.arrows.ArrowsStyles;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+/**
+ * Arrow icons component: replace arrows
+ *
+ */
+class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
+  private val connect: MessageBusConnection = ApplicationManager.getApplication().messageBus.connect()
 
-import javax.swing.*;
+  override fun appStarted() = initComponent()
 
-public class ArrowIconsComponent implements DynamicPluginListener, AppLifecycleListener {
-  private final MessageBusConnection connect;
+  override fun appClosing(): Unit = disposeComponent()
 
-  public ArrowIconsComponent() {
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
+  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
+
+  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
+
+  private fun initComponent() {
+    replaceArrowIcons()
+
+    connect.subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { replaceArrowIcons() })
+    connect.subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
+      override fun projectOpened(project: Project) = replaceArrowIcons()
+    })
+    connect.subscribe(LafManagerListener.TOPIC, LafManagerListener { replaceArrowIcons() })
   }
 
-  private static void replaceTree() {
-    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    final ArrowsStyles arrowsStyle = AtomFileIconsConfig.getInstance().getArrowsStyle();
-    defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
-    defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
-    defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
-    defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
+  private fun disposeComponent() = connect.disconnect()
 
-    SwingUtilities.invokeLater(ActionToolbarImpl::updateAllToolbarsImmediately);
+  private fun replaceArrowIcons() {
+    val defaults = UIManager.getLookAndFeelDefaults()
+    val arrowsStyle = instance.arrowsStyle
+    defaults["Tree.collapsedIcon"] = arrowsStyle.expandIcon
+    defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
+    defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
+    defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
+    SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
 
-  @Override
-  public void appStarting(@Nullable final Project projectFromCommandLine) {
-    initComponent();
-  }
-
-  @Override
-  public void appClosing() {
-    disposeComponent();
-  }
-
-  @Override
-  public void pluginLoaded(@NotNull final IdeaPluginDescriptor pluginDescriptor) {
-    initComponent();
-  }
-
-  @Override
-  public void pluginUnloaded(@NotNull final IdeaPluginDescriptor pluginDescriptor, final boolean isUpdate) {
-    disposeComponent();
-  }
-
-  private void initComponent() {
-    replaceTree();
-
-    connect.subscribe(AtomConfigNotifier.TOPIC, atomFileIconsConfig -> replaceTree());
-    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
-      @Override
-      public void projectOpened(@NotNull final Project project) {
-        replaceTree();
-      }
-    });
-
-    connect.subscribe(LafManagerListener.TOPIC, source -> replaceTree());
-  }
-
-  private void disposeComponent() {
-    connect.disconnect();
-  }
 }

@@ -25,19 +25,23 @@
  */
 package com.mallowigi.tree.arrows
 
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
+/**
+ * Material arrows style: Chevron
+ *
+ */
 class MaterialArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = MTIcons.Arrows.MaterialRight
+    get() = AtomIcons.Arrows.MaterialRight
 
   override val collapseIcon: Icon
-    get() = MTIcons.Arrows.MaterialDown
+    get() = AtomIcons.Arrows.MaterialDown
 
   override val selectedExpandIcon: Icon
-    get() = MTIcons.Arrows.MaterialRightSelected
+    get() = AtomIcons.Arrows.MaterialRightSelected
 
   override val selectedCollapseIcon: Icon
-    get() = MTIcons.Arrows.MaterialDownSelected
+    get() = AtomIcons.Arrows.MaterialDownSelected
 }

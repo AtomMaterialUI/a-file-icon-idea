@@ -41,10 +41,14 @@ import com.intellij.util.PlatformIcons
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
-import icons.MTIcons
+import icons.AtomIcons
 import java.util.Objects
 import javax.swing.Icon
 
+/**
+ * Hollow folders decorator: Decorate directories as "open" when one of its files is open
+ *
+ */
 class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
@@ -53,65 +57,57 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
     if (project != null && file != null && !Disposer.isDisposed(project)) {
       if (!AtomFileIconsConfig.instance.isUseHollowFolders || !file.isDirectory) return
+
       if (AtomFileIconsConfig.instance.isHideFolderIcons) return
 
       if (isFolderContainingOpenFiles(project, file)) setOpenDirectoryIcon(data, file, project)
     }
   }
 
+  /**
+   * Set open directory icon according to the directory type
+   *
+   * @param data Presentation Data
+   * @param file data about the directory
+   * @param project current project
+   */
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
       when {
-        data.getIcon(true) is CustomDirIcon -> return
-        data.getIcon(true) is DirIcon -> {
+        data.getIcon(true) is CustomDirIcon                                -> return
+        data.getIcon(true) is DirIcon                                      -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
           data.setIcon(DirIcon(openedIcon))
         }
-        ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> {
-          data.setIcon(MTIcons.EXCLUDED)
-        }
-        ProjectRootsUtil.isModuleContentRoot(file, project) -> {
-          data.setIcon(MTIcons.MODULE)
-        }
-        ProjectRootsUtil.isInSource(file, project) -> {
-          data.setIcon(MTIcons.SOURCE)
-        }
-        ProjectRootsUtil.isInTestSource(file, project) -> {
-          data.setIcon(MTIcons.TEST)
-        }
-        data.getIcon(false) == PlatformIcons.PACKAGE_ICON -> {
-          //      Looks like an open directory anyway
-          data.setIcon(PlatformIcons.PACKAGE_ICON)
-        }
-        else -> {
-          data.setIcon(directoryIcon)
-        }
+        ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> data.setIcon(AtomIcons.EXCLUDED)
+        ProjectRootsUtil.isModuleContentRoot(file, project)                -> data.setIcon(AtomIcons.MODULE)
+        ProjectRootsUtil.isInSource(file, project)                         -> data.setIcon(AtomIcons.SOURCE)
+        ProjectRootsUtil.isInTestSource(file, project)                     -> data.setIcon(AtomIcons.TEST)
+        data.getIcon(false) == PlatformIcons.PACKAGE_ICON                  -> data.setIcon(PlatformIcons.PACKAGE_ICON)
+        else                                                               -> data.setIcon(directoryIcon)
       }
     } catch (e: Exception) {
       LOG.warn(e.message)
     }
   }
 
-  private fun isFolderContainingOpenFiles(
-    project: Project,
-    virtualFile: VirtualFile
-  ): Boolean {
+  private fun isFolderContainingOpenFiles(project: Project, virtualFile: VirtualFile): Boolean {
     val openFiles = FileEditorManager.getInstance(project).openFiles
     return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
-  override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {}
+  override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer): Unit = Unit
 
   companion object {
-    val LOG = Logger.getInstance("HollowFoldersDecorator")
+    val LOG: Logger = Logger.getInstance("HollowFoldersDecorator")
 
     @Volatile
-    private var directory: Icon? = MTIcons.Nodes2.FolderOpen
+    private var directory: Icon? = AtomIcons.Nodes2.FolderOpen
 
     private val directoryIcon: Icon?
       get() {
         if (directory == null) {
-          directory = MTIcons.Nodes2.FolderOpen
+          directory = AtomIcons.Nodes2.FolderOpen
         }
         return directory
       }

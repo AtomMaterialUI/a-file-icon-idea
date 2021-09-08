@@ -37,15 +37,18 @@ import com.mallowigi.config.associations.AtomAssocConfig
 import com.mallowigi.icons.providers.DefaultFileIconProvider
 import com.mallowigi.icons.special.CustomFileIcon
 import com.mallowigi.models.VirtualFileInfo
-import icons.MTIcons
+import icons.AtomIcons
 
+/**
+ * Specific treatment for python files, since they override the fileIconProvider
+ *
+ */
 class PythonDecorator : ProjectViewNodeDecorator {
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val virtualFile = node.virtualFile ?: return
     val extensions = listOf("py", "pt", "pyx", "webpy", "pyc", "mako")
 
-    if (!AtomFileIconsConfig.instance.isEnabledIcons) return
-    if (virtualFile.extension !in extensions) return
+    if (!AtomFileIconsConfig.instance.isEnabledIcons || virtualFile.extension !in extensions) return
 
     matchCustomAssociation(virtualFile, data)
     matchDefaultAssociation(virtualFile, data)
@@ -57,7 +60,7 @@ class PythonDecorator : ProjectViewNodeDecorator {
 
     val matchingAssociation = associations.findMatchingAssociation(fileInfo)
     if (matchingAssociation != null) {
-      data.setIcon(MTIcons.getFileIcon(matchingAssociation.icon))
+      data.setIcon(AtomIcons.getFileIcon(matchingAssociation.icon))
     }
   }
 
@@ -67,9 +70,9 @@ class PythonDecorator : ProjectViewNodeDecorator {
 
     val matchingAssociation = customFileAssociations.findMatchingAssociation(fileInfo)
     if (matchingAssociation != null) {
-      data.setIcon(CustomFileIcon(MTIcons.loadSVGIcon(matchingAssociation.icon)))
+      data.setIcon(CustomFileIcon(AtomIcons.loadSVGIcon(matchingAssociation.icon)))
     }
   }
 
-  override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {}
+  override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer): Unit = Unit
 }

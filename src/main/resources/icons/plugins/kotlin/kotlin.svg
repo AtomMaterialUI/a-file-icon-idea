@@ -24,7 +24,7 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
   <g fill="none" fill-rule="evenodd">
     <polygon fill="#497CE3" fill-rule="nonzero" points="1 15 8.023 7.977 15 15" />
     <polygon fill="#497CE3" fill-rule="nonzero" points="1 1 8.023 1 1 8.583" />

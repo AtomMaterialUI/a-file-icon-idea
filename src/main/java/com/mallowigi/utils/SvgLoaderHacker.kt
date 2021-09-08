@@ -67,7 +67,6 @@ object SvgLoaderHacker {
       ourColorPatcherField.get(null)
     }
 
-
   private fun useFallBackPatcher(): PatcherProvider =
     if (this::collectedPatcherProvider.isInitialized) collectedPatcherProvider else noOpPatcherProvider
 }

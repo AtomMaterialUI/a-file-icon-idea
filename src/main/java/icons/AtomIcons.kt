@@ -41,8 +41,11 @@ import java.net.URL
 import java.util.logging.Logger
 import javax.swing.Icon
 
-@Suppress("UndocumentedPublicClass")
-object MTIcons {
+/**
+ * Loader for Plugin's Icons
+ *
+ */
+object AtomIcons {
   private const val FILES_PATH: String = "/iconGenerator/assets"
   private const val FOLDERS_PATH: String = "/iconGenerator/assets/icons/folders"
   private const val FOLDERS_OPEN_PATH: String = "/iconGenerator/assets/icons/foldersOpen"
@@ -57,12 +60,24 @@ object MTIcons {
   val EYE_ON: Icon = load("/icons/mt/eye.svg")
   val EYE_OFF: Icon = load("/icons/mt/eyeOff.svg")
 
-  fun getFileIcon(iconPath: String): Icon = IconLoader.getIcon(FILES_PATH + iconPath, MTIcons.javaClass)
+  /**
+   * Get file icon from the resources folder
+   *
+   * @param iconPath path without the prefix
+   * @return the full path
+   */
+  fun getFileIcon(iconPath: String): Icon = IconLoader.getIcon(FILES_PATH + iconPath, AtomIcons.javaClass)
 
+  /**
+   * Get folder icons from the resources folder
+   *
+   * @param iconPath path without the prefix
+   * @return the DirIcon (closed+opened)
+   */
   fun getFolderIcon(iconPath: String): DirIcon {
     return DirIcon(
-      IconLoader.getIcon(FOLDERS_PATH + iconPath, MTIcons.javaClass),
-      IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath, MTIcons.javaClass)
+      IconLoader.getIcon(FOLDERS_PATH + iconPath, AtomIcons.javaClass),
+      IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath, AtomIcons.javaClass)
     )
   }
 

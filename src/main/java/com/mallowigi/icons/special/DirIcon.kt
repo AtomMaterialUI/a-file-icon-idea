@@ -25,7 +25,7 @@
  */
 package com.mallowigi.icons.special
 
-import icons.MTIcons
+import icons.AtomIcons
 import java.awt.Component
 import java.awt.Graphics
 import javax.swing.Icon
@@ -38,7 +38,7 @@ import javax.swing.Icon
  * @constructor Create empty Dir icon
  */
 open class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
-  internal constructor() : this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen)
+  internal constructor() : this(AtomIcons.Nodes2.FolderOpen, AtomIcons.Nodes2.FolderOpen)
 
   constructor(icon: Icon) : this(icon, icon)
 

@@ -56,7 +56,6 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
   companion object {
     private val PLUGIN_ID = PluginId.getId("com.mallowigi")
 
-
     private fun initComponent() {
       val otherPatcher = collectOtherPatcher()
       MainSvgPatcher.instance.addPatcher(otherPatcher)
@@ -68,9 +67,7 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
       connect.subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { refreshColors() })
     }
 
-    private fun refreshColors() {
-      MainSvgPatcher.instance.refreshColors()
-    }
+    private fun refreshColors() = MainSvgPatcher.instance.refreshColors()
 
     private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
   }

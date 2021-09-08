@@ -32,7 +32,7 @@ import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.associations.AtomAssocConfig
 import com.mallowigi.icons.associations.CustomAssociations
 import com.mallowigi.icons.special.CustomDirIcon
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
 /**
@@ -49,7 +49,7 @@ class CustomFolderIconProvider : AbstractFileIconProvider() {
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
-  override fun getIcon(iconPath: String): Icon = CustomDirIcon(MTIcons.loadSVGIcon(iconPath))
+  override fun getIcon(iconPath: String): Icon = CustomDirIcon(AtomIcons.loadSVGIcon(iconPath))
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
 

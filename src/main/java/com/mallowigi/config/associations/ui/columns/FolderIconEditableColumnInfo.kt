@@ -30,7 +30,7 @@ import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.util.PathUtil
 import com.intellij.util.ui.table.IconTableCellRenderer
 import com.mallowigi.icons.associations.Association
-import icons.MTIcons
+import icons.AtomIcons
 import java.io.IOException
 import javax.swing.Icon
 import javax.swing.JTable
@@ -52,7 +52,7 @@ class FolderIconEditableColumnInfo(private val parent: Disposable, private val e
       return object : IconTableCellRenderer<String>() {
         override fun getIcon(value: String, table: JTable, row: Int): Icon? {
           return try {
-            MTIcons.getFolderIcon(value)
+            AtomIcons.getFolderIcon(value)
           } catch (e: IOException) {
             null
           }

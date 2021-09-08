@@ -25,19 +25,23 @@
  */
 package com.mallowigi.tree.arrows
 
-import icons.MTIcons
+import icons.AtomIcons
 import javax.swing.Icon
 
+/**
+ * Darcula arrows style (triangle)
+ *
+ */
 class DarculaArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = MTIcons.Arrows.DarculaRight
+    get() = AtomIcons.Arrows.DarculaRight
 
   override val collapseIcon: Icon
-    get() = MTIcons.Arrows.DarculaDown
+    get() = AtomIcons.Arrows.DarculaDown
 
   override val selectedExpandIcon: Icon
-    get() = MTIcons.Arrows.DarculaRightSelected
+    get() = AtomIcons.Arrows.DarculaRightSelected
 
   override val selectedCollapseIcon: Icon
-    get() = MTIcons.Arrows.DarculaDownSelected
+    get() = AtomIcons.Arrows.DarculaDownSelected
 }
