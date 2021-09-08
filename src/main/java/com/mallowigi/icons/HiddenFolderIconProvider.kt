@@ -35,11 +35,10 @@ import javax.swing.Icon
 /**
  * Hidden folder icon provider
  *
- * @constructor Create empty Hidden folder icon provider
  */
 class HiddenFolderIconProvider : IconProvider() {
   /**
-   * Remove folder icon
+   * Remove folder icons
    */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     // If hide file icons is not activated, skip

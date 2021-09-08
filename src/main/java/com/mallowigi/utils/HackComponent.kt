@@ -32,6 +32,10 @@ import javassist.ClassPool
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 
+/**
+ * Hack Sources
+ * @unused
+ */
 object HackComponent {
   init {
     hackIconLoader()
@@ -57,5 +61,5 @@ object HackComponent {
       e.printStackTrace()
     }
   }
-  
+
 }

@@ -116,11 +116,6 @@ public final class SettingsForm implements SettingsFormUI {
     initComponents();
   }
 
-  //region big icons
-  public boolean getHasBigIcons() {
-    return biggerIconsCheckBox.isSelected();
-  }
-
   @SuppressWarnings("OverlyComplexMethod")
   public boolean isModified(final AtomFileIconsConfig config) {
     boolean modified = config.isEnabledIconsChanged(getIsEnabledIcons());
@@ -160,6 +155,11 @@ public final class SettingsForm implements SettingsFormUI {
   @Override
   public void dispose() {
     // empty
+  }
+
+  //region big icons
+  public boolean getHasBigIcons() {
+    return biggerIconsCheckBox.isSelected();
   }
 
   @SuppressWarnings({"Convert2MethodRef",
@@ -349,22 +349,7 @@ public final class SettingsForm implements SettingsFormUI {
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
     // Arrows
-    arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
-    arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<ArrowsStyles>() {
-      @Override
-      public void customize(final @NotNull JList list,
-                            final ArrowsStyles value,
-                            final int index,
-                            final boolean selected,
-                            final boolean hasFocus) {
-        final Icon baseIcon;
-        if (value == null) {
-          return;
-        }
-        baseIcon = value.getIcon();
-        setIcon(baseIcon);
-      }
-    });
+    initializeComboboxes();
   }
 
   //region Events
@@ -522,6 +507,25 @@ public final class SettingsForm implements SettingsFormUI {
     themedColorCheckbox.setSelected(enabled);
   }
   //endregion
+
+  private void initializeComboboxes() {
+    arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+    arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<ArrowsStyles>() {
+      @Override
+      public void customize(final @NotNull JList list,
+                            final ArrowsStyles value,
+                            final int index,
+                            final boolean selected,
+                            final boolean hasFocus) {
+        final Icon baseIcon;
+        if (value == null) {
+          return;
+        }
+        baseIcon = value.getIcon();
+        setIcon(baseIcon);
+      }
+    });
+  }
 
   private void accentColorCheckboxActionPerformed(final ActionEvent e) {
     accentColorChooser.setEnabled(accentColorCheckbox.isSelected());

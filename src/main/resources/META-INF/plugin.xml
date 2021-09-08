@@ -95,9 +95,9 @@
               topic="com.intellij.ide.plugins.DynamicPluginListener" />
     <listener class="com.mallowigi.icons.AtomSettingsListener" topic="com.intellij.ide.AppLifecycleListener" />
 
-    <listener class="com.mallowigi.icons.AtomColorsListener"
+    <listener class="com.mallowigi.icons.AtomSVGPatchersListener"
               topic="com.intellij.ide.plugins.DynamicPluginListener" />
-    <listener class="com.mallowigi.icons.AtomColorsListener" topic="com.intellij.ide.AppLifecycleListener" />
+    <listener class="com.mallowigi.icons.AtomSVGPatchersListener" topic="com.intellij.ide.AppLifecycleListener" />
 
     <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener" />
     <listener class="com.mallowigi.tree.ArrowIconsComponent"

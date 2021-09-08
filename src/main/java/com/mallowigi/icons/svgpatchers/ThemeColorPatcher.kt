@@ -32,9 +32,8 @@ import org.w3c.dom.Element
 import javax.swing.plaf.ColorUIResource
 
 /**
- * Theme color patcher
+ * Color Patcher for themed color
  *
- * @constructor Create empty Theme color patcher
  */
 class ThemeColorPatcher : SvgPatcher {
   private var themedColor: @NonNls ColorUIResource? = getThemedColor()

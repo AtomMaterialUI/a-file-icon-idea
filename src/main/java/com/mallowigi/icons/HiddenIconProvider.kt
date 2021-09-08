@@ -36,11 +36,10 @@ import javax.swing.Icon
 /**
  * Hidden icon provider
  *
- * @constructor Create empty Hidden icon provider
  */
 class HiddenIconProvider : IconProvider() {
   /**
-   * Remove icon when the setting is set
+   * Remove file icons
    */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
     // If hide file icons is not activated, skip

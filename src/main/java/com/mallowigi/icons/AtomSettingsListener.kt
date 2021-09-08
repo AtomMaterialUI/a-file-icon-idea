@@ -47,7 +47,7 @@ import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.utils.refreshOpenedProjects
 
 /**
- * Component in charge of replacing icons and apply filters
+ * Listener for Settings Changes
  *
  */
 class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {

@@ -39,9 +39,9 @@ import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
 
 /**
- * Apply a tint to the icons. This is used either for accented icons and themed icons.
+ * Listener for SVG Patchers
  */
-class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
+class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
   override fun appStarting(projectFromCommandLine: Project?): Unit = initComponent()
 
   override fun appClosing(): Unit = disposeComponent()
@@ -63,13 +63,15 @@ class AtomColorsListener : DynamicPluginListener, AppLifecycleListener, DumbAwar
 
       // Listen for changes on the settings
       val connect = ApplicationManager.getApplication().messageBus.connect()
-      connect.subscribe(LafManagerListener.TOPIC, LafManagerListener { refreshColors() })
-      connect.subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { refreshColors() })
+      connect.run {
+        subscribe(LafManagerListener.TOPIC, LafManagerListener { applySvgPatchers() })
+        subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
+      }
 
-      refreshColors()
+      applySvgPatchers()
     }
 
-    private fun refreshColors() = MainSvgPatcher.instance.refreshColors()
+    private fun applySvgPatchers() = MainSvgPatcher.instance.applySvgPatchers()
 
     private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
   }

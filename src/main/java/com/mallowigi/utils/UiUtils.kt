@@ -44,9 +44,7 @@ fun refresh(project: Project?) {
     val view = ProjectView.getInstance(project)
     if (view != null) {
       view.refresh()
-      if (view.currentProjectViewPane != null) {
-        view.currentProjectViewPane.updateFromRoot(true)
-      }
+      if (view.currentProjectViewPane != null) view.currentProjectViewPane.updateFromRoot(true)
     }
   }
 }
@@ -57,15 +55,12 @@ fun refresh(project: Project?) {
  */
 fun refreshOpenedProjects() {
   val projects: Array<Project> = ProjectManager.getInstance().openProjects
-  for (project in projects) {
-    refresh(project)
-  }
+  for (project in projects) refresh(project)
 }
 
 /**
  * Get plugin descriptor
  *
- * @return
  */
 fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId("com.mallowigi"))
 

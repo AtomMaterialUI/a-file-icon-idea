@@ -63,7 +63,7 @@ fun runSafely(runner: Runner): Unit =
  *
  * @param T
  */
-fun <T> T?.toOptional() = Optional.ofNullable(this)
+fun <T> T?.toOptional(): Optional<T> = Optional.ofNullable(this)
 
 /**
  * To stream

@@ -50,7 +50,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   /**
    * Call refresh colors on all patchers
    */
-  fun refreshColors() {
+  fun applySvgPatchers() {
     patchers.forEach { it.refresh() }
     SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }

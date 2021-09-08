@@ -101,7 +101,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   override fun getState(): AtomFileIconsConfig = this
 
-  override fun loadState(state: AtomFileIconsConfig) = XmlSerializerUtil.copyBean(state, this)
+  override fun loadState(state: AtomFileIconsConfig): Unit = XmlSerializerUtil.copyBean(state, this)
 
   /**
    * Fire event when settings are changed
@@ -398,7 +398,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   }
   //endregion
 
-
   companion object {
     @JvmStatic
     val instance: AtomFileIconsConfig
@@ -412,9 +411,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
     private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
-        "Light" -> "Button.select"
+        "Light"   -> "Button.select"
         "Darcula" -> "Button.select"
-        else -> "Link.activeForeground"
+        else      -> "Link.activeForeground"
       }
 
       val namedColor = JBColor.namedColor(
