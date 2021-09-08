@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<!--
   - The MIT License (MIT)
   -
   - Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
@@ -26,9 +26,8 @@
 
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px"
-     y="0px"
-     viewBox="0 0 512 512" xml:space="preserve" fill="#92DC5B" width="16px" height="16px">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512"
+     xml:space="preserve" fill="#92DC5B" width="16px" height="16px">
 <g>
 <g>
 <path d="M411.815,255.999l67.915-67.915c42.958-42.958,42.958-112.857,0-155.814C458.92,11.46,431.252,0,401.823,0
@@ -48,36 +47,36 @@ C489.32,376.522,489.32,427.123,458.222,458.221z" />
   <g>
 <g>
 
-<rect x="240.794" y="177.161" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -61.7615 237.6615)"
-      width="30.417" height="32.445" />
+<rect x="240.794" y="177.161" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -61.7615 237.6615)" width="30.417"
+      height="32.445" />
 </g>
 </g>
   <g>
 <g>
 
-<rect x="303.405" y="239.774" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -87.6967 300.2732)"
-      width="30.417" height="32.444" />
+<rect x="303.405" y="239.774" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -87.6967 300.2732)" width="30.417"
+      height="32.444" />
 </g>
 </g>
   <g>
 <g>
 
-<rect x="178.177" y="239.777" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -124.377 211.7241)"
-      width="30.417" height="32.444" />
+<rect x="178.177" y="239.777" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -124.377 211.7241)" width="30.417"
+      height="32.444" />
 </g>
 </g>
   <g>
 <g>
 
-<rect x="240.8" y="302.383" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -150.3047 274.3424)"
-      width="30.417" height="32.445" />
+<rect x="240.8" y="302.383" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -150.3047 274.3424)" width="30.417"
+      height="32.445" />
 </g>
 </g>
   <g>
 <g>
 
-<rect x="240.793" y="239.781" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -106.0401 256.0016)"
-      width="30.417" height="32.444" />
+<rect x="240.793" y="239.781" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -106.0401 256.0016)" width="30.417"
+      height="32.444" />
 </g>
 </g>
 </svg>

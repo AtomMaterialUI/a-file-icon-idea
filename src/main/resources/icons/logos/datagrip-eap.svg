@@ -25,11 +25,10 @@
   -
   -->
 
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      width="64px" height="64px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">  <image
-  id="image0" width="1024" height="1024" x="0" y="0"
-  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+  id="image0" width="1024" height="1024" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAACA
 AElEQVR42uz9a8w0W3Yehj1r7V3V7/vdzvedy5y5z/AyQ3JokRTvlClYsi60KVmyFIm2AieAJf+z
 EcCAA/8IghgB8itIDP8IECSwA+RfggSO4SBxYNiyYcFBoktiyTHD6EJSIofizHA4t3PO93bV3is/
@@ -4779,5 +4778,5 @@ IYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGE
 EEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBC
 CCGEEEIIIYQQQgghhBBCyFfG/w9SeOhVZJJYggAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wNi0x
 OFQwOTo1OTo1OC0wNzowMEiLS+oAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDYtMThUMDk6NTk6
-NTgtMDc6MDA51vNWAAAAAElFTkSuQmCC"/>
+NTgtMDc6MDA51vNWAAAAAElFTkSuQmCC" />
 </svg>

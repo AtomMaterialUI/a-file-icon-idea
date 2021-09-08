@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<!--
   - The MIT License (MIT)
   -
   - Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
@@ -26,8 +26,6 @@
 
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     version="1.1" width="12px" height="12px"
-     viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="12px" height="12px" viewBox="0 0 24 24">
   <path fill="#F44336" d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
 </svg>
