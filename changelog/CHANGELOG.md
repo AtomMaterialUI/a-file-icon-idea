@@ -1,5 +1,402 @@
 ## Changelog
 ----
+
+## 40.0 (4.2.0)
+
+### Features
+- Add support for optional `.` and `_` prefix for folder icons
+- Make all icons bigger with the _Bigger Icons_ setting
+- Add action for _Bigger Icons_
+
+### Fixes
+- Fix Bigger Icons not being applied at start
+
+### Other
+- Convert more code to Kotlin
+- Upgrade dependencies
+- Add Urls to assocations (for the icon generator)
+
+## 39.0 (4.1.0)
+
+### Additions
+- Caught up with **Atom File Icons** and **VSCode Icons** (non exhaustive list):
+  - Tea
+  - Telegram
+  - Tex
+  - Tfsignore
+  - Table Of Contents
+  - Template Toolkit
+  - Subtitles
+  - Terser
+  - Thor
+  - Tipe
+  - Tla
+  - Tmux
+  - Truffle
+  - TTCN
+  - Twine
+  - Txl
+  - Typedoc
+  - Typo3
+  - Db2
+  - Db3
+  - Udf
+  - SSH
+  - Kdbx
+  - Passwd
+  - Sassrc
+  - Kojo
+  - Solidity
+  - Cql
+  - 4GL
+  - Do
+  - Ihlp
+  - Sthlp
+  - Mata
+  - Matah
+  - Stylelintignore
+  - Nomad
+  - Noon
+  - Normalize
+  - NSRI
+  - Nu
+  - Numpy
+  - NXC
+  - OpenOffice
+  - OCaml
+  - Finder
+  - Oberon
+  - Obj-J
+  - Octave
+  - Odin
+  - Ooc
+  - Opa
+  - OpenCL
+  - OpenGL
+  - OpenPolicy
+  - OpenScad
+  - OpenVMS
+  - OpenVPN
+  - Org-mode
+  - Oxygene
+  - Oz
+  - Progress
+  - Sac
+  - Sage
+  - Sails
+  - Saltstack
+  - Sas
+  - Scilab
+  - Scilla
+  - Scratch
+  - Scrutinizer
+  - Secret
+  - Self
+  - Sencha
+  - Sentry
+  - Serverless
+  - ServiceFabric
+  - Shadowcljs
+  - Shen
+  - Shipit
+  - Shippable
+  - Sigils
+  - SketchMake
+  - SketchUp
+  - Skipper
+  - Slash
+  - SnapCraft
+  - Snap.svg
+  - Snort
+  - Snyk
+  - Solidarity
+  - Sophia
+  - Sorbet
+  - Spacemacs
+  - Sqf
+  - Squarespace
+  - Squirrel
+  - Stan
+  - Stdlib
+  - Storyist
+  - Stylable
+  - StyledComponents
+  - Stylish-haskell
+  - Automator
+  - Bitcoin
+  - Bloc
+  - Buildkite
+  - Cnab
+  - Cubit
+  - Dub
+  - Dvc
+  - Macosx
+  - Wine
+  - ApiExtractor
+  - Apollo
+  - Binder
+  - Bitcoin
+  - BlitzBasic
+  - Bors
+  - Bosque
+  - Calva
+  - Casc
+  - Codemeta
+  - Commitizen
+  - Dafny
+  - TSS
+  - JsonL
+  - LdJSON
+  - Deps
+  - Pydeps
+  - Cpc
+  - Python Configs
+  - Shell History
+  - Son
+  - Rdjson
+  - Ston
+  - Ejson
+  - More Db Associations
+  - Dependabot
+  - Drawio
+  - Dub
+  - Fabfile
+  - Fabric
+  - Fauna
+  - Figma
+  - Fthtml
+  - Gitpod
+  - GoReleaser
+  - Gql Codegen
+  - Grapher
+  - Hie
+  - Arm
+  - Avr
+  - Bison
+  - CkEditor
+  - Hygen
+  - Imgbot
+  - Mixin
+  - Photorec
+  - Shellcheck
+  - Windi.css
+  - Jscpd
+  - Kaitai
+  - Kibo
+  - Kusto
+  - Lark
+  - Latino
+  - Lgtm
+  - Lighthouse
+  - Linqpad
+  - Macaulay2
+  - Mermaid
+  - Metapost
+  - Modernweb
+  - Sourcemap
+  - Neon
+  - Nokogiri
+  - Nwscript
+  - Nx
+  - Pytest
+  - Readthedocs
+  - Ftr
+  - Omnigraffle
+  - Ogone
+  - Openexr
+  - Openzfs
+  - Rsync
+  - Sandbox
+  - Warcraft3
+  - Winui
+  - Wolfram
+  - Qsharp
+  - Xmake
+  - Rescript
+  - Stitches
+  - Expo
+  - Testcafe
+  - Tilt
+  - Ufo
+  - Unicode
+  - W3c
+  - Yamllint
+  - Yandex
+  - Yvm
+  - Vercel
+  - Detekt
+  - Al
+  - Apex
+  - Bats
+  - Bicep
+  - Cddl
+  - Fork
+  - AmigaOS
+  - Codemirror
+  - Cairo
+  - Codeql
+  - Confluence
+  - Donejs
+  - Dylan
+  - Dal
+  - Dojo
+  - Dosbox
+  - Drupal
+  - Dustjs
+  - Deno
+  - Nest Land
+  - E
+  - Edge
+  - Elastic
+  - Fossil
+  - Freedos
+  - Fiddle
+  - Freemat
+  - Asar
+  - Floobits
+  - Freedesktop
+  - Baboon
+  - Tinymce
+  - Gcode
+  - Spray
+  - Hosts
+  - Hlsl
+  - Hunspell
+  - Hypr
+  - Haxedevelop
+  - Hugo
+  - Icl
+  - Informix
+  - Janet
+  - Zorinos
+  - Xubuntu
+  - Zquery
+  - Webp
+  - Wpml
+  - Wxml
+  - Wxs
+  - Wxss
+  - Vertex
+  - Vmware
+  - Volt
+  - Vsix
+  - Unlicense
+  - Teal
+  - Tera
+  - Tox
+  - Tuc
+  - Sdlang
+  - Slang
+  - Slice
+  - Spaceengine
+  - Sparql
+  - SSS
+  - Reactos
+  - Rehype
+  - Remark
+  - Retext
+  - Rproj
+  - Rust-toolchain
+  - Pipeline
+  - Pddl
+  - Phpcs
+  - Pipeline
+  - Pkgsrc
+  - Precision
+  - Prometheus
+  - Pytyped
+  - Nodemon
+  - Prisma
+  - DragonFlyBSD
+  - ElementaryOS
+  - Manjaro
+  - OpenBSD
+  - Openhab
+  - OpenIndiana
+  - OpenSolaris
+  - OpenStack
+  - SmartOS
+  - N64
+  - Nearley
+  - Nix
+  - Stencil
+  - Xliff
+  - Svnignore
+  - Magit
+  - Manifest
+  - Matlab
+  - Mlang
+  - Mojolicious
+  - Mongo
+  - Ms-dos
+  - Mson
+  - Libuv
+  - License.bat
+  - Kite
+  - JSS
+  - Jsp
+  - JBuiler
+  - Iodine
+  - Jshintignore
+  - Helix
+  - Helixignore
+  - Homeassistant
+  - Horusec
+  - Haxe Develop
+  - Haxelib
+  - Jekyll
+  - Appsemble
+  - Astro
+  - Avif
+  - Drools
+  - Dvc
+  - Glitter
+  - Docz Config
+  - Dojorc
+  - Dox
+  - Emakerfile
+  - Flutter Lock
+  - Flutter Pacakges
+  - Angular Module
+  - Angular Controller
+  - Angular Container Ngrx
+  - Angular Page Ionic
+  - Angular App Routing
+  - Angular Tailwind
+  - Nest Adapter
+  - Nest Controller
+  - Nest Decorator
+  - Nest Filter
+  - Nest Gateway
+  - Nest Interceptor
+  - Nest Guard
+  - Nest Middleware
+  - Nest Service
+  - Nest Pipe
+  - Nest Module
+  - Azure Pipelines
+  - Blueprint
+  - Cake
+  - Composer,
+  - GCloud
+  - Haxelib
+  - Husky
+  - Mjml
+  - Mongo
+  - Next
+  - Nuget
+  - Platformio
+  - Redis
+  - Sso
+  - Vs
+  - Cmake
+  - Dapr
+  - Debian
+  - Elastic
+  - Electron
+  - Abc
+  - Astyle
+
 ## 38.0 (4.0.0)
 
 ### Features
