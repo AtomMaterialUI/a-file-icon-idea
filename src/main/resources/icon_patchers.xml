@@ -34,6 +34,8 @@
     <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/" />
     <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/" />
     <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/" />
+    <iconPatcher name="Datalore" remove="icons/org/jetbrains/plugins/notebooks/jupyter/ui"
+                 append="/icons/plugins/datalore/" />
     <iconPatcher name="Dart" remove="icons" append="/icons/plugins/dart/" />
     <iconPatcher name="Debugger" remove="icons" append="/icons/debugger/" />
     <iconPatcher name="DataGrip" remove="" append="/icons/plugins/datagrip/" />
