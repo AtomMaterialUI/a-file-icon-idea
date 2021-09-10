@@ -144,8 +144,8 @@
     <filePatcher name="Python" remove="icons/com/jetbrains" append="/files/plugins/python/" />
     <filePatcher name="PHP" remove="icons" append="/files/plugins/php/" />
     <filePatcher name="R" remove="icons/fileTypes" append="/files/plugins/r/" />
-    <filePatcher name="Rails" remove="icons/rails" append="/files/plugins/rails/" />
     <filePatcher name="Rider" remove="rider" append="/files/plugins/rider/" />
+    <filePatcher name="Ruby" remove="icons" append="/files/plugins/ruby/" />
     <filePatcher name="Rust" remove="" append="/files/plugins/rust/" />
     <filePatcher name="Sass" remove="org/jetbrains/plugins/sass" append="/files/plugins/sass/" />
     <filePatcher name="Scala" remove="" append="/files/plugins/scala/" />
