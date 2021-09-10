@@ -38,6 +38,7 @@
     <iconPatcher name="Debugger" remove="icons" append="/icons/debugger/" />
     <iconPatcher name="DataGrip" remove="" append="/icons/plugins/datagrip/" />
     <iconPatcher name="Docker" remove="icons" append="/icons/plugins/docker/" />
+    <iconPatcher name="FeatureTrainer" remove="img" append="/icons/plugins/features/" />
     <iconPatcher name="Goland" remove="icons" append="/icons/plugins/goland/" />
     <iconPatcher name="Github" remove="org/jetbrains/plugins/github" append="/icons/plugins/github/" />
     <iconPatcher name="Github2" remove="com.intellij.codeReview" append="/icons/plugins/github/" />
@@ -123,9 +124,11 @@
   <filePatchers>
     <filePatcher name="Files" remove="fileTypes" append="/files/fileTypes/" />
     <filePatcher name="BigData" remove="icons" append="/files/plugins/bigdata/" />
+    <filePatcher name="CLion" remove="" append="/files/plugins/clion/" />
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="/files/plugins/coffee/" />
     <filePatcher name="Dart" remove="icons" append="/files/plugins/dart/" />
     <filePatcher name="Freemarker" remove="icons" append="/files/plugins/freemarker/" />
+    <filePatcher name="Goland" remove="icons" append="/icons/plugins/goland/" />
     <filePatcher name="Groovy" remove="icons/groovy" append="/files/plugins/groovy/" />
     <filePatcher name="Haml" remove="org/jetbrains/plugins/haml" append="/files/plugins/haml/" />
     <filePatcher name="Handlebars" remove="icons" append="/files/plugins/handlebars/" />

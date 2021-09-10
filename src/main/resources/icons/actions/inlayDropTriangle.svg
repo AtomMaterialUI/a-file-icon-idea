@@ -25,6 +25,7 @@
   -->
 
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-  <path fill="#FD8A6A" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="9px" height="5px" fill="#26C6DA"
+     viewBox="6 6 12 12">
+  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
 </svg>

@@ -24,7 +24,10 @@
   -
   -->
 
-
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-  <path fill="#FD8A6A" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+<svg big="true" version="1.1" viewBox="0 0 300 300" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
+     fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+    <g fill-rule="nonzero" fill="#f9ad00">
+        <path d="M195.015 30h75v75h-75zM112.5 30h75v75h-75zM30 30h75v75H30zM195.015 112.5h75v75h-75z" />
+        <path fill="#4e4e4e" d="M112.5 112.5h75v75h-75zM112.5 195h75v75h-75zM195.015 195h75v75h-75zM30 195h75v75H30z" />
+    </g>
 </svg>

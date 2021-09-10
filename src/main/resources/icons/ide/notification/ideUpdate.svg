@@ -23,8 +23,8 @@
   -
   -
   -->
-
-
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-  <path fill="#FD8A6A" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="16" height="16" rx="8" fill="#EDA200" />
+  <rect x="8.80005" y="4.8" width="7.2" height="1.6" transform="rotate(90 8.80005 4.8)" fill="white" />
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4L12 8L4 8L8 4Z" fill="white" />
 </svg>
