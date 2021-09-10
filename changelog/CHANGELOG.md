@@ -18,6 +18,9 @@
 
 ## 39.0 (4.1.0)
 
+### Features
+- Caught up with latest UI Icons, except <https://github.com/mallowigi/a-file-icon-idea/issues/212>
+
 ### Additions
 - Caught up with **Atom File Icons** and **VSCode Icons** (non exhaustive list):
   - Tea
