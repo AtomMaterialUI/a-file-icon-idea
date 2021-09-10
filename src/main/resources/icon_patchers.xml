@@ -60,6 +60,7 @@
     <iconPatcher name="PHP" remove="icons" append="/icons/plugins/php/" />
     <iconPatcher name="PostCSS" remove="org/intellij/plugins/postcss" append="/icons/plugins/postcss/" />
     <iconPatcher name="Python" remove="icons/com/jetbrains" append="/icons/plugins/python/" />
+    <iconPatcher name="Qodana" remove="org/jetbrains/qodana/icons" append="/icons/plugins/qodana" />
     <iconPatcher name="R" remove="icons" append="/icons/plugins/r/" />
     <iconPatcher name="Remote" remove="icons" append="/icons/remote/" />
     <iconPatcher name="Resharper" remove="resharper" append="/icons/plugins/resharper/" />
