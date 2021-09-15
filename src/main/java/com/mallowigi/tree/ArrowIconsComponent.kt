@@ -34,7 +34,6 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.project.ProjectManagerListener
-import com.intellij.util.messages.MessageBusConnection
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import javax.swing.SwingUtilities
@@ -45,7 +44,6 @@ import javax.swing.UIManager
  *
  */
 class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
-  private val connect: MessageBusConnection = ApplicationManager.getApplication().messageBus.connect()
 
   override fun appStarted() = initComponent()
 
@@ -57,15 +55,18 @@ class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
 
   private fun initComponent() {
     replaceArrowIcons()
+    val connect = ApplicationManager.getApplication().messageBus.connect()
 
-    connect.subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { replaceArrowIcons() })
-    connect.subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
-      override fun projectOpened(project: Project) = replaceArrowIcons()
-    })
-    connect.subscribe(LafManagerListener.TOPIC, LafManagerListener { replaceArrowIcons() })
+    connect.run {
+      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { replaceArrowIcons() })
+      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
+        override fun projectOpened(project: Project) = replaceArrowIcons()
+      })
+      subscribe(LafManagerListener.TOPIC, LafManagerListener { replaceArrowIcons() })
+    }
   }
 
-  private fun disposeComponent() = connect.disconnect()
+  private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
 
   private fun replaceArrowIcons() {
     val defaults = UIManager.getLookAndFeelDefaults()

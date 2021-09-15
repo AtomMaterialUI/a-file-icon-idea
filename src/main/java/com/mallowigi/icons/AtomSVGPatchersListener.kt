@@ -42,6 +42,8 @@ import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
  * Listener for SVG Patchers
  */
 class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
+  private val pluginId = PluginId.getId("com.mallowigi")
+
   override fun appStarting(projectFromCommandLine: Project?): Unit = initComponent()
 
   override fun appClosing(): Unit = disposeComponent()
@@ -49,30 +51,26 @@ class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, Dum
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
   override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
-    if (PLUGIN_ID != pluginDescriptor.pluginId) return
+    if (pluginId != pluginDescriptor.pluginId) return
     disposeComponent()
   }
 
-  companion object {
-    private val PLUGIN_ID = PluginId.getId("com.mallowigi")
+  private fun initComponent() {
+    val otherPatcher = collectOtherPatcher()
+    MainSvgPatcher.instance.addPatcher(otherPatcher)
+    SVGLoader.setColorPatcherProvider(MainSvgPatcher.instance)
 
-    private fun initComponent() {
-      val otherPatcher = collectOtherPatcher()
-      MainSvgPatcher.instance.addPatcher(otherPatcher)
-      SVGLoader.setColorPatcherProvider(MainSvgPatcher.instance)
-
-      // Listen for changes on the settings
-      val connect = ApplicationManager.getApplication().messageBus.connect()
-      connect.run {
-        subscribe(LafManagerListener.TOPIC, LafManagerListener { applySvgPatchers() })
-        subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
-      }
-
-      applySvgPatchers()
+    // Listen for changes on the settings
+    val connect = ApplicationManager.getApplication().messageBus.connect()
+    connect.run {
+      subscribe(LafManagerListener.TOPIC, LafManagerListener { applySvgPatchers() })
+      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
     }
 
-    private fun applySvgPatchers() = MainSvgPatcher.instance.applySvgPatchers()
-
-    private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
+    applySvgPatchers()
   }
+
+  private fun applySvgPatchers() = MainSvgPatcher.instance.applySvgPatchers()
+
+  private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
 }
