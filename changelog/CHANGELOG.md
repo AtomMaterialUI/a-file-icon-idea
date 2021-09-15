@@ -1,17 +1,61 @@
 ## Changelog
 ----
 
+## 41.0 (4.3.0)
+
+### Fixes
+
+- Fix accent and tinted colors not being applied during theme switch
+- First attempt on trying to fix the BaseConnection NPE
+
+### Additions
+
+- Gauge
+- Go Template
+- SemGrep
+- NgRx Actions, Reducers, Selectors, State
+- Coconut
+- DenizenScript
+- Fastlane
+- Dune
+- Forth
+- FoxPro
+- OPAM
+- Percy
+- SML
+- Gleam
+- Rust Folders
+- Act
+- ThunderClient
+- Nest dto, schema, provider, strategy
+- CAP
+- Hasura config
+- YueScript
+- Eleventy
+- dialogs, to, entities folder icons
+- atoms, molecules, redux, organisms folder icons
+- install.md files
+- workflows/ci.yml github files
+- png, jpg, gif, bmp, icon files
+- funding
+- artisan
+- robots.txt
+- pictures folder associations
+
 ## 40.0 (4.2.0)
 
 ### Features
+
 - Add support for optional `.` and `_` prefix for folder icons
 - Make all icons bigger with the _Bigger Icons_ setting
 - Add action for _Bigger Icons_
 
 ### Fixes
+
 - Fix Bigger Icons not being applied at start
 
 ### Other
+
 - Convert more code to Kotlin
 - Upgrade dependencies
 - Add Urls to assocations (for the icon generator)
@@ -19,9 +63,11 @@
 ## 39.0 (4.1.0)
 
 ### Features
+
 - Caught up with latest UI Icons, except <https://github.com/mallowigi/a-file-icon-idea/issues/212>
 
 ### Additions
+
 - Caught up with **Atom File Icons** and **VSCode Icons** (non exhaustive list):
   - Tea
   - Telegram
@@ -403,10 +449,12 @@
 ## 38.0 (4.0.0)
 
 ### Features
+
 - New Setting: **Bigger Icons**
 - Support for **Sync Settings** plugin. Now you can finally sync your settings between IDEs
 
 ### Additions
+
 - Added many many more **UI Icons**:
   - Big Data Tools
   - UI Designer
@@ -458,26 +506,33 @@
   - cypress
 
 ### Fixes
+
 - Fix the fatal error when triggering the actions from the "Tools" menu
 
 ### Other
+
 - Migrate to gradle.kts
 - Rewrite changelog to suit the changelog standard (<https://keepachangelog.com/en/1.0.0/>)
 
-
 ## 37.0 (3.12.2)
+
 ### Other
+
 - Support for 2021.2
 - Java version update to 11
 - Verification automated workflow with Github Actions
 - Fix selected checkbox size
 
 ## 36.0 (3.12.1)
+
 ### Other
+
 - Support for 2021.1
 
 ## 35.0 (3.12.0)
+
 ### Additions
+
 - New **file icons**:
   - genstat
   - gentoo
@@ -501,11 +556,14 @@
   - snowpack
 
 ### Fixes
+
 - Fix bundle size
 - Fix bad associations
 
 ## 34.0 (3.11.0)
+
 ### Additions
+
 - New **file icons**:
   - mapbox
   - markdownlint
@@ -556,10 +614,13 @@
   - rstudio
 
 ## 33.0 (3.10.0)
+
 ### Fixes
+
 - fix `init.py`
 
 ### Additions
+
 - New **file icons**:
   - eclipselang
   - eagle
@@ -574,10 +635,13 @@
   - extjs
 
 ## 32.0 (3.9.0)
+
 ### Features
+
 - Add the ability to disable associations
 
 ### Additions
+
 - New **folder associations**:
   - ios
   - iosApp
@@ -591,15 +655,19 @@
 - Add django associations and `eslintignore`
 
 ### Fixes
+
 - Fix the bug with Edit/Clone associations
 
 ## 31.0 (3.8.0)
+
 ### Fixes
+
 - Remove dependency to the Material Theme and add Javassist to fix the IconLoader issue.
 - Fix possible NPE
 - Recolored some icons
 
 ### Additions
+
 - New **file icons**:
   - UIKit
   - Unibeautify
@@ -693,15 +761,20 @@
 - Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache
 
 ## 30.0 (3.7.0)
+
 ### Additions
+
 - New icons and folder associations: `public_html`, redis db
 - New **UI Icons**: Checkboxes, Inlay icons, CodeWithMe, Emoji Picker, Tool Window Analyze...
 
 ### Fixes
+
 - Pseudo-fix: Add leading slash relatively to new EAP refactor
 
 ## 29.0 (3.6.0)
+
 ### Additions
+
 - Add new **UI icon sets**:
   - Spring
   - Kubernetes
@@ -728,34 +801,46 @@
   - stylelintrc
 
 ### Features
+
 - Feature: **Hide Folders**
 - Feature: Show Custom and Default file icons in the Commit Window and Panel
 - Add more UI Icons
 
 ### Fixes
+
 - Fix: regression issue with UI icons not disabling
 - Fix: popup menus: restore active indicator
 
 ## 28.0 (3.5.1)
+
 ### Other
+
 - Support for 2020.3
 - Support for more UI icons
 
 ## 27.0 (3.5.0)
+
 ### Features
+
 - Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
-  - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93> and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
-- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons. As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
+  - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93>
+    and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
+- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons.
+  As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
 - Add icons to the **Atom Material Settings Toolbar Menu**.
 - Add actions for switching between **Arrow Styles**
 
 ## 26.0 (3.4.0)
+
 ### Features
+
 - New Option: "**Folder Color**" to customize Folder Colors from the current theme.
 - Better detection of the current theme's accent color
-- Add Checkboxes to **Accent Color** and **Folder Color** to allow customizing such colors instead of picking them from the theme
+- Add Checkboxes to **Accent Color** and **Folder Color** to allow customizing such colors instead of picking them from
+  the theme
 
 ### Additions
+
 - New **file icons**:
   - brew
   - harbour
@@ -768,30 +853,40 @@
   - hyper, question
 
 ### Fixes
+
 - Improve Hollow Folders opened files detection
 - Put _Custom file associations_ under the "Atom File Icon Settings"
 
 ## 25.3 (3.3.3)
+
 ### Fixes
+
 - Fixes many issues with custom associations
 
 ## 25.2 (3.3.2)
+
 ### Other
+
 - Support for 2020.2 EAP
 
 ## 25.1 (3.3.1)
+
 ### Fixes
+
 - Fix Psi Icons for PHP files
 
 ## 25.0 (3.3.0)
+
 ### Features
+
 - The finally awaited **Custom Icon Associations** is here! This is an alpha version so it can contain bugs :)
-    - Assign custom file associations and folder associations from the Settings
-    - Preview Default File and Folder Associations from the Settings
-    - Assign icons from your file system
-    - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
+  - Assign custom file associations and folder associations from the Settings
+  - Preview Default File and Folder Associations from the Settings
+  - Assign icons from your file system
+  - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
 
 ### Additions
+
 - **New folder associations**:
   - widgets
   - elements
@@ -820,19 +915,24 @@
 - Added `jsconfig` and `tsconfig`
 
 ### Fixes
+
 - Fix issue with monospace colors not being persisted
 - Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons
 - Now the _PSI Icons setting_ is dependent on the _UI Icons setting_, as this wouldn't work without it.
 - And the _Hollow Folders Setting_ is dependent on the _Folder Decorations Setting_ as well.
 
 ### Other
+
 - The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)
 
 ## 24.0 (3.2.0)
+
 ### Features
+
 - Added accent color selection in the settings
 
 ### Additions
+
 - new **UI/PSI icons**: `Scala, Ruby, Typescript`
 - new _redux_ icons: `redux saga` and `redux epics`, tweaked other colors too
 - new _test_ icons: ``test dart`, `test go`, `test haskell`, `test perl`, `test rust`
@@ -898,11 +998,14 @@
   - glyph
 
 ### Fixes
+
 - Try to fix the weird border at start
 - Fix wrong associations
 
 ## 23.0 (3.1.0)
+
 ### Additions
+
 - **File icons**:
   - walt
   - watchman
@@ -961,19 +1064,22 @@
 - New pattern: `main.js` is now associated with nodejs
 - Add `cron/scheduler` folder icons
 
-
 ## 22.0 (3.0.0)
+
 ### Other
+
 - You can now preview icons at <https://github.com/mallowigi/a-file-icon-idea> !
-- You can now get the list of available associations at <http://www.material-theme.com/docs/reference/associations/> and <http://www.material-theme.com/docs/reference/folder_associations/> !
+- You can now get the list of available associations at <http://www.material-theme.com/docs/reference/associations/>
+  and <http://www.material-theme.com/docs/reference/folder_associations/> !
 - Extracted icons to its own repository so it can be used with multiple projects
 - Optimized icons (reduce icons size, set colors in paths, etc)
-    - Also the icons look much more like the Atom original plugin ones
+  - Also the icons look much more like the Atom original plugin ones
 - Added fileNames in associations, to be used with the examples generator
 - Added colors in associations, for use with the font generator
 - Update UI Icons with latest icons
 
 ### Additions
+
 - **New/Updated UI Icons**:
   - Ant
   - Haml
@@ -1099,46 +1205,63 @@
   - video
 
 ## 21.0 (2.10.1)
+
 ### Features
+
 - Add new 2020.1 UI Icons
 
 ### Additions
+
 - New **folder associations**: bin and units
 
 ### Fixes
+
 - Fix issue with _Arrow Colors_ being black in Darcula
 - Fix issue with _Plugins_ labels being black in Darcula
 
 ## 20.0 (2.10.0)
+
 ### Features
-- Restore the **Accent Color** function to colorize icons with the Accent color (defined from Material Theme, or from the current active tab indicator color)
+
+- Restore the **Accent Color** function to colorize icons with the Accent color (defined from Material Theme, or from
+  the current active tab indicator color)
 
 ### Additions
+
 - Add `bz2`, `xar`, `egg` and `sit` to "Archive" file association
 - Add `sql/mysql/pgsql` folder
 
 ### Fixes
+
 - Fix issue where arrows style were not persisted
 - Fix Kotlin icons being unaffected by PSI File Icons setting
 - Make Icon Settings "dumb aware" (not affected by the indexing process)
 
 ## 19.0 (2.9.0)
+
 ### Features
+
 - New feature: **Arrows Style**
 - New pattern: `angular controller`
 
 ### Fixes
+
 - Fix issue with icons not being applied on start
 
 ### Other
+
 - Add missing icons since Nov 2019
 
 ## 18.0 (2.8.1)
+
 ### Other
+
 - Support for 2020.1
 
 ## 17.0 (2.8.0)
+
 ### Additions
+
 - New **File Icons**:
   - 1c
   - 3dmodel
@@ -1187,11 +1310,14 @@
   - gnu
 
 ### Features
+
 - New Feature: **Hide File Icons**
 - New Feature: **Hollow Directories**
 
 ## 16.0 (2.7.0)
+
 ### Additions
+
 - New **file icons**:
   - Cargo
   - Codecov
@@ -1215,14 +1341,19 @@
   - relay
 
 ### Other
+
 - Sync with new UI Icons
 
 ## 15.0 (2.6.1)
+
 ### Other
+
 - Support for 2019.3 EAP
 
 ## 14.0 (2.6.0)
+
 ### Additions
+
 - New **File Icons**:
   - edge
   - autoit
@@ -1287,42 +1418,57 @@
   - vm
 
 ### Other
+
 - Sync with Material Icons
 
 ## 13.0 (2.5.0)
+
 ### Additions
+
 - New Icons and associations
 
 ### Other
+
 - Sync with Material Icons
 
 ## 12.0 (2.4.0)
+
 ### Other
+
 - Support for 2019.2
 - Sync with Material Icons
 
 ## 11.0 (2.3.0)
+
 ### Features
+
 - Add light equivalents of icons
 - Update new icons: Resharper (Rider)
 - Sync with Material Icons
 
 ### Fixes
+
 - Fix errors
 
 ## 10.0 (2.2.0)
+
 ### Features
+
 - New setting: **PSI Icons**. Replaces icons about program structure: classes, interfaces, methods, enums etc.
 - Import last set of UI Icons from the Material Theme
 
 ### Other
+
 - Update for 2019.1
 
 ## 9.0 (2.1.0)
+
 ### Features
+
 - Add Monochrome Icons' tint color selection
 
 ### Additions
+
 - New **folder icons**:
   - guard
   - providers
@@ -1369,22 +1515,29 @@
   - toml
 
 ### Fixes
+
 - Fix UI Icons setting needing the IDE to be restarted
 - Fix settings not being persisted
 - Add more contrast to monochrome icons
 - Fix some directories icons' contrast between the directory and the icon
 
 ## 8.0 (2.0.0)
+
 ### Features
+
 - Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons
 - New Option: **Monochrome Icons**
 
 ## 7.0 (1.6.1)
+
 ### Fixes
+
 - Fix fatal error
 
 ## 6.0 (1.6.0)
+
 ### Additions
+
 - New **file icons**:
   - Jenkins
   - Rspec
@@ -1433,7 +1586,9 @@
   - vue
 
 ## 5.0 (1.5.0)
+
 ### Additions
+
 - New **file icons**:
   - Arduino
   - Assembly
@@ -1484,26 +1639,35 @@
   - tasks
 
 ## 4.0 (1.4.0)
+
 ### Other
+
 - Convert icons to SVG
 - Add more system UI icons
 
 ## 3.0 (1.3.0)
+
 ### Features
+
 - Add **settings page** to control which components to enable or disable.
   - Components: **File Icons**, **Directory Icons** and **UI Icons** (experimental)
 
 ## 2.0 (1.2.0)
+
 ### Features
+
 - Add **folder icons** feature
 - Add more UI icons
 
 ## 1.2 (1.1.0)
+
 ### Features
+
 - Add PHPStorm and PyCharm files and plugin support
 - Add "nodes" icons for various file trees
 
 ### Additions
+
 - New icons
   - Github Code of conduct, Github Contributing, Commit message convention, Github Template
   - README
@@ -1564,12 +1728,16 @@
   - Minified javascripts
 
 ### Fixes
+
 - make it DumbAware
 
 ### Other
+
 - Add markdown to html for changelog
 - add gradle.properties for easy installing
 
 ## 1.0 (1.0.0)
+
 ### Other
+
 - First commit, migrated from the Material Theme UI
