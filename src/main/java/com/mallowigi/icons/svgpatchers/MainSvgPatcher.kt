@@ -27,6 +27,7 @@ package com.mallowigi.icons.svgpatchers
 
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
+import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcher
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
 import org.jetbrains.annotations.NonNls
@@ -51,6 +52,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
    * Call refresh colors on all patchers
    */
   fun applySvgPatchers() {
+    SVGLoader.setColorPatcherProvider(this)
     patchers.forEach { it.refresh() }
     SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
