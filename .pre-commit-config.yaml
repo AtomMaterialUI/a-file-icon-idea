@@ -10,7 +10,7 @@ repos:
       - id: svgo
         name: Optimize SVG Files
         files: ^.*\.svg$
-        entry: bash -c "svgo --pretty -r -f ./"
+        entry: bash -c "npx svglint ./"
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
