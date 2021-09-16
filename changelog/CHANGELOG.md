@@ -1,6 +1,12 @@
 ## Changelog
 ----
 
+## 41.1 (4.3.1)
+
+### Fixes
+
+- Fix icons not showing because of duplicate attribute.
+
 ## 41.0 (4.3.0)
 
 ### Fixes
