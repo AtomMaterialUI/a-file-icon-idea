@@ -157,11 +157,6 @@ public final class SettingsForm implements SettingsFormUI {
     // empty
   }
 
-  //region big icons
-  public boolean getHasBigIcons() {
-    return biggerIconsCheckBox.isSelected();
-  }
-
   @SuppressWarnings({"Convert2MethodRef",
     "LocalCanBeFinal"})
   private void initComponents() {
@@ -508,6 +503,16 @@ public final class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
+  //region big icons
+  public boolean getHasBigIcons() {
+    return biggerIconsCheckBox.isSelected();
+  }
+
+  private void setHasBigIcons(final boolean isBigIconsEnabled) {
+    biggerIconsCheckBox.setSelected(isBigIconsEnabled);
+  }
+  //endregion
+
   private void initializeComboboxes() {
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
     arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<ArrowsStyles>() {
@@ -530,10 +535,5 @@ public final class SettingsForm implements SettingsFormUI {
   private void accentColorCheckboxActionPerformed(final ActionEvent e) {
     accentColorChooser.setEnabled(accentColorCheckbox.isSelected());
   }
-
-  private void setHasBigIcons(final boolean isBigIconsEnabled) {
-    biggerIconsCheckBox.setSelected(isBigIconsEnabled);
-  }
-  //endregion
 
 }
