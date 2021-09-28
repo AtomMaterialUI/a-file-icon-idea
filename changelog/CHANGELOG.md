@@ -1,6 +1,30 @@
 ## Changelog
 ----
 
+## 42.0 (4.4.0)
+
+### Fixes
+
+- add missing optional underscores for some folder associations
+- fix composer, husky, maven folder icons
+- change pm2 icon
+
+### Additions
+
+- _Files_:
+  - coala, parcel, distignore
+  - clio and stalebot
+  - lolcode, nuxt, skript, textlint, grain
+  - dockercompose, spectral, mdsvex
+  - bundle.properties, mybatis
+- *Folders*:
+  - kotlin, java
+  - perl, lua
+  - input/output
+  - connection, nuxt, quasar, scala, vuepress, article, base, cart, home, mobile, kivy, project
+  - infra
+  - stencil, scala, svelte, tech, terraform, venv
+
 ## 41.1 (4.3.1)
 
 ### Fixes
