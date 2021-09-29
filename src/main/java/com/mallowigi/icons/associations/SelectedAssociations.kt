@@ -73,10 +73,11 @@ class SelectedAssociations : Associations {
    * @param name
    * @param assoc
    */
-  fun set(name: String, assoc: RegexAssociation) {
+  fun insert(name: String, assoc: RegexAssociation) {
     if (has(name)) return
 
     myAssociations[name] = assoc
+    myAssociations[name]?.enabled = true
   }
 
   /**
@@ -92,8 +93,6 @@ class SelectedAssociations : Associations {
       .findAny()
       .orElse(null)
 
-
   override fun getTheAssociations(): List<RegexAssociation> = values()
-
 
 }

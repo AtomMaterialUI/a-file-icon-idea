@@ -28,6 +28,7 @@ package com.mallowigi.config.select
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.SettingsCategory
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
@@ -47,7 +48,8 @@ import java.util.Objects
  */
 @State(
   name = "Atom Icon Selections Config",
-  storages = [Storage("atom-selections.xml")] // NON-NLS:
+  storages = [Storage("atom-icon-associations.xml")],
+  category = SettingsCategory.UI
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
@@ -56,17 +58,16 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations()
 
-
   init {
     val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
     folderAssociations
       .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFolderAssociations.set(it.name, it) }
+      .forEach { selectedFolderAssociations.insert(it.name, it) }
 
     val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
     fileAssociations
       .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFileAssociations.set(it.name, it) }
+      .forEach { selectedFileAssociations.insert(it.name, it) }
   }
 
   override fun getState(): AtomSelectConfig = this
@@ -90,7 +91,6 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
       .syncPublisher(AtomSelectNotifier.TOPIC)
       .configChanged(this)
   }
-
 
   /**
    * Is file icons modified

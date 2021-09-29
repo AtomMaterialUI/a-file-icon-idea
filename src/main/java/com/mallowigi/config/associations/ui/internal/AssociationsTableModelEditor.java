@@ -27,7 +27,6 @@ package com.mallowigi.config.associations.ui.internal;
 
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.util.Ref;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.TableSpeedSearch;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.ToolbarDecorator;
@@ -50,7 +49,8 @@ import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings({"SyntheticAccessorCall",
-  "AccessingNonPublicFieldOfAnotherObject"})
+  "AccessingNonPublicFieldOfAnotherObject",
+  "AssignmentOrReturnOfFieldWithMutableType"})
 public final class AssociationsTableModelEditor<T> extends CollectionModelEditor<T, CollectionItemEditor<T>> {
   private final TableView<T> table;
   private final ToolbarDecorator toolbarDecorator;
@@ -63,8 +63,7 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
     this(Collections.emptyList(), columns, itemEditor, emptyText);
   }
 
-  @SuppressWarnings({"MagicNumber",
-    "BreakStatement"})
+  @SuppressWarnings("MagicNumber")
   public AssociationsTableModelEditor(@NotNull final List<T> items,
                                       final ColumnInfo @NotNull [] columns,
                                       @NotNull final CollectionItemEditor<T> itemEditor,
@@ -89,24 +88,10 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
       JBTable.setupCheckboxShortcut(table, 0);
     }
 
-    boolean needTableHeader = false;
-    for (final ColumnInfo column : columns) {
-      if (!StringUtil.isEmpty(column.getName())) {
-        needTableHeader = true;
-        break;
-      }
-    }
-
-    if (!needTableHeader) {
-      table.setTableHeader(null);
-    }
-
-    table.getEmptyText().setFont(UIUtil.getLabelFont().deriveFont(24f));
+    table.getEmptyText().setFont(UIUtil.getLabelFont().deriveFont(24.0f));
     table.getEmptyText().setText(emptyText);
+
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this);
-    toolbarDecorator.disableAddAction();
-    toolbarDecorator.disableRemoveAction();
-    toolbarDecorator.disableUpDownActions();
   }
 
   public static <T> void cloneUsingXmlSerialization(@NotNull final T oldItem, @NotNull final T newItem) {
@@ -174,13 +159,13 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
     }
 
     helper.reset(model.items);
-    return Collections.unmodifiableList(model.items);
+    return model.items;
   }
 
   @NotNull
   @Override
   protected List<T> getItems() {
-    return Collections.unmodifiableList(model.items);
+    return model.items;
   }
 
   @Override
@@ -189,6 +174,8 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
     model.setItems(new ArrayList<>(originalItems));
   }
 
+  @SuppressWarnings({"AbstractClassNeverImplemented",
+    "NoopMethodInAbstractClass"})
   public abstract static class DataChangedListener<T> implements TableModelListener {
     public abstract void dataChanged(@NotNull ColumnInfo<T, ?> columnInfo, int rowIndex);
 
@@ -201,17 +188,18 @@ public final class AssociationsTableModelEditor<T> extends CollectionModelEditor
     "SerializableInnerClassWithNonSerializableOuterClass"})
   private final class MyListTableModel extends ListTableModel<T> {
     private List<T> items;
+    @SuppressWarnings("InstanceVariableMayNotBeInitialized")
     private DataChangedListener<T> dataChangedListener;
 
-    MyListTableModel(final ColumnInfo @NotNull [] columns, @NotNull final List<T> items) {
-      super(columns, items);
+    MyListTableModel(final ColumnInfo @NotNull [] columnNames, @NotNull final List<T> items) {
+      super(columnNames, items);
 
       this.items = items;
     }
 
     @Override
     public void setItems(@NotNull final List<T> items) {
-      this.items = Collections.unmodifiableList(items);
+      this.items = items;
       super.setItems(items);
     }
 

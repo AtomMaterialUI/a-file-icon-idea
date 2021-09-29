@@ -41,7 +41,7 @@ import java.io.Serializable
 abstract class Association internal constructor(
   @field:Property @field:NonNls var name: String,
   @field:Property var icon: String,
-  var enabled: Boolean = true
+  var enabled: Boolean = true,
 ) : Serializable {
 
   abstract var matcher: String
@@ -67,7 +67,6 @@ abstract class Association internal constructor(
     icon = other.icon
     enabled = other.enabled
   }
-
 
   override fun toString(): String = "$name $matcher"
 

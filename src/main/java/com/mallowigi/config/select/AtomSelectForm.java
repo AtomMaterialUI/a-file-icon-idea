@@ -120,11 +120,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   @SuppressWarnings({"SimplifiableIfStatement",
     "DuplicatedCode"})
-  public boolean isModified(@Nullable final AtomSelectConfig config) {
-    if (config == null) {
-      return false;
-    }
-
+  public boolean isModified(final AtomSelectConfig config) {
     boolean modified = false;
     if (fileAssociationsEditor != null) {
       modified = config.isFileIconsModified(fileAssociationsEditor.getModel().getItems());

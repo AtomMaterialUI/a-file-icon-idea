@@ -28,6 +28,7 @@ package com.mallowigi.config.associations
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.SettingsCategory
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
@@ -45,7 +46,8 @@ import java.util.Objects
  */
 @State(
   name = "Atom Icon Associations Config",
-  storages = [Storage("atom-icon-associations.xml")] // NON-NLS:
+  storages = [Storage("atom-icon-associations.xml")],
+  category = SettingsCategory.UI
 )
 class AtomAssocConfig : PersistentStateComponent<AtomAssocConfig> {
 

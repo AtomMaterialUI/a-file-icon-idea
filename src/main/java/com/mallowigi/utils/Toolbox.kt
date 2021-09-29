@@ -39,7 +39,7 @@ import java.util.stream.Stream
  * @param callable
  * @return
  */
-fun <T> getSafely(callable: Callable<T>): Optional<T> =
+fun <T> getSafely(callable: Callable<T?>): Optional<T> =
   try {
     callable.call().toOptional()
   } catch (e: Throwable) {

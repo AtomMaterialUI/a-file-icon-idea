@@ -45,45 +45,39 @@ import javax.swing.table.TableCellRenderer
  */
 @Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  override fun valueOf(item: Association?): String? = item?.matcher
+  EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
+  override fun valueOf(item: Association): String = item.matcher
 
-  override fun setValue(item: Association?, value: String?) {
-    item?.matcher = value!!
+  override fun setValue(item: Association, value: String?) {
+    item.matcher = value!!
   }
 
-  override fun getEditor(item: Association?): TableCellEditor {
+  override fun getEditor(item: Association): TableCellEditor {
     val cellEditor = ExtendableTextField()
 
     return RegexpEditor(cellEditor, parent)
   }
 
-  override fun getRenderer(item: Association?): TableCellRenderer? {
+  override fun getRenderer(item: Association): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
   }
 
-  override fun isCellEditable(item: Association?): Boolean = editable
+  override fun isCellEditable(item: Association): Boolean = editable
 
-  companion object {
-    private fun validate(value: Any?): ValidationInfo? {
-      return if (value == null || value == "") {
-        ValidationInfo(message("AtomAssocConfig.PatternEditor.empty"))
-      } else if (!isValidPattern(value.toString())) {
-        ValidationInfo(message("AtomAssocConfig.PatternEditor.invalid"))
-      } else {
-        null
-      }
+  private fun validate(value: Any?): ValidationInfo? {
+    return when {
+      value == null || value == ""      -> ValidationInfo(message("AtomAssocConfig.PatternEditor.empty"))
+      !isValidPattern(value.toString()) -> ValidationInfo(message("AtomAssocConfig.PatternEditor.invalid"))
+      else                              -> null
     }
+  }
 
-    private fun isValidPattern(pattern: String): Boolean {
-      return try {
-        Pattern.compile(pattern)
-        true
-      } catch (e: RuntimeException) {
-        false
-      }
-    }
+  private fun isValidPattern(pattern: String): Boolean = try {
+    Pattern.compile(pattern)
+    true
+  } catch (e: RuntimeException) {
+    false
   }
 
 }

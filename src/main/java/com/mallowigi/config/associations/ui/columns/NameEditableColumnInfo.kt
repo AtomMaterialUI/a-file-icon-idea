@@ -44,19 +44,19 @@ import javax.swing.table.TableCellRenderer
  */
 @Suppress("UnstableApiUsage")
 class NameEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
-  override fun valueOf(item: Association?): String? = item?.name
+  EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
+  override fun valueOf(item: Association): String = item.name
 
-  override fun setValue(item: Association?, value: String?) {
-    item?.name = value!!
+  override fun setValue(item: Association, value: String?) {
+    item.name = value!!
   }
 
-  override fun getEditor(item: Association?): TableCellEditor {
+  override fun getEditor(item: Association): TableCellEditor {
     val cellEditor = ExtendableTextField()
     return StatefulValidatingCellEditor(cellEditor, parent)
   }
 
-  override fun getRenderer(item: Association?): TableCellRenderer? {
+  override fun getRenderer(item: Association): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int ->
         if (value == null || value == "") {
@@ -67,5 +67,5 @@ class NameEditableColumnInfo(private val parent: Disposable, private val editabl
       }
   }
 
-  override fun isCellEditable(item: Association?): Boolean = editable
+  override fun isCellEditable(item: Association): Boolean = editable
 }

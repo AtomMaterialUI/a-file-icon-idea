@@ -45,21 +45,17 @@ import javax.swing.table.TableCellRenderer
 class FolderIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
-  override fun getRenderer(item: Association?): TableCellRenderer? {
-    if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
-      return null
-    } else {
-      return object : IconTableCellRenderer<String>() {
-        override fun getIcon(value: String, table: JTable, row: Int): Icon? {
-          return try {
-            AtomIcons.getFolderIcon(value)
-          } catch (e: IOException) {
-            null
-          }
-        }
+  override fun getRenderer(item: Association): TableCellRenderer? {
+    if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
 
-        override fun getText(): String = PathUtil.getFileName(item.icon)
+    return object : IconTableCellRenderer<String>() {
+      override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
+        AtomIcons.getFolderIcon(value)
+      } catch (e: IOException) {
+        null
       }
+
+      override fun getText(): String = PathUtil.getFileName(item.icon)
     }
   }
 }

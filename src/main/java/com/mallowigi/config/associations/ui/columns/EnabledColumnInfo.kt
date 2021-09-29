@@ -36,15 +36,15 @@ import javax.swing.table.TableCellEditor
  * Column info for the enabled state
  */
 class EnabledColumnInfo :
-  EditableColumnInfo<Association?, Boolean>(message("AssociationsForm.folderIconsTable.columns.enabled")) {
+  EditableColumnInfo<Association, Boolean>(message("AssociationsForm.folderIconsTable.columns.enabled")) {
 
-  override fun valueOf(item: Association?): Boolean? = item?.enabled
+  override fun valueOf(item: Association): Boolean = item.enabled
 
-  override fun setValue(item: Association?, value: Boolean?) {
-    if (value != null) item?.enabled = value
+  override fun setValue(item: Association, value: Boolean?) {
+    if (value != null) item.enabled = value
   }
 
-  override fun getEditor(item: Association?): TableCellEditor = DefaultCellEditor(JCheckBox())
+  override fun getEditor(item: Association): TableCellEditor = DefaultCellEditor(JCheckBox())
 
   override fun getColumnClass(): Class<Boolean> = Boolean::class.java
 

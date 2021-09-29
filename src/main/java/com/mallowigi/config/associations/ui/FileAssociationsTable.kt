@@ -46,6 +46,15 @@ import javax.swing.table.AbstractTableModel
 internal class FileAssociationsTable :
   JBTable(MyTableModel(DefaultFileIconProvider.associations.getTheAssociations())) {
 
+  init {
+    StripeTable.apply(this)
+    setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
+    TableSpeedSearch(this)
+    setEnableAntialiasing(true)
+    preferredScrollableViewportSize = JBUI.size(200, -1)
+    initColumns()
+  }
+
   private fun initColumns() {
     val iconColumn = getColumnModel().getColumn(ICON_COLUMN)
     iconColumn.cellRenderer = object : IconTableCellRenderer<String>() {
@@ -81,15 +90,6 @@ internal class FileAssociationsTable :
       }
     }
 
-  }
-
-  init {
-    StripeTable.apply(this)
-    setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
-    TableSpeedSearch(this)
-    setEnableAntialiasing(true)
-    preferredScrollableViewportSize = JBUI.size(200, -1)
-    initColumns()
   }
 
   companion object {

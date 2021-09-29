@@ -49,36 +49,33 @@ import javax.swing.table.TableCellRenderer
  */
 @Suppress("unused")
 open class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association?, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
+  EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
 
-  override fun valueOf(item: Association?): String? = PathUtil.toSystemDependentName(item?.icon)
+  override fun valueOf(item: Association): String? = PathUtil.toSystemDependentName(item.icon)
 
-  override fun setValue(item: Association?, value: String?) {
-    if (value != null) item?.icon = value
+  override fun setValue(item: Association, value: String?) {
+    if (value != null) item.icon = value
   }
 
-  override fun getEditor(item: Association?): TableCellEditor? =
+  override fun getEditor(item: Association): TableCellEditor? =
     LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
 
-  override fun getRenderer(item: Association?): TableCellRenderer? {
-    if (item == null || item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") {
-      return null
-    } else {
-      return object : IconTableCellRenderer<String>() {
-        override fun getIcon(value: String, table: JTable, row: Int): Icon? {
-          return try {
-            AtomIcons.loadSVGIcon(value)
-          } catch (e: IOException) {
-            null
-          }
-        }
+  override fun getRenderer(item: Association): TableCellRenderer? {
+    if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
 
-        override fun getText(): String = PathUtil.getFileName(item.icon)
+    return object : IconTableCellRenderer<String>() {
+      override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
+        AtomIcons.loadSVGIcon(value)
+      } catch (e: IOException) {
+        null
       }
+
+      override fun getText(): String = PathUtil.getFileName(item.icon)
     }
+
   }
 
-  override fun isCellEditable(item: Association?): Boolean = editable
+  override fun isCellEditable(item: Association): Boolean = editable
 
   companion object {
     private val DESCRIPTOR = FileChooserDescriptorFactory.createSingleFileDescriptor(

@@ -45,7 +45,7 @@ class RegexAssociation @JvmOverloads constructor(
   name: String = "",
   icon: String = "",
   enabled: Boolean = true,
-  @field:Property var pattern: String = ""
+  @field:Property var pattern: String = "",
 ) : Association(name, icon, enabled) {
 
   override var matcher: String
@@ -70,12 +70,10 @@ class RegexAssociation @JvmOverloads constructor(
     }
   }
 
-
   override fun apply(other: Association) {
     super.apply(other)
     pattern = other.matcher
   }
-
 
   companion object {
     private val LOG = Logger.getInstance(RegexAssociation::class.java)
