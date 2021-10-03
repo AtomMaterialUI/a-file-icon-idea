@@ -27,6 +27,7 @@ package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.event.DocumentEvent
 import com.intellij.openapi.editor.event.DocumentListener
 import com.intellij.openapi.project.ProjectManager
@@ -54,16 +55,18 @@ import javax.swing.table.TableCellEditor
  */
 class RegexpEditor(
   textField: JTextField,
-  parent: Disposable
+  parent: Disposable,
 ) : StatefulValidatingCellEditor(textField, parent), TableCellEditor {
   private var editor: EditorTextField =
-    EditorTextField(ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE)
+    EditorTextField(EditorFactory.getInstance().createDocument("dummy.regexp"),
+                    ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE, false, true)
   private var myDocument: Document? = null
   private val stateUpdater = Consumer { _: ValidationInfo? -> }
 
   init {
     // Creates a regex editor
     editor.setOneLineMode(true)
+    editor.fileType = RegExpFileType.INSTANCE
     // Register enter and escape keys
     editor.registerKeyboardAction(
       { stopCellEditing() },
@@ -99,7 +102,7 @@ class RegexpEditor(
     value: Any,
     isSelected: Boolean,
     row: Int,
-    column: Int
+    column: Int,
   ): Component {
 
     editor.text = value.toString()

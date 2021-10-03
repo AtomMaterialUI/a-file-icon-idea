@@ -52,7 +52,11 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
     return null
   }
 
-  override fun getIcon(filePath: FilePath, project: Project?): Icon? = this.findIcon(filePath)
+  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
+    if (isNotAppliable()) return null
+
+    return findIcon(filePath)
+  }
 
   private fun findIcon(element: PsiElement): Icon? {
     var icon: Icon? = null

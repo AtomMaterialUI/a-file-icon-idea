@@ -89,7 +89,7 @@ class SelectedAssociations : Associations {
 
   override fun findMatchingAssociation(file: FileInfo?): Association? =
     values().stream()
-      .filter { association: Association -> association.matches(file!!) }
+      .filter { association: Association -> association.enabled && association.matches(file!!) }
       .findAny()
       .orElse(null)
 

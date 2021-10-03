@@ -76,15 +76,15 @@
     <iconProvider implementation="com.mallowigi.icons.providers.CustomFileIconProvider"
                   order="first, after HiddenIconProvider"
                   id="CustomFileIconProvider" />
-    <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"
-                  order="first, after HiddenFolderIconProvider"
-                  id="CustomFolderIconProvider" />
+    <!--    <iconProvider implementation="com.mallowigi.icons.providers.CustomFolderIconProvider"-->
+    <!--                  order="first, after HiddenFolderIconProvider"-->
+    <!--                  id="CustomFolderIconProvider" />-->
     <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
-                  order="first, after CustomFileIconProvider"
+                  order="first, after SelectedFileIconProvider"
                   id="DefaultFileIconProvider" />
-    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
-                  order="first, after CustomFolderIconProvider"
-                  id="DefaultFolderIconProvider" />
+    <!--    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"-->
+    <!--                  order="first, after CustomFolderIconProvider"-->
+    <!--                  id="DefaultFolderIconProvider" />-->
 
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
