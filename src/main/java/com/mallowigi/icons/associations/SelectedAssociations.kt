@@ -104,9 +104,9 @@ class SelectedAssociations : Associations {
       .maxByOrNull { it.priority }
 
   /**
-   * Get the [Associations]
+   * Get the list of [SelectedAssociations]
    *
-   * @return
+   * @return the list of [SelectedAssociations]
    */
   override fun getTheAssociations(): List<RegexAssociation> = values()
 

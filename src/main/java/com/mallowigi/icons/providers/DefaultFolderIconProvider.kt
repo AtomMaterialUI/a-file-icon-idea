@@ -80,6 +80,7 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
   }
 
   companion object {
-    val associations: DefaultAssociations = AssociationsFactory.create("/iconGenerator/folder_associations.xml")
+    val associations: DefaultAssociations =
+      AssociationsFactory.create("/iconGenerator/folder_associations.xml")
   }
 }

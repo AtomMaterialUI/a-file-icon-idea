@@ -113,11 +113,11 @@ object IconPatchersManager {
   }
 
   fun updateFileIcons() {
-    ModalityUiUtil.invokeLaterIfNeeded({
-                                         val app = ApplicationManager.getApplication()
-                                         app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-                                         app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
-                                         applyFilter()
-                                       }, ModalityState.NON_MODAL)
+    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL) {
+      val app = ApplicationManager.getApplication()
+      app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
+      app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
+      applyFilter()
+    }
   }
 }

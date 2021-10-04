@@ -30,18 +30,24 @@ import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.TypeAssociation
 import com.thoughtworks.xstream.XStream
-import org.jetbrains.annotations.NonNls
 
-@Suppress("HardCodedStringLiteral")
-@NonNls
+/**
+ * Factory for building associations from XML
+ *
+ */
 object AssociationsFactory {
 
-  fun create(associationsFile: String?): DefaultAssociations {
+  /**
+   * Generate the list of [DefaultAssociations] from XML
+   *
+   * @param associationsFile xml file
+   * @return list of [DefaultAssociations]
+   */
+  fun create(associationsFile: String): DefaultAssociations {
     val associationsXml = AssociationsFactory::class.java.getResource(associationsFile)
-    @NonNls val xStream = XStream()
+    val xStream = XStream()
 
     xStream.run {
-      XStream.setupDefaultSecurity(this)
       allowTypesByWildcard(arrayOf("com.mallowigi.icons.associations.*")) // NON-NLS
       alias("associations", DefaultAssociations::class.java)
       alias("regex", RegexAssociation::class.java)
@@ -49,12 +55,18 @@ object AssociationsFactory {
       useAttributeFor(DefaultAssociations::class.java, "associations")
       useAttributeFor(Association::class.java, "icon")
       useAttributeFor(Association::class.java, "name")
+      useAttributeFor(Association::class.java, "priority")
+      useAttributeFor(Association::class.java, "iconType")
+      useAttributeFor(Association::class.java, "color")
+      useAttributeFor(Association::class.java, "folderColor")
+      useAttributeFor(Association::class.java, "iconColor")
       useAttributeFor(RegexAssociation::class.java, "pattern")
       useAttributeFor(TypeAssociation::class.java, "type")
     }
     return try {
       xStream.fromXML(associationsXml) as DefaultAssociations
     } catch (e: RuntimeException) {
+      e.printStackTrace()
       DefaultAssociations()
     }
   }

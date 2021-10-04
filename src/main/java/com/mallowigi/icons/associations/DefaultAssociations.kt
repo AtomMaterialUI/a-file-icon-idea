@@ -26,6 +26,7 @@
 package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
+import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.models.FileInfo
 
 /**
@@ -35,13 +36,26 @@ import com.mallowigi.models.FileInfo
  */
 class DefaultAssociations : Associations() {
   @Property
+  @XCollection
   var associations: List<Association> = emptyList()
 
+  /**
+   * Find the file info's matching association by looping over all associations sorted by priority,
+   * taking the first enabled one that matches.
+   *
+   * @param file file information
+   * @return [Association] if found
+   */
   override fun findMatchingAssociation(file: FileInfo): Association? =
     associations
       .filter { association: Association -> association.matches(file) }
       .maxByOrNull { it.priority }
 
+  /**
+   * Return list of [DefaultAssociations]
+   *
+   * @return list of [DefaultAssociations]
+   */
   override fun getTheAssociations(): List<Association> = associations
 
 }

@@ -27,7 +27,6 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
-import org.jetbrains.annotations.NonNls
 
 /**
  * Type association
@@ -35,18 +34,10 @@ import org.jetbrains.annotations.NonNls
  * @property type the type representation (Images, Database...)
  * @constructor
  *
- * @param name
- * @param icon
- * @param enabled
- * @param priority
  */
-class TypeAssociation internal constructor(
-  name: String = "",
-  icon: String = "",
-  enabled: Boolean = true,
-  priority: Int = 100,
-  @field:Property @field:NonNls var type: String,
-) : Association(name, icon, enabled, priority) {
+class TypeAssociation internal constructor() : Association() {
+  @field:Property
+  var type: String = ""
 
   /**
    * The matcher is the mime type

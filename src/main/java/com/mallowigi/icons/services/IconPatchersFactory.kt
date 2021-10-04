@@ -31,7 +31,6 @@ import com.mallowigi.icons.patchers.GlyphIconsPatcher
 import com.mallowigi.icons.patchers.IconPathPatchers
 import com.mallowigi.icons.patchers.UIIconsPatcher
 import com.thoughtworks.xstream.XStream
-import org.jetbrains.annotations.NonNls
 
 /**
  * Load patchers from xml
@@ -39,14 +38,13 @@ import org.jetbrains.annotations.NonNls
  * @constructor Create empty Icon patchers factory
  */
 object IconPatchersFactory {
-  @NonNls
   private val ICON_PATCHERS_XML = "/icon_patchers.xml"
 
   fun create(): IconPathPatchers {
     val xml = IconPatchersFactory::class.java.getResource(ICON_PATCHERS_XML)
-    @NonNls val xStream = XStream()
-    with(xStream) {
-      XStream.setupDefaultSecurity(this)
+    val xStream = XStream()
+
+    xStream.run {
       allowTypesByWildcard(arrayOf("com.mallowigi.icons.patchers.*"))
       alias("iconPathPatchers", IconPathPatchers::class.java)
       alias("iconPatchers", MutableSet::class.java)

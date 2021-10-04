@@ -51,13 +51,21 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
    * @return a clone of the association
    */
   override fun clone(item: RegexAssociation, forInPlaceEditing: Boolean): RegexAssociation {
-    return RegexAssociation(
-      item.name,
-      item.icon,
-      item.enabled,
-      item.priority,
-      item.matcher
-    )
+    val regexAssociation = RegexAssociation()
+
+    with(regexAssociation) {
+      iconType = item.iconType
+      name = item.name
+      icon = item.icon
+      enabled = item.enabled
+      priority = item.priority
+      color = item.color
+      iconColor = item.iconColor
+      folderColor = item.folderColor
+      matcher = item.matcher
+    }
+
+    return regexAssociation
   }
 
   /**

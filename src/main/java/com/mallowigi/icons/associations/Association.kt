@@ -30,19 +30,40 @@ import com.mallowigi.models.FileInfo
 import java.io.Serializable
 
 /**
- * Association
+ * Represents an Association
  *
+ * @property iconType the type of icon (file/folder)
  * @property name the name of the association
  * @property icon the icon
  * @property enabled whether the association is used
  * @property priority association priority. Lowest priorities are used last.
+ * @property color icon color for file icons
+ * @property iconColor icon color for folder icons
+ * @property folderColor folder color for folder icons
  */
-abstract class Association internal constructor(
-  @field:Property var name: String,
-  @field:Property var icon: String,
-  var enabled: Boolean = true,
-  @field:Property var priority: Int,
-) : Serializable {
+abstract class Association internal constructor() : Serializable {
+  var enabled: Boolean = true
+
+  @field:Property
+  var iconType: IconType = IconType.FILE
+
+  @field:Property
+  var name: String = ""
+
+  @field:Property
+  var icon: String = ""
+
+  @field:Property
+  var priority: Int = 100
+
+  @field:Property
+  var color: String? = null
+
+  @field:Property
+  var iconColor: String? = null
+
+  @field:Property
+  var folderColor: String? = null
 
   /**
    * How the association will be matched against (regex, type)
@@ -53,7 +74,7 @@ abstract class Association internal constructor(
    * Verifies that the association is not empty
    */
   open val isEmpty: Boolean
-    get() = name.isEmpty() || icon.isEmpty() || priority > 0
+    get() = name.isEmpty() || icon.isEmpty()
 
   /**
    * Check whether the file matches the association
@@ -69,13 +90,17 @@ abstract class Association internal constructor(
    * @param other the other assoc to apply from
    */
   open fun apply(other: Association) {
+    iconType = other.iconType
     name = other.name
     icon = other.icon
     enabled = other.enabled
     priority = other.priority
+    color = other.color
+    iconColor = other.iconColor
+    folderColor = other.folderColor
   }
 
-  override fun toString(): String = "$name $matcher ($priority)"
+  override fun toString(): String = "$name: $matcher ($priority)"
 
   companion object {
     private const val serialVersionUID: Long = -1L

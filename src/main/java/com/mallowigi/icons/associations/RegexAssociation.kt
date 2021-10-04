@@ -34,21 +34,13 @@ import java.util.regex.PatternSyntaxException
 /**
  * A Regex [Association]
  *
- * @property pattern
+ * @property pattern the regex pattern
  * @constructor
  *
- * @param name
- * @param icon
- * @param enabled
- * @param priority
  */
-class RegexAssociation @JvmOverloads constructor(
-  name: String = "",
-  icon: String = "",
-  enabled: Boolean = true,
-  priority: Int = 100,
-  @field:Property var pattern: String = "",
-) : Association(name, icon, enabled, priority) {
+class RegexAssociation internal constructor() : Association() {
+  @field:Property
+  var pattern: String = ""
 
   /**
    * Compiled pattern of the regex pattern

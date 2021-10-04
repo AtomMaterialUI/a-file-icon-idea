@@ -73,7 +73,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
-    new PriorityColumnInfo(this, true)
+    //    new PriorityColumnInfo(this, true)
   };
 
   private final transient ColumnInfo[] folderColumns = {
@@ -81,7 +81,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
-    new PriorityColumnInfo(this, true)
+    //    new PriorityColumnInfo(this, true)
   };
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
