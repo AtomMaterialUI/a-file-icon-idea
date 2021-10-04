@@ -32,28 +32,43 @@ import org.jetbrains.annotations.NonNls
 /**
  * Type association
  *
- * @property type
+ * @property type the type representation (Images, Database...)
  * @constructor
  *
  * @param name
  * @param icon
  * @param enabled
+ * @param priority
  */
 class TypeAssociation internal constructor(
   name: String = "",
   icon: String = "",
   enabled: Boolean = true,
-  @field:Property @field:NonNls var type: String
-) : Association(name, icon, enabled) {
+  priority: Int = 100,
+  @field:Property @field:NonNls var type: String,
+) : Association(name, icon, enabled, priority) {
+
+  /**
+   * The matcher is the mime type
+   */
   override var matcher: String
     get() = type
     set(matcher) {
       type = matcher
     }
 
+  /**
+   * Checks that the [Association] has all the required information
+   */
   override val isEmpty: Boolean
     get() = super.isEmpty || type.isEmpty()
 
+  /**
+   * Matches againt the mime type
+   *
+   * @param file
+   * @return true if it matches
+   */
   override fun matches(file: FileInfo): Boolean = file.fileType == type
 
 }

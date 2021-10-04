@@ -31,9 +31,9 @@ import com.mallowigi.models.FileInfo
 import java.util.List.copyOf
 
 /**
- * Custom associations
+ * Custom associations are [Associations] defined by the user. They are prioritized over bundled associations.
  *
- * @constructor Create empty Custom associations
+ * @constructor Create empty Custom [Associations]
  */
 @Suppress("MemberNameEqualsClassName")
 class CustomAssociations : Associations {
@@ -45,16 +45,30 @@ class CustomAssociations : Associations {
     customAssociations = emptyList()
   }
 
+  /**
+   * Initializes [Associations] from a list
+   */
   constructor(associations: List<RegexAssociation>) {
     customAssociations = copyOf(associations)
   }
 
-  override fun findMatchingAssociation(file: FileInfo?): Association? =
-    customAssociations.stream()
-      .filter { association: RegexAssociation -> association.enabled && association.matches(file!!) }
-      .findAny()
-      .orElse(null)
+  /**
+   * Find the file info's matching association by looping over all associations sorted by priority,
+   * taking the first enabled one that matches.
+   *
+   * @param file file information
+   * @return [Association] if found
+   */
+  override fun findMatchingAssociation(file: FileInfo): Association? =
+    customAssociations
+      .filter { association: Association -> association.enabled && association.matches(file) }
+      .maxByOrNull { it.priority }
 
+  /**
+   * Return list of [CustomAssociations]
+   *
+   * @return list of [CustomAssociations]
+   */
   override fun getTheAssociations(): List<RegexAssociation> = customAssociations
 
 }

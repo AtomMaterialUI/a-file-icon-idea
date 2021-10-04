@@ -27,35 +27,70 @@ package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.util.Function
 import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
+import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 
 /**
- * Associations table item editor
+ * Editor for the [Association] table cells
  *
  */
-class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation> {
-  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
+class AssociationsTableItemEditor : DialogItemEditor<Association> {
 
-  override fun clone(item: RegexAssociation, forInPlaceEditing: Boolean): RegexAssociation {
+  /**
+   * Class of the items
+   *
+   */
+  override fun getItemClass(): Class<out Association> = Association::class.java
+
+  /**
+   * Duplicate an item
+   *
+   * @param item the [RegexAssociation]
+   * @param forInPlaceEditing if editing in place (true)
+   * @return a clone of the association
+   */
+  override fun clone(item: Association, forInPlaceEditing: Boolean): Association {
     return RegexAssociation(
       item.name,
       item.icon,
       item.enabled,
+      item.priority,
       item.matcher
     )
   }
 
-  override fun applyEdited(oldItem: RegexAssociation, newItem: RegexAssociation): Unit = oldItem.apply(newItem)
+  /**
+   * Apply changes to the edited item
+   *
+   * @param oldItem the item to modify
+   * @param newItem the changes
+   */
+  override fun applyEdited(oldItem: Association, newItem: Association): Unit = oldItem.apply(newItem)
 
-  override fun isEditable(item: RegexAssociation): Boolean = !item.isEmpty
+  /**
+   * Do not allow editing empty items
+   *
+   * @param item the [Association]
+   * @return true if editable
+   */
+  override fun isEditable(item: Association): Boolean = !item.isEmpty
 
-  override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
+  /**
+   * Determines what constitues an empty [Association]
+   *
+   * @param item the [Association]
+   * @return true if empty
+   */
+  override fun isEmpty(item: Association): Boolean = item.isEmpty
 
-  override fun edit(
-    item: RegexAssociation,
-    mutator: Function<in RegexAssociation, out RegexAssociation>,
-    isAdd: Boolean,
-  ) {
+  /**
+   * Edits an item
+   *
+   * @param item the [Association]
+   * @param mutator a function to mutate the item
+   * @param isAdd if in add mode
+   */
+  override fun edit(item: Association, mutator: Function<in Association, out Association>, isAdd: Boolean) {
     val settings = clone(item, true)
     mutator.`fun`(item).apply(settings)
   }

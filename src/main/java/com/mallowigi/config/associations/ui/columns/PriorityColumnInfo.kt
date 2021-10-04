@@ -27,67 +27,62 @@ package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.ui.ValidationInfo
+import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
 import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
-import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
-import com.mallowigi.config.associations.ui.internal.RegexpEditor
 import com.mallowigi.icons.associations.Association
-import java.util.regex.Pattern
+import javax.swing.JTextField
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
- * Editable column info for [Association] pattern
- *
+ * Editable column for the priority
  * @property parent the Parent class
  * @property editable whether the column should be editable
  */
-@Suppress("UnstableApiUsage")
-class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  /**
-   * The value of the column is the matcher
-   *
-   * @param item the [Association]
-   * @return [Association] matcher
-   */
-  override fun valueOf(item: Association): String = item.matcher
+class PriorityColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+  EditableColumnInfo<Association, Int>(message("AssociationsForm.folderIconsTable.columns.priority")) {
 
   /**
-   * Set the [Association]'s matcher
+   * The value of the column is the priority
    *
    * @param item the [Association]
-   * @param value the string value for the matcher
+   * @return the priority
    */
-  override fun setValue(item: Association, value: String) {
-    item.matcher = value
+  override fun valueOf(item: Association): Int = item.priority
+
+  /**
+   * Set the [Association]'s priority. Must be > 0
+   *
+   * @param item the [Association]
+   * @param value the new value
+   */
+  override fun setValue(item: Association, value: Int) {
+    item.priority = value
   }
 
   /**
-   * Creates an editor for the [Association] pattern, which validates regexps
+   * Creates an editor for the priority, with empty value validation
    *
    * @param item the [Association]
    * @return the [TableCellEditor]
    */
   override fun getEditor(item: Association): TableCellEditor {
-    val cellEditor = ExtendableTextField()
-
-    return RegexpEditor(cellEditor, parent)
+    val cellEditor = JTextField()
+    return StatefulValidatingCellEditor(cellEditor, parent)
   }
 
   /**
-   * Renders the regexp.
-   *
-   * TODO: find how to renders highlighted regexs
+   * Creates a renderer for the priority with validation
    *
    * @param item the [Association]
    * @return the [TableCellRenderer]
    */
   override fun getRenderer(item: Association): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
+      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as String?) }
   }
 
   /**
@@ -104,19 +99,12 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    * @param value
    * @return
    */
-  private fun validate(value: Any?): ValidationInfo? {
+  private fun validate(value: String?): ValidationInfo? {
     return when {
-      value == null || value == ""      -> ValidationInfo(message("AtomAssocConfig.PatternEditor.empty"))
-      !isValidPattern(value.toString()) -> ValidationInfo(message("AtomAssocConfig.PatternEditor.invalid"))
-      else                              -> null
+      value == null || value == "" -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
+      value.toIntOrNull() == null  -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.invalidNumber"))
+      value.toInt() <= 0           -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))
+      else                         -> null
     }
   }
-
-  private fun isValidPattern(pattern: String): Boolean = try {
-    Pattern.compile(pattern)
-    true
-  } catch (e: RuntimeException) {
-    false
-  }
-
 }

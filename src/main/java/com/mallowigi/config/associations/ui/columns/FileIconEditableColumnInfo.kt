@@ -37,14 +37,22 @@ import javax.swing.JTable
 import javax.swing.table.TableCellRenderer
 
 /**
- * Icon editable column info
+ * Column info for the icon of a **File Icon Association**. Displays the icon path alongside the icon.
  *
- * @constructor Create empty Icon editable column info
+ * @constructor Create a column info
+ * @param parent Parent container
+ * @param editable Whether the column is editable
  */
 @Suppress("unused")
 class FileIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
+  /**
+   * Renders the icon along it's trimmed path (to /resources/icons/...). Uses [AtomIcons.getFileIcon].
+   *
+   * @param item the [Association]
+   * @return the [TableCellRenderer]
+   */
   override fun getRenderer(item: Association): TableCellRenderer? {
     if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
 

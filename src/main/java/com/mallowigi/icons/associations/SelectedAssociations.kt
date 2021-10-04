@@ -31,9 +31,8 @@ import com.mallowigi.models.FileInfo
 import java.util.Map.copyOf
 
 /**
- * Custom associations
+ * Represents a list of [SelectedAssociations]
  *
- * @constructor Create empty Custom associations
  */
 @Suppress("MemberNameEqualsClassName")
 class SelectedAssociations : Associations {
@@ -45,30 +44,36 @@ class SelectedAssociations : Associations {
     myAssociations = mutableMapOf()
   }
 
+  /**
+   * Copy from other [Associations] as a map
+   */
   constructor(associations: Map<String, RegexAssociation>) {
     myAssociations = copyOf(associations)
   }
 
+  /**
+   * Copy from a list of other [Associations]
+   */
   constructor(associations: List<RegexAssociation>) {
     myAssociations = associations.associateBy { it.name }.toMutableMap()
   }
 
   /**
-   * Has the association?
+   * Checks if an [Association] is already registered
    *
    * @param name
    */
   fun has(name: String): Boolean = myAssociations.containsKey(name)
 
   /**
-   * Get an association
+   * Get an [Association] by name
    *
    * @param name
    */
   fun get(name: String): RegexAssociation? = myAssociations[name]
 
   /**
-   * Add association to map if not exists
+   * Inserts association to map if not exists
    *
    * @param name
    * @param assoc
@@ -81,18 +86,28 @@ class SelectedAssociations : Associations {
   }
 
   /**
-   * get the association values
+   * get the [Associations]
    *
    * @return
    */
   fun values(): List<RegexAssociation> = myAssociations.values.toList()
 
-  override fun findMatchingAssociation(file: FileInfo?): Association? =
-    values().stream()
-      .filter { association: Association -> association.enabled && association.matches(file!!) }
-      .findAny()
-      .orElse(null)
+  /**
+   * Find matching association with the highest priority
+   *
+   * @param file
+   * @return the association if found
+   */
+  override fun findMatchingAssociation(file: FileInfo): Association? =
+    values()
+      .filter { association: Association -> association.enabled && association.matches(file) }
+      .maxByOrNull { it.priority }
 
+  /**
+   * Get the [Associations]
+   *
+   * @return
+   */
   override fun getTheAssociations(): List<RegexAssociation> = values()
 
 }

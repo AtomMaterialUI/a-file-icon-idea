@@ -29,19 +29,18 @@ import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
 
 /**
- * Default List of file associations
+ * Represents the bundled list of associations parsed from the xml
  *
- * @constructor Create empty Default associations
+ * @constructor Create empty [DefaultAssociations]
  */
 class DefaultAssociations : Associations() {
   @Property
   var associations: List<Association> = emptyList()
 
-  override fun findMatchingAssociation(file: FileInfo?): Association? =
-    associations.stream()
-      .filter { association: Association -> association.matches(file!!) }
-      .findAny()
-      .orElse(null)
+  override fun findMatchingAssociation(file: FileInfo): Association? =
+    associations
+      .filter { association: Association -> association.matches(file) }
+      .maxByOrNull { it.priority }
 
   override fun getTheAssociations(): List<Association> = associations
 

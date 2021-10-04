@@ -40,8 +40,8 @@ class EnabledColumnInfo :
 
   override fun valueOf(item: Association): Boolean = item.enabled
 
-  override fun setValue(item: Association, value: Boolean?) {
-    if (value != null) item.enabled = value
+  override fun setValue(item: Association, value: Boolean) {
+    item.enabled = value
   }
 
   override fun getEditor(item: Association): TableCellEditor = DefaultCellEditor(JCheckBox())

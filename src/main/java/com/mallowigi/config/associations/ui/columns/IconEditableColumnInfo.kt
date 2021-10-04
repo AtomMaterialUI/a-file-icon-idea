@@ -28,53 +28,64 @@ package com.mallowigi.config.associations.ui.columns
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.fileTypes.FileTypeManager
-import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.util.PathUtil
 import com.intellij.util.ui.LocalPathCellEditor
-import com.intellij.util.ui.table.IconTableCellRenderer
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
-import icons.AtomIcons
-import java.io.IOException
-import javax.swing.Icon
-import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
- * Icon editable column info
+ * Abstract class for Icon Editable Column
  *
  * @constructor Create empty Icon editable column info
  */
 @Suppress("unused")
-open class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+abstract class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
 
+  /**
+   * Gets the column value from the path name
+   *
+   * @param item the [Association]
+   * @return the full path
+   */
   override fun valueOf(item: Association): String? = PathUtil.toSystemDependentName(item.icon)
 
+  /**
+   * Set column value (sets the icon from the path)
+   *
+   * @param item [Association] to set
+   * @param value the path name
+   */
   override fun setValue(item: Association, value: String?) {
     if (value != null) item.icon = value
   }
 
+  /**
+   * Creates an editor with a file chooser
+   *
+   * @param item the [Association]
+   * @return the [TableCellEditor]
+   */
   override fun getEditor(item: Association): TableCellEditor? =
     LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
 
-  override fun getRenderer(item: Association): TableCellRenderer? {
-    if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
+  /**
+   * Creates a [TableCellRenderer] that displays the icon with it's path
+   *
+   * @param item the [Association]
+   * @return the [TableCellRenderer]
+   */
+  abstract override fun getRenderer(item: Association): TableCellRenderer?
 
-    return object : IconTableCellRenderer<String>() {
-      override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
-        AtomIcons.loadSVGIcon(value)
-      } catch (e: IOException) {
-        null
-      }
-
-      override fun getText(): String = PathUtil.getFileName(item.icon)
-    }
-
-  }
-
+  /**
+   * Prevents cell to be editable
+   *
+   * @param item the [Association]
+   * @return true if editable
+   */
   override fun isCellEditable(item: Association): Boolean = editable
 
   companion object {

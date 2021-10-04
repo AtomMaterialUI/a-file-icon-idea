@@ -37,10 +37,7 @@ import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.AtomAssocConfig;
-import com.mallowigi.config.associations.ui.columns.EnabledColumnInfo;
-import com.mallowigi.config.associations.ui.columns.IconEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.*;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
 import com.mallowigi.icons.associations.CustomAssociations;
@@ -75,14 +72,16 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true)
+    new FileIconEditableColumnInfo(this, true),
+    new PriorityColumnInfo(this, true)
   };
 
   private final transient ColumnInfo[] folderColumns = {
     new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
-    new IconEditableColumnInfo(this, true)
+    new FolderIconEditableColumnInfo(this, true),
+    new PriorityColumnInfo(this, true)
   };
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

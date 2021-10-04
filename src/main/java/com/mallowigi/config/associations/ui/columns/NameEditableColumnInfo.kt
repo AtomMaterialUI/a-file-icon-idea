@@ -38,24 +38,49 @@ import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
- * Editable column info for association name
+ * Editable column info for [Association] name
  *
  * @property parent the Parent class
+ * @property editable whether the column should be editable
  */
 @Suppress("UnstableApiUsage")
 class NameEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.name")) {
+  /**
+   * The value of the column is the name
+   *
+   * @param item the [Association]
+   * @return [Association] name
+   */
   override fun valueOf(item: Association): String = item.name
 
-  override fun setValue(item: Association, value: String?) {
-    item.name = value!!
+  /**
+   * Set [Association]'s name
+   *
+   * @param item the [Association]
+   * @param value the new name
+   */
+  override fun setValue(item: Association, value: String) {
+    item.name = value
   }
 
+  /**
+   * Creates an editor for the name, with empty value validation
+   *
+   * @param item the [Association]
+   * @return the [TableCellEditor]
+   */
   override fun getEditor(item: Association): TableCellEditor {
     val cellEditor = ExtendableTextField()
     return StatefulValidatingCellEditor(cellEditor, parent)
   }
 
+  /**
+   * Creates a renderer for the name: displays the name with a calidation tooltip if the name is empty
+   *
+   * @param item the [Association]
+   * @return the [TableCellRenderer]
+   */
   override fun getRenderer(item: Association): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int ->
@@ -67,5 +92,11 @@ class NameEditableColumnInfo(private val parent: Disposable, private val editabl
       }
   }
 
+  /**
+   * Whether the cell is editable
+   *
+   * @param item
+   * @return
+   */
   override fun isCellEditable(item: Association): Boolean = editable
 }

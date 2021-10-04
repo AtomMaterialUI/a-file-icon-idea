@@ -27,48 +27,55 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
-import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
 /**
  * Association
  *
- * @property name
- * @property icon
- * @property enabled
- * @constructor Create empty Association
+ * @property name the name of the association
+ * @property icon the icon
+ * @property enabled whether the association is used
+ * @property priority association priority. Lowest priorities are used last.
  */
 abstract class Association internal constructor(
-  @field:Property @field:NonNls var name: String,
+  @field:Property var name: String,
   @field:Property var icon: String,
   var enabled: Boolean = true,
+  @field:Property var priority: Int,
 ) : Serializable {
 
+  /**
+   * How the association will be matched against (regex, type)
+   */
   abstract var matcher: String
 
+  /**
+   * Verifies that the association is not empty
+   */
   open val isEmpty: Boolean
-    get() = name.isEmpty() || icon.isEmpty()
+    get() = name.isEmpty() || icon.isEmpty() || priority > 0
 
   /**
    * Check whether the file matches the association
    *
-   * @param file
-   * @return
+   * @param file file information
+   * @return true if matches
    */
   abstract fun matches(file: FileInfo): Boolean
 
   /**
-   * Apply the association
+   * Apply changes to the association
    *
-   * @param other
+   * @param other the other assoc to apply from
    */
   open fun apply(other: Association) {
     name = other.name
     icon = other.icon
     enabled = other.enabled
+    priority = other.priority
   }
 
-  override fun toString(): String = "$name $matcher"
+  override fun toString(): String = "$name $matcher ($priority)"
 
   companion object {
     private const val serialVersionUID: Long = -1L

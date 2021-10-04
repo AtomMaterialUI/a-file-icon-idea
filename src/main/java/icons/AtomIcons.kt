@@ -30,6 +30,7 @@ import com.intellij.openapi.util.Ref
 import com.intellij.ui.scale.ScaleContext
 import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
+import com.intellij.util.ui.JBUI
 import com.mallowigi.icons.special.DirIcon
 import org.jetbrains.annotations.NonNls
 import java.awt.Image
@@ -81,8 +82,20 @@ object AtomIcons {
     )
   }
 
+  /**
+   * Loads an icon
+   *
+   * @param path absolute path to the icon
+   * @return the icon. must not be null
+   */
   private fun load(@NonNls path: String): Icon = IconLoader.findIcon(path)!!
 
+  /**
+   * Tries to load a svg icon
+   *
+   * @param canonicalPath
+   * @return
+   */
   @Throws(IOException::class)
   fun loadSVGIcon(canonicalPath: String): Icon {
     val url = Ref.create<URL>()
@@ -92,9 +105,13 @@ object AtomIcons {
       Logger.getAnonymousLogger().info(e.message)
     }
     val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
-    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), 16, 16)
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
   }
 
+  /**
+   * Arrow Icons
+   *
+   */
   object Arrows {
     var MaterialDownSelected: Icon = load("/icons/mac/material/down_selected.svg")
     var MaterialRightSelected: Icon = load("/icons/mac/material/right_selected.svg")
@@ -114,6 +131,10 @@ object AtomIcons {
     var Right: Icon = load("/icons/mac/arrow/right.svg")
   }
 
+  /**
+   * Node icons
+   *
+   */
   object Nodes2 {
     val FolderOpen: Icon = load("/icons/nodes/folderOpen.svg")
   }

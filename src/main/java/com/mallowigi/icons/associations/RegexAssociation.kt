@@ -32,7 +32,7 @@ import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 
 /**
- * Regex association
+ * A Regex [Association]
  *
  * @property pattern
  * @constructor
@@ -40,26 +40,43 @@ import java.util.regex.PatternSyntaxException
  * @param name
  * @param icon
  * @param enabled
+ * @param priority
  */
 class RegexAssociation @JvmOverloads constructor(
   name: String = "",
   icon: String = "",
   enabled: Boolean = true,
+  priority: Int = 100,
   @field:Property var pattern: String = "",
-) : Association(name, icon, enabled) {
+) : Association(name, icon, enabled, priority) {
 
+  /**
+   * Compiled pattern of the regex pattern
+   */
+  @Transient
+  private var compiledPattern: Pattern? = null
+
+  /**
+   * Matches by the [pattern]
+   */
   override var matcher: String
     get() = pattern
     set(matcher) {
       pattern = matcher
     }
 
+  /**
+   * Identifies [RegexAssociation] that are empty
+   */
   override val isEmpty: Boolean
     get() = super.isEmpty || pattern.isEmpty()
 
-  @Transient
-  private var compiledPattern: Pattern? = null
-
+  /**
+   * Matches against the pattern
+   *
+   * @param file the file info
+   * @return true if the pattern matches
+   */
   override fun matches(file: FileInfo): Boolean {
     return try {
       if (compiledPattern == null) compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE)
@@ -70,6 +87,11 @@ class RegexAssociation @JvmOverloads constructor(
     }
   }
 
+  /**
+   * Apply changes from another [RegexAssociation]
+   *
+   * @param other the other to apply from
+   */
   override fun apply(other: Association) {
     super.apply(other)
     pattern = other.matcher

@@ -35,30 +35,28 @@ import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
 /**
- * Associations
+ * Represents a serialized collection of [Associations][Association]
  *
  * @constructor Create empty Associations
  */
 abstract class Associations : Serializable {
   /**
-   * Find the association which matches the file
+   * Find the [Association] which matches the file info
    *
    * @param fileInfo the file information
-   * @return
+   * @return the [Association] if found
    */
-  fun findAssociation(fileInfo: FileInfo?): Association? {
+  fun findAssociation(fileInfo: FileInfo): Association? {
     // First check in custom assocs
     val matching: Association? = findMatchingAssociation(fileInfo)
     // Specific plugin handling
     if (matching != null && IMAGE_TYPES.contains(matching.name)) {
       try {
         // If those plugins are installed, let them handle the icon
-        val pluginID = message("plugins.iconViewer")
         val imageIconViewerID = message("plugins.imageIconViewer")
-        val plugin = PluginManagerCore.getPlugin(PluginId.getId(pluginID))
-        val plugin2 = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
+        val plugin = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
 
-        if (plugin != null || plugin2 != null) return null
+        if (plugin != null) return null
       } catch (e: RuntimeException) {
         LOG.error(e)
       }
@@ -70,17 +68,17 @@ abstract class Associations : Serializable {
   }
 
   /**
-   * Find matching association
+   * Look for a matching [Association]
    *
-   * @param file
-   * @return
+   * @param file file information
+   * @return [Association] if found
    */
-  abstract fun findMatchingAssociation(file: FileInfo?): Association?
+  abstract fun findMatchingAssociation(file: FileInfo): Association?
 
   /**
-   * Return the associations
+   * Get the parsed [associations][Association]
    *
-   * @return
+   * @return list of [associations][Association]
    */
   abstract fun getTheAssociations(): List<Association>
 

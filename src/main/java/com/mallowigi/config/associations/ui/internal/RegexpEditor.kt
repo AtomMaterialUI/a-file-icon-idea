@@ -48,19 +48,28 @@ import javax.swing.KeyStroke
 import javax.swing.table.TableCellEditor
 
 /**
- * Regexp editor
+ * A Regular expression editor with validation
  *
- * @param textField
- * @param parent
+ * @param textField the text field component
+ * @param parent the disposable parent
  */
-class RegexpEditor(
-  textField: JTextField,
-  parent: Disposable,
-) : StatefulValidatingCellEditor(textField, parent), TableCellEditor {
+class RegexpEditor(textField: JTextField, parent: Disposable) :
+  StatefulValidatingCellEditor(textField, parent), TableCellEditor {
+  /**
+   * Instance of an editor with regexp syntax highlighting
+   */
   private var editor: EditorTextField =
     EditorTextField(EditorFactory.getInstance().createDocument("dummy.regexp"),
                     ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE, false, true)
+
+  /**
+   * Floating document during edition
+   */
   private var myDocument: Document? = null
+
+  /**
+   * State updater reducer used for validation
+   */
   private val stateUpdater = Consumer { _: ValidationInfo? -> }
 
   init {
@@ -97,6 +106,16 @@ class RegexpEditor(
     Disposer.register(parent) { myDocument!!.removeDocumentListener(dl) }
   }
 
+  /**
+   * Creates a [TableCellEditor] with validation functionalities
+   *
+   * @param table the table
+   * @param value the value to render
+   * @param isSelected whether the cell is selected
+   * @param row the cell row
+   * @param column the cell column
+   * @return an editor for the current cell
+   */
   override fun getTableCellEditorComponent(
     table: JTable,
     value: Any,
@@ -113,7 +132,7 @@ class RegexpEditor(
     val validationProperty = renderer.getClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY)
     if (validationProperty != null) {
       val cellInfo = validationProperty as ValidationInfo
-      // Add validation info
+      // Add validation info in a property
       editor.putClientProperty(
         ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY,
         cellInfo.forComponent(editor)
@@ -125,15 +144,29 @@ class RegexpEditor(
     return editor
   }
 
+  /**
+   * The cell value: the contents of the edited document
+   *
+   * @return the contents of the text field
+   */
   override fun getCellEditorValue(): Any = myDocument!!.text
 
+  /**
+   * Validates cell when edition stopped
+   *
+   * @return true if valid
+   */
   override fun stopCellEditing(): Boolean {
     // Revalidates on blur
     ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
     fireEditingStopped()
-    return true
+    return true // todo return false if invalid?
   }
 
+  /**
+   * Revalidates when cancel editing
+   *
+   */
   override fun cancelCellEditing() {
     // Revalidates on cancel
     ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
@@ -142,6 +175,8 @@ class RegexpEditor(
 
   /**
    * Executes validations
+   *
+   * @return the [ValidationInfo] if there is
    */
   override fun get(): ValidationInfo? {
     val validationProperty = editor.getClientProperty(ValidatingTableCellRendererWrapper.CELL_VALIDATION_PROPERTY)
@@ -153,5 +188,10 @@ class RegexpEditor(
     return null
   }
 
+  /**
+   * Get component: the editor
+   *
+   * @return the [EditorTextField]
+   */
   override fun getComponent(): Component = editor
 }
