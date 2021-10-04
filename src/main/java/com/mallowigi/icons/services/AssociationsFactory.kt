@@ -35,7 +35,6 @@ import com.thoughtworks.xstream.XStream
  *
  */
 object AssociationsFactory {
-
   /**
    * Generate the list of [DefaultAssociations] from XML
    *
@@ -51,20 +50,6 @@ object AssociationsFactory {
       processAnnotations(DefaultAssociations::class.java)
       processAnnotations(RegexAssociation::class.java)
       processAnnotations(TypeAssociation::class.java)
-
-//      alias("associations", DefaultAssociations::class.java)
-//      alias("regex", RegexAssociation::class.java)
-//      alias("type", TypeAssociation::class.java)
-//      useAttributeFor(DefaultAssociations::class.java, "associations")
-//      useAttributeFor(Association::class.java, "icon")
-//      useAttributeFor(Association::class.java, "name")
-//      useAttributeFor(Association::class.java, "priority")
-//      useAttributeFor(Association::class.java, "iconType")
-//      useAttributeFor(Association::class.java, "color")
-//      useAttributeFor(Association::class.java, "folderColor")
-//      useAttributeFor(Association::class.java, "iconColor")
-//      useAttributeFor(RegexAssociation::class.java, "pattern")
-//      useAttributeFor(TypeAssociation::class.java, "type")
     }
     return try {
       xStream.fromXML(associationsXml) as DefaultAssociations

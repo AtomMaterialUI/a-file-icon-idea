@@ -29,42 +29,44 @@ import com.intellij.openapi.Disposable
 import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
 import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
+import com.intellij.ui.ColorUtil
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
+import java.awt.Color
 import javax.swing.JTextField
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
- * Editable column for the priority
+ * Editable column for the color
  * @property parent the Parent class
  * @property editable whether the column should be editable
  */
-class PriorityColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association, Int>(message("AssociationsForm.folderIconsTable.columns.priority")) {
+class ColorColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+  EditableColumnInfo<Association, Color?>(message("AssociationsForm.folderIconsTable.columns.color")) {
 
   /**
-   * The value of the column is the priority
+   * The value of the column is the color
    *
    * @param item the [Association]
-   * @return the priority
+   * @return the color
    */
-  override fun valueOf(item: Association): Int = item.priority
+  override fun valueOf(item: Association): Color? = item.color
 
   /**
-   * Set the [Association]'s priority. Must be > 0
+   * Set the [Association]'s color. Must be > 0
    *
    * @param item the [Association]
    * @param value the new value
    */
-  override fun setValue(item: Association, value: Int) {
-    item.priority = value
+  override fun setValue(item: Association, value: Color?) {
+    item.color = value
   }
 
   /**
-   * Creates an editor for the priority, with empty value validation
+   * Creates an editor for the color, with empty value validation
    *
    * @param item the [Association]
    * @return the [TableCellEditor]
@@ -75,15 +77,22 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
   }
 
   /**
-   * Creates a renderer for the priority with validation
+   * Creates a renderer for the color with validation
    *
    * @param item the [Association]
    * @return the [TableCellRenderer]
    */
-  override fun getRenderer(item: Association): TableCellRenderer? {
-    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as Int?) }
-  }
+  override fun getRenderer(item: Association): TableCellRenderer? =
+    ValidatingTableCellRendererWrapper(object : DefaultTableCellRenderer() {
+      override fun repaint() {
+        if (item.color != null) {
+          background = item.color
+          foreground = Color.white
+          text = ColorUtil.toHex(background)
+        }
+      }
+    })
+      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as Color?) }
 
   /**
    * Whether the cell is editable
@@ -99,12 +108,11 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @param value
    * @return
    */
-  private fun validate(value: Int?): ValidationInfo? {
+  private fun validate(value: Color?): ValidationInfo? {
     return when {
-      value == null      -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
+      value == null -> ValidationInfo(message("AtomAssocConfig.ColorEditor.empty"))
 //      value.toIntOrNull() == null  -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.invalidNumber"))
-      value.toInt() <= 0 -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))
-      else               -> null
+      else          -> null
     }
   }
 }
