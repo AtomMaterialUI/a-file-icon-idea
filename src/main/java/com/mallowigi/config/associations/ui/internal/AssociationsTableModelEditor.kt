@@ -23,203 +23,208 @@
  *
  *
  */
-package com.mallowigi.config.associations.ui.internal;
+package com.mallowigi.config.associations.ui.internal
 
-import com.intellij.openapi.util.Comparing;
-import com.intellij.openapi.util.Ref;
-import com.intellij.ui.TableSpeedSearch;
-import com.intellij.ui.TableUtil;
-import com.intellij.ui.ToolbarDecorator;
-import com.intellij.ui.table.JBTable;
-import com.intellij.ui.table.TableView;
-import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.*;
-import com.intellij.util.ui.table.ComboBoxTableCellEditor;
-import com.intellij.util.xmlb.XmlSerializer;
-import org.jdom.Element;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.util.Ref
+import com.intellij.ui.TableSpeedSearch
+import com.intellij.ui.TableUtil
+import com.intellij.ui.ToolbarDecorator
+import com.intellij.ui.table.JBTable
+import com.intellij.ui.table.TableView
+import com.intellij.util.containers.ContainerUtil
+import com.intellij.util.ui.CollectionItemEditor
+import com.intellij.util.ui.CollectionModelEditor
+import com.intellij.util.ui.ColumnInfo
+import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.ListTableModel
+import com.intellij.util.ui.UIUtil
+import com.intellij.util.ui.table.ComboBoxTableCellEditor
+import com.mallowigi.icons.associations.Association
+import org.jetbrains.annotations.Nls
+import javax.swing.JComponent
 
-import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+/**
+ * [Association] table model editor
+ *
+ * @param T type of items
+ * @constructor
+ *
+ * @param items the [Association]
+ * @param columns list of [ColumnInfo]
+ * @param itemEditor the [Association] editor
+ * @param emptyText the text to show when the table is empty
+ */
+class AssociationsTableModelEditor<T : Association>(
+  items: List<T>,
+  columns: Array<ColumnInfo<*, *>>,
+  itemEditor: CollectionItemEditor<T>,
+  emptyText: @Nls(capitalization = Nls.Capitalization.Sentence) String,
+) : CollectionModelEditor<T, CollectionItemEditor<T>?>(itemEditor) {
+  /**
+   * Table View
+   */
+  private val table: TableView<T>
 
-@SuppressWarnings({"SyntheticAccessorCall",
-  "AccessingNonPublicFieldOfAnotherObject",
-  "AssignmentOrReturnOfFieldWithMutableType"})
-public final class AssociationsTableModelEditor<T> extends CollectionModelEditor<T, CollectionItemEditor<T>> {
-  private final TableView<T> table;
-  private final ToolbarDecorator toolbarDecorator;
+  /**
+   * Toolbar actions
+   */
+  private val toolbarDecorator: ToolbarDecorator
 
-  private final MyListTableModel model;
+  /**
+   * Association Table Model
+   */
+  private val model: AssociationTableModel<T>
 
-  public AssociationsTableModelEditor(final ColumnInfo @NotNull [] columns,
-                                      @NotNull final CollectionItemEditor<T> itemEditor,
-                                      @NotNull @Nls(capitalization = Nls.Capitalization.Sentence) final String emptyText) {
-    this(Collections.emptyList(), columns, itemEditor, emptyText);
-  }
+  init {
+    model = AssociationTableModel(columns, items)
+    // Table settings
+    table = TableView(model)
+    table.isStriped = true
+    table.setMaxItemsForSizeCalculation(MAX_ITEMS)
+    table.ignoreRepaint = true
+    table.fillsViewportHeight = true
+    table.setShowGrid(false)
+    table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
+    table.setEnableAntialiasing(true)
+    table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
+    table.visibleRowCount = JBTable.PREFERRED_SCROLLABLE_VIEWPORT_HEIGHT_IN_ROWS
+    TableSpeedSearch(table)
 
-  @SuppressWarnings("MagicNumber")
-  public AssociationsTableModelEditor(@NotNull final List<T> items,
-                                      final ColumnInfo @NotNull [] columns,
-                                      @NotNull final CollectionItemEditor<T> itemEditor,
-                                      @NotNull @Nls(capitalization = Nls.Capitalization.Sentence) final String emptyText) {
-    super(itemEditor);
-
-    model = new MyListTableModel(columns, new ArrayList<>(items));
-    table = new TableView<>(model);
-    table.setStriped(true);
-    table.setMaxItemsForSizeCalculation(20);
-    table.setIgnoreRepaint(true);
-    table.setFillsViewportHeight(true);
-    table.setShowGrid(false);
-    table.setDefaultEditor(Enum.class, ComboBoxTableCellEditor.INSTANCE);
-    table.setEnableAntialiasing(true);
-    table.setPreferredScrollableViewportSize(JBUI.size(200, -1));
-    table.setVisibleRowCount(JBTable.PREFERRED_SCROLLABLE_VIEWPORT_HEIGHT_IN_ROWS);
-    new TableSpeedSearch(table);
-    final ColumnInfo firstColumn = columns[0];
-    if ((firstColumn.getColumnClass() == boolean.class || firstColumn.getColumnClass() == Boolean.class) && firstColumn.getName().isEmpty()) {
-      TableUtil.setupCheckboxColumn(table.getColumnModel().getColumn(0), 0);
-      JBTable.setupCheckboxShortcut(table, 0);
+    // Special support for checkbox: toggle by clicking or space
+    val firstColumn = columns[0]
+    if (
+      (firstColumn.columnClass == Boolean::class.javaPrimitiveType || firstColumn.columnClass == Boolean::class.java) &&
+      firstColumn.name.isEmpty()
+    ) {
+      TableUtil.setupCheckboxColumn(table.columnModel.getColumn(0), 0)
+      JBTable.setupCheckboxShortcut(table, 0)
     }
 
-    table.getEmptyText().setFont(UIUtil.getLabelFont().deriveFont(24.0f));
-    table.getEmptyText().setText(emptyText);
+    // Display empty text when loading
+    table.emptyText.setFont(UIUtil.getLabelFont().deriveFont(24.0f))
+    table.emptyText.text = emptyText
 
-    toolbarDecorator = ToolbarDecorator.createDecorator(table, this);
+    // Setup actions
+    toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
   }
 
-  public static <T> void cloneUsingXmlSerialization(@NotNull final T oldItem, @NotNull final T newItem) {
-    final Element serialized = com.intellij.configurationStore.XmlSerializer.serialize(oldItem);
-    if (serialized != null) {
-      XmlSerializer.deserializeInto(newItem, serialized);
-    }
+  /**
+   *
+   * @constructor for empty items
+   */
+  constructor(
+    columns: Array<ColumnInfo<*, *>>,
+    itemEditor: CollectionItemEditor<T>,
+    emptyText: @Nls(capitalization = Nls.Capitalization.Sentence) String,
+  ) : this(emptyList<T>(), columns, itemEditor, emptyText)
+
+  /**
+   * Convenience method to disable/enable the table
+   *
+   * @param isEnabled new enabled state
+   * @return self
+   */
+  fun enabled(isEnabled: Boolean): AssociationsTableModelEditor<T> {
+    table.isEnabled = isEnabled
+    return this
   }
 
-  @NotNull
-  public AssociationsTableModelEditor<T> enabled(final boolean value) {
-    table.setEnabled(value);
-    return this;
+  /**
+   * Add a model listener for changes
+   *
+   * @param listener a data listener
+   * @return self
+   */
+  internal fun setModelListener(listener: AssociationsDataChangedListener<T>): AssociationsTableModelEditor<T> {
+    model.dataChangedListener = listener
+    model.addTableModelListener(listener)
+    return this
   }
 
-  public AssociationsTableModelEditor<T> modelListener(@NotNull final DataChangedListener<T> listener) {
-    model.dataChangedListener = listener;
-    model.addTableModelListener(listener);
-    return this;
-  }
+  /**
+   * Returns the [AssociationTableModel]
+   *
+   * @return the [AssociationTableModel]
+   */
+  fun getModel(): ListTableModel<T> = model
 
-  @NotNull
-  public ListTableModel<T> getModel() {
-    return model;
-  }
+  /**
+   * Create component with toolbar
+   *
+   */
+  fun createComponent(): JComponent = toolbarDecorator.createPanel()
 
-  @NotNull
-  public JComponent createComponent() {
-    return toolbarDecorator.createPanel();
-  }
+  /**
+   * Selects an item programmatically
+   *
+   * @param item the item to select
+   */
+  fun selectItem(item: T) {
+    table.clearSelection()
+    val ref: Ref<T>?
 
-  public void selectItem(@NotNull final T item) {
-    table.clearSelection();
-
-    final @Nullable Ref<T> ref;
     if (helper.hasModifiedItems()) {
-      ref = Ref.create();
-      helper.process((modified, original) -> {
-        if (item == original) {
-          ref.set(modified);
-        }
-        return ref.isNull();
-      });
+      ref = Ref.create()
+      helper.process { modified: T, original: T ->
+        if (item === original) ref.set(modified)
+        ref.isNull
+      }
     } else {
-      ref = null;
+      ref = null
     }
 
-    table.addSelection(ref == null || ref.isNull() ? item : ref.get());
+    table.addSelection(if (ref == null || ref.isNull) item else ref.get())
   }
 
-  @NotNull
-  public List<T> apply() {
+  /**
+   * Apply changes to elements
+   *
+   * @return the new items after changes
+   */
+  fun apply(): List<T> {
     if (helper.hasModifiedItems()) {
-      @SuppressWarnings("unchecked") final ColumnInfo<T, Object>[] columns = model.getColumnInfos();
-      helper.process((newItem, oldItem) -> {
-        for (final ColumnInfo<T, Object> column : columns) {
-          if (column.isCellEditable(newItem)) {
-            column.setValue(oldItem, column.valueOf(newItem));
-          }
+      val columns = model.columnInfos
+
+      helper.process { newItem: T, oldItem: T ->
+        // set all modified items new values
+        for (column in columns) {
+          if (column.isCellEditable(newItem)) column.setValue(oldItem, column.valueOf(newItem))
         }
-
-        model.items.set(ContainerUtil.indexOfIdentity(model.items, newItem), oldItem);
-        return true;
-      });
-    }
-
-    helper.reset(model.items);
-    return model.items;
-  }
-
-  @NotNull
-  @Override
-  protected List<T> getItems() {
-    return model.items;
-  }
-
-  @Override
-  public void reset(@NotNull final List<? extends T> originalItems) {
-    super.reset(originalItems);
-    model.setItems(new ArrayList<>(originalItems));
-  }
-
-  @SuppressWarnings({"AbstractClassNeverImplemented",
-    "NoopMethodInAbstractClass"})
-  public abstract static class DataChangedListener<T> implements TableModelListener {
-    public abstract void dataChanged(@NotNull ColumnInfo<T, ?> columnInfo, int rowIndex);
-
-    @Override
-    public void tableChanged(@NotNull final TableModelEvent e) {
-    }
-  }
-
-  @SuppressWarnings({"FieldHasSetterButNoGetter",
-    "SerializableInnerClassWithNonSerializableOuterClass"})
-  private final class MyListTableModel extends ListTableModel<T> {
-    private List<T> items;
-    @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-    private DataChangedListener<T> dataChangedListener;
-
-    MyListTableModel(final ColumnInfo @NotNull [] columnNames, @NotNull final List<T> items) {
-      super(columnNames, items);
-
-      this.items = items;
-    }
-
-    @Override
-    public void setItems(@NotNull final List<T> items) {
-      this.items = items;
-      super.setItems(items);
-    }
-
-    @Override
-    public void setValueAt(final Object aValue, final int rowIndex, final int columnIndex) {
-      if (rowIndex < getRowCount()) {
-        @SuppressWarnings("unchecked") final ColumnInfo<T, Object> column = getColumnInfos()[columnIndex];
-        final T item = getItem(rowIndex);
-        final Object oldValue = column.valueOf(item);
-        if (column.getColumnClass() == String.class
-            ? !Comparing.strEqual(((String) oldValue), ((String) aValue))
-            : !Comparing.equal(oldValue, aValue)) {
-
-          column.setValue(helper.getMutable(item, rowIndex), aValue);
-          if (dataChangedListener != null) {
-            dataChangedListener.dataChanged(column, rowIndex);
-          }
-        }
+        // Sets the newItem in place of the old item
+        model.items[ContainerUtil.indexOfIdentity(model.items, newItem)] = oldItem
+        true
       }
     }
+    // Resets the helper
+    helper.reset(model.items)
+    return model.items
   }
 
+  /**
+   * Return the model items
+   *
+   * @return the model items
+   */
+  override fun getItems(): List<T> = model.items
+
+  /**
+   * Restore the original items on reset
+   *
+   * @param originalItems
+   */
+  override fun reset(originalItems: List<T>) {
+    super.reset(originalItems)
+    model.items = ArrayList(originalItems)
+  }
+
+  companion object {
+    const val MAX_ITEMS: Int = 20
+    const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
+//    fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
+//      val serialized = serialize(oldItem)
+//      if (serialized != null) {
+//        XmlSerializer.deserializeInto(newItem, serialized)
+//      }
+//    }
+  }
 }

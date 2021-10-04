@@ -39,6 +39,8 @@ import javax.swing.JTable
 import javax.swing.ListSelectionModel
 import javax.swing.table.AbstractTableModel
 
+@Deprecated("Replaced with SelectAssociations")
+
 /**
  * Table for Folder Associations
  */

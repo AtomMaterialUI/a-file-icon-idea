@@ -26,6 +26,7 @@
 package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.util.Function
+import com.intellij.util.ui.CollectionItemEditor
 import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
@@ -34,13 +35,13 @@ import com.mallowigi.icons.associations.RegexAssociation
  * Editor for the [Association] table cells
  *
  */
-class AssociationsTableItemEditor : DialogItemEditor<Association> {
+class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, CollectionItemEditor<RegexAssociation> {
 
   /**
    * Class of the items
    *
    */
-  override fun getItemClass(): Class<out Association> = Association::class.java
+  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
 
   /**
    * Duplicate an item
@@ -49,7 +50,7 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
    * @param forInPlaceEditing if editing in place (true)
    * @return a clone of the association
    */
-  override fun clone(item: Association, forInPlaceEditing: Boolean): Association {
+  override fun clone(item: RegexAssociation, forInPlaceEditing: Boolean): RegexAssociation {
     return RegexAssociation(
       item.name,
       item.icon,
@@ -65,7 +66,7 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
    * @param oldItem the item to modify
    * @param newItem the changes
    */
-  override fun applyEdited(oldItem: Association, newItem: Association): Unit = oldItem.apply(newItem)
+  override fun applyEdited(oldItem: RegexAssociation, newItem: RegexAssociation): Unit = oldItem.apply(newItem)
 
   /**
    * Do not allow editing empty items
@@ -73,7 +74,7 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
    * @param item the [Association]
    * @return true if editable
    */
-  override fun isEditable(item: Association): Boolean = !item.isEmpty
+  override fun isEditable(item: RegexAssociation): Boolean = !item.isEmpty
 
   /**
    * Determines what constitues an empty [Association]
@@ -81,7 +82,7 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
    * @param item the [Association]
    * @return true if empty
    */
-  override fun isEmpty(item: Association): Boolean = item.isEmpty
+  override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
 
   /**
    * Edits an item
@@ -90,9 +91,15 @@ class AssociationsTableItemEditor : DialogItemEditor<Association> {
    * @param mutator a function to mutate the item
    * @param isAdd if in add mode
    */
-  override fun edit(item: Association, mutator: Function<in Association, out Association>, isAdd: Boolean) {
+  override fun edit(
+    item: RegexAssociation,
+    mutator: Function<in RegexAssociation, out RegexAssociation>,
+    isAdd: Boolean,
+  ) {
     val settings = clone(item, true)
     mutator.`fun`(item).apply(settings)
   }
+
+  override fun isRemovable(item: RegexAssociation): Boolean = true
 
 }
