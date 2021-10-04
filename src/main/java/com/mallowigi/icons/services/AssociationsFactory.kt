@@ -25,7 +25,6 @@
  */
 package com.mallowigi.icons.services
 
-import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.TypeAssociation
@@ -49,19 +48,23 @@ object AssociationsFactory {
 
     xStream.run {
       allowTypesByWildcard(arrayOf("com.mallowigi.icons.associations.*")) // NON-NLS
-      alias("associations", DefaultAssociations::class.java)
-      alias("regex", RegexAssociation::class.java)
-      alias("type", TypeAssociation::class.java)
-      useAttributeFor(DefaultAssociations::class.java, "associations")
-      useAttributeFor(Association::class.java, "icon")
-      useAttributeFor(Association::class.java, "name")
-      useAttributeFor(Association::class.java, "priority")
-      useAttributeFor(Association::class.java, "iconType")
-      useAttributeFor(Association::class.java, "color")
-      useAttributeFor(Association::class.java, "folderColor")
-      useAttributeFor(Association::class.java, "iconColor")
-      useAttributeFor(RegexAssociation::class.java, "pattern")
-      useAttributeFor(TypeAssociation::class.java, "type")
+      processAnnotations(DefaultAssociations::class.java)
+      processAnnotations(RegexAssociation::class.java)
+      processAnnotations(TypeAssociation::class.java)
+
+//      alias("associations", DefaultAssociations::class.java)
+//      alias("regex", RegexAssociation::class.java)
+//      alias("type", TypeAssociation::class.java)
+//      useAttributeFor(DefaultAssociations::class.java, "associations")
+//      useAttributeFor(Association::class.java, "icon")
+//      useAttributeFor(Association::class.java, "name")
+//      useAttributeFor(Association::class.java, "priority")
+//      useAttributeFor(Association::class.java, "iconType")
+//      useAttributeFor(Association::class.java, "color")
+//      useAttributeFor(Association::class.java, "folderColor")
+//      useAttributeFor(Association::class.java, "iconColor")
+//      useAttributeFor(RegexAssociation::class.java, "pattern")
+//      useAttributeFor(TypeAssociation::class.java, "type")
     }
     return try {
       xStream.fromXML(associationsXml) as DefaultAssociations

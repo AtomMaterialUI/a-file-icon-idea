@@ -23,47 +23,18 @@
  *
  *
  */
+
 package com.mallowigi.icons.associations
 
-import com.intellij.util.xmlb.annotations.Property
-import com.mallowigi.models.FileInfo
-import com.thoughtworks.xstream.annotations.XStreamAlias
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute
+import com.intellij.ui.ColorUtil
+import com.thoughtworks.xstream.converters.SingleValueConverter
+import java.awt.Color
 
-/**
- * Type association
- *
- * @property type the type representation (Images, Database...)
- * @constructor
- *
- */
-@XStreamAlias("type")
-class TypeAssociation internal constructor() : Association() {
-  @field:Property
-  @XStreamAsAttribute
-  var type: String = ""
+class HexColorConverter : SingleValueConverter {
+  override fun toString(color: Any?): String = ColorUtil.toHex(color as Color)
 
-  /**
-   * The matcher is the mime type
-   */
-  override var matcher: String
-    get() = type
-    set(matcher) {
-      type = matcher
-    }
+  override fun canConvert(clazz: Class<*>): Boolean = clazz == Color::class.java
 
-  /**
-   * Checks that the [Association] has all the required information
-   */
-  override val isEmpty: Boolean
-    get() = super.isEmpty || type.isEmpty()
-
-  /**
-   * Matches againt the mime type
-   *
-   * @param file
-   * @return true if it matches
-   */
-  override fun matches(file: FileInfo): Boolean = file.fileType == type
-
+  override fun fromString(value: String): Any = ColorUtil.fromHex(value)
+  
 }

@@ -28,6 +28,8 @@ package com.mallowigi.icons.associations
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
+import com.thoughtworks.xstream.annotations.XStreamAlias
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 
@@ -38,8 +40,10 @@ import java.util.regex.PatternSyntaxException
  * @constructor
  *
  */
+@XStreamAlias("regex")
 class RegexAssociation internal constructor() : Association() {
   @field:Property
+  @XStreamAsAttribute
   var pattern: String = ""
 
   /**

@@ -28,15 +28,19 @@ package com.mallowigi.icons.associations
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.models.FileInfo
+import com.thoughtworks.xstream.annotations.XStreamAlias
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
 /**
  * Represents the bundled list of associations parsed from the xml
  *
  * @constructor Create empty [DefaultAssociations]
  */
+@XStreamAlias("associations")
 class DefaultAssociations : Associations() {
   @Property
   @XCollection
+  @XStreamAsAttribute
   var associations: List<Association> = emptyList()
 
   /**

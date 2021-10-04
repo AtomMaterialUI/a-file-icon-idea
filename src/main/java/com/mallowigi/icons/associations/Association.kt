@@ -27,6 +27,9 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute
+import com.thoughtworks.xstream.annotations.XStreamConverter
+import java.awt.Color
 import java.io.Serializable
 
 /**
@@ -45,25 +48,35 @@ abstract class Association internal constructor() : Serializable {
   var enabled: Boolean = true
 
   @field:Property
+  @XStreamAsAttribute
   var iconType: IconType = IconType.FILE
 
   @field:Property
+  @XStreamAsAttribute
   var name: String = ""
 
   @field:Property
+  @XStreamAsAttribute
   var icon: String = ""
 
   @field:Property
+  @XStreamAsAttribute
   var priority: Int = 100
 
   @field:Property
-  var color: String? = null
+  @XStreamAsAttribute
+  @XStreamConverter(value = HexColorConverter::class)
+  var color: Color? = null
 
   @field:Property
-  var iconColor: String? = null
+  @XStreamAsAttribute
+  @XStreamConverter(value = HexColorConverter::class)
+  var iconColor: Color? = null
 
   @field:Property
-  var folderColor: String? = null
+  @XStreamAsAttribute
+  @XStreamConverter(value = HexColorConverter::class)
+  var folderColor: Color? = null
 
   /**
    * How the association will be matched against (regex, type)
