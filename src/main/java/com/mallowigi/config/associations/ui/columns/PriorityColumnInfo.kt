@@ -32,6 +32,7 @@ import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
+import javax.swing.JTable
 import javax.swing.JTextField
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
@@ -99,12 +100,14 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @param value
    * @return
    */
-  private fun validate(value: Int?): ValidationInfo? {
-    return when {
-      value == null      -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
+  private fun validate(value: Int?): ValidationInfo? = when {
+    value == null      -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
 //      value.toIntOrNull() == null  -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.invalidNumber"))
-      value.toInt() <= 0 -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))
-      else               -> null
-    }
+    value.toInt() <= 0 -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))
+    else               -> null
   }
+
+  override fun getComparator(): Comparator<Association> = Comparator.comparingInt { c: Association -> c.priority }
+
+  override fun getWidth(table: JTable?): Int = 50
 }

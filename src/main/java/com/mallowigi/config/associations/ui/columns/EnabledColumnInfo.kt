@@ -30,6 +30,7 @@ import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
 import javax.swing.DefaultCellEditor
 import javax.swing.JCheckBox
+import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 
 /**
@@ -48,4 +49,5 @@ class EnabledColumnInfo :
 
   override fun getColumnClass(): Class<Boolean> = Boolean::class.java
 
+  override fun getWidth(table: JTable?): Int = 20
 }

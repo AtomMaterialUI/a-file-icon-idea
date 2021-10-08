@@ -40,7 +40,6 @@ import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.icons.associations.Association
-import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
 
 /**
@@ -58,7 +57,7 @@ class AssociationsTableModelEditor<T : Association>(
   items: List<T>,
   columns: Array<ColumnInfo<*, *>>,
   itemEditor: CollectionItemEditor<T>,
-  emptyText: @Nls(capitalization = Nls.Capitalization.Sentence) String,
+  emptyText: String,
 ) : CollectionModelEditor<T, CollectionItemEditor<T>?>(itemEditor) {
   /**
    * Table View
@@ -88,17 +87,13 @@ class AssociationsTableModelEditor<T : Association>(
     table.setEnableAntialiasing(true)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
     table.visibleRowCount = JBTable.PREFERRED_SCROLLABLE_VIEWPORT_HEIGHT_IN_ROWS
+    table.rowMargin = 0
+
     TableSpeedSearch(table)
 
     // Special support for checkbox: toggle by clicking or space
-    val firstColumn = columns[0]
-    if (
-      (firstColumn.columnClass == Boolean::class.javaPrimitiveType || firstColumn.columnClass == Boolean::class.java) &&
-      firstColumn.name.isEmpty()
-    ) {
-      TableUtil.setupCheckboxColumn(table.columnModel.getColumn(0), 0)
-      JBTable.setupCheckboxShortcut(table, 0)
-    }
+    TableUtil.setupCheckboxColumn(table.columnModel.getColumn(0), 0)
+    JBTable.setupCheckboxShortcut(table, 0)
 
     // Display empty text when loading
     table.emptyText.setFont(UIUtil.getLabelFont().deriveFont(24.0f))
@@ -106,6 +101,11 @@ class AssociationsTableModelEditor<T : Association>(
 
     // Setup actions
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
+    toolbarDecorator.run {
+      disableUpDownActions()
+      disableAddAction()
+      disableRemoveAction()
+    }
   }
 
   /**
@@ -115,7 +115,7 @@ class AssociationsTableModelEditor<T : Association>(
   constructor(
     columns: Array<ColumnInfo<*, *>>,
     itemEditor: CollectionItemEditor<T>,
-    emptyText: @Nls(capitalization = Nls.Capitalization.Sentence) String,
+    emptyText: String,
   ) : this(emptyList<T>(), columns, itemEditor, emptyText)
 
   /**
