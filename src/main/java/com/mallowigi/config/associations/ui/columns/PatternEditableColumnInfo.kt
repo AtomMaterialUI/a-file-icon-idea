@@ -31,10 +31,10 @@ import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
 import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.ui.internal.RegExpTableCellRenderer
 import com.mallowigi.config.associations.ui.internal.RegexpEditor
 import com.mallowigi.icons.associations.Association
 import java.util.regex.Pattern
-import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
@@ -86,7 +86,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    * @return the [TableCellRenderer]
    */
   override fun getRenderer(item: Association): TableCellRenderer? {
-    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
+    return ValidatingTableCellRendererWrapper(RegExpTableCellRenderer())
       .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
   }
 
