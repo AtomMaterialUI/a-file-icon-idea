@@ -44,7 +44,9 @@ import javax.swing.table.TableCellRenderer
  * @property editable whether the column should be editable
  */
 class PriorityColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association, Int>(message("AssociationsForm.folderIconsTable.columns.priority")) {
+  EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.priority")) {
+
+  override fun getColumnClass(): Class<Int> = Int::class.java
 
   /**
    * The value of the column is the priority
@@ -52,7 +54,7 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @param item the [Association]
    * @return the priority
    */
-  override fun valueOf(item: Association): Int = item.priority
+  override fun valueOf(item: Association): String = item.priority.toString()
 
   /**
    * Set the [Association]'s priority. Must be > 0
@@ -60,8 +62,11 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @param item the [Association]
    * @param value the new value
    */
-  override fun setValue(item: Association, value: Int) {
-    item.priority = value
+  override fun setValue(item: Association, value: String) {
+    val newValue = value.toIntOrNull()
+    if (newValue != null) {
+      item.priority = newValue
+    }
   }
 
   /**
@@ -83,7 +88,7 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    */
   override fun getRenderer(item: Association): TableCellRenderer? {
     return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as Int?) }
+      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as String) }
   }
 
   /**
@@ -100,7 +105,7 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @param value
    * @return
    */
-  private fun validate(value: Int?): ValidationInfo? = when {
+  private fun validate(value: String?): ValidationInfo? = when {
     value == null      -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
 //      value.toIntOrNull() == null  -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.invalidNumber"))
     value.toInt() <= 0 -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))

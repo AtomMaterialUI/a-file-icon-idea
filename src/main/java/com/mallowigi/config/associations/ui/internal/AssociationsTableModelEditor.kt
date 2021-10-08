@@ -25,6 +25,7 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.configurationStore.serialize
 import com.intellij.openapi.util.Ref
 import com.intellij.ui.TableSpeedSearch
 import com.intellij.ui.TableUtil
@@ -39,6 +40,7 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
+import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.icons.associations.Association
 import javax.swing.JComponent
 
@@ -217,14 +219,15 @@ class AssociationsTableModelEditor<T : Association>(
     model.items = ArrayList(originalItems)
   }
 
+  fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
+    val serialized = serialize(oldItem!!)
+    if (serialized != null) {
+      XmlSerializer.deserializeInto(newItem!!, serialized)
+    }
+  }
+
   companion object {
     const val MAX_ITEMS: Int = 20
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
-//    fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
-//      val serialized = serialize(oldItem)
-//      if (serialized != null) {
-//        XmlSerializer.deserializeInto(newItem, serialized)
-//      }
-//    }
   }
 }

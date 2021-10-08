@@ -59,11 +59,10 @@ internal class AssociationTableModel<T : Association>(columnNames: Array<ColumnI
 
       val comparator = when (columnInfo.columnClass) {
         String::class.java -> Comparing.strEqual(oldValue as String?, aValue as String)
-        Int::class.java    -> Comparing.compare(oldValue as Int, aValue as Int) == 0
         else               -> Comparing.equal(oldValue, aValue)
       }
 
-      if (comparator) {
+      if (!comparator) {
         columnInfo.setValue(item, aValue)
         dataChangedListener?.dataChanged(columnInfo, rowIndex)
       }
