@@ -110,4 +110,12 @@ class SelectedAssociations : Associations {
    */
   override fun getTheAssociations(): List<RegexAssociation> = values()
 
+  /**
+   * Clear the list
+   *
+   */
+  fun clear() {
+    myAssociations.clear()
+  }
+
 }

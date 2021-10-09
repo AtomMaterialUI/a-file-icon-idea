@@ -70,7 +70,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   private final transient ColumnInfo[] fileColumns = {
     new EnabledColumnInfo(),
-    new NameEditableColumnInfo(this, false),
+    new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true)
@@ -78,7 +78,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   private final transient ColumnInfo[] folderColumns = {
     new EnabledColumnInfo(),
-    new NameEditableColumnInfo(this, false),
+    new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true)

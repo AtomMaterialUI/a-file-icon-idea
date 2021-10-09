@@ -40,9 +40,8 @@ import com.mallowigi.icons.associations.CustomAssociations
 import java.util.Objects
 
 /**
- * Atom assoc config
+ * Configuration for [CustomAssociations]
  *
- * @constructor Create empty Atom assoc config
  */
 @State(
   name = "Atom Icon Associations Config",

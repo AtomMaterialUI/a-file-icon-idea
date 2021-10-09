@@ -42,9 +42,8 @@ import com.mallowigi.icons.providers.DefaultFolderIconProvider
 import java.util.Objects
 
 /**
- * Atom select config
+ * Configuration for [SelectedAssociations]
  *
- * @constructor Create empty Atom select config
  */
 @State(
   name = "Atom Icon Selections Config",
@@ -59,15 +58,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations()
 
   init {
-    val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
-    folderAssociations
-      .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFolderAssociations.insert(it.name, it) }
-
-    val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
-    fileAssociations
-      .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFileAssociations.insert(it.name, it) }
+    init()
   }
 
   override fun getState(): AtomSelectConfig = this
@@ -109,6 +100,27 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
    */
   fun isFolderIconsModified(folderAssociations: List<Association>): Boolean =
     !Objects.deepEquals(this.selectedFolderAssociations, folderAssociations)
+
+  /**
+   * Resets the associations
+   *
+   */
+  fun reset() {
+    selectedFolderAssociations.clear()
+    selectedFileAssociations.clear()
+  }
+
+  private fun init() {
+    val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
+    folderAssociations
+      .filterIsInstance<RegexAssociation>()
+      .forEach { selectedFolderAssociations.insert(it.name, it) }
+
+    val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
+    fileAssociations
+      .filterIsInstance<RegexAssociation>()
+      .forEach { selectedFileAssociations.insert(it.name, it) }
+  }
 
   companion object {
     @JvmStatic

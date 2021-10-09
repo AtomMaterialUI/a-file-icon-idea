@@ -45,6 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.awt.event.ActionEvent;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -60,16 +61,16 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, false),
     new PatternEditableColumnInfo(this, true),
-    new PriorityColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
+    new PriorityColumnInfo(this, true),
   };
 
   private final transient ColumnInfo[] folderColumns = {
     new EnabledColumnInfo(),
-    new NameEditableColumnInfo(this, true),
+    new NameEditableColumnInfo(this, false),
     new PatternEditableColumnInfo(this, true),
-    new PriorityColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
+    new PriorityColumnInfo(this, true),
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -77,6 +78,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private JTabbedPane tabbedPane;
   private JPanel fileAssociationsPanel;
   private JPanel folderAssociationsPanel;
+  private JButton resetButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
   private JComponent folderIconsTable;
@@ -149,6 +151,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     tabbedPane = new JTabbedPane();
     fileAssociationsPanel = new JPanel();
     folderAssociationsPanel = new JPanel();
+    resetButton = new JButton();
 
     //======== this ========
     setBorder(new TitledBorder(null, "Associations Editor", TitledBorder.CENTER, TitledBorder.TOP));
@@ -158,8 +161,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       "[369,grow,fill]",
       // rows
       "[]" +
-        "[270,grow,fill]" +
-        "[]"));
+        "[grow,fill]" +
+        "[fill]"));
 
     //---- explanation ----
     explanation.setText(bundle.getString("SelectForm.explanation.text"));
@@ -177,7 +180,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // columns
           "0[grow,fill]0",
           // rows
-          "0[grow,fill]0"));
+          "0[grow,fill]rel"));
       }
       tabbedPane.addTab(bundle.getString("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel);
 
@@ -193,7 +196,28 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       tabbedPane.addTab(bundle.getString("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel);
     }
     add(tabbedPane, "cell 0 1");
+
+    //---- resetButton ----
+    resetButton.setText(bundle.getString("SelectForm.resetButton.text"));
+    add(resetButton, "cell 0 2,alignx right,growx 0");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    resetButton.addActionListener(this::resetButtonActionPerformed);
+  }
+
+  @SuppressWarnings("FeatureEnvy")
+  private void resetButtonActionPerformed(final ActionEvent e) {
+    final AtomSelectConfig config = AtomSelectConfig.getInstance();
+
+    config.reset();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (fileAssociationsEditor != null) {
+        fileAssociationsEditor.reset(config.getSelectedFileAssociations().getTheAssociations());
+      }
+      if (folderAssociationsEditor != null) {
+        folderAssociationsEditor.reset(config.getSelectedFolderAssociations().getTheAssociations());
+      }
+      afterStateSet();
+    });
   }
 
   private void createTables() {

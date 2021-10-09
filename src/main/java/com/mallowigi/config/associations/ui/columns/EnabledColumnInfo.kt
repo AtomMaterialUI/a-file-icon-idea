@@ -49,5 +49,8 @@ class EnabledColumnInfo :
 
   override fun getColumnClass(): Class<Boolean> = Boolean::class.java
 
-  override fun getWidth(table: JTable?): Int = 20
+  override fun getWidth(table: JTable?): Int = 16
+
+  override fun getName(): String = ""
+
 }
