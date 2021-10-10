@@ -28,8 +28,6 @@ package com.mallowigi.icons.associations
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
-import com.thoughtworks.xstream.annotations.XStreamConverter
-import java.awt.Color
 import java.io.Serializable
 
 /**
@@ -63,20 +61,20 @@ abstract class Association internal constructor() : Serializable {
   @XStreamAsAttribute
   var priority: Int = 100
 
-  @field:Property
-  @XStreamAsAttribute
-  @XStreamConverter(value = HexColorConverter::class)
-  var color: Color? = null
-
-  @field:Property
-  @XStreamAsAttribute
-  @XStreamConverter(value = HexColorConverter::class)
-  var iconColor: Color? = null
-
-  @field:Property
-  @XStreamAsAttribute
-  @XStreamConverter(value = HexColorConverter::class)
-  var folderColor: Color? = null
+//  @field:Property
+//  @XStreamAsAttribute
+//  @XStreamConverter(value = HexColorConverter::class)
+//  var color: Color? = Color.BLACK
+//
+//  @field:Property
+//  @XStreamAsAttribute
+//  @XStreamConverter(value = HexColorConverter::class)
+//  var iconColor: Color? = Color.BLACK
+//
+//  @field:Property
+//  @XStreamAsAttribute
+//  @XStreamConverter(value = HexColorConverter::class)
+//  var folderColor: Color? = Color.BLACK
 
   /**
    * How the association will be matched against (regex, type)
@@ -108,9 +106,9 @@ abstract class Association internal constructor() : Serializable {
     icon = other.icon
     enabled = other.enabled
     priority = other.priority
-    color = other.color
-    iconColor = other.iconColor
-    folderColor = other.folderColor
+//    color = other.color
+//    iconColor = other.iconColor
+//    folderColor = other.folderColor
   }
 
   override fun toString(): String = "$name: $matcher ($priority)"

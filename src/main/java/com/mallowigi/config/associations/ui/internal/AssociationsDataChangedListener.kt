@@ -43,7 +43,7 @@ abstract class AssociationsDataChangedListener<T : Association> : TableModelList
    * @param columnInfo column cell
    * @param rowIndex row
    */
-  abstract fun dataChanged(columnInfo: ColumnInfo<T, *>, rowIndex: Int)
+  abstract fun dataChanged(columnInfo: ColumnInfo<Any, Any>, rowIndex: Int)
 
   /**
    * Method to call when Table changed

@@ -26,6 +26,7 @@
 package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.configurationStore.serialize
+import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.Ref
 import com.intellij.ui.TableSpeedSearch
 import com.intellij.ui.TableUtil
@@ -74,7 +75,7 @@ class AssociationsTableModelEditor<T : Association>(
   /**
    * Association Table Model
    */
-  private val model: AssociationTableModel<T>
+  private val model: AssociationTableModel
 
   init {
     model = AssociationTableModel(columns, items)
@@ -88,9 +89,9 @@ class AssociationsTableModelEditor<T : Association>(
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
     table.setEnableAntialiasing(true)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
-    table.visibleRowCount = JBTable.PREFERRED_SCROLLABLE_VIEWPORT_HEIGHT_IN_ROWS
+    table.visibleRowCount = 20
+    table.rowHeight = 32
     table.rowMargin = 0
-
     TableSpeedSearch(table)
 
     // Special support for checkbox: toggle by clicking or space
@@ -219,11 +220,63 @@ class AssociationsTableModelEditor<T : Association>(
     model.items = ArrayList(originalItems)
   }
 
+  /**
+   * Clone using xml serialization
+   *
+   * @param T
+   * @param oldItem
+   * @param newItem
+   */
   fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
     val serialized = serialize(oldItem!!)
     if (serialized != null) {
       XmlSerializer.deserializeInto(newItem!!, serialized)
     }
+  }
+
+  private inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<T>) :
+    ListTableModel<T>(columnNames, items) {
+
+    var assocs: MutableList<T> = items.toMutableList()
+    var dataChangedListener: AssociationsDataChangedListener<T>? = null
+
+    override fun getItems(): MutableList<T> = assocs
+
+    override fun setItems(items: MutableList<T>) {
+      assocs = items
+      super.setItems(items)
+    }
+
+    override fun removeRow(index: Int) {
+      helper.remove(getItem(index))
+      super.removeRow(index)
+    }
+
+    /**
+     * Set the value at the given row/column
+     *
+     * @param aValue value to set
+     * @param rowIndex row number
+     * @param columnIndex column number
+     */
+    override fun setValueAt(aValue: Any, rowIndex: Int, columnIndex: Int) {
+      if (rowIndex < rowCount) {
+        val columnInfo = columnInfos[columnIndex]
+        val item = getItem(rowIndex)
+        val oldValue = columnInfo.valueOf(item)
+
+        val comparator = when (columnInfo.columnClass) {
+          String::class.java -> Comparing.strEqual(oldValue as String?, aValue as String)
+          else               -> Comparing.equal(oldValue, aValue)
+        }
+
+        if (!comparator) {
+          columnInfo.setValue(helper.getMutable(item, rowIndex), aValue)
+          dataChangedListener?.dataChanged(columnInfo, rowIndex)
+        }
+      }
+    }
+
   }
 
   companion object {

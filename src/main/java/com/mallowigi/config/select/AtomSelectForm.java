@@ -46,7 +46,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ActionEvent;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
@@ -54,7 +53,8 @@ import java.util.ResourceBundle;
   "StringConcatenation",
   "UndesirableClassUsage",
   "InstanceVariableMayNotBeInitialized",
-  "TransientFieldNotInitialized"})
+  "TransientFieldNotInitialized",
+  "ClassWithTooManyFields"})
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
@@ -134,12 +134,12 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   public SelectedAssociations getFileAssociations() {
     assert fileAssociationsEditor != null;
-    return new SelectedAssociations(Collections.unmodifiableList(fileAssociationsEditor.getModel().getItems()));
+    return new SelectedAssociations(fileAssociationsEditor.getModel().getItems());
   }
 
   public SelectedAssociations getFolderAssociations() {
     assert folderAssociationsEditor != null;
-    return new SelectedAssociations(Collections.unmodifiableList(folderAssociationsEditor.getModel().getItems()));
+    return new SelectedAssociations(folderAssociationsEditor.getModel().getItems());
   }
 
   @SuppressWarnings("ConfusingFloatingPointLiteral")
