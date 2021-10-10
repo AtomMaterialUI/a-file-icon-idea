@@ -59,10 +59,8 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
       icon = item.icon
       enabled = item.enabled
       priority = item.priority
-//      color = item.color
-//      iconColor = item.iconColor
-//      folderColor = item.folderColor
       matcher = item.matcher
+      touched = item.touched
     }
 
     return regexAssociation

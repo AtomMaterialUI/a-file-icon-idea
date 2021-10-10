@@ -65,6 +65,7 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
   override fun setValue(item: Association, value: String) {
     val newValue = value.toIntOrNull()
     if (newValue != null) {
+      item.touched = true
       item.priority = newValue
     }
   }
@@ -107,7 +108,6 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    */
   private fun validate(value: String?): ValidationInfo? = when {
     value == null      -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.empty"))
-//      value.toIntOrNull() == null  -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.invalidNumber"))
     value.toInt() <= 0 -> ValidationInfo(message("AtomAssocConfig.PriorityEditor.wrong"))
     else               -> null
   }

@@ -60,7 +60,10 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
    * @param value the path name
    */
   override fun setValue(item: Association, value: String?) {
-    if (value != null) item.icon = value
+    if (value != null) {
+      item.touched = true
+      item.icon = value
+    }
   }
 
   /**

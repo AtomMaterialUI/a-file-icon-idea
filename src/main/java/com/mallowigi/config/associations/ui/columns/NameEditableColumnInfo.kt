@@ -33,6 +33,7 @@ import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
+import javax.swing.UIManager
 import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
@@ -62,6 +63,7 @@ class NameEditableColumnInfo(private val parent: Disposable, private val editabl
    */
   override fun setValue(item: Association, value: String) {
     item.name = value
+    item.touched = true
   }
 
   /**
@@ -82,7 +84,13 @@ class NameEditableColumnInfo(private val parent: Disposable, private val editabl
    * @return the [TableCellRenderer]
    */
   override fun getRenderer(item: Association): TableCellRenderer? {
-    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
+    return ValidatingTableCellRendererWrapper(object : DefaultTableCellRenderer() {
+      override fun repaint() {
+        if (item.touched) {
+          foreground = UIManager.getColor("Tree.modifiedItemForeground")
+        }
+      }
+    })
       .withCellValidator { value: Any?, _: Int, _: Int ->
         if (value == null || value == "") {
           return@withCellValidator ValidationInfo(message("AtomAssocConfig.NameEditor.empty"))

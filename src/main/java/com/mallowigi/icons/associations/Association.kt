@@ -43,7 +43,12 @@ import java.io.Serializable
  * @property folderColor folder color for folder icons
  */
 abstract class Association internal constructor() : Serializable {
+  @field:Property
   var enabled: Boolean = true
+
+  @field:Property
+  @XStreamAsAttribute
+  var touched: Boolean = false
 
   @field:Property
   @XStreamAsAttribute
@@ -60,21 +65,6 @@ abstract class Association internal constructor() : Serializable {
   @field:Property
   @XStreamAsAttribute
   var priority: Int = 100
-
-//  @field:Property
-//  @XStreamAsAttribute
-//  @XStreamConverter(value = HexColorConverter::class)
-//  var color: Color? = Color.BLACK
-//
-//  @field:Property
-//  @XStreamAsAttribute
-//  @XStreamConverter(value = HexColorConverter::class)
-//  var iconColor: Color? = Color.BLACK
-//
-//  @field:Property
-//  @XStreamAsAttribute
-//  @XStreamConverter(value = HexColorConverter::class)
-//  var folderColor: Color? = Color.BLACK
 
   /**
    * How the association will be matched against (regex, type)
@@ -106,9 +96,7 @@ abstract class Association internal constructor() : Serializable {
     icon = other.icon
     enabled = other.enabled
     priority = other.priority
-//    color = other.color
-//    iconColor = other.iconColor
-//    folderColor = other.folderColor
+    touched = other.touched
   }
 
   override fun toString(): String = "$name: $matcher ($priority)"
