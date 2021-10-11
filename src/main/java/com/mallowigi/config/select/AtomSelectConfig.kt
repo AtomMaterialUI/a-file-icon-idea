@@ -57,6 +57,10 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations()
 
+  init {
+    init()
+  }
+
   override fun getState(): AtomSelectConfig = this
 
   override fun loadState(state: AtomSelectConfig) {
@@ -91,7 +95,31 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
    * @param fileAssociations new file associations to compare to
    * @return true if they differ
    */
-  fun isFileIconsModified(fileAssociations: List<Association>): Boolean =
+  fun isFileIconsModified(fileAssociations: List<Association>): Boolean {
+    val touched = fileAssociations.filter { it.touched }
+
+    return !Objects.deepEquals(this.selectedFileAssociations.ownValues(), touched)
+  }
+
+  /**
+   * Is folder icons modified
+   *
+   * @param folderAssociations new folder associations to compare to
+   * @return true if they differ
+   */
+  fun isFolderIconsModified(folderAssociations: List<Association>): Boolean {
+    val touched = folderAssociations.filter { it.touched }
+
+    return !Objects.deepEquals(this.selectedFolderAssociations.ownValues(), touched)
+  }
+
+  /**
+   * Is file icons modified
+   *
+   * @param fileAssociations new file associations to compare to
+   * @return true if they differ
+   */
+  fun isFileIconsModified3(fileAssociations: List<Association>): Boolean =
     !Objects.deepEquals(this.selectedFileAssociations, fileAssociations)
 
   /**
@@ -100,7 +128,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
    * @param folderAssociations new folder associations to compare to
    * @return true if they differ
    */
-  fun isFolderIconsModified(folderAssociations: List<Association>): Boolean =
+  fun isFolderIconsModified3(folderAssociations: List<Association>): Boolean =
     !Objects.deepEquals(this.selectedFolderAssociations, folderAssociations)
 
   /**
