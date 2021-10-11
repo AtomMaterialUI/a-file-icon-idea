@@ -57,13 +57,12 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations()
 
-  init {
-    init()
-  }
-
   override fun getState(): AtomSelectConfig = this
 
-  override fun loadState(state: AtomSelectConfig): Unit = XmlSerializerUtil.copyBean(state, this)
+  override fun loadState(state: AtomSelectConfig) {
+    XmlSerializerUtil.copyBean(state, this)
+    init() // reload defaults
+  }
 
   /**
    * Apply settings
@@ -73,6 +72,9 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   fun applySettings(form: AtomSelectForm) {
     selectedFileAssociations = form.fileAssociations
     selectedFolderAssociations = form.folderAssociations
+
+    selectedFileAssociations.registerOwnAssociations()
+    selectedFolderAssociations.registerOwnAssociations()
 
     fireChanged()
   }
@@ -114,12 +116,12 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
     folderAssociations
       .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFolderAssociations.insert(it.name, it) }
+      .forEach { selectedFolderAssociations.insertDefault(it.name, it) }
 
     val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
     fileAssociations
       .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFileAssociations.insert(it.name, it) }
+      .forEach { selectedFileAssociations.insertDefault(it.name, it) }
   }
 
   companion object {

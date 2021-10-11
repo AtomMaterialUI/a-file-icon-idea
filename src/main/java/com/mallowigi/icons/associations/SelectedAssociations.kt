@@ -28,94 +28,151 @@ package com.mallowigi.icons.associations
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
 import com.mallowigi.models.FileInfo
-import java.util.Map.copyOf
 
 /**
  * Represents a list of [SelectedAssociations]
  *
  */
 @Suppress("MemberNameEqualsClassName")
-class SelectedAssociations : Associations {
+class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : Associations() {
+  /**
+   * All loaded [Associations]
+   */
+  @Transient
+  private var defaultAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+
+  /**
+   * My modified [Associations]
+   */
   @Property
   @XCollection
-  private val myAssociations: MutableMap<String, RegexAssociation>
+  private var ownAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
-  constructor() {
-    myAssociations = mutableMapOf()
+  init {
+    // Copy from a list of other [Associations] (used when applying form)
+    defaultAssociations = associations.associateBy { it.name }.toMutableMap()
   }
 
   /**
-   * Copy from other [Associations] as a map
-   */
-  constructor(associations: Map<String, RegexAssociation>) {
-    myAssociations = copyOf(associations)
-  }
-
-  /**
-   * Copy from a list of other [Associations]
-   */
-  constructor(associations: List<RegexAssociation>) {
-    myAssociations = associations.associateBy { it.name }.toMutableMap()
-  }
-
-  /**
-   * Checks if an [Association] is already registered
+   * Checks if an [Association] is already registered in the defaults
    *
    * @param name
    */
-  fun has(name: String): Boolean = myAssociations.containsKey(name)
+  fun hasDefault(name: String): Boolean = defaultAssociations.containsKey(name)
 
   /**
-   * Get an [Association] by name
+   * Get a default [Association] by name
    *
    * @param name
    */
-  fun get(name: String): RegexAssociation? = myAssociations[name]
+  fun getDefault(name: String): RegexAssociation? = defaultAssociations[name]
 
   /**
-   * Inserts association to map if not exists
+   * Checks if an own [Association] is already registered
+   *
+   * @param name
+   */
+  fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
+
+  /**
+   * Get an own [Association] by name
+   *
+   * @param name
+   */
+  fun getOwn(name: String): RegexAssociation? = ownAssociations[name]
+
+  /**
+   * Inserts association to [defaultAssociations] map if not exists
    *
    * @param name
    * @param assoc
    */
-  fun insert(name: String, assoc: RegexAssociation) {
-    if (has(name)) return
+  fun insertDefault(name: String, assoc: RegexAssociation) {
+    if (hasDefault(name)) return
 
-    myAssociations[name] = assoc
-    myAssociations[name]?.enabled = true
+    defaultAssociations[name] = assoc
+    defaultAssociations[name]?.enabled = true
   }
 
   /**
-   * get the [Associations]
+   * Inserts association to [ownAssociations]
+   *
+   * @param name
+   * @param assoc
+   */
+  fun insertOwn(name: String, assoc: RegexAssociation) {
+    ownAssociations[name] = assoc
+  }
+
+  /**
+   * Gets the list of default [Associations]
    *
    * @return
    */
-  fun values(): List<RegexAssociation> = myAssociations.values.toList()
+  fun defaultValues(): List<RegexAssociation> = defaultAssociations.values.toList()
 
   /**
-   * Find matching association with the highest priority
+   * Gets the list of own [Associations]
    *
-   * @param file
+   * @return
+   */
+  fun ownValues(): List<RegexAssociation> = ownAssociations.values.toList()
+
+  /**
+   * Find matching [Association] with the highest priority
+   *
+   * @param file a file's [FileInfo]
    * @return the association if found
    */
-  override fun findMatchingAssociation(file: FileInfo): Association? =
-    values()
-      .filter { association: Association -> association.enabled && association.matches(file) }
-      .maxByOrNull { it.priority }
+  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInDefault(file)
 
   /**
-   * Get the list of [SelectedAssociations]
+   * Look for [Association] in [defaultAssociations]
    *
-   * @return the list of [SelectedAssociations]
+   * @param file a file's [FileInfo]
+   * @return matching [Association] if found
    */
-  override fun getTheAssociations(): List<RegexAssociation> = values()
+  private fun findInDefault(file: FileInfo): Association? = defaultValues()
+    .filter { association: Association -> association.enabled && association.matches(file) }
+    .maxByOrNull { it.priority }
 
   /**
-   * Clear the list
+   * Look for matching association in [ownAssociations]
+   *
+   * @param file a file's [FileInfo]
+   * @return matching association if found
+   */
+  private fun findInOwn(file: FileInfo): Association? = ownValues()
+    .filter { association: Association -> association.enabled && association.matches(file) }
+    .maxByOrNull { it.priority }
+
+  /**
+   * Get the list of all [Associations]
+   *
+   * @return the list of [Associations]
+   */
+  override fun getTheAssociations(): List<RegexAssociation> {
+    // to display associations to the form, need to merge both
+    val result = mutableMapOf<String, RegexAssociation>()
+    result.putAll(defaultAssociations)
+    result.putAll(ownAssociations)
+    return result.values.toList()
+  }
+
+  /**
+   * Clear [ownAssociations]
    *
    */
   fun clear() {
-    myAssociations.clear()
+    ownAssociations.clear()
+  }
+
+  /**
+   * Extract [ownAssociations] from [defaultAssociations]
+   *
+   */
+  fun registerOwnAssociations() {
+    ownAssociations.putAll(defaultAssociations.filter { it.value.touched })
   }
 
 }

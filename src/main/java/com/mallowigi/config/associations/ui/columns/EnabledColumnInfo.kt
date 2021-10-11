@@ -42,6 +42,7 @@ class EnabledColumnInfo :
   override fun valueOf(item: Association): Boolean = item.enabled
 
   override fun setValue(item: Association, value: Boolean) {
+    item.touched = true
     item.enabled = value
   }
 
