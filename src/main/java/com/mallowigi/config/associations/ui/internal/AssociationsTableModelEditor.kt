@@ -46,6 +46,8 @@ import com.mallowigi.icons.associations.Association
 import java.awt.Dimension
 import javax.swing.JComponent
 import javax.swing.ListSelectionModel
+import javax.swing.RowSorter
+import javax.swing.SortOrder
 
 /**
  * [Association] table model editor
@@ -81,6 +83,7 @@ class AssociationsTableModelEditor<T : Association>(
 
   init {
     model = AssociationTableModel(columns, items)
+
     // Table settings
     table = TableView(model)
     table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
@@ -90,17 +93,24 @@ class AssociationsTableModelEditor<T : Association>(
     table.fillsViewportHeight = true
     table.setShowGrid(false)
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
-    table.setEnableAntialiasing(true)
+    table.setEnableAntialiasing(false)
     table.intercellSpacing = Dimension(0, 0)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
-    table.visibleRowCount = 20
+    table.visibleRowCount = MIN_ROW_COUNT
     table.rowHeight = 32
     table.rowMargin = 0
-    TableSpeedSearch(table) { o, cell -> o.toString().takeIf { cell.column == 1 || cell.column == 2 } }
+    // sort by touched but remove the column from the table
+    table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
+    table.removeColumn(table.columnModel.getColumn(Columns.TOUCHED.index))
+
+    // search by name or pattern only
+    TableSpeedSearch(table) { o, cell ->
+      o.toString().takeIf { cell.column == Columns.NAME.index || cell.column == Columns.PATTERN.index }
+    }
 
     // Special support for checkbox: toggle by clicking or space
-    TableUtil.setupCheckboxColumn(table.columnModel.getColumn(0), 0)
-    JBTable.setupCheckboxShortcut(table, 0)
+    TableUtil.setupCheckboxColumn(table.columnModel.getColumn(Columns.ENABLED.index), 0)
+    JBTable.setupCheckboxShortcut(table, Columns.ENABLED.index)
 
     // Display empty text when loading
     table.emptyText.setFont(UIUtil.getLabelFont().deriveFont(24.0f))
@@ -287,7 +297,18 @@ class AssociationsTableModelEditor<T : Association>(
   }
 
   companion object {
-    const val MAX_ITEMS: Int = 20
+    const val MAX_ITEMS: Int = 60
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
+    const val MIN_ROW_COUNT: Int = 15
+
+    // columns (yes this is hardcoded but I have no idea how to do it differently)
+    private enum class Columns(val displayName: String, val index: Int) {
+      ENABLED("Enabled", 0),
+      NAME("Name", 1),
+      PATTERN("Pattern", 2),
+      ICON("Icon", 3),
+      PRIORITY("Priority", 4),
+      TOUCHED("Touched", 5),
+    }
   }
 }

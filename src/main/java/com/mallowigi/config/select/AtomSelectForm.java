@@ -63,6 +63,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
+    new TouchedColumnInfo(),
   };
 
   private final transient ColumnInfo[] folderColumns = {
@@ -71,6 +72,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
+    new TouchedColumnInfo(),
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
