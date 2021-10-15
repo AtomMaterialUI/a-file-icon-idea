@@ -31,10 +31,10 @@ import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
 import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.ui.internal.ModifiedInfoCellRenderer
 import com.mallowigi.icons.associations.Association
 import javax.swing.JTable
 import javax.swing.JTextField
-import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
@@ -88,7 +88,7 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
    * @return the [TableCellRenderer]
    */
   override fun getRenderer(item: Association): TableCellRenderer? {
-    return ValidatingTableCellRendererWrapper(DefaultTableCellRenderer())
+    return ValidatingTableCellRendererWrapper(ModifiedInfoCellRenderer(item))
       .withCellValidator { value: Any?, _: Int, _: Int -> validate(value as String) }
   }
 

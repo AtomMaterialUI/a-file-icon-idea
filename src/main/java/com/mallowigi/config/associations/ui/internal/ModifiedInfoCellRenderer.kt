@@ -23,22 +23,22 @@
  *
  *
  */
-package com.mallowigi.config.associations.ui.columns
 
-import com.intellij.openapi.Disposable
-import icons.AtomIcons
-import javax.swing.Icon
+package com.mallowigi.config.associations.ui.internal
+
+import com.mallowigi.icons.associations.Association
+import com.mallowigi.utils.getModifiedColor
+import javax.swing.table.DefaultTableCellRenderer
 
 /**
- * Column info for the icon of a **File Icon Association**. Displays the icon path alongside the icon.
+ * Modified info cell renderer
  *
- * @constructor Create a column info
- * @param parent Parent container
- * @param editable Whether the column is editable
+ * @property item the [Association]
+ * @constructor Create empty Modified info cell renderer
  */
-@Suppress("unused")
-class FileIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  IconEditableColumnInfo(parent, editable) {
+class ModifiedInfoCellRenderer(private val item: Association?) : DefaultTableCellRenderer() {
 
-  override fun loadIcon(path: String): Icon = AtomIcons.getFileIcon(path)
+  override fun repaint() {
+    if (item?.touched == true) foreground = getModifiedColor()
+  }
 }

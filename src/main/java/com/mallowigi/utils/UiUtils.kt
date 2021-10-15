@@ -32,6 +32,7 @@ import com.intellij.ide.projectView.ProjectView
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
+import com.intellij.ui.JBColor
 import com.mallowigi.config.AtomSettingsBundle
 
 /**
@@ -73,3 +74,5 @@ fun getVersion(): String {
   val plugin: IdeaPluginDescriptor? = getPlugin()
   return if (plugin != null) plugin.version else AtomSettingsBundle.message("plugin.version")
 }
+
+fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)

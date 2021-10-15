@@ -28,11 +28,18 @@ package com.mallowigi.config.associations.ui.columns
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.fileTypes.FileTypeManager
+import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.util.PathUtil
 import com.intellij.util.ui.LocalPathCellEditor
+import com.intellij.util.ui.table.IconTableCellRenderer
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.icons.associations.Association
+import com.mallowigi.utils.getModifiedColor
+import icons.AtomIcons
+import java.io.IOException
+import javax.swing.Icon
+import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
@@ -81,7 +88,34 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
    * @param item the [Association]
    * @return the [TableCellRenderer]
    */
-  abstract override fun getRenderer(item: Association): TableCellRenderer?
+  override fun getRenderer(item: Association): TableCellRenderer? {
+    if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
+
+    return object : IconTableCellRenderer<String>() {
+      override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
+        val icon = loadIcon(value)
+        if (icon.iconHeight == 0) AtomIcons.loadSVGIcon(value) else icon
+      } catch (e: IOException) {
+        null
+      }
+
+      override fun getText(): String = PathUtil.getFileName(item.icon)
+
+      override fun repaint() {
+        if (item.touched) {
+          foreground = getModifiedColor()
+        }
+      }
+    }
+  }
+
+  /**
+   * Load icon from the relevant folder (files/folders)
+   *
+   * @param path
+   * @return the icon
+   */
+  abstract fun loadIcon(path: String): Icon
 
   /**
    * Prevents cell to be editable

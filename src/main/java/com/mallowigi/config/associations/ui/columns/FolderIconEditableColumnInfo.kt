@@ -26,15 +26,8 @@
 package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.util.io.FileUtilRt
-import com.intellij.util.PathUtil
-import com.intellij.util.ui.table.IconTableCellRenderer
-import com.mallowigi.icons.associations.Association
 import icons.AtomIcons
-import java.io.IOException
 import javax.swing.Icon
-import javax.swing.JTable
-import javax.swing.table.TableCellRenderer
 
 /**
  * Column info for the icon of a **Folder Icon Association**. Displays the icon path alongside the icon.
@@ -47,23 +40,5 @@ import javax.swing.table.TableCellRenderer
 class FolderIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
-  /**
-   * Renders the icon along it's trimmed path (to /resources/icons/...). Uses [AtomIcons.getFolderIcon]
-   *
-   * @param item the [Association]
-   * @return the [TableCellRenderer]
-   */
-  override fun getRenderer(item: Association): TableCellRenderer? {
-    if (item.icon.isEmpty() || FileUtilRt.getExtension(item.icon) != "svg") return null
-
-    return object : IconTableCellRenderer<String>() {
-      override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
-        AtomIcons.getFolderIcon(value)
-      } catch (e: IOException) {
-        null
-      }
-
-      override fun getText(): String = PathUtil.getFileName(item.icon)
-    }
-  }
+  override fun loadIcon(path: String): Icon = AtomIcons.getFolderIcon(path)
 }

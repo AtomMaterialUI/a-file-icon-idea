@@ -43,7 +43,9 @@ import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.icons.associations.Association
+import java.awt.Dimension
 import javax.swing.JComponent
+import javax.swing.ListSelectionModel
 
 /**
  * [Association] table model editor
@@ -81,6 +83,7 @@ class AssociationsTableModelEditor<T : Association>(
     model = AssociationTableModel(columns, items)
     // Table settings
     table = TableView(model)
+    table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
     table.isStriped = true
     table.setMaxItemsForSizeCalculation(MAX_ITEMS)
     table.ignoreRepaint = true
@@ -88,11 +91,12 @@ class AssociationsTableModelEditor<T : Association>(
     table.setShowGrid(false)
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
     table.setEnableAntialiasing(true)
+    table.intercellSpacing = Dimension(0, 0)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
     table.visibleRowCount = 20
     table.rowHeight = 32
     table.rowMargin = 0
-    TableSpeedSearch(table)
+    TableSpeedSearch(table) { o, cell -> o.toString().takeIf { cell.column == 1 || cell.column == 2 } }
 
     // Special support for checkbox: toggle by clicking or space
     TableUtil.setupCheckboxColumn(table.columnModel.getColumn(0), 0)
@@ -237,7 +241,10 @@ class AssociationsTableModelEditor<T : Association>(
   private inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<T>) :
     ListTableModel<T>(columnNames, items) {
 
+    // Our items
     var assocs: MutableList<T> = items.toMutableList()
+
+    // An optional [DataChangedListener]
     var dataChangedListener: AssociationsDataChangedListener<T>? = null
 
     override fun getItems(): MutableList<T> = assocs
