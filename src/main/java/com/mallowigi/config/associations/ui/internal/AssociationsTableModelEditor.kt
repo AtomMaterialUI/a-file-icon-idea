@@ -28,7 +28,9 @@ package com.mallowigi.config.associations.ui.internal
 import com.intellij.configurationStore.serialize
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.Ref
-import com.intellij.ui.TableSpeedSearch
+import com.intellij.openapi.util.text.StringUtil
+import com.intellij.ui.DocumentAdapter
+import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.table.JBTable
@@ -44,10 +46,13 @@ import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.icons.associations.Association
 import java.awt.Dimension
+import java.awt.event.KeyAdapter
+import java.awt.event.KeyEvent
 import javax.swing.JComponent
 import javax.swing.ListSelectionModel
 import javax.swing.RowSorter
 import javax.swing.SortOrder
+import javax.swing.event.DocumentEvent
 
 /**
  * [Association] table model editor
@@ -65,6 +70,7 @@ class AssociationsTableModelEditor<T : Association>(
   columns: Array<ColumnInfo<*, *>>,
   itemEditor: CollectionItemEditor<T>,
   emptyText: String,
+  val searchTextField: SearchTextField?,
 ) : CollectionModelEditor<T, CollectionItemEditor<T>?>(itemEditor) {
   /**
    * Table View
@@ -81,8 +87,12 @@ class AssociationsTableModelEditor<T : Association>(
    */
   private val model: AssociationTableModel
 
+  private val myList: MutableList<T> = arrayListOf()
+  private val myFilteredList: MutableList<T> = arrayListOf()
+
   init {
     model = AssociationTableModel(columns, items)
+    initUnfilteredList()
 
     // Table settings
     table = TableView(model)
@@ -103,11 +113,6 @@ class AssociationsTableModelEditor<T : Association>(
     table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
     table.removeColumn(table.columnModel.getColumn(Columns.TOUCHED.index))
 
-    // search by name or pattern only
-    TableSpeedSearch(table) { o, cell ->
-      o.toString().takeIf { cell.column == Columns.NAME.index || cell.column == Columns.PATTERN.index }
-    }
-
     // Special support for checkbox: toggle by clicking or space
     TableUtil.setupCheckboxColumn(table.columnModel.getColumn(Columns.ENABLED.index), 0)
     JBTable.setupCheckboxShortcut(table, Columns.ENABLED.index)
@@ -123,17 +128,69 @@ class AssociationsTableModelEditor<T : Association>(
       disableAddAction()
       disableRemoveAction()
     }
+
+    // Add a filter listener to the search box
+    if (searchTextField != null) {
+      table.addKeyListener(object : KeyAdapter() {
+        override fun keyTyped(e: KeyEvent) {
+          val keyChar = e.keyChar
+          if (Character.isLetter(keyChar) || Character.isDigit(keyChar)) {
+            searchTextField.text = keyChar.toString()
+            searchTextField.requestFocus()
+          }
+          super.keyPressed(e)
+        }
+      })
+
+      searchTextField.addDocumentListener(object : DocumentAdapter() {
+        override fun textChanged(e: DocumentEvent) = filterTable()
+      })
+    }
   }
 
   /**
+   * Update the list from the items and update the table model with the filtered items
    *
-   * @constructor for empty items
    */
+  private fun initUnfilteredList() {
+    myList.clear()
+    myList.addAll(model.items)
+    filterTable()
+  }
+
+  /**
+   * Filter the table from the search
+   *
+   */
+  private fun filterTable() {
+    if (searchTextField == null) return
+
+    val text: String = searchTextField.text.trim()
+    myFilteredList.clear()
+    for (assoc in myList) {
+      if (text.isEmpty() ||
+        StringUtil.containsIgnoreCase(assoc.matcher, text) ||
+        StringUtil.containsIgnoreCase(assoc.name, text)
+      ) {
+        myFilteredList.add(assoc)
+      }
+    }
+    model.items = myFilteredList
+    model.fireTableDataChanged()
+  }
+
   constructor(
     columns: Array<ColumnInfo<*, *>>,
     itemEditor: CollectionItemEditor<T>,
     emptyText: String,
-  ) : this(emptyList<T>(), columns, itemEditor, emptyText)
+  ) : this(emptyList<T>(), columns, itemEditor, emptyText, null)
+
+  constructor(
+    columns: Array<ColumnInfo<*, *>>,
+    itemEditor: CollectionItemEditor<T>,
+    emptyText: String,
+    searchTextField: SearchTextField,
+  ) : this(emptyList<T>(), columns, itemEditor, emptyText, searchTextField)
 
   /**
    * Convenience method to disable/enable the table
@@ -232,6 +289,7 @@ class AssociationsTableModelEditor<T : Association>(
   override fun reset(originalItems: List<T>) {
     super.reset(originalItems)
     model.items = ArrayList(originalItems)
+    initUnfilteredList()
   }
 
   /**

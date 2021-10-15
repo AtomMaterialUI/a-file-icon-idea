@@ -32,6 +32,7 @@ package com.mallowigi.config.select;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.ui.SearchTextField;
 import com.intellij.util.ui.ColumnInfo;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.ui.columns.*;
@@ -79,7 +80,11 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private JLabel explanation;
   private JTabbedPane tabbedPane;
   private JPanel fileAssociationsPanel;
+  private SearchTextField fileSearch;
+  private JPanel filePanelTable;
   private JPanel folderAssociationsPanel;
+  private SearchTextField folderSearch;
+  private JPanel folderPanelTable;
   private JButton resetButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
@@ -152,7 +157,11 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     explanation = new JLabel();
     tabbedPane = new JTabbedPane();
     fileAssociationsPanel = new JPanel();
+    fileSearch = new SearchTextField();
+    filePanelTable = new JPanel();
     folderAssociationsPanel = new JPanel();
+    folderSearch = new SearchTextField();
+    folderPanelTable = new JPanel();
     resetButton = new JButton();
 
     //======== this ========
@@ -182,7 +191,21 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // columns
           "0[grow,fill]0",
           // rows
-          "0[grow,fill]rel"));
+          "[]0" +
+            "[grow,fill]rel" +
+            "[]"));
+        fileAssociationsPanel.add(fileSearch, "cell 0 0");
+
+        //======== filePanelTable ========
+        {
+          filePanelTable.setLayout(new MigLayout(
+            "insets 0,hidemode 3,gap 0 0",
+            // columns
+            "[grow,fill]",
+            // rows
+            "[grow,fill]"));
+        }
+        fileAssociationsPanel.add(filePanelTable, "cell 0 1");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel);
 
@@ -193,7 +216,20 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // columns
           "0[grow,fill]0",
           // rows
-          "0[grow,fill]0"));
+          "0[fill]0" +
+            "[grow]"));
+        folderAssociationsPanel.add(folderSearch, "cell 0 0");
+
+        //======== folderPanelTable ========
+        {
+          folderPanelTable.setLayout(new MigLayout(
+            "insets 0,hidemode 3,gap 0 0",
+            // columns
+            "[grow,fill]",
+            // rows
+            "[grow,fill]"));
+        }
+        folderAssociationsPanel.add(folderPanelTable, "cell 0 1");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel);
     }
@@ -234,9 +270,10 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     fileAssociationsEditor = new AssociationsTableModelEditor<>(fileColumns,
       itemEditor,
-      AtomSettingsBundle.message("no.file.associations"));
+      AtomSettingsBundle.message("no.file.associations"),
+      fileSearch);
     fileIconsTable = fileAssociationsEditor.createComponent();
-    fileAssociationsPanel.add(fileIconsTable, "cell 0 0"); //NON-NLS
+    filePanelTable.add(fileIconsTable, "cell 0 0"); //NON-NLS
 
   }
 
@@ -247,8 +284,9 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
     folderAssociationsEditor = new AssociationsTableModelEditor<>(folderColumns,
       itemEditor,
-      AtomSettingsBundle.message("no.folder.associations"));
+      AtomSettingsBundle.message("no.folder.associations"),
+      folderSearch);
     folderIconsTable = folderAssociationsEditor.createComponent();
-    folderAssociationsPanel.add(folderIconsTable, "cell 0 0"); //NON-NLS
+    folderPanelTable.add(folderIconsTable, "cell 0 0"); //NON-NLS
   }
 }
