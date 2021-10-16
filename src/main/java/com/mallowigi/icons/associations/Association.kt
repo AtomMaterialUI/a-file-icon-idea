@@ -27,6 +27,7 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
+import com.mallowigi.models.IconType
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 import java.io.Serializable
 

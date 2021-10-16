@@ -87,8 +87,17 @@ class AssociationsTableModelEditor<T : Association>(
    */
   private val model: AssociationTableModel
 
-  private val myList: MutableList<T> = arrayListOf()
-  private val myFilteredList: MutableList<T> = arrayListOf()
+  /**
+   * Backing field for model's unfiltered list
+   */
+  private val myList: MutableList<T>
+    get() = model.allItems
+
+  /**
+   * Backing field for model's filtered list
+   */
+  private val myFilteredList: MutableList<T>
+    get() = model.filteredItems
 
   init {
     model = AssociationTableModel(columns, items)
@@ -129,7 +138,7 @@ class AssociationsTableModelEditor<T : Association>(
       disableRemoveAction()
     }
 
-    // Add a filter listener to the search box
+    // Search and filter table
     if (searchTextField != null) {
       table.addKeyListener(object : KeyAdapter() {
         override fun keyTyped(e: KeyEvent) {
@@ -149,7 +158,7 @@ class AssociationsTableModelEditor<T : Association>(
   }
 
   /**
-   * Update the list from the items and update the table model with the filtered items
+   * Inits the unfiltered list (before any search)
    *
    */
   private fun initUnfilteredList() {
@@ -159,7 +168,7 @@ class AssociationsTableModelEditor<T : Association>(
   }
 
   /**
-   * Filter the table from the search
+   * Filters the table - this will set the [model]'s filteredItems
    *
    */
   private fun filterTable() {
@@ -167,6 +176,7 @@ class AssociationsTableModelEditor<T : Association>(
 
     val text: String = searchTextField.text.trim()
     myFilteredList.clear()
+    // Search by name or pattern only
     for (assoc in myList) {
       if (text.isEmpty() ||
         StringUtil.containsIgnoreCase(assoc.matcher, text) ||
@@ -175,7 +185,7 @@ class AssociationsTableModelEditor<T : Association>(
         myFilteredList.add(assoc)
       }
     }
-    model.items = myFilteredList
+//    model.filteredItems = myFilteredList
     model.fireTableDataChanged()
   }
 
@@ -220,7 +230,7 @@ class AssociationsTableModelEditor<T : Association>(
    *
    * @return the [AssociationTableModel]
    */
-  fun getModel(): ListTableModel<T> = model
+  fun getModel(): AssociationTableModel = model
 
   /**
    * Create component with toolbar
@@ -282,13 +292,14 @@ class AssociationsTableModelEditor<T : Association>(
   override fun getItems(): List<T> = model.items
 
   /**
-   * Restore the original items on reset
+   * Resets the [model]'s items
    *
-   * @param originalItems
+   * @param originalItems the elements
    */
   override fun reset(originalItems: List<T>) {
     super.reset(originalItems)
-    model.items = ArrayList(originalItems)
+    model.allItems = ArrayList(originalItems)
+    model.filteredItems = ArrayList(originalItems)
     initUnfilteredList()
   }
 
@@ -306,29 +317,82 @@ class AssociationsTableModelEditor<T : Association>(
     }
   }
 
-  private inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<T>) :
+  /**
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
+   * the filtered list
+   *
+   * @param oldItem item changed (in the filtered list)
+   * @param newItem new item to insert
+   * @param index index in the filtered lisst
+   */
+  override fun silentlyReplaceItem(oldItem: T, newItem: T, index: Int) {
+    super.silentlyReplaceItem(oldItem, newItem, index)
+    // silently replace item in unfiltered list
+    val items = model.allItems
+    val allItemsIndex = items.indexOfFirst { it.name == newItem.name }
+    items[if (allItemsIndex == -1) ContainerUtil.indexOfIdentity(items, oldItem) else allItemsIndex] = newItem
+  }
+
+  /**
+   * [Association] table model inheriting the [ListTableModel]
+   *
+   * @constructor
+   *
+   * @param columnNames the columns
+   * @param items the items
+   */
+  inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<T>) :
     ListTableModel<T>(columnNames, items) {
 
-    // Our items
-    var assocs: MutableList<T> = items.toMutableList()
+    /**
+     * This contains all items, before any filter is applied. This is also what will be persisted.
+     */
+    var allItems: MutableList<T> = items.toMutableList()
+
+    /**
+     * This is the currently filtered table
+     */
+    var filteredItems: MutableList<T> = items.toMutableList()
+      set(value) {
+        field = value
+        super.setItems(value)
+      }
 
     // An optional [DataChangedListener]
     var dataChangedListener: AssociationsDataChangedListener<T>? = null
 
-    override fun getItems(): MutableList<T> = assocs
+    /**
+     * We display only the filtered items
+     *
+     * @return the [filteredItems]
+     */
+    override fun getItems(): MutableList<T> = filteredItems
 
+    /**
+     * When items are set, we reset the table's items
+     *
+     * @param items
+     */
     override fun setItems(items: MutableList<T>) {
-      assocs = items
-      super.setItems(items)
+      allItems = items
+      filteredItems = items
+//      super.setItems(items)
+      fireTableDataChanged()
     }
 
+    /**
+     * Remove a row
+     * @unused
+     *
+     * @param index
+     */
     override fun removeRow(index: Int) {
       helper.remove(getItem(index))
       super.removeRow(index)
     }
 
     /**
-     * Set the value at the given row/column
+     * Set the value at the given row and column using the [helper]
      *
      * @param aValue value to set
      * @param rowIndex row number
@@ -357,7 +421,7 @@ class AssociationsTableModelEditor<T : Association>(
   companion object {
     const val MAX_ITEMS: Int = 60
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
-    const val MIN_ROW_COUNT: Int = 15
+    const val MIN_ROW_COUNT: Int = 16
 
     // columns (yes this is hardcoded but I have no idea how to do it differently)
     private enum class Columns(val displayName: String, val index: Int) {

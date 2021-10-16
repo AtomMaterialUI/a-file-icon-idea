@@ -35,10 +35,8 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.SelectedAssociations
-import com.mallowigi.icons.providers.DefaultFileIconProvider
-import com.mallowigi.icons.providers.DefaultFolderIconProvider
+import com.mallowigi.models.IconType
 import java.util.Objects
 
 /**
@@ -52,13 +50,18 @@ import java.util.Objects
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
-  var selectedFileAssociations: SelectedAssociations = SelectedAssociations()
+  var selectedFileAssociations: SelectedAssociations = SelectedAssociations(IconType.FILE)
 
   @Property
-  var selectedFolderAssociations: SelectedAssociations = SelectedAssociations()
+  var selectedFolderAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
 
   init {
     init()
+  }
+
+  private fun init() {
+    selectedFolderAssociations.initMutableListFromDefaults()
+    selectedFileAssociations.initMutableListFromDefaults()
   }
 
   override fun getState(): AtomSelectConfig = this
@@ -112,44 +115,14 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
     return !Objects.deepEquals(this.selectedFolderAssociations.ownValues(), touched)
   }
-
-  /**
-   * Is file icons modified
-   *
-   * @param fileAssociations new file associations to compare to
-   * @return true if they differ
-   */
-  fun isFileIconsModified3(fileAssociations: List<Association>): Boolean =
-    !Objects.deepEquals(this.selectedFileAssociations, fileAssociations)
-
-  /**
-   * Is folder icons modified
-   *
-   * @param folderAssociations new folder associations to compare to
-   * @return true if they differ
-   */
-  fun isFolderIconsModified3(folderAssociations: List<Association>): Boolean =
-    !Objects.deepEquals(this.selectedFolderAssociations, folderAssociations)
-
+  
   /**
    * Resets the associations
    *
    */
   fun reset() {
-    selectedFolderAssociations.clear()
-    selectedFileAssociations.clear()
-  }
-
-  private fun init() {
-    val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
-    folderAssociations
-      .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFolderAssociations.insertDefault(it.name, it) }
-
-    val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
-    fileAssociations
-      .filterIsInstance<RegexAssociation>()
-      .forEach { selectedFileAssociations.insertDefault(it.name, it) }
+    selectedFolderAssociations.reset()
+    selectedFileAssociations.reset()
   }
 
   companion object {

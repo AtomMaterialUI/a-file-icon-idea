@@ -27,19 +27,26 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
+import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
+import com.mallowigi.models.IconType
 
 /**
  * Represents a list of [SelectedAssociations]
  *
  */
 @Suppress("MemberNameEqualsClassName")
-class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : Associations() {
+class SelectedAssociations(
+  @Property val iconType: IconType = IconType.FILE,
+  associations: List<RegexAssociation> = listOf(),
+) :
+  Associations() {
+
   /**
-   * All loaded [Associations]
+   * All associations, mutable (from the form)
    */
   @Transient
-  private var defaultAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var mutableAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
   /**
    * My modified [Associations]
@@ -50,22 +57,16 @@ class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : As
 
   init {
     // Copy from a list of other [Associations] (used when applying form)
-    defaultAssociations = associations.associateBy { it.name }.toMutableMap()
+    mutableAssociations = associations.associateBy { it.name }.toMutableMap()
   }
 
   /**
-   * Checks if an [Association] is already registered in the defaults
+   * Reinitializes the [mutableAssociations] from the [defaultAssociations]
    *
-   * @param name
    */
-  fun hasDefault(name: String): Boolean = defaultAssociations.containsKey(name)
-
-  /**
-   * Get a default [Association] by name
-   *
-   * @param name
-   */
-  fun getDefault(name: String): RegexAssociation? = defaultAssociations[name]
+  fun initMutableListFromDefaults() {
+    mutableAssociations.putAll(BundledAssociations.instance.getMap(iconType))
+  }
 
   /**
    * Checks if an own [Association] is already registered
@@ -82,19 +83,6 @@ class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : As
   fun getOwn(name: String): RegexAssociation? = ownAssociations[name]
 
   /**
-   * Inserts association to [defaultAssociations] map if not exists
-   *
-   * @param name
-   * @param assoc
-   */
-  fun insertDefault(name: String, assoc: RegexAssociation) {
-    if (hasDefault(name)) return
-
-    defaultAssociations[name] = assoc
-    defaultAssociations[name]?.enabled = true
-  }
-
-  /**
    * Inserts association to [ownAssociations]
    *
    * @param name
@@ -102,14 +90,8 @@ class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : As
    */
   fun insertOwn(name: String, assoc: RegexAssociation) {
     ownAssociations[name] = assoc
+    ownAssociations[name]?.touched = true
   }
-
-  /**
-   * Gets the list of default [Associations]
-   *
-   * @return
-   */
-  fun defaultValues(): List<RegexAssociation> = defaultAssociations.values.toList()
 
   /**
    * Gets the list of own [Associations]
@@ -124,17 +106,8 @@ class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : As
    * @param file a file's [FileInfo]
    * @return the association if found
    */
-  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInDefault(file)
-
-  /**
-   * Look for [Association] in [defaultAssociations]
-   *
-   * @param file a file's [FileInfo]
-   * @return matching [Association] if found
-   */
-  private fun findInDefault(file: FileInfo): Association? = defaultValues()
-    .filter { association: Association -> association.enabled && association.matches(file) }
-    .maxByOrNull { it.priority }
+  override fun findMatchingAssociation(file: FileInfo): Association? = findInMutable(file)
+//  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInDefault(file)
 
   /**
    * Look for matching association in [ownAssociations]
@@ -147,32 +120,38 @@ class SelectedAssociations(associations: List<RegexAssociation> = listOf()) : As
     .maxByOrNull { it.priority }
 
   /**
+   * Look for matching association in [mutableAssociations]
+   *
+   * @param file a file's [FileInfo]
+   * @return matching association if found
+   */
+  private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.toList()
+    .filter { association: Association -> association.enabled && association.matches(file) }
+    .maxByOrNull { it.priority }
+
+  /**
    * Get the list of all [Associations]
    *
    * @return the list of [Associations]
    */
-  override fun getTheAssociations(): List<RegexAssociation> {
-    // to display associations to the form, need to merge both
-    val result = mutableMapOf<String, RegexAssociation>()
-    result.putAll(defaultAssociations)
-    result.putAll(ownAssociations)
-    return result.values.toList()
-  }
+  override fun getTheAssociations(): List<RegexAssociation> = mutableAssociations.values.toList()
 
   /**
-   * Clear [ownAssociations]
+   * Resets default state
    *
    */
-  fun clear() {
+  fun reset() {
+    mutableAssociations.clear()
     ownAssociations.clear()
+    initMutableListFromDefaults()
   }
 
   /**
-   * Extract [ownAssociations] from [defaultAssociations]
+   * Extract [ownAssociations] from [mutableAssociations]
    *
    */
   fun registerOwnAssociations() {
-    ownAssociations.putAll(defaultAssociations.filter { it.value.touched })
+    ownAssociations.putAll(mutableAssociations.filter { it.value.touched })
   }
 
 }

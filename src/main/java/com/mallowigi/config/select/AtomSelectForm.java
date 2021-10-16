@@ -41,6 +41,7 @@ import com.mallowigi.config.associations.ui.internal.AssociationsTableModelEdito
 import com.mallowigi.config.ui.SettingsFormUI;
 import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.SelectedAssociations;
+import com.mallowigi.models.IconType;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
 
@@ -141,12 +142,12 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   public SelectedAssociations getFileAssociations() {
     assert fileAssociationsEditor != null;
-    return new SelectedAssociations(fileAssociationsEditor.getModel().getItems());
+    return new SelectedAssociations(IconType.FILE, fileAssociationsEditor.getModel().getAllItems());
   }
 
   public SelectedAssociations getFolderAssociations() {
     assert folderAssociationsEditor != null;
-    return new SelectedAssociations(folderAssociationsEditor.getModel().getItems());
+    return new SelectedAssociations(IconType.FOLDER, folderAssociationsEditor.getModel().getAllItems());
   }
 
   @SuppressWarnings("ConfusingFloatingPointLiteral")

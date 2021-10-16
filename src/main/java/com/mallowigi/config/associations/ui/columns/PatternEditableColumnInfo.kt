@@ -63,6 +63,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    */
   override fun setValue(item: Association, value: String) {
     item.matcher = value
+    item.touched = true
   }
 
   /**

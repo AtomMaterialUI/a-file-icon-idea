@@ -88,6 +88,9 @@
 
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
+
+    <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations"></applicationService>
+
   </extensions>
 
   <applicationListeners>
