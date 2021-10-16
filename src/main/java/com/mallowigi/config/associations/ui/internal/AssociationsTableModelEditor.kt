@@ -466,7 +466,7 @@ class AssociationsTableModelEditor(
     const val MAX_ITEMS: Int = 60
     const val MIN_ROW_COUNT: Int = 18
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
-    const val PREFERABLE_VIEWPORT_HEIGHT: Int = 300
+    const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
 
     // columns (yes this is hardcoded but I have no idea how to do it differently)
     @Suppress("unused")

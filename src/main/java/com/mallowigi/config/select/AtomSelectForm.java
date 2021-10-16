@@ -93,6 +93,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   private SearchTextField fileSearch;
   private JPanel folderAssociationsPanel;
   private SearchTextField folderSearch;
+  private JTextPane explanation2;
   private JButton resetButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
@@ -177,19 +178,21 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     fileSearch = new SearchTextField();
     folderAssociationsPanel = new JPanel();
     folderSearch = new SearchTextField();
+    explanation2 = new JTextPane();
     resetButton = new JButton();
 
     //======== this ========
     setBorder(new TitledBorder(null, "Associations Editor", TitledBorder.CENTER, TitledBorder.TOP));
     setLayout(new MigLayout(
-      "hidemode 3",
+      "hidemode 3,wrap",
       // columns
       "[grow,fill]",
       // rows
       "[]" +
         "[]" +
         "[shrink 0,fill]" +
-        "[top]0"));
+        "[top]0" +
+        "[]"));
 
     //---- explanation ----
     explanation.setText(bundle.getString("SelectForm.explanation.text"));
@@ -221,6 +224,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
       //======== fileAssociationsPanel ========
       {
+        fileAssociationsPanel.setMinimumSize(null);
+        fileAssociationsPanel.setPreferredSize(null);
         fileAssociationsPanel.setLayout(new MigLayout(
           "aligny top",
           // columns
@@ -245,9 +250,15 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     }
     add(tabbedPane, "cell 0 2");
 
+    //---- explanation2 ----
+    explanation2.setText(bundle.getString("SelectForm.explanation2.text"));
+    explanation2.setForeground(UIManager.getColor("inactiveCaptionText"));
+    explanation2.setFont(explanation2.getFont().deriveFont(explanation2.getFont().getSize() - 1f));
+    add(explanation2, "cell 0 3");
+
     //---- resetButton ----
     resetButton.setText(bundle.getString("SelectForm.resetButton.text"));
-    add(resetButton, "cell 0 3,alignx right,growx 0");
+    add(resetButton, "cell 0 4,alignx right,growx 0");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     resetButton.addActionListener(this::resetButtonActionPerformed);
   }

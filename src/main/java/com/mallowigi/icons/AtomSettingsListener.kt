@@ -39,8 +39,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.project.ProjectManagerListener
 import com.intellij.util.ui.UIUtil
-import com.mallowigi.config.listeners.AssocConfigNotifier
 import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
@@ -79,7 +79,7 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
 
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { onSettingsChanged() })
 
-      subscribe(AssocConfigNotifier.TOPIC, AssocConfigNotifier { onSettingsChanged() })
+      subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged() })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
         override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()

@@ -30,6 +30,7 @@
 
 package com.mallowigi.config.associations.ui;
 
+import java.awt.*;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.Disposable;
 import com.intellij.ui.components.labels.LinkLabel;
@@ -86,13 +87,9 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
-  private JLabel customExplanation;
-  private JLabel customExplanation2;
-  private LinkLabel link;
-  private JPanel vSpacer1;
+  private JTextPane deprecated;
   private JTabbedPane tabbedContainer;
   private JPanel customFileIcons;
-  private JTextPane explanation;
   private JPanel customFolderIcons;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent customFileIconsTable;
@@ -167,52 +164,26 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle");
-    customExplanation = new JLabel();
-    customExplanation2 = new JLabel();
-    link = new LinkLabel();
-    vSpacer1 = new JPanel(null);
+    deprecated = new JTextPane();
     tabbedContainer = new JTabbedPane();
     customFileIcons = new JPanel();
-    explanation = new JTextPane();
     customFolderIcons = new JPanel();
 
     //======== this ========
     setBorder(new TitledBorder(null, bundle.getString("AssociationsForm.this.border"), TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
     setLayout(new MigLayout(
-      "hidemode 3",
+      "flowy,hidemode 3,wrap",
       // columns
       "[369,grow,fill]",
       // rows
       "[]" +
-        "[]" +
-        "[]" +
-        "[270,grow,fill]"));
+      "[270,grow,fill]"));
 
-    //---- customExplanation ----
-    customExplanation.setText(bundle.getString("AssociationsForm.customExplanation.text"));
-    customExplanation.setFont(customExplanation.getFont().deriveFont(customExplanation.getFont().getSize() - 1f));
-    customExplanation.setForeground(UIManager.getColor("inactiveCaptionText"));
-    customExplanation.setLabelFor(explanation);
-    add(customExplanation, "cell 0 0");
-
-    //---- customExplanation2 ----
-    customExplanation2.setText(bundle.getString("AssociationsForm.customExplanation2.text"));
-    customExplanation2.setFont(customExplanation2.getFont().deriveFont(customExplanation2.getFont().getSize() - 1f));
-    customExplanation2.setForeground(UIManager.getColor("inactiveCaptionText"));
-    add(customExplanation2, "cell 0 1,alignx left,growx 0");
-
-    //---- link ----
-    link.setText(bundle.getString("AssociationsForm.link.text"));
-    link.setFont(link.getFont().deriveFont(link.getFont().getSize() - 1f));
-    link.setLabelFor(explanation);
-    link.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseClicked(MouseEvent e) {
-        linkMouseClicked(e);
-      }
-    });
-    add(link, "cell 0 1");
-    add(vSpacer1, "cell 0 2");
+    //---- deprecated ----
+    deprecated.setText(bundle.getString("AssociationsForm.deprecated.text"));
+    deprecated.setFont(deprecated.getFont().deriveFont(deprecated.getFont().getSize() + 5f));
+    deprecated.setForeground(SystemColor.controlHighlight);
+    add(deprecated, "cell 0 0");
 
     //======== tabbedContainer ========
     {
@@ -224,14 +195,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
           // columns
           "0[grow,fill]0",
           // rows
-          "0[grow,fill]0" +
-            "[]"));
-
-        //---- explanation ----
-        explanation.setText(bundle.getString("AssociationsForm.explanation.text"));
-        explanation.setForeground(UIManager.getColor("inactiveCaptionText"));
-        explanation.setFont(explanation.getFont().deriveFont(explanation.getFont().getSize() - 1f));
-        customFileIcons.add(explanation, "cell 0 1");
+          "0[grow,fill]0"));
       }
       tabbedContainer.addTab(bundle.getString("AssociationsForm.customFileIcons.tab.title"), customFileIcons);
 
@@ -246,7 +210,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       }
       tabbedContainer.addTab(bundle.getString("AssociationsForm.customFolderIcons.title"), customFolderIcons);
     }
-    add(tabbedContainer, "cell 0 3");
+    add(tabbedContainer, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 

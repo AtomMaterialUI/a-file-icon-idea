@@ -8,9 +8,9 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "hidemode 3"
+			"$layoutConstraints": "hidemode 3,wrap"
 			"$columnConstraints": "[grow,fill]"
-			"$rowConstraints": "[][][shrink 0,fill][top]0"
+			"$rowConstraints": "[][][shrink 0,fill][top]0[]"
 		} ) {
 			name: "this"
 			"border": new javax.swing.border.TitledBorder( null, "Associations Editor", 2, 2 )
@@ -48,6 +48,8 @@ new FormModel {
 					"$rowConstraints": "rel[shrink 0,fill]rel"
 				} ) {
 					name: "fileAssociationsPanel"
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					add( new FormComponent( "com.intellij.ui.SearchTextField" ) {
 						name: "fileSearch"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -73,15 +75,23 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 2"
 			} )
+			add( new FormComponent( "javax.swing.JTextPane" ) {
+				name: "explanation2"
+				"text": new FormMessage( null, "SelectForm.explanation2.text" )
+				"foreground": new com.jformdesigner.model.SwingColor( "inactiveCaptionText" )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 3"
+			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "resetButton"
 				"text": new FormMessage( null, "SelectForm.resetButton.text" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 3,alignx right,growx 0"
+				"value": "cell 0 4,alignx right,growx 0"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 665, 365 )
+			"size": new java.awt.Dimension( 590, 365 )
 		} )
 	}
 }
