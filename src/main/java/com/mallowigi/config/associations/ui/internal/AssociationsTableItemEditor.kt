@@ -106,6 +106,6 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
     mutator.`fun`(item).apply(settings)
   }
 
-  override fun isRemovable(item: RegexAssociation): Boolean = true
+  override fun isRemovable(item: RegexAssociation): Boolean = item.touched
 
 }

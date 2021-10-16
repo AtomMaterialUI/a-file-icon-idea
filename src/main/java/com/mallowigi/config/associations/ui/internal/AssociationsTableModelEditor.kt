@@ -50,6 +50,7 @@ import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo
 import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.RegexAssociation
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -62,7 +63,6 @@ import javax.swing.event.DocumentEvent
 /**
  * [Association] table model editor
  *
- * @param T type of items
  * @constructor
  *
  * @param items the [Association]
@@ -70,17 +70,17 @@ import javax.swing.event.DocumentEvent
  * @param itemEditor the [Association] editor
  * @param emptyText the text to show when the table is empty
  */
-class AssociationsTableModelEditor<T : Association>(
-  items: List<T>,
+class AssociationsTableModelEditor(
+  items: List<RegexAssociation>,
   columns: Array<ColumnInfo<*, *>>,
-  itemEditor: CollectionItemEditor<T>,
+  itemEditor: CollectionItemEditor<RegexAssociation>,
   emptyText: String,
   val searchTextField: SearchTextField?,
-) : CollectionModelEditor<T, CollectionItemEditor<T>?>(itemEditor) {
+) : CollectionModelEditor<RegexAssociation, CollectionItemEditor<RegexAssociation>?>(itemEditor) {
   /**
    * Table View
    */
-  private val table: TableView<T>
+  private val table: TableView<RegexAssociation>
 
   /**
    * Toolbar actions
@@ -95,14 +95,19 @@ class AssociationsTableModelEditor<T : Association>(
   /**
    * Backing field for model's unfiltered list
    */
-  private val myList: MutableList<T>
+  private val myList: MutableList<RegexAssociation>
     get() = model.allItems
 
   /**
    * Backing field for model's filtered list
    */
-  private val myFilteredList: MutableList<T>
+  private val myFilteredList: MutableList<RegexAssociation>
     get() = model.filteredItems
+
+  /**
+   * Own Increment for adding
+   */
+  private var increment: Int = 0
 
   init {
     model = AssociationTableModel(columns, items)
@@ -195,16 +200,16 @@ class AssociationsTableModelEditor<T : Association>(
 
   constructor(
     columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<T>,
+    itemEditor: CollectionItemEditor<RegexAssociation>,
     emptyText: String,
-  ) : this(emptyList<T>(), columns, itemEditor, emptyText, null)
+  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, null)
 
   constructor(
     columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<T>,
+    itemEditor: CollectionItemEditor<RegexAssociation>,
     emptyText: String,
     searchTextField: SearchTextField,
-  ) : this(emptyList<T>(), columns, itemEditor, emptyText, searchTextField)
+  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField)
 
   /**
    * Convenience method to disable/enable the table
@@ -212,7 +217,7 @@ class AssociationsTableModelEditor<T : Association>(
    * @param isEnabled new enabled state
    * @return self
    */
-  fun enabled(isEnabled: Boolean): AssociationsTableModelEditor<T> {
+  fun enabled(isEnabled: Boolean): AssociationsTableModelEditor {
     table.isEnabled = isEnabled
     return this
   }
@@ -223,7 +228,7 @@ class AssociationsTableModelEditor<T : Association>(
    * @param listener a data listener
    * @return self
    */
-  internal fun setModelListener(listener: AssociationsDataChangedListener<T>): AssociationsTableModelEditor<T> {
+  internal fun setModelListener(listener: AssociationsDataChangedListener<RegexAssociation>): AssociationsTableModelEditor {
     model.dataChangedListener = listener
     model.addTableModelListener(listener)
     return this
@@ -247,13 +252,13 @@ class AssociationsTableModelEditor<T : Association>(
    *
    * @param item the item to select
    */
-  fun selectItem(item: T) {
+  fun selectItem(item: RegexAssociation) {
     table.clearSelection()
-    val ref: Ref<T>?
+    val ref: Ref<RegexAssociation>?
 
     if (helper.hasModifiedItems()) {
       ref = Ref.create()
-      helper.process { modified: T, original: T ->
+      helper.process { modified: RegexAssociation, original: RegexAssociation ->
         if (item === original) ref.set(modified)
         ref.isNull
       }
@@ -269,11 +274,11 @@ class AssociationsTableModelEditor<T : Association>(
    *
    * @return the new items after changes
    */
-  fun apply(): List<T> {
+  fun apply(): List<RegexAssociation> {
     if (helper.hasModifiedItems()) {
       val columns = model.columnInfos
 
-      helper.process { newItem: T, oldItem: T ->
+      helper.process { newItem: RegexAssociation, oldItem: RegexAssociation ->
         // set all modified items new values
         for (column in columns) {
           if (column.isCellEditable(newItem)) column.setValue(oldItem, column.valueOf(newItem))
@@ -293,14 +298,14 @@ class AssociationsTableModelEditor<T : Association>(
    *
    * @return the model items
    */
-  override fun getItems(): List<T> = model.items
+  override fun getItems(): List<RegexAssociation> = model.items
 
   /**
    * Resets the [model]'s items
    *
    * @param originalItems the elements
    */
-  override fun reset(originalItems: List<T>) {
+  override fun reset(originalItems: List<RegexAssociation>) {
     super.reset(originalItems)
     model.allItems = ArrayList(originalItems)
     model.filteredItems = ArrayList(originalItems)
@@ -322,6 +327,20 @@ class AssociationsTableModelEditor<T : Association>(
   }
 
   /**
+   * Create a new custom association
+   *
+   */
+  override fun createElement(): RegexAssociation {
+    increment++
+
+    val regexAssociation = RegexAssociation()
+    regexAssociation.name = "New Association (${increment})"
+    regexAssociation.pattern = "^.*\\.ext${increment}$"
+    regexAssociation.priority = 10000
+    return regexAssociation
+  }
+
+  /**
    * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
    * the filtered list
    *
@@ -329,7 +348,7 @@ class AssociationsTableModelEditor<T : Association>(
    * @param newItem new item to insert
    * @param index index in the filtered lisst
    */
-  override fun silentlyReplaceItem(oldItem: T, newItem: T, index: Int) {
+  override fun silentlyReplaceItem(oldItem: RegexAssociation, newItem: RegexAssociation, index: Int) {
     super.silentlyReplaceItem(oldItem, newItem, index)
     // silently replace item in unfiltered list
     val items = model.allItems
@@ -345,39 +364,39 @@ class AssociationsTableModelEditor<T : Association>(
    * @param columnNames the columns
    * @param items the items
    */
-  inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<T>) :
-    ListTableModel<T>(columnNames, items) {
+  inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<RegexAssociation>) :
+    ListTableModel<RegexAssociation>(columnNames, items) {
 
     /**
      * This contains all items, before any filter is applied. This is also what will be persisted.
      */
-    var allItems: MutableList<T> = items.toMutableList()
+    var allItems: MutableList<RegexAssociation> = items.toMutableList()
 
     /**
      * This is the currently filtered table
      */
-    var filteredItems: MutableList<T> = items.toMutableList()
+    var filteredItems: MutableList<RegexAssociation> = items.toMutableList()
       set(value) {
         field = value
         super.setItems(value)
       }
 
     // An optional [DataChangedListener]
-    var dataChangedListener: AssociationsDataChangedListener<T>? = null
+    var dataChangedListener: AssociationsDataChangedListener<RegexAssociation>? = null
 
     /**
      * We display only the filtered items
      *
      * @return the [filteredItems]
      */
-    override fun getItems(): MutableList<T> = filteredItems
+    override fun getItems(): MutableList<RegexAssociation> = filteredItems
 
     /**
      * When items are set, we reset the table's items
      *
      * @param items
      */
-    override fun setItems(items: MutableList<T>) {
+    override fun setItems(items: MutableList<RegexAssociation>) {
       allItems = items
       filteredItems = items
       fireTableDataChanged()
@@ -390,7 +409,10 @@ class AssociationsTableModelEditor<T : Association>(
      * @param index
      */
     override fun removeRow(index: Int) {
-      helper.remove(getItem(index))
+      val item = getItem(index)
+      if (!item.touched) return
+
+      helper.remove(item)
       super.removeRow(index)
     }
 
@@ -447,13 +469,14 @@ class AssociationsTableModelEditor<T : Association>(
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 300
 
     // columns (yes this is hardcoded but I have no idea how to do it differently)
-    private enum class Columns(val displayName: String, val index: Int) {
-      ENABLED("Enabled", 0),
-      NAME("Name", 1),
-      PATTERN("Pattern", 2),
-      ICON("Icon", 3),
-      PRIORITY("Priority", 4),
-      TOUCHED("Touched", 5),
+    @Suppress("unused")
+    private enum class Columns(val index: Int) {
+      ENABLED(0),
+      NAME(1),
+      PATTERN(2),
+      ICON(3),
+      PRIORITY(4),
+      TOUCHED(5),
     }
   }
 }

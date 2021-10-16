@@ -41,7 +41,6 @@ import com.mallowigi.config.associations.ui.columns.*;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableModelEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
-import com.mallowigi.icons.associations.RegexAssociation;
 import com.mallowigi.icons.associations.SelectedAssociations;
 import com.mallowigi.models.IconType;
 import net.miginfocom.swing.MigLayout;
@@ -63,7 +62,8 @@ import java.util.ResourceBundle;
   "ClassWithTooManyFields",
   "OverlyLongMethod",
   "MethodMayBeStatic",
-  "MethodOnlyUsedFromInnerClass"})
+  "MethodOnlyUsedFromInnerClass",
+  "SyntheticAccessorCall"})
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
@@ -97,8 +97,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
   private JComponent folderIconsTable;
-  private @Nullable AssociationsTableModelEditor<RegexAssociation> fileAssociationsEditor;
-  private @Nullable AssociationsTableModelEditor<RegexAssociation> folderAssociationsEditor;
+  private @Nullable AssociationsTableModelEditor fileAssociationsEditor;
+  private @Nullable AssociationsTableModelEditor folderAssociationsEditor;
 
   @Override
   public void init() {
@@ -159,9 +159,9 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     return new SelectedAssociations(IconType.FOLDER, folderAssociationsEditor.getModel().getAllItems());
   }
 
+  @SuppressWarnings("unused")
   private void linkMouseClicked(final MouseEvent e) {
     BrowserUtil.browse(AtomSettingsBundle.message("AssociationsForm.link.text"));
-
   }
 
   @SuppressWarnings("ConfusingFloatingPointLiteral")
@@ -278,7 +278,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
    */
   private void createFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    fileAssociationsEditor = new AssociationsTableModelEditor<>(fileColumns,
+    fileAssociationsEditor = new AssociationsTableModelEditor(fileColumns,
       itemEditor,
       AtomSettingsBundle.message("no.file.associations"),
       fileSearch);
@@ -294,7 +294,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
    */
   private void createFolderIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    folderAssociationsEditor = new AssociationsTableModelEditor<>(folderColumns,
+    folderAssociationsEditor = new AssociationsTableModelEditor(folderColumns,
       itemEditor,
       AtomSettingsBundle.message("no.folder.associations"),
       folderSearch);
