@@ -26,6 +26,7 @@
 
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFileFactory
@@ -35,14 +36,23 @@ import org.intellij.lang.regexp.RegExpFileType
 import java.awt.Component
 import javax.swing.BorderFactory
 import javax.swing.JTable
-import javax.swing.table.TableCellRenderer
+import javax.swing.table.DefaultTableCellRenderer
 
 /**
  * Preview regexps in the table
  *
  * @constructor Create empty Reg exp table cell renderer
  */
-class RegExpTableCellRenderer : TableCellRenderer {
+class RegExpTableCellRenderer : DefaultTableCellRenderer() {
+  private val project: Project
+    get() = ProjectManager.getInstance().defaultProject
+
+  private val factory: PsiFileFactory
+    get() = PsiFileFactory.getInstance(project)
+
+  private val documentManager: PsiDocumentManager
+    get() = PsiDocumentManager.getInstance(project)
+
   override fun getTableCellRendererComponent(
     table: JTable?,
     value: Any?,
@@ -51,14 +61,14 @@ class RegExpTableCellRenderer : TableCellRenderer {
     row: Int,
     column: Int,
   ): Component {
-    val myProject = ProjectManager.getInstance().defaultProject
-    val factory = PsiFileFactory.getInstance(myProject)
     val psiFile = factory.createFileFromText(RegExpFileType.INSTANCE.language, value as String)
     val editorTextField: EditorTextField
 
-    editorTextField = object : EditorTextField(PsiDocumentManager.getInstance(myProject).getDocument(psiFile),
-                                               myProject,
-                                               RegExpFileType.INSTANCE) {
+    editorTextField = object : EditorTextField(documentManager.getDocument(psiFile),
+                                               project,
+                                               RegExpFileType.INSTANCE,
+                                               true,
+                                               true) {
       override fun shouldHaveBorder(): Boolean = false
     }
 
@@ -67,9 +77,11 @@ class RegExpTableCellRenderer : TableCellRenderer {
     }
 
     editorTextField.putClientProperty("JComboBox.isTableCellEditor", java.lang.Boolean.TRUE)
+    editorTextField.isDoubleBuffered = true
+    editorTextField.ignoreRepaint = true
     editorTextField.border =
       if (hasFocus || isSelected) BorderFactory.createLineBorder(table.selectionBackground) else JBUI.Borders.empty(1)
-    if (isSelected && PsiDocumentManager.getInstance(myProject).getDocument(psiFile) != null) {
+    if (isSelected && PsiDocumentManager.getInstance(project).getDocument(psiFile) != null) {
       val bg = table.selectionBackground
       val fg = table.selectionForeground
       editorTextField.background = bg

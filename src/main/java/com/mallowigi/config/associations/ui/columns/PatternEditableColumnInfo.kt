@@ -81,14 +81,11 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
   /**
    * Renders the regexp.
    *
-   * TODO: find how to renders highlighted regexs
-   *
    * @param item the [Association]
    * @return the [TableCellRenderer]
    */
-  override fun getRenderer(item: Association): TableCellRenderer? {
+  override fun getRenderer(item: Association): TableCellRenderer {
     return ValidatingTableCellRendererWrapper(RegExpTableCellRenderer())
-      .withCellValidator { value: Any?, _: Int, _: Int -> validate(value) }
   }
 
   /**

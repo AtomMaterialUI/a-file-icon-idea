@@ -282,8 +282,10 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       itemEditor,
       AtomSettingsBundle.message("no.file.associations"),
       fileSearch);
-    fileIconsTable = fileAssociationsEditor.createComponent();
-    fileAssociationsPanel.add(fileIconsTable, "cell 0 1"); //NON-NLS
+    ApplicationManager.getApplication().invokeLater(() -> {
+      fileIconsTable = fileAssociationsEditor.createComponent();
+      fileAssociationsPanel.add(fileIconsTable, "cell 0 1"); //NON-NLS
+    });
 
   }
 
@@ -296,7 +298,9 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       itemEditor,
       AtomSettingsBundle.message("no.folder.associations"),
       folderSearch);
-    folderIconsTable = folderAssociationsEditor.createComponent();
-    folderAssociationsPanel.add(folderIconsTable, "cell 0 1"); //NON-NLS
+    ApplicationManager.getApplication().invokeLater(() -> {
+      folderIconsTable = folderAssociationsEditor.createComponent();
+      folderAssociationsPanel.add(folderIconsTable, "cell 0 1"); //NON-NLS
+    });
   }
 }
