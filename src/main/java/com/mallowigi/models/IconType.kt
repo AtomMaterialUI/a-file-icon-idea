@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.icons.associations
+package com.mallowigi.models
 
 /**
  * Icon type

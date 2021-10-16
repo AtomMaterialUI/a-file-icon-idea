@@ -32,6 +32,7 @@ import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.associations.AtomAssocConfig
 import com.mallowigi.icons.associations.CustomAssociations
 import com.mallowigi.icons.special.CustomDirIcon
+import com.mallowigi.models.IconType
 import icons.AtomIcons
 import javax.swing.Icon
 

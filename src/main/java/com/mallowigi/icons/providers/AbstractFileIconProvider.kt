@@ -35,6 +35,7 @@ import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
 import com.mallowigi.models.FileInfo
+import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
 import com.mallowigi.utils.toOptional
 import javax.swing.Icon
