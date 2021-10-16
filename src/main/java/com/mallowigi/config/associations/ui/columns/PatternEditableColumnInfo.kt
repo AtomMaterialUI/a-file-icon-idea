@@ -27,10 +27,10 @@ package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.ui.ValidationInfo
-import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
 import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.ui.internal.ModifiedInfoCellRenderer
 import com.mallowigi.config.associations.ui.internal.RegExpTableCellRenderer
 import com.mallowigi.config.associations.ui.internal.RegexpEditor
 import com.mallowigi.icons.associations.Association
@@ -47,6 +47,8 @@ import javax.swing.table.TableCellRenderer
 @Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
+  var toggledPattern: Boolean = false
+
   /**
    * The value of the column is the matcher
    *
@@ -84,9 +86,10 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    * @param item the [Association]
    * @return the [TableCellRenderer]
    */
-  override fun getRenderer(item: Association): TableCellRenderer {
-    return ValidatingTableCellRendererWrapper(RegExpTableCellRenderer())
-  }
+  override fun getRenderer(item: Association): TableCellRenderer = RegExpTableCellRenderer()
+
+  override fun getCustomizedRenderer(o: Association, renderer: TableCellRenderer): TableCellRenderer =
+    if (toggledPattern) renderer else ModifiedInfoCellRenderer(o)
 
   /**
    * Whether the cell is editable

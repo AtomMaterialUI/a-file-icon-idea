@@ -68,7 +68,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   private final transient ColumnInfo[] fileColumns = {
     new EnabledColumnInfo(),
-    new NameEditableColumnInfo(this, false),
+    new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
@@ -77,7 +77,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   private final transient ColumnInfo[] folderColumns = {
     new EnabledColumnInfo(),
-    new NameEditableColumnInfo(this, false),
+    new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
@@ -184,12 +184,12 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     setLayout(new MigLayout(
       "hidemode 3",
       // columns
-      "[369,grow,fill]",
+      "[grow,fill]",
       // rows
       "[]" +
         "[]" +
-        "[grow,fill]" +
-        "[fill]"));
+        "[shrink 0,fill]" +
+        "[top]0"));
 
     //---- explanation ----
     explanation.setText(bundle.getString("SelectForm.explanation.text"));
@@ -226,7 +226,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // columns
           "0[grow,fill]0",
           // rows
-          "0[shrink 0,fill]0"));
+          "rel[shrink 0,fill]rel"));
         fileAssociationsPanel.add(fileSearch, "cell 0 0");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel);
@@ -238,7 +238,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
           // columns
           "0[grow,fill]0",
           // rows
-          "0[shrink 0,fill]0"));
+          "rel[shrink 0,fill]rel"));
         folderAssociationsPanel.add(folderSearch, "cell 0 0");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel);

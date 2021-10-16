@@ -26,12 +26,15 @@
 package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.configurationStore.serialize
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
+import com.intellij.ui.ToggleActionButton
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.table.JBTable
 import com.intellij.ui.table.TableView
@@ -44,6 +47,8 @@ import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.intellij.util.xmlb.XmlSerializer
+import com.mallowigi.config.AtomSettingsBundle
+import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo
 import com.mallowigi.icons.associations.Association
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
@@ -114,7 +119,7 @@ class AssociationsTableModelEditor<T : Association>(
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
     table.setEnableAntialiasing(false)
     table.intercellSpacing = Dimension(0, 0)
-    table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, -1)
+    table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, PREFERABLE_VIEWPORT_HEIGHT)
     table.visibleRowCount = MIN_ROW_COUNT
     table.rowHeight = 32
     table.rowMargin = 0
@@ -134,8 +139,7 @@ class AssociationsTableModelEditor<T : Association>(
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
     toolbarDecorator.run {
       disableUpDownActions()
-      disableAddAction()
-      disableRemoveAction()
+      addExtraAction(TogglePatternAction())
     }
 
     // Search and filter table
@@ -376,7 +380,6 @@ class AssociationsTableModelEditor<T : Association>(
     override fun setItems(items: MutableList<T>) {
       allItems = items
       filteredItems = items
-//      super.setItems(items)
       fireTableDataChanged()
     }
 
@@ -418,10 +421,30 @@ class AssociationsTableModelEditor<T : Association>(
 
   }
 
+  /**
+   * Toggle pattern action: Toggle pattern highlighting
+   *
+   * @constructor Create empty Toggle pattern action
+   */
+  private inner class TogglePatternAction :
+    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
+
+    override fun isSelected(e: AnActionEvent?): Boolean {
+      return (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
+    }
+
+    override fun setSelected(e: AnActionEvent?, state: Boolean) {
+      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
+
+      patternColumn.toggledPattern = !patternColumn.toggledPattern
+    }
+  }
+
   companion object {
     const val MAX_ITEMS: Int = 60
-    const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val MIN_ROW_COUNT: Int = 18
+    const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
+    const val PREFERABLE_VIEWPORT_HEIGHT: Int = 300
 
     // columns (yes this is hardcoded but I have no idea how to do it differently)
     private enum class Columns(val displayName: String, val index: Int) {
