@@ -421,7 +421,7 @@ class AssociationsTableModelEditor<T : Association>(
   companion object {
     const val MAX_ITEMS: Int = 60
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
-    const val MIN_ROW_COUNT: Int = 16
+    const val MIN_ROW_COUNT: Int = 18
 
     // columns (yes this is hardcoded but I have no idea how to do it differently)
     private enum class Columns(val displayName: String, val index: Int) {

@@ -10,7 +10,7 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[369,grow,fill]"
-			"$rowConstraints": "[][grow,fill][fill]"
+			"$rowConstraints": "[][][grow,fill][fill]"
 		} ) {
 			name: "this"
 			"border": new javax.swing.border.TitledBorder( null, "Associations Editor", 2, 2 )
@@ -22,12 +22,30 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "customExplanation2"
+				"text": new FormMessage( null, "SelectForm.customExplanation2.text" )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+				"foreground": new com.jformdesigner.model.SwingColor( "inactiveCaptionText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1,alignx left,growx 0"
+			} )
+			add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+				name: "link"
+				"text": new FormMessage( null, "SelectForm.link.text" )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+				"labelFor": new FormReference( "explanation" )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "linkMouseClicked", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane"
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "hidemode 3"
+					"$layoutConstraints": "aligny top"
 					"$columnConstraints": "0[grow,fill]0"
-					"$rowConstraints": "[]0[grow,fill]rel[]"
+					"$rowConstraints": "0[shrink 0,fill]0"
 				} ) {
 					name: "fileAssociationsPanel"
 					add( new FormComponent( "com.intellij.ui.SearchTextField" ) {
@@ -35,22 +53,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-						"$layoutConstraints": "insets 0,hidemode 3,gap 0 0"
-						"$columnConstraints": "[grow,fill]"
-						"$rowConstraints": "[grow,fill]"
-					} ) {
-						name: "filePanelTable"
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1"
-					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "SelectForm.fileAssociationsPanel.tab.title" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "hidemode 3"
+					"$layoutConstraints": "aligny top"
 					"$columnConstraints": "0[grow,fill]0"
-					"$rowConstraints": "0[fill]0[grow]"
+					"$rowConstraints": "0[shrink 0,fill]0"
 				} ) {
 					name: "folderAssociationsPanel"
 					add( new FormComponent( "com.intellij.ui.SearchTextField" ) {
@@ -58,30 +67,21 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-						"$layoutConstraints": "insets 0,hidemode 3,gap 0 0"
-						"$columnConstraints": "[grow,fill]"
-						"$rowConstraints": "[grow,fill]"
-					} ) {
-						name: "folderPanelTable"
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1"
-					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "SelectForm.folderAssociationsPanel.tab.title" )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 1"
+				"value": "cell 0 2"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "resetButton"
 				"text": new FormMessage( null, "SelectForm.resetButton.text" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 2,alignx right,growx 0"
+				"value": "cell 0 3,alignx right,growx 0"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 665, 490 )
+			"size": new java.awt.Dimension( 665, 455 )
 		} )
 	}
 }

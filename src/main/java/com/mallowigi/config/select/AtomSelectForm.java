@@ -30,9 +30,11 @@
 
 package com.mallowigi.config.select;
 
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ui.SearchTextField;
+import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.ui.ColumnInfo;
 import com.mallowigi.config.AtomSettingsBundle;
 import com.mallowigi.config.associations.ui.columns.*;
@@ -48,6 +50,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
@@ -56,7 +60,10 @@ import java.util.ResourceBundle;
   "UndesirableClassUsage",
   "InstanceVariableMayNotBeInitialized",
   "TransientFieldNotInitialized",
-  "ClassWithTooManyFields"})
+  "ClassWithTooManyFields",
+  "OverlyLongMethod",
+  "MethodMayBeStatic",
+  "MethodOnlyUsedFromInnerClass"})
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
@@ -79,13 +86,13 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JLabel explanation;
+  private JLabel customExplanation2;
+  private LinkLabel link;
   private JTabbedPane tabbedPane;
   private JPanel fileAssociationsPanel;
   private SearchTextField fileSearch;
-  private JPanel filePanelTable;
   private JPanel folderAssociationsPanel;
   private SearchTextField folderSearch;
-  private JPanel folderPanelTable;
   private JButton resetButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
   private JComponent fileIconsTable;
@@ -97,6 +104,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
   public void init() {
     initComponents();
     createTables();
+    fileSearch.getTextEditor().getEmptyText().setText(AtomSettingsBundle.message("fileSearch.placeholder"));
+    folderSearch.getTextEditor().getEmptyText().setText(AtomSettingsBundle.message("fileSearch.placeholder"));
   }
 
   @Override
@@ -150,19 +159,24 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     return new SelectedAssociations(IconType.FOLDER, folderAssociationsEditor.getModel().getAllItems());
   }
 
+  private void linkMouseClicked(final MouseEvent e) {
+    BrowserUtil.browse(AtomSettingsBundle.message("AssociationsForm.link.text"));
+
+  }
+
   @SuppressWarnings("ConfusingFloatingPointLiteral")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle");
     explanation = new JLabel();
+    customExplanation2 = new JLabel();
+    link = new LinkLabel();
     tabbedPane = new JTabbedPane();
     fileAssociationsPanel = new JPanel();
     fileSearch = new SearchTextField();
-    filePanelTable = new JPanel();
     folderAssociationsPanel = new JPanel();
     folderSearch = new SearchTextField();
-    folderPanelTable = new JPanel();
     resetButton = new JButton();
 
     //======== this ========
@@ -173,6 +187,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       "[369,grow,fill]",
       // rows
       "[]" +
+        "[]" +
         "[grow,fill]" +
         "[fill]"));
 
@@ -182,63 +197,57 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     explanation.setForeground(UIManager.getColor("inactiveCaptionText"));
     add(explanation, "cell 0 0");
 
+    //---- customExplanation2 ----
+    customExplanation2.setText(bundle.getString("SelectForm.customExplanation2.text"));
+    customExplanation2.setFont(customExplanation2.getFont().deriveFont(customExplanation2.getFont().getSize() - 1f));
+    customExplanation2.setForeground(UIManager.getColor("inactiveCaptionText"));
+    add(customExplanation2, "cell 0 1,alignx left,growx 0");
+
+    //---- link ----
+    link.setText(bundle.getString("SelectForm.link.text"));
+    link.setFont(link.getFont().deriveFont(link.getFont().getSize() - 1f));
+    link.setLabelFor(explanation);
+    link.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(final MouseEvent e) {
+        linkMouseClicked(e);
+      }
+    });
+    add(link, "cell 0 1");
+
     //======== tabbedPane ========
     {
+      tabbedPane.setMinimumSize(null);
 
       //======== fileAssociationsPanel ========
       {
         fileAssociationsPanel.setLayout(new MigLayout(
-          "hidemode 3",
+          "aligny top",
           // columns
           "0[grow,fill]0",
           // rows
-          "[]0" +
-            "[grow,fill]rel" +
-            "[]"));
+          "0[shrink 0,fill]0"));
         fileAssociationsPanel.add(fileSearch, "cell 0 0");
-
-        //======== filePanelTable ========
-        {
-          filePanelTable.setLayout(new MigLayout(
-            "insets 0,hidemode 3,gap 0 0",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[grow,fill]"));
-        }
-        fileAssociationsPanel.add(filePanelTable, "cell 0 1");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel);
 
       //======== folderAssociationsPanel ========
       {
         folderAssociationsPanel.setLayout(new MigLayout(
-          "hidemode 3",
+          "aligny top",
           // columns
           "0[grow,fill]0",
           // rows
-          "0[fill]0" +
-            "[grow]"));
+          "0[shrink 0,fill]0"));
         folderAssociationsPanel.add(folderSearch, "cell 0 0");
-
-        //======== folderPanelTable ========
-        {
-          folderPanelTable.setLayout(new MigLayout(
-            "insets 0,hidemode 3,gap 0 0",
-            // columns
-            "[grow,fill]",
-            // rows
-            "[grow,fill]"));
-        }
-        folderAssociationsPanel.add(folderPanelTable, "cell 0 1");
       }
       tabbedPane.addTab(bundle.getString("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel);
     }
-    add(tabbedPane, "cell 0 1");
+    add(tabbedPane, "cell 0 2");
 
     //---- resetButton ----
     resetButton.setText(bundle.getString("SelectForm.resetButton.text"));
-    add(resetButton, "cell 0 2,alignx right,growx 0");
+    add(resetButton, "cell 0 3,alignx right,growx 0");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     resetButton.addActionListener(this::resetButtonActionPerformed);
   }
@@ -274,7 +283,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       AtomSettingsBundle.message("no.file.associations"),
       fileSearch);
     fileIconsTable = fileAssociationsEditor.createComponent();
-    filePanelTable.add(fileIconsTable, "cell 0 0"); //NON-NLS
+    fileAssociationsPanel.add(fileIconsTable, "cell 0 1"); //NON-NLS
 
   }
 
@@ -288,6 +297,6 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
       AtomSettingsBundle.message("no.folder.associations"),
       folderSearch);
     folderIconsTable = folderAssociationsEditor.createComponent();
-    folderPanelTable.add(folderIconsTable, "cell 0 0"); //NON-NLS
+    folderAssociationsPanel.add(folderIconsTable, "cell 0 1"); //NON-NLS
   }
 }

@@ -94,7 +94,7 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
     return object : IconTableCellRenderer<String>() {
       override fun getIcon(value: String, table: JTable, row: Int): Icon? = try {
         val icon = loadIcon(value)
-        if (icon.iconHeight == 0) AtomIcons.loadSVGIcon(value) else icon
+        if (icon.iconHeight == 1) AtomIcons.loadSVGIcon(value) else icon
       } catch (e: IOException) {
         null
       }
