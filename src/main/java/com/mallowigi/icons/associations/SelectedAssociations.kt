@@ -106,8 +106,7 @@ class SelectedAssociations(
    * @param file a file's [FileInfo]
    * @return the association if found
    */
-  override fun findMatchingAssociation(file: FileInfo): Association? = findInMutable(file)
-//  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInDefault(file)
+  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInMutable(file)
 
   /**
    * Look for matching association in [ownAssociations]
@@ -134,7 +133,13 @@ class SelectedAssociations(
    *
    * @return the list of [Associations]
    */
-  override fun getTheAssociations(): List<RegexAssociation> = mutableAssociations.values.toList()
+  override fun getTheAssociations(): List<RegexAssociation> {
+    // to display associations to the form, need to merge both
+    val result = mutableMapOf<String, RegexAssociation>()
+    result.putAll(mutableAssociations)
+    result.putAll(ownAssociations)
+    return result.values.toList()
+  }
 
   /**
    * Resets default state

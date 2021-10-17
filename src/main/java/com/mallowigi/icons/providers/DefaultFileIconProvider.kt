@@ -49,7 +49,8 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
 
   override fun getSource(): SelectedAssociations = AtomSelectConfig.instance.selectedFileAssociations
 
-  override fun getIcon(iconPath: String): Icon = AtomIcons.getFileIcon(iconPath)
+  override fun getIcon(iconPath: String): Icon =
+    AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledIcons
 

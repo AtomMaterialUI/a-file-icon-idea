@@ -108,6 +108,8 @@ object AtomIcons {
     return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
   }
 
+  fun loadIconWithFallback(icon: Icon, path: String): Icon = if (icon.iconHeight == 1) loadSVGIcon(path) else icon
+
   /**
    * Arrow Icons
    *

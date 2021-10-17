@@ -26,12 +26,12 @@
 
 package com.mallowigi.icons.providers
 
-import com.intellij.openapi.fileEditor.FileEditorManager
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
 import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.icons.associations.DefaultAssociations
+import com.mallowigi.icons.associations.SelectedAssociations
 import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.IconType
 import icons.AtomIcons
@@ -43,13 +43,14 @@ import javax.swing.Icon
  * @constructor Create empty Default folder icon provider
  */
 class DefaultFolderIconProvider : AbstractFileIconProvider() {
-  override fun getIcon(iconPath: String): Icon? = AtomIcons.getFolderIcon(iconPath)
+  override fun getIcon(iconPath: String): Icon =
+    AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
   override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
 
-  override fun getSource(): DefaultAssociations = associations
+  override fun getSource(): SelectedAssociations = AtomSelectConfig.instance.selectedFolderAssociations
 
   override fun getType(): IconType = IconType.FOLDER
 
@@ -72,13 +73,13 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
 //    return null
 //  }
 
-  private fun isFolderContainingOpenFiles(
-    element: PsiElement,
-    virtualFile: VirtualFile,
-  ): Boolean {
-    val openFiles = FileEditorManager.getInstance(element.project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
-  }
+//  private fun isFolderContainingOpenFiles(
+//    element: PsiElement,
+//    virtualFile: VirtualFile,
+//  ): Boolean {
+//    val openFiles = FileEditorManager.getInstance(element.project).openFiles
+//    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
+//  }
 
   companion object {
     val associations: DefaultAssociations =
