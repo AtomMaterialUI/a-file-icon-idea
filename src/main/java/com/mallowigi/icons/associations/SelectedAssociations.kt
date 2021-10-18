@@ -106,7 +106,16 @@ class SelectedAssociations(
    * @param file a file's [FileInfo]
    * @return the association if found
    */
-  override fun findMatchingAssociation(file: FileInfo): Association? = findInOwn(file) ?: findInMutable(file)
+  override fun findMatchingAssociation(file: FileInfo): Association? {
+    val inOwn = findInOwn(file)
+    val inMutable = findInMutable(file)
+
+    return when {
+      inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
+      else                               -> inOwn ?: inMutable
+    }
+
+  }
 
   /**
    * Look for matching association in [ownAssociations]
