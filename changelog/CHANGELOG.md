@@ -1,6 +1,12 @@
 ## Changelog
 ----
 
+## 50.0 (5.0.0)
+
+### Features
+
+- You can now preview, add, modify and remove the associations directly from the Settings Page!
+
 ## 42.0 (4.4.0)
 
 ### Fixes

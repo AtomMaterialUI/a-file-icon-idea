@@ -1,4 +1,5 @@
 # Atom Material Icons Plugin for JetBrains
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -13,14 +14,16 @@
 </h1>
 
 
-This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
+This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of
+the [Material Theme UI](https://github.com/ChrisRM/material-theme-jetbrains) plugin.
 
 ## Chrome Extension
+
 <https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc>
 
 ## Firefox Extension
-<https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/>
 
+<https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/>
 
 ## Features
 
@@ -60,17 +63,20 @@ This plugin is a port of the [Atom File Icons](https://github.com/file-icons/ato
   - Folder associations
   - Preview default icons
 
-
 ## File Icons
+
 ![File Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
 
 ## Folder Icons
+
 ![Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
 
 ## Credits
 
 Special credits to:
-- [Atom File Icons](https://github.com/file-icons/atom) and [Sublime Text A File Icon](https://github.com/SublimeText/AFileIcon) for the idea
+
+- [Atom File Icons](https://github.com/file-icons/atom)
+  and [Sublime Text A File Icon](https://github.com/SublimeText/AFileIcon) for the idea
 - [Scientifics Study Vectors](https://www.svgrepo.com/svg/121720/atom) for the plugin icon
 - [File-Icons](https://github.com/file-icons/source/blob/master/charmap.md)
 - [FontAwesome 4.7.0](https://fontawesome.com/v4.7.0/cheatsheet/)
@@ -104,4 +110,5 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
+Contributions of any kind welcome!

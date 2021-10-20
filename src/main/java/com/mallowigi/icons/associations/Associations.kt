@@ -87,7 +87,13 @@ abstract class Associations : Serializable {
     private val LOG = Logger.getInstance(Associations::class.java)
 
     @NonNls
-    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images", "SVG")
+    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images",
+                                                           "SVG",
+                                                           "Images (PNG)",
+                                                           "Images (JPG)",
+                                                           "Images (BMP)",
+                                                           "Images (GIF)",
+                                                           "Icons")
 
     private val IGNORED: Set<String> = ImmutableSet.of("PHP")
   }
