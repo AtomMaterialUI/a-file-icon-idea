@@ -162,7 +162,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   @SuppressWarnings("unused")
   private void linkMouseClicked(final MouseEvent e) {
-    BrowserUtil.browse(AtomSettingsBundle.message("AssociationsForm.link.text"));
+    BrowserUtil.browse(AtomSettingsBundle.message("SelectForm.link.text"));
   }
 
   @SuppressWarnings("ConfusingFloatingPointLiteral")
