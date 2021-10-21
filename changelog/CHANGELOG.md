@@ -5,7 +5,19 @@
 
 ### Features
 
-- You can now preview, add, modify and remove the associations directly from the Settings Page!
+- New Settings page: **Associations Editor**. The Custom Associations page has been revamped with more features:
+  - View all icon and folder associations from the settings page
+  - Toggle, Add, Remove and Edit associations easily
+  - Search by name and pattern
+  - Tweak the associations priorities
+  - Reset all custom associations at once
+- Deprecation of the old _Custom Associations_ page. Please migrate your currently defined associations in the new page.
+
+### Other
+
+- More and more conversions to Kotlin
+- Refactor xStream to use annotations
+- Rename "_Custom Folder Color_" to "_Custom Themed Color_"
 
 ## 42.0 (4.4.0)
 

@@ -127,6 +127,8 @@ complexity:
   TooManyFunctions:
     ignorePrivate: true
     ignoreOverridden: true
+  ReturnCount:
+    max: 3
 
 naming:
   NoNameShadowing:
