@@ -28,11 +28,9 @@ package com.mallowigi.icons.services
 
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
-import com.intellij.util.ModalityUiUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.patchers.CheckStyleIconPatcher
@@ -113,7 +111,7 @@ object IconPatchersManager {
   }
 
   fun updateFileIcons() {
-    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL) {
+    ApplicationManager.getApplication().invokeLater {
       val app = ApplicationManager.getApplication()
       app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
       app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }

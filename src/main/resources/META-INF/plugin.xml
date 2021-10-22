@@ -32,7 +32,7 @@
 
   <idea-version since-build="211" />
 
-  <depends>com.intellij.modules.lang</depends>
+  <!--  <depends optional="true" config-file="withLang.xml">com.intellij.modules.lang</depends>-->
   <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
   <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
 
@@ -85,6 +85,7 @@
                   id="DefaultFolderIconProvider" />
 
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
+    <!--suppress PluginXmlValidity -->
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
 
     <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations"></applicationService>
