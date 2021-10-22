@@ -63,7 +63,9 @@ fun refreshOpenedProjects() {
  * Get plugin descriptor
  *
  */
-fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId("com.mallowigi"))
+fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(getPluginId())
+
+fun getPluginId(): PluginId = PluginId.getId("com.mallowigi")
 
 /**
  * Get current plugin version

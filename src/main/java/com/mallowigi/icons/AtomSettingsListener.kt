@@ -51,7 +51,7 @@ import com.mallowigi.utils.refreshOpenedProjects
  *
  */
 class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
-  override fun appStarting(projectFromCommandLine: Project?): Unit = initComponent()
+  override fun appStarted(): Unit = initComponent()
 
   override fun appClosing(): Unit = disposeComponent()
 

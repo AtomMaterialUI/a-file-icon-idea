@@ -44,6 +44,8 @@ object SvgLoaderHacker {
 
   private val noOpPatcherProvider =
     object : PatcherProvider {
+      override fun forPath(path: String?): SVGLoader.SvgElementColorPatcher? = null
+
       override fun forURL(url: URL?): SVGLoader.SvgElementColorPatcher? = null
     }
 

@@ -31,6 +31,8 @@ import com.mallowigi.config.AtomConfigurable
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.associations.AtomAssocConfig
+import com.mallowigi.config.select.AtomSelectConfig
+import com.mallowigi.config.select.AtomSelectConfigurable
 
 /**
  * Atom cloud provider
@@ -39,18 +41,17 @@ import com.mallowigi.config.associations.AtomAssocConfig
  */
 class AtomCloudProvider : CloudConfigAppender {
   override fun appendClassesToStream(): List<Class<*>> =
-    ContainerUtil.newArrayList<Class<*>>(
+    listOf(
       AtomAssocConfig::class.java,
+      AtomSelectConfig::class.java,
       AtomFileIconsConfig::class.java
     )
 
   override fun getConfigDescription(clazz: Class<*>): String {
-    return if (AtomConfigurable.ID == clazz.simpleName) {
-      message("settings.titles.prefix", message("settings.titles.main"))
-    } else {
-      message(
-        "settings.titles.prefix", message("settings.titles.customAssociations")
-      )
+    return when (clazz.simpleName) {
+      AtomConfigurable.ID       -> message("settings.titles.prefix", message("settings.titles.main"))
+      AtomSelectConfigurable.ID -> message("settings.titles.prefix", message("settings.titles.customAssociations"))
+      else                      -> "UNKNOWN"
     }
   }
 }

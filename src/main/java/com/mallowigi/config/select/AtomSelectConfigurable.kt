@@ -59,7 +59,7 @@ class AtomSelectConfigurable : ConfigurableBase<AtomSelectForm?, AtomSelectConfi
 
   companion object {
     @NonNls
-    private const val ID = "com.mallowigi.config.selections"
+    const val ID = "com.mallowigi.config.selections"
 
     private fun checkFormModified(form: AtomSelectForm, config: AtomSelectConfig?): Boolean =
       Objects.requireNonNull(form)!!.isModified(config)

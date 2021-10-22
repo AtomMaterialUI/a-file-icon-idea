@@ -30,28 +30,26 @@ import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.ui.LafManagerListener
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.DumbAware
-import com.intellij.openapi.project.Project
 import com.intellij.util.SVGLoader
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
+import com.mallowigi.utils.getPluginId
 
 /**
  * Listener for SVG Patchers
  */
 class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
-  private val pluginId = PluginId.getId("com.mallowigi")
 
-  override fun appStarting(projectFromCommandLine: Project?): Unit = initComponent()
+  override fun appStarted(): Unit = initComponent()
 
   override fun appClosing(): Unit = disposeComponent()
 
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
   override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
-    if (pluginId != pluginDescriptor.pluginId) return
+    if (getPluginId() != pluginDescriptor.pluginId) return
     disposeComponent()
   }
 

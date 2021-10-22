@@ -30,10 +30,8 @@
 
 package com.mallowigi.config.associations.ui;
 
-import java.awt.*;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.Disposable;
-import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.ui.ColumnInfo;
 import com.intellij.util.ui.table.TableModelEditor;
 import com.mallowigi.config.AtomSettingsBundle;
@@ -48,7 +46,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import java.awt.event.MouseAdapter;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -57,16 +55,13 @@ import java.util.ResourceBundle;
   "FieldCanBeLocal",
   "LocalCanBeFinal",
   "PublicMethodNotExposedInInterface",
-  "ClassWithTooManyFields",
   "InstanceVariableMayNotBeInitialized",
   "TransientFieldNotInitialized",
   "DuplicateStringLiteralInspection",
   "StringConcatenation",
   "DuplicatedCode",
-  "OverlyLongMethod",
-  "MethodOnlyUsedFromInnerClass",
-  "unused",
-  "SyntheticAccessorCall"})
+  "unused"
+})
 public final class AssociationsForm extends JPanel implements SettingsFormUI, Disposable {
 
   private final transient ColumnInfo[] fileColumns = {
@@ -104,7 +99,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
   }
 
   private static void linkMouseClicked(MouseEvent e) {
-    BrowserUtil.browse(AtomSettingsBundle.message("AssociationsForm.link.text"));
+    BrowserUtil.browse(AtomSettingsBundle.message("SelectForm.link.text"));
   }
 
   @Override
@@ -177,7 +172,7 @@ public final class AssociationsForm extends JPanel implements SettingsFormUI, Di
       "[369,grow,fill]",
       // rows
       "[]" +
-      "[270,grow,fill]"));
+        "[270,grow,fill]"));
 
     //---- deprecated ----
     deprecated.setText(bundle.getString("AssociationsForm.deprecated.text"));
