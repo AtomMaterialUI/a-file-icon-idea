@@ -3,6 +3,11 @@
 
 ## 50.1 (5.1.0)
 
+### Additions
+- Add Preact association
+- Add i18n language codes association (en.js, fr.yml, de.json...)
+- More UI icons
+
 ### Fixes
 
 - Remove the Binary File association to prevent the plugin to replace fallback icons with the binary file.
