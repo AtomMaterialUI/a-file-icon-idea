@@ -1,6 +1,12 @@
 ## Changelog
 ----
 
+## 50.1 (5.1.0)
+
+### Fixes
+
+- Remove the Binary File association to prevent the plugin to replace fallback icons with the binary file.
+
 ## 50.0 (5.0.0)
 
 ### Features
