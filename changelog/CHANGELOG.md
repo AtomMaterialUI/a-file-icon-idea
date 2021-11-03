@@ -1,9 +1,21 @@
 ## Changelog
 ----
 
+## 50.2 (5.2.0)
+
+### Additions
+
+- Files: Add MobX and Mock
+- Folders: Add objects
+
+### Fixes
+
+- Fix associations not being persisted
+
 ## 50.1 (5.1.0)
 
 ### Additions
+
 - Add Preact association
 - Add i18n language codes association (en.js, fr.yml, de.json...)
 - More UI icons
