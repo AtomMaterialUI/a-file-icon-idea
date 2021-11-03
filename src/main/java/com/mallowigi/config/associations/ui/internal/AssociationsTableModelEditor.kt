@@ -337,6 +337,8 @@ class AssociationsTableModelEditor(
     regexAssociation.name = "New Association (${increment})"
     regexAssociation.pattern = "^.*\\.ext${increment}$"
     regexAssociation.priority = 10000
+    regexAssociation.icon = ""
+    regexAssociation.touched = true
     return regexAssociation
   }
 
@@ -414,6 +416,12 @@ class AssociationsTableModelEditor(
 
       helper.remove(item)
       super.removeRow(index)
+      allItems.remove(item)
+    }
+
+    override fun addRow(item: RegexAssociation) {
+      super.addRow(item)
+      allItems.add(item)
     }
 
     /**
