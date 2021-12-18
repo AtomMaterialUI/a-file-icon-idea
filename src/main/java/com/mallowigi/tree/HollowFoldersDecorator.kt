@@ -33,7 +33,6 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
-import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.packageDependencies.ui.PackageDependenciesNode
 import com.intellij.ui.ColoredTreeCellRenderer
@@ -55,12 +54,14 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     val file = node.virtualFile
     val project = node.project
 
-    if (project != null && file != null && !Disposer.isDisposed(project)) {
-      if (!AtomFileIconsConfig.instance.isUseHollowFolders || !file.isDirectory) return
+    if (project != null && file != null && !project.isDisposed) {
+      when {
+        !AtomFileIconsConfig.instance.isUseHollowFolders -> return
+        !file.isDirectory                                -> return
+        AtomFileIconsConfig.instance.isHideFolderIcons   -> return
+        isFolderContainingOpenFiles(project, file)       -> setOpenDirectoryIcon(data, file, project)
+      }
 
-      if (AtomFileIconsConfig.instance.isHideFolderIcons) return
-
-      if (isFolderContainingOpenFiles(project, file)) setOpenDirectoryIcon(data, file, project)
     }
   }
 
@@ -104,7 +105,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     @Volatile
     private var directory: Icon? = AtomIcons.Nodes2.FolderOpen
 
-    private val directoryIcon: Icon?
+    val directoryIcon: Icon?
       get() {
         if (directory == null) {
           directory = AtomIcons.Nodes2.FolderOpen

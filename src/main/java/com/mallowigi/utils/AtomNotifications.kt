@@ -37,7 +37,6 @@ import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
 import com.mallowigi.config.AtomSettingsBundle.message
-import org.jetbrains.annotations.NonNls
 import java.awt.Point
 import java.util.Objects
 
@@ -47,7 +46,7 @@ import java.util.Objects
  * @constructor Create empty Atom notifications
  */
 object AtomNotifications {
-  const val CHANNEL: @NonNls String = "Atom Material Notifications"
+  const val CHANNEL: String = "Atom Material Notifications"
 
   /**
    * Show the update notification

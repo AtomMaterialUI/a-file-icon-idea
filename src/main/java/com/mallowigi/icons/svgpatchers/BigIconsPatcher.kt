@@ -26,7 +26,6 @@
 package com.mallowigi.icons.svgpatchers
 
 import com.mallowigi.config.AtomFileIconsConfig
-import org.jetbrains.annotations.NonNls
 import org.w3c.dom.Element
 
 /**
@@ -47,7 +46,7 @@ class BigIconsPatcher : SvgPatcher {
 
   override fun priority(): Int = 97
 
-  private fun patchSizes(svg: @NonNls Element) {
+  private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
     val size = if (hasBigIcons) LARGE else REGULAR
 

@@ -27,7 +27,6 @@ package com.mallowigi.icons.svgpatchers
 
 import com.intellij.ui.ColorUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-import org.jetbrains.annotations.NonNls
 import org.w3c.dom.Element
 import javax.swing.plaf.ColorUIResource
 
@@ -37,7 +36,7 @@ import javax.swing.plaf.ColorUIResource
  * @constructor Create empty Tint color patcher
  */
 class AccentColorPatcher : SvgPatcher {
-  private var accentColor: @NonNls ColorUIResource? = getAccentColor()
+  private var accentColor: ColorUIResource? = getAccentColor()
 
   override fun refresh(): Unit = refreshAccentColor()
 
@@ -51,7 +50,7 @@ class AccentColorPatcher : SvgPatcher {
 
   private fun getAccentColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentAccentColor()))
 
-  private fun patchTints(svg: @NonNls Element) {
+  private fun patchTints(svg: Element) {
     val tint = svg.getAttribute(SvgPatcher.TINT) ?: return
     val newAccentColor = ColorUtil.toHex(accentColor!!)
 

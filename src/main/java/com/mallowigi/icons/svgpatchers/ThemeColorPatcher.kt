@@ -27,7 +27,6 @@ package com.mallowigi.icons.svgpatchers
 
 import com.intellij.ui.ColorUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-import org.jetbrains.annotations.NonNls
 import org.w3c.dom.Element
 import javax.swing.plaf.ColorUIResource
 
@@ -36,7 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class ThemeColorPatcher : SvgPatcher {
-  private var themedColor: @NonNls ColorUIResource? = getThemedColor()
+  private var themedColor: ColorUIResource? = getThemedColor()
 
   override fun refresh(): Unit = refreshThemeColor()
 
@@ -50,7 +49,7 @@ class ThemeColorPatcher : SvgPatcher {
 
   private fun getThemedColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentThemedColor()))
 
-  private fun patchTints(svg: @NonNls Element) {
+  private fun patchTints(svg: Element) {
     val themed = svg.getAttribute(SvgPatcher.THEMED) ?: return
     val newThemedColor = ColorUtil.toHex(themedColor!!)
 
