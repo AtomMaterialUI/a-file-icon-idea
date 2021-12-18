@@ -23,6 +23,10 @@
  *
  *
  */
+@file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
+
+import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.changelog.markdownToHTML
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -32,15 +36,17 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.5.31"
+  id("org.jetbrains.kotlin.jvm") version "1.6.0"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.2.1"
+  id("org.jetbrains.intellij") version "1.3.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.1"
+  // Gradle Qodana Plugin
+  id("org.jetbrains.qodana") version "0.1.13"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.18.1"
+  id("io.gitlab.arturbosch.detekt") version "1.19.0"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint-idea") version "10.2.0"
+  id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
 group = properties("pluginGroup")
@@ -56,12 +62,11 @@ repositories {
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.18")
   implementation("org.javassist:javassist:3.28.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
 }
 
 // Configure gradle-intellij-plugin plugin.
@@ -73,6 +78,7 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
+  //  localPath.set(properties("idePath"))
 //  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
 
   plugins.set(
@@ -101,27 +107,38 @@ changelog {
 detekt {
   config = files("./detekt-config.yml")
   buildUponDefaultConfig = true
+  autoCorrect = true
+}
 
-  reports {
-    html.enabled = false
-    xml.enabled = false
-    txt.enabled = false
-  }
+// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
+qodana {
+  cachePath.set(projectDir.resolve(".qodana").canonicalPath)
+  reportPath.set(projectDir.resolve("build/reports/inspections").canonicalPath)
+  saveReport.set(true)
+  showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
 }
 
 tasks {
-  // Set the compatibility versions to 1.8
-  withType<JavaCompile> {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
-  }
-  withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=enable")
+  properties("javaVersion").let {
+    // Set the compatibility versions to 1.8
+    withType<JavaCompile> {
+      sourceCompatibility = it
+      targetCompatibility = it
+    }
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+      kotlinOptions.jvmTarget = it
+      kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
+    }
   }
 
-  withType<io.gitlab.arturbosch.detekt.Detekt> {
-    jvmTarget = "1.8"
+  wrapper {
+    gradleVersion = properties("gradleVersion")
+  }
+
+
+  withType<Detekt> {
+    jvmTarget = properties("javaVersion")
+    reports.xml.required.set(true)
   }
 
   withType<Copy> {
@@ -141,9 +158,7 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-    changeNotes.set(
-      changelog.getLatest().toHTML()
-    )
+    changeNotes.set(changelog.getLatest().toHTML())
   }
 
   runPluginVerifier {
@@ -154,12 +169,53 @@ tasks {
     enabled = false
   }
 
+  // Configure UI tests plugin
+  // Read more: https://github.com/JetBrains/intellij-ui-test-robot
+  runIdeForUiTests {
+    systemProperty("robot-server.port", "8082")
+    systemProperty("ide.mac.message.dialogs.as.sheets", "false")
+    systemProperty("jb.privacy.policy.text", "<!--999.999-->")
+    systemProperty("jb.consents.confirmation.enabled", "false")
+  }
+
+//  runIde {
+//    jvmArgs = properties("jvmArgs").split("")
+//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
+//  }
+
+  signPlugin {
+    certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
+    privateKey.set(System.getenv("PRIVATE_KEY"))
+    password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+  }
+
+
   publishPlugin {
 //    dependsOn("patchChangelog")
     token.set(file("./publishToken").readText().trim())
+    channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
   }
 
   runIde {
     ideDir.set(fileProperties("idePath"))
+  }
+
+  register("bumpPluginVersion") {
+    doLast {
+      val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
+      val gradleProperties = file("gradle.properties")
+      val updatedText =
+        gradleProperties.readLines().joinToString("\n") { line ->
+          if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
+        }
+      gradleProperties.writeText(updatedText)
+    }
+  }
+
+  register("markdownToHtml") {
+    val input = File("./changelog/CHANGELOG.md")
+    File("./changelog/CHANGELOG.html").run {
+      writeText(markdownToHTML(input.readText()))
+    }
   }
 }

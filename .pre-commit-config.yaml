@@ -5,13 +5,6 @@ fail_fast: false
 default_stages:
   - commit
 repos:
-  - repo: local
-    hooks:
-      - id: svgo
-        name: Optimize SVG Files
-        files: ^.*\.svg$
-        entry: bash -c "npx svglint ./"
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -22,9 +15,9 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
       - id: detect-private-key
-      - id: no-commit-to-branch
       - id: trailing-whitespace
       - id: end-of-file-fixer
+        exclude: ^\.idea
       - id: mixed-line-ending
       - id: check-json
       - id: check-xml
@@ -37,6 +30,7 @@ repos:
     rev: 2.1.5
     hooks:
       - id: forbid-binary
+        exclude: ^\.idea
         exclude_types:
           - image
           - icon
@@ -149,4 +143,3 @@ repos:
           - --fix
         types:
           - markdown
-
