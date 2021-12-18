@@ -95,7 +95,7 @@ abstract class Associations : Serializable {
                                                            "Images (GIF)",
                                                            "Icons")
 
-    private val IGNORED: Set<String> = ImmutableSet.of("PHP")
+    private val IGNORED: Set<String> = ImmutableSet.of("PHP", "Kotlin")
   }
 
 }
