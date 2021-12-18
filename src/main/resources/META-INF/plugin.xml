@@ -35,6 +35,7 @@
   <depends>com.intellij.modules.platform</depends>
   <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
   <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
+  <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
 
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
@@ -60,7 +61,7 @@
                              groupId="appearance" dynamic="true"
                              parentId="AtomConfig"
                              id="AtomAssocConfig" />
-
+    <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations" />
     <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />
 
 
@@ -88,10 +89,6 @@
     <!--suppress PluginXmlValidity -->
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
 
-    <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations" />
-
-    <!-- todo move to rider.xml   -->
-    <solutionExplorerCustomization implementation="com.mallowigi.tree.RiderHollowFoldersDecorator" />
 
   </extensions>
 
