@@ -12,6 +12,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/its" />
+            <option value="$PROJECT_DIR$/rider" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -24,5 +24,13 @@
  *
  */
 
-rootProject.name = "a-file-icon-idea"
-include("its", "rider")
+
+plugins {
+  id("org.jetbrains.intellij")
+
+  kotlin("jvm")
+}
+
+intellij {
+  version.set("RD-2020.1.3")
+}

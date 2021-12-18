@@ -46,5 +46,10 @@
       <option name="name" value="maven2" />
       <option name="url" value="https://repo.eclipse.org/content/groups/releases/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://www.myget.org/F/rd-snapshots/maven/" />
+    </remote-repository>
   </component>
 </project>
