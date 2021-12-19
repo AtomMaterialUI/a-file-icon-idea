@@ -23,35 +23,23 @@
  *
  *
  */
-package com.mallowigi.utils
 
-import com.intellij.cloudConfig.CloudConfigAppender
-import com.intellij.util.containers.ContainerUtil
-import com.mallowigi.config.AtomConfigurable
-import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.AtomSettingsBundle.message
-import com.mallowigi.config.associations.AtomAssocConfig
-import com.mallowigi.config.select.AtomSelectConfig
-import com.mallowigi.config.select.AtomSelectConfigurable
+val platformVersion: String by project
+val platformType: String by project
 
-/**
- * Atom cloud provider
- *
- * @constructor Create empty Atom cloud provider
- */
-class AtomCloudProvider : CloudConfigAppender {
-  override fun appendClassesToStream(): List<Class<*>> =
-    listOf(
-      AtomAssocConfig::class.java,
-      AtomSelectConfig::class.java,
-      AtomFileIconsConfig::class.java
-    )
+plugins {
+  id("org.jetbrains.intellij")
 
-  override fun getConfigDescription(clazz: Class<*>): String {
-    return when (clazz.simpleName) {
-      AtomConfigurable.ID       -> message("settings.titles.prefix", message("settings.titles.main"))
-      AtomSelectConfigurable.ID -> message("settings.titles.prefix", message("settings.titles.customAssociations"))
-      else                      -> "UNKNOWN"
-    }
-  }
+  kotlin("jvm")
+}
+
+intellij {
+  version.set(platformVersion)
+  type.set(platformType)
+
+  plugins.set(listOf(
+    "java",
+    "com.intellij.CloudConfig",
+    "Git4Idea",
+  ))
 }

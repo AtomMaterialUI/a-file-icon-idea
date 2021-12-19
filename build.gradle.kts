@@ -27,12 +27,14 @@
 
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
 
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
 
 plugins {
+  signing
   // Java support
   id("java")
   // Kotlin support
@@ -49,17 +51,6 @@ plugins {
   id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
-group = properties("pluginGroup")
-version = properties("pluginVersion")
-
-// Configure project's dependencies
-repositories {
-  mavenCentral()
-  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-  maven(url = "https://repo.eclipse.org/content/groups/releases/")
-  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
-}
 
 dependencies {
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
@@ -67,7 +58,66 @@ dependencies {
   implementation("com.thoughtworks.xstream:xstream:1.4.18")
   implementation("org.javassist:javassist:3.28.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
+  implementation(project(":common"))
   implementation(project(":rider"))
+}
+
+
+group = properties("pluginGroup")
+version = properties("pluginVersion")
+
+allprojects {
+  apply {
+    plugin("java")
+    plugin("org.jetbrains.kotlin.jvm")
+    plugin("org.jetbrains.intellij")
+  }
+
+  repositories {
+    mavenCentral()
+    maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
+    maven(url = "https://repo.eclipse.org/content/groups/releases/")
+    maven(url = "https://www.jetbrains.com/intellij-repository/releases")
+    maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+  }
+
+  java {
+    toolchain {
+      languageVersion.set(JavaLanguageVersion.of(11))
+    }
+  }
+
+  tasks {
+    properties("javaVersion").let {
+      // Set the compatibility versions to 1.8
+      withType<JavaCompile> {
+        sourceCompatibility = it
+        targetCompatibility = it
+      }
+      withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = it
+        kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
+      }
+    }
+
+
+    withType<Copy> {
+      duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
+    sourceSets {
+      main {
+        java.srcDirs("src/main/java")
+        resources.srcDirs("src/main/resources")
+      }
+    }
+
+
+    buildSearchableOptions {
+      enabled = false
+    }
+
+  }
 }
 
 // Configure gradle-intellij-plugin plugin.
@@ -81,14 +131,6 @@ intellij {
   updateSinceUntilBuild.set(true)
   //  localPath.set(properties("idePath"))
 //  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
-
-  plugins.set(
-    listOf(
-      "java",
-      "com.intellij.CloudConfig",
-      "Git4Idea",
-    )
-  )
 }
 
 // Configure gradle-changelog-plugin plugin.
@@ -120,17 +162,6 @@ qodana {
 }
 
 tasks {
-  properties("javaVersion").let {
-    // Set the compatibility versions to 1.8
-    withType<JavaCompile> {
-      sourceCompatibility = it
-      targetCompatibility = it
-    }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-      kotlinOptions.jvmTarget = it
-      kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
-    }
-  }
 
   wrapper {
     gradleVersion = properties("gradleVersion")
@@ -142,16 +173,6 @@ tasks {
     reports.xml.required.set(true)
   }
 
-  withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-  }
-
-  sourceSets {
-    main {
-      java.srcDirs("src/main/java")
-      resources.srcDirs("src/main/resources")
-    }
-  }
 
   patchPluginXml {
     version.set(properties("pluginVersion"))
@@ -164,10 +185,6 @@ tasks {
 
   runPluginVerifier {
     ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
-  }
-
-  buildSearchableOptions {
-    enabled = false
   }
 
   // Configure UI tests plugin
@@ -205,10 +222,9 @@ tasks {
     doLast {
       val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
       val gradleProperties = file("gradle.properties")
-      val updatedText =
-        gradleProperties.readLines().joinToString("\n") { line ->
-          if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
-        }
+      val updatedText = gradleProperties.readLines().joinToString("\n") { line ->
+        if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
+      }
       gradleProperties.writeText(updatedText)
     }
   }

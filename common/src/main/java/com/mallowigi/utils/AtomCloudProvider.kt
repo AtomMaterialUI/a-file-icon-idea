@@ -25,41 +25,32 @@
  */
 package com.mallowigi.utils
 
-import com.intellij.openapi.ui.Divider
-import javassist.CannotCompileException
-import javassist.ClassClassPath
-import javassist.ClassPool
-import javassist.expr.ExprEditor
-import javassist.expr.MethodCall
+import com.intellij.cloudConfig.CloudConfigAppender
+import com.mallowigi.config.AtomConfigurable
+import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.AtomAssocConfig
+import com.mallowigi.config.select.AtomSelectConfig
+import com.mallowigi.config.select.AtomSelectConfigurable
 
 /**
- * Hack Sources
- * @unused
+ * Atom cloud provider
+ *
+ * @constructor Create empty Atom cloud provider
  */
-object HackComponent {
-  init {
-    hackIconLoader()
-  }
+class AtomCloudProvider : CloudConfigAppender {
+  override fun appendClassesToStream(): List<Class<*>> =
+    listOf(
+      AtomAssocConfig::class.java,
+      AtomSelectConfig::class.java,
+      AtomFileIconsConfig::class.java
+    )
 
-  private fun hackIconLoader() {
-    // Hack method
-    try {
-      val cp = ClassPool(true)
-      cp.insertClassPath(ClassClassPath(Divider::class.java))
-      val imageDataResolverClass = cp["com.intellij.openapi.util.IconLoader\$ImageDataResolverImpl"]
-      val loadImage = imageDataResolverClass.getDeclaredMethod("loadImage")
-      loadImage.instrument(object : ExprEditor() {
-        @Throws(CannotCompileException::class)
-        override fun edit(m: MethodCall) {
-          if ("charAt" == m.methodName) {
-            m.replace("{ \$_ = '/'; \$proceed(\$\$); }")
-          }
-        }
-      })
-      imageDataResolverClass.toClass()
-    } catch (e: Exception) {
-      e.printStackTrace()
+  override fun getConfigDescription(clazz: Class<*>): String {
+    return when (clazz.simpleName) {
+      AtomConfigurable.ID       -> message("settings.titles.prefix", message("settings.titles.main"))
+      AtomSelectConfigurable.ID -> message("settings.titles.prefix", message("settings.titles.customAssociations"))
+      else                      -> "UNKNOWN"
     }
   }
-
 }

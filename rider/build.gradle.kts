@@ -24,6 +24,11 @@
  *
  */
 
+val riderVersion: String by project
+
+dependencies {
+  implementation(project(":common"))
+}
 
 plugins {
   id("org.jetbrains.intellij")
@@ -32,5 +37,8 @@ plugins {
 }
 
 intellij {
-  version.set("RD-2020.1.3")
+  version.set(riderVersion)
+  type.set("RD")
+  downloadSources.set(false)
+  instrumentCode.set(false)
 }
