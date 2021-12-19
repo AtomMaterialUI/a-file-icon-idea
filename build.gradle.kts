@@ -136,7 +136,7 @@ intellij {
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path.set("${project.projectDir}/changelog/CHANGELOG.md")
+  path.set("${project.projectDir}/docs/CHANGELOG.md")
   version.set(properties("pluginVersion"))
   header.set(provider { version.get() })
   itemPrefix.set("-")
@@ -230,8 +230,8 @@ tasks {
   }
 
   register("markdownToHtml") {
-    val input = File("./changelog/CHANGELOG.md")
-    File("./changelog/CHANGELOG.html").run {
+    val input = File("./docs/CHANGELOG.md")
+    File("./docs/CHANGELOG.html").run {
       writeText(markdownToHTML(input.readText()))
     }
   }

@@ -1,6 +1,38 @@
 ## Changelog
 ----
 
+## 60.0 (6.0.0)
+
+### Fixes
+
+- Fix Kotlin PSI Icons not showing on the tabs
+- Hollow Folders are now working in Rider!
+- Folder Decorators and Custom Folder Icons are now working in Rider!
+
+### Additions
+
+- Files:
+  - Qodana
+  - Safari
+  - JFormDesigner
+  - nsriignore
+  - retextignore
+  - remarkignore
+  - rehypeignore
+  - boringignore
+  - pubignore
+  - Fitbit
+  - Go-zero
+  - Luau
+  - Toit
+  - Vanilla Extract
+
+### Other
+
+- Reorganization of the whole project by modules: `common` and `Rider`
+- Add linters
+
+
 ## 50.2 (5.2.0)
 
 ### Additions
