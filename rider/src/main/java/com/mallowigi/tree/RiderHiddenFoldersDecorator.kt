@@ -27,53 +27,33 @@ package com.mallowigi.tree
 
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.util.ui.EmptyIcon
 import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCustomization
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
-import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
 import com.mallowigi.config.AtomFileIconsConfig
-import com.mallowigi.config.select.AtomSelectConfig
-import com.mallowigi.models.VirtualFileInfo
-import icons.AtomIcons
 
 /**
- * Rider custom folders decorator
- *
- * @constructor
- *
- * @param project
+ * Rider Hidden Folders Decorator
  */
-class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomization(project) {
+class RiderHiddenFoldersDecorator(project: Project) : SolutionExplorerCustomization(project) {
   /**
-   * Update node icon
+   * Update icon to hidden
    *
    * @param presentation
    * @param entity
    */
   override fun updateNode(presentation: PresentationData, entity: ProjectModelEntity) {
     super.updateNode(presentation, entity)
-    val virtualFile = entity.getVirtualFileAsParent()
-
     if (!project.isDisposed) {
       when {
-        virtualFile == null                                -> return
-        !entity.isDirectory()                              -> return
-        !AtomFileIconsConfig.instance.isEnabledDirectories -> return
-        else                                               -> matchAssociation(virtualFile, presentation)
+        !entity.isDirectory()                           -> return
+        !AtomFileIconsConfig.instance.isHideFolderIcons -> return
+        else                                            -> setHiddenFolderIcon(presentation)
       }
 
     }
   }
 
-  private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
-    val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFolderAssociations
-
-    val matchingAssociation = associations.findMatchingAssociation(fileInfo)
-    if (matchingAssociation != null) {
-      data.setIcon(AtomIcons.getFolderIcon(matchingAssociation.icon))
-    }
-  }
-
+  private fun setHiddenFolderIcon(presentation: PresentationData) = presentation.setIcon(EmptyIcon.ICON_0)
 }
