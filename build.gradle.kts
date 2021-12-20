@@ -59,7 +59,7 @@ dependencies {
   implementation("org.javassist:javassist:3.28.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
   implementation(project(":common"))
-  implementation(project(":rider"))
+  runtimeOnly(project(":rider"))
 }
 
 
