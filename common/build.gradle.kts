@@ -24,12 +24,12 @@
  *
  */
 
+@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
+
 val platformVersion: String by project
 val platformType: String by project
 
 plugins {
-  id("org.jetbrains.intellij")
-
   kotlin("jvm")
 }
 

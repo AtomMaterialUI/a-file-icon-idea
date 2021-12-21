@@ -72,7 +72,9 @@ class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomiza
 
     val matchingAssociation = associations.findMatchingAssociation(fileInfo)
     if (matchingAssociation != null) {
-      data.setIcon(AtomIcons.getFolderIcon(matchingAssociation.icon))
+      val iconPath = matchingAssociation.icon
+      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
+      data.setIcon(icon)
     }
   }
 

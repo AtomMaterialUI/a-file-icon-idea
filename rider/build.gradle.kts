@@ -23,6 +23,7 @@
  *
  *
  */
+@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
 
 val riderVersion: String by project
 
@@ -31,8 +32,6 @@ dependencies {
 }
 
 plugins {
-  id("org.jetbrains.intellij")
-
   kotlin("jvm")
 }
 

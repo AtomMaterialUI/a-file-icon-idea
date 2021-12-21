@@ -26,14 +26,15 @@
 
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
-    <solutionExplorerCustomization id="RiderHiddenFoldersDecorator"
-                                   implementation="com.mallowigi.tree.RiderHiddenFoldersDecorator" />
     <solutionExplorerCustomization id="RiderDefaultFoldersDecorator"
                                    implementation="com.mallowigi.tree.RiderDefaultFoldersDecorator"
-                                   order="after RiderHiddenFoldersDecorator" />
+    />
     <solutionExplorerCustomization id="RiderHollowFoldersDecorator"
                                    implementation="com.mallowigi.tree.RiderHollowFoldersDecorator"
-                                   order="after RiderDefaultFoldersDecorator" />
+    />
+    <solutionExplorerCustomization id="RiderHiddenFoldersDecorator"
+                                   implementation="com.mallowigi.tree.RiderHiddenFoldersDecorator"
+    />
   </extensions>
 
 
