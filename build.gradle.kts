@@ -222,16 +222,16 @@ tasks {
     doLast {
       val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
       val gradleProperties = file("gradle.properties")
-      val updatedText = gradleProperties.readLines().joinToString("\n") { line ->
-        if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
+      val updatedText = gradleProperties.readLines().joinToString("\n") {
+        if (it.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else it
       }
       gradleProperties.writeText(updatedText)
     }
   }
 
   register("markdownToHtml") {
-    val input = File("./docs/CHANGELOG.md")
-    File("./docs/CHANGELOG.html").run {
+    val input = File("${project.projectDir}/docs/CHANGELOG.md")
+    File("${project.projectDir}/docs/CHANGELOG.html").run {
       writeText(markdownToHTML(input.readText()))
     }
   }
