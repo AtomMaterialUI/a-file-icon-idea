@@ -65,11 +65,13 @@ import javax.swing.event.DocumentEvent
  *
  * @constructor
  *
- * @param items the [Association]
- * @param columns list of [ColumnInfo]
+ * @param items the [Association]s
+ * @param columns list of [ColumnInfo]s
  * @param itemEditor the [Association] editor
  * @param emptyText the text to show when the table is empty
+ * @param searchTextField the search text field (optional)
  */
+@Suppress("HardCodedStringLiteral", "KDocMissingDocumentation", "OutdatedDocumentation")
 class AssociationsTableModelEditor(
   items: List<RegexAssociation>,
   columns: Array<ColumnInfo<*, *>>,
@@ -126,7 +128,7 @@ class AssociationsTableModelEditor(
     table.intercellSpacing = Dimension(0, 0)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, PREFERABLE_VIEWPORT_HEIGHT)
     table.visibleRowCount = MIN_ROW_COUNT
-    table.rowHeight = 32
+    table.rowHeight = ROW_HEIGHT
     table.rowMargin = 0
     // sort by touched but remove the column from the table
     table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
@@ -137,7 +139,7 @@ class AssociationsTableModelEditor(
     JBTable.setupCheckboxShortcut(table, Columns.ENABLED.index)
 
     // Display empty text when loading
-    table.emptyText.setFont(UIUtil.getLabelFont().deriveFont(24.0f))
+    table.emptyText.setFont(UIUtil.getLabelFont().deriveFont(LOADING_FONT_SIZE))
     table.emptyText.text = emptyText
 
     // Setup actions
@@ -165,6 +167,19 @@ class AssociationsTableModelEditor(
       })
     }
   }
+
+  constructor(
+    columns: Array<ColumnInfo<*, *>>,
+    itemEditor: CollectionItemEditor<RegexAssociation>,
+    emptyText: String,
+  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, null)
+
+  constructor(
+    columns: Array<ColumnInfo<*, *>>,
+    itemEditor: CollectionItemEditor<RegexAssociation>,
+    emptyText: String,
+    searchTextField: SearchTextField,
+  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField)
 
   /**
    * Inits the unfiltered list (before any search)
@@ -198,19 +213,6 @@ class AssociationsTableModelEditor(
     model.fireTableDataChanged()
   }
 
-  constructor(
-    columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<RegexAssociation>,
-    emptyText: String,
-  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, null)
-
-  constructor(
-    columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<RegexAssociation>,
-    emptyText: String,
-    searchTextField: SearchTextField,
-  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField)
-
   /**
    * Convenience method to disable/enable the table
    *
@@ -228,7 +230,8 @@ class AssociationsTableModelEditor(
    * @param listener a data listener
    * @return self
    */
-  internal fun setModelListener(listener: AssociationsDataChangedListener<RegexAssociation>): AssociationsTableModelEditor {
+  internal fun setModelListener(listener: AssociationsDataChangedListener<RegexAssociation>):
+    AssociationsTableModelEditor {
     model.dataChangedListener = listener
     model.addTableModelListener(listener)
     return this
@@ -320,9 +323,9 @@ class AssociationsTableModelEditor(
    * @param newItem
    */
   fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
-    val serialized = serialize(oldItem!!)
+    val serialized = serialize(oldItem ?: return)
     if (serialized != null) {
-      XmlSerializer.deserializeInto(newItem!!, serialized)
+      XmlSerializer.deserializeInto(newItem ?: return, serialized)
     }
   }
 
@@ -336,7 +339,7 @@ class AssociationsTableModelEditor(
     val regexAssociation = RegexAssociation()
     regexAssociation.name = "New Association (${increment})"
     regexAssociation.pattern = "^.*\\.ext${increment}$"
-    regexAssociation.priority = 10000
+    regexAssociation.priority = DEFAULT_PRIORITY
     regexAssociation.icon = ""
     regexAssociation.touched = true
     return regexAssociation
@@ -438,7 +441,7 @@ class AssociationsTableModelEditor(
         val oldValue = columnInfo.valueOf(item)
 
         val comparator = when (columnInfo.columnClass) {
-          String::class.java -> Comparing.strEqual(oldValue as String?, aValue as String)
+          String::class.java -> Comparing.strEqual(oldValue as? String, aValue as String)
           else               -> Comparing.equal(oldValue, aValue)
         }
 
@@ -459,9 +462,8 @@ class AssociationsTableModelEditor(
   private inner class TogglePatternAction :
     ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
 
-    override fun isSelected(e: AnActionEvent?): Boolean {
-      return (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
-    }
+    override fun isSelected(e: AnActionEvent?): Boolean =
+      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
 
     override fun setSelected(e: AnActionEvent?, state: Boolean) {
       val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
@@ -470,13 +472,17 @@ class AssociationsTableModelEditor(
     }
   }
 
+  @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {
     const val MAX_ITEMS: Int = 60
     const val MIN_ROW_COUNT: Int = 18
+    const val ROW_HEIGHT: Int = 32
+    const val LOADING_FONT_SIZE: Float = 24.0F
+    const val DEFAULT_PRIORITY: Int = 10_000
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
 
-    // columns (yes this is hardcoded but I have no idea how to do it differently)
+    // columns (yes this is hardcoded, but I have no idea how to do it differently)
     @Suppress("unused")
     private enum class Columns(val index: Int) {
       ENABLED(0),
