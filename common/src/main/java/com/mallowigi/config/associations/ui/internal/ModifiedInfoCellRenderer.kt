@@ -38,6 +38,9 @@ import javax.swing.table.DefaultTableCellRenderer
  */
 class ModifiedInfoCellRenderer(private val item: Association?) : DefaultTableCellRenderer() {
 
+  /**
+   * Set color to blue for modified items
+   */
   override fun repaint() {
     if (item?.touched == true) foreground = getModifiedColor()
   }

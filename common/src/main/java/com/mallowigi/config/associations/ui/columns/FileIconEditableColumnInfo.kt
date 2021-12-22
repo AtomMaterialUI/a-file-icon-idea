@@ -31,12 +31,8 @@ import javax.swing.Icon
 
 /**
  * Column info for the icon of a **File Icon Association**. Displays the icon path alongside the icon.
- *
- * @constructor Create a column info
- * @param parent Parent container
- * @param editable Whether the column is editable
  */
-@Suppress("unused")
+@Suppress("unused", "HardCodedStringLiteral")
 class FileIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 

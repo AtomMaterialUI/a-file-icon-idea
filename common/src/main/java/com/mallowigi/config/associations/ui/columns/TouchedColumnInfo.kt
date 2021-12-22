@@ -34,25 +34,46 @@ import javax.swing.JTable
 import javax.swing.table.TableCellEditor
 
 /**
- * Column info for the enabled state
+ * Column info for the touched state
  */
 class TouchedColumnInfo :
-  EditableColumnInfo<Association, Boolean>(message("AssociationsForm.folderIconsTable.columns.enabled")) {
+  EditableColumnInfo<Association, Boolean>(message("AssociationsForm.folderIconsTable.columns.touched")) {
 
+  /**
+   * Touched state of the [Association]
+   */
   override fun valueOf(item: Association): Boolean = item.touched
 
+  /**
+   * Set touched state
+   */
   override fun setValue(item: Association, value: Boolean) {
     item.touched = value
   }
 
+  /**
+   * Set touched state as a checkbox (hidden)
+   */
   override fun getEditor(item: Association): TableCellEditor = DefaultCellEditor(JCheckBox())
 
+  /**
+   * Column class is [Boolean]
+   */
   override fun getColumnClass(): Class<Boolean> = Boolean::class.java
 
+  /**
+   * Hide this column by setting this width to 1
+   */
   override fun getWidth(table: JTable?): Int = 1
 
+  /**
+   * No name for this column
+   */
   override fun getName(): String = ""
 
+  /**
+   * Compare with touched state for putting touched at the top
+   */
   override fun getComparator(): Comparator<Association>? = Comparator.comparing { c: Association -> c.touched }
 
 }

@@ -41,7 +41,6 @@ import javax.swing.table.DefaultTableCellRenderer
 /**
  * Preview regexps in the table
  *
- * @constructor Create empty Reg exp table cell renderer
  */
 class RegExpTableCellRenderer : DefaultTableCellRenderer() {
   private val project: Project
@@ -53,6 +52,9 @@ class RegExpTableCellRenderer : DefaultTableCellRenderer() {
   private val documentManager: PsiDocumentManager
     get() = PsiDocumentManager.getInstance(project)
 
+  /**
+   * Regex editor for the table cell
+   */
   override fun getTableCellRendererComponent(
     table: JTable?,
     value: Any?,
@@ -61,14 +63,19 @@ class RegExpTableCellRenderer : DefaultTableCellRenderer() {
     row: Int,
     column: Int,
   ): Component {
-    val psiFile = factory.createFileFromText(RegExpFileType.INSTANCE.language, value as String)
+    val psiFile =
+      factory.createFileFromText(
+        /* language = */ RegExpFileType.INSTANCE.language,
+        /* text = */ value as String
+      )
     val editorTextField: EditorTextField
 
-    editorTextField = object : EditorTextField(documentManager.getDocument(psiFile),
-                                               project,
-                                               RegExpFileType.INSTANCE,
-                                               true,
-                                               true) {
+    editorTextField = object : EditorTextField(
+      /* document = */ documentManager.getDocument(psiFile),
+      /* project = */ project,
+      /* fileType = */ RegExpFileType.INSTANCE,
+      /* isViewer = */ true,
+      /* oneLineMode = */ true) {
       override fun shouldHaveBorder(): Boolean = false
     }
 

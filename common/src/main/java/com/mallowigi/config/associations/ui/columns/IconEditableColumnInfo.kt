@@ -48,7 +48,7 @@ import javax.swing.table.TableCellRenderer
  *
  * @constructor Create empty Icon editable column info
  */
-@Suppress("unused")
+@Suppress("unused", "HardCodedStringLiteral")
 abstract class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
 

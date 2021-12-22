@@ -43,9 +43,13 @@ import javax.swing.table.TableCellRenderer
  * @property parent the Parent class
  * @property editable whether the column should be editable
  */
+@Suppress("UnstableApiUsage")
 class PriorityColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.priority")) {
 
+  /**
+   * Priority class is Integer
+   */
   override fun getColumnClass(): Class<Int> = Int::class.java
 
   /**
@@ -112,7 +116,13 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
     else               -> null
   }
 
+  /**
+   * Compare by priority for sorting
+   */
   override fun getComparator(): Comparator<Association> = Comparator.comparingInt { c: Association -> c.priority }
 
+  /**
+   * Column width
+   */
   override fun getWidth(table: JTable?): Int = 50
 }

@@ -103,7 +103,7 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
     }
 
     myDocument!!.addDocumentListener(dl)
-    Disposer.register(parent) { myDocument!!.removeDocumentListener(dl) }
+    Disposer.register(parent) { (myDocument ?: return@register).removeDocumentListener(dl) }
   }
 
   /**
@@ -160,7 +160,7 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
     // Revalidates on blur
     ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }
     fireEditingStopped()
-    return true // todo return false if invalid?
+    return true
   }
 
   /**

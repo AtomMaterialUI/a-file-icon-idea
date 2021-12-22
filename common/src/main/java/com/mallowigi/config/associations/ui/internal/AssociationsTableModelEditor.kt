@@ -26,15 +26,12 @@
 package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.configurationStore.serialize
-import com.intellij.icons.AllIcons
-import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
-import com.intellij.ui.ToggleActionButton
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.table.JBTable
 import com.intellij.ui.table.TableView
@@ -47,8 +44,6 @@ import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.intellij.util.xmlb.XmlSerializer
-import com.mallowigi.config.AtomSettingsBundle
-import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import java.awt.Dimension
@@ -146,7 +141,7 @@ class AssociationsTableModelEditor(
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
     toolbarDecorator.run {
       disableUpDownActions()
-      addExtraAction(TogglePatternAction())
+//      addExtraAction(TogglePatternAction())
     }
 
     // Search and filter table
@@ -221,19 +216,6 @@ class AssociationsTableModelEditor(
    */
   fun enabled(isEnabled: Boolean): AssociationsTableModelEditor {
     table.isEnabled = isEnabled
-    return this
-  }
-
-  /**
-   * Add a model listener for changes
-   *
-   * @param listener a data listener
-   * @return self
-   */
-  internal fun setModelListener(listener: AssociationsDataChangedListener<RegexAssociation>):
-    AssociationsTableModelEditor {
-    model.dataChangedListener = listener
-    model.addTableModelListener(listener)
     return this
   }
 
@@ -386,9 +368,6 @@ class AssociationsTableModelEditor(
         super.setItems(value)
       }
 
-    // An optional [DataChangedListener]
-    var dataChangedListener: AssociationsDataChangedListener<RegexAssociation>? = null
-
     /**
      * We display only the filtered items
      *
@@ -447,7 +426,6 @@ class AssociationsTableModelEditor(
 
         if (!comparator) {
           columnInfo.setValue(helper.getMutable(item, rowIndex), aValue)
-          dataChangedListener?.dataChanged(columnInfo, rowIndex)
         }
       }
     }
@@ -459,18 +437,18 @@ class AssociationsTableModelEditor(
    *
    * @constructor Create empty Toggle pattern action
    */
-  private inner class TogglePatternAction :
-    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
-
-    override fun isSelected(e: AnActionEvent?): Boolean =
-      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
-
-    override fun setSelected(e: AnActionEvent?, state: Boolean) {
-      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
-
-      patternColumn.toggledPattern = !patternColumn.toggledPattern
-    }
-  }
+//  private inner class TogglePatternAction :
+//    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
+//
+//    override fun isSelected(e: AnActionEvent?): Boolean =
+//      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
+//
+//    override fun setSelected(e: AnActionEvent?, state: Boolean) {
+//      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
+//
+//      patternColumn.toggledPattern = !patternColumn.toggledPattern
+//    }
+//  }
 
   @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {

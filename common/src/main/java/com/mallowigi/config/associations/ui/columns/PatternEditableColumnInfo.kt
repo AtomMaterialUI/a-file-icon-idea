@@ -26,7 +26,6 @@
 package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
@@ -34,7 +33,6 @@ import com.mallowigi.config.associations.ui.internal.ModifiedInfoCellRenderer
 import com.mallowigi.config.associations.ui.internal.RegExpTableCellRenderer
 import com.mallowigi.config.associations.ui.internal.RegexpEditor
 import com.mallowigi.icons.associations.Association
-import java.util.regex.Pattern
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
@@ -47,7 +45,10 @@ import javax.swing.table.TableCellRenderer
 @Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  var toggledPattern: Boolean = false
+  /**
+   * Whether the regex highlight is enabled (disabled by default because it's slow)
+   */
+//  var toggledPattern: Boolean = false
 
   /**
    * The value of the column is the matcher
@@ -88,8 +89,11 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    */
   override fun getRenderer(item: Association): TableCellRenderer = RegExpTableCellRenderer()
 
+  /**
+   * Set a regex language highlighter for this column
+   */
   override fun getCustomizedRenderer(o: Association, renderer: TableCellRenderer): TableCellRenderer =
-    if (toggledPattern) renderer else ModifiedInfoCellRenderer(o)
+    ModifiedInfoCellRenderer(o)
 
   /**
    * Whether the cell is editable
@@ -98,26 +102,5 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    * @return true if editable
    */
   override fun isCellEditable(item: Association): Boolean = editable
-
-  /**
-   * Returns the relevant validation message
-   *
-   * @param value
-   * @return
-   */
-  private fun validate(value: Any?): ValidationInfo? {
-    return when {
-      value == null || value == ""      -> ValidationInfo(message("AtomAssocConfig.PatternEditor.empty"))
-      !isValidPattern(value.toString()) -> ValidationInfo(message("AtomAssocConfig.PatternEditor.invalid"))
-      else                              -> null
-    }
-  }
-
-  private fun isValidPattern(pattern: String): Boolean = try {
-    Pattern.compile(pattern)
-    true
-  } catch (e: RuntimeException) {
-    false
-  }
 
 }

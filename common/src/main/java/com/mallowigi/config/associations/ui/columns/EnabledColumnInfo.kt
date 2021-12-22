@@ -39,19 +39,37 @@ import javax.swing.table.TableCellEditor
 class EnabledColumnInfo :
   EditableColumnInfo<Association, Boolean>(message("AssociationsForm.folderIconsTable.columns.enabled")) {
 
+  /**
+   * Gets the enabled state of the [Association]
+   */
   override fun valueOf(item: Association): Boolean = item.enabled
 
+  /**
+   * Enable the [Association]
+   */
   override fun setValue(item: Association, value: Boolean) {
     item.touched = true
     item.enabled = value
   }
 
+  /**
+   * Edit this state by a checkbox
+   */
   override fun getEditor(item: Association): TableCellEditor = DefaultCellEditor(JCheckBox())
 
+  /**
+   * The column class of this state
+   */
   override fun getColumnClass(): Class<Boolean> = Boolean::class.java
 
+  /**
+   * Sets the table width for a checkbox
+   */
   override fun getWidth(table: JTable?): Int = 16
 
+  /**
+   * No name for this column
+   */
   override fun getName(): String = ""
 
 }
