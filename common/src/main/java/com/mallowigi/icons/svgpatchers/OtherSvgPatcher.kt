@@ -34,6 +34,7 @@ import org.w3c.dom.Element
  * @property otherPatcherProvider
  * @constructor Create empty Other svg patcher
  */
+@Suppress("UnstableApiUsage")
 class OtherSvgPatcher internal constructor(private val otherPatcherProvider: SvgElementColorPatcherProvider) :
   SvgPatcher {
   override fun refresh() {

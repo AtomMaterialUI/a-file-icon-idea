@@ -30,6 +30,7 @@ import org.w3c.dom.Element
 /**
  * Interface for all svg patchers
  */
+@Suppress("KDocMissingDocumentation")
 interface SvgPatcher {
   /**
    * Refresh

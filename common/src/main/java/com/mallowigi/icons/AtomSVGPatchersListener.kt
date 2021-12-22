@@ -42,17 +42,30 @@ import com.mallowigi.utils.getPluginId
  */
 class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
 
+  /**
+   * Init on app started
+   */
   override fun appStarted(): Unit = initComponent()
 
+  /**
+   * Dispose on app closing
+   */
   override fun appClosing(): Unit = disposeComponent()
 
+  /**
+   * Init on plugin loaded
+   */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
+  /**
+   * Dispose on plugin unloaded
+   */
   override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
     if (getPluginId() != pluginDescriptor.pluginId) return
     disposeComponent()
   }
 
+  @Suppress("UnstableApiUsage")
   private fun initComponent() {
     val otherPatcher = collectOtherPatcher()
     MainSvgPatcher.instance.addPatcher(otherPatcher)

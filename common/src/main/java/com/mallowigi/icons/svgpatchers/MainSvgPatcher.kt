@@ -39,6 +39,7 @@ import javax.swing.SwingUtilities
  *
  * @constructor Create empty Main svg patcher
  */
+@Suppress("UnstableApiUsage")
 class MainSvgPatcher : SvgElementColorPatcherProvider {
   private val patchers: SortedSet<SvgPatcher> = sortedSetOf(
     compareByDescending { it.priority() },
@@ -85,9 +86,15 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     }
   }
 
+  /**
+   * Create patcher for path
+   */
   override fun forPath(path: String?): SvgElementColorPatcher = createPatcher(path)
 
   companion object {
+    /**
+     * Service instance
+     */
     val instance: MainSvgPatcher
       get() = ApplicationManager.getApplication().getService(MainSvgPatcher::class.java)
   }
