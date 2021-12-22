@@ -39,12 +39,6 @@
 
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
-  <!--    <application-components>-->
-  <!--        <component>-->
-  <!--            <implementation-class>com.mallowigi.utils.HackComponent</implementation-class>-->
-  <!--        </component>-->
-  <!--    </application-components>-->
-
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig" />
     <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
@@ -56,11 +50,6 @@
                              groupId="appearance" dynamic="true"
                              parentId="AtomConfig"
                              id="AtomSelectConfig" />
-    <applicationService serviceImplementation="com.mallowigi.config.associations.AtomAssocConfig" />
-    <applicationConfigurable instance="com.mallowigi.config.associations.AssocConfigurable"
-                             groupId="appearance" dynamic="true"
-                             parentId="AtomConfig"
-                             id="AtomAssocConfig" />
     <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations" />
     <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />
 

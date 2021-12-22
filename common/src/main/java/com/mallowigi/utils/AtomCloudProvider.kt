@@ -29,7 +29,6 @@ import com.intellij.cloudConfig.CloudConfigAppender
 import com.mallowigi.config.AtomConfigurable
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle.message
-import com.mallowigi.config.associations.AtomAssocConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.config.select.AtomSelectConfigurable
 
@@ -41,7 +40,6 @@ import com.mallowigi.config.select.AtomSelectConfigurable
 class AtomCloudProvider : CloudConfigAppender {
   override fun appendClassesToStream(): List<Class<*>> =
     listOf(
-      AtomAssocConfig::class.java,
       AtomSelectConfig::class.java,
       AtomFileIconsConfig::class.java
     )
