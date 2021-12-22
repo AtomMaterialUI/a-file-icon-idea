@@ -24,6 +24,8 @@
  *
  */
 
+@file:Suppress("UnstableApiUsage")
+
 package com.mallowigi.utils
 
 import com.intellij.util.SVGLoader
@@ -31,12 +33,14 @@ import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import java.net.URL
 import java.util.Optional
 
+/**
+ * Svg Element Color Patcher type alias
+ */
 typealias PatcherProvider = SVGLoader.SvgElementColorPatcherProvider
 
 /**
  * Svg loader hacker
  *
- * @constructor Create empty Svg loader hacker
  */
 object SvgLoaderHacker {
 
@@ -49,6 +53,9 @@ object SvgLoaderHacker {
       override fun forURL(url: URL?): SVGLoader.SvgElementColorPatcher? = null
     }
 
+  /**
+   * Collect the "other patcher"
+   */
   @JvmStatic
   fun collectOtherPatcher(): PatcherProvider =
     extractPatcher()

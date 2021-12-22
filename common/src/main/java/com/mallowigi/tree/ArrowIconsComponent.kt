@@ -45,12 +45,24 @@ import javax.swing.UIManager
  */
 class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
 
-  override fun appStarted() = initComponent()
+  /**
+   * Init on app started
+   */
+  override fun appStarted(): Unit = initComponent()
 
+  /**
+   * Dispose on app closing
+   */
   override fun appClosing(): Unit = disposeComponent()
 
+  /**
+   * Init on plugin loaded
+   */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
+  /**
+   * Dispose on plugin unloaded
+   */
   override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
 
   private fun initComponent() {

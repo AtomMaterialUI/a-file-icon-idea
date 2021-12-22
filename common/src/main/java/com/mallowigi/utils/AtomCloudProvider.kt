@@ -35,15 +35,20 @@ import com.mallowigi.config.select.AtomSelectConfigurable
 /**
  * Atom cloud provider
  *
- * @constructor Create empty Atom cloud provider
  */
 class AtomCloudProvider : CloudConfigAppender {
+  /**
+   * Classes to sync
+   */
   override fun appendClassesToStream(): List<Class<*>> =
     listOf(
       AtomSelectConfig::class.java,
       AtomFileIconsConfig::class.java
     )
 
+  /**
+   * Sync Settings description
+   */
   override fun getConfigDescription(clazz: Class<*>): String {
     return when (clazz.simpleName) {
       AtomConfigurable.ID       -> message("settings.titles.prefix", message("settings.titles.main"))

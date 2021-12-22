@@ -54,6 +54,7 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
   /**
    * Init on app started
    */
+  @Suppress("UnstableApiUsage")
   override fun appStarted(): Unit = initComponent()
 
   /**

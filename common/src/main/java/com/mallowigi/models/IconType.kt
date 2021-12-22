@@ -31,6 +31,13 @@ package com.mallowigi.models
  *
  */
 enum class IconType {
+  /**
+   * File icon
+   */
   FILE,
+
+  /**
+   * Folder icon
+   */
   FOLDER
 }

@@ -35,24 +35,58 @@ import javax.swing.Icon
  * @property arrowsStyle enum value
  */
 enum class ArrowsStyles(@param:NonNls private val type: String, private val arrowsStyle: ArrowsStyle) {
+  /**
+   * Material Style (chevrons)
+   */
   MATERIAL("Material", MaterialArrowsStyle()),
+
+  /**
+   * Darcula Style (triangle)
+   */
   DARCULA("Darcula", DarculaArrowsStyle()),
+
+  /**
+   * Plus-Minus Style
+   */
   PLUSMINUS("Plus-Minus", PlusMinusArrowsStyle()),
+
+  /**
+   * Arrows Style
+   */
   ARROWS("Arrows", ArrowsArrowsStyle()),
+
+  /**
+   * No Arrows
+   */
   NONE("None", NoneArrowsStyle());
 
+  /**
+   * Current style's expanded icon
+   */
   val expandIcon: Icon
     get() = arrowsStyle.expandIcon
 
+  /**
+   * Current style's collapsed icon
+   */
   val collapseIcon: Icon
     get() = arrowsStyle.collapseIcon
 
+  /**
+   * Current style's selected expanded icon
+   */
   val selectedExpandIcon: Icon
     get() = arrowsStyle.selectedExpandIcon
 
+  /**
+   * Current style's selected collapsed icon
+   */
   val selectedCollapseIcon: Icon
     get() = arrowsStyle.selectedCollapseIcon
 
+  /**
+   * Icon to show in settings
+   */
   val icon: Icon
     get() = expandIcon
 

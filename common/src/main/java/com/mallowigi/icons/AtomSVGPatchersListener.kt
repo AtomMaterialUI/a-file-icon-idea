@@ -45,6 +45,7 @@ class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, Dum
   /**
    * Init on app started
    */
+  @Suppress("UnstableApiUsage")
   override fun appStarted(): Unit = initComponent()
 
   /**

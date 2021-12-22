@@ -29,7 +29,7 @@ import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.ProjectViewNodeDecorator
 import com.intellij.ide.projectView.impl.ProjectRootsUtil
-import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
@@ -45,11 +45,14 @@ import java.util.Objects
 import javax.swing.Icon
 
 /**
- * Hollow folders decorator: Decorate directories as "open" when one of its files is open
+ * Hollow folders' decorator: Decorate directories as "open" when one of its files is open
  *
  */
 class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
+  /**
+   * Decorate nodes with icon associations
+   */
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val file = node.virtualFile
     val project = node.project
@@ -88,7 +91,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
         else                                                               -> data.setIcon(directoryIcon)
       }
     } catch (e: Exception) {
-      LOG.warn(e.message)
+      thisLogger().warn(e.message)
     }
   }
 
@@ -97,19 +100,21 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
+  /**
+   * Do nothing
+   */
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer): Unit = Unit
 
   companion object {
-    val LOG: Logger = Logger.getInstance("HollowFoldersDecorator")
-
     @Volatile
     private var directory: Icon? = AtomIcons.Nodes2.FolderOpen
 
+    /**
+     * Default directory icon
+     */
     val directoryIcon: Icon?
       get() {
-        if (directory == null) {
-          directory = AtomIcons.Nodes2.FolderOpen
-        }
+        if (directory == null) directory = AtomIcons.Nodes2.FolderOpen
         return directory
       }
   }

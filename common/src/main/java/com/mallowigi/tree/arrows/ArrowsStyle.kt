@@ -32,8 +32,23 @@ import javax.swing.Icon
  *
  */
 interface ArrowsStyle {
+  /**
+   * Expanded icon
+   */
   val expandIcon: Icon
+
+  /**
+   * Collapsed icon
+   */
   val collapseIcon: Icon
+
+  /**
+   * Selected item expanded icon
+   */
   val selectedExpandIcon: Icon
+
+  /**
+   * Selected item collapsed icon
+   */
   val selectedCollapseIcon: Icon
 }

@@ -51,13 +51,12 @@ class ThemeColorPatcher : SvgPatcher {
 
   private fun patchTints(svg: Element) {
     val themed = svg.getAttribute(SvgPatcher.THEMED) ?: return
-    val newThemedColor = ColorUtil.toHex(themedColor!!)
+    val newThemedColor = ColorUtil.toHex(themedColor ?: return)
 
     // if themed="true" or themed="fill", change the fill color, or change the stroke color if "stroke"
-    if (themed == SvgPatcher.TRUE || themed == SvgPatcher.FILL) {
-      svg.setAttribute(SvgPatcher.FILL, "#$newThemedColor")
-    } else if (themed == SvgPatcher.STROKE) {
-      svg.setAttribute(SvgPatcher.STROKE, "#$newThemedColor")
+    when (themed) {
+      SvgPatcher.TRUE, SvgPatcher.FILL -> svg.setAttribute(SvgPatcher.FILL, "#$newThemedColor")
+      SvgPatcher.STROKE                -> svg.setAttribute(SvgPatcher.STROKE, "#$newThemedColor")
     }
   }
 }

@@ -28,9 +28,15 @@ package com.mallowigi.models
 /**
  * File info
  *
- * @constructor Create empty File info
  */
 interface FileInfo {
+  /**
+   * File name
+   */
   val name: String
+
+  /**
+   * Type
+   */
   val fileType: String
 }
