@@ -34,7 +34,6 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 /**
  * Represents the bundled list of associations parsed from the xml
  *
- * @constructor Create empty [DefaultAssociations]
  */
 @Suppress("HardCodedStringLiteral")
 @XStreamAlias("associations")

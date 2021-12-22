@@ -46,7 +46,6 @@ import javax.swing.table.TableCellRenderer
 /**
  * Abstract class for Icon Editable Column
  *
- * @constructor Create empty Icon editable column info
  */
 @Suppress("unused", "HardCodedStringLiteral")
 abstract class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :

@@ -33,7 +33,6 @@ import java.util.List.copyOf
 /**
  * Custom associations are [Associations] defined by the user. They are prioritized over bundled associations.
  *
- * @constructor Create empty Custom [Associations]
  */
 @Suppress("MemberNameEqualsClassName")
 class CustomAssociations : Associations {

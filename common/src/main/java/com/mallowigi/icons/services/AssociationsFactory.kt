@@ -25,6 +25,7 @@
  */
 package com.mallowigi.icons.services
 
+import com.intellij.openapi.diagnostic.thisLogger
 import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.TypeAssociation
@@ -54,7 +55,7 @@ object AssociationsFactory {
     return try {
       xStream.fromXML(associationsXml) as DefaultAssociations
     } catch (e: RuntimeException) {
-      e.printStackTrace()
+      thisLogger().error(e)
       DefaultAssociations()
     }
   }

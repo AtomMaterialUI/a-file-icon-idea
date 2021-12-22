@@ -34,7 +34,6 @@ import javax.swing.table.DefaultTableCellRenderer
  * Modified info cell renderer
  *
  * @property item the [Association]
- * @constructor Create empty Modified info cell renderer
  */
 class ModifiedInfoCellRenderer(private val item: Association?) : DefaultTableCellRenderer() {
 

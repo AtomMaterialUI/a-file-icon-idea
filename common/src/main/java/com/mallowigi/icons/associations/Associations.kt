@@ -37,7 +37,6 @@ import java.io.Serializable
 /**
  * Represents a serialized collection of [Associations][Association]
  *
- * @constructor Create empty Associations
  */
 abstract class Associations : Serializable {
   /**

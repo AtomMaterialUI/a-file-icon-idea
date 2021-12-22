@@ -33,7 +33,6 @@ import java.awt.Color
 /**
  * Monochrome filter
  *
- * @constructor Create empty Monochrome filter
  */
 object MonochromeFilter : ColorizeFilter() {
 

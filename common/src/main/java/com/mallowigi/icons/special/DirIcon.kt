@@ -35,17 +35,25 @@ import javax.swing.Icon
  *
  * @property closedIcon
  * @property openedIcon
- * @constructor Create empty Dir icon
  */
 open class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
   internal constructor() : this(AtomIcons.Nodes2.FolderOpen, AtomIcons.Nodes2.FolderOpen)
 
   constructor(icon: Icon) : this(icon, icon)
 
-  override fun paintIcon(c: Component?, g: Graphics, x: Int, y: Int) = closedIcon.paintIcon(c, g, x, y)
+  /**
+   * Paint icon
+   */
+  override fun paintIcon(c: Component?, g: Graphics, x: Int, y: Int): Unit = closedIcon.paintIcon(c, g, x, y)
 
+  /**
+   * Icon width
+   */
   override fun getIconWidth(): Int = closedIcon.iconWidth
 
+  /**
+   * Icon height
+   */
   override fun getIconHeight(): Int = closedIcon.iconHeight
 
 }

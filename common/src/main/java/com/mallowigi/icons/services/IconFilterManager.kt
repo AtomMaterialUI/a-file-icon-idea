@@ -32,15 +32,17 @@ import com.mallowigi.icons.filters.MonochromeFilter
 /**
  * Icon filter manager
  *
- * @constructor Create empty Icon filter manager
  */
 @Suppress("UseIfInsteadOfWhen")
 object IconFilterManager {
+  /**
+   * Apply filter
+   */
   fun applyFilter() {
     val monochromeIcons = instance.isMonochromeIcons
     when {
       monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
-      else -> IconLoader.setFilter(null)
+      else            -> IconLoader.setFilter(null)
     }
   }
 }

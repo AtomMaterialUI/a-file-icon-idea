@@ -43,7 +43,6 @@ import org.jetbrains.annotations.NonNls
 /**
  * Atom file icons config
  *
- * @constructor Create empty Atom file icons config
  */
 @Suppress("TooManyFunctions")
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS

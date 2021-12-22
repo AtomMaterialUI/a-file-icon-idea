@@ -435,7 +435,6 @@ class AssociationsTableModelEditor(
   /**
    * Toggle pattern action: Toggle pattern highlighting
    *
-   * @constructor Create empty Toggle pattern action
    */
 //  private inner class TogglePatternAction :
 //    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {

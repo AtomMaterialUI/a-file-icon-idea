@@ -30,7 +30,6 @@ import com.intellij.util.xmlb.annotations.Property
 /**
  * External icons patcher
  *
- * @constructor Create empty External icons patcher
  */
 @Suppress("UnusedPrivateMember")
 open class ExternalIconsPatcher : AbstractIconPatcher() {
@@ -43,7 +42,14 @@ open class ExternalIconsPatcher : AbstractIconPatcher() {
   @Property
   private val name: String? = null
 
-  public override fun getPathToAppend(): String = append!!
+  /**
+   * Get path to append
+   */
+  public override fun getPathToAppend(): String = append
 
-  public override fun getPathToRemove(): String = remove!!
+  /**
+   * Get path to remove
+   *
+   */
+  public override fun getPathToRemove(): String = remove
 }

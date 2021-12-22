@@ -30,6 +30,5 @@ package com.mallowigi.icons.patchers
 /**
  * File icons patcher
  *
- * @constructor Create empty File icons patcher
  */
 class FileIconsPatcher : ExternalIconsPatcher()

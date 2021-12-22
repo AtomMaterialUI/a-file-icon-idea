@@ -40,7 +40,6 @@ import javax.swing.Icon
 /**
  * Default folder icon provider
  *
- * @constructor Create empty Default folder icon provider
  */
 class DefaultFolderIconProvider : AbstractFileIconProvider() {
   override fun getIcon(iconPath: String): Icon =

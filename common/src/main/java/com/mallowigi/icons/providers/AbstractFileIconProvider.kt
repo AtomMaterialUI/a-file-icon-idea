@@ -44,7 +44,6 @@ import javax.swing.Icon
 /**
  * Abstract file icon provider
  *
- * @constructor Create empty Abstract file icon provider
  */
 abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
   /**

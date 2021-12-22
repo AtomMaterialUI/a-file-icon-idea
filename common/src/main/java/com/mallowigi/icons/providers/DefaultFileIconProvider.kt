@@ -40,7 +40,6 @@ import javax.swing.Icon
 /**
  * Default file icon provider
  *
- * @constructor Create empty Default file icon provider
  */
 class DefaultFileIconProvider : AbstractFileIconProvider() {
   override fun getType(): IconType = IconType.FILE

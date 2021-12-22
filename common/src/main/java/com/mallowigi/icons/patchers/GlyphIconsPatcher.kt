@@ -30,6 +30,5 @@ package com.mallowigi.icons.patchers
 /**
  * Glyph icons patcher
  *
- * @constructor Create empty Glyph icons patcher
  */
 class GlyphIconsPatcher : ExternalIconsPatcher()

@@ -35,11 +35,15 @@ import com.thoughtworks.xstream.XStream
 /**
  * Load patchers from xml
  *
- * @constructor Create empty Icon patchers factory
  */
 object IconPatchersFactory {
   private val ICON_PATCHERS_XML = "/icon_patchers.xml"
 
+  /**
+   * Generate the list of [IconPathPatchers] from XML
+   *
+   * @return list of [IconPathPatchers]
+   */
   fun create(): IconPathPatchers {
     val xml = IconPatchersFactory::class.java.getResource(ICON_PATCHERS_XML)
     val xStream = XStream()

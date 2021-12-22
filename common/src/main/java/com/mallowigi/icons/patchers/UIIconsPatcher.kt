@@ -30,6 +30,5 @@ package com.mallowigi.icons.patchers
 /**
  * UI icons patcher
  *
- * @constructor Create empty U i icons patcher
  */
 class UIIconsPatcher : ExternalIconsPatcher()

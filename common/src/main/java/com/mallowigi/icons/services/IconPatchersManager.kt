@@ -39,7 +39,6 @@ import com.mallowigi.icons.services.IconFilterManager.applyFilter
 /**
  * Icon patchers manager
  *
- * @constructor Create empty Icon patchers manager
  */
 @Suppress("MagicNumber")
 object IconPatchersManager {
@@ -47,6 +46,9 @@ object IconPatchersManager {
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
   private val checkStyleIconPatcher = CheckStyleIconPatcher()
 
+  /**
+   * Init the patchers
+   */
   fun init() {
     val atomFileIconsConfig = instance
     IconLoader.installPathPatcher(checkStyleIconPatcher)
@@ -56,6 +58,9 @@ object IconPatchersManager {
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
 
+  /**
+   * Update patchers on save
+   */
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
     val atomFileIconsConfig = instance
@@ -110,6 +115,9 @@ object IconPatchersManager {
     patcher.enabled = enabled
   }
 
+  /**
+   * Update all trees
+   */
   fun updateFileIcons() {
     ApplicationManager.getApplication().invokeLater {
       val app = ApplicationManager.getApplication()

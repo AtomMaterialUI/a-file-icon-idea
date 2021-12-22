@@ -31,17 +31,25 @@ import java.util.Collections
 /**
  * Icon path patchers
  *
- * @constructor Create empty Icon path patchers
  */
 class IconPathPatchers {
+  /**
+   * UI Icon Patchers
+   */
   @Property
   val iconPatchers: Set<UIIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)
 
+  /**
+   * Glyph Icon Patchers
+   */
   @Property
   val glyphPatchers: Set<GlyphIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)
 
+  /**
+   * File Icon Patchers
+   */
   @Property
   val filePatchers: Set<FileIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)

@@ -32,7 +32,6 @@ import com.mallowigi.config.select.AtomSelectConfig
 /**
  * Atom select notifier
  *
- * @constructor Create empty Atom select notifier
  */
 fun interface AtomSelectNotifier {
 
