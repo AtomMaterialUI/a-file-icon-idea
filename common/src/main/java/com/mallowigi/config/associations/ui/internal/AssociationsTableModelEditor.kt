@@ -341,7 +341,6 @@ class AssociationsTableModelEditor(
     regexAssociation.pattern = "^.*\\.ext${increment}$"
     regexAssociation.priority = DEFAULT_PRIORITY
     regexAssociation.icon = ""
-    regexAssociation.touched = true
     return regexAssociation
   }
 
@@ -355,6 +354,7 @@ class AssociationsTableModelEditor(
    */
   override fun silentlyReplaceItem(oldItem: RegexAssociation, newItem: RegexAssociation, index: Int) {
     super.silentlyReplaceItem(oldItem, newItem, index)
+    newItem.touched = true
     // silently replace item in unfiltered list
     val items = model.allItems
     val allItemsIndex = items.indexOfFirst { it.name == newItem.name }

@@ -1,3 +1,3 @@
 [submodule "src/main/resources/iconGenerator"]
-	path = common/src/main/resources/iconGenerator
+	path = src/main/resources/iconGenerator
 	url = git@github.com:mallowigi/iconGenerator.git
