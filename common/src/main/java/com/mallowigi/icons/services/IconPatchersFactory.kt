@@ -25,6 +25,7 @@
  */
 package com.mallowigi.icons.services
 
+import com.intellij.openapi.diagnostic.thisLogger
 import com.mallowigi.icons.patchers.ExternalIconsPatcher
 import com.mallowigi.icons.patchers.FileIconsPatcher
 import com.mallowigi.icons.patchers.GlyphIconsPatcher
@@ -37,7 +38,7 @@ import com.thoughtworks.xstream.XStream
  *
  */
 object IconPatchersFactory {
-  private val ICON_PATCHERS_XML = "/icon_patchers.xml"
+  private const val iconPatchersFile = "/icon_patchers.xml"
 
   /**
    * Generate the list of [IconPathPatchers] from XML
@@ -45,25 +46,21 @@ object IconPatchersFactory {
    * @return list of [IconPathPatchers]
    */
   fun create(): IconPathPatchers {
-    val xml = IconPatchersFactory::class.java.getResource(ICON_PATCHERS_XML)
+    val xml = IconPatchersFactory::class.java.getResource(iconPatchersFile)
     val xStream = XStream()
 
     xStream.run {
-      allowTypesByWildcard(arrayOf("com.mallowigi.icons.patchers.*"))
-      alias("iconPathPatchers", IconPathPatchers::class.java)
-      alias("iconPatchers", MutableSet::class.java)
-      alias("glyphPatchers", MutableSet::class.java)
-      alias("filePatchers", MutableSet::class.java)
-      alias("filePatcher", FileIconsPatcher::class.java)
-      alias("iconPatcher", UIIconsPatcher::class.java)
-      alias("glyphPatcher", GlyphIconsPatcher::class.java)
-      useAttributeFor(ExternalIconsPatcher::class.java, "append")
-      useAttributeFor(ExternalIconsPatcher::class.java, "remove")
-      useAttributeFor(ExternalIconsPatcher::class.java, "name")
+      allowTypesByWildcard(arrayOf("com.mallowigi.icons.patchers.*")) // NON-NLS
+      processAnnotations(IconPathPatchers::class.java)
+      processAnnotations(FileIconsPatcher::class.java)
+      processAnnotations(UIIconsPatcher::class.java)
+      processAnnotations(GlyphIconsPatcher::class.java)
+      processAnnotations(ExternalIconsPatcher::class.java)
     }
     return try {
       xStream.fromXML(xml) as IconPathPatchers
     } catch (e: RuntimeException) {
+      thisLogger().error(e)
       IconPathPatchers()
     }
   }

@@ -26,6 +26,7 @@
 package com.mallowigi.icons.patchers
 
 import com.intellij.util.xmlb.annotations.Property
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
 /**
  * External icons patcher
@@ -34,22 +35,25 @@ import com.intellij.util.xmlb.annotations.Property
 @Suppress("UnusedPrivateMember")
 open class ExternalIconsPatcher : AbstractIconPatcher() {
   @Property
-  private val append: String? = null
+  @XStreamAsAttribute
+  private val append: String = ""
 
   @Property
-  private val remove: String? = null
+  @XStreamAsAttribute
+  private val remove: String = ""
 
   @Property
-  private val name: String? = null
+  @XStreamAsAttribute
+  private val name: String = ""
 
   /**
    * Get path to append
    */
-  public override fun getPathToAppend(): String = append!!
+  public override fun getPathToAppend(): String = append
 
   /**
    * Get path to remove
    *
    */
-  public override fun getPathToRemove(): String = remove!!
+  public override fun getPathToRemove(): String = remove
 }

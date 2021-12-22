@@ -26,9 +26,11 @@
 
 package com.mallowigi.icons.patchers
 
+import com.thoughtworks.xstream.annotations.XStreamAlias
 
 /**
  * UI icons patcher
  *
  */
+@XStreamAlias("iconPatcher")
 class UIIconsPatcher : ExternalIconsPatcher()

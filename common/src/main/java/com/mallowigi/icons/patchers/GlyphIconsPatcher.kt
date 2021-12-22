@@ -26,9 +26,11 @@
 
 package com.mallowigi.icons.patchers
 
+import com.thoughtworks.xstream.annotations.XStreamAlias
 
 /**
  * Glyph icons patcher
  *
  */
+@XStreamAlias("glyphPatcher")
 class GlyphIconsPatcher : ExternalIconsPatcher()

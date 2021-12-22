@@ -26,17 +26,22 @@
 package com.mallowigi.icons.patchers
 
 import com.intellij.util.xmlb.annotations.Property
+import com.intellij.util.xmlb.annotations.XCollection
+import com.thoughtworks.xstream.annotations.XStreamAlias
 import java.util.Collections
 
 /**
  * Icon path patchers
  *
  */
+@XStreamAlias("iconPathPatchers")
 class IconPathPatchers {
   /**
    * UI Icon Patchers
    */
   @Property
+  @XCollection
+  @XStreamAlias("iconPatchers")
   val iconPatchers: Set<UIIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)
 
@@ -44,6 +49,8 @@ class IconPathPatchers {
    * Glyph Icon Patchers
    */
   @Property
+  @XCollection
+  @XStreamAlias("glyphPatchers")
   val glyphPatchers: Set<GlyphIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)
 
@@ -51,6 +58,8 @@ class IconPathPatchers {
    * File Icon Patchers
    */
   @Property
+  @XCollection
+  @XStreamAlias("filePatchers")
   val filePatchers: Set<FileIconsPatcher>? = null
     get() = Collections.unmodifiableSet(field)
 }
