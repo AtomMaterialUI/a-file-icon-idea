@@ -49,9 +49,15 @@ import java.util.Objects
   category = SettingsCategory.UI
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
+  /**
+   * List of user file [Association]s
+   */
   @Property
   var selectedFileAssociations: SelectedAssociations = SelectedAssociations(IconType.FILE)
 
+  /**
+   * List of user folder [Association]s
+   */
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
 
@@ -64,8 +70,14 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     selectedFileAssociations.initMutableListFromDefaults()
   }
 
+  /**
+   * The config state
+   */
   override fun getState(): AtomSelectConfig = this
 
+  /**
+   * Load state from XML
+   */
   override fun loadState(state: AtomSelectConfig) {
     XmlSerializerUtil.copyBean(state, this)
     init() // reload defaults
@@ -115,7 +127,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
     return !Objects.deepEquals(this.selectedFolderAssociations.ownValues(), touched)
   }
-  
+
   /**
    * Resets the associations
    *
@@ -126,6 +138,9 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   }
 
   companion object {
+    /**
+     * Instance of the [AtomSelectConfig]
+     */
     @JvmStatic
     val instance: AtomSelectConfig
       get() = ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)

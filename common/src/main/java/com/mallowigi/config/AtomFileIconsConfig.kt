@@ -48,59 +48,110 @@ import org.jetbrains.annotations.NonNls
 @Suppress("TooManyFunctions")
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
+  /**
+   * Whether the file icons are enabled
+   */
   @Property
   var isEnabledIcons: Boolean = true
 
+  /**
+   * Whether the folder icons are enabledd
+   */
   @Property
   var isEnabledDirectories: Boolean = true
 
+  /**
+   * Whether the UI icons are enabled
+   */
   @Property
   var isEnabledUIIcons: Boolean = true
 
+  /**
+   * Whether the monochrome icons are enabled
+   */
   @Property
   var isMonochromeIcons: Boolean = false
 
+  /**
+   * The monochrome color
+   */
   @NonNls
   @Property
   var monochromeColor: String = "546E7A"
     private set
 
+  /**
+   * Whether the PSI icons are enabled
+   */
   @Property
   var isEnabledPsiIcons: Boolean = true
 
+  /**
+   * Whether file icons are hidden
+   */
   @Property
   var isHideFileIcons: Boolean = false
 
+  /**
+   * Whether folder icons are hidden
+   */
   @Property
   var isHideFolderIcons: Boolean = false
 
+  /**
+   * Whether the hollow folders are enabled
+   */
   @Property
   var isUseHollowFolders: Boolean = true
 
+  /**
+   * Style of tree expand arrows
+   */
   @Property
   var arrowsStyle: ArrowsStyles = ArrowsStyles.MATERIAL
 
+  /**
+   * Whether custom accent color is enabled
+   */
   @Property
   var isAccentColorEnabled: Boolean = false
 
+  /**
+   * Custom accent color
+   */
   @NonNls
   @Property
   var accentColor: String = accentColorFromTheme
     private set
 
+  /**
+   * Whether custom theme color is enabled
+   */
   @Property
   var isThemedColorEnabled: Boolean = false
 
+  /**
+   * Custom theme color
+   */
   @NonNls
   @Property
   var themedColor: String = themedColorFromTheme
     private set
 
+  /**
+   * Whether big icons is enabled
+   */
   @Property
   var hasBigIcons: Boolean = false
 
+  /**
+   * Config state
+   */
   override fun getState(): AtomFileIconsConfig = this
 
+  /**
+   * Load config state from XML
+   */
   override fun loadState(state: AtomFileIconsConfig): Unit = XmlSerializerUtil.copyBean(state, this)
 
   /**
@@ -399,6 +450,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   companion object {
+    /**
+     * Instance of the Config service
+     */
     @JvmStatic
     val instance: AtomFileIconsConfig
       get() = ApplicationManager.getApplication().getService(AtomFileIconsConfig::class.java)
@@ -409,6 +463,11 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
 
+    /**
+     * Extract accent color from current theme
+     *
+     */
+    @Suppress("HardCodedStringLiteral")
     private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
         "Light"   -> "Button.select"
@@ -423,6 +482,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       return ColorUtil.toHex(namedColor)
     }
 
+    /**
+     * Extract themed color from current theme
+     *
+     */
     private fun getThemedFromTheme(): String =
       ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
   }

@@ -44,6 +44,9 @@ fun interface AtomSelectNotifier {
   fun configChanged(atomFileIconsConfig: AtomSelectConfig?)
 
   companion object {
+    /**
+     * Topic for [AtomSelectNotifier]
+     */
     @Topic.AppLevel
     @JvmField
     val TOPIC: Topic<AtomSelectNotifier> = Topic.create("Atom Selections", AtomSelectNotifier::class.java)

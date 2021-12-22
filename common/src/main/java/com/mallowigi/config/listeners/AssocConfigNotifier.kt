@@ -42,6 +42,9 @@ fun interface AssocConfigNotifier {
   fun assocChanged(config: AtomAssocConfig?)
 
   companion object {
+    /**
+     * Topic for [AssocConfigNotifier]
+     */
     @Topic.AppLevel
     @JvmField
     val TOPIC: Topic<AssocConfigNotifier> =

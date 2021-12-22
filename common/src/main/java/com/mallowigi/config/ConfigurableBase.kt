@@ -39,6 +39,7 @@ import javax.swing.JComponent
  * @param FORM
  * @param CONFIG
  */
+@Suppress("OutdatedDocumentation")
 abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentStateComponent<*>?> :
   BaseConfigurable() {
   /**

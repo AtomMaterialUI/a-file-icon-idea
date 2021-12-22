@@ -31,9 +31,12 @@ import com.mallowigi.icons.associations.Associations
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.providers.DefaultFileIconProvider
 import com.mallowigi.icons.providers.DefaultFolderIconProvider
-import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 
+/**
+ * Service for managing bundled [Associations]
+ *
+ */
 class BundledAssociations {
   /**
    * All loaded file [Associations]
@@ -79,10 +82,10 @@ class BundledAssociations {
   }
 
   /**
-   * Insert a new default [Association]
+   * Insert a new default [RegexAssociation]
    *
    * @param name assoc name
-   * @param assoc the [Association]
+   * @param assoc the [RegexAssociation]
    * @param iconType the [IconType]
    */
   fun insert(name: String, assoc: RegexAssociation, iconType: IconType) {
@@ -97,36 +100,31 @@ class BundledAssociations {
   /**
    * Checks if an [Association] is already registered in the defaults
    *
-   * @param name
+   * @param name assoc name
+   * @param iconType the [IconType]
    */
   fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
 
   /**
-   * Get a default [Association] by name
+   * Get a default [Association] by name and [IconType]
    *
-   * @param name
+   * @param name the name
+   * @param iconType the [IconType]
    */
   fun getDefault(name: String, iconType: IconType): RegexAssociation? = getMap(iconType)[name]
 
   /**
-   * Get the list of a association map
+   * Get the list of [RegexAssociation]s
    *
    * @param iconType the [IconType]
    * @return the list
    */
   fun getList(iconType: IconType): List<RegexAssociation> = getMap(iconType).values.toList()
 
-  /**
-   * Look for [Association]
-   *
-   * @param file a file's [FileInfo]
-   * @return matching [Association] if found
-   */
-  private fun findInDefault(iconType: IconType, file: FileInfo): Association? = getList(iconType)
-    .filter { association: Association -> association.enabled && association.matches(file) }
-    .maxByOrNull { it.priority }
-
   companion object {
+    /**
+     * Service instance
+     */
     val instance: BundledAssociations
       get() = ApplicationManager.getApplication().getService(BundledAssociations::class.java)
   }

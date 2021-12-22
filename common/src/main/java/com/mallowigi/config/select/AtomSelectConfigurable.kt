@@ -39,9 +39,15 @@ class AtomSelectConfigurable : ConfigurableBase<AtomSelectForm?, AtomSelectConfi
   override val config: AtomSelectConfig
     get() = AtomSelectConfig.instance
 
+  /**
+   * Configurable display name
+   */
   @Nls
   override fun getDisplayName(): String = AtomSettingsBundle.message("AtomSelectForm.title")
 
+  /**
+   * Configurable ID
+   */
   override fun getId(): String = ID
 
   override fun createForm(): AtomSelectForm = AtomSelectForm()
@@ -51,15 +57,18 @@ class AtomSelectConfigurable : ConfigurableBase<AtomSelectForm?, AtomSelectConfi
   }
 
   override fun doApply(form: AtomSelectForm?, config: AtomSelectConfig?) {
-    config?.applySettings(form!!)
+    config?.applySettings(form ?: return)
   }
 
   override fun checkModified(form: AtomSelectForm?, config: AtomSelectConfig?): Boolean =
     checkFormModified(form!!, config)
 
   companion object {
+    /**
+     * Configurable ID
+     */
     @NonNls
-    const val ID = "com.mallowigi.config.selections"
+    const val ID: String = "com.mallowigi.config.selections"
 
     private fun checkFormModified(form: AtomSelectForm, config: AtomSelectConfig?): Boolean =
       Objects.requireNonNull(form)!!.isModified(config)

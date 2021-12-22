@@ -34,6 +34,9 @@ import com.mallowigi.config.AtomSettingsBundle.message
  * Provider for Searchable options
  */
 class AtomOptionContributor : SearchableOptionContributor() {
+  /**
+   * Add options to the search everything
+   */
   override fun processOptions(processor: SearchableOptionProcessor) {
     val configurable: Configurable = AtomConfigurable()
     val displayName = configurable.displayName

@@ -42,6 +42,9 @@ fun interface AtomConfigNotifier {
   fun configChanged(atomFileIconsConfig: AtomFileIconsConfig?)
 
   companion object {
+    /**
+     * Topic for [AtomConfigNotifier]
+     */
     @Topic.AppLevel
     @JvmField
     val TOPIC: Topic<AtomConfigNotifier> = Topic.create("Atom Material Icons save", AtomConfigNotifier::class.java)

@@ -41,8 +41,14 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
   override val config: AtomFileIconsConfig
     get() = AtomFileIconsConfig.instance
 
+  /**
+   * Display name
+   */
   override fun getDisplayName(): String = message("settings.title")
 
+  /**
+   * Configurable ID
+   */
   override fun getId(): String = ID
 
   override fun createForm(): SettingsForm = SettingsForm()
@@ -52,13 +58,16 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
   }
 
   override fun doApply(form: SettingsForm?, config: AtomFileIconsConfig?) {
-    config!!.applySettings(form!!)
+    (config ?: return).applySettings(form ?: return)
   }
 
   override fun checkModified(form: SettingsForm?, config: AtomFileIconsConfig?): Boolean =
     checkFormModified(form, config!!)
 
   companion object {
+    /**
+     * Configurable ID
+     */
     @NonNls
     const val ID: String = "AtomFileIconsConfig"
 

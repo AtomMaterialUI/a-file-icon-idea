@@ -29,6 +29,7 @@ import com.intellij.ide.ui.OptionsSearchTopHitProvider.ApplicationLevelProvider
 import com.intellij.ide.ui.PublicMethodBasedOptionDescription
 import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
+import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.util.text.StringUtil
 import com.mallowigi.config.AtomSettingsBundle.message
 import org.jetbrains.annotations.NonNls
@@ -38,10 +39,17 @@ import java.util.function.Supplier
 /**
  * Provide commands for Search Everything Top Hit commands
  */
+@Suppress("DialogTitleCapitalization")
 class AtomConfigTopHitProvider : ApplicationLevelProvider {
+  /**
+   * ID
+   */
   @NonNls
   override fun getId(): String = "atomconfig"
 
+  /**
+   * Option list
+   */
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS
 
   companion object {
@@ -65,9 +73,16 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
       )
     )
 
+    @Suppress("UnstableApiUsage")
+    @NlsContexts.Label
     private fun getText(property: String): String = StringUtil.stripHtml(message(property), false)
 
-    private fun option(@NonNls option: String, getter: String, setter: String): BooleanOptionDescription {
+    @Suppress("UnstableApiUsage")
+    private fun option(
+      @NlsContexts.Label @NonNls option: String,
+      getter: String,
+      setter: String,
+    ): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(message("option.prefix") + option,
                                                          AtomConfigurable.ID,
                                                          getter,
