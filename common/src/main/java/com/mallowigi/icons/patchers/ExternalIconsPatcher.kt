@@ -45,11 +45,11 @@ open class ExternalIconsPatcher : AbstractIconPatcher() {
   /**
    * Get path to append
    */
-  public override fun getPathToAppend(): String = append
+  public override fun getPathToAppend(): String = append!!
 
   /**
    * Get path to remove
    *
    */
-  public override fun getPathToRemove(): String = remove
+  public override fun getPathToRemove(): String = remove!!
 }
