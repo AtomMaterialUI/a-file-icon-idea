@@ -34,15 +34,16 @@ import java.io.Serializable
 /**
  * Represents an Association
  *
- * @property iconType the type of icon (file/folder)
- * @property name the name of the association
- * @property icon the icon
  * @property enabled whether the association is used
+ * @property touched whether the association is touched by the user
+ * @property iconType the [IconType] of icon (file/folder)
+ * @property name the name of the association
+ * @property icon the icon path
  * @property priority association priority. Lowest priorities are used last.
- * @property color icon color for file icons
- * @property iconColor icon color for folder icons
- * @property folderColor folder color for folder icons
+ * @property matcher  How the association will be matched against (regex, type)
+ * @property isEmpty whether the association has empty fields
  */
+@Suppress("OutdatedDocumentation")
 abstract class Association internal constructor() : Serializable {
   @field:Property
   var enabled: Boolean = true
@@ -67,14 +68,8 @@ abstract class Association internal constructor() : Serializable {
   @XStreamAsAttribute
   var priority: Int = 100
 
-  /**
-   * How the association will be matched against (regex, type)
-   */
   abstract var matcher: String
 
-  /**
-   * Verifies that the association is not empty
-   */
   open val isEmpty: Boolean
     get() = name.isEmpty() || icon.isEmpty()
 

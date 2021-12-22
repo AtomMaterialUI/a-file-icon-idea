@@ -32,11 +32,20 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Hollow folders action
  */
 class HollowFoldersAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   *
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isUseHollowFolders
 
+  /**
+   * Upon select, toggle hollow icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleUseHollowFolders()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
   companion object {

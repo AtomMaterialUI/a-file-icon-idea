@@ -34,6 +34,9 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup
  * Overrides default action group to have icons on menus
  */
 class ActionGroup : DefaultActionGroup() {
+  /**
+   * Update menu
+   */
   override fun update(event: AnActionEvent) {
     val p = event.presentation
     val hasProject = event.getData(CommonDataKeys.PROJECT) != null

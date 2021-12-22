@@ -32,11 +32,20 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Enable file icons action
  */
 class EnableFileIconsAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   *
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledIcons
 
+  /**
+   * Upon select, toggle file icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleEnabledIcons()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
   companion object {

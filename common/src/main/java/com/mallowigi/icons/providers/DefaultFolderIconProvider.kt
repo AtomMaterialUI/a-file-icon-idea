@@ -48,38 +48,13 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiDirectory
 
-  override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
+  override fun isNotApplicable(): Boolean = !AtomFileIconsConfig.instance.isEnabledDirectories
 
   override fun getSource(): SelectedAssociations = AtomSelectConfig.instance.selectedFolderAssociations
 
   override fun getType(): IconType = IconType.FOLDER
 
   override fun isDefault(): Boolean = true
-
-//  override fun getIcon(element: PsiElement, flags: Int): Icon? {
-//    var icon = super.getIcon(element, flags) as? DirIcon
-//
-//    // Hollow folders support
-//    if (!AtomFileIconsConfig.instance.isUseHollowFolders) {
-//      return icon?.closedIcon
-//    }
-//
-//    val virtualFile = PsiUtilCore.getVirtualFile(element)
-//
-//    if (icon != null && virtualFile != null) {
-//      val has = isFolderContainingOpenFiles(element, virtualFile)
-//      return if (has) icon.openedIcon else icon.closedIcon
-//    }
-//    return null
-//  }
-
-//  private fun isFolderContainingOpenFiles(
-//    element: PsiElement,
-//    virtualFile: VirtualFile,
-//  ): Boolean {
-//    val openFiles = FileEditorManager.getInstance(element.project).openFiles
-//    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
-//  }
 
   companion object {
     val associations: DefaultAssociations =

@@ -36,12 +36,14 @@ import java.util.regex.PatternSyntaxException
 /**
  * A Regex [Association]
  *
- * @property pattern the regex pattern
  * @constructor
  *
  */
 @XStreamAlias("regex")
 class RegexAssociation internal constructor() : Association() {
+  /**
+   * The regex pattern
+   */
   @field:Property
   @XStreamAsAttribute
   var pattern: String = ""

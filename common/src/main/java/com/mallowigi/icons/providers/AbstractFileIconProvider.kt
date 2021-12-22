@@ -27,6 +27,7 @@
 package com.mallowigi.icons.providers
 
 import com.intellij.ide.IconProvider
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vcs.FilePath
 import com.intellij.openapi.vcs.changes.FilePathIconProvider
@@ -46,19 +47,35 @@ import javax.swing.Icon
  * @constructor Create empty Abstract file icon provider
  */
 abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
+  /**
+   * Get the icon for the given psiElement
+   * @param element The psiElement to get the icon for
+   * @param flags The flags (unused)
+   */
   override fun getIcon(element: PsiElement, flags: Int): Icon? {
-    if (isNotAppliable()) return null
+    if (isNotApplicable()) return null
 
     if (isOfType(element)) return findIcon(element)
     return null
   }
 
+  /**
+   * Get the icon for the given filePath, or null if no association foun
+   * @param filePath the file path
+   * @param project The current project
+   */
   override fun getIcon(filePath: FilePath, project: Project?): Icon? {
-    if (isNotAppliable()) return null
+    if (isNotApplicable()) return null
 
     return findIcon(filePath)
   }
 
+  /**
+   * Find icon for a psiElement
+   *
+   * @param element the psi element
+   * @return icon if found
+   */
   private fun findIcon(element: PsiElement): Icon? {
     var icon: Icon? = null
     val virtualFile = PsiUtilCore.getVirtualFile(element)
@@ -71,6 +88,12 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
     return icon
   }
 
+  /**
+   * Find icon for a given path
+   *
+   * @param filePath the filePath
+   * @return icon if found
+   */
   private fun findIcon(filePath: FilePath): Icon? {
     var icon: Icon? = null
     val virtualFile = filePath.virtualFile
@@ -92,10 +115,10 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
   private fun loadIcon(association: Association?): Icon? {
     var icon: Icon? = null
     try {
-      val iconPath = association!!.icon
+      val iconPath = (association ?: return null).icon
       icon = getIcon(iconPath)
     } catch (e: RuntimeException) {
-      e.printStackTrace()
+      thisLogger().error(e)
     }
     return icon
   }
@@ -103,46 +126,45 @@ abstract class AbstractFileIconProvider : IconProvider(), FilePathIconProvider {
   private fun findAssociation(file: FileInfo): Association? = getSource().findAssociation(file)
 
   /**
-   * Is of type
+   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider
    *
-   * @param element
-   * @return
+   * @param element the psi element
+   * @return true if element is of type defined by this provider
    */
   abstract fun isOfType(element: PsiElement): Boolean
 
   /**
-   * Is not appliable
+   * Determine whether this provider is applicable
    *
-   * @return
+   * @return true if not applicable
    */
-  abstract fun isNotAppliable(): Boolean
+  abstract fun isNotApplicable(): Boolean
 
   /**
-   * Get source
+   * Get the source of associations
    *
-   * @return
+   * @return the [Associations] source
    */
   abstract fun getSource(): Associations
 
   /**
-   * Get icon
+   * Get icon of an icon path
    *
-   * @param iconPath
-   * @return
+   * @param iconPath the icon path to check
+   * @return icon if there is an [Association] for this path
    */
   abstract fun getIcon(iconPath: String): Icon?
 
   /**
-   * Get type
+   * Return the [IconType] of this provider
    *
-   * @return
    */
   abstract fun getType(): IconType
 
   /**
-   * Is default
+   * Whether this provider is for default associations
    *
-   * @return
+   * @return true if default assoc provider
    */
   abstract fun isDefault(): Boolean
 }

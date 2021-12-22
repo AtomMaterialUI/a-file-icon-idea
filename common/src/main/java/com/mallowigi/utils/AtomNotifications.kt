@@ -33,6 +33,7 @@ import com.intellij.notification.Notifications
 import com.intellij.notification.impl.NotificationsManagerImpl
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
+import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
@@ -46,6 +47,9 @@ import java.util.Objects
  * @constructor Create empty Atom notifications
  */
 object AtomNotifications {
+  /**
+   * Notification channel
+   */
   const val CHANNEL: String = "Atom Material Notifications"
 
   /**
@@ -53,6 +57,7 @@ object AtomNotifications {
    *
    * @param project  the project to display in
    */
+  @Suppress("DialogTitleCapitalization")
   @JvmStatic
   fun showUpdate(project: Project) {
     val notification = createNotification(
@@ -69,8 +74,9 @@ object AtomNotifications {
    * @param project
    * @param content
    */
+  @Suppress("UnstableApiUsage")
   @JvmStatic
-  fun showSimple(project: Project, content: String) {
+  fun showSimple(project: Project, @NlsContexts.NotificationContent content: String) {
     val notification = createNotification("", content, NotificationType.INFORMATION)
     Notifications.Bus.notify(notification, project)
   }
@@ -84,11 +90,12 @@ object AtomNotifications {
    * @param type     notification type
    * @param listener optional listener
    */
+  @Suppress("UnstableApiUsage")
   @JvmStatic
   fun showWithListener(
     project: Project,
-    title: String,
-    content: String,
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
     type: NotificationType,
     listener: NotificationListener?,
   ) {
@@ -104,7 +111,12 @@ object AtomNotifications {
    * @param type     the type (sticky...)
    * @return new notification to be displayed
    */
-  private fun createNotification(title: String, content: String, type: NotificationType): Notification {
+  @Suppress("UnstableApiUsage")
+  private fun createNotification(
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
+    type: NotificationType,
+  ): Notification {
     val group = NotificationGroupManager.getInstance().getNotificationGroup(CHANNEL)
     return group.createNotification(title, content, type)
   }
@@ -118,9 +130,10 @@ object AtomNotifications {
    * @param listener listener
    * @return new notification to be displayed
    */
+  @Suppress("UnstableApiUsage")
   private fun createNotification(
-    title: String,
-    content: String,
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
     type: NotificationType,
     listener: NotificationListener?,
   ): Notification {

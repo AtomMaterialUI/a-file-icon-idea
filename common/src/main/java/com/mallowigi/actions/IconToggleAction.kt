@@ -37,7 +37,6 @@ import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.utils.AtomNotifications.showSimple
 import java.awt.Component
 import java.awt.Graphics
-import java.text.MessageFormat
 import javax.swing.Icon
 import javax.swing.UIManager
 
@@ -48,6 +47,10 @@ import javax.swing.UIManager
 abstract class IconToggleAction : ToggleAction() {
   private val iconSize: Int = JBUI.scale(18)
 
+  /**
+   * Add selected layer instead of selected icon
+   *
+   */
   @Suppress("UseIfInsteadOfWhen")
   override fun update(e: AnActionEvent) {
     val selected = isSelected(e)
@@ -64,10 +67,15 @@ abstract class IconToggleAction : ToggleAction() {
     }
   }
 
+  /**
+   * Show a notification upon toggling an action
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     val notificationMessage = e.presentation.text
     val restText = message(if (state) "action.toggle.enabled" else "action.toggle.disabled")
-    showSimple(e.project!!, MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText))
+    showSimple(e.project ?: return,
+               message("action.toggle.notification.pattern", notificationMessage, restText))
   }
 
   private fun regularIcon(icon: Icon): Icon = IconUtil.toSize(icon, iconSize, iconSize)

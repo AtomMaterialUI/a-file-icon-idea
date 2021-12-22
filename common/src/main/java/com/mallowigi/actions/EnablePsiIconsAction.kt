@@ -32,13 +32,26 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Enable psi icons action
  */
 class EnablePsiIconsAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   *
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledPsiIcons
 
+  /**
+   * Upon select, toggle psi icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.togglePsiIcons()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
+  /**
+   * Disable PSI Icons if UI icons is disabled
+   *
+   */
   override fun update(e: AnActionEvent) {
     super.update(e)
     if (!CONFIG.isEnabledUIIcons) {

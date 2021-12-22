@@ -35,17 +35,26 @@ import com.mallowigi.tree.arrows.ArrowsStyles
  * Abstract base class for arrows action
  */
 abstract class MTAbstractArrowsAction : IconToggleAction() {
+  /**
+   * The [ArrowsStyles]
+   */
+  protected abstract val arrowsStyle: ArrowsStyles
 
+  /**
+   * Whether this menu is selected
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.arrowsStyle === arrowsStyle
 
+  /**
+   * On selection, update all toolbars
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.arrowsStyle = this.arrowsStyle
     ActionToolbarImpl.updateAllToolbarsImmediately()
 
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
-
-  protected abstract val arrowsStyle: ArrowsStyles
 
   companion object {
     private val CONFIG = instance

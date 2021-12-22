@@ -89,6 +89,7 @@
     <!--suppress PluginXmlValidity -->
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
 
+    <notificationGroup displayType="BALLOON" id="Atom Material Notifications" />
 
   </extensions>
 

@@ -32,11 +32,19 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Enable directory icons action
  */
 class EnableDirectoryIconsAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledDirectories
 
+  /**
+   * Upon select, toggle directory icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleDirectoriesIcons()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
   companion object {

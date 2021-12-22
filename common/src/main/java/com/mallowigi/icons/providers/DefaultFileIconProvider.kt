@@ -52,7 +52,7 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
   override fun getIcon(iconPath: String): Icon =
     AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)
 
-  override fun isNotAppliable(): Boolean = !AtomFileIconsConfig.instance.isEnabledIcons
+  override fun isNotApplicable(): Boolean = !AtomFileIconsConfig.instance.isEnabledIcons
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiFile
 

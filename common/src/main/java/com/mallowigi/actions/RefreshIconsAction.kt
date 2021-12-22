@@ -35,6 +35,10 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  *
  */
 class RefreshIconsAction : AnAction() {
+  /**
+   * Refresh icons
+   *
+   */
   override fun actionPerformed(e: AnActionEvent): Unit = CONFIG.fireChanged()
 
   companion object {

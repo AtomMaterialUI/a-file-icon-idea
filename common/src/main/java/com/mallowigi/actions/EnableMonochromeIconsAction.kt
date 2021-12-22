@@ -32,11 +32,20 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Enable monochrome icons action
  */
 class EnableMonochromeIconsAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   *
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isMonochromeIcons
 
+  /**
+   * Upon select, toggle monochrome icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleMonochromeIcons()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
   companion object {

@@ -29,10 +29,15 @@ package com.mallowigi.icons.filters;
 import java.awt.*;
 import java.awt.image.RGBImageFilter;
 
+/**
+ * Applies a filter to the IDE to colorize the icons with a color
+ */
+@SuppressWarnings("AbstractClassWithOnlyOneDirectInheritor")
 public abstract class ColorizeFilter extends RGBImageFilter {
 
   abstract Color getColor();
 
+  @SuppressWarnings("OverlyComplexBooleanExpression")
   @Override
   public final int filterRGB(final int x, final int y, final int rgb) {
     final float[] myBase = Color.RGBtoHSB(getColor().getRed(), getColor().getGreen(), getColor().getBlue(), null);

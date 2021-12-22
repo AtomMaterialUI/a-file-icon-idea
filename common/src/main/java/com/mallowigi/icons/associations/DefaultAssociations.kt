@@ -36,8 +36,13 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute
  *
  * @constructor Create empty [DefaultAssociations]
  */
+@Suppress("HardCodedStringLiteral")
 @XStreamAlias("associations")
 class DefaultAssociations : Associations() {
+
+  /**
+   * List of [Association]s
+   */
   @Property
   @XCollection
   @XStreamAsAttribute

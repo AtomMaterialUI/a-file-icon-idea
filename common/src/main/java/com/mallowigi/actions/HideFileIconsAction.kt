@@ -32,11 +32,20 @@ import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
  * Hide file icons action
  */
 class HideFileIconsAction : IconToggleAction() {
+  /**
+   * Whether the menu item is selected
+   *
+   */
   override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isHideFileIcons
 
+  /**
+   * Upon select, toggle hidden file icons
+   *
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleHideFileIcons()
     CONFIG.fireChanged()
+    super.setSelected(e, state)
   }
 
   companion object {

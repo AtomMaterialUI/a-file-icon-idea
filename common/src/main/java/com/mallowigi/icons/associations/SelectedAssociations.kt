@@ -37,10 +37,12 @@ import com.mallowigi.models.IconType
  */
 @Suppress("MemberNameEqualsClassName")
 class SelectedAssociations(
+  /**
+   * The [IconType] of the [SelectedAssociations]
+   */
   @Property val iconType: IconType = IconType.FILE,
   associations: List<RegexAssociation> = listOf(),
-) :
-  Associations() {
+) : Associations() {
 
   /**
    * All associations, mutable (from the form)
@@ -61,7 +63,7 @@ class SelectedAssociations(
   }
 
   /**
-   * Reinitializes the [mutableAssociations] from the [defaultAssociations]
+   * Reinitializes the [mutableAssociations]
    *
    */
   fun initMutableListFromDefaults() {

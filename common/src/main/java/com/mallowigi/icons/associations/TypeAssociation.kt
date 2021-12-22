@@ -33,12 +33,14 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 /**
  * Type association
  *
- * @property type the type representation (Images, Database...)
  * @constructor
  *
  */
 @XStreamAlias("type")
 class TypeAssociation internal constructor() : Association() {
+  /**
+   * The type representation (Images, Database…)
+   */
   @field:Property
   @XStreamAsAttribute
   var type: String = ""
