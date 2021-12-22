@@ -98,4 +98,10 @@ abstract class IconToggleAction : ToggleAction() {
 
     override fun getIconHeight(): Int = icon?.iconHeight ?: iconSize
   }
+
+  /**
+   * Dumb
+   */
+  override fun isDumbAware(): Boolean = true
+
 }

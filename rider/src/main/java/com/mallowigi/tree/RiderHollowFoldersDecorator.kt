@@ -26,6 +26,7 @@
 package com.mallowigi.tree
 
 import com.intellij.ide.projectView.PresentationData
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
@@ -37,6 +38,7 @@ import com.jetbrains.rider.projectView.workspace.isDirectory
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
+import icons.AtomIcons
 import java.util.Objects
 import javax.swing.Icon
 
@@ -70,12 +72,10 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
           data.setIcon(DirIcon(openedIcon))
         }
         data.getIcon(false) == PlatformIcons.PACKAGE_ICON -> data.setIcon(PlatformIcons.PACKAGE_ICON)
-        else                                              -> data.setIcon(
-          HollowFoldersDecorator.directoryIcon
-        )
+        else                                              -> data.setIcon(AtomIcons.Nodes2.FolderOpen)
       }
     } catch (e: Exception) {
-      HollowFoldersDecorator.LOG.warn(e.message)
+      thisLogger().warn(e.message)
     }
   }
 

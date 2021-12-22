@@ -42,4 +42,9 @@ class ActionGroup : DefaultActionGroup() {
     val hasProject = event.getData(CommonDataKeys.PROJECT) != null
     p.isVisible = hasProject
   }
+
+  /**
+   * Do not wait
+   */
+  override fun isDumbAware(): Boolean = true
 }
