@@ -26,9 +26,7 @@
 
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
-    <!--    <openapi.vcs.changes.ui.filePathIconProvider-->
-    <!--      implementation="com.mallowigi.icons.providers.CustomFileIconProvider" />-->
     <openapi.vcs.changes.ui.filePathIconProvider
-      implementation="com.mallowigi.icons.providers.DefaultFileIconProvider" />
+      implementation="com.mallowigi.icons.providers.DefaultVcsFileIconProvider" />
   </extensions>
 </idea-plugin>

@@ -33,7 +33,7 @@
   <idea-version since-build="211" />
 
   <depends>com.intellij.modules.platform</depends>
-  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
+  <!--  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>-->
   <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
   <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
 

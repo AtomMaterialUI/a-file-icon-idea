@@ -26,10 +26,11 @@
 
 package com.mallowigi.icons.providers
 
-import com.intellij.ide.IconProvider
 import com.intellij.openapi.diagnostic.thisLogger
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vcs.FilePath
+import com.intellij.openapi.vcs.changes.FilePathIconProvider
 import com.intellij.psi.PsiElement
-import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
 import com.mallowigi.models.FileInfo
@@ -42,28 +43,28 @@ import javax.swing.Icon
  * Abstract file icon provider
  *
  */
-abstract class AbstractFileIconProvider : IconProvider() {
+abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
+
   /**
-   * Get the icon for the given psiElement
-   * @param element The psiElement to get the icon for
-   * @param flags The flags (unused)
+   * Get the icon for the given filePath, or null if no association foun
+   * @param filePath the file path
+   * @param project The current project
    */
-  override fun getIcon(element: PsiElement, flags: Int): Icon? {
+  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
     if (isNotApplicable()) return null
 
-    if (isOfType(element)) return findIcon(element)
-    return null
+    return findIcon(filePath)
   }
 
   /**
-   * Find icon for a psiElement
+   * Find icon for a given path
    *
-   * @param element the psi element
+   * @param filePath the filePath
    * @return icon if found
    */
-  private fun findIcon(element: PsiElement): Icon? {
+  private fun findIcon(filePath: FilePath): Icon? {
     var icon: Icon? = null
-    val virtualFile = PsiUtilCore.getVirtualFile(element)
+    val virtualFile = filePath.virtualFile
 
     if (virtualFile != null) {
       val file: FileInfo = VirtualFileInfo(virtualFile)
