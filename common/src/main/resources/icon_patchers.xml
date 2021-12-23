@@ -32,7 +32,9 @@
     <iconPatcher name="BuildTools" remove="icons/buildTools" append="/icons/buildTools/" />
     <iconPatcher name="BigData" remove="icons" append="/icons/plugins/bigdata/" />
     <iconPatcher name="CLion" remove="" append="/icons/plugins/clion/" />
+    <iconPatcher name="CLionEmbedded" remove="" append="/icons/plugins/clionEmbedded/" />
     <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="/icons/plugins/coffee/" />
+    <iconPatcher name="Collaboration" remove="icons" append="/icons/plugins/collaboration/" />
     <iconPatcher name="Database" remove="icons" append="/icons/plugins/datagrip/" />
     <iconPatcher name="Datalore" remove="icons/org/jetbrains/plugins/notebooks/jupyter/ui"
                  append="/icons/plugins/datalore/" />
@@ -41,6 +43,7 @@
     <iconPatcher name="DataGrip" remove="" append="/icons/plugins/datagrip/" />
     <iconPatcher name="Docker" remove="icons" append="/icons/plugins/docker/" />
     <iconPatcher name="FeatureTrainer" remove="img" append="/icons/plugins/features/" />
+    <iconPatcher name="Gateway" remove="" append="/icons/plugins/gateway/" />
     <iconPatcher name="Goland" remove="icons" append="/icons/plugins/goland/" />
     <iconPatcher name="Github" remove="org/jetbrains/plugins/github" append="/icons/plugins/github/" />
     <iconPatcher name="Github2" remove="com.intellij.codeReview" append="/icons/plugins/github/" />
@@ -87,6 +90,8 @@
     <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="/icons/mt/checkboxes/" />
 
     <iconPatcher name="Logos" remove="artwork" append="/icons/logos/" />
+    <iconPatcher name="Logos2" remove="" append="/icons/logos/" />
+    <iconPatcher name="Logos3" remove="generated" append="/icons/logos/" />
   </iconPatchers>
   <glyphPatchers>
     <glyphPatcher name="Glyphs" remove="nodes" append="/glyphs/nodes/" />
@@ -128,6 +133,7 @@
     <filePatcher name="Files" remove="fileTypes" append="/files/fileTypes/" />
     <filePatcher name="BigData" remove="icons" append="/files/plugins/bigdata/" />
     <filePatcher name="CLion" remove="" append="/files/plugins/clion/" />
+    <filePatcher name="CLionEmbedded" remove="" append="/files/plugins/clionEmbedded/" />
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="/files/plugins/coffee/" />
     <filePatcher name="Dart" remove="icons" append="/files/plugins/dart/" />
     <filePatcher name="Freemarker" remove="icons" append="/files/plugins/freemarker/" />
