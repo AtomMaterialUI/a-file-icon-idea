@@ -6,6 +6,8 @@
 ### Fixes
 
 - Fix Kotlin PSI Icons not showing on the tabs
+- Fix issue where adding associations would show up at the top of the list while scrolling down
+- Fix issue where disabled associations would be enabled nonetheless
 - Hollow Folders are now working in Rider!
 - Folder Decorators and Custom Folder Icons are now working in Rider!
 
@@ -20,12 +22,15 @@
   - remarkignore
   - rehypeignore
   - boringignore
+  - bazelignore
   - pubignore
   - Fitbit
   - Go-zero
   - Luau
   - Toit
   - Vanilla Extract
+  - Changelog
+  - CodeOwners
 
 ### Other
 

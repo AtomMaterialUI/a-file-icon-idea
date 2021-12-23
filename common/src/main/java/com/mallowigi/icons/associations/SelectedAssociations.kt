@@ -126,7 +126,7 @@ class SelectedAssociations(
    * @return matching association if found
    */
   private fun findInOwn(file: FileInfo): Association? = ownValues()
-    .filter { association: Association -> association.enabled && association.matches(file) }
+    .filter { it.enabled && it.matches(file) }
     .maxByOrNull { it.priority }
 
   /**
@@ -136,7 +136,7 @@ class SelectedAssociations(
    * @return matching association if found
    */
   private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.toList()
-    .filter { association: Association -> association.enabled && association.matches(file) }
+    .filter { it.enabled && it.matches(file) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
   /**
