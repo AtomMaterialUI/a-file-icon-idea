@@ -56,7 +56,7 @@ class DefaultAssociations : Associations() {
    */
   override fun findMatchingAssociation(file: FileInfo): Association? =
     associations
-      .filter { association: Association -> association.matches(file) }
+      .filter { association: Association -> association.enabled && association.matches(file) }
       .maxByOrNull { it.priority }
 
   /**
