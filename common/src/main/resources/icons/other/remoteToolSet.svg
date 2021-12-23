@@ -24,9 +24,8 @@
   -
   -->
 
-
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-
-  <path fill="#FFB74D" d="M3,3H9V7H3V3M15,10H21V14H15V10M15,17H21V21H15V17M13,13H7V18H13V20H7L5,20V9H7V11H13V13Z" />
-  <circle r="12" cx="12" cy="12" tint="true" opacity="0.5"></circle>
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 -1 16 16">
+  <path id="file_type_shell.svg" class="i-color" fill="#AA759F"
+        d="M13.992,2H2a0.961,0.961,0,0,0-1,.916v9.165a0.961,0.961,0,0,0,1,.917h12a0.961,0.961,0,0,0,1-.917V2.912A0.961,0.961,0,0,0,13.992,2ZM3,8.411L5,6.578,3,4.745l1-.916,3,2.75L4,9.327Zm8,0.917h-4V8.411h4V9.327Z"
+        transform="translate(0 0)" />
 </svg>
