@@ -91,7 +91,6 @@
 
     <iconPatcher name="Logos" remove="artwork" append="/icons/logos/" />
     <iconPatcher name="Logos2" remove="" append="/icons/logos/" />
-    <iconPatcher name="Logos3" remove="generated" append="/icons/logos/" />
   </iconPatchers>
   <glyphPatchers>
     <glyphPatcher name="Glyphs" remove="nodes" append="/glyphs/nodes/" />
