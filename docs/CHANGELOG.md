@@ -1,7 +1,7 @@
 ## Changelog
 ----
 
-## 60.0 (6.0.0)
+## 53.0 (5.3.0)
 
 ### Fixes
 
@@ -13,6 +13,13 @@
 
 ### Additions
 
+- Many new UI Icons:
+  - Resharper
+  - Rider
+  - Spring
+  - Gateway
+  - Space
+  - Logos
 - Files:
   - Qodana
   - Safari
@@ -31,14 +38,16 @@
   - Vanilla Extract
   - Changelog
   - CodeOwners
+  - Bundle files in Java and Kotlin
 
 ### Other
 
 - Reorganization of the whole project by modules: `common` and `Rider`
 - Add linters
+- Removed deprecated _Custom File Associations_ settings
 
 
-## 50.2 (5.2.0)
+## 52.0 (5.2.0)
 
 ### Additions
 
@@ -49,7 +58,7 @@
 
 - Fix associations not being persisted
 
-## 50.1 (5.1.0)
+## 51.0 (5.1.0)
 
 ### Additions
 
