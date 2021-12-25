@@ -33,7 +33,7 @@
   <idea-version since-build="211" />
 
   <depends>com.intellij.modules.platform</depends>
-  <!--  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>-->
+  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
   <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
   <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
 
@@ -62,8 +62,8 @@
     <!--suppress PluginXmlValidity -->
     <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
     <!--suppress PluginXmlValidity -->
-    <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
-                  id="HiddenFolderIconProvider" />
+    <!--    <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"-->
+    <!--                  id="HiddenFolderIconProvider" />-->
 
     <!--suppress PluginXmlValidity -->
     <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
@@ -74,6 +74,7 @@
                   order="first, after HiddenFolderIconProvider"
                   id="DefaultFolderIconProvider" />
 
+    <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator" />
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />
     <!--suppress PluginXmlValidity -->
     <projectViewNodeDecorator implementation="com.mallowigi.tree.PythonDecorator" order="first" />
