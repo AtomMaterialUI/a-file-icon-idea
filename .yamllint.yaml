@@ -4,7 +4,7 @@ rules:
   braces:
     forbid: non-empty
   brackets:
-    forbid: non-empty
+    forbid: false
   comments:
     min-spaces-from-content: 1
   document-end: disable
