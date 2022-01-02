@@ -38,10 +38,10 @@ import com.mallowigi.models.VirtualFileInfo
 import icons.AtomIcons
 
 /**
- * New custom folders decorator
+ * New custom files decorator
  *
  */
-class DefaultFoldersDecorator : ProjectViewNodeDecorator {
+class DefaultFilesDecorator : ProjectViewNodeDecorator {
 
   /**
    * Do nun'
@@ -58,11 +58,11 @@ class DefaultFoldersDecorator : ProjectViewNodeDecorator {
 
     if (project != null && !project.isDisposed) {
       when {
-        file == null                                       -> return
-        !file.isDirectory                                  -> return
-        AtomFileIconsConfig.instance.isHideFolderIcons     -> hideIcon(data)
-        !AtomFileIconsConfig.instance.isEnabledDirectories -> return
-        else                                               -> matchAssociation(file, data)
+        file == null                                 -> return
+        file.isDirectory                             -> return
+        AtomFileIconsConfig.instance.isHideFileIcons -> hideIcon(data)
+        !AtomFileIconsConfig.instance.isEnabledIcons -> return
+        else                                         -> matchAssociation(file, data)
       }
 
     }
@@ -70,12 +70,12 @@ class DefaultFoldersDecorator : ProjectViewNodeDecorator {
 
   private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFolderAssociations
+    val associations = AtomSelectConfig.instance.selectedFileAssociations
 
     val matchingAssociation = associations.findMatchingAssociation(fileInfo)
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
-      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
+      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)
       data.setIcon(icon)
     }
   }
