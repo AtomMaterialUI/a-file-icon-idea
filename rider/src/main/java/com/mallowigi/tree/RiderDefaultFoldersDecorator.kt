@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.mallowigi.tree
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.util.ui.EmptyIcon
 import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCustomization
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
 import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
@@ -59,6 +60,7 @@ class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomiza
       when {
         virtualFile == null                                -> return
         !entity.isDirectory()                              -> return
+        AtomFileIconsConfig.instance.isHideFolderIcons     -> hideIcon(presentation)
         !AtomFileIconsConfig.instance.isEnabledDirectories -> return
         else                                               -> matchAssociation(virtualFile, presentation)
       }
@@ -77,5 +79,7 @@ class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomiza
       data.setIcon(icon)
     }
   }
+
+  private fun hideIcon(data: PresentationData) = data.setIcon(EmptyIcon.ICON_0)
 
 }
