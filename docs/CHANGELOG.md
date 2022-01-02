@@ -1,6 +1,21 @@
 ## Changelog
 ----
 
+## 54.0 (5.4.0)
+
+### Features
+
+- Refactor the project to use the `ProjectViewDecorators` instead of `FileIconProvider`, thus fixing the problems with plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.
+
+### Additions:
+
+- File Icons
+  - Playwright
+  - Gymfile, Matchfile, Pluginfile
+  - Koka
+- Folder Icons
+  - fastlane
+
 ## 53.0 (5.3.0)
 
 ### Fixes
