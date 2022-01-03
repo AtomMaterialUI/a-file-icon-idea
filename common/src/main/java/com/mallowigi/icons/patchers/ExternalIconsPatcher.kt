@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,11 +49,17 @@ open class ExternalIconsPatcher : AbstractIconPatcher() {
   /**
    * Get path to append
    */
-  public override fun getPathToAppend(): String = append
+//  override fun getPathToAppend(): String = append
 
   /**
    * Get path to remove
    *
    */
-  public override fun getPathToRemove(): String = remove
+//  override fun getPathToRemove(): String = remove
+
+  override val pathToAppend: String
+    get() = append
+
+  override val pathToRemove: String
+    get() = remove
 }

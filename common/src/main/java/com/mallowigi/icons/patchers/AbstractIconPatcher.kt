@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,126 +23,139 @@
  *
  *
  */
+package com.mallowigi.icons.patchers
 
-package com.mallowigi.icons.patchers;
+import com.intellij.openapi.util.IconPathPatcher
+import com.mallowigi.config.AtomFileIconsConfig
+import org.jetbrains.annotations.NonNls
+import java.net.URL
 
-import com.intellij.openapi.util.IconPathPatcher;
-import com.mallowigi.config.AtomFileIconsConfig;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+/**
+ * Base class for [IconPathPatcher]s
+ */
+abstract class AbstractIconPatcher : IconPathPatcher() {
+  /**
+   * Whether the patcher should be enabled or not
+   */
+  var enabled: Boolean = false
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+  /**
+   * Singleton instance
+   */
+  var instance: AtomFileIconsConfig? = AtomFileIconsConfig.instance
+    get() {
+      if (field == null) field = AtomFileIconsConfig.instance
+      return field
+    }
+    private set
 
-public abstract class AbstractIconPatcher extends IconPathPatcher {
-  private static final Map<String, String> CACHE = new HashMap<>(100);
-  private static final Map<String, ClassLoader> CL_CACHE = new HashMap<>(100);
+  /**
+   * The string to append to the final path
+   */
+  protected abstract val pathToAppend: @NonNls String
 
-  private static final Pattern PNG = Pattern.compile(".png", Pattern.LITERAL);
-  private static final Pattern SVG = Pattern.compile(".svg", Pattern.LITERAL);
-  private static final Pattern GIF = Pattern.compile(".gif", Pattern.LITERAL);
-  public boolean enabled;
-  private AtomFileIconsConfig instance = AtomFileIconsConfig.getInstance();
+  /**
+   *  The string to remove from the original path
+   */
+  protected abstract val pathToRemove: @NonNls String
 
-  public static void clearCache() {
-    CACHE.clear();
+  /**
+   * Patch the icon path if there is an icon available
+   *
+   * @param path the path to patch
+   * @param classLoader the classloader of the icon
+   * @return the patched path to the plugin icon, or the original path if the icon patcher is disabled
+   */
+  override fun patchPath(path: String, classLoader: ClassLoader?): String? {
+    if (instance == null) return null
+
+    val patchedPath = getPatchedPath(path)
+    return if (!enabled) path else patchedPath
   }
 
   /**
-   * @return The string to append to the final path
+   * Get the plugin context class loader if an icon needs to be patched
+   *
+   * @param path the icon path
+   * @param originalClassLoader the original class loader
+   * @return the plugin class loader if the icon needs to be patched, or the original class loader
    */
-  @NonNls
-  @NotNull
-  protected abstract String getPathToAppend();
+  override fun getContextClassLoader(path: String, originalClassLoader: ClassLoader?): ClassLoader? {
+    val classLoader = javaClass.classLoader
+    if (!CL_CACHE.containsKey(path)) CL_CACHE[path] = originalClassLoader
+
+    val cachedClassLoader = CL_CACHE[path]
+    return if (enabled) classLoader else cachedClassLoader
+  }
 
   /**
-   * @return The string to remove from the original path
+   * Returns the patched path by taking the original path and appending the path to append, and converting to svg
+   *
+   * @param path
+   * @return
    */
-  @NonNls
-  @NotNull
-  protected abstract String getPathToRemove();
-
-  @Nullable
-  @Override
-  public final String patchPath(final @NotNull String path, final ClassLoader classLoader) {
-    if (getInstance() == null) {
-      return null;
-    }
-    final String patchedPath = getPatchedPath(path);
-    if (!enabled) {
-      return path;
-    }
-    return patchedPath;
-  }
-
-  @Nullable
-  @Override
-  public final ClassLoader getContextClassLoader(final @NotNull String path, final ClassLoader originalClassLoader) {
-    final ClassLoader classLoader = getClass().getClassLoader();
-    if (!CL_CACHE.containsKey(path)) {
-      CL_CACHE.put(path, originalClassLoader);
-    }
-    final ClassLoader cachedClassLoader = CL_CACHE.get(path);
-    return enabled ? classLoader : cachedClassLoader;
-  }
-
-  public final AtomFileIconsConfig getInstance() {
-    if (instance == null) {
-      instance = AtomFileIconsConfig.getInstance();
-    }
-    return instance;
-  }
-
-  @Nullable
-  private String getPatchedPath(final String path) {
-    if (!enabled) {
-      return null;
-    }
-    if (CACHE.containsKey(path)) {
-      return CACHE.get(path);
-    }
+  @Suppress("kotlin:S1871", "HardCodedStringLiteral")
+  private fun getPatchedPath(path: String): String? = when {
+    !enabled                -> null
+    CACHE.containsKey(path) -> CACHE[path]
     // First try the svg version of the resource
-    if (getSVG(path) != null) {
-      CACHE.put(path, getReplacement(path));
-      return CACHE.get(path);
+    getSVG(path) != null    -> {
+      CACHE[path] = getReplacement(path)
+      CACHE[path]
     }
     // Then try the png version
-    if (getPNG(path) != null) {
-      CACHE.put(path, getReplacement(path));
-      return CACHE.get(path);
+    getPNG(path) != null    -> {
+      CACHE[path] = getReplacement(path)
+      CACHE[path]
     }
-    return null;
+    else                    -> null
   }
 
   /**
    * Check whether a svg version of a resource exists
    */
-  private URL getSVG(final String path) {
-    final String svgFile = PNG.matcher(getReplacement(path)).replaceAll(Matcher.quoteReplacement(".svg")); // NON-NLS
-    return getClass().getResource(svgFile);
+  private fun getSVG(path: String): URL? {
+    val svgFile = PNG.replace(getReplacement(path), ".svg") // NON-NLS
+    return javaClass.getResource(svgFile)
   }
 
   /**
    * Check whether a png version of a resource exists
    */
-  private URL getPNG(final String path) {
-    final String replacement = SVG.matcher(getReplacement(path)).replaceAll(Matcher.quoteReplacement(".png")); // NON-NLS
-    return getClass().getResource(replacement);
+  private fun getPNG(path: String): URL? {
+    val replacement = SVG.replace(getReplacement(path), ".png") // NON-NLS
+    return javaClass.getResource(replacement)
   }
 
-  @NonNls
-  @NotNull
-  private String getReplacement(final String path) {
-    final String finalPath;
-    if (path.contains(".gif")) { // NON-NLS
-      finalPath = GIF.matcher(path).replaceAll(Matcher.quoteReplacement(".svg")); // NON-NLS
-    } else {
-      finalPath = path.replace(".png", ".svg");
+  /**
+   * Replace the path by using the pathToAppend and pathToRemove
+   *
+   * @param path
+   * @return
+   */
+  private fun getReplacement(path: String): String {
+    val finalPath: String = when {
+      path.contains(".gif") -> GIF.replace(path, ".svg")
+      else                  -> path.replace(".png", ".svg")
     }
-    return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
+    return pathToAppend + finalPath.replace(pathToRemove, "")
+  }
+
+  companion object {
+    private val CACHE: MutableMap<String, String> = HashMap(100)
+    private val CL_CACHE: MutableMap<String, ClassLoader?> = HashMap(100)
+    private val PNG = ".png".toRegex(RegexOption.LITERAL)
+    private val SVG = ".svg".toRegex(RegexOption.LITERAL)
+    private val GIF = ".gif".toRegex(RegexOption.LITERAL)
+
+    /**
+     * Clear all caches
+     *
+     */
+    @JvmStatic
+    fun clearCache() {
+      CACHE.clear()
+      CL_CACHE.clear()
+    }
   }
 }
