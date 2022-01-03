@@ -1,6 +1,13 @@
 ## Changelog
 ----
 
+## 54.1 (5.4.1)
+
+### Fixes
+
+- Fix the regression about icons not being replaced in tabs.
+- Fix the regression about Java and Images icons getting the default icon instead of the PSI icons
+
 ## 54.0 (5.4.0)
 
 ### Features
