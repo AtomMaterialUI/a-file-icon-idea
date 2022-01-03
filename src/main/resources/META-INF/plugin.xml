@@ -58,7 +58,22 @@
                            id="AtomConfigTopHitProvider" />
     <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"
                               id="AtomOptionContributor" />
-    
+
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider" />
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
+                  id="HiddenFolderIconProvider" />
+
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
+                  order="first, after HiddenIconProvider"
+                  id="DefaultFileIconProvider" />
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
+                  order="first, after HiddenFolderIconProvider"
+                  id="DefaultFolderIconProvider" />
+
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator" />
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator" />
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator" />

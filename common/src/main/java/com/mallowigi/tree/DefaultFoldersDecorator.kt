@@ -72,7 +72,7 @@ class DefaultFoldersDecorator : ProjectViewNodeDecorator {
     val fileInfo = VirtualFileInfo(virtualFile)
     val associations = AtomSelectConfig.instance.selectedFolderAssociations
 
-    val matchingAssociation = associations.findMatchingAssociation(fileInfo)
+    val matchingAssociation = associations.findAssociation(fileInfo)
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
       val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
