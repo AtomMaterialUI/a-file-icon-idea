@@ -98,6 +98,8 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
         override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
       })
 
+      
+
       subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
         override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
       })
