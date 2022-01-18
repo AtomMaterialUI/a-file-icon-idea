@@ -15,6 +15,7 @@ exemptLabels:
   - dependencies
   - draft
   - WIP
+  - request
 
 # Label to use when marking as stale
 staleLabel: stale
