@@ -30,9 +30,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.select.AtomSelectConfig
-import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.SelectedAssociations
-import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.IconType
 import icons.AtomIcons
 import javax.swing.Icon
@@ -55,8 +53,4 @@ class DefaultFileIconProvider : AbstractFileIconProvider() {
 
   override fun isOfType(element: PsiElement): Boolean = element is PsiFile
 
-  companion object {
-    val associations: DefaultAssociations =
-      AssociationsFactory.create("/iconGenerator/icon_associations.xml")
-  }
 }

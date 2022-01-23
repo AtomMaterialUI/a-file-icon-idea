@@ -144,6 +144,12 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var hasBigIcons: Boolean = false
 
   /**
+   * Whether low power mode is enabled
+   */
+  @Property
+  var isLowPowerMode: Boolean = false
+
+  /**
    * Config state
    */
   override fun getState(): AtomFileIconsConfig = this
@@ -184,6 +190,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
     hasBigIcons = form.hasBigIcons
+    isLowPowerMode = form.isLowPowerMode
     fireChanged()
   }
 
@@ -207,6 +214,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
     hasBigIcons = false
+    isLowPowerMode = false
   }
 
   //region File Icons
@@ -445,6 +453,24 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun toggleBigIcons() {
     hasBigIcons = !hasBigIcons
+  }
+  //endregion
+
+  //region Low Power mode
+  /**
+   * Is low power mode changed
+   *
+   * @param lowPower
+   * @return
+   */
+  fun isLowPowerModeChanged(lowPower: Boolean): Boolean = isLowPowerMode != lowPower
+
+  /**
+   * Toggle low power mode
+   *
+   */
+  fun toggleLowPowerMode() {
+    isLowPowerMode = !isLowPowerMode
   }
   //endregion
 

@@ -60,6 +60,7 @@ class DefaultFoldersDecorator : ProjectViewNodeDecorator {
       when {
         file == null                                       -> return
         !file.isDirectory                                  -> return
+        AtomFileIconsConfig.instance.isLowPowerMode        -> return
         AtomFileIconsConfig.instance.isHideFolderIcons     -> hideIcon(data)
         !AtomFileIconsConfig.instance.isEnabledDirectories -> return
         else                                               -> matchAssociation(file, data)

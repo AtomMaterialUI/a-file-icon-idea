@@ -30,9 +30,7 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.select.AtomSelectConfig
-import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.SelectedAssociations
-import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.IconType
 import icons.AtomIcons
 import javax.swing.Icon
@@ -55,8 +53,4 @@ class DefaultFolderIconProvider : AbstractFileIconProvider() {
 
   override fun isDefault(): Boolean = true
 
-  companion object {
-    val associations: DefaultAssociations =
-      AssociationsFactory.create("/iconGenerator/folder_associations.xml")
-  }
 }

@@ -59,6 +59,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
     if (project != null && file != null && !project.isDisposed) {
       when {
+        AtomFileIconsConfig.instance.isLowPowerMode      -> return
         !AtomFileIconsConfig.instance.isUseHollowFolders -> return
         !file.isDirectory                                -> return
         AtomFileIconsConfig.instance.isHideFolderIcons   -> return

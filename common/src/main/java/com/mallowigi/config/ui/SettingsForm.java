@@ -34,6 +34,7 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.SimpleListCellRenderer;
+import com.intellij.ui.components.OnOffButton;
 import com.mallowigi.config.AtomFileIconsConfig;
 import com.mallowigi.tree.arrows.ArrowsStyles;
 import net.miginfocom.swing.MigLayout;
@@ -56,7 +57,10 @@ import java.util.ResourceBundle;
   "unused",
   "DuplicateStringLiteralInspection",
   "ConstantConditions",
-  "InstanceVariableMayNotBeInitialized"})
+  "InstanceVariableMayNotBeInitialized",
+  "HardCodedStringLiteral",
+  "uncachedAlloc",
+  "AnonymousInnerClassMayBeStatic"})
 public final class SettingsForm implements SettingsFormUI {
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -89,6 +93,8 @@ public final class SettingsForm implements SettingsFormUI {
   private ColorPanel accentColorChooser;
   private JCheckBox themedColorCheckbox;
   private ColorPanel themedColorChooser;
+  private JLabel lowPowerLabel;
+  private OnOffButton lowPowerSwitch;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public void setFormState(final AtomFileIconsConfig config) {
@@ -107,6 +113,7 @@ public final class SettingsForm implements SettingsFormUI {
     setThemedColorEnabled(config.isThemedColorEnabled());
     setThemedColor(config.getThemedColor());
     setHasBigIcons(config.getHasBigIcons());
+    setLowPowerMode(config.isLowPowerMode());
 
     afterStateSet();
   }
@@ -133,6 +140,7 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isThemedColorEnabledChanged(getIsThemedColorEnabled());
     modified = modified || config.isThemedColorChanged(getThemedColor());
     modified = modified || config.isBigIconsChanged(getHasBigIcons());
+    modified = modified || config.isLowPowerModeChanged(isLowPowerMode());
 
     return modified;
   }
@@ -149,7 +157,6 @@ public final class SettingsForm implements SettingsFormUI {
     monochromeCheckboxStateChanged(null);
     accentColorCheckboxActionPerformed(null);
     themedColorCheckboxActionPerformed(null);
-
   }
 
   @Override
@@ -191,11 +198,13 @@ public final class SettingsForm implements SettingsFormUI {
     accentColorChooser = new ColorPanel();
     themedColorCheckbox = new JCheckBox();
     themedColorChooser = new ColorPanel();
+    lowPowerLabel = new JLabel();
+    lowPowerSwitch = new OnOffButton();
 
     //======== content ========
     {
       content.setLayout(new MigLayout(
-        "hidemode 3",
+        "fillx,hidemode 3",
         // columns
         "[fill]" +
           "[::600,fill]" +
@@ -340,6 +349,15 @@ public final class SettingsForm implements SettingsFormUI {
       //---- themedColorChooser ----
       themedColorChooser.setToolTipText(bundle.getString("SettingsForm.themedColorChooser.toolTipText"));
       content.add(themedColorChooser, "cell 2 11,alignx right,growx 0");
+
+      //---- lowPowerLabel ----
+      lowPowerLabel.setText(bundle.getString("SettingsForm.lowPowerSwitch.text"));
+      content.add(lowPowerLabel, "cell 1 12");
+
+      //---- lowPowerSwitch ----
+      lowPowerSwitch.setText(bundle.getString("SettingsForm.lowPowerSwitch.text"));
+      lowPowerSwitch.setToolTipText(bundle.getString("SettingsForm.lowPowerSwitch.toolTipText"));
+      content.add(lowPowerSwitch, "cell 1 12,alignx right,growx 0,hmin 32");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -513,9 +531,19 @@ public final class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
+  //region big icons
+  public boolean isLowPowerMode() {
+    return lowPowerSwitch.isSelected();
+  }
+
+  private void setLowPowerMode(final boolean lowPowerMode) {
+    lowPowerSwitch.setSelected(lowPowerMode);
+  }
+  //endregion
+
   private void initializeComboboxes() {
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
-    arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<ArrowsStyles>() {
+    arrowsStyleComboBox.setRenderer(new SimpleListCellRenderer<>() {
       @Override
       public void customize(final @NotNull JList list,
                             final ArrowsStyles value,

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.13" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -8,7 +8,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "hidemode 3"
+			"$layoutConstraints": "fillx,hidemode 3"
 			"$columnConstraints": "[fill][::600,fill][fill]"
 			"$rowConstraints": "[][][][][][][][][][50][][][]"
 		} ) {
@@ -196,9 +196,22 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 11,alignx right,growx 0"
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lowPowerLabel"
+				"text": new FormMessage( null, "SettingsForm.lowPowerSwitch.text" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 12"
+			} )
+			add( new FormComponent( "com.intellij.ui.components.OnOffButton" ) {
+				name: "lowPowerSwitch"
+				"text": new FormMessage( null, "SettingsForm.lowPowerSwitch.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.lowPowerSwitch.toolTipText" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 12,alignx right,growx 0,hmin 32"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 440, 470 )
+			"size": new java.awt.Dimension( 440, 560 )
 		} )
 	}
 }
