@@ -28,9 +28,9 @@ package com.mallowigi.config
 import com.intellij.openapi.application.ApplicationManager
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.DefaultAssociations
 import com.mallowigi.icons.associations.RegexAssociation
-import com.mallowigi.icons.providers.DefaultFileIconProvider
-import com.mallowigi.icons.providers.DefaultFolderIconProvider
+import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.IconType
 
 /**
@@ -57,13 +57,11 @@ class BundledAssociations {
    *
    */
   private fun init() {
-    val folderAssociations = DefaultFolderIconProvider.associations.getTheAssociations()
-    folderAssociations
+    folderAssociations.getTheAssociations()
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FOLDER) }
 
-    val fileAssociations = DefaultFileIconProvider.associations.getTheAssociations()
-    fileAssociations
+    fileAssociations.getTheAssociations()
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FILE) }
   }
@@ -127,5 +125,18 @@ class BundledAssociations {
      */
     val instance: BundledAssociations
       get() = ApplicationManager.getApplication().getService(BundledAssociations::class.java)
+
+    /**
+     * Load folder associations from XML
+     */
+    val folderAssociations: DefaultAssociations =
+      AssociationsFactory.create("/iconGenerator/folder_associations.xml")
+
+    /**
+     * Load file associations from XML
+     */
+    val fileAssociations: DefaultAssociations =
+      AssociationsFactory.create("/iconGenerator/icon_associations.xml")
+
   }
 }
