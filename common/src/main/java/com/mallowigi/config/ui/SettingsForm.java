@@ -204,25 +204,25 @@ public final class SettingsForm implements SettingsFormUI {
     //======== content ========
     {
       content.setLayout(new MigLayout(
-        "fillx,hidemode 3",
+        "hidemode 3",
         // columns
         "[fill]" +
-          "[::600,fill]" +
-          "[fill]",
+        "[::600,fill]" +
+        "[fill]",
         // rows
         "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[50]" +
-          "[]" +
-          "[]" +
-          "[]"));
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[]" +
+        "[50]" +
+        "[]" +
+        "[]" +
+        "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
