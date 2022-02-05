@@ -25,8 +25,10 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomFileIconsConfig
 import org.w3c.dom.Element
+import java.nio.charset.StandardCharsets
 
 /**
  * Big icons patcher
@@ -45,6 +47,12 @@ class BigIconsPatcher : SvgPatcher {
   }
 
   override fun priority(): Int = 97
+
+  override fun digest(): ByteArray? {
+    val hasher = DigestUtil.sha512()
+    hasher.update(hasBigIcons.toString().toByteArray(StandardCharsets.UTF_8))
+    return hasher.digest()
+  }
 
   private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)

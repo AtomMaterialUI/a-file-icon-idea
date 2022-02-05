@@ -26,8 +26,10 @@
 package com.mallowigi.icons.svgpatchers
 
 import com.intellij.ui.ColorUtil
+import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import org.w3c.dom.Element
+import java.nio.charset.StandardCharsets
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -36,7 +38,7 @@ import javax.swing.plaf.ColorUIResource
  * @constructor Create empty Tint color patcher
  */
 class AccentColorPatcher : SvgPatcher {
-  private var accentColor: ColorUIResource? = getAccentColor()
+  private var accentColor: ColorUIResource = getAccentColor()
 
   override fun refresh(): Unit = refreshAccentColor()
 
@@ -48,11 +50,18 @@ class AccentColorPatcher : SvgPatcher {
 
   override fun priority(): Int = 99
 
+  override fun digest(): ByteArray? {
+    val hasher = DigestUtil.sha512()
+    // order is significant
+    hasher.update(ColorUtil.toHex(accentColor).toByteArray(StandardCharsets.UTF_8))
+    return hasher.digest()
+  }
+
   private fun getAccentColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentAccentColor()))
 
   private fun patchTints(svg: Element) {
     val tint = svg.getAttribute(SvgPatcher.TINT) ?: return
-    val newAccentColor = ColorUtil.toHex(accentColor!!)
+    val newAccentColor = ColorUtil.toHex(accentColor)
 
     // if tint = "true" or tint = "fill", change the fill color. If tint = "stroke", change the stroke color
     if (tint == SvgPatcher.TRUE || tint == SvgPatcher.FILL) {

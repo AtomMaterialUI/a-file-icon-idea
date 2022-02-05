@@ -26,8 +26,10 @@
 package com.mallowigi.icons.svgpatchers
 
 import com.intellij.ui.ColorUtil
+import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import org.w3c.dom.Element
+import java.nio.charset.StandardCharsets
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -35,7 +37,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class ThemeColorPatcher : SvgPatcher {
-  private var themedColor: ColorUIResource? = getThemedColor()
+  private var themedColor: ColorUIResource = getThemedColor()
 
   override fun refresh(): Unit = refreshThemeColor()
 
@@ -47,11 +49,18 @@ class ThemeColorPatcher : SvgPatcher {
 
   override fun priority(): Int = 98
 
+  override fun digest(): ByteArray? {
+    val hasher = DigestUtil.sha512()
+    // order is significant
+    hasher.update(ColorUtil.toHex(themedColor).toByteArray(StandardCharsets.UTF_8))
+    return hasher.digest()
+  }
+
   private fun getThemedColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentThemedColor()))
 
   private fun patchTints(svg: Element) {
     val themed = svg.getAttribute(SvgPatcher.THEMED) ?: return
-    val newThemedColor = ColorUtil.toHex(themedColor ?: return)
+    val newThemedColor = ColorUtil.toHex(themedColor)
 
     // if themed="true" or themed="fill", change the fill color, or change the stroke color if "stroke"
     when (themed) {

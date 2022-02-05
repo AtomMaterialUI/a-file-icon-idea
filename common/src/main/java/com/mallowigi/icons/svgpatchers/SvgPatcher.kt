@@ -53,6 +53,12 @@ interface SvgPatcher {
    */
   fun priority(): Int = 1
 
+  /**
+   * Get digest of patcher properties
+   *
+   */
+  fun digest(): ByteArray?
+
   companion object {
     const val STROKE: String = "stroke"
     const val FILL: String = "fill"

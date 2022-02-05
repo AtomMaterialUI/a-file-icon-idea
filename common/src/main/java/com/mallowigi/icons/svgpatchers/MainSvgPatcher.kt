@@ -30,6 +30,7 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcher
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
+import com.intellij.util.io.DigestUtil
 import org.w3c.dom.Element
 import java.util.SortedSet
 import javax.swing.SwingUtilities
@@ -82,7 +83,12 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
         }
       }
 
-      override fun digest(): ByteArray? = null
+      override fun digest(): ByteArray? {
+        val hasher = DigestUtil.sha512()
+        // for each of the internal patchers, patch Colors
+        patchers.forEach { hasher.update(it.digest()) }
+        return hasher.digest()
+      }
     }
   }
 

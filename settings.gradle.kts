@@ -25,4 +25,4 @@
  */
 
 rootProject.name = "a-file-icon-idea"
-include("common", "rider")
+include("common")

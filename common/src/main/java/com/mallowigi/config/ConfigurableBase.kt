@@ -28,7 +28,6 @@ package com.mallowigi.config
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.options.BaseConfigurable
 import com.intellij.openapi.options.ConfigurationException
-import com.intellij.openapi.util.Computable
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.ui.SettingsFormUI
 import javax.swing.JComponent
@@ -102,7 +101,7 @@ abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentState
   override fun createComponent(): JComponent? {
     initComponent()
     setFormState(form, config)
-    return form!!.content
+    return (form ?: return null).content
   }
 
   /**
@@ -145,11 +144,11 @@ abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentState
   @Synchronized
   private fun initComponent() {
     if (form == null) {
-      form = UIUtil.invokeAndWaitIfNeeded(Computable {
+      form = UIUtil.invokeAndWaitIfNeeded<FORM> {
         val form = createForm()
         form!!.init()
         form
-      })
+      }
     }
   }
 }

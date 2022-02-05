@@ -26,6 +26,7 @@
 package com.mallowigi.icons.svgpatchers
 
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
+import com.intellij.util.io.DigestUtil
 import org.w3c.dom.Element
 
 /**
@@ -47,4 +48,6 @@ class OtherSvgPatcher internal constructor(private val otherPatcherProvider: Svg
   }
 
   override fun priority(): Int = 100
+
+  override fun digest(): ByteArray? = DigestUtil.sha512().digest()
 }
