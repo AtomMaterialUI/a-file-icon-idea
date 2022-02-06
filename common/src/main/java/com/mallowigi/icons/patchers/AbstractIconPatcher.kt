@@ -138,7 +138,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
       path.contains(".gif") -> GIF.replace(path, ".svg")
       else                  -> path.replace(".png", ".svg")
     }
-    return pathToAppend + finalPath.replace(pathToRemove, "")
+    return (pathToAppend + finalPath.replace(pathToRemove, "")).replace("//", "/") // don't ask
   }
 
   companion object {

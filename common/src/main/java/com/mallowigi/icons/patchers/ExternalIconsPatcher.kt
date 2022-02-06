@@ -46,17 +46,6 @@ open class ExternalIconsPatcher : AbstractIconPatcher() {
   @XStreamAsAttribute
   private val name: String = ""
 
-  /**
-   * Get path to append
-   */
-//  override fun getPathToAppend(): String = append
-
-  /**
-   * Get path to remove
-   *
-   */
-//  override fun getPathToRemove(): String = remove
-
   override val pathToAppend: String
     get() = append
 

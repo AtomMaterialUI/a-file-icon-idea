@@ -51,7 +51,7 @@
                              parentId="AtomConfig"
                              id="AtomSelectConfig" />
     <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations" />
-    <!--    <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />-->
+    <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher" />
 
 
     <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
