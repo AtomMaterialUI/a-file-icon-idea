@@ -1,5 +1,30 @@
 ## Changelog
+
 ----
+
+## 60.0 (6.0.0)
+
+### Features
+
+- New mode: **Low Power Mode**. Reduce icon patching by turning off Project View Decorators
+- New icons for Rails:
+  - controllers
+  - mailers
+  - helpers
+  - jobs
+  - serializers
+  - factories
+  - concerns
+  - fixtures
+  - channels
+  - schemas
+  - services
+  - seed
+  - database.yml
+
+### Fixes
+
+- Support for 2022.1
 
 ## 54.1 (5.4.1)
 
@@ -12,9 +37,10 @@
 
 ### Features
 
-- Refactor the project to use the `ProjectViewDecorators` instead of `FileIconProvider`, thus fixing the problems with plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.
+- Refactor the project to use the `ProjectViewDecorators` instead of `FileIconProvider`, thus fixing the problems with
+  plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.
 
-### Additions:
+### Additions
 
 - File Icons
   - Playwright
@@ -67,7 +93,6 @@
 - Reorganization of the whole project by modules: `common` and `Rider`
 - Add linters
 - Removed deprecated _Custom File Associations_ settings
-
 
 ## 52.0 (5.2.0)
 
@@ -1074,7 +1099,7 @@
 
 - new **UI/PSI icons**: `Scala, Ruby, Typescript`
 - new _redux_ icons: `redux saga` and `redux epics`, tweaked other colors too
-- new _test_ icons: ``test dart`, `test go`, `test haskell`, `test perl`, `test rust`
+- new _test_ icons: ``test dart`,`test go`,`test haskell`,`test perl`,`test rust`
 - switched typescript and tslint icons
 - new **file icons**:
   - icomoon

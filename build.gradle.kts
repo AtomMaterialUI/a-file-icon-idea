@@ -58,7 +58,7 @@ dependencies {
   implementation("com.thoughtworks.xstream:xstream:1.4.19")
   implementation("org.javassist:javassist:3.28.0-GA")
   implementation(project(":common"))
-//  runtimeOnly(project(":rider"))
+  runtimeOnly(project(":rider"))
 }
 
 

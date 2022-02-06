@@ -23,6 +23,7 @@
  *
  *
  */
+@file:Suppress("HardCodedStringLiteral")
 
 rootProject.name = "a-file-icon-idea"
-include("common")
+include("common", "rider")
