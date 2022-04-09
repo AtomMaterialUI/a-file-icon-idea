@@ -27,6 +27,7 @@
 <iconPathPatchers>
   <iconPatchers>
     <iconPatcher name="AllIcons" remove="" append="/icons" />
+    <iconPatcher name="ExpUI" remove="expui" append="/icons/expui" />
     <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="/icons/mt/checkboxes" />
 
     <iconPatcher name="Ant" remove="icons" append="/icons/plugins/ant" />
@@ -94,6 +95,7 @@
     <iconPatcher name="Logos2" remove="" append="/icons/logos" />
   </iconPatchers>
   <glyphPatchers>
+    <glyphPatcher name="ExpUI" remove="expui" append="/glyphs/expui" />
     <glyphPatcher name="Glyphs" remove="nodes" append="/glyphs/nodes" />
     <glyphPatcher name="Actions" remove="actions" append="/glyphs/actions" />
     <glyphPatcher name="AOP" remove="icons" append="/glyphs/plugins/aop" />

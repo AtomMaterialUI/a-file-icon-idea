@@ -90,7 +90,7 @@ object AtomIcons {
    * @param path absolute path to the icon
    * @return the icon. must not be null
    */
-  private fun load(@NonNls path: String): Icon = IconLoader.findIcon(path)!!
+  private fun load(@NonNls path: String): Icon = IconLoader.findIcon(path, AtomIcons.javaClass)!!
 
   /**
    * Tries to load a svg icon

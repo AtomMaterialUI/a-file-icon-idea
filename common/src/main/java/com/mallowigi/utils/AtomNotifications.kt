@@ -27,10 +27,10 @@ package com.mallowigi.utils
 
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationGroupManager
-import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
 import com.intellij.notification.impl.NotificationsManagerImpl
+import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
 import com.intellij.openapi.util.NlsContexts
@@ -38,6 +38,7 @@ import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
 import com.mallowigi.config.AtomSettingsBundle.message
+import org.jetbrains.annotations.NotNull
 import java.awt.Point
 import java.util.Objects
 
@@ -47,15 +48,13 @@ import java.util.Objects
  * @constructor Create empty Atom notifications
  */
 object AtomNotifications {
-  /**
-   * Notification channel
-   */
+  /** Notification channel. */
   const val CHANNEL: String = "Atom Material Notifications"
 
   /**
    * Show the update notification
    *
-   * @param project  the project to display in
+   * @param project the project to display in
    */
   @Suppress("DialogTitleCapitalization")
   @JvmStatic
@@ -84,11 +83,11 @@ object AtomNotifications {
   /**
    * Shows [Notification] in [AtomNotifications.CHANNEL] group.
    *
-   * @param project  current project
-   * @param title    notification title
-   * @param content  notification text
-   * @param type     notification type
-   * @param listener optional listener
+   * @param project current project
+   * @param title notification title
+   * @param content notification text
+   * @param type notification type
+   * @param action action to run on link click
    */
   @Suppress("UnstableApiUsage")
   @JvmStatic
@@ -97,18 +96,18 @@ object AtomNotifications {
     @NlsContexts.NotificationTitle title: String,
     @NlsContexts.NotificationContent content: String,
     type: NotificationType,
-    listener: NotificationListener?,
+    action: AnAction,
   ) {
-    val notification = createNotification(title, content, type, listener)
+    val notification = createNotification(title, content, type, action)
     Notifications.Bus.notify(notification, project)
   }
 
   /**
    * Create a notification
    *
-   * @param title    notification title
-   * @param content  the content
-   * @param type     the type (sticky...)
+   * @param title notification title
+   * @param content the content
+   * @param type the type (sticky...)
    * @return new notification to be displayed
    */
   @Suppress("UnstableApiUsage")
@@ -124,10 +123,10 @@ object AtomNotifications {
   /**
    * Create a notification
    *
-   * @param title    notification title
-   * @param content  the content
-   * @param type     the type (sticky...)
-   * @param listener listener
+   * @param title notification title
+   * @param content the content
+   * @param type the type (sticky...)
+   * @param action action to run on link click
    * @return new notification to be displayed
    */
   @Suppress("UnstableApiUsage")
@@ -135,17 +134,14 @@ object AtomNotifications {
     @NlsContexts.NotificationTitle title: String,
     @NlsContexts.NotificationContent content: String,
     type: NotificationType,
-    listener: NotificationListener?,
-  ): Notification {
-    assert(listener != null)
-    return createNotification(title, content, type).setListener(listener!!)
-  }
+    @NotNull action: AnAction,
+  ): Notification = createNotification(title, content, type).addAction(action)
 
   /**
-   * Show a notification using the Balloon API instead of the bus
-   * Credit to @vladsch
+   * Show a notification using the Balloon API instead of the bus Credit
+   * to @vladsch
    *
-   * @param project      the project to display into
+   * @param project the project to display into
    * @param notification the notification to display
    */
   private fun showFullNotification(project: Project, notification: Notification) {

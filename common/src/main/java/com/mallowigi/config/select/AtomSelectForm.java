@@ -62,10 +62,12 @@ import java.util.ResourceBundle;
   "ClassWithTooManyFields",
   "OverlyLongMethod",
   "MethodMayBeStatic",
-  "MethodOnlyUsedFromInnerClass",
-  "SyntheticAccessorCall"})
+  "HardCodedStringLiteral",
+  "OverlyLongLambda",
+  "ThisEscapedInObjectConstruction"})
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
+  @SuppressWarnings("ThisEscapedInObjectConstruction")
   private final transient ColumnInfo[] fileColumns = {
     new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
