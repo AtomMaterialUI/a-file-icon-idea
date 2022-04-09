@@ -25,7 +25,6 @@
  */
 package com.mallowigi.icons.associations
 
-import com.google.common.collect.ImmutableSet
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.extensions.PluginId
@@ -35,8 +34,7 @@ import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
 /**
- * Represents a serialized collection of [Associations][Association]
- *
+ * Represents a serialized collection of [Associations][Association].
  */
 abstract class Associations : Serializable {
   /**
@@ -47,10 +45,11 @@ abstract class Associations : Serializable {
    */
   fun findAssociation(fileInfo: FileInfo): Association? {
     // First check in custom assocs
-    val matching: Association? = findMatchingAssociation(fileInfo)
-    // Specific plugin handling
-    if (matching != null && IMAGE_TYPES.contains(matching.name)) {
-      try {
+    val matching: Association = findMatchingAssociation(fileInfo) ?: return null
+
+    when {
+      // Specific plugin handling
+      IMAGE_TYPES.contains(matching.name) -> try {
         // If those plugins are installed, let them handle the icon
         val imageIconViewerID = message("plugins.imageIconViewer")
         val plugin = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
@@ -60,8 +59,7 @@ abstract class Associations : Serializable {
         LOG.error(e)
       }
       // PHP Plugin
-    } else if (matching != null && IGNORED.contains(matching.name)) {
-      return null
+      IGNORED.contains(matching.name)     -> return null
     }
     return matching
   }
@@ -86,15 +84,17 @@ abstract class Associations : Serializable {
     private val LOG = Logger.getInstance(Associations::class.java)
 
     @NonNls
-    private val IMAGE_TYPES: Set<String> = ImmutableSet.of("Images",
-                                                           "SVG",
-                                                           "Images (PNG)",
-                                                           "Images (JPG)",
-                                                           "Images (BMP)",
-                                                           "Images (GIF)",
-                                                           "Icons")
+    private val IMAGE_TYPES: Set<String> = setOf(
+      "Images",
+      "SVG",
+      "Images (PNG)",
+      "Images (JPG)",
+      "Images (BMP)",
+      "Images (GIF)",
+      "Icons"
+    )
 
-    private val IGNORED: Set<String> = ImmutableSet.of("PHP", "Kotlin", "Java")
+    private val IGNORED: Set<String> = setOf("PHP", "Kotlin", "Java")
   }
 
 }

@@ -85,7 +85,7 @@ style:
     active: true
   ForbiddenComment:
     active: true
-    values: [ ]
+    values: []
   MagicNumber:
     active: true
     ignorePropertyDeclaration: true
@@ -116,7 +116,7 @@ style:
   RedundantVisibilityModifierRule:
     active: true
   ReturnCount:
-    max: 3
+    max: 4
     excludeGuardClauses: true
   SpacingBetweenPackageAndImports:
     active: true

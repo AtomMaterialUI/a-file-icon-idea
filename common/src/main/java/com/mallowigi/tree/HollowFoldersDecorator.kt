@@ -45,14 +45,12 @@ import java.util.Objects
 import javax.swing.Icon
 
 /**
- * Hollow folders' decorator: Decorate directories as "open" when one of its files is open
- *
+ * Hollow folders' decorator: Decorate directories as "open" when one of
+ * its files is open.
  */
 class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
-  /**
-   * Decorate nodes with icon associations
-   */
+  /** Decorate nodes with icon associations. */
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val file = node.virtualFile
     val project = node.project
@@ -78,19 +76,23 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
    */
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      when {
-        data.getIcon(true) is CustomDirIcon                                -> return
-        data.getIcon(true) is DirIcon                                      -> {
+      if (data.getIcon(/* open = */ true) is CustomDirIcon) return
+
+      val icon = when {
+        data.getIcon(/* open = */ true) is DirIcon                         -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
-          data.setIcon(DirIcon(openedIcon))
+          DirIcon(openedIcon)
         }
-        ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> data.setIcon(AtomIcons.EXCLUDED)
-        ProjectRootsUtil.isModuleContentRoot(file, project)                -> data.setIcon(AtomIcons.MODULE)
-        ProjectRootsUtil.isInSource(file, project)                         -> data.setIcon(AtomIcons.SOURCE)
-        ProjectRootsUtil.isInTestSource(file, project)                     -> data.setIcon(AtomIcons.TEST)
-        data.getIcon(false) == PlatformIcons.PACKAGE_ICON                  -> data.setIcon(PlatformIcons.PACKAGE_ICON)
-        else                                                               -> data.setIcon(directoryIcon)
+        ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> AtomIcons.EXCLUDED
+        ProjectRootsUtil.isModuleContentRoot(file, project)                -> AtomIcons.MODULE
+        ProjectRootsUtil.isInSource(file, project)                         -> AtomIcons.SOURCE
+        ProjectRootsUtil.isInTestSource(file, project)                     -> AtomIcons.TEST
+        data.getIcon(/* open = */ false) == PlatformIcons.PACKAGE_ICON     -> PlatformIcons.PACKAGE_ICON
+        else                                                               -> directoryIcon
       }
+
+      val layeredIcon = AtomIcons.getLayeredIcon(icon, file)
+      data.setIcon(layeredIcon)
     } catch (e: Exception) {
       thisLogger().warn(e.message)
     }
@@ -101,23 +103,12 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
-  /**
-   * Do nothing
-   */
+  /** Do nothing. */
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer): Unit = Unit
 
   companion object {
-    @Volatile
-    private var directory: Icon? = AtomIcons.Nodes2.FolderOpen
-
-    /**
-     * Default directory icon
-     */
-    val directoryIcon: Icon?
-      get() {
-        if (directory == null) directory = AtomIcons.Nodes2.FolderOpen
-        return directory
-      }
+    /** Default directory icon. */
+    val directoryIcon: Icon
+      get() = AtomIcons.Nodes2.FolderOpen
   }
-
 }

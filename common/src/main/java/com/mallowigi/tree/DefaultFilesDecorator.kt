@@ -37,21 +37,13 @@ import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.VirtualFileInfo
 import icons.AtomIcons
 
-/**
- * New custom files decorator
- *
- */
+/** New custom files decorator. */
 class DefaultFilesDecorator : ProjectViewNodeDecorator {
 
-  /**
-   * Do nun'
-   */
+  /** Do nun' */
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer): Unit = Unit
 
-  /**
-   * Update node icon
-   *
-   */
+  /** Update node icon. */
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
     val file = node.virtualFile
     val project = node.project
@@ -77,7 +69,8 @@ class DefaultFilesDecorator : ProjectViewNodeDecorator {
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
       val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)
-      data.setIcon(icon)
+      val layeredIcon = AtomIcons.getLayeredIcon(icon, virtualFile)
+      data.setIcon(layeredIcon)
     }
   }
 

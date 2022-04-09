@@ -38,13 +38,11 @@ import com.mallowigi.models.VirtualFileInfo
 import com.mallowigi.utils.toOptional
 import javax.swing.Icon
 
-/**
- * Abstract file icon provider
- *
- */
+/** Abstract file icon provider. */
 abstract class AbstractFileIconProvider : IconProvider() {
   /**
    * Get the icon for the given psiElement
+   *
    * @param element The psiElement to get the icon for
    * @param flags The flags (unused)
    */
@@ -93,7 +91,8 @@ abstract class AbstractFileIconProvider : IconProvider() {
   private fun findAssociation(file: FileInfo): Association? = getSource().findAssociation(file)
 
   /**
-   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider
+   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined
+   * by this provider
    *
    * @param element the psi element
    * @return true if element is of type defined by this provider
@@ -122,10 +121,7 @@ abstract class AbstractFileIconProvider : IconProvider() {
    */
   abstract fun getIcon(iconPath: String): Icon?
 
-  /**
-   * Return the [IconType] of this provider
-   *
-   */
+  /** Return the [IconType] of this provider. */
   abstract fun getType(): IconType
 
   /**

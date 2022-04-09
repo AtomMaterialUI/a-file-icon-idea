@@ -25,8 +25,12 @@
  */
 package icons
 
+import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.Ref
+import com.intellij.openapi.vfs.VFileProperty
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.ui.LayeredIcon
 import com.intellij.ui.scale.ScaleContext
 import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
@@ -42,10 +46,8 @@ import java.net.URL
 import java.util.logging.Logger
 import javax.swing.Icon
 
-/**
- * Loader for Plugin's Icons
- *
- */
+/** Loader for Plugin's Icons. */
+@Suppress("KDocMissingDocumentation")
 object AtomIcons {
   private const val FILES_PATH: String = "/iconGenerator/assets"
   private const val FOLDERS_PATH: String = "/iconGenerator/assets/icons/folders"
@@ -108,12 +110,30 @@ object AtomIcons {
     return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
   }
 
+  /**
+   * If the icon's height is 1, load a fallback icon, otherwise return
+   * the icon
+   *
+   * @param icon The icon to use if the SVG icon can't be loaded.
+   * @param path The path to the SVG file.
+   */
   fun loadIconWithFallback(icon: Icon, path: String): Icon = if (icon.iconHeight == 1) loadSVGIcon(path) else icon
 
   /**
-   * Arrow Icons
+   * If the file is a symlink, add the symlink icon to the file's icon;
+   * if the file is not writable, add the locked icon the file's icon;
+   * otherwise, return the file's icon
    *
+   * @param icon The icon to be decorated.
+   * @param virtualFile VirtualFile — the file to get the icon for
    */
+  fun getLayeredIcon(icon: Icon, virtualFile: VirtualFile): Icon = when {
+    virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIcon(icon, AllIcons.Nodes.Symlink)
+    !virtualFile.isWritable                 -> LayeredIcon(icon, AllIcons.Nodes.Locked)
+    else                                    -> icon
+  }
+
+  /** Arrow Icons. */
   object Arrows {
     var MaterialDownSelected: Icon = load("/icons/mac/material/down_selected.svg")
     var MaterialRightSelected: Icon = load("/icons/mac/material/right_selected.svg")
@@ -133,10 +153,7 @@ object AtomIcons {
     var Right: Icon = load("/icons/mac/arrow/right.svg")
   }
 
-  /**
-   * Node icons
-   *
-   */
+  /** Node icons. */
   object Nodes2 {
     val FolderOpen: Icon = load("/icons/nodes/folderOpen.svg")
   }
