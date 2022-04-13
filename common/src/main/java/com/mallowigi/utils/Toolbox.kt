@@ -58,6 +58,8 @@ fun runSafely(runner: Runner): Unit =
     e.printStackTrace()
   }
 
+operator fun <T> Lazy<T>.getValue(thisRef: Any?, property: Any) = value
+
 /**
  * To optional
  *
@@ -103,21 +105,12 @@ fun <T> Optional<T>.doOrElse(present: (T) -> Unit, notThere: () -> Unit): Unit =
  * @constructor Create empty Runner
  */
 interface Runner {
-  /**
-   * Run
-   *
-   */
+  /** Run. */
   fun run()
 }
 
-/**
- * To hex string
- *
- */
+/** To hex string. */
 fun Color.toHexString(): String = "#${ColorUtil.toHex(this)}"
 
-/**
- * To color
- *
- */
+/** To color. */
 fun String.toColor(): Color = ColorUtil.fromHex(this)
