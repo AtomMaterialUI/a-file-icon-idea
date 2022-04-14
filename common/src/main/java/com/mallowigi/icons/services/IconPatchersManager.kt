@@ -31,34 +31,46 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
+import com.intellij.ui.ExperimentalUI
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 
-/**
- * Icon patchers manager
- *
- */
+/** Icon patchers manager. */
 object IconPatchersManager {
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
 
-  /**
-   * Init the patchers
-   */
+  /** Init the patchers. */
   fun init() {
     val atomFileIconsConfig = instance
+
+    fixExperimentalUI()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
 
-  /**
-   * Update patchers on save
-   */
+  @Suppress("UnstableApiUsage")
+  private fun fixExperimentalUI() {
+    if (!ExperimentalUI.isNewUI()) return
+
+    val forName = Class.forName("com.intellij.ui.ExperimentalUI")
+    forName.declaredFields.forEach {
+      if (it.name == "iconPathPatcher") {
+        it.isAccessible = true
+        val patcher = it.get(null)
+        IconLoader.removePathPatcher(patcher as IconPathPatcher)
+      }
+    }
+  }
+
+  /** Update patchers on save. */
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
+    fixExperimentalUI()
+
     val atomFileIconsConfig = instance
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
@@ -111,9 +123,7 @@ object IconPatchersManager {
     patcher.enabled = enabled
   }
 
-  /**
-   * Update all trees
-   */
+  /** Update all trees. */
   fun updateFileIcons() {
     ApplicationManager.getApplication().invokeLater {
       val app = ApplicationManager.getApplication()

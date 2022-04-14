@@ -28,18 +28,18 @@ package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.util.IconLoader
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.icons.services.IconPatchersManager
 
-/**
- * Refresh icons action
- *
- */
+/** Refresh icons action. */
 class RefreshIconsAction : AnAction() {
-  /**
-   * Refresh icons
-   *
-   */
-  override fun actionPerformed(e: AnActionEvent): Unit = CONFIG.fireChanged()
+  /** Refresh icons. */
+  override fun actionPerformed(e: AnActionEvent): Unit {
+    CONFIG.fireChanged()
+    IconLoader.clearCache()
+    IconPatchersManager.init()
+  }
 
   companion object {
     private val CONFIG = instance
