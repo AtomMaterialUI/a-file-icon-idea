@@ -2,6 +2,16 @@
 
 ----
 
+## 61.0 (6.1.0)
+
+### Fixes
+
+- Fix #271 – Add symlink/readonly overlay icon
+- Fix #274 - External Libraries
+- Update newer UI Icons
+- Remove Experimental UI custom icons to use the plugin ones
+- Fix deprecations
+
 ## 60.0 (6.0.0)
 
 ### Features
