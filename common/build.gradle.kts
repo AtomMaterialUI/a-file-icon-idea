@@ -43,3 +43,13 @@ intellij {
     "Git4Idea",
   ))
 }
+
+tasks {
+  verifyPlugin {
+    enabled = false
+  }
+
+  publishPlugin {
+    enabled = false
+  }
+}

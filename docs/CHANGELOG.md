@@ -2,6 +2,28 @@
 
 ----
 
+## 62.0 (6.2.0)
+
+### Fixes
+
+- Fix icons invisible when UI Icons is disabled
+
+### Additions
+- Icons:
+  - kustomize
+  - vitest
+  - steadybit
+  - turborepo
+  - poetry
+  - supabase
+  - allcontributorsrc
+  - publishToken
+- Folders:
+  - kustomize
+  - jest
+  - storage
+  - supabase
+
 ## 61.0 (6.1.0)
 
 ### Fixes

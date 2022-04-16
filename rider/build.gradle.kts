@@ -41,3 +41,13 @@ intellij {
   downloadSources.set(false)
   instrumentCode.set(false)
 }
+
+tasks {
+  verifyPlugin {
+    enabled = false
+  }
+
+  publishPlugin {
+    enabled = false
+  }
+}
