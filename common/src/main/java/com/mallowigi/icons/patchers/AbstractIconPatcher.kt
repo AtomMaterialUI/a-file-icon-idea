@@ -30,18 +30,12 @@ import com.mallowigi.config.AtomFileIconsConfig
 import org.jetbrains.annotations.NonNls
 import java.net.URL
 
-/**
- * Base class for [IconPathPatcher]s
- */
+/** Base class for [IconPathPatcher]s. */
 abstract class AbstractIconPatcher : IconPathPatcher() {
-  /**
-   * Whether the patcher should be enabled or not
-   */
+  /** Whether the patcher should be enabled or not. */
   var enabled: Boolean = false
 
-  /**
-   * Singleton instance
-   */
+  /** Singleton instance. */
   var instance: AtomFileIconsConfig? = AtomFileIconsConfig.instance
     get() {
       if (field == null) field = AtomFileIconsConfig.instance
@@ -49,14 +43,10 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
     }
     private set
 
-  /**
-   * The string to append to the final path
-   */
+  /** The string to append to the final path. */
   protected abstract val pathToAppend: @NonNls String
 
-  /**
-   *  The string to remove from the original path
-   */
+  /** The string to remove from the original path. */
   protected abstract val pathToRemove: @NonNls String
 
   /**
@@ -64,13 +54,14 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    *
    * @param path the path to patch
    * @param classLoader the classloader of the icon
-   * @return the patched path to the plugin icon, or the original path if the icon patcher is disabled
+   * @return the patched path to the plugin icon, or the original path
+   *   if the icon patcher is disabled
    */
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
     if (instance == null) return null
 
     val patchedPath = getPatchedPath(path)
-    return if (!enabled) path else patchedPath
+    return if (!enabled) null else patchedPath
   }
 
   /**
@@ -78,7 +69,8 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    *
    * @param path the icon path
    * @param originalClassLoader the original class loader
-   * @return the plugin class loader if the icon needs to be patched, or the original class loader
+   * @return the plugin class loader if the icon needs to be patched, or
+   *   the original class loader
    */
   override fun getContextClassLoader(path: String, originalClassLoader: ClassLoader?): ClassLoader? {
     val classLoader = javaClass.classLoader
@@ -89,7 +81,8 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /**
-   * Returns the patched path by taking the original path and appending the path to append, and converting to svg
+   * Returns the patched path by taking the original path and appending
+   * the path to append, and converting to svg
    *
    * @param path
    * @return
@@ -111,17 +104,13 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
     else                    -> null
   }
 
-  /**
-   * Check whether a svg version of a resource exists
-   */
+  /** Check whether a svg version of a resource exists. */
   private fun getSVG(path: String): URL? {
     val svgFile = PNG.replace(getReplacement(path), ".svg") // NON-NLS
     return javaClass.getResource(svgFile)
   }
 
-  /**
-   * Check whether a png version of a resource exists
-   */
+  /** Check whether a png version of a resource exists. */
   private fun getPNG(path: String): URL? {
     val replacement = SVG.replace(getReplacement(path), ".png") // NON-NLS
     return javaClass.getResource(replacement)
@@ -148,10 +137,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
     private val SVG = ".svg".toRegex(RegexOption.LITERAL)
     private val GIF = ".gif".toRegex(RegexOption.LITERAL)
 
-    /**
-     * Clear all caches
-     *
-     */
+    /** Clear all caches. */
     @JvmStatic
     fun clearCache() {
       CACHE.clear()

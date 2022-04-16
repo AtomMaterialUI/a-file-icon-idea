@@ -78,37 +78,37 @@ object IconPatchersManager {
   }
 
   private fun installPathPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.iconPatchers!!) {
+    for (externalPatcher in iconPathPatchers.iconPatchers) {
       installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
   private fun installPSIPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.glyphPatchers!!) {
+    for (externalPatcher in iconPathPatchers.glyphPatchers) {
       installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
   private fun installFileIconsPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.filePatchers!!) {
+    for (externalPatcher in iconPathPatchers.filePatchers) {
       installPathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
   private fun updatePathPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.iconPatchers!!) {
+    for (externalPatcher in iconPathPatchers.iconPatchers) {
       updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
   private fun updatePSIPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.glyphPatchers!!) {
+    for (externalPatcher in iconPathPatchers.glyphPatchers) {
       updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }
 
   private fun updateFileIconsPatchers(enabled: Boolean) {
-    for (externalPatcher in iconPathPatchers.filePatchers!!) {
+    for (externalPatcher in iconPathPatchers.filePatchers) {
       updatePathPatcher(externalPatcher as AbstractIconPatcher, enabled)
     }
   }

@@ -30,36 +30,27 @@ import com.intellij.util.xmlb.annotations.XCollection
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import java.util.Collections
 
-/**
- * Icon path patchers
- *
- */
+/** Icon path patchers. */
 @XStreamAlias("iconPathPatchers")
 class IconPathPatchers {
-  /**
-   * UI Icon Patchers
-   */
+  /** UI Icon Patchers. */
   @Property
   @XCollection
   @XStreamAlias("iconPatchers")
-  val iconPatchers: Set<UIIconsPatcher>? = null
+  val iconPatchers: Set<UIIconsPatcher> = emptySet()
     get() = Collections.unmodifiableSet(field)
 
-  /**
-   * Glyph Icon Patchers
-   */
+  /** Glyph Icon Patchers. */
   @Property
   @XCollection
   @XStreamAlias("glyphPatchers")
-  val glyphPatchers: Set<GlyphIconsPatcher>? = null
+  val glyphPatchers: Set<GlyphIconsPatcher> = emptySet()
     get() = Collections.unmodifiableSet(field)
 
-  /**
-   * File Icon Patchers
-   */
+  /** File Icon Patchers. */
   @Property
   @XCollection
   @XStreamAlias("filePatchers")
-  val filePatchers: Set<FileIconsPatcher>? = null
+  val filePatchers: Set<FileIconsPatcher> = emptySet()
     get() = Collections.unmodifiableSet(field)
 }
