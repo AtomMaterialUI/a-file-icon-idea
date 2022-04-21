@@ -50,4 +50,8 @@ tasks {
   publishPlugin {
     enabled = false
   }
+
+  runIde {
+    enabled = false
+  }
 }
