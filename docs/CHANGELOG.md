@@ -2,6 +2,45 @@
 
 ----
 
+## 63.0 (6.3.0)
+
+### Fixes
+- Updated icons
+
+### Additions
+- Icons:
+  - amplify
+  - bandit
+  - catala
+  - cnab
+  - cspell
+  - earthly
+  - geojson
+  - hardhat
+  - master UI
+  - npm check updates
+  - noc
+  - plop
+  - publiccode
+  - recoil
+  - remix run
+  - rust object notation
+  - siyuan
+  - styleguidist
+  - xstate
+- Folders:
+  - archetypes
+  - schematics
+  - crates
+  - gallery
+  - recoil
+  - flux
+  - polyfills
+  - queries
+  - strategies
+  - woocommerce
+  - xstate
+
 ## 62.0 (6.2.0)
 
 ### Fixes
