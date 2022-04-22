@@ -36,20 +36,14 @@ import org.jetbrains.annotations.NonNls
 import java.util.Collections
 import java.util.function.Supplier
 
-/**
- * Provide commands for Search Everything Top Hit commands
- */
+/** Provide commands for Search Everything Top Hit commands. */
 @Suppress("DialogTitleCapitalization")
 class AtomConfigTopHitProvider : ApplicationLevelProvider {
-  /**
-   * ID
-   */
+  /** ID. */
   @NonNls
   override fun getId(): String = "atomconfig"
 
-  /**
-   * Option list
-   */
+  /** Option list. */
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS
 
   companion object {
@@ -69,7 +63,10 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
         option(getText("SettingsForm.hideFolderIconsCheckbox.text"), "isHideFolderIcons", "setHideFolderIcons"),
         option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setUseHollowFolders"),
         option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
-        option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled")
+        option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setAccentColorEnabled"),
+        option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled"),
+        option(getText("SettingsForm.biggerIconsCheckBox.text"), "isBiggerIconsEnabled", "setBiggerIconsEnabled"),
+        option(getText("SettingsForm.lowPowerSwitch.text"), "isLowPowerMode", "setLowPowerMode"),
       )
     )
 

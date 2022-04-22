@@ -32,22 +32,16 @@ import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
 import java.util.Objects
 
-/**
- * Configurable for Custom Associations
- */
+/** Configurable for Custom Associations. */
 class AtomSelectConfigurable : ConfigurableBase<AtomSelectForm?, AtomSelectConfig?>(), SearchableConfigurable {
   override val config: AtomSelectConfig
     get() = AtomSelectConfig.instance
 
-  /**
-   * Configurable display name
-   */
+  /** Configurable display name. */
   @Nls
   override fun getDisplayName(): String = AtomSettingsBundle.message("AtomSelectForm.title")
 
-  /**
-   * Configurable ID
-   */
+  /** Configurable ID. */
   override fun getId(): String = ID
 
   override fun createForm(): AtomSelectForm = AtomSelectForm()
@@ -64,11 +58,9 @@ class AtomSelectConfigurable : ConfigurableBase<AtomSelectForm?, AtomSelectConfi
     checkFormModified(form!!, config)
 
   companion object {
-    /**
-     * Configurable ID
-     */
+    /** Configurable ID. */
     @NonNls
-    const val ID: String = "com.mallowigi.config.selections"
+    const val ID: String = "AtomSelectConfig"
 
     private fun checkFormModified(form: AtomSelectForm, config: AtomSelectConfig?): Boolean =
       Objects.requireNonNull(form)!!.isModified(config)

@@ -110,6 +110,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   @Property
   var hasBigIcons: Boolean = false
 
+  /** Custom icon size. */
+  @Property
+  var customIconSize: Int = 20
+
   /** Whether low power mode is enabled. */
   @Property
   var isLowPowerMode: Boolean = true
@@ -148,6 +152,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
     hasBigIcons = form.hasBigIcons
+    customIconSize = form.customIconSize
     isLowPowerMode = form.isLowPowerMode
     fireChanged()
   }
@@ -169,6 +174,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
     hasBigIcons = false
+    customIconSize = 20
     isLowPowerMode = true
   }
 
@@ -384,6 +390,17 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   }
   //endregion
 
+  //region Custom Icon size
+  /**
+   * Is custom icon size changed
+   *
+   * @param newSize
+   * @return
+   */
+  fun isCustomIconSizeChanged(newSize: Int): Boolean = newSize != customIconSize
+
+  //endregion
+
   //region Low Power mode
   /**
    * Is low power mode changed
@@ -400,6 +417,12 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   companion object {
+    /** min icon size */
+    const val MIN_ICON_SIZE: Int = 12
+
+    /** Max icon size. */
+    const val MAX_ICON_SIZE: Int = 24
+
     /** Instance of the Config service. */
     @JvmStatic
     val instance: AtomFileIconsConfig

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.13" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.14.1" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.autoExternalize": true
@@ -137,8 +137,14 @@ new FormModel {
 				name: "biggerIconsCheckBox"
 				"text": new FormMessage( null, "SettingsForm.biggerIconsCheckBox.text" )
 				"toolTipText": new FormMessage( null, "SettingsForm.biggerIconsCheckBox.toolTipText" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customIconSizeActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 8"
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "customIconSizeSpinner"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 8"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "arrowsStyleIcon"

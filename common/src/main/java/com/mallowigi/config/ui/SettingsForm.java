@@ -63,6 +63,8 @@ import java.util.ResourceBundle;
   "AnonymousInnerClassMayBeStatic"})
 public final class SettingsForm implements SettingsFormUI {
 
+  private SpinnerModel customIconSizeSpinnerModel;
+
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
@@ -85,6 +87,7 @@ public final class SettingsForm implements SettingsFormUI {
   private JCheckBox hollowFoldersCheckbox;
   private JLabel hollowFoldersIcon2;
   private JCheckBox biggerIconsCheckBox;
+  private JSpinner customIconSizeSpinner;
   private JLabel arrowsStyleIcon;
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
@@ -113,6 +116,7 @@ public final class SettingsForm implements SettingsFormUI {
     setThemedColorEnabled(config.isThemedColorEnabled());
     setThemedColor(config.getThemedColor());
     setHasBigIcons(config.getHasBigIcons());
+    setCustomIconSize(config.getCustomIconSize());
     setLowPowerMode(config.isLowPowerMode());
 
     afterStateSet();
@@ -121,6 +125,30 @@ public final class SettingsForm implements SettingsFormUI {
   @Override
   public void init() {
     initComponents();
+    setupComponents();
+  }
+
+  private void setupComponents() {
+    configureSpinners();
+  }
+
+  private static int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
+  }
+
+  private void configureSpinners() {
+    final AtomFileIconsConfig config = AtomFileIconsConfig.getInstance();
+    final int customIconSize = valueInRange(config.getCustomIconSize(),
+      AtomFileIconsConfig.MIN_ICON_SIZE,
+      AtomFileIconsConfig.MAX_ICON_SIZE
+    );
+
+    customIconSizeSpinnerModel = new SpinnerNumberModel(customIconSize,
+      AtomFileIconsConfig.MIN_ICON_SIZE,
+      AtomFileIconsConfig.MAX_ICON_SIZE,
+      1
+    );
+    customIconSizeSpinner.setModel(customIconSizeSpinnerModel);
   }
 
   @SuppressWarnings("OverlyComplexMethod")
@@ -140,6 +168,7 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isThemedColorEnabledChanged(getIsThemedColorEnabled());
     modified = modified || config.isThemedColorChanged(getThemedColor());
     modified = modified || config.isBigIconsChanged(getHasBigIcons());
+    modified = modified || config.isCustomIconSizeChanged(getCustomIconSize());
     modified = modified || config.isLowPowerModeChanged(isLowPowerMode());
 
     return modified;
@@ -157,6 +186,7 @@ public final class SettingsForm implements SettingsFormUI {
     monochromeCheckboxStateChanged(null);
     accentColorCheckboxActionPerformed(null);
     themedColorCheckboxActionPerformed(null);
+    customIconSizeActionPerformed(null);
   }
 
   @Override
@@ -190,6 +220,7 @@ public final class SettingsForm implements SettingsFormUI {
     hollowFoldersCheckbox = new JCheckBox();
     hollowFoldersIcon2 = new JLabel();
     biggerIconsCheckBox = new JCheckBox();
+    customIconSizeSpinner = new JSpinner();
     arrowsStyleIcon = new JLabel();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
@@ -207,22 +238,22 @@ public final class SettingsForm implements SettingsFormUI {
         "hidemode 3",
         // columns
         "[fill]" +
-        "[::600,fill]" +
-        "[fill]",
+          "[::600,fill]" +
+          "[fill]",
         // rows
         "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[]" +
-        "[50]" +
-        "[]" +
-        "[]" +
-        "[]"));
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[50]" +
+          "[]" +
+          "[]" +
+          "[]"));
 
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png")));
@@ -311,7 +342,9 @@ public final class SettingsForm implements SettingsFormUI {
       //---- biggerIconsCheckBox ----
       biggerIconsCheckBox.setText(bundle.getString("SettingsForm.biggerIconsCheckBox.text"));
       biggerIconsCheckBox.setToolTipText(bundle.getString("SettingsForm.biggerIconsCheckBox.toolTipText"));
+      biggerIconsCheckBox.addActionListener(e -> customIconSizeActionPerformed(e));
       content.add(biggerIconsCheckBox, "cell 1 8");
+      content.add(customIconSizeSpinner, "cell 2 8");
 
       //---- arrowsStyleIcon ----
       arrowsStyleIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/arrowRight@2x.png")));
@@ -380,6 +413,10 @@ public final class SettingsForm implements SettingsFormUI {
 
   private void themedColorCheckboxActionPerformed(final ActionEvent e) {
     themedColorChooser.setEnabled(themedColorCheckbox.isSelected());
+  }
+
+  private void customIconSizeActionPerformed(final ActionEvent e) {
+    customIconSizeSpinner.setEnabled(biggerIconsCheckBox.isSelected());
   }
   //endregion
 
@@ -531,7 +568,17 @@ public final class SettingsForm implements SettingsFormUI {
   }
   //endregion
 
-  //region big icons
+  //region custom icon size
+  public Integer getCustomIconSize() {
+    return (Integer) customIconSizeSpinnerModel.getValue();
+  }
+
+  private void setCustomIconSize(final Integer newSize) {
+    customIconSizeSpinnerModel.setValue(newSize);
+  }
+  //endregion
+
+  //region Low power mode
   public boolean isLowPowerMode() {
     return lowPowerSwitch.isSelected();
   }

@@ -30,13 +30,9 @@ import com.intellij.ide.ui.search.SearchableOptionProcessor
 import com.intellij.openapi.options.Configurable
 import com.mallowigi.config.AtomSettingsBundle.message
 
-/**
- * Provider for Searchable options
- */
+/** Provider for Searchable options. */
 class AtomOptionContributor : SearchableOptionContributor() {
-  /**
-   * Add options to the search everything
-   */
+  /** Add options to the search everything. */
   override fun processOptions(processor: SearchableOptionProcessor) {
     val configurable: Configurable = AtomConfigurable()
     val displayName = configurable.displayName
@@ -52,7 +48,9 @@ class AtomOptionContributor : SearchableOptionContributor() {
       message("SettingsForm.hideFolderIconsCheckbox.text"),
       message("SettingsForm.hollowFoldersCheckbox.text"),
       message("SettingsForm.monochromeCheckbox.text"),
-      message("SettingsForm.themedColorCheckbox.text")
+      message("SettingsForm.themedColorCheckbox.text"),
+      message("SettingsForm.biggerIconsCheckBox.text"),
+      message("SettingsForm.lowPowerSwitch.text"),
       //endregion
     )
     for (s in strings) {

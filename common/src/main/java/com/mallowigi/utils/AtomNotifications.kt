@@ -49,7 +49,7 @@ import java.util.Objects
  */
 object AtomNotifications {
   /** Notification channel. */
-  const val CHANNEL: String = "Atom Material Notifications"
+  private const val CHANNEL: String = "Atom Material Notifications"
 
   /**
    * Show the update notification

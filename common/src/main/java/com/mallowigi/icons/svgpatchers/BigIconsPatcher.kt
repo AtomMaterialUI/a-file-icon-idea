@@ -56,7 +56,8 @@ class BigIconsPatcher : SvgPatcher {
 
   private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
-    val size = if (hasBigIcons) LARGE else REGULAR
+    val customFontSize = AtomFileIconsConfig.instance.customIconSize.toString()
+    val size = if (hasBigIcons) customFontSize else REGULAR
 
     if (isBig == SvgPatcher.TRUE) {
       svg.setAttribute(SvgPatcher.WIDTH, size)
@@ -65,7 +66,6 @@ class BigIconsPatcher : SvgPatcher {
   }
 
   companion object {
-    private const val LARGE = "20"
     private const val REGULAR = "16"
   }
 }

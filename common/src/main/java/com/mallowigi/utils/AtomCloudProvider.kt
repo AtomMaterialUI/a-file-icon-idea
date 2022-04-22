@@ -32,28 +32,21 @@ import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.config.select.AtomSelectConfigurable
 
-/**
- * Atom cloud provider
- *
- */
+/** Atom cloud provider. */
 class AtomCloudProvider : CloudConfigAppender {
-  /**
-   * Classes to sync
-   */
+  /** Classes to sync. */
   override fun appendClassesToStream(): List<Class<*>> =
     listOf(
       AtomSelectConfig::class.java,
       AtomFileIconsConfig::class.java
     )
 
-  /**
-   * Sync Settings description
-   */
+  /** Sync Settings description. */
   override fun getConfigDescription(clazz: Class<*>): String {
     return when (clazz.simpleName) {
       AtomConfigurable.ID       -> message("settings.titles.prefix", message("settings.titles.main"))
       AtomSelectConfigurable.ID -> message("settings.titles.prefix", message("settings.titles.customAssociations"))
-      else                      -> "UNKNOWN"
+      else                      -> clazz.simpleName
     }
   }
 }

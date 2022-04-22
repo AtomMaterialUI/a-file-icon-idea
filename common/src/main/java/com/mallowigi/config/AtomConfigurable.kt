@@ -31,24 +31,17 @@ import com.mallowigi.config.ui.SettingsForm
 import org.jetbrains.annotations.NonNls
 import java.util.Objects
 
-/**
- * Configurable for the Atom Settings
- *
- */
+/** Configurable for the Atom Settings. */
 class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>(),
   SearchableConfigurable {
 
   override val config: AtomFileIconsConfig
     get() = AtomFileIconsConfig.instance
 
-  /**
-   * Display name
-   */
+  /** Display name. */
   override fun getDisplayName(): String = message("settings.title")
 
-  /**
-   * Configurable ID
-   */
+  /** Configurable ID. */
   override fun getId(): String = ID
 
   override fun createForm(): SettingsForm = SettingsForm()
@@ -65,11 +58,9 @@ class AtomConfigurable : ConfigurableBase<SettingsForm?, AtomFileIconsConfig?>()
     checkFormModified(form, config!!)
 
   companion object {
-    /**
-     * Configurable ID
-     */
+    /** Configurable ID. */
     @NonNls
-    const val ID: String = "AtomFileIconsConfig"
+    const val ID: String = "AtomConfig"
 
     private fun checkFormModified(form: SettingsForm?, config: AtomFileIconsConfig): Boolean =
       Objects.requireNonNull(form)!!.isModified(config)
