@@ -46,30 +46,19 @@ import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.utils.refreshOpenedProjects
 
-/**
- * Listener for Settings Changes
- *
- */
+/** Listener for Settings Changes. */
 class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
-  /**
-   * Init on app started
-   */
+  /** Init on app started. */
   @Suppress("UnstableApiUsage")
   override fun appStarted(): Unit = initComponent()
 
-  /**
-   * Dispose on app closing
-   */
+  /** Dispose on app closing. */
   override fun appClosing(): Unit = disposeComponent()
 
-  /**
-   * Init on plugin loaded
-   */
+  /** Init on plugin loaded. */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
-  /**
-   * Dispose on plugin unloaded
-   */
+  /** Dispose on plugin unloaded. */
   override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
 
   private fun onSettingsChanged() {
@@ -97,8 +86,6 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
         override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
       })
-
-      
 
       subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
         override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
