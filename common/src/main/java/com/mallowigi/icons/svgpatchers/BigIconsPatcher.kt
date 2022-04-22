@@ -29,6 +29,7 @@ import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomFileIconsConfig
 import org.w3c.dom.Element
 import java.nio.charset.StandardCharsets
+import javax.swing.UIManager
 
 /**
  * Big icons patcher
@@ -36,36 +37,54 @@ import java.nio.charset.StandardCharsets
  * @constructor Create empty Big icons patcher
  */
 class BigIconsPatcher : SvgPatcher {
-  private var hasBigIcons = false
+  private var hasCustomSize = false
+  private var customIconSize = REGULAR
+  private var defaultRowHeight = UIManager.get("Tree.rowHeight") as Int
+  private val materialRowHeight = UIManager.get("Tree.materialRowHeight")
 
   override fun refresh(): Unit = refreshBigIcons()
 
   override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
 
   private fun refreshBigIcons() {
-    hasBigIcons = AtomFileIconsConfig.instance.hasBigIcons
+    hasCustomSize = AtomFileIconsConfig.instance.hasBigIcons
+    customIconSize = AtomFileIconsConfig.instance.customIconSize
+
+    if (hasCustomSize) {
+      updateRowHeight()
+    }
+  }
+
+  private fun updateRowHeight() {
+    val customRowHeight = defaultRowHeight + customIconSize - MIN_SIZE
+    if (defaultRowHeight == DEFAULT && materialRowHeight == null) {
+      UIManager.put("Tree.rowHeight", customRowHeight)
+    }
   }
 
   override fun priority(): Int = 97
 
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
-    hasher.update(hasBigIcons.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(hasCustomSize.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(customIconSize.toString().toByteArray(StandardCharsets.UTF_8))
     return hasher.digest()
   }
 
   private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
     val customFontSize = AtomFileIconsConfig.instance.customIconSize.toString()
-    val size = if (hasBigIcons) customFontSize else REGULAR
+    val size = if (hasCustomSize) customFontSize else REGULAR
 
     if (isBig == SvgPatcher.TRUE) {
-      svg.setAttribute(SvgPatcher.WIDTH, size)
-      svg.setAttribute(SvgPatcher.HEIGHT, size)
+      svg.setAttribute(SvgPatcher.WIDTH, size.toString())
+      svg.setAttribute(SvgPatcher.HEIGHT, size.toString())
     }
   }
 
   companion object {
-    private const val REGULAR = "16"
+    private const val MIN_SIZE = 12
+    private const val REGULAR = 16
+    private const val DEFAULT = 20
   }
 }
