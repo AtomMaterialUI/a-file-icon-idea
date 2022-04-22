@@ -40,129 +40,87 @@ import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
 import org.jetbrains.annotations.NonNls
 
-/**
- * Atom file icons config
- *
- */
+/** Atom file icons config. */
 @Suppress("TooManyFunctions")
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
-  /**
-   * Whether the file icons are enabled
-   */
+  /** Whether the file icons are enabled. */
   @Property
   var isEnabledIcons: Boolean = true
 
-  /**
-   * Whether the folder icons are enabledd
-   */
+  /** Whether the folder icons are enabledd. */
   @Property
   var isEnabledDirectories: Boolean = true
 
-  /**
-   * Whether the UI icons are enabled
-   */
+  /** Whether the UI icons are enabled. */
   @Property
   var isEnabledUIIcons: Boolean = true
 
-  /**
-   * Whether the monochrome icons are enabled
-   */
+  /** Whether the monochrome icons are enabled. */
   @Property
   var isMonochromeIcons: Boolean = false
 
-  /**
-   * The monochrome color
-   */
+  /** The monochrome color. */
   @NonNls
   @Property
   var monochromeColor: String = "546E7A"
     private set
 
-  /**
-   * Whether the PSI icons are enabled
-   */
+  /** Whether the PSI icons are enabled. */
   @Property
   var isEnabledPsiIcons: Boolean = true
 
-  /**
-   * Whether file icons are hidden
-   */
+  /** Whether file icons are hidden. */
   @Property
   var isHideFileIcons: Boolean = false
 
-  /**
-   * Whether folder icons are hidden
-   */
+  /** Whether folder icons are hidden. */
   @Property
   var isHideFolderIcons: Boolean = false
 
-  /**
-   * Whether the hollow folders are enabled
-   */
+  /** Whether the hollow folders are enabled. */
   @Property
   var isUseHollowFolders: Boolean = true
 
-  /**
-   * Style of tree expand arrows
-   */
+  /** Style of tree expand arrows. */
   @Property
   var arrowsStyle: ArrowsStyles = ArrowsStyles.MATERIAL
 
-  /**
-   * Whether custom accent color is enabled
-   */
+  /** Whether custom accent color is enabled. */
   @Property
   var isAccentColorEnabled: Boolean = false
 
-  /**
-   * Custom accent color
-   */
+  /** Custom accent color. */
   @NonNls
   @Property
   var accentColor: String = accentColorFromTheme
     private set
 
-  /**
-   * Whether custom theme color is enabled
-   */
+  /** Whether custom theme color is enabled. */
   @Property
   var isThemedColorEnabled: Boolean = false
 
-  /**
-   * Custom theme color
-   */
+  /** Custom theme color. */
   @NonNls
   @Property
   var themedColor: String = themedColorFromTheme
     private set
 
-  /**
-   * Whether big icons is enabled
-   */
+  /** Whether big icons is enabled. */
   @Property
   var hasBigIcons: Boolean = false
 
-  /**
-   * Whether low power mode is enabled
-   */
+  /** Whether low power mode is enabled. */
   @Property
-  var isLowPowerMode: Boolean = false
+  var isLowPowerMode: Boolean = true
 
-  /**
-   * Config state
-   */
+  /** Config state. */
   override fun getState(): AtomFileIconsConfig = this
 
-  /**
-   * Load config state from XML
-   */
+  /** Load config state from XML. */
   override fun loadState(state: AtomFileIconsConfig): Unit = XmlSerializerUtil.copyBean(state, this)
 
-  /**
-   * Fire event when settings are changed
-   *
-   */
+  /** Fire event when settings are changed. */
   fun fireChanged() {
     ApplicationManager.getApplication().messageBus
       .syncPublisher(AtomConfigNotifier.TOPIC)
@@ -194,10 +152,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     fireChanged()
   }
 
-  /**
-   * Reset settings
-   *
-   */
+  /** Reset settings. */
   fun resetSettings() {
     isEnabledIcons = true
     isEnabledDirectories = true
@@ -214,7 +169,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
     hasBigIcons = false
-    isLowPowerMode = false
+    isLowPowerMode = true
   }
 
   //region File Icons
@@ -226,10 +181,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean = this.isEnabledIcons != isEnabledIcons
 
-  /**
-   * Toggle enabled icons
-   *
-   */
+  /** Toggle enabled icons. */
   fun toggleEnabledIcons() {
     isEnabledIcons = !isEnabledIcons
   }
@@ -245,10 +197,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean =
     this.isEnabledDirectories != isEnabledDirectories
 
-  /**
-   * Toggle directories icons
-   *
-   */
+  /** Toggle directories icons. */
   fun toggleDirectoriesIcons() {
     isEnabledDirectories = !isEnabledDirectories
   }
@@ -263,10 +212,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean = isMonochromeIcons != isMonochrome
 
-  /**
-   * Toggle monochrome icons
-   *
-   */
+  /** Toggle monochrome icons. */
   fun toggleMonochromeIcons() {
     isMonochromeIcons = !isMonochromeIcons
   }
@@ -290,10 +236,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
 
-  /**
-   * Toggle ui icons
-   *
-   */
+  /** Toggle ui icons. */
   fun toggleUIIcons() {
     isEnabledUIIcons = !isEnabledUIIcons
   }
@@ -308,10 +251,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean = this.isEnabledPsiIcons != isEnabledPsiIcons
 
-  /**
-   * Toggle psi icons
-   *
-   */
+  /** Toggle psi icons. */
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
   }
@@ -326,10 +266,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean = isUseHollowFolders != useHollowFolders
 
-  /**
-   * Toggle use hollow folders
-   *
-   */
+  /** Toggle use hollow folders. */
   fun toggleUseHollowFolders() {
     isUseHollowFolders = !isUseHollowFolders
   }
@@ -344,10 +281,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean = isHideFileIcons != hideFileIcons
 
-  /**
-   * Toggle hide file icons
-   *
-   */
+  /** Toggle hide file icons. */
   fun toggleHideFileIcons() {
     isHideFileIcons = !isHideFileIcons
   }
@@ -362,10 +296,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean = isHideFolderIcons != hideFolderIcons
 
-  /**
-   * Toggle hide folder icons
-   *
-   */
+  /** Toggle hide folder icons. */
   fun toggleHideFolderIcons() {
     isHideFolderIcons = !isHideFolderIcons
   }
@@ -447,10 +378,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasBigIcons != bigIcons
 
-  /**
-   * Toggle big icons
-   *
-   */
+  /** Toggle big icons. */
   fun toggleBigIcons() {
     hasBigIcons = !hasBigIcons
   }
@@ -465,19 +393,14 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    */
   fun isLowPowerModeChanged(lowPower: Boolean): Boolean = isLowPowerMode != lowPower
 
-  /**
-   * Toggle low power mode
-   *
-   */
+  /** Toggle low power mode. */
   fun toggleLowPowerMode() {
     isLowPowerMode = !isLowPowerMode
   }
   //endregion
 
   companion object {
-    /**
-     * Instance of the Config service
-     */
+    /** Instance of the Config service. */
     @JvmStatic
     val instance: AtomFileIconsConfig
       get() = ApplicationManager.getApplication().getService(AtomFileIconsConfig::class.java)
@@ -488,10 +411,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
 
-    /**
-     * Extract accent color from current theme
-     *
-     */
+    /** Extract accent color from current theme. */
     @Suppress("HardCodedStringLiteral")
     private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
@@ -507,10 +427,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
       return ColorUtil.toHex(namedColor)
     }
 
-    /**
-     * Extract themed color from current theme
-     *
-     */
+    /** Extract themed color from current theme. */
     private fun getThemedFromTheme(): String =
       ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
   }
