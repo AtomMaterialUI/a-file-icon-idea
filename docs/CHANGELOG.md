@@ -2,6 +2,18 @@
 
 ----
 
+## 64.0 (6.4.0)
+
+### Features
+- New Feature: **Custom Icon Size**. Now you can set a custom icon size for icons (replaces the **Bigger Icons** setting)
+- Adapt _Project View_ Items' height according to the custom size.
+
+### Fixes
+- Fix **Folder Icons** not applying in Rider when not using the _Solution Explorer_
+- Fix Settings being exported as `UNKNOWN` when using _Settings Sync_
+
+---
+
 ## 63.0 (6.3.0)
 
 ### Fixes
