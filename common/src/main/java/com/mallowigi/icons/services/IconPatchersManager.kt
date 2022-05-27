@@ -60,7 +60,7 @@ object IconPatchersManager {
     forName.declaredFields.forEach {
       if (it.name == "iconPathPatcher") {
         it.isAccessible = true
-        val patcher = it.get(null)
+        val patcher = it.get(ExperimentalUI.getInstance())
         IconLoader.removePathPatcher(patcher as IconPathPatcher)
       }
     }
