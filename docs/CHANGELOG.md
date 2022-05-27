@@ -2,13 +2,23 @@
 
 ----
 
+## 65.0 (6.5.0)
+
+### Features
+
+- Support for JBR 17 and Experimental UI
+- Add the **Atom Material Icons** settings on the Experimental UI toolbar
+- Enable Experimental UI icons when *UI Icons* is disabled.
+
 ## 64.0 (6.4.0)
 
 ### Features
+
 - New Feature: **Custom Icon Size**. Now you can set a custom icon size for icons (replaces the **Bigger Icons** setting)
 - Adapt _Project View_ Items' height according to the custom size.
 
 ### Fixes
+
 - Fix **Folder Icons** not applying in Rider when not using the _Solution Explorer_
 - Fix Settings being exported as `UNKNOWN` when using _Settings Sync_
 
@@ -17,41 +27,43 @@
 ## 63.0 (6.3.0)
 
 ### Fixes
+
 - Updated icons
 
 ### Additions
+
 - Icons:
-  - amplify
-  - bandit
-  - catala
-  - cnab
-  - cspell
-  - earthly
-  - geojson
-  - hardhat
-  - master UI
-  - npm check updates
-  - noc
-  - plop
-  - publiccode
-  - recoil
-  - remix run
-  - rust object notation
-  - siyuan
-  - styleguidist
-  - xstate
+    - amplify
+    - bandit
+    - catala
+    - cnab
+    - cspell
+    - earthly
+    - geojson
+    - hardhat
+    - master UI
+    - npm check updates
+    - noc
+    - plop
+    - publiccode
+    - recoil
+    - remix run
+    - rust object notation
+    - siyuan
+    - styleguidist
+    - xstate
 - Folders:
-  - archetypes
-  - schematics
-  - crates
-  - gallery
-  - recoil
-  - flux
-  - polyfills
-  - queries
-  - strategies
-  - woocommerce
-  - xstate
+    - archetypes
+    - schematics
+    - crates
+    - gallery
+    - recoil
+    - flux
+    - polyfills
+    - queries
+    - strategies
+    - woocommerce
+    - xstate
 
 ## 62.0 (6.2.0)
 
@@ -60,20 +72,21 @@
 - Fix icons invisible when UI Icons is disabled
 
 ### Additions
+
 - Icons:
-  - kustomize
-  - vitest
-  - steadybit
-  - turborepo
-  - poetry
-  - supabase
-  - allcontributorsrc
-  - publishToken
+    - kustomize
+    - vitest
+    - steadybit
+    - turborepo
+    - poetry
+    - supabase
+    - allcontributorsrc
+    - publishToken
 - Folders:
-  - kustomize
-  - jest
-  - storage
-  - supabase
+    - kustomize
+    - jest
+    - storage
+    - supabase
 
 ## 61.0 (6.1.0)
 
@@ -91,19 +104,19 @@
 
 - New mode: **Low Power Mode**. Reduce icon patching by turning off Project View Decorators
 - New icons for Rails:
-  - controllers
-  - mailers
-  - helpers
-  - jobs
-  - serializers
-  - factories
-  - concerns
-  - fixtures
-  - channels
-  - schemas
-  - services
-  - seed
-  - database.yml
+    - controllers
+    - mailers
+    - helpers
+    - jobs
+    - serializers
+    - factories
+    - concerns
+    - fixtures
+    - channels
+    - schemas
+    - services
+    - seed
+    - database.yml
 
 ### Fixes
 
@@ -126,11 +139,11 @@
 ### Additions
 
 - File Icons
-  - Playwright
-  - Gymfile, Matchfile, Pluginfile
-  - Koka
+    - Playwright
+    - Gymfile, Matchfile, Pluginfile
+    - Koka
 - Folder Icons
-  - fastlane
+    - fastlane
 
 ## 53.0 (5.3.0)
 
@@ -145,31 +158,31 @@
 ### Additions
 
 - Many new UI Icons:
-  - Resharper
-  - Rider
-  - Spring
-  - Gateway
-  - Space
-  - Logos
+    - Resharper
+    - Rider
+    - Spring
+    - Gateway
+    - Space
+    - Logos
 - Files:
-  - Qodana
-  - Safari
-  - JFormDesigner
-  - nsriignore
-  - retextignore
-  - remarkignore
-  - rehypeignore
-  - boringignore
-  - bazelignore
-  - pubignore
-  - Fitbit
-  - Go-zero
-  - Luau
-  - Toit
-  - Vanilla Extract
-  - Changelog
-  - CodeOwners
-  - Bundle files in Java and Kotlin
+    - Qodana
+    - Safari
+    - JFormDesigner
+    - nsriignore
+    - retextignore
+    - remarkignore
+    - rehypeignore
+    - boringignore
+    - bazelignore
+    - pubignore
+    - Fitbit
+    - Go-zero
+    - Luau
+    - Toit
+    - Vanilla Extract
+    - Changelog
+    - CodeOwners
+    - Bundle files in Java and Kotlin
 
 ### Other
 
@@ -205,11 +218,11 @@
 ### Features
 
 - New Settings page: **Associations Editor**. The Custom Associations page has been revamped with more features:
-  - View all icon and folder associations from the settings page
-  - Toggle, Add, Remove and Edit associations easily
-  - Search by name and pattern
-  - Tweak the associations priorities
-  - Reset all custom associations at once
+    - View all icon and folder associations from the settings page
+    - Toggle, Add, Remove and Edit associations easily
+    - Search by name and pattern
+    - Tweak the associations priorities
+    - Reset all custom associations at once
 - Deprecation of the old _Custom Associations_ page. Please migrate your currently defined associations in the new page.
 
 ### Other
@@ -229,18 +242,18 @@
 ### Additions
 
 - _Files_:
-  - coala, parcel, distignore
-  - clio and stalebot
-  - lolcode, nuxt, skript, textlint, grain
-  - dockercompose, spectral, mdsvex
-  - bundle.properties, mybatis
+    - coala, parcel, distignore
+    - clio and stalebot
+    - lolcode, nuxt, skript, textlint, grain
+    - dockercompose, spectral, mdsvex
+    - bundle.properties, mybatis
 - *Folders*:
-  - kotlin, java
-  - perl, lua
-  - input/output
-  - connection, nuxt, quasar, scala, vuepress, article, base, cart, home, mobile, kivy, project
-  - infra
-  - stencil, scala, svelte, tech, terraform, venv
+    - kotlin, java
+    - perl, lua
+    - input/output
+    - connection, nuxt, quasar, scala, vuepress, article, base, cart, home, mobile, kivy, project
+    - infra
+    - stencil, scala, svelte, tech, terraform, venv
 
 ## 41.1 (4.3.1)
 
@@ -316,382 +329,382 @@
 ### Additions
 
 - Caught up with **Atom File Icons** and **VSCode Icons** (non exhaustive list):
-  - Tea
-  - Telegram
-  - Tex
-  - Tfsignore
-  - Table Of Contents
-  - Template Toolkit
-  - Subtitles
-  - Terser
-  - Thor
-  - Tipe
-  - Tla
-  - Tmux
-  - Truffle
-  - TTCN
-  - Twine
-  - Txl
-  - Typedoc
-  - Typo3
-  - Db2
-  - Db3
-  - Udf
-  - SSH
-  - Kdbx
-  - Passwd
-  - Sassrc
-  - Kojo
-  - Solidity
-  - Cql
-  - 4GL
-  - Do
-  - Ihlp
-  - Sthlp
-  - Mata
-  - Matah
-  - Stylelintignore
-  - Nomad
-  - Noon
-  - Normalize
-  - NSRI
-  - Nu
-  - Numpy
-  - NXC
-  - OpenOffice
-  - OCaml
-  - Finder
-  - Oberon
-  - Obj-J
-  - Octave
-  - Odin
-  - Ooc
-  - Opa
-  - OpenCL
-  - OpenGL
-  - OpenPolicy
-  - OpenScad
-  - OpenVMS
-  - OpenVPN
-  - Org-mode
-  - Oxygene
-  - Oz
-  - Progress
-  - Sac
-  - Sage
-  - Sails
-  - Saltstack
-  - Sas
-  - Scilab
-  - Scilla
-  - Scratch
-  - Scrutinizer
-  - Secret
-  - Self
-  - Sencha
-  - Sentry
-  - Serverless
-  - ServiceFabric
-  - Shadowcljs
-  - Shen
-  - Shipit
-  - Shippable
-  - Sigils
-  - SketchMake
-  - SketchUp
-  - Skipper
-  - Slash
-  - SnapCraft
-  - Snap.svg
-  - Snort
-  - Snyk
-  - Solidarity
-  - Sophia
-  - Sorbet
-  - Spacemacs
-  - Sqf
-  - Squarespace
-  - Squirrel
-  - Stan
-  - Stdlib
-  - Storyist
-  - Stylable
-  - StyledComponents
-  - Stylish-haskell
-  - Automator
-  - Bitcoin
-  - Bloc
-  - Buildkite
-  - Cnab
-  - Cubit
-  - Dub
-  - Dvc
-  - Macosx
-  - Wine
-  - ApiExtractor
-  - Apollo
-  - Binder
-  - Bitcoin
-  - BlitzBasic
-  - Bors
-  - Bosque
-  - Calva
-  - Casc
-  - Codemeta
-  - Commitizen
-  - Dafny
-  - TSS
-  - JsonL
-  - LdJSON
-  - Deps
-  - Pydeps
-  - Cpc
-  - Python Configs
-  - Shell History
-  - Son
-  - Rdjson
-  - Ston
-  - Ejson
-  - More Db Associations
-  - Dependabot
-  - Drawio
-  - Dub
-  - Fabfile
-  - Fabric
-  - Fauna
-  - Figma
-  - Fthtml
-  - Gitpod
-  - GoReleaser
-  - Gql Codegen
-  - Grapher
-  - Hie
-  - Arm
-  - Avr
-  - Bison
-  - CkEditor
-  - Hygen
-  - Imgbot
-  - Mixin
-  - Photorec
-  - Shellcheck
-  - Windi.css
-  - Jscpd
-  - Kaitai
-  - Kibo
-  - Kusto
-  - Lark
-  - Latino
-  - Lgtm
-  - Lighthouse
-  - Linqpad
-  - Macaulay2
-  - Mermaid
-  - Metapost
-  - Modernweb
-  - Sourcemap
-  - Neon
-  - Nokogiri
-  - Nwscript
-  - Nx
-  - Pytest
-  - Readthedocs
-  - Ftr
-  - Omnigraffle
-  - Ogone
-  - Openexr
-  - Openzfs
-  - Rsync
-  - Sandbox
-  - Warcraft3
-  - Winui
-  - Wolfram
-  - Qsharp
-  - Xmake
-  - Rescript
-  - Stitches
-  - Expo
-  - Testcafe
-  - Tilt
-  - Ufo
-  - Unicode
-  - W3c
-  - Yamllint
-  - Yandex
-  - Yvm
-  - Vercel
-  - Detekt
-  - Al
-  - Apex
-  - Bats
-  - Bicep
-  - Cddl
-  - Fork
-  - AmigaOS
-  - Codemirror
-  - Cairo
-  - Codeql
-  - Confluence
-  - Donejs
-  - Dylan
-  - Dal
-  - Dojo
-  - Dosbox
-  - Drupal
-  - Dustjs
-  - Deno
-  - Nest Land
-  - E
-  - Edge
-  - Elastic
-  - Fossil
-  - Freedos
-  - Fiddle
-  - Freemat
-  - Asar
-  - Floobits
-  - Freedesktop
-  - Baboon
-  - Tinymce
-  - Gcode
-  - Spray
-  - Hosts
-  - Hlsl
-  - Hunspell
-  - Hypr
-  - Haxedevelop
-  - Hugo
-  - Icl
-  - Informix
-  - Janet
-  - Zorinos
-  - Xubuntu
-  - Zquery
-  - Webp
-  - Wpml
-  - Wxml
-  - Wxs
-  - Wxss
-  - Vertex
-  - Vmware
-  - Volt
-  - Vsix
-  - Unlicense
-  - Teal
-  - Tera
-  - Tox
-  - Tuc
-  - Sdlang
-  - Slang
-  - Slice
-  - Spaceengine
-  - Sparql
-  - SSS
-  - Reactos
-  - Rehype
-  - Remark
-  - Retext
-  - Rproj
-  - Rust-toolchain
-  - Pipeline
-  - Pddl
-  - Phpcs
-  - Pipeline
-  - Pkgsrc
-  - Precision
-  - Prometheus
-  - Pytyped
-  - Nodemon
-  - Prisma
-  - DragonFlyBSD
-  - ElementaryOS
-  - Manjaro
-  - OpenBSD
-  - Openhab
-  - OpenIndiana
-  - OpenSolaris
-  - OpenStack
-  - SmartOS
-  - N64
-  - Nearley
-  - Nix
-  - Stencil
-  - Xliff
-  - Svnignore
-  - Magit
-  - Manifest
-  - Matlab
-  - Mlang
-  - Mojolicious
-  - Mongo
-  - Ms-dos
-  - Mson
-  - Libuv
-  - License.bat
-  - Kite
-  - JSS
-  - Jsp
-  - JBuiler
-  - Iodine
-  - Jshintignore
-  - Helix
-  - Helixignore
-  - Homeassistant
-  - Horusec
-  - Haxe Develop
-  - Haxelib
-  - Jekyll
-  - Appsemble
-  - Astro
-  - Avif
-  - Drools
-  - Dvc
-  - Glitter
-  - Docz Config
-  - Dojorc
-  - Dox
-  - Emakerfile
-  - Flutter Lock
-  - Flutter Pacakges
-  - Angular Module
-  - Angular Controller
-  - Angular Container Ngrx
-  - Angular Page Ionic
-  - Angular App Routing
-  - Angular Tailwind
-  - Nest Adapter
-  - Nest Controller
-  - Nest Decorator
-  - Nest Filter
-  - Nest Gateway
-  - Nest Interceptor
-  - Nest Guard
-  - Nest Middleware
-  - Nest Service
-  - Nest Pipe
-  - Nest Module
-  - Azure Pipelines
-  - Blueprint
-  - Cake
-  - Composer,
-  - GCloud
-  - Haxelib
-  - Husky
-  - Mjml
-  - Mongo
-  - Next
-  - Nuget
-  - Platformio
-  - Redis
-  - Sso
-  - Vs
-  - Cmake
-  - Dapr
-  - Debian
-  - Elastic
-  - Electron
-  - Abc
-  - Astyle
+    - Tea
+    - Telegram
+    - Tex
+    - Tfsignore
+    - Table Of Contents
+    - Template Toolkit
+    - Subtitles
+    - Terser
+    - Thor
+    - Tipe
+    - Tla
+    - Tmux
+    - Truffle
+    - TTCN
+    - Twine
+    - Txl
+    - Typedoc
+    - Typo3
+    - Db2
+    - Db3
+    - Udf
+    - SSH
+    - Kdbx
+    - Passwd
+    - Sassrc
+    - Kojo
+    - Solidity
+    - Cql
+    - 4GL
+    - Do
+    - Ihlp
+    - Sthlp
+    - Mata
+    - Matah
+    - Stylelintignore
+    - Nomad
+    - Noon
+    - Normalize
+    - NSRI
+    - Nu
+    - Numpy
+    - NXC
+    - OpenOffice
+    - OCaml
+    - Finder
+    - Oberon
+    - Obj-J
+    - Octave
+    - Odin
+    - Ooc
+    - Opa
+    - OpenCL
+    - OpenGL
+    - OpenPolicy
+    - OpenScad
+    - OpenVMS
+    - OpenVPN
+    - Org-mode
+    - Oxygene
+    - Oz
+    - Progress
+    - Sac
+    - Sage
+    - Sails
+    - Saltstack
+    - Sas
+    - Scilab
+    - Scilla
+    - Scratch
+    - Scrutinizer
+    - Secret
+    - Self
+    - Sencha
+    - Sentry
+    - Serverless
+    - ServiceFabric
+    - Shadowcljs
+    - Shen
+    - Shipit
+    - Shippable
+    - Sigils
+    - SketchMake
+    - SketchUp
+    - Skipper
+    - Slash
+    - SnapCraft
+    - Snap.svg
+    - Snort
+    - Snyk
+    - Solidarity
+    - Sophia
+    - Sorbet
+    - Spacemacs
+    - Sqf
+    - Squarespace
+    - Squirrel
+    - Stan
+    - Stdlib
+    - Storyist
+    - Stylable
+    - StyledComponents
+    - Stylish-haskell
+    - Automator
+    - Bitcoin
+    - Bloc
+    - Buildkite
+    - Cnab
+    - Cubit
+    - Dub
+    - Dvc
+    - Macosx
+    - Wine
+    - ApiExtractor
+    - Apollo
+    - Binder
+    - Bitcoin
+    - BlitzBasic
+    - Bors
+    - Bosque
+    - Calva
+    - Casc
+    - Codemeta
+    - Commitizen
+    - Dafny
+    - TSS
+    - JsonL
+    - LdJSON
+    - Deps
+    - Pydeps
+    - Cpc
+    - Python Configs
+    - Shell History
+    - Son
+    - Rdjson
+    - Ston
+    - Ejson
+    - More Db Associations
+    - Dependabot
+    - Drawio
+    - Dub
+    - Fabfile
+    - Fabric
+    - Fauna
+    - Figma
+    - Fthtml
+    - Gitpod
+    - GoReleaser
+    - Gql Codegen
+    - Grapher
+    - Hie
+    - Arm
+    - Avr
+    - Bison
+    - CkEditor
+    - Hygen
+    - Imgbot
+    - Mixin
+    - Photorec
+    - Shellcheck
+    - Windi.css
+    - Jscpd
+    - Kaitai
+    - Kibo
+    - Kusto
+    - Lark
+    - Latino
+    - Lgtm
+    - Lighthouse
+    - Linqpad
+    - Macaulay2
+    - Mermaid
+    - Metapost
+    - Modernweb
+    - Sourcemap
+    - Neon
+    - Nokogiri
+    - Nwscript
+    - Nx
+    - Pytest
+    - Readthedocs
+    - Ftr
+    - Omnigraffle
+    - Ogone
+    - Openexr
+    - Openzfs
+    - Rsync
+    - Sandbox
+    - Warcraft3
+    - Winui
+    - Wolfram
+    - Qsharp
+    - Xmake
+    - Rescript
+    - Stitches
+    - Expo
+    - Testcafe
+    - Tilt
+    - Ufo
+    - Unicode
+    - W3c
+    - Yamllint
+    - Yandex
+    - Yvm
+    - Vercel
+    - Detekt
+    - Al
+    - Apex
+    - Bats
+    - Bicep
+    - Cddl
+    - Fork
+    - AmigaOS
+    - Codemirror
+    - Cairo
+    - Codeql
+    - Confluence
+    - Donejs
+    - Dylan
+    - Dal
+    - Dojo
+    - Dosbox
+    - Drupal
+    - Dustjs
+    - Deno
+    - Nest Land
+    - E
+    - Edge
+    - Elastic
+    - Fossil
+    - Freedos
+    - Fiddle
+    - Freemat
+    - Asar
+    - Floobits
+    - Freedesktop
+    - Baboon
+    - Tinymce
+    - Gcode
+    - Spray
+    - Hosts
+    - Hlsl
+    - Hunspell
+    - Hypr
+    - Haxedevelop
+    - Hugo
+    - Icl
+    - Informix
+    - Janet
+    - Zorinos
+    - Xubuntu
+    - Zquery
+    - Webp
+    - Wpml
+    - Wxml
+    - Wxs
+    - Wxss
+    - Vertex
+    - Vmware
+    - Volt
+    - Vsix
+    - Unlicense
+    - Teal
+    - Tera
+    - Tox
+    - Tuc
+    - Sdlang
+    - Slang
+    - Slice
+    - Spaceengine
+    - Sparql
+    - SSS
+    - Reactos
+    - Rehype
+    - Remark
+    - Retext
+    - Rproj
+    - Rust-toolchain
+    - Pipeline
+    - Pddl
+    - Phpcs
+    - Pipeline
+    - Pkgsrc
+    - Precision
+    - Prometheus
+    - Pytyped
+    - Nodemon
+    - Prisma
+    - DragonFlyBSD
+    - ElementaryOS
+    - Manjaro
+    - OpenBSD
+    - Openhab
+    - OpenIndiana
+    - OpenSolaris
+    - OpenStack
+    - SmartOS
+    - N64
+    - Nearley
+    - Nix
+    - Stencil
+    - Xliff
+    - Svnignore
+    - Magit
+    - Manifest
+    - Matlab
+    - Mlang
+    - Mojolicious
+    - Mongo
+    - Ms-dos
+    - Mson
+    - Libuv
+    - License.bat
+    - Kite
+    - JSS
+    - Jsp
+    - JBuiler
+    - Iodine
+    - Jshintignore
+    - Helix
+    - Helixignore
+    - Homeassistant
+    - Horusec
+    - Haxe Develop
+    - Haxelib
+    - Jekyll
+    - Appsemble
+    - Astro
+    - Avif
+    - Drools
+    - Dvc
+    - Glitter
+    - Docz Config
+    - Dojorc
+    - Dox
+    - Emakerfile
+    - Flutter Lock
+    - Flutter Pacakges
+    - Angular Module
+    - Angular Controller
+    - Angular Container Ngrx
+    - Angular Page Ionic
+    - Angular App Routing
+    - Angular Tailwind
+    - Nest Adapter
+    - Nest Controller
+    - Nest Decorator
+    - Nest Filter
+    - Nest Gateway
+    - Nest Interceptor
+    - Nest Guard
+    - Nest Middleware
+    - Nest Service
+    - Nest Pipe
+    - Nest Module
+    - Azure Pipelines
+    - Blueprint
+    - Cake
+    - Composer,
+    - GCloud
+    - Haxelib
+    - Husky
+    - Mjml
+    - Mongo
+    - Next
+    - Nuget
+    - Platformio
+    - Redis
+    - Sso
+    - Vs
+    - Cmake
+    - Dapr
+    - Debian
+    - Elastic
+    - Electron
+    - Abc
+    - Astyle
 
 ## 38.0 (4.0.0)
 
@@ -703,54 +716,54 @@
 ### Additions
 
 - Added many many more **UI Icons**:
-  - Big Data Tools
-  - UI Designer
-  - Package Search
-  - ColdFusion
-  - Resharper/Rider
-  - Ruby
-  - Rust
-  - Tailwind
-  - Space
-  - Swagger
-  - Swift
-  - Lombok
-  - JavaEE
-  - CodeWithMe
-  - Chooser
-  - Thumbnail Viewer
-  - JetBrains Logos
-  - Project Analysis
+    - Big Data Tools
+    - UI Designer
+    - Package Search
+    - ColdFusion
+    - Resharper/Rider
+    - Ruby
+    - Rust
+    - Tailwind
+    - Space
+    - Swagger
+    - Swift
+    - Lombok
+    - JavaEE
+    - CodeWithMe
+    - Chooser
+    - Thumbnail Viewer
+    - JetBrains Logos
+    - Project Analysis
 - New _file icons_:
-  - CoffeelintIgnore
-  - Csslint
-  - htmlhint
-  - jsbeautify
-  - jscs
-  - jshint
-  - pythonconfig
-  - yard
-  - nant
-  - nasm
-  - ndepend
-  - neko
-  - neo4j
-  - nessus
-  - netlinx
-  - netlogo
-  - newrelic
-  - nextflow
-  - nextjs
-  - nickle
-  - nightwatch
-  - nimble
-  - nimrod
-  - nit
-  - nmap
-  - nodemonignore
-  - ninja
+    - CoffeelintIgnore
+    - Csslint
+    - htmlhint
+    - jsbeautify
+    - jscs
+    - jshint
+    - pythonconfig
+    - yard
+    - nant
+    - nasm
+    - ndepend
+    - neko
+    - neo4j
+    - nessus
+    - netlinx
+    - netlogo
+    - newrelic
+    - nextflow
+    - nextjs
+    - nickle
+    - nightwatch
+    - nimble
+    - nimrod
+    - nit
+    - nmap
+    - nodemonignore
+    - ninja
 - New _folder icons_:
-  - cypress
+    - cypress
 
 ### Fixes
 
@@ -781,26 +794,26 @@
 ### Additions
 
 - New **file icons**:
-  - genstat
-  - gentoo
-  - gimp
-  - gitcommit
-  - gitmerge
-  - glade
-  - glide
-  - gltf
-  - gnome
-  - golo
-  - gauss
-  - grammatical framework
-  - glyphs
-  - gn
-  - gnuplot
-  - gosu
-  - gravit
-  - greenkeeper
-  - pointwise
-  - snowpack
+    - genstat
+    - gentoo
+    - gimp
+    - gitcommit
+    - gitmerge
+    - glade
+    - glide
+    - gltf
+    - gnome
+    - golo
+    - gauss
+    - grammatical framework
+    - glyphs
+    - gn
+    - gnuplot
+    - gosu
+    - gravit
+    - greenkeeper
+    - pointwise
+    - snowpack
 
 ### Fixes
 
@@ -812,53 +825,53 @@
 ### Additions
 
 - New **file icons**:
-  - mapbox
-  - markdownlint
-  - materialize
-  - mathjax
-  - max
-  - mdx
-  - mediawiki
-  - mercury
-  - nano
-  - nanoc
-  - MS infopath
-  - lync
-  - visio
-  - publisher
-  - outlook
-  - project
-  - meson
-  - metal
-  - minecraft
-  - minizinc
-  - mirah
-  - mirc
-  - mkdocs
-  - modelica
-  - modernizr
-  - modo
-  - moho
-  - modula2
-  - modula3
-  - moleculer
-  - moment
-  - monkey
-  - reasonstudios
-  - rebol
-  - red2
-  - redhat
-  - reek
-  - rneovate
-  - requirejs
-  - rexx
-  - rhino3d
-  - riemann
-  - ring
-  - riot2
-  - robot2
-  - rss
-  - rstudio
+    - mapbox
+    - markdownlint
+    - materialize
+    - mathjax
+    - max
+    - mdx
+    - mediawiki
+    - mercury
+    - nano
+    - nanoc
+    - MS infopath
+    - lync
+    - visio
+    - publisher
+    - outlook
+    - project
+    - meson
+    - metal
+    - minecraft
+    - minizinc
+    - mirah
+    - mirc
+    - mkdocs
+    - modelica
+    - modernizr
+    - modo
+    - moho
+    - modula2
+    - modula3
+    - moleculer
+    - moment
+    - monkey
+    - reasonstudios
+    - rebol
+    - red2
+    - redhat
+    - reek
+    - rneovate
+    - requirejs
+    - rexx
+    - rhino3d
+    - riemann
+    - ring
+    - riot2
+    - robot2
+    - rss
+    - rstudio
 
 ## 33.0 (3.10.0)
 
@@ -869,17 +882,17 @@
 ### Additions
 
 - New **file icons**:
-  - eclipselang
-  - eagle
-  - easybuild
-  - ec
-  - ecere
-  - electron
-  - email
-  - emberscript
-  - eq
-  - esdoc
-  - extjs
+    - eclipselang
+    - eagle
+    - easybuild
+    - ec
+    - ecere
+    - electron
+    - email
+    - emberscript
+    - eq
+    - esdoc
+    - extjs
 
 ## 32.0 (3.9.0)
 
@@ -890,15 +903,15 @@
 ### Additions
 
 - New **folder associations**:
-  - ios
-  - iosApp
-  - androidApp
-  - backend
-  - desktop
-  - buildSrc
-  - repository
-  - exception
-  - usecase
+    - ios
+    - iosApp
+    - androidApp
+    - backend
+    - desktop
+    - buildSrc
+    - repository
+    - exception
+    - usecase
 - Add django associations and `eslintignore`
 
 ### Fixes
@@ -916,94 +929,94 @@
 ### Additions
 
 - New **file icons**:
-  - UIKit
-  - Unibeautify
-  - Uno
-  - Urweb
-  - Paket
-  - Pan
-  - Papyrus
-  - Parrot
-  - Pascal
-  - Patreon
-  - Pawn
-  - PCD
-  - Pegjs
-  - Phoenix
-  - Oracle
-  - Phrase
-  - Pickle
-  - Pico8
-  - Picolisp
-  - Pike
-  - Pinescript
-  - Platform.IO
-  - PM2
-  - Pod
-  - PgSQL
-  - PogoScript
-  - Pony
-  - Povray
-  - Powwerbuilder
-  - Precommit
-  - Propellet
-  - PROS
-  - Proselint
-  - Pullapprove
-  - Pure
-  - PHP2
-  - LabView
-  - Lasso
-  - Leaflet
-  - Lean
-  - Lefthook
-  - Leiningen
-  - Lekto
-  - Lex
-  - LFE
-  - Lightwave
-  - Lilypond
-  - Link
-  - Lime
-  - Lisp
-  - LLVM
-  - LogTalk
-  - Lolcode
-  - LSL
-  - Lua
-  - Livescript
-  - alexignore
-  - boringignore
-  - D3
-  - darcsignore
-  - darcs
-  - deps
-  - dockerignore
-  - fossaignore
-  - gitignore
-  - helmignore
-  - herokuignore
-  - dashboard
-  - dataweave
-  - dbase
-  - debian
-  - devcontainer
-  - devicetree
-  - dhall
-  - Dia
-  - Digdag
-  - DNS
-  - Docbook
-  - Doclets
-  - Docpad
-  - Docz
-  - Dogescript
-  - Dojo
-  - Dosbox
-  - Doxygen
-  - Dragula
-  - Drone
-  - Dyalog
+    - UIKit
+    - Unibeautify
+    - Uno
+    - Urweb
+    - Paket
+    - Pan
+    - Papyrus
+    - Parrot
+    - Pascal
+    - Patreon
+    - Pawn
+    - PCD
+    - Pegjs
+    - Phoenix
+    - Oracle
+    - Phrase
+    - Pickle
+    - Pico8
+    - Picolisp
+    - Pike
+    - Pinescript
+    - Platform.IO
+    - PM2
+    - Pod
+    - PgSQL
+    - PogoScript
+    - Pony
+    - Povray
+    - Powwerbuilder
+    - Precommit
+    - Propellet
+    - PROS
+    - Proselint
+    - Pullapprove
+    - Pure
+    - PHP2
+    - LabView
+    - Lasso
+    - Leaflet
+    - Lean
+    - Lefthook
+    - Leiningen
+    - Lekto
+    - Lex
+    - LFE
+    - Lightwave
+    - Lilypond
+    - Link
+    - Lime
+    - Lisp
+    - LLVM
+    - LogTalk
+    - Lolcode
+    - LSL
+    - Lua
+    - Livescript
+    - alexignore
+    - boringignore
+    - D3
+    - darcsignore
+    - darcs
+    - deps
+    - dockerignore
+    - fossaignore
+    - gitignore
+    - helmignore
+    - herokuignore
+    - dashboard
+    - dataweave
+    - dbase
+    - debian
+    - devcontainer
+    - devicetree
+    - dhall
+    - Dia
+    - Digdag
+    - DNS
+    - Docbook
+    - Doclets
+    - Docpad
+    - Docz
+    - Dogescript
+    - Dojo
+    - Dosbox
+    - Doxygen
+    - Dragula
+    - Drone
+    - Dyalog
 - Add `index.scss`, `index.css` and `index.html` to the index family
 - Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache
 
@@ -1023,29 +1036,29 @@
 ### Additions
 
 - Add new **UI icon sets**:
-  - Spring
-  - Kubernetes
-  - Slim
-  - Swagger
-  - Sass
-  - Swift
-  - Rider
-  - PostCSS
-  - XSLT
+    - Spring
+    - Kubernetes
+    - Slim
+    - Swagger
+    - Sass
+    - Swift
+    - Rider
+    - PostCSS
+    - XSLT
 - New **file icons**:
-  - ngrx
-  - RxJs
-  - Protobuf
-  - R
-  - Swagger
-  - Tapestry
+    - ngrx
+    - RxJs
+    - Protobuf
+    - R
+    - Swagger
+    - Tapestry
 - **New associations**:
-  - command
-  - console folders
-  - public_html
-  - entities
-  - effects
-  - stylelintrc
+    - command
+    - console folders
+    - public_html
+    - entities
+    - effects
+    - stylelintrc
 
 ### Features
 
@@ -1070,8 +1083,8 @@
 ### Features
 
 - Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
-  - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93>
-    and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
+    - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93>
+      and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
 - Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons.
   As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
 - Add icons to the **Atom Material Settings Toolbar Menu**.
@@ -1089,15 +1102,15 @@
 ### Additions
 
 - New **file icons**:
-  - brew
-  - harbour
-  - holyc
-  - hjson
-  - hoplon
-  - houndci
-  - hp
-  - hy
-  - hyper, question
+    - brew
+    - harbour
+    - holyc
+    - hjson
+    - hoplon
+    - houndci
+    - hp
+    - hy
+    - hyper, question
 
 ### Fixes
 
@@ -1127,38 +1140,38 @@
 ### Features
 
 - The finally awaited **Custom Icon Associations** is here! This is an alpha version so it can contain bugs :)
-  - Assign custom file associations and folder associations from the Settings
-  - Preview Default File and Folder Associations from the Settings
-  - Assign icons from your file system
-  - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
+    - Assign custom file associations and folder associations from the Settings
+    - Preview Default File and Folder Associations from the Settings
+    - Assign icons from your file system
+    - **Important note**: most of the settings won't be applied to custom icons, so use them sparingly!
 
 ### Additions
 
 - **New folder associations**:
-  - widgets
-  - elements
-  - users
-  - members
-  - partners
-  - friends
-  - projects
-  - ui
-  - dev
-  - staging
-  - qa
-  - prod
-  - serializers
-  - types
-  - io
-  - stdlib
-  - deps
+    - widgets
+    - elements
+    - users
+    - members
+    - partners
+    - friends
+    - projects
+    - ui
+    - dev
+    - staging
+    - qa
+    - prod
+    - serializers
+    - types
+    - io
+    - stdlib
+    - deps
 - **New file associations**:
-  - `*_test.go`
-  - `*_spec.go`
-  - `Chart.yaml`
-  - `values.yaml`
-  - `helmfile.yaml`
-  - scala test files
+    - `*_test.go`
+    - `*_spec.go`
+    - `Chart.yaml`
+    - `values.yaml`
+    - `helmfile.yaml`
+    - scala test files
 - Added `jsconfig` and `tsconfig`
 
 ### Fixes
@@ -1185,64 +1198,64 @@
 - new _test_ icons: ``test dart`,`test go`,`test haskell`,`test perl`,`test rust`
 - switched typescript and tslint icons
 - new **file icons**:
-  - icomoon
-  - idl
-  - igor
-  - imba
-  - index
-  - inform
-  - ink
-  - inkscape
-  - inno
-  - ioke
-  - isabelle
-  - jake
-  - jasmine
-  - jison
-  - jolie
-  - json5
-  - jsonld
-  - jsonnet
-  - junos
+    - icomoon
+    - idl
+    - igor
+    - imba
+    - index
+    - inform
+    - ink
+    - inkscape
+    - inno
+    - ioke
+    - isabelle
+    - jake
+    - jasmine
+    - jison
+    - jolie
+    - json5
+    - jsonld
+    - jsonnet
+    - junos
 - new/updated **folder icons**:
-  - acre
-  - agda
-  - alacritty
-  - app
-  - appstore
-  - arttext
-  - atom
-  - aurelia
-  - bazaar
-  - cabal
-  - chef
-  - client
-  - cluster
-  - container
-  - content
-  - controllers
-  - coverage
-  - cvs
-  - messages,
-  - viewmodel
-  - deno
-  - dependabot
-  - devcontainer
-  - dropbox
-  - gitlab
-  - istanbul
-  - yarn
-  - ruby
-  - mercurial
-  - meteor
-  - svn
-  - textmate
-  - vagrant
-  - vim
-  - svg
-  - firebase
-  - xcassets
-  - glyph
+    - acre
+    - agda
+    - alacritty
+    - app
+    - appstore
+    - arttext
+    - atom
+    - aurelia
+    - bazaar
+    - cabal
+    - chef
+    - client
+    - cluster
+    - container
+    - content
+    - controllers
+    - coverage
+    - cvs
+    - messages,
+    - viewmodel
+    - deno
+    - dependabot
+    - devcontainer
+    - dropbox
+    - gitlab
+    - istanbul
+    - yarn
+    - ruby
+    - mercurial
+    - meteor
+    - svn
+    - textmate
+    - vagrant
+    - vim
+    - svg
+    - firebase
+    - xcassets
+    - glyph
 
 ### Fixes
 
@@ -1254,58 +1267,58 @@
 ### Additions
 
 - **File icons**:
-  - walt
-  - watchman
-  - wdl
-  - webgl
-  - owl
-  - webvtt
-  - wenyan
-  - wget
-  - wix
-  - wordpress
-  - workbox
-  - wurst
-  - x10
-  - x11
-  - xmos
-  - xojo
-  - xpages
-  - xproc
-  - xtend
-  - yara
-  - yorick
-  - yui
-  - yasm
-  - zbrush
-  - zeit
-  - zenscript
-  - zig
-  - zilog
-  - zimpl
-  - zork
-  - awk
-  - bazaar
-  - brewfile
-  - hitachi
-  - intel
-  - vax
-  - kerboscript
-  - keybase
-  - keynote
-  - kicad
-  - kitchenci
-  - kml
-  - knime
-  - kotlin
-  - knockout
-  - krl
-  - kubernetes
-  - q
-  - qasm
-  - qlikview
-  - qt
-  - quasar
+    - walt
+    - watchman
+    - wdl
+    - webgl
+    - owl
+    - webvtt
+    - wenyan
+    - wget
+    - wix
+    - wordpress
+    - workbox
+    - wurst
+    - x10
+    - x11
+    - xmos
+    - xojo
+    - xpages
+    - xproc
+    - xtend
+    - yara
+    - yorick
+    - yui
+    - yasm
+    - zbrush
+    - zeit
+    - zenscript
+    - zig
+    - zilog
+    - zimpl
+    - zork
+    - awk
+    - bazaar
+    - brewfile
+    - hitachi
+    - intel
+    - vax
+    - kerboscript
+    - keybase
+    - keynote
+    - kicad
+    - kitchenci
+    - kml
+    - knime
+    - kotlin
+    - knockout
+    - krl
+    - kubernetes
+    - q
+    - qasm
+    - qlikview
+    - qt
+    - quasar
 - New angular icon: `interceptor`
 - New redux icons: `saga` and `selector`
 - New pattern: `main.js` is now associated with nodejs
@@ -1320,7 +1333,7 @@
   and <http://www.material-theme.com/docs/reference/folder_associations/> !
 - Extracted icons to its own repository so it can be used with multiple projects
 - Optimized icons (reduce icons size, set colors in paths, etc)
-  - Also the icons look much more like the Atom original plugin ones
+    - Also the icons look much more like the Atom original plugin ones
 - Added fileNames in associations, to be used with the examples generator
 - Added colors in associations, for use with the font generator
 - Update UI Icons with latest icons
@@ -1328,128 +1341,128 @@
 ### Additions
 
 - **New/Updated UI Icons**:
-  - Ant
-  - Haml
-  - Handlebars
-  - DataGrip
-  - JavaScript
-  - Kotlin
-  - DevKit
-  - Dart
-  - Docker
+    - Ant
+    - Haml
+    - Handlebars
+    - DataGrip
+    - JavaScript
+    - Kotlin
+    - DevKit
+    - Dart
+    - Docker
 - **New icons**:
-  - 4d
-  - agda
-  - alpine linux
-  - analytica
-  - adobe animate
-  - ansible
-  - antwar
-  - aplus
-  - buck
-  - build boot
-  - caddy
-  - caffe
-  - caffe2
-  - cakefile
-  - carthage
-  - chai
-  - chapel
-  - chartjs
-  - cheetah
-  - chocolatey
-  - cpp
-  - csharp
-  - cdf
-  - chrome
-  - chuck
-  - circuit
-  - cirru
-  - clarion
-  - clean
-  - click
-  - clips
-  - closuretpl
-  - cloudfoundry
-  - cocoapods
-  - codacy
-  - codeclimate
-  - cokekit
-  - codeship
-  - conan
-  - conda
-  - conll
-  - coq
-  - corel
-  - coveralls
-  - cp
-  - cpan
-  - credits
-  - creole
-  - crowdin
-  - csound
-  - cuneiform
-  - curl
-  - curry
-  - cwl
-  - collada
-  - nvidia
-  - fabric
-  - factor
-  - falcon
-  - fancy
-  - fantom
-  - fexl
-  - fbx
-  - faust
-  - fasta
-  - finaldraft
-  - firebase bolt
-  - firefox
-  - flask
-  - flutter
-  - flux
-  - font bitmap
-  - fontforge
-  - fossa
-  - fountain
-  - fanca
-  - frege
-  - fuel ux
-  - fusebox
-  - futhark
-  - JetBrains Theme Files
+    - 4d
+    - agda
+    - alpine linux
+    - analytica
+    - adobe animate
+    - ansible
+    - antwar
+    - aplus
+    - buck
+    - build boot
+    - caddy
+    - caffe
+    - caffe2
+    - cakefile
+    - carthage
+    - chai
+    - chapel
+    - chartjs
+    - cheetah
+    - chocolatey
+    - cpp
+    - csharp
+    - cdf
+    - chrome
+    - chuck
+    - circuit
+    - cirru
+    - clarion
+    - clean
+    - click
+    - clips
+    - closuretpl
+    - cloudfoundry
+    - cocoapods
+    - codacy
+    - codeclimate
+    - cokekit
+    - codeship
+    - conan
+    - conda
+    - conll
+    - coq
+    - corel
+    - coveralls
+    - cp
+    - cpan
+    - credits
+    - creole
+    - crowdin
+    - csound
+    - cuneiform
+    - curl
+    - curry
+    - cwl
+    - collada
+    - nvidia
+    - fabric
+    - factor
+    - falcon
+    - fancy
+    - fantom
+    - fexl
+    - fbx
+    - faust
+    - fasta
+    - finaldraft
+    - firebase bolt
+    - firefox
+    - flask
+    - flutter
+    - flux
+    - font bitmap
+    - fontforge
+    - fossa
+    - fountain
+    - fanca
+    - frege
+    - fuel ux
+    - fusebox
+    - futhark
+    - JetBrains Theme Files
 - *Update icon associations*:
-  - actionscript
-  - ansible
-  - antlr
-  - applescript
-  - asciidoc
-  - asm
-  - atom
-  - atoum
-  - babel
-  - backbone
-  - behat
-  - bison
-  - bootstrap
-  - bower
-  - cabal
-  - c
-  - composer.lock
-  - chef
-  - credits
-  - csharp
-  - cypress
-  - todo
-  - finder
-  - firebase
-  - flash
-  - fortran
-  - gem
-  - archives
-  - audio
-  - video
+    - actionscript
+    - ansible
+    - antlr
+    - applescript
+    - asciidoc
+    - asm
+    - atom
+    - atoum
+    - babel
+    - backbone
+    - behat
+    - bison
+    - bootstrap
+    - bower
+    - cabal
+    - c
+    - composer.lock
+    - chef
+    - credits
+    - csharp
+    - cypress
+    - todo
+    - finder
+    - firebase
+    - flash
+    - fortran
+    - gem
+    - archives
+    - audio
+    - video
 
 ## 21.0 (2.10.1)
 
@@ -1510,51 +1523,51 @@
 ### Additions
 
 - New **File Icons**:
-  - 1c
-  - 3dmodel
-  - 3dsmax
-  - abap
-  - abif
-  - acre
-  - advpl
-  - affectscript
-  - affinity
-  - alacritty
-  - alex
-  - alloy
-  - ampl
-  - amusewiki
-  - angelscript
-  - animestudio
-  - ant
-  - apache
-  - apl
-  - appcelerator
-  - arc
-  - archlinux
-  - asymptote
-  - atoum
-  - ats
-  - audacity
-  - augeas
-  - avro
-  - backbone
-  - bnf
-  - bem
-  - bibtext
-  - biml
-  - bintray
-  - blender
-  - bluespec
-  - boo
-  - bootstrap
-  - brakeman
-  - broccoli
-  - brotli
-  - browsersync
-  - brunch
-  - byond
-  - gnu
+    - 1c
+    - 3dmodel
+    - 3dsmax
+    - abap
+    - abif
+    - acre
+    - advpl
+    - affectscript
+    - affinity
+    - alacritty
+    - alex
+    - alloy
+    - ampl
+    - amusewiki
+    - angelscript
+    - animestudio
+    - ant
+    - apache
+    - apl
+    - appcelerator
+    - arc
+    - archlinux
+    - asymptote
+    - atoum
+    - ats
+    - audacity
+    - augeas
+    - avro
+    - backbone
+    - bnf
+    - bem
+    - bibtext
+    - biml
+    - bintray
+    - blender
+    - bluespec
+    - boo
+    - bootstrap
+    - brakeman
+    - broccoli
+    - brotli
+    - browsersync
+    - brunch
+    - byond
+    - gnu
 
 ### Features
 
@@ -1566,26 +1579,26 @@
 ### Additions
 
 - New **file icons**:
-  - Cargo
-  - Codecov
-  - codeowners
-  - cypress
-  - cython
-  - gridsome
-  - netlify
-  - pnpm
-  - posthtml
-  - sapper
-  - svelte-config
-  - uml
-  - v
-  - vala
+    - Cargo
+    - Codecov
+    - codeowners
+    - cypress
+    - cython
+    - gridsome
+    - netlify
+    - pnpm
+    - posthtml
+    - sapper
+    - svelte-config
+    - uml
+    - v
+    - vala
 - New **folder icons**:
-  - events
-  - gulp
-  - json
-  - netlify
-  - relay
+    - events
+    - gulp
+    - json
+    - netlify
+    - relay
 
 ### Other
 
@@ -1602,67 +1615,67 @@
 ### Additions
 
 - New **File Icons**:
-  - edge
-  - autoit
-  - azure
-  - bithound
-  - blink
-  - bucklescript
-  - buildkite
-  - certificate
-  - commitlint
-  - credits
-  - history
-  - graphcoo
-  - hel
-  - istanbu
-  - ke
-  - kiv
-  - li
-  - livescrip
-  - markoj
-  - md
-  - merli
-  - min
-  - moonscrip
-  - mxm
-  - nest
-  - houdini
-  - no
-  - nunjuck
-  - prism
-  - processin
-  - restq
-  - sa
-  - sequeliz
-  - sw
-  - unit
-  - velocit
-  - v
-  - webassembl
-  - webhin
-  - wep
-  - yang
+    - edge
+    - autoit
+    - azure
+    - bithound
+    - blink
+    - bucklescript
+    - buildkite
+    - certificate
+    - commitlint
+    - credits
+    - history
+    - graphcoo
+    - hel
+    - istanbu
+    - ke
+    - kiv
+    - li
+    - livescrip
+    - markoj
+    - md
+    - merli
+    - min
+    - moonscrip
+    - mxm
+    - nest
+    - houdini
+    - no
+    - nunjuck
+    - prism
+    - processin
+    - restq
+    - sa
+    - sequeliz
+    - sw
+    - unit
+    - velocit
+    - v
+    - webassembl
+    - webhin
+    - wep
+    - yang
 - New **Folder Icons**:
-  - ci
-  - class
-  - container
-  - content
-  - css
-  - delta
-  - dump
-  - error
-  - examples
-  - flow
-  - helper
-  - modals
-  - maps
-  - pipe
-  - prisma
-  - private
-  - stack
-  - utils
-  - vm
+    - ci
+    - class
+    - container
+    - content
+    - css
+    - delta
+    - dump
+    - error
+    - examples
+    - flow
+    - helper
+    - modals
+    - maps
+    - pipe
+    - prisma
+    - private
+    - stack
+    - utils
+    - vm
 
 ### Other
 
@@ -1717,49 +1730,49 @@
 ### Additions
 
 - New **folder icons**:
-  - guard
-  - providers
-  - animations
-  - grunt
-  - icons
-  - e2e
-  - custom
-  - rules
-  - screens
-  - storybook
-  - stylus
-  - syntax
-  - security
-  - meta-inf
-  - fixtures
-  - channels
-  - concerns
-  - support
-  - features
-  - fabricators
-  - nyc
-  - reviews
+    - guard
+    - providers
+    - animations
+    - grunt
+    - icons
+    - e2e
+    - custom
+    - rules
+    - screens
+    - storybook
+    - stylus
+    - syntax
+    - security
+    - meta-inf
+    - fixtures
+    - channels
+    - concerns
+    - support
+    - features
+    - fabricators
+    - nyc
+    - reviews
 - New **file icons**:
-  - ANTLR
-  - brainfuck
-  - cobol
-  - delphi
-  - eiffel
-  - fortran
-  - idris
-  - io
-  - j
-  - lerna
-  - postscript
-  - prolog
-  - racket
-  - red
-  - supercollider
-  - scheme
-  - terraform
-  - test-react
-  - turing
-  - toml
+    - ANTLR
+    - brainfuck
+    - cobol
+    - delphi
+    - eiffel
+    - fortran
+    - idris
+    - io
+    - j
+    - lerna
+    - postscript
+    - prolog
+    - racket
+    - red
+    - supercollider
+    - scheme
+    - terraform
+    - test-react
+    - turing
+    - toml
 
 ### Fixes
 
@@ -1786,104 +1799,104 @@
 ### Additions
 
 - New **file icons**:
-  - Jenkins
-  - Rspec
-  - Rubocop
+    - Jenkins
+    - Rspec
+    - Rubocop
 - New **folder icons**:
-  - android
-  - deploy
-  - api
-  - archives
-  - config
-  - constants
-  - core
-  - download
-  - env
-  - exclude
-  - functions
-  - generated
-  - hooks
-  - ios
-  - include
-  - jinja
-  - job
-  - keys
-  - layouts
-  - mailers
-  - meta
-  - middleware
-  - notification
-  - other
-  - packages
-  - posts
-  - react
-  - resourceIOS
-  - routes
-  - scripts
-  - server
-  - serverless
-  - shared
-  - sublime
-  - tasks
-  - themes
-  - utils
-  - upload
-  - vendors
-  - views
-  - vue
+    - android
+    - deploy
+    - api
+    - archives
+    - config
+    - constants
+    - core
+    - download
+    - env
+    - exclude
+    - functions
+    - generated
+    - hooks
+    - ios
+    - include
+    - jinja
+    - job
+    - keys
+    - layouts
+    - mailers
+    - meta
+    - middleware
+    - notification
+    - other
+    - packages
+    - posts
+    - react
+    - resourceIOS
+    - routes
+    - scripts
+    - server
+    - serverless
+    - shared
+    - sublime
+    - tasks
+    - themes
+    - utils
+    - upload
+    - vendors
+    - views
+    - vue
 
 ## 5.0 (1.5.0)
 
 ### Additions
 
 - New **file icons**:
-  - Arduino
-  - Assembly
-  - Authors
-  - Ballerina
-  - Crystal
-  - CSSMap
-  - Dotjs
-  - DTS
-  - Favicon
-  - Firebase
-  - Flash
-  - Gatsby
-  - Gemfile
-  - Po
-  - JSMap
-  - MJML
-  - Nimble
-  - Raml
-  - Razor
-  - Redux Actions/Stores/Reducers
-  - Smarty
-  - Solidity
-  - Sonar
-  - Stencil
-  - Storybook
-  - Wallaby
+    - Arduino
+    - Assembly
+    - Authors
+    - Ballerina
+    - Crystal
+    - CSSMap
+    - Dotjs
+    - DTS
+    - Favicon
+    - Firebase
+    - Flash
+    - Gatsby
+    - Gemfile
+    - Po
+    - JSMap
+    - MJML
+    - Nimble
+    - Raml
+    - Razor
+    - Redux Actions/Stores/Reducers
+    - Smarty
+    - Solidity
+    - Sonar
+    - Stencil
+    - Storybook
+    - Wallaby
 - New **folder icons**:
-  - benchmarks
-  - coverage
-  - controllers
-  - debug
-  - excluded
-  - expo
-  - jinja
-  - less
-  - maven
-  - messages
-  - models
-  - plugin
-  - python
-  - react
-  - redux
-  - routes
-  - scripts
-  - sublime
-  - sync
-  - tasks
+    - benchmarks
+    - coverage
+    - controllers
+    - debug
+    - excluded
+    - expo
+    - jinja
+    - less
+    - maven
+    - messages
+    - models
+    - plugin
+    - python
+    - react
+    - redux
+    - routes
+    - scripts
+    - sublime
+    - sync
+    - tasks
 
 ## 4.0 (1.4.0)
 
@@ -1897,7 +1910,7 @@
 ### Features
 
 - Add **settings page** to control which components to enable or disable.
-  - Components: **File Icons**, **Directory Icons** and **UI Icons** (experimental)
+    - Components: **File Icons**, **Directory Icons** and **UI Icons** (experimental)
 
 ## 2.0 (1.2.0)
 
@@ -1916,63 +1929,63 @@
 ### Additions
 
 - New icons
-  - Github Code of conduct, Github Contributing, Commit message convention, Github Template
-  - README
-  - Prefs
-  - Atom files
-  - Angular component, service, directive, guard, pipe, routing, resolver
-  - Autohotkey
-  - API Blueprint
-  - Appveyor
-  - Java Beans
-  - Browserslist
-  - Cabal
-  - CNAME
-  - Compass files
-  - C++
-  - Dockerignore
-  - Doxygen
-  - Dylib
-  - Eslintignore
-  - MAC OSX files
-  - Flow Config
-  - Ghostscript
-  - Godot
-  - Gradlew
-  - H files
-  - Adobe Indesign
-  - Jekyll config.yml
-  - jQuery
-  - Makefile
-  - Markdown
-  - Manpage
-  - Mathematica
-  - Maven pom.xml
-  - Maya
-  - Mocha
-  - Nib
-  - NPM package.lock
-  - NVM
-  - OpenOffice
-  - Objective C
-  - Patch files
-  - Phalcon
-  - PostCSS Config
-  - Prettier
-  - Powershell
-  - ReasonML
-  - Restructured
-  - Robot
-  - RVM
-  - Spring
-  - Tern
-  - Tomcat
-  - Travis
-  - VHDL
-  - Webpack
-  - XCode
-  - Yarn files
-  - Minified javascripts
+    - Github Code of conduct, Github Contributing, Commit message convention, Github Template
+    - README
+    - Prefs
+    - Atom files
+    - Angular component, service, directive, guard, pipe, routing, resolver
+    - Autohotkey
+    - API Blueprint
+    - Appveyor
+    - Java Beans
+    - Browserslist
+    - Cabal
+    - CNAME
+    - Compass files
+    - C++
+    - Dockerignore
+    - Doxygen
+    - Dylib
+    - Eslintignore
+    - MAC OSX files
+    - Flow Config
+    - Ghostscript
+    - Godot
+    - Gradlew
+    - H files
+    - Adobe Indesign
+    - Jekyll config.yml
+    - jQuery
+    - Makefile
+    - Markdown
+    - Manpage
+    - Mathematica
+    - Maven pom.xml
+    - Maya
+    - Mocha
+    - Nib
+    - NPM package.lock
+    - NVM
+    - OpenOffice
+    - Objective C
+    - Patch files
+    - Phalcon
+    - PostCSS Config
+    - Prettier
+    - Powershell
+    - ReasonML
+    - Restructured
+    - Robot
+    - RVM
+    - Spring
+    - Tern
+    - Tomcat
+    - Travis
+    - VHDL
+    - Webpack
+    - XCode
+    - Yarn files
+    - Minified javascripts
 
 ### Fixes
 
