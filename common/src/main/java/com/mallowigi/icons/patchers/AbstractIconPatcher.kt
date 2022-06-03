@@ -101,19 +101,20 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
       CACHE[path] = getReplacement(path)
       CACHE[path]
     }
+
     else                    -> null
   }
 
   /** Check whether a svg version of a resource exists. */
   private fun getSVG(path: String): URL? {
     val svgFile = PNG.replace(getReplacement(path), ".svg") // NON-NLS
-    return javaClass.getResource(svgFile)
+    return javaClass.getResource("/$svgFile")
   }
 
   /** Check whether a png version of a resource exists. */
   private fun getPNG(path: String): URL? {
     val replacement = SVG.replace(getReplacement(path), ".png") // NON-NLS
-    return javaClass.getResource(replacement)
+    return javaClass.getResource("/$replacement")
   }
 
   /**
