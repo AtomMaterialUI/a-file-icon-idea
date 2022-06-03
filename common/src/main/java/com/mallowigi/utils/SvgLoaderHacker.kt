@@ -30,18 +30,12 @@ package com.mallowigi.utils
 
 import com.intellij.util.SVGLoader
 import com.mallowigi.icons.svgpatchers.MainSvgPatcher
-import java.net.URL
 import java.util.Optional
 
-/**
- * Svg Element Color Patcher type alias
- */
+/** Svg Element Color Patcher type alias. */
 typealias PatcherProvider = SVGLoader.SvgElementColorPatcherProvider
 
-/**
- * Svg loader hacker
- *
- */
+/** Svg loader hacker. */
 object SvgLoaderHacker {
 
   private lateinit var collectedPatcherProvider: PatcherProvider
@@ -50,12 +44,10 @@ object SvgLoaderHacker {
     object : PatcherProvider {
       override fun forPath(path: String?): SVGLoader.SvgElementColorPatcher? = null
 
-      override fun forURL(url: URL?): SVGLoader.SvgElementColorPatcher? = null
+//      override fun forURL(url: URL?): SVGLoader.SvgElementColorPatcher? = null
     }
 
-  /**
-   * Collect the "other patcher"
-   */
+  /** Collect the "other patcher" */
   @JvmStatic
   fun collectOtherPatcher(): PatcherProvider =
     extractPatcher()

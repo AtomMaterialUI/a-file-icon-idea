@@ -49,11 +49,9 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     BigIconsPatcher()
   )
 
-  /**
-   * Call refresh colors on all patchers
-   */
+  /** Call refresh colors on all patchers. */
   fun applySvgPatchers() {
-    SVGLoader.setColorPatcherProvider(this)
+    SVGLoader.colorPatcherProvider = this
     patchers.forEach { it.refresh() }
     SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
@@ -92,15 +90,11 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     }
   }
 
-  /**
-   * Create patcher for path
-   */
+  /** Create patcher for path. */
   override fun forPath(path: String?): SvgElementColorPatcher = createPatcher(path)
 
   companion object {
-    /**
-     * Service instance
-     */
+    /** Service instance. */
     val instance: MainSvgPatcher
       get() = ApplicationManager.getApplication().getService(MainSvgPatcher::class.java)
   }
