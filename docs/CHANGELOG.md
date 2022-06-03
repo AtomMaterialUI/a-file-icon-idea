@@ -2,6 +2,12 @@
 
 ----
 
+## 65.1 (6.5.1)
+
+### Fixes
+
+- Fix new Class Loader exception
+
 ## 65.0 (6.5.0)
 
 ### Features
