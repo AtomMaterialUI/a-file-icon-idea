@@ -59,7 +59,6 @@ import javax.swing.event.DocumentEvent
  * [Association] table model editor
  *
  * @constructor
- *
  * @param items the [Association]s
  * @param columns list of [ColumnInfo]s
  * @param itemEditor the [Association] editor
@@ -74,36 +73,24 @@ class AssociationsTableModelEditor(
   emptyText: String,
   val searchTextField: SearchTextField?,
 ) : CollectionModelEditor<RegexAssociation, CollectionItemEditor<RegexAssociation>?>(itemEditor) {
-  /**
-   * Table View
-   */
+  /** Table View. */
   private val table: TableView<RegexAssociation>
 
-  /**
-   * Toolbar actions
-   */
+  /** Toolbar actions. */
   private val toolbarDecorator: ToolbarDecorator
 
-  /**
-   * Association Table Model
-   */
+  /** Association Table Model. */
   private val model: AssociationTableModel
 
-  /**
-   * Backing field for model's unfiltered list
-   */
+  /** Backing field for model's unfiltered list. */
   private val myList: MutableList<RegexAssociation>
     get() = model.allItems
 
-  /**
-   * Backing field for model's filtered list
-   */
+  /** Backing field for model's filtered list. */
   private val myFilteredList: MutableList<RegexAssociation>
     get() = model.filteredItems
 
-  /**
-   * Own Increment for adding
-   */
+  /** Own Increment for adding. */
   private var increment: Int = 0
 
   init {
@@ -176,20 +163,14 @@ class AssociationsTableModelEditor(
     searchTextField: SearchTextField,
   ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField)
 
-  /**
-   * Inits the unfiltered list (before any search)
-   *
-   */
+  /** Inits the unfiltered list (before any search) */
   private fun initUnfilteredList() {
     myList.clear()
     myList.addAll(model.items)
     filterTable()
   }
 
-  /**
-   * Filters the table - this will set the [model]'s filteredItems
-   *
-   */
+  /** Filters the table - this will set the [model]'s filteredItems. */
   private fun filterTable() {
     if (searchTextField == null) return
 
@@ -226,10 +207,7 @@ class AssociationsTableModelEditor(
    */
   fun getModel(): AssociationTableModel = model
 
-  /**
-   * Create component with toolbar
-   *
-   */
+  /** Create component with toolbar. */
   fun createComponent(): JComponent = toolbarDecorator.createPanel()
 
   /**
@@ -311,10 +289,7 @@ class AssociationsTableModelEditor(
     }
   }
 
-  /**
-   * Create a new custom association
-   *
-   */
+  /** Create a new custom association. */
   override fun createElement(): RegexAssociation {
     increment++
 
@@ -327,8 +302,8 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
-   * the filtered list
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered
+   * list when a change occurs since we're working on the filtered list
    *
    * @param oldItem item changed (in the filtered list)
    * @param newItem new item to insert
@@ -347,7 +322,6 @@ class AssociationsTableModelEditor(
    * [Association] table model inheriting the [ListTableModel]
    *
    * @constructor
-   *
    * @param columnNames the columns
    * @param items the items
    */
@@ -355,13 +329,12 @@ class AssociationsTableModelEditor(
     ListTableModel<RegexAssociation>(columnNames, items) {
 
     /**
-     * This contains all items, before any filter is applied. This is also what will be persisted.
+     * This contains all items, before any filter is applied. This is
+     * also what will be persisted.
      */
     var allItems: MutableList<RegexAssociation> = items.toMutableList()
 
-    /**
-     * This is the currently filtered table
-     */
+    /** This is the currently filtered table. */
     var filteredItems: MutableList<RegexAssociation> = items.toMutableList()
       set(value) {
         field = value
@@ -387,8 +360,7 @@ class AssociationsTableModelEditor(
     }
 
     /**
-     * Remove a row
-     * @unused
+     * Remove a row @unused
      *
      * @param index
      */
@@ -432,10 +404,7 @@ class AssociationsTableModelEditor(
 
   }
 
-  /**
-   * Toggle pattern action: Toggle pattern highlighting
-   *
-   */
+  /** Toggle pattern action: Toggle pattern highlighting. */
 //  private inner class TogglePatternAction :
 //    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
 //
@@ -467,7 +436,9 @@ class AssociationsTableModelEditor(
       PATTERN(2),
       ICON(3),
       PRIORITY(4),
-      TOUCHED(5),
+      ICONCOLOR(5),
+      FOLDERCOLOR(6),
+      TOUCHED(7),
     }
   }
 }

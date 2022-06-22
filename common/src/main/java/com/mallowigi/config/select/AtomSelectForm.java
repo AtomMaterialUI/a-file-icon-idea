@@ -37,7 +37,15 @@ import com.intellij.ui.SearchTextField;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.ui.ColumnInfo;
 import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.config.associations.ui.columns.*;
+import com.mallowigi.config.associations.ui.columns.EnabledColumnInfo;
+import com.mallowigi.config.associations.ui.columns.FileIconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.FolderColorEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.FolderIconEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.IconColorEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
+import com.mallowigi.config.associations.ui.columns.PriorityColumnInfo;
+import com.mallowigi.config.associations.ui.columns.TouchedColumnInfo;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableModelEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
@@ -53,27 +61,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ResourceBundle;
 
-@SuppressWarnings({"FieldCanBeLocal",
-  "DuplicateStringLiteralInspection",
-  "StringConcatenation",
-  "UndesirableClassUsage",
-  "InstanceVariableMayNotBeInitialized",
-  "TransientFieldNotInitialized",
-  "ClassWithTooManyFields",
-  "OverlyLongMethod",
-  "MethodMayBeStatic",
-  "HardCodedStringLiteral",
-  "OverlyLongLambda",
-  "ThisEscapedInObjectConstruction"})
+@SuppressWarnings("ALL")
 public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disposable {
 
-  @SuppressWarnings("ThisEscapedInObjectConstruction")
   private final transient ColumnInfo[] fileColumns = {
     new EnabledColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
+    new IconColorEditableColumnInfo(),
+    new FolderColorEditableColumnInfo(),
     new TouchedColumnInfo(),
   };
 
@@ -83,6 +81,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
+    new IconColorEditableColumnInfo(),
+    new FolderColorEditableColumnInfo(),
     new TouchedColumnInfo(),
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -139,8 +139,6 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     });
   }
 
-  @SuppressWarnings({"SimplifiableIfStatement",
-    "DuplicatedCode"})
   public boolean isModified(final AtomSelectConfig config) {
     boolean modified = false;
     if (fileAssociationsEditor != null) {
@@ -162,12 +160,10 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     return new SelectedAssociations(IconType.FOLDER, folderAssociationsEditor.getModel().getAllItems());
   }
 
-  @SuppressWarnings("unused")
-  private void linkMouseClicked(final MouseEvent e) {
+  private static void linkMouseClicked(final MouseEvent e) {
     BrowserUtil.browse(AtomSettingsBundle.message("SelectForm.link.text"));
   }
 
-  @SuppressWarnings("ConfusingFloatingPointLiteral")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -215,7 +211,7 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     link.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(final MouseEvent e) {
-        linkMouseClicked(e);
+        AtomSelectForm.linkMouseClicked(e);
       }
     });
     add(link, "cell 0 1");
@@ -265,7 +261,6 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     resetButton.addActionListener(this::resetButtonActionPerformed);
   }
 
-  @SuppressWarnings("FeatureEnvy")
   private void resetButtonActionPerformed(final ActionEvent e) {
     final AtomSelectConfig config = AtomSelectConfig.getInstance();
 
