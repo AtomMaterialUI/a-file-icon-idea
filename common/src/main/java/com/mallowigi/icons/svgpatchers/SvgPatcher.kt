@@ -27,15 +27,10 @@ package com.mallowigi.icons.svgpatchers
 
 import org.w3c.dom.Element
 
-/**
- * Interface for all svg patchers
- */
+/** Interface for all svg patchers. */
 @Suppress("KDocMissingDocumentation")
 interface SvgPatcher {
-  /**
-   * Refresh
-   *
-   */
+  /** Refresh. */
   fun refresh()
 
   /**
@@ -53,10 +48,7 @@ interface SvgPatcher {
    */
   fun priority(): Int = 1
 
-  /**
-   * Get digest of patcher properties
-   *
-   */
+  /** Get digest of patcher properties. */
   fun digest(): ByteArray?
 
   companion object {
@@ -68,5 +60,6 @@ interface SvgPatcher {
     const val BIG: String = "big"
     const val TINT: String = "tint"
     const val THEMED: String = "themed"
+    const val CUSTOM: String = "custom"
   }
 }
