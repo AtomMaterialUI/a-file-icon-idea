@@ -25,9 +25,7 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
-import com.intellij.configurationStore.serialize
 import com.intellij.openapi.util.Comparing
-import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
@@ -43,9 +41,9 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
-import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.models.IconType
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -72,6 +70,7 @@ class AssociationsTableModelEditor(
   itemEditor: CollectionItemEditor<RegexAssociation>,
   emptyText: String,
   val searchTextField: SearchTextField?,
+  val type: IconType = IconType.FILE,
 ) : CollectionModelEditor<RegexAssociation, CollectionItemEditor<RegexAssociation>?>(itemEditor) {
   /** Table View. */
   private val table: TableView<RegexAssociation>
@@ -116,6 +115,10 @@ class AssociationsTableModelEditor(
     table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
     table.removeColumn(table.columnModel.getColumn(Columns.TOUCHED.index))
 
+    if (type === IconType.FILE) {
+      table.removeColumn(table.columnModel.getColumn(Columns.FOLDERCOLOR.index))
+    }
+
     // Special support for checkbox: toggle by clicking or space
     TableUtil.setupCheckboxColumn(table.columnModel.getColumn(Columns.ENABLED.index), 0)
     JBTable.setupCheckboxShortcut(table, Columns.ENABLED.index)
@@ -152,16 +155,11 @@ class AssociationsTableModelEditor(
 
   constructor(
     columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<RegexAssociation>,
-    emptyText: String,
-  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, null)
-
-  constructor(
-    columns: Array<ColumnInfo<*, *>>,
-    itemEditor: CollectionItemEditor<RegexAssociation>,
+    itemEditor: AssociationsTableItemEditor,
     emptyText: String,
     searchTextField: SearchTextField,
-  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField)
+    type: IconType,
+  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField, type)
 
   /** Inits the unfiltered list (before any search) */
   private fun initUnfilteredList() {
@@ -211,28 +209,6 @@ class AssociationsTableModelEditor(
   fun createComponent(): JComponent = toolbarDecorator.createPanel()
 
   /**
-   * Selects an item programmatically
-   *
-   * @param item the item to select
-   */
-  fun selectItem(item: RegexAssociation) {
-    table.clearSelection()
-    val ref: Ref<RegexAssociation>?
-
-    if (helper.hasModifiedItems()) {
-      ref = Ref.create()
-      helper.process { modified: RegexAssociation, original: RegexAssociation ->
-        if (item === original) ref.set(modified)
-        ref.isNull
-      }
-    } else {
-      ref = null
-    }
-
-    table.addSelection(if (ref == null || ref.isNull) item else ref.get())
-  }
-
-  /**
    * Apply changes to elements
    *
    * @return the new items after changes
@@ -273,20 +249,6 @@ class AssociationsTableModelEditor(
     model.allItems = ArrayList(originalItems)
     model.filteredItems = ArrayList(originalItems)
     initUnfilteredList()
-  }
-
-  /**
-   * Clone using xml serialization
-   *
-   * @param T
-   * @param oldItem
-   * @param newItem
-   */
-  fun <T> cloneUsingXmlSerialization(oldItem: T, newItem: T) {
-    val serialized = serialize(oldItem ?: return)
-    if (serialized != null) {
-      XmlSerializer.deserializeInto(newItem ?: return, serialized)
-    }
   }
 
   /** Create a new custom association. */

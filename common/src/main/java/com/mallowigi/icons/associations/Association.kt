@@ -75,10 +75,11 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
 
   @field:Property
   @XStreamAsAttribute
-  var iconColor: String = "#808080"
+  var iconColor: String = "808080"
 
   @field:Property
-  var folderColor: String? = "#808080"
+  @XStreamAsAttribute
+  var folderColor: String? = "808080"
 
   abstract var matcher: String
 

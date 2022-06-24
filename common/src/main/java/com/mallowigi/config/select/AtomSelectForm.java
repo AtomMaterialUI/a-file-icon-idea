@@ -286,10 +286,13 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
    */
   private void createFileIconsTable() {
     final AssociationsTableItemEditor itemEditor = new AssociationsTableItemEditor();
-    fileAssociationsEditor = new AssociationsTableModelEditor(fileColumns,
+    fileAssociationsEditor = new AssociationsTableModelEditor(
+      fileColumns,
       itemEditor,
       AtomSettingsBundle.message("no.file.associations"),
-      fileSearch);
+      fileSearch,
+      IconType.FILE
+    );
     ApplicationManager.getApplication().invokeLater(() -> {
       fileIconsTable = fileAssociationsEditor.createComponent();
       fileAssociationsPanel.add(fileIconsTable, "cell 0 1"); //NON-NLS
@@ -305,7 +308,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     folderAssociationsEditor = new AssociationsTableModelEditor(folderColumns,
       itemEditor,
       AtomSettingsBundle.message("no.folder.associations"),
-      folderSearch);
+      folderSearch,
+      IconType.FOLDER);
     ApplicationManager.getApplication().invokeLater(() -> {
       folderIconsTable = folderAssociationsEditor.createComponent();
       folderAssociationsPanel.add(folderIconsTable, "cell 0 1"); //NON-NLS
