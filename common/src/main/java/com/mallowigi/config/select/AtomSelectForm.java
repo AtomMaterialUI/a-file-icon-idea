@@ -24,10 +24,6 @@
  *
  */
 
-/*
- * Created by JFormDesigner on Fri Aug 13 16:21:48 IDT 2021
- */
-
 package com.mallowigi.config.select;
 
 import com.intellij.ide.BrowserUtil;
@@ -70,8 +66,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
-    new IconColorEditableColumnInfo(),
-    new FolderColorEditableColumnInfo(),
+    new IconColorEditableColumnInfo(this, true),
+    new FolderColorEditableColumnInfo(this, true),
     new TouchedColumnInfo(),
   };
 
@@ -81,8 +77,8 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
-    new IconColorEditableColumnInfo(),
-    new FolderColorEditableColumnInfo(),
+    new IconColorEditableColumnInfo(this, true),
+    new FolderColorEditableColumnInfo(this, true),
     new TouchedColumnInfo(),
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

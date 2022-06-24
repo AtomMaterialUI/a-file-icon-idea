@@ -27,6 +27,9 @@ package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.text.StringUtil
+import com.intellij.ui.ClickListener
+import com.intellij.ui.ColorPicker
+import com.intellij.ui.ColorUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
@@ -41,12 +44,15 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
+import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
+import java.awt.Color
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
+import java.awt.event.MouseEvent
 import javax.swing.JComponent
 import javax.swing.ListSelectionModel
 import javax.swing.RowSorter
@@ -151,6 +157,9 @@ class AssociationsTableModelEditor(
         override fun textChanged(e: DocumentEvent) = filterTable()
       })
     }
+
+    // Color picker listening
+    ColorPickerListener().installOn(table)
   }
 
   constructor(
@@ -259,6 +268,8 @@ class AssociationsTableModelEditor(
     regexAssociation.name = "New Association (${increment})"
     regexAssociation.pattern = "^.*\\.ext${increment}$"
     regexAssociation.priority = DEFAULT_PRIORITY
+    regexAssociation.iconColor = DEFAULT_ICON_COLOR
+    regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
     regexAssociation.icon = ""
     return regexAssociation
   }
@@ -366,6 +377,50 @@ class AssociationsTableModelEditor(
 
   }
 
+  inner class ColorPickerListener : ClickListener() {
+    override fun onClick(event: MouseEvent, clickCount: Int): Boolean {
+      val point = event.point
+      val row: Int = table.rowAtPoint(point)
+      val column: Int = table.columnAtPoint(point)
+
+      return when {
+        row >= 0 && row < table.rowCount -> {
+          return when (column) {
+            Columns.ICONCOLOR.index   -> setIconColor(row)
+            Columns.FOLDERCOLOR.index -> setFolderColor(row)
+            else                      -> false
+          }
+        }
+
+        else                             -> false
+      }
+    }
+
+    private fun setFolderColor(row: Int): Boolean {
+      val colorValue: Any = model.getValueAt(row, Columns.FOLDERCOLOR.index)
+      val modelColor: Color = ColorUtil.fromHex(colorValue as String)
+
+      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
+        val assoc = model.items[row] as Association
+        assoc.touched = true
+        assoc.folderColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+      }
+      return true
+    }
+
+    private fun setIconColor(row: Int): Boolean {
+      val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
+      val modelColor: Color = ColorUtil.fromHex(colorValue as String)
+
+      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
+        val assoc = model.items[row] as Association
+        assoc.touched = true
+        assoc.iconColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+      }
+      return true
+    }
+  }
+
   /** Toggle pattern action: Toggle pattern highlighting. */
 //  private inner class TogglePatternAction :
 //    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
@@ -387,6 +442,8 @@ class AssociationsTableModelEditor(
     const val ROW_HEIGHT: Int = 32
     const val LOADING_FONT_SIZE: Float = 24.0F
     const val DEFAULT_PRIORITY: Int = 10_000
+    val DEFAULT_ICON_COLOR: String = AtomFileIconsConfig.instance.getCurrentAccentColor()
+    val DEFAULT_FOLDER_COLOR: String = AtomFileIconsConfig.instance.getCurrentThemedColor()
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
 

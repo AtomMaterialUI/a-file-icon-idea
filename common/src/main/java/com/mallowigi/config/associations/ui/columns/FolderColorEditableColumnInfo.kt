@@ -25,19 +25,23 @@
  */
 package com.mallowigi.config.associations.ui.columns
 
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
 import com.intellij.ui.ColorUtil
+import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.icons.associations.Association
 import java.awt.Color
 import javax.swing.JTable
 import javax.swing.table.DefaultTableCellRenderer
+import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
  * Column info for the icon of a **File Icon Association**. Displays the
  * icon path alongside the icon.
  */
-class FolderColorEditableColumnInfo :
+class FolderColorEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>("Folder Color") {
 
   /** Returns the value to display in the column. */
@@ -52,7 +56,7 @@ class FolderColorEditableColumnInfo :
   override fun setValue(item: Association, value: String?) {
     if (value != null) {
       item.touched = true
-      item.iconColor = value
+      item.folderColor = value
     }
   }
 
@@ -65,6 +69,12 @@ class FolderColorEditableColumnInfo :
         false -> Color.BLACK
       }
     }
+  }
+
+  /** Returns the editor for the column. */
+  override fun getEditor(item: Association): TableCellEditor {
+    val cellEditor = ExtendableTextField()
+    return StatefulValidatingCellEditor(cellEditor, parent)
   }
 
   /** Is the column editable? */
