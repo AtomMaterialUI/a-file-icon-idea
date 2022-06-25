@@ -30,8 +30,6 @@ import com.intellij.ide.IconProvider
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
-import com.intellij.ui.ColorUtil
-import com.intellij.util.IconUtil
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
 import com.mallowigi.models.FileInfo
@@ -69,9 +67,6 @@ abstract class AbstractFileIconProvider : IconProvider() {
       val file: FileInfo = VirtualFileInfo(virtualFile)
       val association = findAssociation(file)
       icon = getIconForAssociation(association)
-      if (icon != null && association != null) {
-        icon = IconUtil.colorize(icon, ColorUtil.fromHex(association.iconColor), true)
-      }
 
     }
     return icon
