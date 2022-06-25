@@ -31,25 +31,21 @@ import com.mallowigi.models.FileInfo
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
-/**
- * Represents the bundled list of associations parsed from the xml
- *
- */
+/** Represents the bundled list of associations parsed from the xml. */
 @Suppress("HardCodedStringLiteral")
 @XStreamAlias("associations")
 class DefaultAssociations : Associations() {
 
-  /**
-   * List of [Association]s
-   */
+  /** List of [Association]s. */
   @Property
   @XCollection
   @XStreamAsAttribute
   var associations: List<Association> = emptyList()
 
   /**
-   * Find the file info's matching association by looping over all associations sorted by priority,
-   * taking the first enabled one that matches.
+   * Find the file info's matching association by looping over all
+   * associations sorted by priority, taking the first enabled one that
+   * matches.
    *
    * @param file file information
    * @return [Association] if found
@@ -65,5 +61,16 @@ class DefaultAssociations : Associations() {
    * @return list of [DefaultAssociations]
    */
   override fun getTheAssociations(): List<Association> = associations
+
+  /**
+   * Find association by name
+   *
+   * @param assocName
+   * @return
+   */
+  override fun findAssociationByName(assocName: String): Association? =
+    associations
+      .filter { it.enabled && it.matchesName(assocName) }
+      .maxByOrNull { it.priority }
 
 }

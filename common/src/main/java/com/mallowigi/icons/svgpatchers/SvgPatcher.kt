@@ -52,6 +52,8 @@ interface SvgPatcher {
   fun digest(): ByteArray?
 
   companion object {
+    const val ICONCOLOR: String = "iconColor"
+    const val FOLDERCOLOR: String = "folderColor"
     const val STROKE: String = "stroke"
     const val FILL: String = "fill"
     const val WIDTH: String = "width"
@@ -60,6 +62,5 @@ interface SvgPatcher {
     const val BIG: String = "big"
     const val TINT: String = "tint"
     const val THEMED: String = "themed"
-    const val CUSTOM: String = "custom"
   }
 }

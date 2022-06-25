@@ -121,4 +121,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
       .comparingInt(Association::priority)
       .compare(this, other)
   }
+
+  /** Check if matches icon name. */
+  fun matchesName(assocName: String): Boolean = name == assocName
 }

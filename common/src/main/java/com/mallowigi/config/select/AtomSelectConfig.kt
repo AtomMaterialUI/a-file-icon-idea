@@ -39,25 +39,18 @@ import com.mallowigi.icons.associations.SelectedAssociations
 import com.mallowigi.models.IconType
 import java.util.Objects
 
-/**
- * Configuration for [SelectedAssociations]
- *
- */
+/** Configuration for [SelectedAssociations]. */
 @State(
   name = "Atom Icon Selections Config",
   storages = [Storage("atom-icon-associations.xml")],
   category = SettingsCategory.UI
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
-  /**
-   * List of user file [Association]s
-   */
+  /** List of user file [Association]s. */
   @Property
   var selectedFileAssociations: SelectedAssociations = SelectedAssociations(IconType.FILE)
 
-  /**
-   * List of user folder [Association]s
-   */
+  /** List of user folder [Association]s. */
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
 
@@ -70,14 +63,10 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     selectedFileAssociations.initMutableListFromDefaults()
   }
 
-  /**
-   * The config state
-   */
+  /** The config state. */
   override fun getState(): AtomSelectConfig = this
 
-  /**
-   * Load state from XML
-   */
+  /** Load state from XML. */
   override fun loadState(state: AtomSelectConfig) {
     XmlSerializerUtil.copyBean(state, this)
     init() // reload defaults
@@ -128,19 +117,25 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     return !Objects.deepEquals(this.selectedFolderAssociations.ownValues(), touched)
   }
 
-  /**
-   * Resets the associations
-   *
-   */
+  /** Resets the associations. */
   fun reset() {
     selectedFolderAssociations.reset()
     selectedFileAssociations.reset()
   }
 
+  /**
+   * Find association by name
+   *
+   * @param name
+   */
+  fun findAssociationByName(name: String): Association? {
+    val fileAssoc = selectedFileAssociations.findAssociationByName(name)
+    val folderAssoc = selectedFolderAssociations.findAssociationByName(name)
+    return fileAssoc ?: folderAssoc
+  }
+
   companion object {
-    /**
-     * Instance of the [AtomSelectConfig]
-     */
+    /** Instance of the [AtomSelectConfig]. */
     @JvmStatic
     val instance: AtomSelectConfig
       get() = ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)

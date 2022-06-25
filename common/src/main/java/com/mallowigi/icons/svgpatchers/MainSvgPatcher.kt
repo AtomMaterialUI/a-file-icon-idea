@@ -46,7 +46,8 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     compareByDescending { it.priority() },
     ThemeColorPatcher(),
     AccentColorPatcher(),
-    BigIconsPatcher()
+    BigIconsPatcher(),
+    CustomColorPatcher(),
   )
 
   /** Call refresh colors on all patchers. */

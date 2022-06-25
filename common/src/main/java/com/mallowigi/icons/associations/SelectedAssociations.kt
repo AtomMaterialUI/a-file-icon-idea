@@ -31,28 +31,19 @@ import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 
-/**
- * Represents a list of [SelectedAssociations]
- *
- */
+/** Represents a list of [SelectedAssociations]. */
 @Suppress("MemberNameEqualsClassName")
 class SelectedAssociations(
-  /**
-   * The [IconType] of the [SelectedAssociations]
-   */
+  /** The [IconType] of the [SelectedAssociations]. */
   @Property val iconType: IconType = IconType.FILE,
   associations: List<RegexAssociation> = listOf(),
 ) : Associations() {
 
-  /**
-   * All associations, mutable (from the form)
-   */
+  /** All associations, mutable (from the form) */
   @Transient
   private var mutableAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
-  /**
-   * My modified [Associations]
-   */
+  /** My modified [Associations]. */
   @Property
   @XCollection
   private var ownAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
@@ -62,10 +53,7 @@ class SelectedAssociations(
     mutableAssociations = associations.associateBy { it.name }.toMutableMap()
   }
 
-  /**
-   * Reinitializes the [mutableAssociations]
-   *
-   */
+  /** Reinitializes the [mutableAssociations]. */
   fun initMutableListFromDefaults() {
     mutableAssociations.putAll(BundledAssociations.instance.getMap(iconType))
   }
@@ -75,7 +63,7 @@ class SelectedAssociations(
    *
    * @param name
    */
-  fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
+  private fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
 
   /**
    * Get an own [Association] by name
@@ -116,7 +104,6 @@ class SelectedAssociations(
       inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
       else                               -> inOwn ?: inMutable
     }
-
   }
 
   /**
@@ -139,6 +126,16 @@ class SelectedAssociations(
     .filter { it.enabled && it.matches(file) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
+  /** Look for matching association in [ownAssociations]. */
+  private fun findInOwnByName(path: String): Association? = ownValues()
+    .filter { it.enabled && it.matchesName(path) }
+    .maxByOrNull { it.priority }
+
+  /** Look for matching association in [mutableAssociations]. */
+  private fun findInMutableByName(path: String): Association? = mutableAssociations.values.toList()
+    .filter { it.enabled && it.matchesName(path) && !hasOwn(it.name) }
+    .maxByOrNull { it.priority }
+
   /**
    * Get the list of all [Associations]
    *
@@ -152,20 +149,24 @@ class SelectedAssociations(
     return result.values.toList()
   }
 
-  /**
-   * Resets default state
-   *
-   */
+  override fun findAssociationByName(assocName: String): Association? {
+    val inOwn = findInOwnByName(assocName)
+    val inMutable = findInMutableByName(assocName)
+
+    return when {
+      inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
+      else                               -> inOwn ?: inMutable
+    }
+  }
+
+  /** Resets default state. */
   fun reset() {
     mutableAssociations.clear()
     ownAssociations.clear()
     initMutableListFromDefaults()
   }
 
-  /**
-   * Extract [ownAssociations] from [mutableAssociations]
-   *
-   */
+  /** Extract [ownAssociations] from [mutableAssociations]. */
   fun registerOwnAssociations() {
     ownAssociations.putAll(mutableAssociations.filter { it.value.touched })
   }

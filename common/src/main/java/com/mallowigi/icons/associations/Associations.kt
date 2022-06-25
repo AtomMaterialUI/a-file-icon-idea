@@ -79,6 +79,13 @@ abstract class Associations : Serializable {
    */
   abstract fun getTheAssociations(): List<Association>
 
+  /**
+   * Find association by name
+   *
+   * @param assocName
+   */
+  abstract fun findAssociationByName(assocName: String): Association?
+
   companion object {
     private const val serialVersionUID: Long = -1L
     private val LOG = Logger.getInstance(Associations::class.java)
