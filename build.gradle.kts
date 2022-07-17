@@ -38,22 +38,22 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.6.21"
+  id("org.jetbrains.kotlin.jvm") version "1.7.10"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.6.0"
+  id("org.jetbrains.intellij") version "1.7.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.1"
   // Gradle Qodana Plugin
   id("org.jetbrains.qodana") version "0.1.13"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.20.0"
+  id("io.gitlab.arturbosch.detekt") version "1.21.0"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
   id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.19")
   implementation("org.javassist:javassist:3.29.0-GA")
