@@ -62,12 +62,12 @@ import javax.swing.event.DocumentEvent
 /**
  * [Association] table model editor
  *
- * @constructor
  * @param items the [Association]s
  * @param columns list of [ColumnInfo]s
  * @param itemEditor the [Association] editor
  * @param emptyText the text to show when the table is empty
  * @param searchTextField the search text field (optional)
+ * @constructor
  */
 @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation", "OutdatedDocumentation")
 class AssociationsTableModelEditor(
@@ -270,13 +270,14 @@ class AssociationsTableModelEditor(
     regexAssociation.priority = DEFAULT_PRIORITY
     regexAssociation.iconColor = DEFAULT_ICON_COLOR
     regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
+    regexAssociation.folderIconColor = DEFAULT_ICON_COLOR
     regexAssociation.icon = ""
     return regexAssociation
   }
 
   /**
-   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered
-   * list when a change occurs since we're working on the filtered list
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
+   * the filtered list
    *
    * @param oldItem item changed (in the filtered list)
    * @param newItem new item to insert
@@ -294,17 +295,14 @@ class AssociationsTableModelEditor(
   /**
    * [Association] table model inheriting the [ListTableModel]
    *
-   * @constructor
    * @param columnNames the columns
    * @param items the items
+   * @constructor
    */
   inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<RegexAssociation>) :
     ListTableModel<RegexAssociation>(columnNames, items) {
 
-    /**
-     * This contains all items, before any filter is applied. This is
-     * also what will be persisted.
-     */
+    /** This contains all items, before any filter is applied. This is also what will be persisted. */
     var allItems: MutableList<RegexAssociation> = items.toMutableList()
 
     /** This is the currently filtered table. */
@@ -386,9 +384,10 @@ class AssociationsTableModelEditor(
       return when {
         row >= 0 && row < table.rowCount -> {
           return when (column) {
-            Columns.ICONCOLOR.index   -> setIconColor(row)
-            Columns.FOLDERCOLOR.index -> setFolderColor(row)
-            else                      -> false
+            Columns.ICONCOLOR.index       -> setIconColor(row)
+            Columns.FOLDERCOLOR.index     -> setFolderColor(row)
+            Columns.FOLDERICONCOLOR.index -> setFolderIconColor(row)
+            else                          -> false
           }
         }
 
@@ -404,6 +403,18 @@ class AssociationsTableModelEditor(
         val assoc = model.items[row] as Association
         assoc.touched = true
         assoc.folderColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+      }
+      return true
+    }
+
+    private fun setFolderIconColor(row: Int): Boolean {
+      val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
+      val modelColor: Color = ColorUtil.fromHex(colorValue as String)
+
+      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
+        val assoc = model.items[row] as Association
+        assoc.touched = true
+        assoc.folderIconColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
       }
       return true
     }
@@ -457,7 +468,8 @@ class AssociationsTableModelEditor(
       PRIORITY(4),
       ICONCOLOR(5),
       FOLDERCOLOR(6),
-      TOUCHED(7),
+      FOLDERICONCOLOR(7),
+      TOUCHED(8),
     }
   }
 }

@@ -40,10 +40,8 @@ import java.io.Serializable
  * @property iconType the [IconType] of icon (file/folder)
  * @property name the name of the association
  * @property icon the icon path
- * @property priority association priority. Lowest priorities are used
- *   last.
- * @property matcher How the association will be matched against (regex,
- *   type)
+ * @property priority association priority. Lowest priorities are used last.
+ * @property matcher How the association will be matched against (regex, type)
  * @property isEmpty whether the association has empty fields
  * @property iconColor the color of the icon
  * @property folderIconColor the color of the folder icon
@@ -80,6 +78,10 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
   @field:Property
   @XStreamAsAttribute
   var folderColor: String? = "808080"
+
+  @field:Property
+  @XStreamAsAttribute
+  var folderIconColor: String? = "808080"
 
   abstract var matcher: String
 
