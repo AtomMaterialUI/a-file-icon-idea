@@ -26,37 +26,7 @@
 
 package com.mallowigi.utils
 
-import com.intellij.ui.ColorUtil
-import java.awt.Color
 import java.util.Optional
-import java.util.concurrent.Callable
-import java.util.stream.Stream
-
-/**
- * Get safely
- *
- * @param T
- * @param callable
- * @return
- */
-fun <T> getSafely(callable: Callable<T?>): Optional<T> =
-  try {
-    callable.call().toOptional()
-  } catch (e: Throwable) {
-    Optional.empty()
-  }
-
-/**
- * Run safely
- *
- * @param runner
- */
-fun runSafely(runner: Runner): Unit =
-  try {
-    runner.run()
-  } catch (e: Throwable) {
-    e.printStackTrace()
-  }
 
 operator fun <T> Lazy<T>.getValue(thisRef: Any?, property: Any) = value
 
@@ -65,52 +35,4 @@ operator fun <T> Lazy<T>.getValue(thisRef: Any?, property: Any) = value
  *
  * @param T
  */
-fun <T> T?.toOptional(): Optional<T> = Optional.ofNullable(this)
-
-/**
- * To stream
- *
- * @param T
- * @return
- */
-fun <T> T?.toStream(): Stream<T> = Stream.of(this)
-
-/**
- * Do or else
- *
- * @param T
- * @param present
- * @param notThere
- * @receiver
- * @receiver
- */
-fun <T> Optional<T>.doOrElse(present: (T) -> Unit, notThere: () -> Unit): Unit =
-  this.map {
-    it to true
-  }.map {
-    it.toOptional()
-  }.orElseGet {
-    (null to false).toOptional()
-  }.ifPresent {
-    if (it.second) {
-      present(it.first)
-    } else {
-      notThere()
-    }
-  }
-
-/**
- * Runner
- *
- * @constructor Create empty Runner
- */
-interface Runner {
-  /** Run. */
-  fun run()
-}
-
-/** To hex string. */
-fun Color.toHexString(): String = "#${ColorUtil.toHex(this)}"
-
-/** To color. */
-fun String.toColor(): Color = ColorUtil.fromHex(this)
+fun <T : Any> T?.toOptional(): Optional<T> = Optional.ofNullable(this)

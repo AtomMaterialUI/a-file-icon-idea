@@ -30,14 +30,15 @@ import org.w3c.dom.Element
 /** Custom Color Patcher. */
 class CustomColorPatcher : SvgPatcher {
   private var touched = false
-  
+
   override fun refresh(): Unit {
     touched = true
   }
 
   override fun patch(svg: Element, path: String?) {
-    patchIconColor(svg)
-    patchFolderColor(svg)
+//    patchIconColor(svg)
+//    patchFolderColor(svg)
+//    patchFolderIconColor(svg)
   }
 
   override fun priority(): Int = 101
@@ -54,7 +55,7 @@ class CustomColorPatcher : SvgPatcher {
     val iconColor = matchingAssociation.iconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
-    svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
+//    svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
   }
 
   private fun patchFolderColor(svg: Element) {
@@ -64,5 +65,14 @@ class CustomColorPatcher : SvgPatcher {
 
     svg.setAttribute(SvgPatcher.FILL, "#$folderColor")
     svg.setAttribute(SvgPatcher.STROKE, "#$folderColor")
+  }
+
+  private fun patchFolderIconColor(svg: Element) {
+    val attr = svg.getAttribute(SvgPatcher.FOLDERICONCOLOR) ?: return
+    val matchingAssociation = AtomSelectConfig.instance.findAssociationByName(attr) ?: return
+    val folderIconColor = matchingAssociation.folderIconColor
+
+    svg.setAttribute(SvgPatcher.FILL, "#$folderIconColor")
+    svg.setAttribute(SvgPatcher.STROKE, "#$folderIconColor")
   }
 }
