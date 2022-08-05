@@ -37,11 +37,13 @@ intellij {
   version.set(platformVersion)
   type.set(platformType)
 
-  plugins.set(listOf(
-    "java",
-    "com.intellij.CloudConfig",
-    "Git4Idea",
-  ))
+  plugins.set(
+    listOf(
+      "java",
+      "com.intellij.CloudConfig",
+      "Git4Idea",
+    )
+  )
 }
 
 tasks {
