@@ -399,25 +399,21 @@ class AssociationsTableModelEditor(
     }
 
     private fun setFolderColor(row: Int): Boolean {
-      val colorValue: Any = model.getValueAt(row, Columns.FOLDERCOLOR.index)
+      val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        val assoc = model.items[row] as Association
-        assoc.touched = true
-        assoc.folderColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERCOLOR.index)
       }
       return true
     }
 
     private fun setFolderIconColor(row: Int): Boolean {
-      val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
+      val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        val assoc = model.items[row] as Association
-        assoc.touched = true
-        assoc.folderIconColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERICONCOLOR.index)
       }
       return true
     }
@@ -427,9 +423,7 @@ class AssociationsTableModelEditor(
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        val assoc = model.items[row] as Association
-        assoc.touched = true
-        assoc.iconColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.ICONCOLOR.index)
       }
       return true
     }
