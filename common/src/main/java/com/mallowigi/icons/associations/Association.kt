@@ -73,7 +73,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
 
   @field:Property
   @XStreamAsAttribute
-  var iconColor: String = "808080"
+  var iconColor: String? = "808080"
 
   @field:Property
   @XStreamAsAttribute
@@ -110,6 +110,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
     touched = other.touched
     iconColor = other.iconColor
     folderColor = other.folderColor
+    folderIconColor = other.folderIconColor
   }
 
   override fun toString(): String = "$name: $matcher ($priority)"

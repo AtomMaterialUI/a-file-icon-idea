@@ -116,7 +116,7 @@ class AssociationsTableModelEditor(
     table.fillsViewportHeight = true
     table.setShowGrid(false)
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
-    table.setEnableAntialiasing(false)
+    table.setEnableAntialiasing(true)
     table.intercellSpacing = Dimension(0, 0)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, PREFERABLE_VIEWPORT_HEIGHT)
     table.visibleRowCount = MIN_ROW_COUNT
@@ -186,9 +186,9 @@ class AssociationsTableModelEditor(
     myFilteredList.clear()
     // Search by name or pattern only
     for (assoc in myList) {
-      if (text.isEmpty() ||
-        StringUtil.containsIgnoreCase(assoc.matcher, text) ||
-        StringUtil.containsIgnoreCase(assoc.name, text)
+      if (text.isEmpty() || StringUtil.containsIgnoreCase(
+          assoc.matcher, text
+        ) || StringUtil.containsIgnoreCase(assoc.name, text)
       ) {
         myFilteredList.add(assoc)
       }
@@ -380,19 +380,21 @@ class AssociationsTableModelEditor(
     override fun onClick(event: MouseEvent, clickCount: Int): Boolean {
       val point = event.point
       val row: Int = table.rowAtPoint(point)
-      val column: Int = table.columnAtPoint(point)
+      val column: Int = table.columnAtPoint(point) + 1 // Because the touched takes a slot...
 
-      return when {
-        row >= 0 && row < table.rowCount -> {
-          return when (column) {
-            Columns.ICONCOLOR.index       -> setIconColor(row)
-            Columns.FOLDERCOLOR.index     -> setFolderColor(row)
-            Columns.FOLDERICONCOLOR.index -> setFolderIconColor(row)
-            else                          -> false
-          }
+      if (row < 0 || row >= table.rowCount) return false
+
+      return when (type) {
+        IconType.FILE   -> when (column) {
+          Columns.ICONCOLOR.index -> setIconColor(row)
+          else                    -> false
         }
 
-        else                             -> false
+        IconType.FOLDER -> when (column) {
+          Columns.FOLDERCOLOR.index     -> setFolderColor(row)
+          Columns.FOLDERICONCOLOR.index -> setFolderIconColor(row)
+          else                          -> false
+        }
       }
     }
 

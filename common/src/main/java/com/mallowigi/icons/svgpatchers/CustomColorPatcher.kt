@@ -26,26 +26,37 @@ package com.mallowigi.icons.svgpatchers
 import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.select.AtomSelectConfig
 import org.w3c.dom.Element
+import java.nio.charset.StandardCharsets
 
 /** Custom Color Patcher. */
 class CustomColorPatcher : SvgPatcher {
-  private var touched = false
 
-  override fun refresh(): Unit {
-    touched = true
+  override fun refresh() {
+    // do nothing
   }
 
   override fun patch(svg: Element, path: String?) {
-//    patchIconColor(svg)
-//    patchFolderColor(svg)
-//    patchFolderIconColor(svg)
+    patchIconColor(svg)
+    patchFolderColor(svg)
+    patchFolderIconColor(svg)
   }
 
   override fun priority(): Int = 101
 
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
-//    hasher.update(touched.toString().toByteArray(StandardCharsets.UTF_8))
+    val fileAssociations = AtomSelectConfig.instance.selectedFileAssociations.ownValues()
+    val folderAssociations = AtomSelectConfig.instance.selectedFolderAssociations.ownValues()
+
+    fileAssociations.forEach {
+      hasher.update(it.iconColor?.toByteArray(StandardCharsets.UTF_8))
+    }
+
+    folderAssociations.forEach {
+      hasher.update(it.folderColor?.toByteArray(StandardCharsets.UTF_8))
+      hasher.update(it.folderIconColor?.toByteArray(StandardCharsets.UTF_8))
+    }
+
     return hasher.digest()
   }
 
@@ -55,7 +66,7 @@ class CustomColorPatcher : SvgPatcher {
     val iconColor = matchingAssociation.iconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
-//    svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
+    svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
   }
 
   private fun patchFolderColor(svg: Element) {

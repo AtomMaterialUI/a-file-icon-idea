@@ -43,7 +43,7 @@ class IconColorEditableColumnInfo(private val parent: Disposable, private val ed
   EditableColumnInfo<Association, String>(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.iconColor")) {
 
   /** Returns the value to display in the column. */
-  override fun valueOf(item: Association): String = item.iconColor
+  override fun valueOf(item: Association): String = item.iconColor ?: "808080"
 
   /**
    * Set column value (sets the color)
@@ -61,7 +61,7 @@ class IconColorEditableColumnInfo(private val parent: Disposable, private val ed
   /** Returns the renderer for the column. */
   override fun getRenderer(item: Association): TableCellRenderer = object : DefaultTableCellRenderer() {
     override fun repaint() {
-      background = ColorUtil.fromHex(item.iconColor)
+      background = ColorUtil.fromHex(item.iconColor ?: "808080")
       foreground = when (ColorUtil.isDark(background)) {
         true  -> Color.WHITE
         false -> Color.BLACK
