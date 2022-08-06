@@ -45,10 +45,8 @@ import javax.swing.table.TableCellRenderer
 @Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  /**
-   * Whether the regex highlight is enabled (disabled by default because it's slow)
-   */
-//  var toggledPattern: Boolean = false
+  /** Whether the regex highlight is enabled (disabled by default because it's slow) */
+  var toggledPattern: Boolean = false
 
   /**
    * The value of the column is the matcher
@@ -89,9 +87,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
    */
   override fun getRenderer(item: Association): TableCellRenderer = RegExpTableCellRenderer()
 
-  /**
-   * Set a regex language highlighter for this column
-   */
+  /** Set a regex language highlighter for this column. */
   override fun getCustomizedRenderer(o: Association, renderer: TableCellRenderer): TableCellRenderer =
     ModifiedInfoCellRenderer(o)
 

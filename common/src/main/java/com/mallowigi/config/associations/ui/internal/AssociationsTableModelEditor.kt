@@ -25,6 +25,8 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.ClickListener
@@ -33,6 +35,7 @@ import com.intellij.ui.ColorUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
+import com.intellij.ui.ToggleActionButton
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.table.JBTable
 import com.intellij.ui.table.TableView
@@ -45,6 +48,8 @@ import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsBundle
+import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
@@ -121,10 +126,6 @@ class AssociationsTableModelEditor(
     table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
     table.removeColumn(table.columnModel.getColumn(Columns.TOUCHED.index))
 
-    if (type === IconType.FILE) {
-      table.removeColumn(table.columnModel.getColumn(Columns.FOLDERCOLOR.index))
-    }
-
     // Special support for checkbox: toggle by clicking or space
     TableUtil.setupCheckboxColumn(table.columnModel.getColumn(Columns.ENABLED.index), 0)
     JBTable.setupCheckboxShortcut(table, Columns.ENABLED.index)
@@ -137,7 +138,7 @@ class AssociationsTableModelEditor(
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
     toolbarDecorator.run {
       disableUpDownActions()
-//      addExtraAction(TogglePatternAction())
+      addExtraAction(TogglePatternAction())
     }
 
     // Search and filter table
@@ -433,18 +434,18 @@ class AssociationsTableModelEditor(
   }
 
   /** Toggle pattern action: Toggle pattern highlighting. */
-//  private inner class TogglePatternAction :
-//    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
-//
-//    override fun isSelected(e: AnActionEvent?): Boolean =
-//      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
-//
-//    override fun setSelected(e: AnActionEvent?, state: Boolean) {
-//      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
-//
-//      patternColumn.toggledPattern = !patternColumn.toggledPattern
-//    }
-//  }
+  private inner class TogglePatternAction :
+    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
+
+    override fun isSelected(e: AnActionEvent?): Boolean =
+      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
+
+    override fun setSelected(e: AnActionEvent?, state: Boolean) {
+      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
+
+      patternColumn.toggledPattern = !patternColumn.toggledPattern
+    }
+  }
 
   @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {
@@ -462,14 +463,14 @@ class AssociationsTableModelEditor(
     @Suppress("unused")
     private enum class Columns(val index: Int) {
       ENABLED(0),
-      NAME(1),
-      PATTERN(2),
-      ICON(3),
-      PRIORITY(4),
-      ICONCOLOR(5),
+      TOUCHED(1),
+      NAME(2),
+      PATTERN(3),
+      ICON(4),
+      PRIORITY(5),
+      ICONCOLOR(6),
       FOLDERCOLOR(6),
       FOLDERICONCOLOR(7),
-      TOUCHED(8),
     }
   }
 }

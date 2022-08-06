@@ -30,6 +30,7 @@ import com.intellij.openapi.ui.cellvalidators.StatefulValidatingCellEditor
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.components.fields.ExtendableTextField
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
+import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.icons.associations.Association
 import java.awt.Color
 import javax.swing.JTable
@@ -37,12 +38,9 @@ import javax.swing.table.DefaultTableCellRenderer
 import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
-/**
- * Column info for the icon of a **File Icon Association**. Displays the
- * icon path alongside the icon.
- */
+/** Column info for the icon of a **File Icon Association**. Displays the icon path alongside the icon. */
 class IconColorEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association, String>("Color") {
+  EditableColumnInfo<Association, String>(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.iconColor")) {
 
   /** Returns the value to display in the column. */
   override fun valueOf(item: Association): String = item.iconColor
