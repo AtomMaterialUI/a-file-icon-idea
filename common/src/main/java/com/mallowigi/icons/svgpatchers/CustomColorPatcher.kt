@@ -62,7 +62,7 @@ class CustomColorPatcher : SvgPatcher {
 
   private fun patchIconColor(svg: Element) {
     val attr = svg.getAttribute(SvgPatcher.ICONCOLOR) ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findAssociationByName(attr) ?: return
+    val matchingAssociation = AtomSelectConfig.instance.findFileAssociationByName(attr) ?: return
     val iconColor = matchingAssociation.iconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
@@ -71,7 +71,7 @@ class CustomColorPatcher : SvgPatcher {
 
   private fun patchFolderColor(svg: Element) {
     val attr = svg.getAttribute(SvgPatcher.FOLDERCOLOR) ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findAssociationByName(attr) ?: return
+    val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
     val folderColor = matchingAssociation.folderColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$folderColor")
@@ -80,7 +80,7 @@ class CustomColorPatcher : SvgPatcher {
 
   private fun patchFolderIconColor(svg: Element) {
     val attr = svg.getAttribute(SvgPatcher.FOLDERICONCOLOR) ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findAssociationByName(attr) ?: return
+    val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
     val folderIconColor = matchingAssociation.folderIconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$folderIconColor")
