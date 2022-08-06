@@ -33,10 +33,11 @@ import com.mallowigi.models.FileInfo
 import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
-/**
- * Represents a serialized collection of [Associations][Association].
- */
+/** Represents a serialized collection of [Associations][Association]. */
 abstract class Associations : Serializable {
+  /** Ignored Associations. */
+  open val ignoredAssociations: Set<String> = emptySet()
+
   /**
    * Find the [Association] which matches the file info
    *
@@ -49,7 +50,7 @@ abstract class Associations : Serializable {
 
     when {
       // Specific plugin handling
-      IMAGE_TYPES.contains(matching.name) -> try {
+      IMAGE_TYPES.contains(matching.name)         -> try {
         // If those plugins are installed, let them handle the icon
         val imageIconViewerID = message("plugins.imageIconViewer")
         val plugin = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
@@ -58,8 +59,8 @@ abstract class Associations : Serializable {
       } catch (e: RuntimeException) {
         LOG.error(e)
       }
-      // PHP Plugin
-      IGNORED.contains(matching.name)     -> return null
+      // Other ignores
+      ignoredAssociations.contains(matching.name) -> return null
     }
     return matching
   }
@@ -101,7 +102,6 @@ abstract class Associations : Serializable {
       "Icons"
     )
 
-    private val IGNORED: Set<String> = setOf("PHP", "Kotlin", "Java")
   }
 
 }
