@@ -381,18 +381,19 @@ class AssociationsTableModelEditor(
       val point = event.point
       val row: Int = table.rowAtPoint(point)
       val column: Int = table.columnAtPoint(point) + 1 // Because the touched takes a slot...
+      val modelIndex = table.convertRowIndexToModel(row)
 
-      if (row < 0 || row >= table.rowCount) return false
+      if (modelIndex < 0 || modelIndex >= table.rowCount) return false
 
       return when (type) {
         IconType.FILE   -> when (column) {
-          Columns.ICONCOLOR.index -> setIconColor(row)
+          Columns.ICONCOLOR.index -> setIconColor(modelIndex)
           else                    -> false
         }
 
         IconType.FOLDER -> when (column) {
-          Columns.FOLDERCOLOR.index     -> setFolderColor(row)
-          Columns.FOLDERICONCOLOR.index -> setFolderIconColor(row)
+          Columns.FOLDERCOLOR.index     -> setFolderColor(modelIndex)
+          Columns.FOLDERICONCOLOR.index -> setFolderIconColor(modelIndex)
           else                          -> false
         }
       }
