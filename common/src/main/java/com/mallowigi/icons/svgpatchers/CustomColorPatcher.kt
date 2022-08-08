@@ -66,7 +66,9 @@ class CustomColorPatcher : SvgPatcher {
     val iconColor = matchingAssociation.iconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
-    svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
+    if (svg.getAttribute(SvgPatcher.STROKE) != "") {
+      svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
+    }
   }
 
   private fun patchFolderColor(svg: Element) {
@@ -75,7 +77,9 @@ class CustomColorPatcher : SvgPatcher {
     val folderColor = matchingAssociation.folderColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$folderColor")
-    svg.setAttribute(SvgPatcher.STROKE, "#$folderColor")
+    if (svg.getAttribute(SvgPatcher.STROKE) != "") {
+      svg.setAttribute(SvgPatcher.STROKE, "#$folderColor")
+    }
   }
 
   private fun patchFolderIconColor(svg: Element) {
@@ -84,6 +88,8 @@ class CustomColorPatcher : SvgPatcher {
     val folderIconColor = matchingAssociation.folderIconColor
 
     svg.setAttribute(SvgPatcher.FILL, "#$folderIconColor")
-    svg.setAttribute(SvgPatcher.STROKE, "#$folderIconColor")
+    if (svg.getAttribute(SvgPatcher.STROKE) != "") {
+      svg.setAttribute(SvgPatcher.STROKE, "#$folderIconColor")
+    }
   }
 }
