@@ -31,16 +31,10 @@ import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 
-/**
- * Editor for the [Association] table cells
- *
- */
+/** Editor for the [Association] table cells. */
 class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, CollectionItemEditor<RegexAssociation> {
 
-  /**
-   * Class of the items
-   *
-   */
+  /** Class of the items. */
   override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
 
   /**
@@ -61,6 +55,9 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
       priority = item.priority
       matcher = item.matcher
       touched = item.touched
+      iconColor = item.iconColor
+      folderColor = item.folderColor
+      folderIconColor = item.folderIconColor
     }
 
     return regexAssociation
@@ -106,9 +103,7 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
     mutator.`fun`(item).apply(settings)
   }
 
-  /**
-   * Whether item can be removed
-   */
+  /** Whether item can be removed. */
   override fun isRemovable(item: RegexAssociation): Boolean = item.touched
 
 }

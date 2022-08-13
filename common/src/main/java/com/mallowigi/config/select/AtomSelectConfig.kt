@@ -128,11 +128,9 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
    *
    * @param name
    */
-  fun findAssociationByName(name: String): Association? {
-    val fileAssoc = selectedFileAssociations.findAssociationByName(name)
-    val folderAssoc = selectedFolderAssociations.findAssociationByName(name)
-    return fileAssoc ?: folderAssoc
-  }
+  fun findFileAssociationByName(name: String): Association? = selectedFileAssociations.findAssociationByName(name)
+
+  fun findFolderAssociationByName(name: String): Association? = selectedFolderAssociations.findAssociationByName(name)
 
   companion object {
     /** Instance of the [AtomSelectConfig]. */

@@ -29,8 +29,10 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+/** Get a property from the gradle.properties file. */
 fun properties(key: String) = project.findProperty(key).toString()
 
+/** Get a property from a file. */
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
 
 plugins {
@@ -40,7 +42,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.7.10"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.7.0"
+  id("org.jetbrains.intellij") version "1.8.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.1"
   // Gradle Qodana Plugin

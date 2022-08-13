@@ -54,6 +54,7 @@ interface SvgPatcher {
   companion object {
     const val ICONCOLOR: String = "iconColor"
     const val FOLDERCOLOR: String = "folderColor"
+    const val FOLDERICONCOLOR: String = "folderIconColor"
     const val STROKE: String = "stroke"
     const val FILL: String = "fill"
     const val WIDTH: String = "width"

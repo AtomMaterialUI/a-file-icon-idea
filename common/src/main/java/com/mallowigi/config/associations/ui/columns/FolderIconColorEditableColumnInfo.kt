@@ -39,11 +39,11 @@ import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /** Column info for the icon of a **File Icon Association**. Displays the icon path alongside the icon. */
-class FolderColorEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
-  EditableColumnInfo<Association, String>(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.folderColor")) {
+class FolderIconColorEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+  EditableColumnInfo<Association, String>(AtomSettingsBundle.message("AssociationsForm.folderIconsTable.columns.iconColor")) {
 
   /** Returns the value to display in the column. */
-  override fun valueOf(item: Association): String = item.folderColor ?: "808080"
+  override fun valueOf(item: Association): String = item.folderIconColor ?: "808080"
 
   /**
    * Set column value (sets the color)
@@ -54,14 +54,14 @@ class FolderColorEditableColumnInfo(private val parent: Disposable, private val 
   override fun setValue(item: Association, value: String?) {
     if (value != null) {
       item.touched = true
-      item.folderColor = value
+      item.folderIconColor = value
     }
   }
 
   /** Returns the renderer for the column. */
   override fun getRenderer(item: Association): TableCellRenderer = object : DefaultTableCellRenderer() {
     override fun repaint() {
-      background = ColorUtil.fromHex(item.folderColor ?: "808080")
+      background = ColorUtil.fromHex(item.folderIconColor ?: "808080")
       foreground = when (ColorUtil.isDark(background)) {
         true  -> Color.WHITE
         false -> Color.BLACK

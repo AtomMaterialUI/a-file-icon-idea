@@ -38,6 +38,13 @@ class SelectedAssociations(
   @Property val iconType: IconType = IconType.FILE,
   associations: List<RegexAssociation> = listOf(),
 ) : Associations() {
+  /** List of associations to ignore by type. */
+  override val ignoredAssociations: Set<String>
+    get() = when (iconType) {
+      IconType.FILE   -> FILE_IGNORED_ASSOCIATIONS
+      IconType.FOLDER -> FOLDER_IGNORED_ASSOCIATIONS
+      else            -> emptySet()
+    }
 
   /** All associations, mutable (from the form) */
   @Transient
@@ -171,4 +178,8 @@ class SelectedAssociations(
     ownAssociations.putAll(mutableAssociations.filter { it.value.touched })
   }
 
+  companion object {
+    private val FILE_IGNORED_ASSOCIATIONS: Set<String> = setOf("PHP", "Kotlin", "Java")
+    private val FOLDER_IGNORED_ASSOCIATIONS: Set<String> = emptySet()
+  }
 }

@@ -33,15 +33,7 @@ import com.intellij.ui.SearchTextField;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.ui.ColumnInfo;
 import com.mallowigi.config.AtomSettingsBundle;
-import com.mallowigi.config.associations.ui.columns.EnabledColumnInfo;
-import com.mallowigi.config.associations.ui.columns.FileIconEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.FolderColorEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.FolderIconEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.IconColorEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.NameEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo;
-import com.mallowigi.config.associations.ui.columns.PriorityColumnInfo;
-import com.mallowigi.config.associations.ui.columns.TouchedColumnInfo;
+import com.mallowigi.config.associations.ui.columns.*;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor;
 import com.mallowigi.config.associations.ui.internal.AssociationsTableModelEditor;
 import com.mallowigi.config.ui.SettingsFormUI;
@@ -62,24 +54,23 @@ public final class AtomSelectForm extends JPanel implements SettingsFormUI, Disp
 
   private final transient ColumnInfo[] fileColumns = {
     new EnabledColumnInfo(),
+    new TouchedColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FileIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
     new IconColorEditableColumnInfo(this, true),
-    new FolderColorEditableColumnInfo(this, true),
-    new TouchedColumnInfo(),
   };
 
   private final transient ColumnInfo[] folderColumns = {
     new EnabledColumnInfo(),
+    new TouchedColumnInfo(),
     new NameEditableColumnInfo(this, true),
     new PatternEditableColumnInfo(this, true),
     new FolderIconEditableColumnInfo(this, true),
     new PriorityColumnInfo(this, true),
-    new IconColorEditableColumnInfo(this, true),
     new FolderColorEditableColumnInfo(this, true),
-    new TouchedColumnInfo(),
+    new FolderIconColorEditableColumnInfo(this, true),
   };
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license

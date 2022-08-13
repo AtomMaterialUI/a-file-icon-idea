@@ -55,21 +55,20 @@ import javax.swing.table.TableCellEditor
  */
 class RegexpEditor(textField: JTextField, parent: Disposable) :
   StatefulValidatingCellEditor(textField, parent), TableCellEditor {
-  /**
-   * Instance of an editor with regexp syntax highlighting
-   */
+  /** Instance of an editor with regexp syntax highlighting. */
   private var editor: EditorTextField =
-    EditorTextField(EditorFactory.getInstance().createDocument("dummy.regexp"),
-                    ProjectManager.getInstance().defaultProject, RegExpFileType.INSTANCE, false, true)
+    EditorTextField(
+      /* document = */ EditorFactory.getInstance().createDocument("dummy.regexp"),
+      /* project = */ ProjectManager.getInstance().defaultProject,
+      /* fileType = */ RegExpFileType.INSTANCE,
+      /* isViewer = */ false,
+      /* oneLineMode = */ true
+    )
 
-  /**
-   * Floating document during edition
-   */
+  /** Floating document during edition. */
   private var myDocument: Document? = null
 
-  /**
-   * State updater reducer used for validation
-   */
+  /** State updater reducer used for validation. */
   private val stateUpdater = Consumer { _: ValidationInfo? -> }
 
   init {
@@ -163,10 +162,7 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
     return true
   }
 
-  /**
-   * Revalidates when cancel editing
-   *
-   */
+  /** Revalidates when cancel editing. */
   override fun cancelCellEditing() {
     // Revalidates on cancel
     ComponentValidator.getInstance(editor).ifPresent { obj: ComponentValidator -> obj.revalidate() }

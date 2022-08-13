@@ -25,6 +25,8 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.ClickListener
@@ -33,6 +35,7 @@ import com.intellij.ui.ColorUtil
 import com.intellij.ui.DocumentAdapter
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.TableUtil
+import com.intellij.ui.ToggleActionButton
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.table.JBTable
 import com.intellij.ui.table.TableView
@@ -45,6 +48,8 @@ import com.intellij.util.ui.ListTableModel
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsBundle
+import com.mallowigi.config.associations.ui.columns.PatternEditableColumnInfo
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
@@ -62,12 +67,12 @@ import javax.swing.event.DocumentEvent
 /**
  * [Association] table model editor
  *
- * @constructor
  * @param items the [Association]s
  * @param columns list of [ColumnInfo]s
  * @param itemEditor the [Association] editor
  * @param emptyText the text to show when the table is empty
  * @param searchTextField the search text field (optional)
+ * @constructor
  */
 @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation", "OutdatedDocumentation")
 class AssociationsTableModelEditor(
@@ -111,7 +116,7 @@ class AssociationsTableModelEditor(
     table.fillsViewportHeight = true
     table.setShowGrid(false)
     table.setDefaultEditor(Enum::class.java, ComboBoxTableCellEditor.INSTANCE)
-    table.setEnableAntialiasing(false)
+    table.setEnableAntialiasing(true)
     table.intercellSpacing = Dimension(0, 0)
     table.preferredScrollableViewportSize = JBUI.size(PREFERABLE_VIEWPORT_WIDTH, PREFERABLE_VIEWPORT_HEIGHT)
     table.visibleRowCount = MIN_ROW_COUNT
@@ -120,10 +125,6 @@ class AssociationsTableModelEditor(
     // sort by touched but remove the column from the table
     table.rowSorter.sortKeys = listOf(RowSorter.SortKey(Columns.TOUCHED.index, SortOrder.DESCENDING))
     table.removeColumn(table.columnModel.getColumn(Columns.TOUCHED.index))
-
-    if (type === IconType.FILE) {
-      table.removeColumn(table.columnModel.getColumn(Columns.FOLDERCOLOR.index))
-    }
 
     // Special support for checkbox: toggle by clicking or space
     TableUtil.setupCheckboxColumn(table.columnModel.getColumn(Columns.ENABLED.index), 0)
@@ -185,9 +186,9 @@ class AssociationsTableModelEditor(
     myFilteredList.clear()
     // Search by name or pattern only
     for (assoc in myList) {
-      if (text.isEmpty() ||
-        StringUtil.containsIgnoreCase(assoc.matcher, text) ||
-        StringUtil.containsIgnoreCase(assoc.name, text)
+      if (text.isEmpty() || StringUtil.containsIgnoreCase(
+          assoc.matcher, text
+        ) || StringUtil.containsIgnoreCase(assoc.name, text)
       ) {
         myFilteredList.add(assoc)
       }
@@ -270,13 +271,14 @@ class AssociationsTableModelEditor(
     regexAssociation.priority = DEFAULT_PRIORITY
     regexAssociation.iconColor = DEFAULT_ICON_COLOR
     regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
+    regexAssociation.folderIconColor = DEFAULT_ICON_COLOR
     regexAssociation.icon = ""
     return regexAssociation
   }
 
   /**
-   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered
-   * list when a change occurs since we're working on the filtered list
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
+   * the filtered list
    *
    * @param oldItem item changed (in the filtered list)
    * @param newItem new item to insert
@@ -294,17 +296,14 @@ class AssociationsTableModelEditor(
   /**
    * [Association] table model inheriting the [ListTableModel]
    *
-   * @constructor
    * @param columnNames the columns
    * @param items the items
+   * @constructor
    */
   inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<RegexAssociation>) :
     ListTableModel<RegexAssociation>(columnNames, items) {
 
-    /**
-     * This contains all items, before any filter is applied. This is
-     * also what will be persisted.
-     */
+    /** This contains all items, before any filter is applied. This is also what will be persisted. */
     var allItems: MutableList<RegexAssociation> = items.toMutableList()
 
     /** This is the currently filtered table. */
@@ -381,18 +380,22 @@ class AssociationsTableModelEditor(
     override fun onClick(event: MouseEvent, clickCount: Int): Boolean {
       val point = event.point
       val row: Int = table.rowAtPoint(point)
-      val column: Int = table.columnAtPoint(point)
+      val column: Int = table.columnAtPoint(point) + 1 // Because the touched takes a slot...
+      val modelIndex = table.convertRowIndexToModel(row)
 
-      return when {
-        row >= 0 && row < table.rowCount -> {
-          return when (column) {
-            Columns.ICONCOLOR.index   -> setIconColor(row)
-            Columns.FOLDERCOLOR.index -> setFolderColor(row)
-            else                      -> false
-          }
+      if (modelIndex < 0 || modelIndex >= table.rowCount) return false
+
+      return when (type) {
+        IconType.FILE   -> when (column) {
+          Columns.ICONCOLOR.index -> setIconColor(modelIndex)
+          else                    -> false
         }
 
-        else                             -> false
+        IconType.FOLDER -> when (column) {
+          Columns.FOLDERCOLOR.index     -> setFolderColor(modelIndex)
+          Columns.FOLDERICONCOLOR.index -> setFolderIconColor(modelIndex)
+          else                          -> false
+        }
       }
     }
 
@@ -401,9 +404,17 @@ class AssociationsTableModelEditor(
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        val assoc = model.items[row] as Association
-        assoc.touched = true
-        assoc.folderColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERCOLOR.index)
+      }
+      return true
+    }
+
+    private fun setFolderIconColor(row: Int): Boolean {
+      val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
+      val modelColor: Color = ColorUtil.fromHex(colorValue as String)
+
+      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERICONCOLOR.index)
       }
       return true
     }
@@ -413,27 +424,25 @@ class AssociationsTableModelEditor(
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        val assoc = model.items[row] as Association
-        assoc.touched = true
-        assoc.iconColor = ColorUtil.toHex(color ?: return@showColorPickerPopup)
+        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.ICONCOLOR.index)
       }
       return true
     }
   }
 
   /** Toggle pattern action: Toggle pattern highlighting. */
-//  private inner class TogglePatternAction :
-//    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
-//
-//    override fun isSelected(e: AnActionEvent?): Boolean =
-//      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
-//
-//    override fun setSelected(e: AnActionEvent?, state: Boolean) {
-//      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
-//
-//      patternColumn.toggledPattern = !patternColumn.toggledPattern
-//    }
-//  }
+  private inner class TogglePatternAction :
+    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
+
+    override fun isSelected(e: AnActionEvent?): Boolean =
+      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
+
+    override fun setSelected(e: AnActionEvent?, state: Boolean) {
+      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
+
+      patternColumn.toggledPattern = !patternColumn.toggledPattern
+    }
+  }
 
   @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {
@@ -451,13 +460,14 @@ class AssociationsTableModelEditor(
     @Suppress("unused")
     private enum class Columns(val index: Int) {
       ENABLED(0),
-      NAME(1),
-      PATTERN(2),
-      ICON(3),
-      PRIORITY(4),
-      ICONCOLOR(5),
+      TOUCHED(1),
+      NAME(2),
+      PATTERN(3),
+      ICON(4),
+      PRIORITY(5),
+      ICONCOLOR(6),
       FOLDERCOLOR(6),
-      TOUCHED(7),
+      FOLDERICONCOLOR(7),
     }
   }
 }
