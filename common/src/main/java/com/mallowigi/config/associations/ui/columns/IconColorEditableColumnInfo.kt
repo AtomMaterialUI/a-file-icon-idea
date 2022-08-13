@@ -76,7 +76,7 @@ class IconColorEditableColumnInfo(private val parent: Disposable, private val ed
   }
 
   /** Is the column editable? */
-  override fun isCellEditable(item: Association): Boolean = true
+  override fun isCellEditable(item: Association): Boolean = false
 
   /** Column width. */
   override fun getWidth(table: JTable?): Int = 50

@@ -138,7 +138,7 @@ class AssociationsTableModelEditor(
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
     toolbarDecorator.run {
       disableUpDownActions()
-      addExtraAction(TogglePatternAction())
+//      addExtraAction(TogglePatternAction())
     }
 
     // Search and filter table
@@ -400,7 +400,7 @@ class AssociationsTableModelEditor(
     }
 
     private fun setFolderColor(row: Int): Boolean {
-      val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
+      val colorValue: Any = model.getValueAt(row, Columns.FOLDERCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
@@ -410,7 +410,7 @@ class AssociationsTableModelEditor(
     }
 
     private fun setFolderIconColor(row: Int): Boolean {
-      val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
+      val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
       ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
