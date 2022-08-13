@@ -2,6 +2,155 @@
 
 ----
 
+## 70.0 (7.0.0)
+
+### Features
+
+- You can now override **File and Folder Icons' colors** through _Custom File Associations_!
+  - Use the color picker to override the icon color
+  - Folder Icons let you specify the Folder Color and Icon Color separately
+  - Multicolored icons would only let you change the "main color"
+  - **Important**: To make it work for custom icons, you will need to add specific attributes on your SVG files:
+    - Add `iconColor=<icon name>` for file icons, with `Icon Name` being the exact name of the icon association ("Kotlin", "Index", etc)
+    - Add `folderColor=<folder icon name>` and `folderIconColor=<folder icon name>` for folder icons, with the same requirement
+  - On the same note, **do not change the pre-bundled associations' names**, or the icon coloring will stop working!
+
+### Additions
+- Some icons have been duplicated to support multiple colorings. Those are (long list ahead):
+  - Android Manifest
+  - Android Smali
+  - Apache Config
+  - APK
+  - Artisan
+  - Astro Config
+  - Azure Pipelines
+  - Arch Linux Pacman
+  - Babel Config
+  - Visual Basic
+  - Bazel Config
+  - Behat Config
+  - Bootstrap RC
+  - Berksfile
+  - Cabal Project
+  - CMakeLists
+  - CoffeeLint
+  - CommitLint Config
+  - Compass Config
+  - Composer Phar
+  - Composer Lock
+  - Cucumber Config
+  - Deno Lock
+  - Django Config
+  - Docz Config
+  - Doxyfile
+  - Eclipse AspectJ
+  - Electron ASAR
+  - Electron Forge
+  - Emacs Cask
+  - Emacs Lisp
+  - Ember CLI
+  - Firebase RC
+  - Firestore
+  - Flutter Lock
+  - Go Config
+  - Gradle KTS
+  - Gradle Wrapper
+  - GraphQL Config
+  - Haskell Config
+  - Hasura Config
+  - Haxe Lib
+  - Helm Chart
+  - Istanbul Config
+  - Jakefile
+  - Jekyll Config
+  - Jest RC
+  - Kubernetes DEPL
+  - Pug Lint
+  - Make
+  - Nest Config
+  - NextFlow Config
+  - NPM Lock
+  - NuGet Config
+  - OpenGL Shader
+  - OpenGL Vertex
+  - Pipfile Lock
+  - Perl Config
+  - PNPM File
+  - Polymer Config
+  - Prettier Config
+  - Prisma Config
+  - Python Version
+  - Rakefile
+  - React CLI
+  - Redis DB
+  - RestQL Config
+  - Routes
+  - RSpec Config
+  - Stencil Config
+  - Swagger Config
+  - Swift Lock
+  - Tern Config
+  - UnibeautifyRC
+  - UOS
+  - VSCode Settings
+  - Vue Config
+  - Vue RC
+  - XCode
+  - Yarn Clean
+  - Yarn Lock
+  - ZSRC
+- New File Icons:
+  - GitHub Actions
+  - GitHub Code of conduct
+  - GitHub Commit Guidelines
+  - GitHub Contributing
+  - GitHub Template
+  - i18n Properties
+  - Angular App Routing
+  - Angular CLI
+  - Contributors
+  - CU Header
+  - Danmakufu
+  - DLL
+  - Elastic Config
+  - Apache Do
+  - Fakefile
+  - Husky Hooks
+  - i18n Lang
+  - index.html
+  - Kazel
+  - Lakefile
+  - Publish Token
+  - More
+  - Node Version
+  - NVM
+  - NgRx Repositories
+  - NgRx JS
+  - Proxy
+  - RBS
+  - Rails DB
+  - Rails Routes
+  - Redux Slice
+  - Ruby Gemset
+  - RubyGems
+  - Ruby EX
+  - Ruby Version
+  - RVM
+  - Vercel
+  - Vercel Ignore
+  - WSDL
+  - XML (new Icon)
+  - XSD
+- New Folder Icons:
+  - admin
+  - deploy
+  - channels
+  - cron
+  - features
+  - molecules
+  - init
+  - iosApp
+
 ## 65.1 (6.5.1)
 
 ### Fixes
