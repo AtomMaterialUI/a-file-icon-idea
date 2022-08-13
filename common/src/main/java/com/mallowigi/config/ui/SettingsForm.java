@@ -400,7 +400,7 @@ public final class SettingsForm implements SettingsFormUI {
 
   //region Events
   private void enableUIIconsCheckboxActionPerformed(final ActionEvent e) {
-    enablePSIIconsCheckbox.setEnabled(enableUIIconsCheckbox.isSelected());
+    //    enablePSIIconsCheckbox.setEnabled(enableUIIconsCheckbox.isSelected());
   }
 
   private void enableDirectoryIconsCheckboxActionPerformed(final ActionEvent e) {

@@ -10,6 +10,7 @@
   - Use the color picker to override the icon color
   - Folder Icons let you specify the Folder Color and Icon Color separately
   - Multicolored icons would only let you change the "main color"
+  - Currently this affects both "light" and "dark" icons
   - **Important**: To make it work for custom icons, you will need to add specific attributes on your SVG files:
     - Add `iconColor=<icon name>` for file icons, with `Icon Name` being the exact name of the icon association ("Kotlin", "Index", etc)
     - Add `folderColor=<folder icon name>` and `folderIconColor=<folder icon name>` for folder icons, with the same requirement
@@ -70,6 +71,7 @@
   - Nest Config
   - NextFlow Config
   - NPM Lock
+  - NPM Shrinkwrap
   - NuGet Config
   - OpenGL Shader
   - OpenGL Vertex
