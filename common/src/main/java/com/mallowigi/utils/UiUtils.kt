@@ -50,36 +50,23 @@ fun refresh(project: Project?) {
   }
 }
 
-/**
- * Refresh opened projects
- *
- */
+/** Refresh opened projects. */
 fun refreshOpenedProjects() {
   val projects: Array<Project> = ProjectManager.getInstance().openProjects
   for (project in projects) refresh(project)
 }
 
-/**
- * Get plugin descriptor
- *
- */
+/** Get plugin descriptor. */
 fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(getPluginId())
 
-/**
- * Plugin ID
- */
+/** Plugin ID. */
 fun getPluginId(): PluginId = PluginId.getId("com.mallowigi")
 
-/**
- * Get current plugin version
- *
- */
+/** Get current plugin version. */
 fun getVersion(): String {
   val plugin: IdeaPluginDescriptor? = getPlugin()
   return if (plugin != null) plugin.version else AtomSettingsBundle.message("plugin.version")
 }
 
-/**
- * Modified color
- */
+/** Modified color. */
 fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)
