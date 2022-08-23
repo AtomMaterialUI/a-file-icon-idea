@@ -36,8 +36,9 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
     if (alreadyRunOnce || !ExperimentalUI.isNewUI()) return
 
     alreadyRunOnce = true
-    val mainToolBar = ActionUtil.getActionGroup("MainToolBar") ?: return
-    val experimentalToolbarActions = ActionUtil.getActionGroup("OldToolbar") as DefaultActionGroup? ?: return
+    val mainToolBar = ActionUtil.getActionGroup(MAIN_TOOLBAR)
+    val experimentalToolbarActions = ActionUtil.getActionGroup(OLD_TOOLBAR) as DefaultActionGroup?
+    if (mainToolBar == null || experimentalToolbarActions == null) return
 
     for (action in mainToolBar.getChildren(null)) {
       experimentalToolbarActions.add(action)
@@ -46,6 +47,12 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
 
   companion object {
     /** Prevents an infinite loop. */
-    var alreadyRunOnce: Boolean = false;
+    var alreadyRunOnce: Boolean = false
+
+    /** Old Toolbar key. */
+    const val OLD_TOOLBAR: String = "AtomFileIcons.OldToolbar"
+
+    /** Main toolbar key. */
+    const val MAIN_TOOLBAR: String = "MainToolBar"
   }
 }

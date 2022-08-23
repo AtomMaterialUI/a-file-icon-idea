@@ -103,7 +103,7 @@
     </applicationListeners>
 
     <actions>
-        <group id="OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile" text="Old Toolbar" description="Old Toolbar"
+        <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
                class="com.mallowigi.actions.ActionGroup">
             <add-to-group group-id="ExperimentalToolbarActions" anchor="first"/>
         </group>
