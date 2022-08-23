@@ -80,6 +80,7 @@
 
         <notificationGroup displayType="BALLOON" id="Atom Material Notifications"/>
 
+        <actionConfigurationCustomizer implementation="com.mallowigi.OldToolbarAdder"/>
     </extensions>
 
     <!--suppress PluginXmlValidity -->
@@ -102,6 +103,10 @@
     </applicationListeners>
 
     <actions>
+        <group id="OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile" text="Old Toolbar" description="Old Toolbar"
+               class="com.mallowigi.actions.ActionGroup">
+            <add-to-group group-id="ExperimentalToolbarActions" anchor="first"/>
+        </group>
         <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
                class="com.mallowigi.actions.ActionGroup">
             <add-to-group group-id="MainToolBar" anchor="last"/>
