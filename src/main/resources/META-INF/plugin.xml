@@ -80,7 +80,7 @@
 
         <notificationGroup displayType="BALLOON" id="Atom Material Notifications"/>
 
-        <actionConfigurationCustomizer implementation="com.mallowigi.OldToolbarAdder"/>
+        <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
     </extensions>
 
     <!--suppress PluginXmlValidity -->
