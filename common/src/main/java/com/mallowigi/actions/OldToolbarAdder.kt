@@ -23,11 +23,13 @@
  */
 package com.mallowigi.actions
 
+import com.intellij.openapi.actionSystem.ActionGroup
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.DefaultActionGroup
-import com.intellij.openapi.actionSystem.ex.ActionUtil
 import com.intellij.openapi.actionSystem.impl.ActionConfigurationCustomizer
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.ui.ExperimentalUI
+import org.jetbrains.annotations.NonNls
 
 /** Utility to add older icons to new UI. */
 class OldToolbarAdder : ActionConfigurationCustomizer {
@@ -36,13 +38,24 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
     if (alreadyRunOnce || !ExperimentalUI.isNewUI()) return
 
     alreadyRunOnce = true
-    val mainToolBar = ActionUtil.getActionGroup(MAIN_TOOLBAR)
-    val experimentalToolbarActions = ActionUtil.getActionGroup(OLD_TOOLBAR) as DefaultActionGroup?
+    ApplicationManager.getApplication().invokeLater { executeAdd(actionManager) }
+  }
+
+  private fun executeAdd(actionManager: ActionManager) {
+    val mainToolBar = getActionGroup(actionManager, MAIN_TOOLBAR)
+    val experimentalToolbarActions = getActionGroup(actionManager, OLD_TOOLBAR) as DefaultActionGroup?
     if (mainToolBar == null || experimentalToolbarActions == null) return
 
-    for (action in mainToolBar.getChildren(null)) {
+    for (action in mainToolBar.getChildren(null, actionManager)) {
       experimentalToolbarActions.add(action)
     }
+  }
+
+  /** Get a specific action group of the current actionManager. */
+  private fun getActionGroup(actionManager: ActionManager, @NonNls id: String): ActionGroup? {
+    val action = actionManager.getAction(id)
+    if (action is ActionGroup) return action
+    return if (action == null) null else DefaultActionGroup(listOf(action))
   }
 
   companion object {
