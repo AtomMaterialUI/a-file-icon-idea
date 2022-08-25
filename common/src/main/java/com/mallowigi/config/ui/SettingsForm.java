@@ -85,8 +85,8 @@ public final class SettingsForm implements SettingsFormUI {
   private JCheckBox hideFolderIconsCheckbox;
   private JLabel hollowFoldersIcon;
   private JCheckBox hollowFoldersCheckbox;
-  private JLabel hollowFoldersIcon2;
-  private JCheckBox biggerIconsCheckBox;
+  private JLabel customIconSizeIcon;
+  private JCheckBox customIconSizeCheckbox;
   private JSpinner customIconSizeSpinner;
   private JCheckBox customLineHeightCheckbox;
   private JSpinner customLineHeightSpinner;
@@ -117,8 +117,9 @@ public final class SettingsForm implements SettingsFormUI {
     setAccentColor(config.getAccentColor());
     setThemedColorEnabled(config.isThemedColorEnabled());
     setThemedColor(config.getThemedColor());
-    setHasBigIcons(config.getHasCustomIconSize());
+    setHasCustomIconSize(config.getHasCustomIconSize());
     setCustomIconSize(config.getCustomIconSize());
+    setHasCustomLineHeight(config.getHasCustomLineHeight());
     setCustomLineHeight(config.getCustomLineHeight());
     setLowPowerMode(config.isLowPowerMode());
 
@@ -183,8 +184,9 @@ public final class SettingsForm implements SettingsFormUI {
     modified = modified || config.isAccentColorChanged(getAccentColor());
     modified = modified || config.isThemedColorEnabledChanged(getIsThemedColorEnabled());
     modified = modified || config.isThemedColorChanged(getThemedColor());
-    modified = modified || config.isBigIconsChanged(getHasBigIcons());
+    modified = modified || config.hasCustomIconSizeChanged(getHasCustomIconSize());
     modified = modified || config.isCustomIconSizeChanged(getCustomIconSize());
+    modified = modified || config.isHasCustomLineHeightChanged(getHasCustomLineHeight());
     modified = modified || config.isCustomLineHeightChanged(getCustomLineHeight());
     modified = modified || config.isLowPowerModeChanged(isLowPowerMode());
 
@@ -236,8 +238,8 @@ public final class SettingsForm implements SettingsFormUI {
     hideFolderIconsCheckbox = new JCheckBox();
     hollowFoldersIcon = new JLabel();
     hollowFoldersCheckbox = new JCheckBox();
-    hollowFoldersIcon2 = new JLabel();
-    biggerIconsCheckBox = new JCheckBox();
+    customIconSizeIcon = new JLabel();
+    customIconSizeCheckbox = new JCheckBox();
     customIconSizeSpinner = new JSpinner();
     customLineHeightCheckbox = new JCheckBox();
     customLineHeightSpinner = new JSpinner();
@@ -357,15 +359,15 @@ public final class SettingsForm implements SettingsFormUI {
       hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText")); //NON-NLS
       content.add(hollowFoldersCheckbox, "cell 1 7"); //NON-NLS
 
-      //---- hollowFoldersIcon2 ----
-      hollowFoldersIcon2.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plus@2x.png"))); //NON-NLS
-      content.add(hollowFoldersIcon2, "cell 0 8"); //NON-NLS
+      //---- customIconSizeIcon ----
+      customIconSizeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plus@2x.png"))); //NON-NLS
+      content.add(customIconSizeIcon, "cell 0 8"); //NON-NLS
 
-      //---- biggerIconsCheckBox ----
-      biggerIconsCheckBox.setText(bundle.getString("SettingsForm.biggerIconsCheckBox.text")); //NON-NLS
-      biggerIconsCheckBox.setToolTipText(bundle.getString("SettingsForm.biggerIconsCheckBox.toolTipText")); //NON-NLS
-      biggerIconsCheckBox.addActionListener(e -> customIconSizeActionPerformed(e));
-      content.add(biggerIconsCheckBox, "cell 1 8"); //NON-NLS
+      //---- customIconSizeCheckbox ----
+      customIconSizeCheckbox.setText(bundle.getString("SettingsForm.customIconSizeCheckbox.text")); //NON-NLS
+      customIconSizeCheckbox.setToolTipText(bundle.getString("SettingsForm.customIconSizeCheckbox.toolTipText")); //NON-NLS
+      customIconSizeCheckbox.addActionListener(e -> customIconSizeActionPerformed(e));
+      content.add(customIconSizeCheckbox, "cell 1 8"); //NON-NLS
       content.add(customIconSizeSpinner, "cell 2 8"); //NON-NLS
 
       //---- customLineHeightCheckbox ----
@@ -445,7 +447,7 @@ public final class SettingsForm implements SettingsFormUI {
   }
 
   private void customIconSizeActionPerformed(final ActionEvent e) {
-    customIconSizeSpinner.setEnabled(biggerIconsCheckBox.isSelected());
+    customIconSizeSpinner.setEnabled(customIconSizeCheckbox.isSelected());
   }
 
   private void customLineHeightActionPerformed(final ActionEvent e) {
@@ -592,12 +594,12 @@ public final class SettingsForm implements SettingsFormUI {
   //endregion
 
   //region big icons
-  public boolean getHasBigIcons() {
-    return biggerIconsCheckBox.isSelected();
+  public boolean getHasCustomIconSize() {
+    return customLineHeightCheckbox.isSelected();
   }
 
-  private void setHasBigIcons(final boolean isBigIconsEnabled) {
-    biggerIconsCheckBox.setSelected(isBigIconsEnabled);
+  private void setHasCustomIconSize(final boolean hasCustomIconSize) {
+    customLineHeightCheckbox.setSelected(hasCustomIconSize);
   }
   //endregion
 
@@ -612,6 +614,14 @@ public final class SettingsForm implements SettingsFormUI {
   //endregion
 
   //region custom line height
+  public boolean getHasCustomLineHeight() {
+    return customLineHeightCheckbox.isSelected();
+  }
+
+  private void setHasCustomLineHeight(final boolean hasCustomLineHeight) {
+    customLineHeightCheckbox.setSelected(hasCustomLineHeight);
+  }
+
   public Integer getCustomLineHeight() {
     return (Integer) customLineHeightSpinnerModel.getValue();
   }

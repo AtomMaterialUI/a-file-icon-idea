@@ -38,17 +38,20 @@ import javax.swing.UIManager
  */
 class BigIconsPatcher : SvgPatcher {
   private var hasCustomSize = false
+  private var hasCustomLineHeight = false
   private var customIconSize = REGULAR
+  private var customLineHeight = REGULAR
   private var defaultRowHeight = UIManager.get("Tree.rowHeight") as Int
-  private val materialRowHeight = UIManager.get("Tree.materialRowHeight")
 
-  override fun refresh(): Unit = refreshBigIcons()
+  override fun refresh(): Unit = refreshSizes()
 
   override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
 
-  private fun refreshBigIcons() {
+  private fun refreshSizes() {
     hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
+    hasCustomLineHeight = AtomFileIconsConfig.instance.hasCustomLineHeight
     customIconSize = AtomFileIconsConfig.instance.customIconSize
+    customLineHeight = AtomFileIconsConfig.instance.customLineHeight
 
     if (hasCustomSize) {
       updateRowHeight()
@@ -56,10 +59,8 @@ class BigIconsPatcher : SvgPatcher {
   }
 
   private fun updateRowHeight() {
-    val customRowHeight = defaultRowHeight + customIconSize - MIN_SIZE
-    if (defaultRowHeight == DEFAULT && materialRowHeight == null) {
-      UIManager.put("Tree.rowHeight", customRowHeight)
-    }
+    val customRowHeight = if (hasCustomLineHeight) customLineHeight else defaultRowHeight + customIconSize - MIN_SIZE
+    UIManager.put("Tree.rowHeight", customRowHeight)
   }
 
   override fun priority(): Int = 97
@@ -67,7 +68,9 @@ class BigIconsPatcher : SvgPatcher {
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
     hasher.update(hasCustomSize.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(hasCustomLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
     hasher.update(customIconSize.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(customLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
     return hasher.digest()
   }
 
@@ -84,7 +87,6 @@ class BigIconsPatcher : SvgPatcher {
 
   companion object {
     private const val MIN_SIZE = 12
-    private const val REGULAR = 16
-    private const val DEFAULT = 20
+    private const val REGULAR = AtomFileIconsConfig.DEFAULT_ICON_SIZE
   }
 }
