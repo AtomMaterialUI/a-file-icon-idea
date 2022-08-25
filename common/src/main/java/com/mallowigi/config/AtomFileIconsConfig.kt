@@ -438,9 +438,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     @Suppress("HardCodedStringLiteral")
     private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
-        "Light"   -> "Button.select"
-        "Darcula" -> "Button.select"
-        else      -> "Link.activeForeground"
+        "IntelliJ Light" -> "ActionButton.focusedBorderColor"
+        "Darcula"        -> "Button.select"
+        else             -> "Link.activeForeground"
       }
 
       val namedColor = JBColor.namedColor(
