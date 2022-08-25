@@ -106,9 +106,13 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   var themedColor: String = themedColorFromTheme
     private set
 
-  /** Whether big icons is enabled. */
+  /** Whether custom icon size is enabled. */
   @Property
-  var hasBigIcons: Boolean = false
+  var hasCustomIconSize: Boolean = false
+
+  /** Whether custom line height is enabled. */
+  @Property
+  var hasCustomLineHeight: Boolean = false
 
   /** Custom icon size. */
   @Property
@@ -155,7 +159,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = form.accentColor
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
-    hasBigIcons = form.hasBigIcons
+    hasCustomIconSize = form.hasBigIcons
     customIconSize = form.customIconSize
     customLineHeight = form.customLineHeight
     isLowPowerMode = form.isLowPowerMode
@@ -178,7 +182,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = accentColorFromTheme
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
-    hasBigIcons = false
+    hasCustomIconSize = false
     customIconSize = DEFAULT_ICON_SIZE
     customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
@@ -388,11 +392,11 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    * @param bigIcons
    * @return
    */
-  fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasBigIcons != bigIcons
+  fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasCustomIconSize != bigIcons
 
   /** Toggle big icons. */
   fun toggleBigIcons() {
-    hasBigIcons = !hasBigIcons
+    hasCustomIconSize = !hasCustomIconSize
   }
   //endregion
 

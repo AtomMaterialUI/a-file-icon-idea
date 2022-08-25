@@ -33,24 +33,12 @@ import org.jetbrains.annotations.PropertyKey
 @NonNls
 private const val BUNDLE = "messages.AtomFileIconsBundle"
 
-/**
- * Atom settings bundle
- */
+/** Atom settings bundle. */
 object AtomSettingsBundle : DynamicBundle(BUNDLE) {
 
-  /**
-   * I18n message
-   */
+  /** I18n message. */
   @NlsActions.ActionText
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String = getMessage(key, *params)
 
-  /**
-   * i18n message pointer
-   */
-  @JvmStatic
-  fun messagePointer(
-    @PropertyKey(resourceBundle = BUNDLE) key: String,
-    vararg params: Any,
-  ): java.util.function.Supplier<String> = getLazyMessage(key, *params)
 }

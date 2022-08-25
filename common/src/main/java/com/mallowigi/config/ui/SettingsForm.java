@@ -117,7 +117,7 @@ public final class SettingsForm implements SettingsFormUI {
     setAccentColor(config.getAccentColor());
     setThemedColorEnabled(config.isThemedColorEnabled());
     setThemedColor(config.getThemedColor());
-    setHasBigIcons(config.getHasBigIcons());
+    setHasBigIcons(config.getHasCustomIconSize());
     setCustomIconSize(config.getCustomIconSize());
     setCustomLineHeight(config.getCustomLineHeight());
     setLowPowerMode(config.isLowPowerMode());

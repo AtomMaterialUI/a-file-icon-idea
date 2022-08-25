@@ -47,7 +47,7 @@ class BigIconsPatcher : SvgPatcher {
   override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
 
   private fun refreshBigIcons() {
-    hasCustomSize = AtomFileIconsConfig.instance.hasBigIcons
+    hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
     customIconSize = AtomFileIconsConfig.instance.customIconSize
 
     if (hasCustomSize) {

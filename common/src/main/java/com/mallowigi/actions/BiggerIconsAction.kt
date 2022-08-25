@@ -28,19 +28,12 @@ package com.mallowigi.actions
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 
-/**
- * Bigger Icons action
- */
+/** Bigger Icons action. */
 class BiggerIconsAction : IconToggleAction() {
-  /**
-   * Whether the menu item is selected
-   */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.hasBigIcons
+  /** Whether the menu item is selected. */
+  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.hasCustomIconSize
 
-  /**
-   * Upon select, toggle big icons
-   *
-   */
+  /** Upon select, toggle big icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     CONFIG.toggleBigIcons()
     CONFIG.fireChanged()

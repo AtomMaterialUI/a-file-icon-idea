@@ -23,18 +23,122 @@
  *
  *
  */
+@file:Suppress("Detekt.TooManyFunctions")
+
 package com.mallowigi.config
 
+import com.intellij.application.options.editor.CheckboxDescriptor
 import com.intellij.ide.ui.OptionsSearchTopHitProvider.ApplicationLevelProvider
-import com.intellij.ide.ui.PublicMethodBasedOptionDescription
 import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
 import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.util.text.StringUtil
+import com.intellij.ui.layout.PropertyBinding
 import com.mallowigi.config.AtomSettingsBundle.message
 import org.jetbrains.annotations.NonNls
 import java.util.Collections
-import java.util.function.Supplier
+
+/** Text. */
+@NlsContexts.Checkbox
+fun getText(property: String): String =
+  StringUtil.stripHtml(message("settings.titles.prefix", message(property)), false)
+
+/** Config instance. */
+fun getInstance(): AtomFileIconsConfig = AtomFileIconsConfig.instance
+
+/** region Checkbox Definitions. */
+
+/** Accent color enabled. */
+fun cdAccentColorEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.accentColorCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isAccentColorEnabled },
+                  { AtomFileIconsConfig.instance.isAccentColorEnabled = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Directory Icons. */
+fun cdDirectoryIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.enableDirectoryIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledDirectories },
+                  { AtomFileIconsConfig.instance.isEnabledDirectories = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** File Icons. */
+fun cdFileIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.enableFileIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledIcons },
+                  { AtomFileIconsConfig.instance.isEnabledIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** PSI Icons. */
+fun cdPsiIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.enablePSIIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledPsiIcons },
+                  { AtomFileIconsConfig.instance.isEnabledPsiIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** UI Icons. */
+fun cdUIIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.enableUIIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledUIIcons },
+                  { AtomFileIconsConfig.instance.isEnabledUIIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Hide File Icons. */
+fun cdHideFileIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.hideFileIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isHideFileIcons },
+                  { AtomFileIconsConfig.instance.isHideFileIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Hide Folder Icons. */
+fun cdHideFolderIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.hideFolderIconsCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isHideFolderIcons },
+                  { AtomFileIconsConfig.instance.isHideFolderIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Hollow Folders. */
+fun cdHollowFoldersEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.hollowFoldersCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isUseHollowFolders },
+                  { AtomFileIconsConfig.instance.isUseHollowFolders = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Monochrome Icons. */
+fun cdMonochromeIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.monochromeCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isMonochromeIcons },
+                  { AtomFileIconsConfig.instance.isMonochromeIcons = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Themed Color. */
+fun cdThemedColorEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.themedColorCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isThemedColorEnabled },
+                  { AtomFileIconsConfig.instance.isThemedColorEnabled = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Custom Icon Size. */
+fun cdCustomIconSizeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.biggerIconsCheckBox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.hasCustomIconSize },
+                  { AtomFileIconsConfig.instance.hasCustomIconSize = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Custom Line Height. */
+fun cdCustomLineHeightEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.customLineHeightCheckbox.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.hasCustomLineHeight },
+                  { AtomFileIconsConfig.instance.hasCustomLineHeight = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+
+/** Low Power Mode. */
+fun cdLowPowerModeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.lowPowerSwitch.text"),
+  PropertyBinding({ AtomFileIconsConfig.instance.isLowPowerMode },
+                  { AtomFileIconsConfig.instance.isLowPowerMode = it })
+).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
+// endregion
 
 /** Provide commands for Search Everything Top Hit commands. */
 @Suppress("DialogTitleCapitalization")
@@ -47,48 +151,25 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS
 
   companion object {
+
     @NonNls
     private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(
       listOf(
-        option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setAccentColorEnabled"),
-        option(
-          getText("SettingsForm.enableDirectoryIconsCheckbox.text"),
-          "isEnabledDirectories",
-          "setEnabledDirectories"
-        ),
-        option(getText("SettingsForm.enableFileIconsCheckbox.text"), "isEnabledIcons", "setEnabledIcons"),
-        option(getText("SettingsForm.enablePSIIconsCheckbox.text"), "isEnabledPsiIcons", "setEnabledPsiIcons"),
-        option(getText("SettingsForm.enableUIIconsCheckbox.text"), "isEnabledUIIcons", "setEnabledUIIcons"),
-        option(getText("SettingsForm.hideFileIconsCheckbox.text"), "isHideFileIcons", "setHideFileIcons"),
-        option(getText("SettingsForm.hideFolderIconsCheckbox.text"), "isHideFolderIcons", "setHideFolderIcons"),
-        option(getText("SettingsForm.hollowFoldersCheckbox.text"), "isUseHollowFolders", "setUseHollowFolders"),
-        option(getText("SettingsForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
-        option(getText("SettingsForm.accentColorCheckbox.text"), "isAccentColorEnabled", "setAccentColorEnabled"),
-        option(getText("SettingsForm.themedColorCheckbox.text"), "isThemedColorEnabled", "setThemedColorEnabled"),
-        option(getText("SettingsForm.biggerIconsCheckBox.text"), "isBiggerIconsEnabled", "setBiggerIconsEnabled"),
-        option(getText("SettingsForm.lowPowerSwitch.text"), "isLowPowerMode", "setLowPowerMode"),
+        cdAccentColorEnabled(),
+        cdDirectoryIconsEnabled(),
+        cdFileIconsEnabled(),
+        cdPsiIconsEnabled(),
+        cdUIIconsEnabled(),
+        cdHideFileIconsEnabled(),
+        cdHideFolderIconsEnabled(),
+        cdHollowFoldersEnabled(),
+        cdMonochromeIconsEnabled(),
+        cdThemedColorEnabled(),
+        cdCustomLineHeightEnabled(),
+        cdCustomIconSizeEnabled(),
+        cdLowPowerModeEnabled()
       )
     )
 
-    @Suppress("UnstableApiUsage")
-    @NlsContexts.Label
-    private fun getText(property: String): String = StringUtil.stripHtml(message(property), false)
-
-    @Suppress("UnstableApiUsage")
-    private fun option(
-      @NlsContexts.Label @NonNls option: String,
-      getter: String,
-      setter: String,
-    ): BooleanOptionDescription {
-      return object : PublicMethodBasedOptionDescription(message("option.prefix") + option,
-                                                         AtomConfigurable.ID,
-                                                         getter,
-                                                         setter,
-                                                         Supplier { AtomFileIconsConfig.instance }) {
-        override fun getInstance(): AtomFileIconsConfig = AtomFileIconsConfig.instance
-
-        override fun fireUpdated() = AtomFileIconsConfig.instance.fireChanged()
-      }
-    }
   }
 }
