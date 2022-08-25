@@ -120,7 +120,7 @@ fun cdThemedColorEnabled(): BooleanOptionDescription = CheckboxDescriptor(
 
 /** Custom Icon Size. */
 fun cdCustomIconSizeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
-  getText("SettingsForm.biggerIconsCheckBox.text"),
+  getText("SettingsForm.customIconSizeCheckbox.text"),
   PropertyBinding({ AtomFileIconsConfig.instance.hasCustomIconSize },
                   { AtomFileIconsConfig.instance.hasCustomIconSize = it })
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }

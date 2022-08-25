@@ -38,28 +38,28 @@ import javax.swing.UIManager
  */
 class BigIconsPatcher : SvgPatcher {
   private var hasCustomSize = false
+  private var hasCustomLineHeight = false
   private var customIconSize = REGULAR
+  private var customLineHeight = REGULAR
   private var defaultRowHeight = UIManager.get("Tree.rowHeight") as Int
-  private val materialRowHeight = UIManager.get("Tree.materialRowHeight")
 
-  override fun refresh(): Unit = refreshBigIcons()
+  override fun refresh(): Unit = refreshSizes()
 
   override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
 
-  private fun refreshBigIcons() {
+  private fun refreshSizes() {
     hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
+    hasCustomLineHeight = AtomFileIconsConfig.instance.hasCustomLineHeight
     customIconSize = AtomFileIconsConfig.instance.customIconSize
+    customLineHeight = AtomFileIconsConfig.instance.customLineHeight
 
-    if (hasCustomSize) {
-      updateRowHeight()
-    }
+    updateRowHeight()
   }
 
   private fun updateRowHeight() {
-    val customRowHeight = defaultRowHeight + customIconSize - MIN_SIZE
-    if (defaultRowHeight == DEFAULT && materialRowHeight == null) {
-      UIManager.put("Tree.rowHeight", customRowHeight)
-    }
+    val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_SIZE else defaultRowHeight
+    val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
+    UIManager.put("Tree.rowHeight", customRowHeight)
   }
 
   override fun priority(): Int = 97
@@ -67,13 +67,16 @@ class BigIconsPatcher : SvgPatcher {
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
     hasher.update(hasCustomSize.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(hasCustomLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
     hasher.update(customIconSize.toString().toByteArray(StandardCharsets.UTF_8))
+    hasher.update(customLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
     return hasher.digest()
   }
 
   private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
     val customFontSize = AtomFileIconsConfig.instance.customIconSize.toString()
+    val hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
     val size = if (hasCustomSize) customFontSize else REGULAR
 
     if (isBig == SvgPatcher.TRUE) {
@@ -85,6 +88,5 @@ class BigIconsPatcher : SvgPatcher {
   companion object {
     private const val MIN_SIZE = 12
     private const val REGULAR = 16
-    private const val DEFAULT = 20
   }
 }

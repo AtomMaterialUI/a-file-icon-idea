@@ -49,7 +49,8 @@ class AtomOptionContributor : SearchableOptionContributor() {
       message("SettingsForm.hollowFoldersCheckbox.text"),
       message("SettingsForm.monochromeCheckbox.text"),
       message("SettingsForm.themedColorCheckbox.text"),
-      message("SettingsForm.biggerIconsCheckBox.text"),
+      message("SettingsForm.customIconSizeCheckbox.text"),
+      message("SettingsForm.customLineHeightCheckbox.text"),
       message("SettingsForm.lowPowerSwitch.text"),
       //endregion
     )

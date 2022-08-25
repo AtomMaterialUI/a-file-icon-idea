@@ -128,15 +128,15 @@ new FormModel {
 				"value": "cell 1 7"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "hollowFoldersIcon2"
+				name: "customIconSizeIcon"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/settings/plus@2x.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 8"
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "biggerIconsCheckBox"
-				"text": new FormMessage( null, "SettingsForm.biggerIconsCheckBox.text" )
-				"toolTipText": new FormMessage( null, "SettingsForm.biggerIconsCheckBox.toolTipText" )
+				name: "customIconSizeCheckbox"
+				"text": new FormMessage( null, "SettingsForm.customIconSizeCheckbox.text" )
+				"toolTipText": new FormMessage( null, "SettingsForm.customIconSizeCheckbox.toolTipText" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customIconSizeActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 8"

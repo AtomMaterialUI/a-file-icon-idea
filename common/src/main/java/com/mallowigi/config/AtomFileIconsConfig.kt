@@ -159,7 +159,8 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = form.accentColor
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
-    hasCustomIconSize = form.hasBigIcons
+    hasCustomIconSize = form.hasCustomIconSize
+    hasCustomLineHeight = form.hasCustomLineHeight
     customIconSize = form.customIconSize
     customLineHeight = form.customLineHeight
     isLowPowerMode = form.isLowPowerMode
@@ -184,17 +185,13 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     themedColor = themedColorFromTheme
     hasCustomIconSize = false
     customIconSize = DEFAULT_ICON_SIZE
+    hasCustomLineHeight = false
     customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
   }
 
   //region File Icons
-  /**
-   * Is enabled icons changed
-   *
-   * @param isEnabledIcons
-   * @return
-   */
+  /** Is enabled icons changed. */
   fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean = this.isEnabledIcons != isEnabledIcons
 
   /** Toggle enabled icons. */
@@ -204,12 +201,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Directory Icons
-  /**
-   * Is enabled directories changed
-   *
-   * @param isEnabledDirectories
-   * @return
-   */
+  /** Is enabled directories changed. */
   fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean =
     this.isEnabledDirectories != isEnabledDirectories
 
@@ -220,12 +212,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Monochrome Icons
-  /**
-   * Is monochrome icons changed
-   *
-   * @param isMonochrome
-   * @return
-   */
+  /** Is monochrome icons changed. */
   fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean = isMonochromeIcons != isMonochrome
 
   /** Toggle monochrome icons. */
@@ -233,23 +220,13 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isMonochromeIcons = !isMonochromeIcons
   }
 
-  /**
-   * Is monochrome color changed
-   *
-   * @param monochromeColor
-   * @return
-   */
+  /** Is monochrome color changed. */
   fun isMonochromeColorChanged(monochromeColor: String): Boolean =
     this.monochromeColor.lowercase() != monochromeColor.lowercase()
   //endregion
 
   //region UI Icons
-  /**
-   * Is enabled ui icons changed
-   *
-   * @param isEnabledUIIcons
-   * @return
-   */
+  /** Is enabled ui icons changed. */
   fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
 
   /** Toggle ui icons. */
@@ -259,12 +236,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region PSI Icons
-  /**
-   * Is enabled psi icons changed
-   *
-   * @param isEnabledPsiIcons
-   * @return
-   */
+  /** Is enabled psi icons changed. */
   fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean = this.isEnabledPsiIcons != isEnabledPsiIcons
 
   /** Toggle psi icons. */
@@ -274,12 +246,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Hollow Folders
-  /**
-   * Is use hollow folders changed
-   *
-   * @param useHollowFolders
-   * @return
-   */
+  /** Is use hollow folders changed. */
   fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean = isUseHollowFolders != useHollowFolders
 
   /** Toggle use hollow folders. */
@@ -289,12 +256,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Hide File Icons
-  /**
-   * Is hide file icons changed
-   *
-   * @param hideFileIcons
-   * @return
-   */
+  /** Is hide file icons changed. */
   fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean = isHideFileIcons != hideFileIcons
 
   /** Toggle hide file icons. */
@@ -304,12 +266,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Hide Folder Icons
-  /**
-   * Is hide folder icons changed
-   *
-   * @param hideFolderIcons
-   * @return
-   */
+  /** Is hide folder icons changed. */
   fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean = isHideFolderIcons != hideFolderIcons
 
   /** Toggle hide folder icons. */
@@ -319,37 +276,18 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Arrows Style
-  /**
-   * Is arrows style changed
-   *
-   * @param arrowsStyle
-   * @return
-   */
+  /** Is arrows style changed? */
   fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean = this.arrowsStyle != arrowsStyle
   //endregion
 
   //region Accent Color
-  /**
-   * Is accent color changed
-   *
-   * @param accentColor
-   * @return
-   */
+  /** Is accent color changed. */
   fun isAccentColorChanged(accentColor: String): Boolean = this.accentColor.lowercase() != accentColor.lowercase()
 
-  /**
-   * Is accent color enabled changed
-   *
-   * @param enabled
-   * @return
-   */
+  /** Is accent color enabled changed. */
   fun isAccentColorEnabledChanged(enabled: Boolean): Boolean = this.isAccentColorEnabled != enabled
 
-  /**
-   * Get current accent color
-   *
-   * @return
-   */
+  /** Get current accent color. */
   fun getCurrentAccentColor(): String {
     if (isAccentColorEnabled) return accentColor
     return accentColorFromTheme
@@ -358,77 +296,47 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Themed Color
-  /**
-   * Is themed color changed
-   *
-   * @param themedColor
-   * @return
-   */
+  /** Is themed color changed. */
   fun isThemedColorChanged(themedColor: String): Boolean = this.themedColor.lowercase() != themedColor.lowercase()
 
-  /**
-   * Is themed color enabled changed
-   *
-   * @param enabled
-   * @return
-   */
+  /** Is themed color enabled changed. */
   fun isThemedColorEnabledChanged(enabled: Boolean): Boolean = this.isThemedColorEnabled != enabled
 
-  /**
-   * Get current themed color
-   *
-   * @return
-   */
+  /** Get current themed color. */
   fun getCurrentThemedColor(): String {
     if (isThemedColorEnabled) return themedColor
     return themedColorFromTheme
   }
   //endregion
 
-  //region Big Icons
-  /**
-   * Is big icons changed
-   *
-   * @param bigIcons
-   * @return
-   */
-  fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasCustomIconSize != bigIcons
+  //region Custom Icon size
+  /** Is custom icon size changed? */
+  fun isHasCustomIconSizeChanged(isCustomIconSize: Boolean): Boolean = hasCustomIconSize != isCustomIconSize
 
   /** Toggle big icons. */
-  fun toggleBigIcons() {
+  fun toggleHasCustomIconSize() {
     hasCustomIconSize = !hasCustomIconSize
   }
   //endregion
 
   //region Custom Icon size
-  /**
-   * Is custom icon size changed
-   *
-   * @param newSize
-   * @return
-   */
+  /** Is custom icon size changed? */
   fun isCustomIconSizeChanged(newSize: Int): Boolean = newSize != customIconSize
 
   //endregion
 
   //region Custom Line Height
-  /**
-   * Is custom line height changed?
-   *
-   * @param newSize
-   * @return
-   */
-  fun isCustomLineHeightChanged(newSize: Int): Boolean = newSize != customLineHeight
+
+  /** Is custom line height changed? */
+  fun isHasCustomLineHeightChanged(newHeight: Boolean): Boolean = hasCustomLineHeight != newHeight
+
+  /** Is custom line height changed? */
+  fun hasCustomLineHeightChanged(newSize: Int): Boolean = newSize != customLineHeight
 
   //endregion
 
   //region Low Power mode
-  /**
-   * Is low power mode changed
-   *
-   * @param lowPower
-   * @return
-   */
+  /** Is low power mode changed. */
   fun isLowPowerModeChanged(lowPower: Boolean): Boolean = isLowPowerMode != lowPower
 
   /** Toggle low power mode. */
@@ -439,7 +347,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   companion object {
     /** Default Icon Size. */
-    const val DEFAULT_ICON_SIZE: Int = 20
+    const val DEFAULT_ICON_SIZE: Int = 16
 
     /** min icon size */
     const val MIN_ICON_SIZE: Int = 12
