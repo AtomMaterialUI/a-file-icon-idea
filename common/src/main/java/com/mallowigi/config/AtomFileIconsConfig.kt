@@ -63,7 +63,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   /** The monochrome color. */
   @NonNls
   @Property
-  var monochromeColor: String = "546E7A"
+  var monochromeColor: String = DEFAULT_MONOCHROME
     private set
 
   /** Whether the PSI icons are enabled. */
@@ -112,7 +112,11 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   /** Custom icon size. */
   @Property
-  var customIconSize: Int = 20
+  var customIconSize: Int = DEFAULT_ICON_SIZE
+
+  /** Custom line height. */
+  @Property
+  var customLineHeight: Int = DEFAULT_LINE_HEIGHT
 
   /** Whether low power mode is enabled. */
   @Property
@@ -153,6 +157,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     themedColor = form.themedColor
     hasBigIcons = form.hasBigIcons
     customIconSize = form.customIconSize
+    customLineHeight = form.customLineHeight
     isLowPowerMode = form.isLowPowerMode
     fireChanged()
   }
@@ -163,7 +168,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isEnabledDirectories = true
     isEnabledUIIcons = true
     isMonochromeIcons = false
-    monochromeColor = "546E7A" // NON-NLS
+    monochromeColor = DEFAULT_MONOCHROME // NON-NLS
     isEnabledPsiIcons = true
     isHideFileIcons = false
     isHideFolderIcons = false
@@ -174,7 +179,8 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     isThemedColorEnabled = false
     themedColor = themedColorFromTheme
     hasBigIcons = false
-    customIconSize = 20
+    customIconSize = DEFAULT_ICON_SIZE
+    customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
   }
 
@@ -401,6 +407,17 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   //endregion
 
+  //region Custom Line Height
+  /**
+   * Is custom line height changed?
+   *
+   * @param newSize
+   * @return
+   */
+  fun isCustomLineHeightChanged(newSize: Int): Boolean = newSize != customLineHeight
+
+  //endregion
+
   //region Low Power mode
   /**
    * Is low power mode changed
@@ -417,11 +434,26 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   companion object {
+    /** Default Icon Size. */
+    const val DEFAULT_ICON_SIZE: Int = 20
+
     /** min icon size */
     const val MIN_ICON_SIZE: Int = 12
 
     /** Max icon size. */
     const val MAX_ICON_SIZE: Int = 24
+
+    /** Default Line Height. */
+    const val DEFAULT_LINE_HEIGHT: Int = 20
+
+    /** Min Line Hieght. */
+    const val MIN_LINE_HEIGHT: Int = 16
+
+    /** Max Line Height. */
+    const val MAX_LINE_HEIGHT: Int = 60
+
+    /** Default Monochrome. */
+    const val DEFAULT_MONOCHROME: String = "546E7A" // NON-NLS
 
     /** Instance of the Config service. */
     @JvmStatic
