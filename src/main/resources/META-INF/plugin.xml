@@ -129,7 +129,7 @@
                     icon="/icons/settings/hideFolderAction.svg"/>
             <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
                     icon="/icons/settings/folderOpen.svg"/>
-            <action class="com.mallowigi.actions.CustomSizeIconsAction" id="BiggerIconsAction"
+            <action class="com.mallowigi.actions.BiggerIconsAction" id="BiggerIconsAction"
                     icon="/icons/settings/plus.svg"/>
             <separator/>
 

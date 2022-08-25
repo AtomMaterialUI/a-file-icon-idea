@@ -159,8 +159,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     accentColor = form.accentColor
     isThemedColorEnabled = form.isThemedColorEnabled
     themedColor = form.themedColor
-    hasCustomIconSize = form.hasCustomIconSize
-    hasCustomLineHeight = form.hasCustomLineHeight
+    hasCustomIconSize = form.hasBigIcons
     customIconSize = form.customIconSize
     customLineHeight = form.customLineHeight
     isLowPowerMode = form.isLowPowerMode
@@ -185,7 +184,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     themedColor = themedColorFromTheme
     hasCustomIconSize = false
     customIconSize = DEFAULT_ICON_SIZE
-    hasCustomLineHeight = false
     customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
   }
@@ -388,11 +386,16 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Big Icons
-  /** Is custom icon size changed. */
-  fun hasCustomIconSizeChanged(hasCustomIconSize: Boolean): Boolean = this.hasCustomIconSize != hasCustomIconSize
+  /**
+   * Is big icons changed
+   *
+   * @param bigIcons
+   * @return
+   */
+  fun isBigIconsChanged(bigIcons: Boolean): Boolean = hasCustomIconSize != bigIcons
 
   /** Toggle big icons. */
-  fun toggleCustomIconSize() {
+  fun toggleBigIcons() {
     hasCustomIconSize = !hasCustomIconSize
   }
   //endregion
@@ -409,8 +412,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   //endregion
 
   //region Custom Line Height
-  fun isHasCustomLineHeightChanged(newHeight: Boolean): Boolean = hasCustomLineHeight != newHeight
-
   /**
    * Is custom line height changed?
    *
@@ -438,7 +439,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   companion object {
     /** Default Icon Size. */
-    const val DEFAULT_ICON_SIZE: Int = 16
+    const val DEFAULT_ICON_SIZE: Int = 20
 
     /** min icon size */
     const val MIN_ICON_SIZE: Int = 12
