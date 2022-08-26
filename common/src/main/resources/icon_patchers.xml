@@ -132,7 +132,7 @@
 
     </glyphPatchers>
     <filePatchers>
-        <iconPatcher name="ExpUI" remove="expui" append="files/expui"/>
+        <filePatcher name="ExpUI" remove="expui" append="files/expui"/>
         <filePatcher name="Files" remove="fileTypes" append="files/fileTypes"/>
         <filePatcher name="BigData" remove="icons" append="files/plugins/bigdata"/>
         <filePatcher name="CLion" remove="" append="files/plugins/clion"/>
