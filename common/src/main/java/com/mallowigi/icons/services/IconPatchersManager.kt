@@ -37,6 +37,7 @@ import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 
 /** Icon patchers manager. */
+@Suppress("Detekt:TooManyFunctions", "HardCodedStringLiteral")
 object IconPatchersManager {
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
