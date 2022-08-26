@@ -194,6 +194,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     hasCustomLineHeight = false
     customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
+    fireChanged()
   }
 
   //region New UI Icons

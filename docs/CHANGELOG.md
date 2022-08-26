@@ -2,6 +2,21 @@
 
 ----
 
+## 72.0 (7.2.0)
+
+### Features
+
+- New Setting: **New UI Icons**, to allow using the New UI icons for people that have access to the New UI plugin.
+    - Please note that this setting can go in the way of the plugin's own icons, such as the UI and PSI Icons.
+- New Setting: **Custom Line Height**. Allows you to customize the line height in the tree views.
+- Add "_Reset Settings_" button for easy restoring default settings.
+- Added back **Dark variants** of specific icons in the _Associations Settings_. Now you can customize dark themes' icons' colors.
+
+### Fixes
+
+- Fix the Quick Switches (Action Palette)
+- Added the names of the _Arrow Styles_ in the settings
+
 ## 71.0 (7.1.0)
 
 ### Features

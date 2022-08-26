@@ -458,8 +458,9 @@ public final class SettingsForm implements SettingsFormUI {
 
   //region Events
 
-  private static void resetDefaultsActionPerformed(final ActionEvent e) {
+  private void resetDefaultsActionPerformed(final ActionEvent e) {
     AtomFileIconsConfig.getInstance().resetSettings();
+    setFormState(AtomFileIconsConfig.getInstance());
   }
 
   private void enableUIIconsCheckboxActionPerformed(final ActionEvent e) {
