@@ -44,6 +44,10 @@ import org.jetbrains.annotations.NonNls
 @Suppress("TooManyFunctions")
 @State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
+  /** Is enabled new ui icons. */
+  @Property
+  var isEnabledNewUiIcons: Boolean = false
+
   /** Whether the file icons are enabled. */
   @Property
   var isEnabledIcons: Boolean = true
@@ -145,6 +149,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    * @param form
    */
   fun applySettings(form: SettingsForm) {
+    isEnabledNewUiIcons = form.isEnabledNewUiIcons
     isEnabledIcons = form.isEnabledIcons
     isEnabledDirectories = form.isEnabledDirectories
     isEnabledUIIcons = form.isEnabledUIIcons
@@ -169,6 +174,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   /** Reset settings. */
   fun resetSettings() {
+    isEnabledNewUiIcons = false
     isEnabledIcons = true
     isEnabledDirectories = true
     isEnabledUIIcons = true
@@ -189,6 +195,17 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     customLineHeight = DEFAULT_LINE_HEIGHT
     isLowPowerMode = true
   }
+
+  //region New UI Icons
+  /** Is enabled icons changed. */
+  fun isEnabledNewUiIconsChanged(isEnabledNewUiIcons: Boolean): Boolean =
+    this.isEnabledNewUiIcons != isEnabledNewUiIcons
+
+  /** Toggle enabled icons. */
+  fun toggleNewUiIcons() {
+    isEnabledNewUiIcons = !isEnabledNewUiIcons
+  }
+  //endregion
 
   //region File Icons
   /** Is enabled icons changed. */
@@ -383,6 +400,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     private fun getAccentFromTheme(): String {
       val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
         "IntelliJ Light" -> "ActionButton.focusedBorderColor"
+        "Light"          -> "ActionButton.focusedBorderColor"
         "Darcula"        -> "Button.select"
         else             -> "Link.activeForeground"
       }
