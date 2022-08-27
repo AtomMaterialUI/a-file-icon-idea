@@ -95,6 +95,7 @@ abstract class Associations : Serializable {
     private val IMAGE_TYPES: Set<String> = setOf(
       "Images",
       "SVG",
+      "SVG Dark",
       "Images (PNG)",
       "Images (JPG)",
       "Images (BMP)",
