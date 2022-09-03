@@ -95,21 +95,26 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    */
   @Suppress("kotlin:S1871", "HardCodedStringLiteral")
   private fun getPatchedPath(path: String): String? = when {
-    !enabled -> null
+    !enabled                             -> null
     path.contains("expui/gutter") -> getArrowReplacement(path)
-    CACHE.containsKey(path) -> CACHE[path]
-    // First try the svg version of the resource
-    getSVG(path) != null -> {
+    CACHE.containsKey(path)              -> CACHE[path]
+    // First try the outline SVG version of the resource
+    getSVG(path, outline = true) != null -> {
+      CACHE[path] = getReplacement(path, outline = true)
+      CACHE[path]
+    }
+    // Then try the SVG version of the resource
+    getSVG(path) != null                 -> {
       CACHE[path] = getReplacement(path)
       CACHE[path]
     }
-    // Then try the png version
-    getPNG(path) != null -> {
+    // Then try the PNG version
+    getPNG(path) != null                 -> {
       CACHE[path] = getReplacement(path)
       CACHE[path]
     }
 
-    else -> null
+    else                                 -> null
   }
 
   private fun getArrowReplacement(path: String): String? {
@@ -125,17 +130,23 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    * @param path
    * @return
    */
-  private fun getReplacement(path: String): String {
+  private fun getReplacement(path: String, outline: Boolean = false): String {
     val finalPath: String = when {
       path.contains(".gif") -> GIF.replace(path, ".svg")
       else -> path.replace(".png", ".svg")
     }
-    return (pathToAppend + finalPath.replace(pathToRemove, "")).replace("//", "/") // don't ask
+
+    var resultPath = (pathToAppend + finalPath.replace(pathToRemove, "")).replace("//", "/")
+    if (outline) {
+      resultPath = resultPath.replace(".svg", "_outline.svg")
+    }
+
+    return resultPath
   }
 
   /** Check whether a svg version of a resource exists. */
-  private fun getSVG(path: String): URL? {
-    val svgFile = PNG.replace(getReplacement(path), ".svg") // NON-NLS
+  private fun getSVG(path: String, outline: Boolean = false): URL? {
+    val svgFile = PNG.replace(getReplacement(path, outline), ".svg") // NON-NLS
     return javaClass.getResource("/$svgFile")
   }
 
