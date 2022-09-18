@@ -59,7 +59,7 @@ class BigIconsPatcher : SvgPatcher {
   private fun updateRowHeight() {
     val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_SIZE else defaultRowHeight
     val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
-    val materialHeight = UIManager.get("Tree.materialRowHeight") as Int
+    val materialHeight = UIManager.get("Tree.materialRowHeight") as Int?
 
     if (materialHeight != null) {
       UIManager.put("Tree.rowHeight", materialHeight)
