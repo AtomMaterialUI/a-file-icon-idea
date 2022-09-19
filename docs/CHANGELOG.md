@@ -2,6 +2,53 @@
 
 ----
 
+## 73.0
+
+### Additions
+
+- New Icons:
+    - Dart Bloc
+    - Cue
+    - HypeStyle
+    - JWT
+    - Parquet
+    - Tauri
+    - UnoCSS
+    - Compose.yml
+    - Amplication
+    - Histoire
+    - Bun
+    - Bunlock
+    - SonarCloud
+    - Cadence
+    - Ansible Galaxy
+    - Enc
+    - WGSL
+    - Wikitext
+    - Unison
+    - EAS Metadata
+    - Carbon
+    - Deepsource.io
+    - mdsvex
+    - Jellycut
+- New Folders:
+    - cue
+    - jwt
+    - tauri
+    - navigation
+    - mac
+    - linux
+    - windows
+    - amplication
+    - histoire
+    - playbooks
+    - adapters
+    - decorators
+
+### Fixes
+
+- Fix SVG (Dark) not being recognized by Image Icon Loader
+
 ## 72.0 (7.2.0)
 
 ### Features
