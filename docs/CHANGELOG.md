@@ -2,6 +2,14 @@
 
 ----
 
+## 80.0 (8.0.0)
+
+### Features
+
+- Support for 2022.3
+- New UI Icons for the data providers
+- Add latest UI Icons
+
 ## 73.0 (7.3.0)
 
 ### Additions
