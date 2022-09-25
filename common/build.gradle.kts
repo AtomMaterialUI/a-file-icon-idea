@@ -42,6 +42,7 @@ intellij {
       "java",
       "com.intellij.CloudConfig",
       "Git4Idea",
+      "firsttimeinforever.focusmode:0.0.3"
     )
   )
 }

@@ -105,14 +105,14 @@
     <actions>
         <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
                class="com.mallowigi.actions.ActionGroup">
-            <add-to-group group-id="ExperimentalToolbarActions" anchor="first"/>
+            <add-to-group group-id="MainToolbarRight" anchor="first"/>
         </group>
         <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
                class="com.mallowigi.actions.ActionGroup">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="last"/>
-            <add-to-group group-id="ExperimentalToolbarActions" anchor="first"/>
+            <add-to-group group-id="MainToolbarRight" anchor="first"/>
             <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
                     icon="/icons/settings/atom.svg"/>
             <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
