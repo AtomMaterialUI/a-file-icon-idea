@@ -1,0 +1,44 @@
+<!--
+  - The MIT License (MIT)
+  -
+  -  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  -
+  -  Permission is hereby granted, free of charge, to any person obtaining a copy
+  -  of this software and associated documentation files (the "Software"), to deal
+  -  in the Software without restriction, including without limitation the rights
+  -  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  -  copies of the Software, and to permit persons to whom the Software is
+  -  furnished to do so, subject to the following conditions:
+  -
+  -  The above copyright notice and this permission notice shall be included in all
+  -  copies or substantial portions of the Software.
+  -
+  -  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  -  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  -  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  -  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  -  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  -  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  -  SOFTWARE.
+  -->
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="#3F51B5" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <mask id="Mask">
+            <rect x="1" y="3" width="14" height="10" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M14.0018 11.0646V12.0124H10.7293C10.7293 12.0124 12.339 8.8248 12.515 8.47336C12.691 8.12191 12.779 7.84773 12.779 7.65083C12.779 7.49972 12.7524 7.38696 12.6993 7.31255C12.6461 7.23814 12.5652 7.22 12.4565 7.22C12.3478 7.22 12.2669 7.24214 12.2137 7.32457C12.1606 7.40699 12.134 7.57069 12.134 7.81568V8.34457H10.851V8.14194C10.851 7.83056 10.8675 7.58501 10.9006 7.40527C10.9337 7.22554 11.0152 7.04868 11.1452 6.87467C11.2751 6.70066 11.4441 6.56901 11.652 6.47972C11.8599 6.39043 12.1092 6.34578 12.3998 6.34578C12.9692 6.34578 13.3998 6.48258 13.6916 6.75618C13.9834 7.02979 14.1293 7.37608 14.1293 7.79507C14.1293 8.11332 14.0472 8.44989 13.883 8.80477C13.7188 9.15965 13.235 9.91291 12.4317 11.0646H14.0018Z"
+                  fill="black"/>
+            <path d="M6.00873 6.61672H7.20873V8.809H8.80004V6.61672H10V12.0167H8.80004V10.009H7.20873V12.0167H6.00873V6.61672Z"
+                  fill="black"/>
+        </mask>
+    </defs>
+    <g mask="url(#Mask)">
+        <rect x="1" y="3" width="14" height="10"/>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M14.0018 11.0646V12.0124H10.7293C10.7293 12.0124 12.339 8.8248 12.515 8.47336C12.691 8.12191 12.779 7.84773 12.779 7.65083C12.779 7.49972 12.7524 7.38696 12.6993 7.31255C12.6461 7.23814 12.5652 7.22 12.4565 7.22C12.3478 7.22 12.2669 7.24214 12.2137 7.32457C12.1606 7.40699 12.134 7.57069 12.134 7.81568V8.34457H10.851V8.14194C10.851 7.83056 10.8675 7.58501 10.9006 7.40527C10.9337 7.22554 11.0152 7.04868 11.1452 6.87467C11.2751 6.70066 11.4441 6.56901 11.652 6.47972C11.8599 6.39043 12.1092 6.34578 12.3998 6.34578C12.9692 6.34578 13.3998 6.48258 13.6916 6.75618C13.9834 7.02979 14.1293 7.37608 14.1293 7.79507C14.1293 8.11332 14.0472 8.44989 13.883 8.80477C13.7188 9.15965 13.235 9.91291 12.4317 11.0646H14.0018Z"
+              fill="white"/>
+        <path d="M6.00873 6.61672H7.20873V8.809H8.80004V6.61672H10V12.0167H8.80004V10.009H7.20873V12.0167H6.00873V6.61672Z"
+              fill="white"/>
+    </g>
+</svg>
+
