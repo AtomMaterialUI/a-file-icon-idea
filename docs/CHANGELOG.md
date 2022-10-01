@@ -2,7 +2,7 @@
 
 ----
 
-## 80.0 (8.0.0)
+## 80.0.0 (8.0.0)
 
 ### Features
 
@@ -10,7 +10,7 @@
 - New UI Icons for the data providers
 - Add latest UI Icons
 
-## 73.0 (7.3.0)
+## 73.0.0 (7.3.0)
 
 ### Additions
 
@@ -57,7 +57,7 @@
 
 - Fix SVG (Dark) not being recognized by Image Icon Loader
 
-## 72.0 (7.2.0)
+## 72.0.0 (7.2.0)
 
 ### Features
 
@@ -72,13 +72,13 @@
 - Fix the Quick Switches (Action Palette)
 - Added the names of the _Arrow Styles_ in the settings
 
-## 71.0 (7.1.0)
+## 71.0.0 (7.1.0)
 
 ### Features
 
 - Add **Old Toolbar** menu to New UI Toolbar to get back the original toolbar's actions at hand.
 
-## 70.0 (7.0.0)
+## 70.0.0 (7.0.0)
 
 ### Features
 
@@ -230,13 +230,13 @@
     - init
     - iosApp
 
-## 65.1 (6.5.1)
+## 65.1.0 (6.5.1)
 
 ### Fixes
 
 - Fix new Class Loader exception
 
-## 65.0 (6.5.0)
+## 65.0.0 (6.5.0)
 
 ### Features
 
@@ -244,7 +244,7 @@
 - Add the **Atom Material Icons** settings on the Experimental UI toolbar
 - Enable Experimental UI icons when *UI Icons* is disabled.
 
-## 64.0 (6.4.0)
+## 64.0.0 (6.4.0)
 
 ### Features
 
@@ -258,7 +258,7 @@
 
 ---
 
-## 63.0 (6.3.0)
+## 63.0.0 (6.3.0)
 
 ### Fixes
 
@@ -299,7 +299,7 @@
     - woocommerce
     - xstate
 
-## 62.0 (6.2.0)
+## 62.0.0 (6.2.0)
 
 ### Fixes
 
@@ -322,7 +322,7 @@
     - storage
     - supabase
 
-## 61.0 (6.1.0)
+## 61.0.0 (6.1.0)
 
 ### Fixes
 
@@ -332,7 +332,7 @@
 - Remove Experimental UI custom icons to use the plugin ones
 - Fix deprecations
 
-## 60.0 (6.0.0)
+## 60.0.0 (6.0.0)
 
 ### Features
 
@@ -356,14 +356,14 @@
 
 - Support for 2022.1
 
-## 54.1 (5.4.1)
+## 54.1.0 (5.4.1)
 
 ### Fixes
 
 - Fix the regression about icons not being replaced in tabs.
 - Fix the regression about Java and Images icons getting the default icon instead of the PSI icons
 
-## 54.0 (5.4.0)
+## 54.0.0 (5.4.0)
 
 ### Features
 
@@ -379,7 +379,7 @@
 - Folder Icons
     - fastlane
 
-## 53.0 (5.3.0)
+## 53.0.0 (5.3.0)
 
 ### Fixes
 
@@ -424,7 +424,7 @@
 - Add linters
 - Removed deprecated _Custom File Associations_ settings
 
-## 52.0 (5.2.0)
+## 52.0.0 (5.2.0)
 
 ### Additions
 
@@ -435,7 +435,7 @@
 
 - Fix associations not being persisted
 
-## 51.0 (5.1.0)
+## 51.0.0 (5.1.0)
 
 ### Additions
 
@@ -447,7 +447,7 @@
 
 - Remove the Binary File association to prevent the plugin to replace fallback icons with the binary file.
 
-## 50.0 (5.0.0)
+## 50.0.0 (5.0.0)
 
 ### Features
 
@@ -465,7 +465,7 @@
 - Refactor xStream to use annotations
 - Rename "_Custom Folder Color_" to "_Custom Themed Color_"
 
-## 42.0 (4.4.0)
+## 42.0.0 (4.4.0)
 
 ### Fixes
 
@@ -489,13 +489,13 @@
     - infra
     - stencil, scala, svelte, tech, terraform, venv
 
-## 41.1 (4.3.1)
+## 41.1.0 (4.3.1)
 
 ### Fixes
 
 - Fix icons not showing because of duplicate attribute.
 
-## 41.0 (4.3.0)
+## 41.0.0 (4.3.0)
 
 ### Fixes
 
@@ -536,7 +536,7 @@
 - robots.txt
 - pictures folder associations
 
-## 40.0 (4.2.0)
+## 40.0.0 (4.2.0)
 
 ### Features
 
@@ -554,7 +554,7 @@
 - Upgrade dependencies
 - Add Urls to assocations (for the icon generator)
 
-## 39.0 (4.1.0)
+## 39.0.0 (4.1.0)
 
 ### Features
 
@@ -940,7 +940,7 @@
     - Abc
     - Astyle
 
-## 38.0 (4.0.0)
+## 38.0.0 (4.0.0)
 
 ### Features
 
@@ -1008,7 +1008,7 @@
 - Migrate to gradle.kts
 - Rewrite changelog to suit the changelog standard (<https://keepachangelog.com/en/1.0.0/>)
 
-## 37.0 (3.12.2)
+## 37.0.0 (3.12.2)
 
 ### Other
 
@@ -1017,13 +1017,13 @@
 - Verification automated workflow with Github Actions
 - Fix selected checkbox size
 
-## 36.0 (3.12.1)
+## 36.0.0 (3.12.1)
 
 ### Other
 
 - Support for 2021.1
 
-## 35.0 (3.12.0)
+## 35.0.0 (3.12.0)
 
 ### Additions
 
@@ -1054,7 +1054,7 @@
 - Fix bundle size
 - Fix bad associations
 
-## 34.0 (3.11.0)
+## 34.0.0 (3.11.0)
 
 ### Additions
 
@@ -1107,7 +1107,7 @@
     - rss
     - rstudio
 
-## 33.0 (3.10.0)
+## 33.0.0 (3.10.0)
 
 ### Fixes
 
@@ -1128,7 +1128,7 @@
     - esdoc
     - extjs
 
-## 32.0 (3.9.0)
+## 32.0.0 (3.9.0)
 
 ### Features
 
@@ -1152,7 +1152,7 @@
 
 - Fix the bug with Edit/Clone associations
 
-## 31.0 (3.8.0)
+## 31.0.0 (3.8.0)
 
 ### Fixes
 
@@ -1254,7 +1254,7 @@
 - Add `index.scss`, `index.css` and `index.html` to the index family
 - Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache
 
-## 30.0 (3.7.0)
+## 30.0.0 (3.7.0)
 
 ### Additions
 
@@ -1265,7 +1265,7 @@
 
 - Pseudo-fix: Add leading slash relatively to new EAP refactor
 
-## 29.0 (3.6.0)
+## 29.0.0 (3.6.0)
 
 ### Additions
 
@@ -1305,14 +1305,14 @@
 - Fix: regression issue with UI icons not disabling
 - Fix: popup menus: restore active indicator
 
-## 28.0 (3.5.1)
+## 28.0.0 (3.5.1)
 
 ### Other
 
 - Support for 2020.3
 - Support for more UI icons
 
-## 27.0 (3.5.0)
+## 27.0.0 (3.5.0)
 
 ### Features
 
@@ -1324,7 +1324,7 @@
 - Add icons to the **Atom Material Settings Toolbar Menu**.
 - Add actions for switching between **Arrow Styles**
 
-## 26.0 (3.4.0)
+## 26.0.0 (3.4.0)
 
 ### Features
 
@@ -1351,25 +1351,25 @@
 - Improve Hollow Folders opened files detection
 - Put _Custom file associations_ under the "Atom File Icon Settings"
 
-## 25.3 (3.3.3)
+## 25.3.0 (3.3.3)
 
 ### Fixes
 
 - Fixes many issues with custom associations
 
-## 25.2 (3.3.2)
+## 25.2.0 (3.3.2)
 
 ### Other
 
 - Support for 2020.2 EAP
 
-## 25.1 (3.3.1)
+## 25.1.0 (3.3.1)
 
 ### Fixes
 
 - Fix Psi Icons for PHP files
 
-## 25.0 (3.3.0)
+## 25.0.0 (3.3.0)
 
 ### Features
 
@@ -1419,7 +1419,7 @@
 
 - The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)
 
-## 24.0 (3.2.0)
+## 24.0.0 (3.2.0)
 
 ### Features
 
@@ -1496,7 +1496,7 @@
 - Try to fix the weird border at start
 - Fix wrong associations
 
-## 23.0 (3.1.0)
+## 23.0.0 (3.1.0)
 
 ### Additions
 
@@ -1558,7 +1558,7 @@
 - New pattern: `main.js` is now associated with nodejs
 - Add `cron/scheduler` folder icons
 
-## 22.0 (3.0.0)
+## 22.0.0 (3.0.0)
 
 ### Other
 
@@ -1698,7 +1698,7 @@
     - audio
     - video
 
-## 21.0 (2.10.1)
+## 21.0.0 (2.10.1)
 
 ### Features
 
@@ -1713,7 +1713,7 @@
 - Fix issue with _Arrow Colors_ being black in Darcula
 - Fix issue with _Plugins_ labels being black in Darcula
 
-## 20.0 (2.10.0)
+## 20.0.0 (2.10.0)
 
 ### Features
 
@@ -1731,7 +1731,7 @@
 - Fix Kotlin icons being unaffected by PSI File Icons setting
 - Make Icon Settings "dumb aware" (not affected by the indexing process)
 
-## 19.0 (2.9.0)
+## 19.0.0 (2.9.0)
 
 ### Features
 
@@ -1746,13 +1746,13 @@
 
 - Add missing icons since Nov 2019
 
-## 18.0 (2.8.1)
+## 18.0.0 (2.8.1)
 
 ### Other
 
 - Support for 2020.1
 
-## 17.0 (2.8.0)
+## 17.0.0 (2.8.0)
 
 ### Additions
 
@@ -1808,7 +1808,7 @@
 - New Feature: **Hide File Icons**
 - New Feature: **Hollow Directories**
 
-## 16.0 (2.7.0)
+## 16.0.0 (2.7.0)
 
 ### Additions
 
@@ -1838,13 +1838,13 @@
 
 - Sync with new UI Icons
 
-## 15.0 (2.6.1)
+## 15.0.0 (2.6.1)
 
 ### Other
 
 - Support for 2019.3 EAP
 
-## 14.0 (2.6.0)
+## 14.0.0 (2.6.0)
 
 ### Additions
 
@@ -1915,7 +1915,7 @@
 
 - Sync with Material Icons
 
-## 13.0 (2.5.0)
+## 13.0.0 (2.5.0)
 
 ### Additions
 
@@ -1925,14 +1925,14 @@
 
 - Sync with Material Icons
 
-## 12.0 (2.4.0)
+## 12.0.0 (2.4.0)
 
 ### Other
 
 - Support for 2019.2
 - Sync with Material Icons
 
-## 11.0 (2.3.0)
+## 11.0.0 (2.3.0)
 
 ### Features
 
@@ -1944,7 +1944,7 @@
 
 - Fix errors
 
-## 10.0 (2.2.0)
+## 10.0.0 (2.2.0)
 
 ### Features
 
@@ -1955,7 +1955,7 @@
 
 - Update for 2019.1
 
-## 9.0 (2.1.0)
+## 9.0.0 (2.1.0)
 
 ### Features
 
@@ -2015,20 +2015,20 @@
 - Add more contrast to monochrome icons
 - Fix some directories icons' contrast between the directory and the icon
 
-## 8.0 (2.0.0)
+## 8.0.0 (2.0.0)
 
 ### Features
 
 - Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons
 - New Option: **Monochrome Icons**
 
-## 7.0 (1.6.1)
+## 7.0.0 (1.6.1)
 
 ### Fixes
 
 - Fix fatal error
 
-## 6.0 (1.6.0)
+## 6.0.0 (1.6.0)
 
 ### Additions
 
@@ -2079,7 +2079,7 @@
     - views
     - vue
 
-## 5.0 (1.5.0)
+## 5.0.0 (1.5.0)
 
 ### Additions
 
@@ -2132,28 +2132,28 @@
     - sync
     - tasks
 
-## 4.0 (1.4.0)
+## 4.0.0 (1.4.0)
 
 ### Other
 
 - Convert icons to SVG
 - Add more system UI icons
 
-## 3.0 (1.3.0)
+## 3.0.0 (1.3.0)
 
 ### Features
 
 - Add **settings page** to control which components to enable or disable.
     - Components: **File Icons**, **Directory Icons** and **UI Icons** (experimental)
 
-## 2.0 (1.2.0)
+## 2.0.0 (1.2.0)
 
 ### Features
 
 - Add **folder icons** feature
 - Add more UI icons
 
-## 1.2 (1.1.0)
+## 1.2.0 (1.1.0)
 
 ### Features
 
@@ -2230,7 +2230,7 @@
 - Add markdown to html for changelog
 - add gradle.properties for easy installing
 
-## 1.0 (1.0.0)
+## 1.0.0 (1.0.0)
 
 ### Other
 
