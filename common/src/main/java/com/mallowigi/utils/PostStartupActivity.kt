@@ -23,6 +23,7 @@
  */
 package com.mallowigi.utils
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import com.intellij.openapi.util.IconLoader
@@ -33,9 +34,11 @@ import com.mallowigi.icons.services.IconPatchersManager
 class PostStartupActivity : StartupActivity {
   /** Run activity on open. */
   override fun runActivity(project: Project) {
-    AtomFileIconsConfig.instance.fireChanged()
-    IconLoader.clearCache()
-    IconPatchersManager.init()
+    ApplicationManager.getApplication().invokeLater {
+      AtomFileIconsConfig.instance.fireChanged()
+      IconLoader.clearCache()
+      IconPatchersManager.init()
+    }
   }
 
 }
