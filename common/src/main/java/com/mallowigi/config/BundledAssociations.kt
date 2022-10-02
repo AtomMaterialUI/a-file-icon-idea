@@ -40,6 +40,9 @@ class BundledAssociations {
   /** All loaded folder [Associations]. */
   private var defaultFolderAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
+  /** Default psi associations. */
+  private var defaultPsiAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+
   init {
     init()
   }
@@ -66,11 +69,10 @@ class BundledAssociations {
    * @param iconType
    * @return
    */
-  fun getMap(iconType: IconType): MutableMap<String, RegexAssociation> {
-    return when (iconType) {
-      IconType.FILE   -> defaultFileAssociations
-      IconType.FOLDER -> defaultFolderAssociations
-    }
+  fun getMap(iconType: IconType): MutableMap<String, RegexAssociation> = when (iconType) {
+    IconType.FILE   -> defaultFileAssociations
+    IconType.FOLDER -> defaultFolderAssociations
+    IconType.PSI    -> defaultPsiAssociations
   }
 
   /**

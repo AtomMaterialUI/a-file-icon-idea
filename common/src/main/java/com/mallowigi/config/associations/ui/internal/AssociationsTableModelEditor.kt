@@ -389,6 +389,8 @@ class AssociationsTableModelEditor(
           Columns.FOLDERICONCOLOR.index -> setFolderIconColor(modelIndex)
           else                          -> false
         }
+
+        IconType.PSI    -> false
       }
     }
 
