@@ -1,27 +1,25 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
 package com.mallowigi.config.associations.ui.internal
 
@@ -34,8 +32,13 @@ import com.mallowigi.icons.associations.RegexAssociation
 /** Editor for the [Association] table cells. */
 class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, CollectionItemEditor<RegexAssociation> {
 
-  /** Class of the items. */
-  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
+  /**
+   * Apply changes to the edited item
+   *
+   * @param oldItem the item to modify
+   * @param newItem the changes
+   */
+  override fun applyEdited(oldItem: RegexAssociation, newItem: RegexAssociation): Unit = oldItem.apply(newItem)
 
   /**
    * Duplicate an item
@@ -64,12 +67,23 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
   }
 
   /**
-   * Apply changes to the edited item
+   * Edits an item
    *
-   * @param oldItem the item to modify
-   * @param newItem the changes
+   * @param item the [Association]
+   * @param mutator a function to mutate the item
+   * @param isAdd if in add mode
    */
-  override fun applyEdited(oldItem: RegexAssociation, newItem: RegexAssociation): Unit = oldItem.apply(newItem)
+  override fun edit(
+    item: RegexAssociation,
+    mutator: Function<in RegexAssociation, out RegexAssociation>,
+    isAdd: Boolean,
+  ) {
+    val settings = clone(item, true)
+    mutator.`fun`(item).apply(settings)
+  }
+
+  /** Class of the items. */
+  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
 
   /**
    * Do not allow editing empty items
@@ -86,22 +100,6 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
    * @return true if empty
    */
   override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
-
-  /**
-   * Edits an item
-   *
-   * @param item the [Association]
-   * @param mutator a function to mutate the item
-   * @param isAdd if in add mode
-   */
-  override fun edit(
-    item: RegexAssociation,
-    mutator: Function<in RegexAssociation, out RegexAssociation>,
-    isAdd: Boolean,
-  ) {
-    val settings = clone(item, true)
-    mutator.`fun`(item).apply(settings)
-  }
 
   /** Whether item can be removed. */
   override fun isRemovable(item: RegexAssociation): Boolean = item.touched

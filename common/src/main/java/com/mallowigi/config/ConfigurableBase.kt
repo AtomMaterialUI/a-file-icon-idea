@@ -1,27 +1,25 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
 package com.mallowigi.config
 
@@ -41,56 +39,19 @@ import javax.swing.JComponent
 @Suppress("OutdatedDocumentation")
 abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentStateComponent<*>?> :
   BaseConfigurable() {
-  /**
-   * Return the created form
-   */
+
+  /** Return the created form. */
   @Volatile
   private var form: FORM? = null
 
-  /**
-   * Returns the config object for this setting
-   */
+  /** Returns the config object for this setting. */
   protected abstract val config: CONFIG
 
-  /**
-   * Link a form to a config
-   *
-   * @param form   the form
-   * @param config the config
-   */
-  protected abstract fun setFormState(form: FORM?, config: CONFIG)
-
-  /**
-   * Create the Form UI for the settings
-   */
-  protected abstract fun createForm(): FORM
-
-  /**
-   * Called when applying settings
-   *
-   * @param form   the form
-   * @param config the config
-   */
+  /** Apply settings. */
   @Throws(ConfigurationException::class)
-  protected abstract fun doApply(form: FORM?, config: CONFIG)
-
-  /**
-   * Checks whether the user has modified the settings
-   *
-   * @param form   the form
-   * @param config the config
-   * @return true if modified
-   */
-  protected abstract fun checkModified(form: FORM?, config: CONFIG): Boolean
-
-  /**
-   * Used to disable the apply button
-   *
-   * @return true if modified
-   */
-  override fun isModified(): Boolean {
-    isModified = checkModified(form, config)
-    return super.isModified()
+  override fun apply() {
+    initComponent()
+    doApply(form, config)
   }
 
   /**
@@ -104,26 +65,7 @@ abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentState
     return (form ?: return null).content
   }
 
-  /**
-   * Apply settings
-   */
-  @Throws(ConfigurationException::class)
-  override fun apply() {
-    initComponent()
-    doApply(form, config)
-  }
-
-  /**
-   * Reset settings
-   */
-  override fun reset() {
-    initComponent()
-    setFormState(form, config)
-  }
-
-  /**
-   * Dispose the FORM on dispose
-   */
+  /** Dispose the FORM on dispose. */
   @Synchronized
   override fun disposeUIResources() {
     dispose()
@@ -132,15 +74,56 @@ abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentState
   }
 
   /**
-   * Dispose resources
+   * Used to disable the apply button
+   *
+   * @return true if modified
    */
+  override fun isModified(): Boolean {
+    isModified = checkModified(form, config)
+    return super.isModified()
+  }
+
+  /** Reset settings. */
+  override fun reset() {
+    initComponent()
+    setFormState(form, config)
+  }
+
+  /**
+   * Checks whether the user has modified the settings
+   *
+   * @param form the form
+   * @param config the config
+   * @return true if modified
+   */
+  protected abstract fun checkModified(form: FORM?, config: CONFIG): Boolean
+
+  /** Create the Form UI for the settings. */
+  protected abstract fun createForm(): FORM
+
+  /**
+   * Called when applying settings
+   *
+   * @param form the form
+   * @param config the config
+   */
+  @Throws(ConfigurationException::class)
+  protected abstract fun doApply(form: FORM?, config: CONFIG)
+
+  /**
+   * Link a form to a config
+   *
+   * @param form the form
+   * @param config the config
+   */
+  protected abstract fun setFormState(form: FORM?, config: CONFIG)
+
+  /** Dispose resources. */
   private fun dispose() {
     // Do nothing
   }
 
-  /**
-   * Creates the component with Swing
-   */
+  /** Creates the component with Swing. */
   @Synchronized
   private fun initComponent() {
     if (form == null) {
@@ -151,4 +134,5 @@ abstract class ConfigurableBase<FORM : SettingsFormUI?, CONFIG : PersistentState
       }
     }
   }
+
 }

@@ -1,27 +1,25 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
 
 package com.mallowigi.config.select
@@ -46,6 +44,7 @@ import java.util.Objects
   category = SettingsCategory.UI
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
+
   /** List of user file [Association]s. */
   @Property
   var selectedFileAssociations: SelectedAssociations = SelectedAssociations(IconType.FILE)
@@ -56,20 +55,6 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
   init {
     init()
-  }
-
-  private fun init() {
-    selectedFolderAssociations.initMutableListFromDefaults()
-    selectedFileAssociations.initMutableListFromDefaults()
-  }
-
-  /** The config state. */
-  override fun getState(): AtomSelectConfig = this
-
-  /** Load state from XML. */
-  override fun loadState(state: AtomSelectConfig) {
-    XmlSerializerUtil.copyBean(state, this)
-    init() // reload defaults
   }
 
   /**
@@ -87,11 +72,11 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     fireChanged()
   }
 
-  private fun fireChanged() {
-    ApplicationManager.getApplication().messageBus
-      .syncPublisher(AtomSelectNotifier.TOPIC)
-      .configChanged(this)
-  }
+  /** Find association by name. */
+  fun findFileAssociationByName(name: String): Association? = selectedFileAssociations.findAssociationByName(name)
+
+  /** Find folder association by name. */
+  fun findFolderAssociationByName(name: String): Association? = selectedFolderAssociations.findAssociationByName(name)
 
   /**
    * Is file icons modified
@@ -123,14 +108,25 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     selectedFileAssociations.reset()
   }
 
-  /**
-   * Find association by name
-   *
-   * @param name
-   */
-  fun findFileAssociationByName(name: String): Association? = selectedFileAssociations.findAssociationByName(name)
+  /** The config state. */
+  override fun getState(): AtomSelectConfig = this
 
-  fun findFolderAssociationByName(name: String): Association? = selectedFolderAssociations.findAssociationByName(name)
+  /** Load state from XML. */
+  override fun loadState(state: AtomSelectConfig) {
+    XmlSerializerUtil.copyBean(state, this)
+    init() // reload defaults
+  }
+
+  private fun fireChanged() {
+    ApplicationManager.getApplication().messageBus
+      .syncPublisher(AtomSelectNotifier.TOPIC)
+      .configChanged(this)
+  }
+
+  private fun init() {
+    selectedFolderAssociations.initMutableListFromDefaults()
+    selectedFileAssociations.initMutableListFromDefaults()
+  }
 
   companion object {
     /** Instance of the [AtomSelectConfig]. */
@@ -138,4 +134,5 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     val instance: AtomSelectConfig
       get() = ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)
   }
+
 }

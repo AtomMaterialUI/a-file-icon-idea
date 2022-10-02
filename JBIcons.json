@@ -89,6 +89,7 @@
       "objectBrowser",
       "plugins",
       "process",
+      "profiler",
       "providers",
       "runConfigurations",
       "scope",
@@ -99,6 +100,7 @@
       "webreferences",
       "welcome",
       "windows",
+      "wizard",
       "xml"
     ],
     "sections": [
@@ -133,6 +135,7 @@
       "process",
       "process/big",
       "process/fs",
+      "profiler",
       "providers",
       "runConfigurations",
       "runConfigurations/testState",
@@ -146,6 +149,7 @@
       "welcome",
       "welcome/project",
       "windows",
+      "wizard",
       "xml",
       "xml/browsers"
     ],
@@ -3468,23 +3472,6 @@
         "java": "AllIcons.Actions.ShowCode"
       },
       {
-        "name": "showHiddens",
-        "set": "AllIcons",
-        "area": "actions",
-        "section": "actions",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "AllIcons.Actions.ShowHiddens"
-      },
-      {
         "name": "showImportStatements",
         "set": "AllIcons",
         "area": "actions",
@@ -3772,6 +3759,23 @@
         ],
         "kind": "svg",
         "java": "AllIcons.Actions.ToggleSoftWrap"
+      },
+      {
+        "name": "toggleVisibility",
+        "set": "AllIcons",
+        "area": "actions",
+        "section": "actions",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Actions.ToggleVisibility"
       },
       {
         "name": "traceInto",
@@ -4471,6 +4475,40 @@
         "java": "AllIcons.CodeWithMe.CwmTerminate"
       },
       {
+        "name": "green",
+        "set": "AllIcons",
+        "area": "codeWithMe",
+        "section": "codeWithMe",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            8,
+            8
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.CodeWithMe.Green"
+      },
+      {
+        "name": "red",
+        "set": "AllIcons",
+        "area": "codeWithMe",
+        "section": "codeWithMe",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            8,
+            8
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.CodeWithMe.Red"
+      },
+      {
         "name": "users",
         "set": "AllIcons",
         "area": "codeWithMe",
@@ -4486,6 +4524,23 @@
         ],
         "kind": "svg",
         "java": "AllIcons.CodeWithMe.Users"
+      },
+      {
+        "name": "yellow",
+        "set": "AllIcons",
+        "area": "codeWithMe",
+        "section": "codeWithMe",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            8,
+            8
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.CodeWithMe.Yellow"
       },
       {
         "name": "LambdaBreakpoint",
@@ -14672,6 +14727,57 @@
         "java": "AllIcons.Process.StopSmallHovered"
       },
       {
+        "name": "rec",
+        "set": "AllIcons",
+        "area": "profiler",
+        "section": "profiler",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Profiler.Rec"
+      },
+      {
+        "name": "recInactive",
+        "set": "AllIcons",
+        "area": "profiler",
+        "section": "profiler",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Profiler.RecInactive"
+      },
+      {
+        "name": "Apache Phoenix",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            85,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.Apache Phoenix"
+      },
+      {
         "name": "DB2",
         "set": "AllIcons",
         "area": "providers",
@@ -14740,12 +14846,29 @@
         "java": "AllIcons.Providers.ApacheDerby"
       },
       {
+        "name": "apacheIgnite",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.ApacheIgnite"
+      },
+      {
         "name": "apachePhoenix",
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14761,8 +14884,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14778,8 +14901,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14795,8 +14918,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14829,8 +14952,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14846,8 +14969,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14863,8 +14986,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14874,6 +14997,35 @@
         ],
         "kind": "svg",
         "java": "AllIcons.Providers.Couchbase"
+      },
+      {
+        "name": "duckBD",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 1,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [],
+        "kind": "svg",
+        "java": "AllIcons.Providers.DuckBD"
+      },
+      {
+        "name": "duckDB",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.DuckDB"
       },
       {
         "name": "eclipse",
@@ -14897,8 +15049,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14931,8 +15083,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14948,8 +15100,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14965,8 +15117,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -14995,6 +15147,18 @@
         "java": "AllIcons.Providers.H2"
       },
       {
+        "name": "hana",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 1,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [],
+        "kind": "svg",
+        "java": "AllIcons.Providers.Hana"
+      },
+      {
         "name": "hive",
         "set": "AllIcons",
         "area": "providers",
@@ -15016,8 +15180,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15067,8 +15231,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15118,8 +15282,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15131,12 +15295,29 @@
         "java": "AllIcons.Providers.Microsoft"
       },
       {
+        "name": "mimerSQL",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            17
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.MimerSQL"
+      },
+      {
         "name": "mongoDB",
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15186,8 +15367,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15203,8 +15384,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15254,8 +15435,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15271,8 +15452,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15288,8 +15469,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15305,8 +15486,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15373,8 +15554,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15386,12 +15567,29 @@
         "java": "AllIcons.Providers.Sybase"
       },
       {
+        "name": "tSQLt",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.TSQLt"
+      },
+      {
         "name": "tarantool",
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15407,8 +15605,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15441,8 +15639,8 @@
         "set": "AllIcons",
         "area": "providers",
         "section": "providers",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -15471,6 +15669,40 @@
         "java": "AllIcons.Providers.Trino"
       },
       {
+        "name": "userDriver",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.UserDriver"
+      },
+      {
+        "name": "utPLSQL",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.UtPLSQL"
+      },
+      {
         "name": "vertica",
         "set": "AllIcons",
         "area": "providers",
@@ -15486,6 +15718,23 @@
         ],
         "kind": "svg",
         "java": "AllIcons.Providers.Vertica"
+      },
+      {
+        "name": "warehouse",
+        "set": "AllIcons",
+        "area": "providers",
+        "section": "providers",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            59,
+            9
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Providers.Warehouse"
       },
       {
         "name": "yugabyte",
@@ -16627,6 +16876,23 @@
         "java": "AllIcons.ToolbarDecorator.Export"
       },
       {
+        "name": "exportSmall",
+        "set": "AllIcons",
+        "area": "toolbarDecorator",
+        "section": "toolbarDecorator",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.ToolbarDecorator.ExportSmall"
+      },
+      {
         "name": "import",
         "set": "AllIcons",
         "area": "toolbarDecorator",
@@ -17322,6 +17588,23 @@
         ],
         "kind": "svg",
         "java": "AllIcons.Vcs.ShowUnversionedFiles"
+      },
+      {
+        "name": "Stash",
+        "set": "AllIcons",
+        "area": "vcs",
+        "section": "vcs",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Vcs.Stash"
       },
       {
         "name": "Unshelve",
@@ -18325,6 +18608,142 @@
         ],
         "kind": "svg",
         "java": "AllIcons.Windows.RestoreSmall"
+      },
+      {
+        "name": "keymap",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Keymap"
+      },
+      {
+        "name": "pluginsAndFeatures",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.PluginsAndFeatures"
+      },
+      {
+        "name": "recentProjects",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.RecentProjects"
+      },
+      {
+        "name": "settings",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Settings"
+      },
+      {
+        "name": "vs",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Vs"
+      },
+      {
+        "name": "vscode",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Vscode"
+      },
+      {
+        "name": "vsmac",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Vsmac"
+      },
+      {
+        "name": "xcode",
+        "set": "AllIcons",
+        "area": "wizard",
+        "section": "wizard",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "AllIcons.Wizard.Xcode"
       },
       {
         "name": "canary",
@@ -21443,7 +21862,7 @@
         "java": "ClionExecutionIcons.Icons.CoreDumpDebug"
       },
       {
-        "name": "coreDumpDebug",
+        "name": "сoreDumpDebug",
         "set": "ClionExecutionIcons",
         "area": "icons",
         "section": "icons",
@@ -21457,7 +21876,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "ClionExecutionIcons.Icons.CoreDumpDebug"
+        "java": "ClionExecutionIcons.Icons.СoreDumpDebug"
       }
     ]
   },
@@ -25521,6 +25940,23 @@
     ],
     "icons": [
       {
+        "name": "defined",
+        "set": "DownburstIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "DownburstIcons.Icons.Defined"
+      },
+      {
         "name": "error",
         "set": "DownburstIcons",
         "area": "icons",
@@ -25538,12 +25974,12 @@
         "java": "DownburstIcons.Icons.Error"
       },
       {
-        "name": "orphaned",
+        "name": "rebuildRecreate",
         "set": "DownburstIcons",
         "area": "icons",
         "section": "icons",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -25552,7 +25988,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "DownburstIcons.Icons.Orphaned"
+        "java": "DownburstIcons.Icons.RebuildRecreate"
       },
       {
         "name": "started",
@@ -25776,6 +26212,23 @@
         "java": "DownburstIcons.Icons.Starting_9"
       },
       {
+        "name": "stopped",
+        "set": "DownburstIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "DownburstIcons.Icons.Stopped"
+      },
+      {
         "name": "stopping_1",
         "set": "DownburstIcons",
         "area": "icons",
@@ -25978,6 +26431,23 @@
         ],
         "kind": "svg",
         "java": "DownburstIcons.Icons.Stopping_9"
+      },
+      {
+        "name": "unhealthy",
+        "set": "DownburstIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "DownburstIcons.Icons.Unhealthy"
       }
     ]
   },
@@ -27277,9 +27747,27 @@
     ],
     "sections": [
       "",
+      "icons",
       "icons/products"
     ],
     "icons": [
+      {
+        "name": "jetBrainsClient",
+        "set": "GatewayCoreIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "GatewayCoreIcons.Icons.JetBrainsClient"
+      },
       {
         "name": "appcode",
         "set": "GatewayCoreIcons",
@@ -27725,53 +28213,6 @@
         ],
         "kind": "svg",
         "java": "GatewayIcons.Gateway_16_EAP"
-      }
-    ]
-  },
-  {
-    "set": "GatewaySpaceIcons",
-    "areas": [
-      "icons",
-      "META-INF"
-    ],
-    "sections": [
-      "icons",
-      "META-INF"
-    ],
-    "icons": [
-      {
-        "name": "pluginIcon",
-        "set": "GatewaySpaceIcons",
-        "area": "META-INF",
-        "section": "META-INF",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "GatewaySpaceIcons.META-INF.PluginIcon"
-      },
-      {
-        "name": "main_16",
-        "set": "GatewaySpaceIcons",
-        "area": "icons",
-        "section": "icons",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "GatewaySpaceIcons.Icons.Main_16"
       }
     ]
   },
@@ -31967,34 +32408,6 @@
     ]
   },
   {
-    "set": "JbossCoreIcons",
-    "areas": [
-      "icons"
-    ],
-    "sections": [
-      "icons"
-    ],
-    "icons": [
-      {
-        "name": "jboss",
-        "set": "JbossCoreIcons",
-        "area": "icons",
-        "section": "icons",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "JbossCoreIcons.Icons.Jboss"
-      }
-    ]
-  },
-  {
     "set": "JbossDroolsIcons",
     "areas": [
       "META-INF",
@@ -33511,6 +33924,23 @@
         "java": "JetgroovyIcons.Icons.Groovy.Property"
       },
       {
+        "name": "record",
+        "set": "JetgroovyIcons",
+        "area": "icons",
+        "section": "icons/groovy",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "JetgroovyIcons.Icons.Groovy.Record"
+      },
+      {
         "name": "trait",
         "set": "JetgroovyIcons",
         "area": "icons",
@@ -34054,6 +34484,23 @@
         ],
         "kind": "svg",
         "java": "KotlinFirFrontendIndependentIcons.Org.Jetbrains.Kotlin.Idea.Icons.Field_variable"
+      },
+      {
+        "name": "fir",
+        "set": "KotlinFirFrontendIndependentIcons",
+        "area": "org",
+        "section": "org/jetbrains/kotlin/idea/icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "KotlinFirFrontendIndependentIcons.Org.Jetbrains.Kotlin.Idea.Icons.Fir"
       },
       {
         "name": "interfaceKotlin",
@@ -35202,8 +35649,8 @@
         "set": "KubernetesIcons",
         "area": "icons",
         "section": "icons",
-        "variants": 2,
-        "dark": true,
+        "variants": 1,
+        "dark": false,
         "hiDPI": false,
         "sizes": [
           [
@@ -35451,6 +35898,23 @@
         ],
         "kind": "svg",
         "java": "KubernetesIcons.Icons.ToolWindowKubernetes"
+      },
+      {
+        "name": "werf",
+        "set": "KubernetesIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "KubernetesIcons.Icons.Werf"
       },
       {
         "name": "workloads",
@@ -42423,6 +42887,40 @@
         "java": "SpaceIcons.Auth.SpaceAuthIcon"
       },
       {
+        "name": "active",
+        "set": "SpaceIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "SpaceIcons.Icons.Active"
+      },
+      {
+        "name": "error",
+        "set": "SpaceIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "SpaceIcons.Icons.Error"
+      },
+      {
         "name": "failed",
         "set": "SpaceIcons",
         "area": "icons",
@@ -42489,6 +42987,23 @@
         ],
         "kind": "svg",
         "java": "SpaceIcons.Icons.Hanging"
+      },
+      {
+        "name": "hibernated",
+        "set": "SpaceIcons",
+        "area": "icons",
+        "section": "icons",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "SpaceIcons.Icons.Hibernated"
       },
       {
         "name": "main",
@@ -47938,6 +48453,23 @@
         "java": "BigdatatoolsIcons6.AmazonS3"
       },
       {
+        "name": "cluster",
+        "set": "BigdatatoolsIcons6",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "BigdatatoolsIcons6.Cluster"
+      },
+      {
         "name": "csv",
         "set": "BigdatatoolsIcons6",
         "area": "",
@@ -47970,6 +48502,40 @@
         ],
         "kind": "svg",
         "java": "BigdatatoolsIcons6.DigitalOceanSpaces"
+      },
+      {
+        "name": "empty",
+        "set": "BigdatatoolsIcons6",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "BigdatatoolsIcons6.Empty"
+      },
+      {
+        "name": "error",
+        "set": "BigdatatoolsIcons6",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "BigdatatoolsIcons6.Error"
       },
       {
         "name": "gcs",
@@ -48159,6 +48725,23 @@
         "java": "BigdatatoolsIcons6.RemoteFS"
       },
       {
+        "name": "running",
+        "set": "BigdatatoolsIcons6",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "BigdatatoolsIcons6.Running"
+      },
+      {
         "name": "s3bucket",
         "set": "BigdatatoolsIcons6",
         "area": "",
@@ -48208,6 +48791,23 @@
         ],
         "kind": "svg",
         "java": "BigdatatoolsIcons6.Tsv"
+      },
+      {
+        "name": "warning",
+        "set": "BigdatatoolsIcons6",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "BigdatatoolsIcons6.Warning"
       },
       {
         "name": "webHdfs",
@@ -48827,25 +49427,21 @@
     ],
     "icons": [
       {
-        "name": "model",
+        "name": "MPS_16",
         "set": "MpsIcons2",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons2.Model"
+        "kind": "svg",
+        "java": "MpsIcons2.MPS_16"
       }
     ]
   },
@@ -48859,7 +49455,7 @@
     ],
     "icons": [
       {
-        "name": "abstractClass",
+        "name": "model",
         "set": "MpsIcons3",
         "area": "",
         "section": "",
@@ -48877,427 +49473,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons3.AbstractClass"
-      },
-      {
-        "name": "abstractException",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.AbstractException"
-      },
-      {
-        "name": "abstractMethod",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.AbstractMethod"
-      },
-      {
-        "name": "annotationtype",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Annotationtype"
-      },
-      {
-        "name": "anonymousClass",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.AnonymousClass"
-      },
-      {
-        "name": "c_plocal",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.C_plocal"
-      },
-      {
-        "name": "c_private",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.C_private"
-      },
-      {
-        "name": "c_protected",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.C_protected"
-      },
-      {
-        "name": "c_public",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.C_public"
-      },
-      {
-        "name": "class",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Class"
-      },
-      {
-        "name": "classInitializer",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.ClassInitializer"
-      },
-      {
-        "name": "enum",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Enum"
-      },
-      {
-        "name": "exceptionClass",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.ExceptionClass"
-      },
-      {
-        "name": "field",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Field"
-      },
-      {
-        "name": "finalMark",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 4,
-        "dark": true,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.FinalMark"
-      },
-      {
-        "name": "interfaceType",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.InterfaceType"
-      },
-      {
-        "name": "method",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Method"
-      },
-      {
-        "name": "parameter",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Parameter"
-      },
-      {
-        "name": "runnableMark",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.RunnableMark"
-      },
-      {
-        "name": "staticMark",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 4,
-        "dark": true,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.StaticMark"
-      },
-      {
-        "name": "variable",
-        "set": "MpsIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons3.Variable"
+        "java": "MpsIcons3.Model"
       }
     ]
   },
@@ -49311,21 +49487,445 @@
     ],
     "icons": [
       {
-        "name": "primitive",
+        "name": "abstractClass",
         "set": "MpsIcons4",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons4.Primitive"
+        "kind": "png",
+        "java": "MpsIcons4.AbstractClass"
+      },
+      {
+        "name": "abstractException",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.AbstractException"
+      },
+      {
+        "name": "abstractMethod",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.AbstractMethod"
+      },
+      {
+        "name": "annotationtype",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Annotationtype"
+      },
+      {
+        "name": "anonymousClass",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.AnonymousClass"
+      },
+      {
+        "name": "c_plocal",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.C_plocal"
+      },
+      {
+        "name": "c_private",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.C_private"
+      },
+      {
+        "name": "c_protected",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.C_protected"
+      },
+      {
+        "name": "c_public",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.C_public"
+      },
+      {
+        "name": "class",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Class"
+      },
+      {
+        "name": "classInitializer",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.ClassInitializer"
+      },
+      {
+        "name": "enum",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Enum"
+      },
+      {
+        "name": "exceptionClass",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.ExceptionClass"
+      },
+      {
+        "name": "field",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Field"
+      },
+      {
+        "name": "finalMark",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 4,
+        "dark": true,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.FinalMark"
+      },
+      {
+        "name": "interfaceType",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.InterfaceType"
+      },
+      {
+        "name": "method",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Method"
+      },
+      {
+        "name": "parameter",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Parameter"
+      },
+      {
+        "name": "runnableMark",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.RunnableMark"
+      },
+      {
+        "name": "staticMark",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 4,
+        "dark": true,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.StaticMark"
+      },
+      {
+        "name": "variable",
+        "set": "MpsIcons4",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons4.Variable"
       }
     ]
   },
@@ -49339,25 +49939,21 @@
     ],
     "icons": [
       {
-        "name": "namedTuple",
+        "name": "primitive",
         "set": "MpsIcons5",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons5.NamedTuple"
+        "kind": "svg",
+        "java": "MpsIcons5.Primitive"
       }
     ]
   },
@@ -49371,21 +49967,25 @@
     ],
     "icons": [
       {
-        "name": "annotationLink",
+        "name": "namedTuple",
         "set": "MpsIcons6",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons6.AnnotationLink"
+        "kind": "png",
+        "java": "MpsIcons6.NamedTuple"
       }
     ]
   },
@@ -49399,7 +49999,7 @@
     ],
     "icons": [
       {
-        "name": "actions",
+        "name": "annotationLink",
         "set": "MpsIcons7",
         "area": "",
         "section": "",
@@ -49413,92 +50013,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons7.Actions"
-      },
-      {
-        "name": "actionsModel",
-        "set": "MpsIcons7",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons7.ActionsModel"
-      },
-      {
-        "name": "nodeFactories",
-        "set": "MpsIcons7",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons7.NodeFactories"
-      },
-      {
-        "name": "pasteWrapper",
-        "set": "MpsIcons7",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons7.PasteWrapper"
-      },
-      {
-        "name": "rightTransform",
-        "set": "MpsIcons7",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons7.RightTransform"
-      },
-      {
-        "name": "smartActions",
-        "set": "MpsIcons7",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons7.SmartActions"
+        "java": "MpsIcons7.AnnotationLink"
       }
     ]
   },
@@ -49512,7 +50027,7 @@
     ],
     "icons": [
       {
-        "name": "DataFlowAnalyser",
+        "name": "actions",
         "set": "MpsIcons8",
         "area": "",
         "section": "",
@@ -49526,10 +50041,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons8.DataFlowAnalyser"
+        "java": "MpsIcons8.Actions"
       },
       {
-        "name": "DataFlowRule",
+        "name": "actionsModel",
         "set": "MpsIcons8",
         "area": "",
         "section": "",
@@ -49543,7 +50058,75 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons8.DataFlowRule"
+        "java": "MpsIcons8.ActionsModel"
+      },
+      {
+        "name": "nodeFactories",
+        "set": "MpsIcons8",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons8.NodeFactories"
+      },
+      {
+        "name": "pasteWrapper",
+        "set": "MpsIcons8",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons8.PasteWrapper"
+      },
+      {
+        "name": "rightTransform",
+        "set": "MpsIcons8",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons8.RightTransform"
+      },
+      {
+        "name": "smartActions",
+        "set": "MpsIcons8",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons8.SmartActions"
       }
     ]
   },
@@ -49557,7 +50140,7 @@
     ],
     "icons": [
       {
-        "name": "behaviorModel",
+        "name": "DataFlowAnalyser",
         "set": "MpsIcons9",
         "area": "",
         "section": "",
@@ -49571,7 +50154,24 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons9.BehaviorModel"
+        "java": "MpsIcons9.DataFlowAnalyser"
+      },
+      {
+        "name": "DataFlowRule",
+        "set": "MpsIcons9",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons9.DataFlowRule"
       }
     ]
   },
@@ -49585,7 +50185,7 @@
     ],
     "icons": [
       {
-        "name": "constraintsModel",
+        "name": "behaviorModel",
         "set": "MpsIcons10",
         "area": "",
         "section": "",
@@ -49599,7 +50199,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons10.ConstraintsModel"
+        "java": "MpsIcons10.BehaviorModel"
       }
     ]
   },
@@ -49613,45 +50213,20 @@
     ],
     "icons": [
       {
-        "name": "constraints",
-        "set": "MpsIcons11",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons11.Constraints"
-      },
-      {
         "name": "constraintsModel",
         "set": "MpsIcons11",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
-        "kind": "png",
+        "kind": "svg",
         "java": "MpsIcons11.ConstraintsModel"
       }
     ]
@@ -49665,23 +50240,6 @@
       ""
     ],
     "icons": [
-      {
-        "name": "constraint-rules",
-        "set": "MpsIcons12",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons12.ConstraintRules"
-      },
       {
         "name": "constraints",
         "set": "MpsIcons12",
@@ -49736,7 +50294,7 @@
     ],
     "icons": [
       {
-        "name": "dataFlowModel",
+        "name": "constraint-rules",
         "set": "MpsIcons13",
         "area": "",
         "section": "",
@@ -49749,8 +50307,50 @@
             16
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons13.DataFlowModel"
+        "kind": "png",
+        "java": "MpsIcons13.ConstraintRules"
+      },
+      {
+        "name": "constraints",
+        "set": "MpsIcons13",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons13.Constraints"
+      },
+      {
+        "name": "constraintsModel",
+        "set": "MpsIcons13",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons13.ConstraintsModel"
       }
     ]
   },
@@ -49764,91 +50364,7 @@
     ],
     "icons": [
       {
-        "name": "editorComponent",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.EditorComponent"
-      },
-      {
-        "name": "editorContextHints",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.EditorContextHints"
-      },
-      {
-        "name": "editorModel",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.EditorModel"
-      },
-      {
-        "name": "editorStylesheet",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.EditorStylesheet"
-      },
-      {
-        "name": "keyMap",
+        "name": "dataFlowModel",
         "set": "MpsIcons14",
         "area": "",
         "section": "",
@@ -49862,126 +50378,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons14.KeyMap"
-      },
-      {
-        "name": "menuComponent",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.MenuComponent"
-      },
-      {
-        "name": "parametersInformation",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.ParametersInformation"
-      },
-      {
-        "name": "styleKeyPack",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.StyleKeyPack"
-      },
-      {
-        "name": "substituteMenu",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.SubstituteMenu"
-      },
-      {
-        "name": "substituteMenuContribution",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.SubstituteMenuContribution"
-      },
-      {
-        "name": "transformationMenu",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.TransformationMenu"
-      },
-      {
-        "name": "transformationMenuContribution",
-        "set": "MpsIcons14",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons14.TransformationMenuContribution"
+        "java": "MpsIcons14.DataFlowModel"
       }
     ]
   },
@@ -49995,24 +50392,91 @@
     ],
     "icons": [
       {
-        "name": "feedback",
+        "name": "editorComponent",
         "set": "MpsIcons15",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
+          [
+            16,
+            16
+          ],
           [
             16,
             16
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons15.Feedback"
+        "kind": "svg",
+        "java": "MpsIcons15.EditorComponent"
       },
       {
-        "name": "feedbackModel",
+        "name": "editorContextHints",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.EditorContextHints"
+      },
+      {
+        "name": "editorModel",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.EditorModel"
+      },
+      {
+        "name": "editorStylesheet",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.EditorStylesheet"
+      },
+      {
+        "name": "keyMap",
         "set": "MpsIcons15",
         "area": "",
         "section": "",
@@ -50025,8 +50489,127 @@
             16
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons15.FeedbackModel"
+        "kind": "svg",
+        "java": "MpsIcons15.KeyMap"
+      },
+      {
+        "name": "menuComponent",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.MenuComponent"
+      },
+      {
+        "name": "parametersInformation",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.ParametersInformation"
+      },
+      {
+        "name": "styleKeyPack",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.StyleKeyPack"
+      },
+      {
+        "name": "substituteMenu",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.SubstituteMenu"
+      },
+      {
+        "name": "substituteMenuContribution",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.SubstituteMenuContribution"
+      },
+      {
+        "name": "transformationMenu",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.TransformationMenu"
+      },
+      {
+        "name": "transformationMenuContribution",
+        "set": "MpsIcons15",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons15.TransformationMenuContribution"
       }
     ]
   },
@@ -50040,7 +50623,7 @@
     ],
     "icons": [
       {
-        "name": "findUsagesModel",
+        "name": "feedback",
         "set": "MpsIcons16",
         "area": "",
         "section": "",
@@ -50053,11 +50636,11 @@
             16
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons16.FindUsagesModel"
+        "kind": "png",
+        "java": "MpsIcons16.Feedback"
       },
       {
-        "name": "usagesFinder",
+        "name": "feedbackModel",
         "set": "MpsIcons16",
         "area": "",
         "section": "",
@@ -50070,8 +50653,8 @@
             16
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons16.UsagesFinder"
+        "kind": "png",
+        "java": "MpsIcons16.FeedbackModel"
       }
     ]
   },
@@ -50085,7 +50668,7 @@
     ],
     "icons": [
       {
-        "name": "parameters",
+        "name": "findUsagesModel",
         "set": "MpsIcons17",
         "area": "",
         "section": "",
@@ -50099,7 +50682,24 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons17.Parameters"
+        "java": "MpsIcons17.FindUsagesModel"
+      },
+      {
+        "name": "usagesFinder",
+        "set": "MpsIcons17",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons17.UsagesFinder"
       }
     ]
   },
@@ -50113,7 +50713,7 @@
     ],
     "icons": [
       {
-        "name": "generatorScript",
+        "name": "parameters",
         "set": "MpsIcons18",
         "area": "",
         "section": "",
@@ -50127,41 +50727,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons18.GeneratorScript"
-      },
-      {
-        "name": "switch",
-        "set": "MpsIcons18",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons18.Switch"
-      },
-      {
-        "name": "templateFragment",
-        "set": "MpsIcons18",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons18.TemplateFragment"
+        "java": "MpsIcons18.Parameters"
       }
     ]
   },
@@ -50175,7 +50741,7 @@
     ],
     "icons": [
       {
-        "name": "intentionBulb",
+        "name": "generatorScript",
         "set": "MpsIcons19",
         "area": "",
         "section": "",
@@ -50189,10 +50755,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons19.IntentionBulb"
+        "java": "MpsIcons19.GeneratorScript"
       },
       {
-        "name": "intentionsModel",
+        "name": "switch",
         "set": "MpsIcons19",
         "area": "",
         "section": "",
@@ -50206,10 +50772,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons19.IntentionsModel"
+        "java": "MpsIcons19.Switch"
       },
       {
-        "name": "surroundWithIntention",
+        "name": "templateFragment",
         "set": "MpsIcons19",
         "area": "",
         "section": "",
@@ -50223,7 +50789,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons19.SurroundWithIntention"
+        "java": "MpsIcons19.TemplateFragment"
       }
     ]
   },
@@ -50237,7 +50803,7 @@
     ],
     "icons": [
       {
-        "name": "imageGenerator",
+        "name": "intentionBulb",
         "set": "MpsIcons20",
         "area": "",
         "section": "",
@@ -50250,8 +50816,42 @@
             16
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons20.ImageGenerator"
+        "kind": "svg",
+        "java": "MpsIcons20.IntentionBulb"
+      },
+      {
+        "name": "intentionsModel",
+        "set": "MpsIcons20",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons20.IntentionsModel"
+      },
+      {
+        "name": "surroundWithIntention",
+        "set": "MpsIcons20",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons20.SurroundWithIntention"
       }
     ]
   },
@@ -50265,7 +50865,7 @@
     ],
     "icons": [
       {
-        "name": "facetDeclaration",
+        "name": "imageGenerator",
         "set": "MpsIcons21",
         "area": "",
         "section": "",
@@ -50278,8 +50878,8 @@
             16
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons21.FacetDeclaration"
+        "kind": "png",
+        "java": "MpsIcons21.ImageGenerator"
       }
     ]
   },
@@ -50293,7 +50893,7 @@
     ],
     "icons": [
       {
-        "name": "migrationModel",
+        "name": "facetDeclaration",
         "set": "MpsIcons22",
         "area": "",
         "section": "",
@@ -50307,24 +50907,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons22.MigrationModel"
-      },
-      {
-        "name": "migrationScript",
-        "set": "MpsIcons22",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons22.MigrationScript"
+        "java": "MpsIcons22.FacetDeclaration"
       }
     ]
   },
@@ -50338,109 +50921,38 @@
     ],
     "icons": [
       {
-        "name": "devkit",
+        "name": "migrationModel",
         "set": "MpsIcons23",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons23.Devkit"
+        "kind": "svg",
+        "java": "MpsIcons23.MigrationModel"
       },
       {
-        "name": "generator",
+        "name": "migrationScript",
         "set": "MpsIcons23",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons23.Generator"
-      },
-      {
-        "name": "lang-rt",
-        "set": "MpsIcons23",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons23.LangRt"
-      },
-      {
-        "name": "language",
-        "set": "MpsIcons23",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons23.Language"
-      },
-      {
-        "name": "solution",
-        "set": "MpsIcons23",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons23.Solution"
+        "kind": "svg",
+        "java": "MpsIcons23.MigrationScript"
       }
     ]
   },
@@ -50454,38 +50966,109 @@
     ],
     "icons": [
       {
-        "name": "applicationPlugin",
+        "name": "devkit",
         "set": "MpsIcons24",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons24.ApplicationPlugin"
+        "kind": "png",
+        "java": "MpsIcons24.Devkit"
       },
       {
-        "name": "projectPlugin",
+        "name": "generator",
         "set": "MpsIcons24",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons24.ProjectPlugin"
+        "kind": "png",
+        "java": "MpsIcons24.Generator"
+      },
+      {
+        "name": "lang-rt",
+        "set": "MpsIcons24",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons24.LangRt"
+      },
+      {
+        "name": "language",
+        "set": "MpsIcons24",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons24.Language"
+      },
+      {
+        "name": "solution",
+        "set": "MpsIcons24",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            32,
+            32
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons24.Solution"
       }
     ]
   },
@@ -50499,7 +51082,7 @@
     ],
     "icons": [
       {
-        "name": "actionGroupNew",
+        "name": "applicationPlugin",
         "set": "MpsIcons25",
         "area": "",
         "section": "",
@@ -50513,10 +51096,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons25.ActionGroupNew"
+        "java": "MpsIcons25.ApplicationPlugin"
       },
       {
-        "name": "actionNew",
+        "name": "projectPlugin",
         "set": "MpsIcons25",
         "area": "",
         "section": "",
@@ -50530,75 +51113,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons25.ActionNew"
-      },
-      {
-        "name": "ideaPluginDeclaration",
-        "set": "MpsIcons25",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons25.IdeaPluginDeclaration"
-      },
-      {
-        "name": "keymapChangesDeclaration",
-        "set": "MpsIcons25",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons25.KeymapChangesDeclaration"
-      },
-      {
-        "name": "pluginModel",
-        "set": "MpsIcons25",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons25.PluginModel"
-      },
-      {
-        "name": "tabbedEditor",
-        "set": "MpsIcons25",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons25.TabbedEditor"
+        "java": "MpsIcons25.ProjectPlugin"
       }
     ]
   },
@@ -50612,7 +51127,7 @@
     ],
     "icons": [
       {
-        "name": "refactoringsModel",
+        "name": "actionGroupNew",
         "set": "MpsIcons26",
         "area": "",
         "section": "",
@@ -50626,7 +51141,92 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons26.RefactoringsModel"
+        "java": "MpsIcons26.ActionGroupNew"
+      },
+      {
+        "name": "actionNew",
+        "set": "MpsIcons26",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons26.ActionNew"
+      },
+      {
+        "name": "ideaPluginDeclaration",
+        "set": "MpsIcons26",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons26.IdeaPluginDeclaration"
+      },
+      {
+        "name": "keymapChangesDeclaration",
+        "set": "MpsIcons26",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons26.KeymapChangesDeclaration"
+      },
+      {
+        "name": "pluginModel",
+        "set": "MpsIcons26",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons26.PluginModel"
+      },
+      {
+        "name": "tabbedEditor",
+        "set": "MpsIcons26",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons26.TabbedEditor"
       }
     ]
   },
@@ -50640,7 +51240,7 @@
     ],
     "icons": [
       {
-        "name": "iconResourceBundle",
+        "name": "refactoringsModel",
         "set": "MpsIcons27",
         "area": "",
         "section": "",
@@ -50654,7 +51254,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons27.IconResourceBundle"
+        "java": "MpsIcons27.RefactoringsModel"
       }
     ]
   },
@@ -50668,7 +51268,7 @@
     ],
     "icons": [
       {
-        "name": "scriptsIcon",
+        "name": "iconResourceBundle",
         "set": "MpsIcons28",
         "area": "",
         "section": "",
@@ -50682,24 +51282,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons28.ScriptsIcon"
-      },
-      {
-        "name": "scriptsModel",
-        "set": "MpsIcons28",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons28.ScriptsModel"
+        "java": "MpsIcons28.IconResourceBundle"
       }
     ]
   },
@@ -50713,7 +51296,7 @@
     ],
     "icons": [
       {
-        "name": "generator",
+        "name": "scriptsIcon",
         "set": "MpsIcons29",
         "area": "",
         "section": "",
@@ -50727,10 +51310,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons29.Generator"
+        "java": "MpsIcons29.ScriptsIcon"
       },
       {
-        "name": "lang-rt",
+        "name": "scriptsModel",
         "set": "MpsIcons29",
         "area": "",
         "section": "",
@@ -50744,24 +51327,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons29.LangRt"
-      },
-      {
-        "name": "language",
-        "set": "MpsIcons29",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons29.Language"
+        "java": "MpsIcons29.ScriptsModel"
       }
     ]
   },
@@ -50775,7 +51341,7 @@
     ],
     "icons": [
       {
-        "name": "constrainedTD",
+        "name": "generator",
         "set": "MpsIcons30",
         "area": "",
         "section": "",
@@ -50789,31 +51355,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons30.ConstrainedTD"
+        "java": "MpsIcons30.Generator"
       },
       {
-        "name": "enum",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.Enum"
-      },
-      {
-        "name": "interfaceStructure",
+        "name": "lang-rt",
         "set": "MpsIcons30",
         "area": "",
         "section": "",
@@ -50827,10 +51372,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons30.InterfaceStructure"
+        "java": "MpsIcons30.LangRt"
       },
       {
-        "name": "link",
+        "name": "language",
         "set": "MpsIcons30",
         "area": "",
         "section": "",
@@ -50844,92 +51389,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons30.Link"
-      },
-      {
-        "name": "primitiveTD",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.PrimitiveTD"
-      },
-      {
-        "name": "property",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.Property"
-      },
-      {
-        "name": "rootableConcept",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.RootableConcept"
-      },
-      {
-        "name": "structure",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.Structure"
-      },
-      {
-        "name": "structureModel",
-        "set": "MpsIcons30",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons30.StructureModel"
+        "java": "MpsIcons30.Language"
       }
     ]
   },
@@ -50943,7 +51403,7 @@
     ],
     "icons": [
       {
-        "name": "textGenComponent",
+        "name": "constrainedTD",
         "set": "MpsIcons31",
         "area": "",
         "section": "",
@@ -50957,220 +51417,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons31.TextGenComponent"
+        "java": "MpsIcons31.ConstrainedTD"
       },
       {
-        "name": "textGenModel",
+        "name": "enum",
         "set": "MpsIcons31",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons31.TextGenModel"
-      }
-    ]
-  },
-  {
-    "set": "MpsIcons32",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "macroTable",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.MacroTable"
-      },
-      {
-        "name": "queryTable",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.QueryTable"
-      },
-      {
-        "name": "queryTableContribution",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.QueryTableContribution"
-      },
-      {
-        "name": "ruleTable",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.RuleTable"
-      },
-      {
-        "name": "termTable",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.TermTable"
-      },
-      {
-        "name": "termTableContribution",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.TermTableContribution"
-      },
-      {
-        "name": "typesModel",
-        "set": "MpsIcons32",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons32.TypesModel"
-      }
-    ]
-  },
-  {
-    "set": "MpsIcons33",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "comparison",
-        "set": "MpsIcons33",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons33.Comparison"
-      },
-      {
-        "name": "nontypesystem",
-        "set": "MpsIcons33",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons33.Nontypesystem"
-      },
-      {
-        "name": "overloadedRules",
-        "set": "MpsIcons33",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons33.OverloadedRules"
-      },
-      {
-        "name": "quickFix",
-        "set": "MpsIcons33",
         "area": "",
         "section": "",
         "variants": 2,
@@ -51187,10 +51438,185 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.QuickFix"
+        "java": "MpsIcons31.Enum"
       },
       {
-        "name": "replacement",
+        "name": "interfaceStructure",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.InterfaceStructure"
+      },
+      {
+        "name": "link",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.Link"
+      },
+      {
+        "name": "primitiveTD",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.PrimitiveTD"
+      },
+      {
+        "name": "property",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.Property"
+      },
+      {
+        "name": "rootableConcept",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.RootableConcept"
+      },
+      {
+        "name": "structure",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.Structure"
+      },
+      {
+        "name": "structureModel",
+        "set": "MpsIcons31",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons31.StructureModel"
+      }
+    ]
+  },
+  {
+    "set": "MpsIcons32",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "textGenComponent",
+        "set": "MpsIcons32",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons32.TextGenComponent"
+      },
+      {
+        "name": "textGenModel",
+        "set": "MpsIcons32",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons32.TextGenModel"
+      }
+    ]
+  },
+  {
+    "set": "MpsIcons33",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "macroTable",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51204,10 +51630,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.Replacement"
+        "java": "MpsIcons33.MacroTable"
       },
       {
-        "name": "rule",
+        "name": "queryTable",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51221,10 +51647,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.Rule"
+        "java": "MpsIcons33.QueryTable"
       },
       {
-        "name": "substitute",
+        "name": "queryTableContribution",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51238,10 +51664,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.Substitute"
+        "java": "MpsIcons33.QueryTableContribution"
       },
       {
-        "name": "subtyping",
+        "name": "ruleTable",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51255,10 +51681,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.Subtyping"
+        "java": "MpsIcons33.RuleTable"
       },
       {
-        "name": "typesystemModel",
+        "name": "termTable",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51272,10 +51698,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.TypesystemModel"
+        "java": "MpsIcons33.TermTable"
       },
       {
-        "name": "variableReplacement",
+        "name": "termTableContribution",
         "set": "MpsIcons33",
         "area": "",
         "section": "",
@@ -51289,7 +51715,24 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons33.VariableReplacement"
+        "java": "MpsIcons33.TermTableContribution"
+      },
+      {
+        "name": "typesModel",
+        "set": "MpsIcons33",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons33.TypesModel"
       }
     ]
   },
@@ -51303,7 +51746,7 @@
     ],
     "icons": [
       {
-        "name": "runConfigurationDeclaration",
+        "name": "comparison",
         "set": "MpsIcons34",
         "area": "",
         "section": "",
@@ -51316,8 +51759,165 @@
             16
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons34.RunConfigurationDeclaration"
+        "kind": "svg",
+        "java": "MpsIcons34.Comparison"
+      },
+      {
+        "name": "nontypesystem",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.Nontypesystem"
+      },
+      {
+        "name": "overloadedRules",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.OverloadedRules"
+      },
+      {
+        "name": "quickFix",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            16,
+            16
+          ],
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.QuickFix"
+      },
+      {
+        "name": "replacement",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.Replacement"
+      },
+      {
+        "name": "rule",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.Rule"
+      },
+      {
+        "name": "substitute",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.Substitute"
+      },
+      {
+        "name": "subtyping",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.Subtyping"
+      },
+      {
+        "name": "typesystemModel",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.TypesystemModel"
+      },
+      {
+        "name": "variableReplacement",
+        "set": "MpsIcons34",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons34.VariableReplacement"
       }
     ]
   },
@@ -51331,7 +51931,7 @@
     ],
     "icons": [
       {
-        "name": "plugin",
+        "name": "runConfigurationDeclaration",
         "set": "MpsIcons35",
         "area": "",
         "section": "",
@@ -51345,7 +51945,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons35.Plugin"
+        "java": "MpsIcons35.RunConfigurationDeclaration"
       }
     ]
   },
@@ -51359,7 +51959,7 @@
     ],
     "icons": [
       {
-        "name": "archive",
+        "name": "plugin",
         "set": "MpsIcons36",
         "area": "",
         "section": "",
@@ -51373,11 +51973,39 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Archive"
+        "java": "MpsIcons36.Plugin"
+      }
+    ]
+  },
+  {
+    "set": "MpsIcons37",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "archive",
+        "set": "MpsIcons37",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons37.Archive"
       },
       {
         "name": "build",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 4,
@@ -51394,11 +52022,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Build"
+        "java": "MpsIcons37.Build"
       },
       {
         "name": "dependency",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51411,11 +52039,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Dependency"
+        "java": "MpsIcons37.Dependency"
       },
       {
         "name": "externalLayout",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51428,11 +52056,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.ExternalLayout"
+        "java": "MpsIcons37.ExternalLayout"
       },
       {
         "name": "javaModule",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51445,11 +52073,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.JavaModule"
+        "java": "MpsIcons37.JavaModule"
       },
       {
         "name": "javaOptions",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51462,11 +52090,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.JavaOptions"
+        "java": "MpsIcons37.JavaOptions"
       },
       {
         "name": "layout",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51479,11 +52107,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Layout"
+        "java": "MpsIcons37.Layout"
       },
       {
         "name": "library",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51496,11 +52124,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Library"
+        "java": "MpsIcons37.Library"
       },
       {
         "name": "macro",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51513,11 +52141,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Macro"
+        "java": "MpsIcons37.Macro"
       },
       {
         "name": "path",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51530,11 +52158,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.Path"
+        "java": "MpsIcons37.Path"
       },
       {
         "name": "string",
-        "set": "MpsIcons36",
+        "set": "MpsIcons37",
         "area": "",
         "section": "",
         "variants": 1,
@@ -51547,60 +52175,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons36.String"
-      }
-    ]
-  },
-  {
-    "set": "MpsIcons37",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "checkBox",
-        "set": "MpsIcons37",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            20,
-            20
-          ],
-          [
-            40,
-            40
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons37.CheckBox"
-      },
-      {
-        "name": "checkBoxSelected",
-        "set": "MpsIcons37",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            20,
-            20
-          ],
-          [
-            40,
-            40
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons37.CheckBoxSelected"
+        "java": "MpsIcons37.String"
       }
     ]
   },
@@ -51614,21 +52189,46 @@
     ],
     "icons": [
       {
-        "name": "feedback",
+        "name": "checkBox",
         "set": "MpsIcons38",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
-            16,
-            16
+            20,
+            20
+          ],
+          [
+            40,
+            40
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons38.Feedback"
+        "java": "MpsIcons38.CheckBox"
+      },
+      {
+        "name": "checkBoxSelected",
+        "set": "MpsIcons38",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            20,
+            20
+          ],
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons38.CheckBoxSelected"
       }
     ]
   },
@@ -51642,7 +52242,7 @@
     ],
     "icons": [
       {
-        "name": "connector",
+        "name": "feedback",
         "set": "MpsIcons39",
         "area": "",
         "section": "",
@@ -51656,41 +52256,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons39.Connector"
-      },
-      {
-        "name": "consumer",
-        "set": "MpsIcons39",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons39.Consumer"
-      },
-      {
-        "name": "producer",
-        "set": "MpsIcons39",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons39.Producer"
+        "java": "MpsIcons39.Feedback"
       }
     ]
   },
@@ -51703,23 +52269,6 @@
       ""
     ],
     "icons": [
-      {
-        "name": "block",
-        "set": "MpsIcons40",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons40.Block"
-      },
       {
         "name": "connector",
         "set": "MpsIcons40",
@@ -51736,6 +52285,40 @@
         ],
         "kind": "png",
         "java": "MpsIcons40.Connector"
+      },
+      {
+        "name": "consumer",
+        "set": "MpsIcons40",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons40.Consumer"
+      },
+      {
+        "name": "producer",
+        "set": "MpsIcons40",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons40.Producer"
       }
     ]
   },
@@ -51749,7 +52332,7 @@
     ],
     "icons": [
       {
-        "name": "kotlin_file",
+        "name": "block",
         "set": "MpsIcons41",
         "area": "",
         "section": "",
@@ -51763,10 +52346,10 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons41.Kotlin_file"
+        "java": "MpsIcons41.Block"
       },
       {
-        "name": "kotlin_script",
+        "name": "connector",
         "set": "MpsIcons41",
         "area": "",
         "section": "",
@@ -51780,7 +52363,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons41.Kotlin_script"
+        "java": "MpsIcons41.Connector"
       }
     ]
   },
@@ -51794,25 +52377,38 @@
     ],
     "icons": [
       {
-        "name": "language",
+        "name": "kotlin_file",
         "set": "MpsIcons42",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons42.Language"
+        "java": "MpsIcons42.Kotlin_file"
+      },
+      {
+        "name": "kotlin_script",
+        "set": "MpsIcons42",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons42.Kotlin_script"
       }
     ]
   },
@@ -51826,53 +52422,8 @@
     ],
     "icons": [
       {
-        "name": "testClass",
+        "name": "language",
         "set": "MpsIcons43",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "MpsIcons43.TestClass"
-      }
-    ]
-  },
-  {
-    "set": "MpsIcons44",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "nodesTest",
-        "set": "MpsIcons44",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons44.NodesTest"
-      },
-      {
-        "name": "tests",
-        "set": "MpsIcons44",
         "area": "",
         "section": "",
         "variants": 2,
@@ -51889,7 +52440,35 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons44.Tests"
+        "java": "MpsIcons43.Language"
+      }
+    ]
+  },
+  {
+    "set": "MpsIcons44",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "testClass",
+        "set": "MpsIcons44",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons44.TestClass"
       }
     ]
   },
@@ -51903,12 +52482,29 @@
     ],
     "icons": [
       {
-        "name": "commit",
+        "name": "nodesTest",
         "set": "MpsIcons45",
         "area": "",
         "section": "",
-        "variants": 4,
-        "dark": true,
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons45.NodesTest"
+      },
+      {
+        "name": "tests",
+        "set": "MpsIcons45",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
         "hiDPI": true,
         "sizes": [
           [
@@ -51921,7 +52517,7 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons45.Commit"
+        "java": "MpsIcons45.Tests"
       }
     ]
   },
@@ -51967,21 +52563,25 @@
     ],
     "icons": [
       {
-        "name": "documentation",
+        "name": "commit",
         "set": "MpsIcons47",
         "area": "",
         "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
+        "variants": 4,
+        "dark": true,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons47.Documentation"
+        "kind": "png",
+        "java": "MpsIcons47.Commit"
       }
     ]
   },
@@ -51995,8 +52595,36 @@
     ],
     "icons": [
       {
-        "name": "abs",
+        "name": "documentation",
         "set": "MpsIcons48",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "MpsIcons48.Documentation"
+      }
+    ]
+  },
+  {
+    "set": "MpsIcons49",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "abs",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52013,11 +52641,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Abs"
+        "java": "MpsIcons49.Abs"
       },
       {
         "name": "column",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52034,11 +52662,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Column"
+        "java": "MpsIcons49.Column"
       },
       {
         "name": "exp",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52055,11 +52683,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Exp"
+        "java": "MpsIcons49.Exp"
       },
       {
         "name": "frac",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52076,11 +52704,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Frac"
+        "java": "MpsIcons49.Frac"
       },
       {
         "name": "log",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52097,11 +52725,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Log"
+        "java": "MpsIcons49.Log"
       },
       {
         "name": "matrix",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52118,11 +52746,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Matrix"
+        "java": "MpsIcons49.Matrix"
       },
       {
         "name": "max",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52139,11 +52767,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Max"
+        "java": "MpsIcons49.Max"
       },
       {
         "name": "min",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
@@ -52160,11 +52788,11 @@
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons48.Min"
+        "java": "MpsIcons49.Min"
       },
       {
         "name": "minus",
-        "set": "MpsIcons48",
+        "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 3,
@@ -52185,140 +52813,112 @@
           ]
         ],
         "kind": "svg",
-        "java": "MpsIcons48.Minus"
+        "java": "MpsIcons49.Minus"
       },
       {
         "name": "plus",
-        "set": "MpsIcons48",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            32,
-            32
-          ],
-          [
-            64,
-            64
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons48.Plus"
-      },
-      {
-        "name": "power",
-        "set": "MpsIcons48",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            32,
-            32
-          ],
-          [
-            64,
-            64
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons48.Power"
-      },
-      {
-        "name": "prod",
-        "set": "MpsIcons48",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            32,
-            32
-          ],
-          [
-            64,
-            64
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons48.Prod"
-      },
-      {
-        "name": "sum",
-        "set": "MpsIcons48",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            32,
-            32
-          ],
-          [
-            64,
-            64
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons48.Sum"
-      },
-      {
-        "name": "times",
-        "set": "MpsIcons48",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            32,
-            32
-          ],
-          [
-            64,
-            64
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons48.Times"
-      }
-    ]
-  },
-  {
-    "set": "MpsIcons49",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "task",
         "set": "MpsIcons49",
         "area": "",
         "section": "",
         "variants": 2,
-        "dark": true,
-        "hiDPI": false,
+        "dark": false,
+        "hiDPI": true,
         "sizes": [
           [
-            16,
-            16
+            32,
+            32
+          ],
+          [
+            64,
+            64
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons49.Task"
+        "kind": "png",
+        "java": "MpsIcons49.Plus"
+      },
+      {
+        "name": "power",
+        "set": "MpsIcons49",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons49.Power"
+      },
+      {
+        "name": "prod",
+        "set": "MpsIcons49",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons49.Prod"
+      },
+      {
+        "name": "sum",
+        "set": "MpsIcons49",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons49.Sum"
+      },
+      {
+        "name": "times",
+        "set": "MpsIcons49",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": false,
+        "hiDPI": true,
+        "sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons49.Times"
       }
     ]
   },
@@ -52332,12 +52932,12 @@
     ],
     "icons": [
       {
-        "name": "icon",
+        "name": "task",
         "set": "MpsIcons50",
         "area": "",
         "section": "",
-        "variants": 1,
-        "dark": false,
+        "variants": 2,
+        "dark": true,
         "hiDPI": false,
         "sizes": [
           [
@@ -52345,8 +52945,8 @@
             16
           ]
         ],
-        "kind": "png",
-        "java": "MpsIcons50.Icon"
+        "kind": "svg",
+        "java": "MpsIcons50.Task"
       }
     ]
   },
@@ -52360,46 +52960,21 @@
     ],
     "icons": [
       {
-        "name": "action",
+        "name": "icon",
         "set": "MpsIcons51",
         "area": "",
         "section": "",
-        "variants": 2,
+        "variants": 1,
         "dark": false,
-        "hiDPI": true,
+        "hiDPI": false,
         "sizes": [
           [
             16,
             16
-          ],
-          [
-            32,
-            32
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons51.Action"
-      },
-      {
-        "name": "refactoring",
-        "set": "MpsIcons51",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": false,
-        "hiDPI": true,
-        "sizes": [
-          [
-            16,
-            16
-          ],
-          [
-            32,
-            32
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons51.Refactoring"
+        "java": "MpsIcons51.Icon"
       }
     ]
   },
@@ -52413,55 +52988,46 @@
     ],
     "icons": [
       {
-        "name": "child1",
+        "name": "action",
         "set": "MpsIcons52",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
+          ],
+          [
+            32,
+            32
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons52.Child1"
+        "java": "MpsIcons52.Action"
       },
       {
-        "name": "child1subConcept",
+        "name": "refactoring",
         "set": "MpsIcons52",
         "area": "",
         "section": "",
-        "variants": 1,
+        "variants": 2,
         "dark": false,
-        "hiDPI": false,
+        "hiDPI": true,
         "sizes": [
           [
             16,
             16
-          ]
-        ],
-        "kind": "png",
-        "java": "MpsIcons52.Child1subConcept"
-      },
-      {
-        "name": "child2",
-        "set": "MpsIcons52",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
+          ],
           [
-            16,
-            16
+            32,
+            32
           ]
         ],
         "kind": "png",
-        "java": "MpsIcons52.Child2"
+        "java": "MpsIcons52.Refactoring"
       }
     ]
   },
@@ -55622,7 +56188,7 @@
     ],
     "icons": [
       {
-        "name": "MPS_16",
+        "name": "child1",
         "set": "MpsIcons",
         "area": "",
         "section": "",
@@ -55635,8 +56201,42 @@
             16
           ]
         ],
-        "kind": "svg",
-        "java": "MpsIcons.MPS_16"
+        "kind": "png",
+        "java": "MpsIcons.Child1"
+      },
+      {
+        "name": "child1subConcept",
+        "set": "MpsIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons.Child1subConcept"
+      },
+      {
+        "name": "child2",
+        "set": "MpsIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "png",
+        "java": "MpsIcons.Child2"
       }
     ]
   },
@@ -89573,6 +90173,40 @@
         "java": "NetIcons.Ide.FolderOpened(GrayDark)"
       },
       {
+        "name": "FolderOpened(RiderDark)",
+        "set": "NetIcons",
+        "area": "Ide",
+        "section": "Ide",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.Ide.FolderOpened(RiderDark)"
+      },
+      {
+        "name": "FolderOpened(RiderLight)",
+        "set": "NetIcons",
+        "area": "Ide",
+        "section": "Ide",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.Ide.FolderOpened(RiderLight)"
+      },
+      {
         "name": "Html(RiderDark)",
         "set": "NetIcons",
         "area": "Ide",
@@ -95266,6 +95900,108 @@
         ],
         "kind": "svg",
         "java": "NetIcons.ProjectModel.Folder(GrayDark)"
+      },
+      {
+        "name": "FolderWWWRootClosed(Color)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootClosed(Color)"
+      },
+      {
+        "name": "FolderWWWRootClosed(Gray)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootClosed(Gray)"
+      },
+      {
+        "name": "FolderWWWRootClosed(GrayDark)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootClosed(GrayDark)"
+      },
+      {
+        "name": "FolderWWWRootOpened(Color)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootOpened(Color)"
+      },
+      {
+        "name": "FolderWWWRootOpened(Gray)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootOpened(Gray)"
+      },
+      {
+        "name": "FolderWWWRootOpened(GrayDark)",
+        "set": "NetIcons",
+        "area": "ProjectModel",
+        "section": "ProjectModel",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "NetIcons.ProjectModel.FolderWWWRootOpened(GrayDark)"
       },
       {
         "name": "FrameworkFolder(Color)",
@@ -150704,6 +151440,40 @@
         "java": "RiderIcons.Actions.CancelCompile"
       },
       {
+        "name": "compileSelected",
+        "set": "RiderIcons",
+        "area": "actions",
+        "section": "actions",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "RiderIcons.Actions.CompileSelected"
+      },
+      {
+        "name": "compileStartup",
+        "set": "RiderIcons",
+        "area": "actions",
+        "section": "actions",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "RiderIcons.Actions.CompileStartup"
+      },
+      {
         "name": "csharpInteractive",
         "set": "RiderIcons",
         "area": "actions",
@@ -155536,8 +156306,36 @@
     ],
     "icons": [
       {
-        "name": "abstractClassObjectScala",
+        "name": "pluginIcon",
         "set": "ScalaIcons3",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            40,
+            40
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons3.PluginIcon"
+      }
+    ]
+  },
+  {
+    "set": "ScalaIcons",
+    "areas": [
+      ""
+    ],
+    "sections": [
+      ""
+    ],
+    "icons": [
+      {
+        "name": "abstractClassObjectScala",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155550,11 +156348,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AbstractClassObjectScala"
+        "java": "ScalaIcons.AbstractClassObjectScala"
       },
       {
         "name": "abstractClassScala",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155567,11 +156365,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AbstractClassScala"
+        "java": "ScalaIcons.AbstractClassScala"
       },
       {
         "name": "abstractFieldValue",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155584,11 +156382,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AbstractFieldValue"
+        "java": "ScalaIcons.AbstractFieldValue"
       },
       {
         "name": "abstractFieldVariable",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155601,11 +156399,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AbstractFieldVariable"
+        "java": "ScalaIcons.AbstractFieldVariable"
       },
       {
         "name": "abstractTypeAlias",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155618,11 +156416,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AbstractTypeAlias"
+        "java": "ScalaIcons.AbstractTypeAlias"
       },
       {
         "name": "addClause",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 2,
@@ -155635,11 +156433,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.AddClause"
+        "java": "ScalaIcons.AddClause"
       },
       {
         "name": "classCompanion",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 2,
@@ -155652,11 +156450,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.ClassCompanion"
+        "java": "ScalaIcons.ClassCompanion"
       },
       {
         "name": "classCompanionSwapped",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 2,
@@ -155669,11 +156467,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.ClassCompanionSwapped"
+        "java": "ScalaIcons.ClassCompanionSwapped"
       },
       {
         "name": "classObjectScala",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155686,11 +156484,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.ClassObjectScala"
+        "java": "ScalaIcons.ClassObjectScala"
       },
       {
         "name": "classScala",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155703,11 +156501,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.ClassScala"
+        "java": "ScalaIcons.ClassScala"
       },
       {
         "name": "compilationCharts",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155720,11 +156518,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.CompilationCharts"
+        "java": "ScalaIcons.CompilationCharts"
       },
       {
         "name": "compileServer",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 1,
@@ -155737,11 +156535,11 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.CompileServer"
+        "java": "ScalaIcons.CompileServer"
       },
       {
         "name": "enumScala",
-        "set": "ScalaIcons3",
+        "set": "ScalaIcons",
         "area": "",
         "section": "",
         "variants": 2,
@@ -155758,701 +156556,10 @@
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons3.EnumScala"
+        "java": "ScalaIcons.EnumScala"
       },
       {
         "name": "fieldValue",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.FieldValue"
-      },
-      {
-        "name": "fieldVariable",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.FieldVariable"
-      },
-      {
-        "name": "fileScala",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.FileScala"
-      },
-      {
-        "name": "function",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Function"
-      },
-      {
-        "name": "lambda",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Lambda"
-      },
-      {
-        "name": "lightbendLogo",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.LightbendLogo"
-      },
-      {
-        "name": "multipleTypeDefinitions",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.MultipleTypeDefinitions"
-      },
-      {
-        "name": "noScalaSdk",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.NoScalaSdk"
-      },
-      {
-        "name": "objectCompanion",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ObjectCompanion"
-      },
-      {
-        "name": "objectCompanionSwapped",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ObjectCompanionSwapped"
-      },
-      {
-        "name": "objectScala",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ObjectScala"
-      },
-      {
-        "name": "packageObject",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.PackageObject"
-      },
-      {
-        "name": "parameter",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Parameter"
-      },
-      {
-        "name": "patternValue",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.PatternValue"
-      },
-      {
-        "name": "recursion",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Recursion"
-      },
-      {
-        "name": "removeClause",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.RemoveClause"
-      },
-      {
-        "name": "sbtFile",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtFile"
-      },
-      {
-        "name": "sbtFolder",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtFolder"
-      },
-      {
-        "name": "sbtIcon",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtIcon"
-      },
-      {
-        "name": "sbtLoadChanges",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtLoadChanges"
-      },
-      {
-        "name": "sbtShell",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtShell"
-      },
-      {
-        "name": "sbtShellToolwin",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            13,
-            13
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtShellToolwin"
-      },
-      {
-        "name": "sbtToolwin",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            13,
-            13
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.SbtToolwin"
-      },
-      {
-        "name": "scala16",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Scala16"
-      },
-      {
-        "name": "scalaConsole",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaConsole"
-      },
-      {
-        "name": "scalaScriptIcon",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaScriptIcon"
-      },
-      {
-        "name": "scalaSdk",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaSdk"
-      },
-      {
-        "name": "scalaSmallLogo",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaSmallLogo"
-      },
-      {
-        "name": "scalaTest",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaTest"
-      },
-      {
-        "name": "scalaTestIcon",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.ScalaTestIcon"
-      },
-      {
-        "name": "tailRecursion",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TailRecursion"
-      },
-      {
-        "name": "traitCompanion",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TraitCompanion"
-      },
-      {
-        "name": "traitCompanionSwapped",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 2,
-        "dark": true,
-        "hiDPI": false,
-        "sizes": [
-          [
-            12,
-            12
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TraitCompanionSwapped"
-      },
-      {
-        "name": "traitObjectScala",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TraitObjectScala"
-      },
-      {
-        "name": "traitScala",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TraitScala"
-      },
-      {
-        "name": "typeAlias",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.TypeAlias"
-      },
-      {
-        "name": "typed",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Typed"
-      },
-      {
-        "name": "untyped",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Untyped"
-      },
-      {
-        "name": "value",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Value"
-      },
-      {
-        "name": "variable",
-        "set": "ScalaIcons3",
-        "area": "",
-        "section": "",
-        "variants": 1,
-        "dark": false,
-        "hiDPI": false,
-        "sizes": [
-          [
-            16,
-            16
-          ]
-        ],
-        "kind": "svg",
-        "java": "ScalaIcons3.Variable"
-      }
-    ]
-  },
-  {
-    "set": "ScalaIcons",
-    "areas": [
-      ""
-    ],
-    "sections": [
-      ""
-    ],
-    "icons": [
-      {
-        "name": "pluginIcon",
         "set": "ScalaIcons",
         "area": "",
         "section": "",
@@ -156461,12 +156568,675 @@
         "hiDPI": false,
         "sizes": [
           [
-            40,
-            40
+            16,
+            16
           ]
         ],
         "kind": "svg",
-        "java": "ScalaIcons.PluginIcon"
+        "java": "ScalaIcons.FieldValue"
+      },
+      {
+        "name": "fieldVariable",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.FieldVariable"
+      },
+      {
+        "name": "fileScala",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.FileScala"
+      },
+      {
+        "name": "function",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Function"
+      },
+      {
+        "name": "lambda",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Lambda"
+      },
+      {
+        "name": "lightbendLogo",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.LightbendLogo"
+      },
+      {
+        "name": "multipleTypeDefinitions",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.MultipleTypeDefinitions"
+      },
+      {
+        "name": "noScalaSdk",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.NoScalaSdk"
+      },
+      {
+        "name": "objectCompanion",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ObjectCompanion"
+      },
+      {
+        "name": "objectCompanionSwapped",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ObjectCompanionSwapped"
+      },
+      {
+        "name": "objectScala",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ObjectScala"
+      },
+      {
+        "name": "packageObject",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.PackageObject"
+      },
+      {
+        "name": "parameter",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Parameter"
+      },
+      {
+        "name": "patternValue",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.PatternValue"
+      },
+      {
+        "name": "recursion",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Recursion"
+      },
+      {
+        "name": "removeClause",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.RemoveClause"
+      },
+      {
+        "name": "sbtFile",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtFile"
+      },
+      {
+        "name": "sbtFolder",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtFolder"
+      },
+      {
+        "name": "sbtIcon",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtIcon"
+      },
+      {
+        "name": "sbtLoadChanges",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtLoadChanges"
+      },
+      {
+        "name": "sbtShell",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtShell"
+      },
+      {
+        "name": "sbtShellToolwin",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            13,
+            13
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtShellToolwin"
+      },
+      {
+        "name": "sbtToolwin",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            13,
+            13
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.SbtToolwin"
+      },
+      {
+        "name": "scala16",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Scala16"
+      },
+      {
+        "name": "scalaConsole",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaConsole"
+      },
+      {
+        "name": "scalaScriptIcon",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaScriptIcon"
+      },
+      {
+        "name": "scalaSdk",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaSdk"
+      },
+      {
+        "name": "scalaSmallLogo",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaSmallLogo"
+      },
+      {
+        "name": "scalaTest",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaTest"
+      },
+      {
+        "name": "scalaTestIcon",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.ScalaTestIcon"
+      },
+      {
+        "name": "tailRecursion",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TailRecursion"
+      },
+      {
+        "name": "traitCompanion",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TraitCompanion"
+      },
+      {
+        "name": "traitCompanionSwapped",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 2,
+        "dark": true,
+        "hiDPI": false,
+        "sizes": [
+          [
+            12,
+            12
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TraitCompanionSwapped"
+      },
+      {
+        "name": "traitObjectScala",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TraitObjectScala"
+      },
+      {
+        "name": "traitScala",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TraitScala"
+      },
+      {
+        "name": "typeAlias",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.TypeAlias"
+      },
+      {
+        "name": "typed",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Typed"
+      },
+      {
+        "name": "untyped",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Untyped"
+      },
+      {
+        "name": "value",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Value"
+      },
+      {
+        "name": "variable",
+        "set": "ScalaIcons",
+        "area": "",
+        "section": "",
+        "variants": 1,
+        "dark": false,
+        "hiDPI": false,
+        "sizes": [
+          [
+            16,
+            16
+          ]
+        ],
+        "kind": "svg",
+        "java": "ScalaIcons.Variable"
       }
     ]
   }

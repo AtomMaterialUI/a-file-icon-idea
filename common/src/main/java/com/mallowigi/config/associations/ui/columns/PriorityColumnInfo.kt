@@ -1,27 +1,25 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
 package com.mallowigi.config.associations.ui.columns
 
@@ -40,6 +38,7 @@ import javax.swing.table.TableCellRenderer
 
 /**
  * Editable column for the priority
+ *
  * @property parent the Parent class
  * @property editable whether the column should be editable
  */
@@ -47,9 +46,7 @@ import javax.swing.table.TableCellRenderer
 class PriorityColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.priority")) {
 
-  /**
-   * Priority class is Integer
-   */
+  /** Priority class is Integer. */
   override fun getColumnClass(): Class<Int> = Int::class.java
 
   /**
@@ -116,13 +113,9 @@ class PriorityColumnInfo(private val parent: Disposable, private val editable: B
     else               -> null
   }
 
-  /**
-   * Compare by priority for sorting
-   */
+  /** Compare by priority for sorting. */
   override fun getComparator(): Comparator<Association> = Comparator.comparingInt { c: Association -> c.priority }
 
-  /**
-   * Column width
-   */
+  /** Column width. */
   override fun getWidth(table: JTable?): Int = 50
 }
