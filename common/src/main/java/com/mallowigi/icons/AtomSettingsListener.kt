@@ -33,9 +33,6 @@ import com.intellij.openapi.fileTypes.FileTypeEvent
 import com.intellij.openapi.fileTypes.FileTypeListener
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.DumbAware
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.ProjectManager
-import com.intellij.openapi.project.ProjectManagerListener
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.listeners.AtomSelectNotifier
@@ -79,9 +76,9 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
         override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
       })
 
-      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
-        override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
-      })
+//      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
+//        override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
+//      })
     }
 
     UIUtil.invokeLaterIfNeeded { IconFilterManager.applyFilter() }
