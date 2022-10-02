@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NonNls
 
 /** Utility to add older icons to new UI. */
 class OldToolbarAdder : ActionConfigurationCustomizer {
+
   /** Customize. */
   override fun customize(actionManager: ActionManager) {
     if (alreadyRunOnce || !ExperimentalUI.isNewUI()) return
@@ -43,7 +44,7 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
 
   private fun executeAdd(actionManager: ActionManager) {
     val mainToolBar = getActionGroup(actionManager, MAIN_TOOLBAR)
-    val experimentalToolbarActions = getActionGroup(actionManager, OLD_TOOLBAR) as DefaultActionGroup?
+    val experimentalToolbarActions = getActionGroup(actionManager, OLD_TOOLBAR) as? DefaultActionGroup
     if (mainToolBar == null || experimentalToolbarActions == null) return
 
     for (action in mainToolBar.getChildren(null, actionManager)) {
@@ -68,4 +69,5 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
     /** Main toolbar key. */
     const val MAIN_TOOLBAR: String = "MainToolBar"
   }
+
 }
