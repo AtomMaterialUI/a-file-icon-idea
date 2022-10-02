@@ -81,6 +81,17 @@ class BundledAssociations {
    */
   private fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
 
+  /** Load bundled associations. */
+  private fun init() {
+    folderAssociations.getTheAssociations()
+      .filterIsInstance<RegexAssociation>()
+      .forEach { insert(it.name, it, IconType.FOLDER) }
+
+    fileAssociations.getTheAssociations()
+      .filterIsInstance<RegexAssociation>()
+      .forEach { insert(it.name, it, IconType.FILE) }
+  }
+
   /**
    * Insert a new default [RegexAssociation]
    *
@@ -95,17 +106,6 @@ class BundledAssociations {
 
     map[name] = assoc
     map[name]?.enabled = true
-  }
-
-  /** Load bundled associations. */
-  private fun init() {
-    folderAssociations.getTheAssociations()
-      .filterIsInstance<RegexAssociation>()
-      .forEach { insert(it.name, it, IconType.FOLDER) }
-
-    fileAssociations.getTheAssociations()
-      .filterIsInstance<RegexAssociation>()
-      .forEach { insert(it.name, it, IconType.FILE) }
   }
 
   companion object {

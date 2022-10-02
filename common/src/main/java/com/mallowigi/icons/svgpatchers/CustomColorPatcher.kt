@@ -31,18 +31,6 @@ import java.nio.charset.StandardCharsets
 /** Custom Color Patcher. */
 class CustomColorPatcher : SvgPatcher {
 
-  override fun refresh() {
-    // do nothing
-  }
-
-  override fun patch(svg: Element, path: String?) {
-    patchIconColor(svg)
-    patchFolderColor(svg)
-    patchFolderIconColor(svg)
-  }
-
-  override fun priority(): Int = 101
-
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
     val fileAssociations = AtomSelectConfig.instance.selectedFileAssociations.ownValues()
@@ -60,15 +48,16 @@ class CustomColorPatcher : SvgPatcher {
     return hasher.digest()
   }
 
-  private fun patchIconColor(svg: Element) {
-    val attr = svg.getAttribute(SvgPatcher.ICONCOLOR) ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findFileAssociationByName(attr) ?: return
-    val iconColor = matchingAssociation.iconColor
+  override fun patch(svg: Element, path: String?) {
+    patchIconColor(svg)
+    patchFolderColor(svg)
+    patchFolderIconColor(svg)
+  }
 
-    svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
-    if (svg.getAttribute(SvgPatcher.STROKE) != "") {
-      svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
-    }
+  override fun priority(): Int = 101
+
+  override fun refresh() {
+    // do nothing
   }
 
   private fun patchFolderColor(svg: Element) {
@@ -92,4 +81,16 @@ class CustomColorPatcher : SvgPatcher {
       svg.setAttribute(SvgPatcher.STROKE, "#$folderIconColor")
     }
   }
+
+  private fun patchIconColor(svg: Element) {
+    val attr = svg.getAttribute(SvgPatcher.ICONCOLOR) ?: return
+    val matchingAssociation = AtomSelectConfig.instance.findFileAssociationByName(attr) ?: return
+    val iconColor = matchingAssociation.iconColor
+
+    svg.setAttribute(SvgPatcher.FILL, "#$iconColor")
+    if (svg.getAttribute(SvgPatcher.STROKE) != "") {
+      svg.setAttribute(SvgPatcher.STROKE, "#$iconColor")
+    }
+  }
+
 }

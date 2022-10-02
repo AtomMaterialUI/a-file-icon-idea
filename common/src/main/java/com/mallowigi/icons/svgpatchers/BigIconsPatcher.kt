@@ -1,27 +1,25 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  */
 package com.mallowigi.icons.svgpatchers
 
@@ -31,44 +29,14 @@ import org.w3c.dom.Element
 import java.nio.charset.StandardCharsets
 import javax.swing.UIManager
 
-/**
- * Big icons patcher
- *
- * @constructor Create empty Big icons patcher
- */
+/** Big icons patcher. */
 class BigIconsPatcher : SvgPatcher {
-  private var hasCustomSize = false
-  private var hasCustomLineHeight = false
+
   private var customIconSize = REGULAR
   private var customLineHeight = REGULAR
-  private var defaultRowHeight = UIManager.get("Tree.rowHeight") as Int
-
-  override fun refresh(): Unit = refreshSizes()
-
-  override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
-
-  private fun refreshSizes() {
-    hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
-    hasCustomLineHeight = AtomFileIconsConfig.instance.hasCustomLineHeight
-    customIconSize = AtomFileIconsConfig.instance.customIconSize
-    customLineHeight = AtomFileIconsConfig.instance.customLineHeight
-
-    updateRowHeight()
-  }
-
-  private fun updateRowHeight() {
-    val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_SIZE else defaultRowHeight
-    val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
-    val materialHeight = UIManager.get("Tree.materialRowHeight") as Int?
-
-    if (materialHeight != null) {
-      UIManager.put("Tree.rowHeight", materialHeight)
-    } else {
-      UIManager.put("Tree.rowHeight", customRowHeight)
-    }
-  }
-
-  override fun priority(): Int = 97
+  private var defaultRowHeight = UIManager.getInt(ROW_HEIGHT)
+  private var hasCustomLineHeight = false
+  private var hasCustomSize = false
 
   override fun digest(): ByteArray? {
     val hasher = DigestUtil.sha512()
@@ -78,6 +46,12 @@ class BigIconsPatcher : SvgPatcher {
     hasher.update(customLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
     return hasher.digest()
   }
+
+  override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
+
+  override fun priority(): Int = 97
+
+  override fun refresh(): Unit = refreshSizes()
 
   private fun patchSizes(svg: Element) {
     val isBig = svg.getAttribute(SvgPatcher.BIG)
@@ -91,8 +65,32 @@ class BigIconsPatcher : SvgPatcher {
     }
   }
 
+  private fun refreshSizes() {
+    hasCustomSize = AtomFileIconsConfig.instance.hasCustomIconSize
+    hasCustomLineHeight = AtomFileIconsConfig.instance.hasCustomLineHeight
+    customIconSize = AtomFileIconsConfig.instance.customIconSize
+    customLineHeight = AtomFileIconsConfig.instance.customLineHeight
+
+    updateRowHeight()
+  }
+
+  private fun updateRowHeight() {
+    val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_SIZE else defaultRowHeight
+    val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
+    val materialHeight = UIManager.getInt(MATERIAL_ROW_HEIGHT)
+
+    if (materialHeight != 0) {
+      UIManager.put(ROW_HEIGHT, materialHeight)
+    } else {
+      UIManager.put(ROW_HEIGHT, customRowHeight)
+    }
+  }
+
   companion object {
     private const val MIN_SIZE = 12
     private const val REGULAR = 16
+    private const val ROW_HEIGHT = "Tree.rowHeight"
+    private const val MATERIAL_ROW_HEIGHT = "Tree.materialRowHeight"
   }
+
 }
