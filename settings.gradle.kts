@@ -27,3 +27,10 @@
 
 rootProject.name = "a-file-icon-idea"
 include("common", "rider")
+
+pluginManagement {
+  repositories {
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    gradlePluginPortal()
+  }
+}
