@@ -1,6 +1,11 @@
 ## Changelog
 
 ----
+## 81.0.0 (8.1.0)
+
+### Features
+
+- Support folder/ file path matching if the pattern contains forward slash
 
 ## 80.0.0 (8.0.0)
 
