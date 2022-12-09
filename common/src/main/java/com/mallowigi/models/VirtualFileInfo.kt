@@ -38,4 +38,6 @@ class VirtualFileInfo(private val vFile: VirtualFile) : FileInfo {
   override val fileType: String
     get() = vFile.fileType.name
 
+  override val path: String
+    get() = vFile.getPath()
 }

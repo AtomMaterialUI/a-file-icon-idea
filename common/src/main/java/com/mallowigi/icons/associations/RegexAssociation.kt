@@ -69,7 +69,11 @@ class RegexAssociation internal constructor() : Association() {
   override fun matches(file: FileInfo): Boolean {
     return try {
       if (compiledPattern == null) compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE)
-      compiledPattern!!.matcher(file.name).matches()
+      var target = file.name
+      if (pattern.contains("/")) {
+        target = file.path
+      }
+      compiledPattern!!.matcher(target).matches()
     } catch (e: PatternSyntaxException) {
       LOG.warn(e)
       false
