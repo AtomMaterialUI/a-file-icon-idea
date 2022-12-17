@@ -9,6 +9,7 @@
 - Add support for EditorGroups
 - Add support for GitToolbox
 - Add missing Docker icons
+- Support for Sync Settings framework
 
 ### Fixes
 

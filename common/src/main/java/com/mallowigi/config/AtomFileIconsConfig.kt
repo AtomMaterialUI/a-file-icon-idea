@@ -26,6 +26,7 @@ package com.mallowigi.config
 import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.SettingsCategory
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.ui.ColorUtil
@@ -40,7 +41,11 @@ import org.jetbrains.annotations.NonNls
 
 /** Atom file icons config. */
 @Suppress("TooManyFunctions")
-@State(name = "AtomFileIconsConfig", storages = [Storage("a-file-icons.xml")]) // NON-NLS
+@State(
+  name = "AtomFileIconsConfig",
+  storages = [Storage("a-file-icons.xml")],
+  category = SettingsCategory.UI
+) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   /** Is enabled new ui icons. */
   @Property
