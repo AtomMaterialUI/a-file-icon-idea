@@ -32,4 +32,7 @@ interface FileInfo {
   /** File name. */
   val name: String
 
+  /** Full path of File. */
+  val path: String
+
 }
