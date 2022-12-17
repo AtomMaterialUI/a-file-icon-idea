@@ -2,6 +2,75 @@
 
 ----
 
+## 81.0.0 (8.1.0)
+
+### Features
+
+- Add support for EditorGroups
+- Add support for GitToolbox
+- Add missing Docker icons
+
+### Fixes
+
+- Add cjs, ts, and mjs where js is used
+- Add R associations
+- Hide Dropdown icon
+- Fix PostStartupActivity
+- Other UI Icons
+
+### Additions
+
+- Icons:
+  - RedwoodJS
+  - Cypress Files
+  - Moon
+  - CodeSandbox
+  - Electron Files
+  - Japafile
+  - Palettes
+  - Pinia
+  - Quantum
+  - RBS Config
+  - Size-Limit
+  - Systemd
+  - Vuepress
+  - Abell
+  - BFBF
+  - Docusaurus
+  - GameMaker
+  - JSON Schema
+  - Madge
+  - Roblox
+  - Rojo
+  - Wally
+  - Taskfile
+  - Craco
+  - Volar
+  - Calyx
+  - Yggdrasil
+  - Concord
+  - Woodpecker
+
+- Folders:
+  - Contacts
+  - Info
+  - FAQ
+  - ADR
+  - CodeSandbox
+  - Domain
+  - Elixir
+  - Pinia
+  - Quantum
+  - Trait
+  - ACF
+  - Helm
+  - Nuxt
+  - Queries
+  - Storyblok
+  - Playwright
+  - Taskfile
+  - Vitepress
+
 ## 80.0.0 (8.0.0)
 
 ### Features
