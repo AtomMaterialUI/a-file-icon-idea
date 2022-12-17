@@ -1,16 +1,12 @@
 ## Changelog
 
 ----
-## 81.0.0 (8.1.0)
-
-### Features
-
-- Support folder/ file path matching if the pattern contains forward slash
 
 ## 81.0.0 (8.1.0)
 
 ### Features
 
+- Support folder/ file path matching if the pattern contains forward slash (Thanks @Yogesh!)
 - Add support for EditorGroups
 - Add support for GitToolbox
 - Add missing Docker icons

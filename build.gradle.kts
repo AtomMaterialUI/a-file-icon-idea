@@ -40,7 +40,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.7.21"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.10.0"
+  id("org.jetbrains.intellij") version "1.11.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "2.0.0"
   // Gradle Qodana Plugin
@@ -128,6 +128,11 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
+//  plugins.set(
+//    listOf(
+//      "zielu.gittoolbox:213.10.3"
+//    )
+//  )
   //  localPath.set(properties("idePath"))
 //  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
 }
