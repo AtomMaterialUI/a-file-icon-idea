@@ -89,6 +89,7 @@
         <iconPatcher name="VCS" remove="icons" append="icons/plugins/vcs"/>
         <iconPatcher name="Web" remove="images" append="icons/webDeployment"/>
         <iconPatcher name="Wizard" remove="icons/plugins" append="icons/plugins/wizard"/>
+        <iconPatcher name="Krasa" remove="/krasa/editorGroups/icons" append="icons/other"/>
         <iconPatcher name="Other" remove="icons" append="icons/other"/>
 
         <iconPatcher name="Logos" remove="artwork" append="icons/logos"/>
