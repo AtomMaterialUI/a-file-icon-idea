@@ -6,7 +6,7 @@
 
 ### Features
 
-- Support folder/ file path matching if the pattern contains forward slash (Thanks @Yogesh!)
+- Support parent directory matching if the pattern contains slash (Thanks @Yogesh!)
 - Add support for EditorGroups
 - Add support for GitToolbox
 - Add missing Docker icons
