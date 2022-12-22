@@ -93,9 +93,9 @@ abstract class IconToggleAction : ToggleAction() {
       }
     }
 
-    override fun getIconWidth(): Int = icon?.iconWidth ?: iconSize
+    override fun getIconWidth(): Int = iconSize
 
-    override fun getIconHeight(): Int = icon?.iconHeight ?: iconSize
+    override fun getIconHeight(): Int = iconSize
   }
 
 }
