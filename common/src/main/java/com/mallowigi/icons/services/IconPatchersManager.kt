@@ -83,7 +83,7 @@ object IconPatchersManager {
         it.isAccessible = true
         val patcher = it.get(ExperimentalUI.getInstance())
 
-        if (instance.isEnabledNewUiIcons) {
+        if (!instance.isEnabledUIIcons) {
           IconLoader.installPathPatcher(patcher as IconPathPatcher)
         } else {
           IconLoader.removePathPatcher(patcher as IconPathPatcher)

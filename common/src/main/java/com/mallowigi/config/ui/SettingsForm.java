@@ -33,7 +33,6 @@ package com.mallowigi.config.ui;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.ExperimentalUI;
 import com.intellij.ui.SimpleListCellRenderer;
 import com.intellij.ui.components.OnOffButton;
 import com.mallowigi.config.AtomFileIconsConfig;
@@ -67,10 +66,7 @@ public final class SettingsForm implements SettingsFormUI {
   private SpinnerModel customLineHeightSpinnerModel;
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
   private JPanel content;
-  private JLabel expUiIcon;
-  private JCheckBox expUiCheckbox;
   private JLabel enableFileIconsIcon;
   private JCheckBox enableFileIconsCheckbox;
   private JLabel enableDirectoryIconsIcon;
@@ -107,7 +103,6 @@ public final class SettingsForm implements SettingsFormUI {
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public void setFormState(final AtomFileIconsConfig config) {
-    setIsEnabledNewUiIcons(config.isEnabledNewUiIcons());
     setIsEnabledIcons(config.isEnabledIcons());
     setIsEnabledDirectories(config.isEnabledDirectories());
     setIsEnabledMonochromeIcons(config.isMonochromeIcons());
@@ -175,8 +170,7 @@ public final class SettingsForm implements SettingsFormUI {
 
   @SuppressWarnings("OverlyComplexMethod")
   public boolean isModified(final AtomFileIconsConfig config) {
-    boolean modified = config.isEnabledNewUiIconsChanged(getIsEnabledNewUiIcons());
-    modified = modified || config.isEnabledIconsChanged(getIsEnabledIcons());
+    boolean modified = config.isEnabledIconsChanged(getIsEnabledIcons());
     modified = modified || config.isEnabledDirectoriesChanged(getIsEnabledDirectories());
     modified = modified || config.isMonochromeIconsChanged(getIsEnabledMonochromeIcons());
     modified = modified || config.isEnabledUIIconsChanged(getIsEnabledUIIcons());
@@ -213,8 +207,6 @@ public final class SettingsForm implements SettingsFormUI {
     themedColorCheckboxActionPerformed(null);
     customIconSizeActionPerformed(null);
     customLineHeightActionPerformed(null);
-    // Need to be last
-    expUiActionPerformed(null);
   }
 
   @Override
@@ -226,11 +218,8 @@ public final class SettingsForm implements SettingsFormUI {
     "LocalCanBeFinal"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-    // Generated using JFormDesigner non-commercial license
     ResourceBundle bundle = ResourceBundle.getBundle("messages.AtomFileIconsBundle"); //NON-NLS
     content = new JPanel();
-    expUiIcon = new JLabel();
-    expUiCheckbox = new JCheckBox();
     enableFileIconsIcon = new JLabel();
     enableFileIconsCheckbox = new JCheckBox();
     enableDirectoryIconsIcon = new JLabel();
@@ -284,171 +273,160 @@ public final class SettingsForm implements SettingsFormUI {
           "[]" + //NON-NLS
           "[]" + //NON-NLS
           "[]" + //NON-NLS
-          "[]" + //NON-NLS
           "[50]" + //NON-NLS
           "[]" + //NON-NLS
           "[]" + //NON-NLS
           "[]" + //NON-NLS
           "[]")); //NON-NLS
 
-      //---- expUiIcon ----
-      expUiIcon.setIcon(new ImageIcon(getClass().getResource("/icons/mt/themeSwitch@2x.png"))); //NON-NLS
-      content.add(expUiIcon, "cell 0 0"); //NON-NLS
-
-      //---- expUiCheckbox ----
-      expUiCheckbox.setText(bundle.getString("SettingsForm.expUiCheckbox.text")); //NON-NLS
-      expUiCheckbox.setToolTipText(bundle.getString("SettingsForm.expUiCheckbox.toolTipText")); //NON-NLS
-      expUiCheckbox.addActionListener(e -> expUiActionPerformed(e));
-      content.add(expUiCheckbox, "cell 1 0"); //NON-NLS
-
       //---- enableFileIconsIcon ----
       enableFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/atom@2x.png"))); //NON-NLS
-      content.add(enableFileIconsIcon, "cell 0 1"); //NON-NLS
+      content.add(enableFileIconsIcon, "cell 0 0"); //NON-NLS
 
       //---- enableFileIconsCheckbox ----
       enableFileIconsCheckbox.setText(bundle.getString("SettingsForm.enableFileIconsCheckbox.text")); //NON-NLS
       enableFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableFileIconsCheckbox.toolTipText")); //NON-NLS
-      content.add(enableFileIconsCheckbox, "cell 1 1"); //NON-NLS
+      content.add(enableFileIconsCheckbox, "cell 1 0"); //NON-NLS
 
       //---- enableDirectoryIconsIcon ----
       enableDirectoryIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/compiledClassesFolder@2x.png"))); //NON-NLS
-      content.add(enableDirectoryIconsIcon, "cell 0 2"); //NON-NLS
+      content.add(enableDirectoryIconsIcon, "cell 0 1"); //NON-NLS
 
       //---- enableDirectoryIconsCheckbox ----
       enableDirectoryIconsCheckbox.setText(bundle.getString("SettingsForm.enableDirectoryIconsCheckbox.text")); //NON-NLS
       enableDirectoryIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableDirectoryIconsCheckbox.toolTipText")); //NON-NLS
       enableDirectoryIconsCheckbox.addActionListener(e -> enableDirectoryIconsCheckboxActionPerformed(e));
-      content.add(enableDirectoryIconsCheckbox, "cell 1 2"); //NON-NLS
+      content.add(enableDirectoryIconsCheckbox, "cell 1 1"); //NON-NLS
 
       //---- monochromeIcon ----
       monochromeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/monochrome@2x.png"))); //NON-NLS
-      content.add(monochromeIcon, "cell 0 3"); //NON-NLS
+      content.add(monochromeIcon, "cell 0 2"); //NON-NLS
 
       //---- monochromeCheckbox ----
       monochromeCheckbox.setText(bundle.getString("SettingsForm.monochromeCheckbox.text")); //NON-NLS
       monochromeCheckbox.setToolTipText(bundle.getString("SettingsForm.monochromeCheckbox.toolTipText")); //NON-NLS
       monochromeCheckbox.setIcon(null);
       monochromeCheckbox.addChangeListener(e -> monochromeCheckboxStateChanged(e));
-      content.add(monochromeCheckbox, "cell 1 3"); //NON-NLS
+      content.add(monochromeCheckbox, "cell 1 2"); //NON-NLS
 
       //---- monoColorChooser ----
       monoColorChooser.setToolTipText(bundle.getString("SettingsForm.monoColorChooser.toolTipText")); //NON-NLS
-      content.add(monoColorChooser, "cell 2 3,alignx right,growx 0"); //NON-NLS
+      content.add(monoColorChooser, "cell 2 2,alignx right,growx 0"); //NON-NLS
 
       //---- enableUIIconsIcon ----
       enableUIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plugin@2x.png"))); //NON-NLS
-      content.add(enableUIIconsIcon, "cell 0 4"); //NON-NLS
+      content.add(enableUIIconsIcon, "cell 0 3"); //NON-NLS
 
       //---- enableUIIconsCheckbox ----
       enableUIIconsCheckbox.setText(bundle.getString("SettingsForm.enableUIIconsCheckbox.text")); //NON-NLS
       enableUIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enableUIIconsCheckbox.toolTipText")); //NON-NLS
       enableUIIconsCheckbox.addActionListener(e -> enableUIIconsCheckboxActionPerformed(e));
-      content.add(enableUIIconsCheckbox, "cell 1 4"); //NON-NLS
+      content.add(enableUIIconsCheckbox, "cell 1 3"); //NON-NLS
 
       //---- enablePSIIconsIcon ----
       enablePSIIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/psiIcons@2x.png"))); //NON-NLS
-      content.add(enablePSIIconsIcon, "cell 0 5"); //NON-NLS
+      content.add(enablePSIIconsIcon, "cell 0 4"); //NON-NLS
 
       //---- enablePSIIconsCheckbox ----
       enablePSIIconsCheckbox.setText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.text")); //NON-NLS
       enablePSIIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.enablePSIIconsCheckbox.toolTipText")); //NON-NLS
-      content.add(enablePSIIconsCheckbox, "cell 1 5"); //NON-NLS
+      content.add(enablePSIIconsCheckbox, "cell 1 4"); //NON-NLS
 
       //---- hideFileIconsIcon ----
       hideFileIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFileAction@2x.png"))); //NON-NLS
-      content.add(hideFileIconsIcon, "cell 0 6"); //NON-NLS
+      content.add(hideFileIconsIcon, "cell 0 5"); //NON-NLS
 
       //---- hideFileIconsCheckbox ----
       hideFileIconsCheckbox.setText(bundle.getString("SettingsForm.hideFileIconsCheckbox.text")); //NON-NLS
       hideFileIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFileIconsCheckbox.toolTipText")); //NON-NLS
-      content.add(hideFileIconsCheckbox, "cell 1 6"); //NON-NLS
+      content.add(hideFileIconsCheckbox, "cell 1 5"); //NON-NLS
 
       //---- hideFolderIconsIcon ----
       hideFolderIconsIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/hideFolderAction@2x.png"))); //NON-NLS
-      content.add(hideFolderIconsIcon, "cell 0 7"); //NON-NLS
+      content.add(hideFolderIconsIcon, "cell 0 6"); //NON-NLS
 
       //---- hideFolderIconsCheckbox ----
       hideFolderIconsCheckbox.setText(bundle.getString("SettingsForm.hideFolderIconsCheckbox.text")); //NON-NLS
       hideFolderIconsCheckbox.setToolTipText(bundle.getString("SettingsForm.hideFolderIconsCheckbox.toolTipText")); //NON-NLS
-      content.add(hideFolderIconsCheckbox, "cell 1 7"); //NON-NLS
+      content.add(hideFolderIconsCheckbox, "cell 1 6"); //NON-NLS
 
       //---- hollowFoldersIcon ----
       hollowFoldersIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/folderOpen@2x.png"))); //NON-NLS
-      content.add(hollowFoldersIcon, "cell 0 8"); //NON-NLS
+      content.add(hollowFoldersIcon, "cell 0 7"); //NON-NLS
 
       //---- hollowFoldersCheckbox ----
       hollowFoldersCheckbox.setText(bundle.getString("SettingsForm.hollowFoldersCheckbox.text")); //NON-NLS
       hollowFoldersCheckbox.setToolTipText(bundle.getString("SettingsForm.hollowFoldersCheckbox.toolTipText")); //NON-NLS
-      content.add(hollowFoldersCheckbox, "cell 1 8"); //NON-NLS
+      content.add(hollowFoldersCheckbox, "cell 1 7"); //NON-NLS
 
       //---- customIconSizeIcon ----
       customIconSizeIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/plus@2x.png"))); //NON-NLS
-      content.add(customIconSizeIcon, "cell 0 9"); //NON-NLS
+      content.add(customIconSizeIcon, "cell 0 8"); //NON-NLS
 
       //---- customIconSizeCheckbox ----
       customIconSizeCheckbox.setText(bundle.getString("SettingsForm.customIconSizeCheckbox.text")); //NON-NLS
       customIconSizeCheckbox.setToolTipText(bundle.getString("SettingsForm.customIconSizeCheckbox.toolTipText")); //NON-NLS
       customIconSizeCheckbox.addActionListener(e -> customIconSizeActionPerformed(e));
-      content.add(customIconSizeCheckbox, "cell 1 9"); //NON-NLS
-      content.add(customIconSizeSpinner, "cell 2 9"); //NON-NLS
+      content.add(customIconSizeCheckbox, "cell 1 8"); //NON-NLS
+      content.add(customIconSizeSpinner, "cell 2 8"); //NON-NLS
 
       //---- customLineHeightCheckbox ----
       customLineHeightCheckbox.setText(bundle.getString("SettingsForm.customLineHeightCheckbox.text")); //NON-NLS
       customLineHeightCheckbox.setToolTipText(bundle.getString("SettingsForm.customLineHeightCheckbox.toolTipText")); //NON-NLS
       customLineHeightCheckbox.addActionListener(e -> customLineHeightActionPerformed(e));
-      content.add(customLineHeightCheckbox, "cell 1 10"); //NON-NLS
-      content.add(customLineHeightSpinner, "cell 2 10"); //NON-NLS
+      content.add(customLineHeightCheckbox, "cell 1 9"); //NON-NLS
+      content.add(customLineHeightSpinner, "cell 2 9"); //NON-NLS
 
       //---- arrowsStyleIcon ----
       arrowsStyleIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/arrowRight@2x.png"))); //NON-NLS
-      content.add(arrowsStyleIcon, "cell 0 11"); //NON-NLS
+      content.add(arrowsStyleIcon, "cell 0 10"); //NON-NLS
 
       //---- arrowsStyleLabel ----
       arrowsStyleLabel.setText(bundle.getString("SettingsForm.arrowsStyleLabel.text")); //NON-NLS
       arrowsStyleLabel.setToolTipText(bundle.getString("SettingsForm.arrowsStyleLabel.toolTipText")); //NON-NLS
-      content.add(arrowsStyleLabel, "pad 0,cell 1 11,aligny center,grow 100 0"); //NON-NLS
+      content.add(arrowsStyleLabel, "pad 0,cell 1 10,aligny center,grow 100 0"); //NON-NLS
 
       //---- arrowsStyleComboBox ----
       arrowsStyleComboBox.setToolTipText(bundle.getString("SettingsForm.arrowsStyleComboBox.toolTipText")); //NON-NLS
-      content.add(arrowsStyleComboBox, "cell 2 11,align right center,grow 0 0,width 120:120:120"); //NON-NLS
+      content.add(arrowsStyleComboBox, "cell 2 10,align right center,grow 0 0,width 120:120:120"); //NON-NLS
 
       //---- accentColorIcon ----
       accentColorIcon.setIcon(new ImageIcon(getClass().getResource("/icons/settings/accentColor@2x.png"))); //NON-NLS
-      content.add(accentColorIcon, "cell 0 12"); //NON-NLS
+      content.add(accentColorIcon, "cell 0 11"); //NON-NLS
 
       //---- accentColorCheckbox ----
       accentColorCheckbox.setText(bundle.getString("SettingsForm.accentColorCheckbox.text")); //NON-NLS
       accentColorCheckbox.setToolTipText(bundle.getString("SettingsForm.accentColorCheckbox.toolTipText")); //NON-NLS
       accentColorCheckbox.addActionListener(e -> accentColorCheckboxActionPerformed(e));
-      content.add(accentColorCheckbox, "cell 1 12"); //NON-NLS
+      content.add(accentColorCheckbox, "cell 1 11"); //NON-NLS
 
       //---- accentColorChooser ----
       accentColorChooser.setToolTipText(bundle.getString("SettingsForm.accentColorChooser.toolTipText")); //NON-NLS
-      content.add(accentColorChooser, "cell 2 12,alignx right,growx 0"); //NON-NLS
+      content.add(accentColorChooser, "cell 2 11,alignx right,growx 0"); //NON-NLS
 
       //---- themedColorCheckbox ----
       themedColorCheckbox.setText(bundle.getString("SettingsForm.themedColorCheckbox.text")); //NON-NLS
       themedColorCheckbox.setToolTipText(bundle.getString("SettingsForm.themedColorCheckbox.toolTipText")); //NON-NLS
       themedColorCheckbox.addActionListener(e -> themedColorCheckboxActionPerformed(e));
-      content.add(themedColorCheckbox, "cell 1 13"); //NON-NLS
+      content.add(themedColorCheckbox, "cell 1 12"); //NON-NLS
 
       //---- themedColorChooser ----
       themedColorChooser.setToolTipText(bundle.getString("SettingsForm.themedColorChooser.toolTipText")); //NON-NLS
-      content.add(themedColorChooser, "cell 2 13,alignx right,growx 0"); //NON-NLS
+      content.add(themedColorChooser, "cell 2 12,alignx right,growx 0"); //NON-NLS
 
       //---- lowPowerLabel ----
       lowPowerLabel.setText(bundle.getString("SettingsForm.lowPowerSwitch.text")); //NON-NLS
-      content.add(lowPowerLabel, "cell 1 14"); //NON-NLS
+      content.add(lowPowerLabel, "cell 1 13"); //NON-NLS
 
       //---- lowPowerSwitch ----
       lowPowerSwitch.setText(bundle.getString("SettingsForm.lowPowerSwitch.text")); //NON-NLS
       lowPowerSwitch.setToolTipText(bundle.getString("SettingsForm.lowPowerSwitch.toolTipText")); //NON-NLS
-      content.add(lowPowerSwitch, "cell 1 14,alignx right,growx 0,hmin 32"); //NON-NLS
+      content.add(lowPowerSwitch, "cell 1 13,alignx right,growx 0,hmin 32"); //NON-NLS
 
       //---- resetDefaultsButton ----
       resetDefaultsButton.setText(bundle.getString("SettingsForm.resetDefaultsButton.text")); //NON-NLS
       resetDefaultsButton.addActionListener(e -> resetDefaultsActionPerformed(e));
-      content.add(resetDefaultsButton, "cell 2 15"); //NON-NLS
+      content.add(resetDefaultsButton, "cell 2 14"); //NON-NLS
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -487,25 +465,6 @@ public final class SettingsForm implements SettingsFormUI {
     customLineHeightSpinner.setEnabled(customLineHeightCheckbox.isSelected());
   }
 
-  private void expUiActionPerformed(final ActionEvent e) {
-    expUiCheckbox.setEnabled(ExperimentalUI.isNewUI());
-
-    final boolean isExpUiDisabled = !expUiCheckbox.isSelected();
-    //    enableFileIconsCheckbox.setEnabled(isExpUiDisabled);
-    //    enableDirectoryIconsCheckbox.setEnabled(isExpUiDisabled);
-    enablePSIIconsCheckbox.setEnabled(isExpUiDisabled);
-    enableUIIconsCheckbox.setEnabled(isExpUiDisabled);
-  }
-  //endregion
-
-  //region New UI Icons
-  public boolean getIsEnabledNewUiIcons() {
-    return expUiCheckbox.isSelected();
-  }
-
-  private void setIsEnabledNewUiIcons(final boolean enabledIcons) {
-    expUiCheckbox.setSelected(enabledIcons);
-  }
   //endregion
 
   //region File Icons

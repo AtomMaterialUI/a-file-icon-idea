@@ -152,7 +152,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
    * @param form
    */
   fun applySettings(form: SettingsForm) {
-    isEnabledNewUiIcons = form.isEnabledNewUiIcons
     isEnabledIcons = form.isEnabledIcons
     isEnabledDirectories = form.isEnabledDirectories
     isEnabledUIIcons = form.isEnabledUIIcons
