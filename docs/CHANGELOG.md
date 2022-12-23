@@ -2,6 +2,24 @@
 
 ----
 
+## 82.0.0 (8.2.0)
+
+### Additions
+
+- Pest
+- SVGO
+- Justfile
+- JTE
+- ArangoDB
+- Candid
+
+### Fixes
+
+- Fix fatal error on LayeredIcon
+- Merged the "New UI Icons" setting with the "UI Icons". Now it automatically uses the New UI's icons when the plugin's UI Icons are disabled and the user is on
+  the new UI.
+- Added newest UI Icons
+
 ## 81.0.0 (8.1.0)
 
 ### Features
