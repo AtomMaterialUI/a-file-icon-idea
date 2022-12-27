@@ -45,6 +45,8 @@ import java.util.Objects
 )
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
+  private var firstRun: Boolean = true
+
   /** List of user file [Association]s. */
   @Property
   var selectedFileAssociations: SelectedAssociations = SelectedAssociations(IconType.FILE)
@@ -113,8 +115,14 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
   /** Load state from XML. */
   override fun loadState(state: AtomSelectConfig) {
+    val changed = state != this
     XmlSerializerUtil.copyBean(state, this)
-    init() // reload defaults
+
+    if (changed && !firstRun) {
+      ApplicationManager.getApplication().invokeAndWait { fireChanged() }
+    }
+    firstRun = false
+    init()
   }
 
   private fun fireChanged() {

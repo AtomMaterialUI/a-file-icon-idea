@@ -47,6 +47,8 @@ import org.jetbrains.annotations.NonNls
   category = SettingsCategory.UI
 ) // NON-NLS
 class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
+  private var firstRun: Boolean = true
+
   /** Is enabled new ui icons. */
   @Property
   var isEnabledNewUiIcons: Boolean = false
@@ -137,7 +139,15 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   override fun getState(): AtomFileIconsConfig = this
 
   /** Load config state from XML. */
-  override fun loadState(state: AtomFileIconsConfig): Unit = XmlSerializerUtil.copyBean(state, this)
+  override fun loadState(state: AtomFileIconsConfig): Unit {
+    val changed = state != this
+    XmlSerializerUtil.copyBean(state, this)
+
+    if (changed && !firstRun) {
+      ApplicationManager.getApplication().invokeAndWait { fireChanged() }
+    }
+    firstRun = false
+  }
 
   /** Fire event when settings are changed. */
   fun fireChanged() {
