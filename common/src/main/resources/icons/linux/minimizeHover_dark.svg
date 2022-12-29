@@ -28,6 +28,6 @@
 <svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" fill="#b0bec5"
      viewBox="0 0 24 24">
 
-  <path d="M20,14H4V10H20" />
-  <circle r="12" cx="12" cy="12" tint="true" opacity="0.5"></circle>
+    <path d="M20,14H4V10H20"/>
+    <circle r="12" cx="12" cy="12" tint="true" accent="true" opacity="0.5"></circle>
 </svg>

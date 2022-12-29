@@ -25,5 +25,5 @@
   -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="16px" viewBox="0 0 12 16">
-  <circle cx="6" cy="8" r="2.5" tint="true" />
+    <circle cx="6" cy="8" r="2.5" tint="true" accent="true"/>
 </svg>
