@@ -2,6 +2,32 @@
 
 ----
 
+## 83.0.0
+
+### Fixes
+
+- Correctly reload the UI upon settings sync
+
+### Additions
+
+- Icons:
+  - Github Files
+  - i18n Bundle Files
+  - JetBrains Color Schemes
+  - JetBrains' plugin manifests
+  - Ansible Files
+  - React Native
+  - OpenShift
+  - Metro
+- Folders:
+  - OpenShift
+  - Red Hat
+  - Notebooks
+  - Toolkits
+  - Toolboxes
+  - Managers
+  - Moderators
+
 ## 82.0.0 (8.2.0)
 
 ### Additions
