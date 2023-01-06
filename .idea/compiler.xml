@@ -3,4 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="17" />
   </component>
+  <component name="TypeScriptCompiler">
+    <option name="nodeInterpreterTextField" value="$USER_HOME$/.nvm/versions/node/v18.12.1/bin/node" />
+  </component>
 </project>
