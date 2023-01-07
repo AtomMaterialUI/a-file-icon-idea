@@ -23,245 +23,245 @@
   -->
 
 <idea-plugin>
-    <id>com.mallowigi</id>
-    <name>Atom Material Icons</name>
-    <version>@version</version>
-    <vendor email="elior@material-theme.com" url="https://github.com/mallowigi">AtomMaterial</vendor>
+  <id>com.mallowigi</id>
+  <name>Atom Material Icons</name>
+  <version>@version</version>
+  <vendor email="elior@material-theme.com" url="https://github.com/mallowigi">AtomMaterial</vendor>
 
-    <idea-version since-build="211"/>
+  <idea-version since-build="211"/>
 
-    <depends>com.intellij.modules.platform</depends>
-    <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
-    <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
-    <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
+  <depends>com.intellij.modules.platform</depends>
+  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
+  <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
+  <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
 
-    <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
+  <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
-        <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
-                                 groupId="appearance" dynamic="true"
-                                 id="AtomConfig"/>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
+    <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
+                             groupId="appearance" dynamic="true"
+                             id="AtomConfig"/>
 
-        <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
-        <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
-                                 groupId="appearance" dynamic="true"
-                                 parentId="AtomConfig"
-                                 id="AtomSelectConfig"/>
-        <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations"/>
-        <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher"/>
+    <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
+    <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
+                             groupId="appearance" dynamic="true"
+                             parentId="AtomConfig"
+                             id="AtomSelectConfig"/>
+    <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations"/>
+    <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher"/>
 
 
-        <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
-                               id="AtomConfigTopHitProvider"/>
-        <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"
-                                  id="AtomOptionContributor"/>
-
-        <!--suppress PluginXmlValidity -->
-        <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
-        <!--suppress PluginXmlValidity -->
-        <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
-                      id="HiddenFolderIconProvider"/>
-
-        <!--suppress PluginXmlValidity -->
-        <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
-                      order="first, after HiddenIconProvider"
-                      id="DefaultFileIconProvider"/>
-        <!--suppress PluginXmlValidity -->
-        <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
-                      order="first, after HiddenFolderIconProvider"
-                      id="DefaultFolderIconProvider"/>
-
-        <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator"/>
-        <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
-        <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
-
-        <notificationGroup displayType="BALLOON" id="Atom Material Notifications" bundle="messages.AtomFileIconsBundle"
-                           key="notification.group.atom.material.notifications"/>
-
-        <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
-        <backgroundPostStartupActivity implementation="com.mallowigi.utils.PostStartupActivity"/>
-    </extensions>
+    <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
+                           id="AtomConfigTopHitProvider"/>
+    <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"
+                              id="AtomOptionContributor"/>
 
     <!--suppress PluginXmlValidity -->
-    <applicationListeners>
-        <listener class="com.mallowigi.icons.AtomSettingsListener"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-        <listener class="com.mallowigi.icons.AtomSettingsListener" topic="com.intellij.ide.AppLifecycleListener"/>
+    <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
+                  id="HiddenFolderIconProvider"/>
 
-        <listener class="com.mallowigi.icons.AtomSVGPatchersListener"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-        <listener class="com.mallowigi.icons.AtomSVGPatchersListener" topic="com.intellij.ide.AppLifecycleListener"/>
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
+                  order="first, after HiddenIconProvider"
+                  id="DefaultFileIconProvider"/>
+    <!--suppress PluginXmlValidity -->
+    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
+                  order="first, after HiddenFolderIconProvider"
+                  id="DefaultFolderIconProvider"/>
 
-        <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
-        <listener class="com.mallowigi.tree.ArrowIconsComponent"
-                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator"/>
+    <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
+    <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
 
-        <listener class="com.mallowigi.tree.RefreshTreeListener"
-                  topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
+    <notificationGroup displayType="BALLOON" id="Atom Material Notifications" bundle="messages.AtomFileIconsBundle"
+                       key="notification.group.atom.material.notifications"/>
 
-    </applicationListeners>
+    <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
+    <!--        <backgroundPostStartupActivity implementation="com.mallowigi.utils.PostStartupActivity"/>-->
+  </extensions>
 
-    <actions>
-        <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
-               class="com.mallowigi.actions.ActionGroup">
-            <add-to-group group-id="MainToolbarRight"/>
-        </group>
-        <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
-               class="com.mallowigi.actions.ActionGroup">
-            <add-to-group group-id="MainToolBar" anchor="last"/>
-            <add-to-group group-id="ToolsMenu"/>
-            <add-to-group group-id="ChangeScheme" anchor="last"/>
-            <add-to-group group-id="MainToolbarRight"/>
-            <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
-                    icon="/icons/settings/atom.svg"/>
-            <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
-                    icon="/icons/settings/compiledClassesFolder.svg"/>
-            <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
-                    icon="/icons/settings/plugin.svg"/>
-            <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
-                    icon="/icons/settings/psi.svg"/>
-            <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
-                    icon="/icons/settings/monochrome.svg"/>
-            <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
-                    icon="/icons/settings/hideFileAction.svg"/>
-            <action class="com.mallowigi.actions.HideFolderIconsAction" id="HideFolderIcons"
-                    icon="/icons/settings/hideFolderAction.svg"/>
-            <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
-                    icon="/icons/settings/folderOpen.svg"/>
-            <action class="com.mallowigi.actions.CustomIconSizeAction" id="BiggerIconsAction"
-                    icon="/icons/settings/plus.svg"/>
-            <separator/>
+  <!--suppress PluginXmlValidity -->
+  <applicationListeners>
+    <listener class="com.mallowigi.icons.AtomSettingsListener"
+              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    <listener class="com.mallowigi.icons.AtomSettingsListener" topic="com.intellij.ide.AppLifecycleListener"/>
 
-            <group id="AtomFileIcons.ArrowStyles" popup="true">
-                <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
-                        id="MTMaterialArrows"
-                        icon="/icons/actions/arrows/material.svg"/>
-                <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
-                        id="MTDarculaArrows"
-                        icon="/icons/actions/arrows/darcula.svg"/>
-                <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
-                        id="MTPlusMinusArrows"
-                        icon="/icons/actions/arrows/plusminus.svg"/>
-                <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
-                        id="MTArrowsArrows"
-                        icon="/icons/actions/arrows/arrows.svg"/>
-                <action class="com.mallowigi.actions.arrows.MTNoneArrows"
-                        icon="/icons/actions/arrows/none.svg"
-                        id="MTNoneArrows"/>
-            </group>
-            <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
-                    icon="/icons/actions/refresh.svg"/>
-            <separator/>
-        </group>
+    <listener class="com.mallowigi.icons.AtomSVGPatchersListener"
+              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    <listener class="com.mallowigi.icons.AtomSVGPatchersListener" topic="com.intellij.ide.AppLifecycleListener"/>
 
-    </actions>
+    <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="com.mallowigi.tree.ArrowIconsComponent"
+              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
 
-    <description><![CDATA[
-        <h1>Atom Material File Icons</h1>
-        <h2>Custom File and IDE Icons for improved visual grepping</h2>
-        <div><a href='https://www.material-theme.com/docs/configuration/icons-settings/#atom-material-icons-plugin'
-                style='outline: none;'>
-            <img width='64' height='64'
-                 alt='logo'
-                 src='https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/icon.png'></a>
-        </div>
-        <hr>
-        <p>This plugin is a port of the <a href='https://github.com/file-icons/atom'>Atom File Icons</a> and the icons
-            of the <a href='https://github.com/ChrisRM/material-theme-jetbrains'>Material Theme UI</a> plugin.
-            <br>
-        </p>
-        <hr>
-        <h2 id='chrome-extension'>Chrome Extension</h2>
-        <p><a href='https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc'>https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
-        </p>
-        <h2 id='firefox-extension'>Firefox Extension</h2>
-        <p><a href='https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/'>https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
-        </p>
-        <h2 id='features'>Features</h2>
+    <listener class="com.mallowigi.tree.RefreshTreeListener"
+              topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
+
+  </applicationListeners>
+
+  <actions>
+    <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
+           class="com.mallowigi.actions.ActionGroup">
+      <add-to-group group-id="MainToolbarRight"/>
+    </group>
+    <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
+           class="com.mallowigi.actions.ActionGroup">
+      <add-to-group group-id="MainToolBar" anchor="last"/>
+      <add-to-group group-id="ToolsMenu"/>
+      <add-to-group group-id="ChangeScheme" anchor="last"/>
+      <add-to-group group-id="MainToolbarRight"/>
+      <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
+              icon="/icons/settings/atom.svg"/>
+      <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
+              icon="/icons/settings/compiledClassesFolder.svg"/>
+      <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
+              icon="/icons/settings/plugin.svg"/>
+      <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
+              icon="/icons/settings/psi.svg"/>
+      <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
+              icon="/icons/settings/monochrome.svg"/>
+      <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
+              icon="/icons/settings/hideFileAction.svg"/>
+      <action class="com.mallowigi.actions.HideFolderIconsAction" id="HideFolderIcons"
+              icon="/icons/settings/hideFolderAction.svg"/>
+      <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
+              icon="/icons/settings/folderOpen.svg"/>
+      <action class="com.mallowigi.actions.CustomIconSizeAction" id="BiggerIconsAction"
+              icon="/icons/settings/plus.svg"/>
+      <separator/>
+
+      <group id="AtomFileIcons.ArrowStyles" popup="true">
+        <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
+                id="MTMaterialArrows"
+                icon="/icons/actions/arrows/material.svg"/>
+        <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
+                id="MTDarculaArrows"
+                icon="/icons/actions/arrows/darcula.svg"/>
+        <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
+                id="MTPlusMinusArrows"
+                icon="/icons/actions/arrows/plusminus.svg"/>
+        <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
+                id="MTArrowsArrows"
+                icon="/icons/actions/arrows/arrows.svg"/>
+        <action class="com.mallowigi.actions.arrows.MTNoneArrows"
+                icon="/icons/actions/arrows/none.svg"
+                id="MTNoneArrows"/>
+      </group>
+      <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
+              icon="/icons/actions/refresh.svg"/>
+      <separator/>
+    </group>
+
+  </actions>
+
+  <description><![CDATA[
+    <h1>Atom Material File Icons</h1>
+    <h2>Custom File and IDE Icons for improved visual grepping</h2>
+    <div><a href='https://www.material-theme.com/docs/configuration/icons-settings/#atom-material-icons-plugin'
+            style='outline: none;'>
+      <img width='64' height='64'
+           alt='logo'
+           src='https://raw.githubusercontent.com/mallowigi/a-file-icon-idea/master/icon.png'></a>
+    </div>
+    <hr>
+    <p>This plugin is a port of the <a href='https://github.com/file-icons/atom'>Atom File Icons</a> and the icons
+      of the <a href='https://github.com/ChrisRM/material-theme-jetbrains'>Material Theme UI</a> plugin.
+      <br>
+    </p>
+    <hr>
+    <h2 id='chrome-extension'>Chrome Extension</h2>
+    <p><a href='https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc'>https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
+    </p>
+    <h2 id='firefox-extension'>Firefox Extension</h2>
+    <p><a href='https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/'>https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc</a>
+    </p>
+    <h2 id='features'>Features</h2>
+    <ul>
+      <li>Replaces <strong>file icons</strong> with their relevant logo icons
         <ul>
-            <li>Replaces <strong>file icons</strong> with their relevant logo icons
-                <ul>
-                    <li>According to their extension (Java, PHP, Ruby...)</li>
-                    <li>According to the framework (Android, NPM, RSpec...)</li>
-                    <li>According to the program used with (Babel, Docker, CircleCI...)</li>
-                </ul>
-            </li>
-            <li>Replaces <strong>directories</strong>:
-                <ul>
-                    <li>With a common pattern: src, main, app, img, docs...</li>
-                    <li>With a specific pattern: node_modules, .vscode, .git...</li>
-                </ul>
-            </li>
-            <li>Replaces the <strong>PSI (Program Structure Interface)</strong> icons:
-                <ul>
-                    <li>Classes, Interfaces, Enums, Abstract...</li>
-                    <li>Methods, Lambdas, Inherits, Overrides...</li>
-                </ul>
-            </li>
-            <li>Replaces the <strong>UI Icons</strong>:
-                <ul>
-                    <li>Toolbar icons (actions)</li>
-                    <li>Gutter icons (debugger)</li>
-                    <li>Node icons (folders)...</li>
-                </ul>
-            </li>
-            <li><strong>Monochrome filter</strong>: Set a monochrome filter to the whole UI
-                <ul>
-                    <li>Ability to select the color</li>
-                </ul>
-            </li>
-            <li><strong>Arrows Style</strong>: Customize the look of the arrows in Tree components
-                <ul>
-                    <li>Material: Chevron-like arrows</li>
-                    <li>Darcula: Regular triangle arrows</li>
-                    <li>Plus-Minus: Plus and Minus signs</li>
-                    <li>Arrows: Simple Arrows</li>
-                    <li>None: No arrows</li>
-                </ul>
-            </li>
-            <li><strong>Hollow Folders</strong>: Make folders containing open files hollow</li>
-            <li><strong>Accent Color</strong>: Change the color of specific icons:
-                <ul>
-                    <li>Closing tab button</li>
-                    <li>Highlighted arrows</li>
-                    <li>Loading indicator...</li>
-                </ul>
-            </li>
-            <li><strong>Custom Icon Size</strong>: Increase the IDE icons' size
-                <ul>
-                    <li>Only for the prebundled icons</li>
-                    <li>Choose between 12 and 24px</li>
-                </ul>
-            </li>
-            <li><strong>Customizability</strong>: Custom Settings
-                <ul>
-                    <li>Settings Pages</li>
-                    <li>Toolbar Action Buttons</li>
-                </ul>
-            </li>
-            <li><strong>Custom File and Directory associations</strong> (NEW): Customize your own associations
-                <ul>
-                    <li>File associations by Regex</li>
-                    <li>Folder associations</li>
-                    <li>Preview default icons</li>
-                    <li>Customize Icons and Folders' colors</li>
-                </ul>
-            </li>
+          <li>According to their extension (Java, PHP, Ruby...)</li>
+          <li>According to the framework (Android, NPM, RSpec...)</li>
+          <li>According to the program used with (Babel, Docker, CircleCI...)</li>
         </ul>
+      </li>
+      <li>Replaces <strong>directories</strong>:
+        <ul>
+          <li>With a common pattern: src, main, app, img, docs...</li>
+          <li>With a specific pattern: node_modules, .vscode, .git...</li>
+        </ul>
+      </li>
+      <li>Replaces the <strong>PSI (Program Structure Interface)</strong> icons:
+        <ul>
+          <li>Classes, Interfaces, Enums, Abstract...</li>
+          <li>Methods, Lambdas, Inherits, Overrides...</li>
+        </ul>
+      </li>
+      <li>Replaces the <strong>UI Icons</strong>:
+        <ul>
+          <li>Toolbar icons (actions)</li>
+          <li>Gutter icons (debugger)</li>
+          <li>Node icons (folders)...</li>
+        </ul>
+      </li>
+      <li><strong>Monochrome filter</strong>: Set a monochrome filter to the whole UI
+        <ul>
+          <li>Ability to select the color</li>
+        </ul>
+      </li>
+      <li><strong>Arrows Style</strong>: Customize the look of the arrows in Tree components
+        <ul>
+          <li>Material: Chevron-like arrows</li>
+          <li>Darcula: Regular triangle arrows</li>
+          <li>Plus-Minus: Plus and Minus signs</li>
+          <li>Arrows: Simple Arrows</li>
+          <li>None: No arrows</li>
+        </ul>
+      </li>
+      <li><strong>Hollow Folders</strong>: Make folders containing open files hollow</li>
+      <li><strong>Accent Color</strong>: Change the color of specific icons:
+        <ul>
+          <li>Closing tab button</li>
+          <li>Highlighted arrows</li>
+          <li>Loading indicator...</li>
+        </ul>
+      </li>
+      <li><strong>Custom Icon Size</strong>: Increase the IDE icons' size
+        <ul>
+          <li>Only for the prebundled icons</li>
+          <li>Choose between 12 and 24px</li>
+        </ul>
+      </li>
+      <li><strong>Customizability</strong>: Custom Settings
+        <ul>
+          <li>Settings Pages</li>
+          <li>Toolbar Action Buttons</li>
+        </ul>
+      </li>
+      <li><strong>Custom File and Directory associations</strong> (NEW): Customize your own associations
+        <ul>
+          <li>File associations by Regex</li>
+          <li>Folder associations</li>
+          <li>Preview default icons</li>
+          <li>Customize Icons and Folders' colors</li>
+        </ul>
+      </li>
+    </ul>
 
 
-        <hr>
-        <h3>Donate</h3>
-        <p>This theme is backed up by <a
-                href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
-            If you like this plugin, don't hesitate to give it a star or donate via <a
-                    href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
-                    href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
-        ]]></description>
+    <hr>
+    <h3>Donate</h3>
+    <p>This theme is backed up by <a
+      href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
+      If you like this plugin, don't hesitate to give it a star or donate via <a
+        href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
+        href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
+    ]]></description>
 
-    <change-notes>
-        Change notes will be available as part of Changelog.html
-    </change-notes>
+  <change-notes>
+    Change notes will be available as part of Changelog.html
+  </change-notes>
 
 </idea-plugin>
