@@ -27,15 +27,9 @@ import com.intellij.ide.AppLifecycleListener
 import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.ui.LafManagerListener
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.ProjectManager
-import com.intellij.openapi.project.ProjectManagerListener
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.config.listeners.AtomConfigNotifier
-import javax.swing.SwingUtilities
-import javax.swing.UIManager
+import com.mallowigi.utils.replaceArrowIcons
 
 /** Arrow icons component: replace arrows. */
 class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
@@ -60,21 +54,8 @@ class ArrowIconsComponent : DynamicPluginListener, AppLifecycleListener {
 
     connect.run {
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { replaceArrowIcons() })
-      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
-        override fun projectOpened(project: Project) = replaceArrowIcons()
-      })
       subscribe(LafManagerListener.TOPIC, LafManagerListener { replaceArrowIcons() })
     }
-  }
-
-  private fun replaceArrowIcons() {
-    val defaults = UIManager.getLookAndFeelDefaults()
-    val arrowsStyle = instance.arrowsStyle
-    defaults["Tree.collapsedIcon"] = arrowsStyle.expandIcon
-    defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
-    defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
-    defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
-    SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
 
 }

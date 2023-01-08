@@ -29,11 +29,16 @@ package com.mallowigi.utils
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
+import com.intellij.ui.ExperimentalUI
 import com.intellij.ui.JBColor
+import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle
+import javax.swing.SwingUtilities
+import javax.swing.UIManager
 
 /**
  * Refresh
@@ -70,3 +75,18 @@ fun getVersion(): String {
 
 /** Modified color. */
 fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)
+
+fun replaceArrowIcons() {
+  val defaults = UIManager.getLookAndFeelDefaults()
+  val arrowsStyle = AtomFileIconsConfig.instance.arrowsStyle
+  defaults["Tree.collapsedIcon"] = arrowsStyle.expandIcon
+  defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
+  defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
+  defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
+
+  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "Fold", arrowsStyle.collapseIcon) // NON-NLS
+  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "Unfold", arrowsStyle.expandIcon) // NON-NLS
+  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "FoldBottom", arrowsStyle.expandIcon) // NON-NLS
+
+  SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
+}

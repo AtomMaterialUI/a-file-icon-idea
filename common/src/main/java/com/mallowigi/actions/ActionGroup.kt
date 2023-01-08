@@ -29,6 +29,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DefaultActionGroup
 import com.mallowigi.icons.services.IconPatchersManager
+import com.mallowigi.utils.replaceArrowIcons
 
 /** Overrides default action group to have icons on menus. */
 class ActionGroup : DefaultActionGroup() {
@@ -37,6 +38,7 @@ class ActionGroup : DefaultActionGroup() {
   init {
     if (isFirstRun) {
       IconPatchersManager.init()
+      replaceArrowIcons()
       isFirstRun = false
     }
   }

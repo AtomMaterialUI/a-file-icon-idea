@@ -24,24 +24,33 @@
 package com.mallowigi.utils
 
 import java.lang.reflect.Field
-import java.lang.reflect.Modifier
+import java.lang.reflect.Method
 
 /** Super hacking class to change static fields! */
 @Suppress("unused", "HardCodedStringLiteral")
 object StaticPatcher {
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  @JvmStatic
+  fun setFinalStatic(cls: Class<*>, fieldName: String, newValue: Any) {
+    val fields = cls.declaredFields
+    for (field in fields) {
+      if (field.name == fieldName) {
+        setFinalStatic(field, newValue)
+        return
+      }
+    }
+  }
 
   /** Set final. */
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
-  fun setFinal(instance: Any, field: Field, newValue: Any) {
+  fun setFinalStatic(field: Field, newValue: Any) {
     field.isAccessible = true
-    val modifiersField = Field::class.java.getDeclaredField("modifiers")
-    modifiersField.isAccessible = true
-    modifiersField.setInt(field, field.modifiers and Modifier.FINAL.inv())
+    FieldHelper.makeNonFinal(field)
 
-    field[instance] = newValue
-    modifiersField.setInt(field, field.modifiers or Modifier.FINAL)
-    modifiersField.isAccessible = false
+    field[null] = newValue
+
+    FieldHelper.makeFinal(field)
     field.isAccessible = false
   }
 
@@ -53,17 +62,42 @@ object StaticPatcher {
    */
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
-  fun setFinalStatic(field: Field, newValue: Any?) {
+  fun setFinal(instance: Any, field: Field, newValue: Any) {
     field.isAccessible = true
-    val modifiersField = Field::class.java.getDeclaredField("modifiers")
-    modifiersField.isAccessible = true
-    modifiersField.setInt(field, field.modifiers and Modifier.FINAL.inv())
+    FieldHelper.makeNonFinal(field)
 
-    field[null] = newValue
-    modifiersField.setInt(field, field.modifiers or Modifier.FINAL)
-    modifiersField.isAccessible = false
+    field[instance] = newValue
 
+    FieldHelper.makeFinal(field)
     field.isAccessible = false
+  }
+
+  /**
+   * Invoke method
+   *
+   * @param method the method to invoke
+   * @param instance the instance to invoke upon
+   */
+  @JvmStatic
+  fun invokeMethod(method: Method, instance: Any) {
+    method.isAccessible = true
+    method.invoke(instance)
+    method.isAccessible = false
+  }
+
+  /**
+   * Invoke method
+   *
+   * @param cls the class to extract the method from
+   * @param methodName the method to invoke
+   * @param instance the instance to invoke upon
+   */
+  @JvmStatic
+  fun invokeMethod(cls: Class<*>, methodName: String, instance: Any) {
+    val method = cls.getDeclaredMethod(methodName)
+    method.isAccessible = true
+    method.invoke(instance)
+    method.isAccessible = false
   }
 
 }
