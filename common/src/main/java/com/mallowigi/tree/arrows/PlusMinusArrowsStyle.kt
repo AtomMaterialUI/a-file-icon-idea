@@ -28,10 +28,7 @@ package com.mallowigi.tree.arrows
 import icons.AtomIcons
 import javax.swing.Icon
 
-/**
- * Plus-minus arrows style
- *
- */
+/** Plus-minus arrows style. */
 class PlusMinusArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
     get() = AtomIcons.Arrows.Plus
@@ -43,5 +40,11 @@ class PlusMinusArrowsStyle : ArrowsStyle {
     get() = AtomIcons.Arrows.PlusSelected
 
   override val selectedCollapseIcon: Icon
+    get() = AtomIcons.Arrows.MinusSelected
+
+  override val bottomCollapseIcon: Icon
+    get() = AtomIcons.Arrows.Minus
+
+  override val selectedBottomCollapseIcon: Icon
     get() = AtomIcons.Arrows.MinusSelected
 }

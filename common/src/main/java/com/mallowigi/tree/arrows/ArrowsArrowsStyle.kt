@@ -28,10 +28,7 @@ package com.mallowigi.tree.arrows
 import icons.AtomIcons
 import javax.swing.Icon
 
-/**
- * Arrows Arrow style
- *
- */
+/** Arrows Arrow style. */
 class ArrowsArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
     get() = AtomIcons.Arrows.Right
@@ -44,4 +41,10 @@ class ArrowsArrowsStyle : ArrowsStyle {
 
   override val selectedCollapseIcon: Icon
     get() = AtomIcons.Arrows.DownSelected
+
+  override val bottomCollapseIcon: Icon
+    get() = AtomIcons.Arrows.Up
+
+  override val selectedBottomCollapseIcon: Icon
+    get() = AtomIcons.Arrows.UpSelected
 }

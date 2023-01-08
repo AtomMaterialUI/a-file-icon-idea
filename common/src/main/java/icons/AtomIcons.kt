@@ -111,8 +111,8 @@ object AtomIcons {
   }
 
   /**
-   * If the icon's height is 1, load a fallback icon, otherwise return
-   * the icon
+   * If the icon's height is 1, load a fallback icon, otherwise return the
+   * icon
    *
    * @param icon The icon to use if the SVG icon can't be loaded.
    * @param path The path to the SVG file.
@@ -129,28 +129,37 @@ object AtomIcons {
    */
   fun getLayeredIcon(icon: Icon, virtualFile: VirtualFile): Icon = when {
     virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIcon(icon, AllIcons.Nodes.Symlink)
-    !virtualFile.isWritable                 -> LayeredIcon(icon, AllIcons.Nodes.Locked)
-    else                                    -> icon
+    !virtualFile.isWritable -> LayeredIcon(icon, AllIcons.Nodes.Locked)
+    else -> icon
   }
 
   /** Arrow Icons. */
   object Arrows {
-    var MaterialDownSelected: Icon = load("/icons/mac/material/down_selected.svg")
-    var MaterialRightSelected: Icon = load("/icons/mac/material/right_selected.svg")
-    var DarculaDownSelected: Icon = load("/icons/mac/darcula/down_selected.svg")
-    var DarculaRightSelected: Icon = load("/icons/mac/darcula/right_selected.svg")
-    var PlusSelected: Icon = load("/icons/mac/plusminus/plus_selected.svg")
-    var MinusSelected: Icon = load("/icons/mac/plusminus/minus_selected.svg")
-    var DownSelected: Icon = load("/icons/mac/arrow/down_selected.svg")
-    var RightSelected: Icon = load("/icons/mac/arrow/right_selected.svg")
     var MaterialDown: Icon = load("/icons/mac/material/down.svg")
     var MaterialRight: Icon = load("/icons/mac/material/right.svg")
+    var MaterialDownSelected: Icon = load("/icons/mac/material/down_selected.svg")
+    var MaterialRightSelected: Icon = load("/icons/mac/material/right_selected.svg")
+    var MaterialUp: Icon = load("/icons/mac/material/up.svg")
+    var MaterialUpSelected: Icon = load("/icons/mac/material/up_selected.svg")
+
     var DarculaDown: Icon = load("/icons/mac/darcula/down.svg")
     var DarculaRight: Icon = load("/icons/mac/darcula/right.svg")
+    var DarculaDownSelected: Icon = load("/icons/mac/darcula/down_selected.svg")
+    var DarculaRightSelected: Icon = load("/icons/mac/darcula/right_selected.svg")
+    var DarculaUp: Icon = load("/icons/mac/darcula/up.svg")
+    var DarculaUpSelected: Icon = load("/icons/mac/darcula/up_selected.svg")
+
     var Plus: Icon = load("/icons/mac/plusminus/plus.svg")
     var Minus: Icon = load("/icons/mac/plusminus/minus.svg")
+    var PlusSelected: Icon = load("/icons/mac/plusminus/plus_selected.svg")
+    var MinusSelected: Icon = load("/icons/mac/plusminus/minus_selected.svg")
+
     var Down: Icon = load("/icons/mac/arrow/down.svg")
     var Right: Icon = load("/icons/mac/arrow/right.svg")
+    var DownSelected: Icon = load("/icons/mac/arrow/down_selected.svg")
+    var RightSelected: Icon = load("/icons/mac/arrow/right_selected.svg")
+    var Up: Icon = load("/icons/mac/arrow/up.svg")
+    var UpSelected: Icon = load("/icons/mac/arrow/up_selected.svg")
   }
 
   /** Node icons. */

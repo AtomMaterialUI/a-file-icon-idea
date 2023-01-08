@@ -29,10 +29,7 @@ import com.intellij.icons.AllIcons
 import com.intellij.util.ui.EmptyIcon
 import javax.swing.Icon
 
-/**
- * No arrows style
- *
- */
+/** No arrows style. */
 class NoneArrowsStyle : ArrowsStyle {
   private val emptyIcon = EmptyIcon.create(AllIcons.General.ArrowUp)
   override val expandIcon: Icon
@@ -45,5 +42,11 @@ class NoneArrowsStyle : ArrowsStyle {
     get() = emptyIcon
 
   override val selectedCollapseIcon: Icon
+    get() = emptyIcon
+
+  override val bottomCollapseIcon: Icon
+    get() = emptyIcon
+
+  override val selectedBottomCollapseIcon: Icon
     get() = emptyIcon
 }

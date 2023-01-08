@@ -66,6 +66,14 @@ enum class ArrowsStyles(@param:NonNls public val type: String, private val arrow
   val selectedCollapseIcon: Icon
     get() = arrowsStyle.selectedCollapseIcon
 
+  /** Bottom collapse icon. */
+  val bottomCollapseIcon: Icon
+    get() = arrowsStyle.bottomCollapseIcon
+
+  /** Selected bottom collapse icon. */
+  val selectedBottomCollapseIcon: Icon
+    get() = arrowsStyle.selectedBottomCollapseIcon
+
   /** Icon to show in settings. */
   val icon: Icon
     get() = expandIcon
