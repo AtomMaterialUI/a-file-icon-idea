@@ -2,6 +2,17 @@
 
 ----
 
+## 85.0.0 (8.5.0)
+
+### Features
+
+- Use the _Arrow Styles_ for the gutter folding icons
+
+### Fixes
+
+- Fix the ngRx taking priority to TypeScript files
+- Fix collaboration icons (GitHub PR)
+
 ## 84.0.0 (8.4.0)
 
 ### Fixes
