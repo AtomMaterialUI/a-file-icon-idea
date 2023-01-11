@@ -40,7 +40,6 @@ intellij {
   plugins.set(
     listOf(
       "java",
-      "com.intellij.CloudConfig",
       "Git4Idea",
     )
   )
