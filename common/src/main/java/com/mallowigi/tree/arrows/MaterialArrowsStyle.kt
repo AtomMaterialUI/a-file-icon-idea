@@ -26,25 +26,55 @@
 package com.mallowigi.tree.arrows
 
 import icons.AtomIcons
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
+
+const val MATERIAL_COLLAPSE: String = "/icons/mac/material/down.svg"
+const val MATERIAL_EXPAND: String = "/icons/mac/material/right.svg"
+const val MATERIAL_COLLAPSE_SELECTED: String = "/icons/mac/material/down_selected.svg"
+const val MATERIAL_EXPAND_SELECTED: String = "/icons/mac/material/right_selected.svg"
+const val MATERIAL_UNFOLD: String = "/icons/mac/material/up.svg"
+const val MATERIAL_UNFOLD_SELECTED: String = "/icons/mac/material/up_selected.svg"
+
+var MaterialDown: Icon = AtomIcons.load(MATERIAL_COLLAPSE)
+var MaterialRight: Icon = AtomIcons.load(MATERIAL_EXPAND)
+var MaterialDownSelected: Icon = AtomIcons.load(MATERIAL_COLLAPSE_SELECTED)
+var MaterialRightSelected: Icon = AtomIcons.load(MATERIAL_EXPAND_SELECTED)
+var MaterialUp: Icon = AtomIcons.load(MATERIAL_UNFOLD)
+var MaterialUpSelected: Icon = AtomIcons.load(MATERIAL_UNFOLD_SELECTED)
 
 /** Material arrows style: Chevron. */
 class MaterialArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = AtomIcons.Arrows.MaterialRight
+    get() = MaterialRight
+  override val expandIconPath: String
+    get() = MATERIAL_EXPAND
 
   override val collapseIcon: Icon
-    get() = AtomIcons.Arrows.MaterialDown
+    get() = MaterialDown
+  override val collapseIconPath: String
+    get() = MATERIAL_COLLAPSE
 
   override val selectedExpandIcon: Icon
-    get() = AtomIcons.Arrows.MaterialRightSelected
+    get() = MaterialRightSelected
+  override val selectedExpandIconPath: String
+    get() = MATERIAL_EXPAND_SELECTED
 
   override val selectedCollapseIcon: Icon
-    get() = AtomIcons.Arrows.MaterialDownSelected
+    get() = MaterialDownSelected
+  override val selectedCollapseIconPath: String
+    get() = MATERIAL_COLLAPSE_SELECTED
 
   override val bottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.MaterialUp
+    get() = MaterialUp
+  override val bottomIconPath: String
+    get() = MATERIAL_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.MaterialUpSelected
+    get() = MaterialUpSelected
+  override val selectedBottomCollapseIconPath: String
+    get() = MATERIAL_UNFOLD_SELECTED
+
+  override val pathId: @NonNls String
+    get() = "material"
 }

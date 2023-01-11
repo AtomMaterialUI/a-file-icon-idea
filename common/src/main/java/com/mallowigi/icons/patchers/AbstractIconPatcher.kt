@@ -25,6 +25,7 @@ package com.mallowigi.icons.patchers
 
 import com.intellij.openapi.util.IconPathPatcher
 import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.tree.arrows.ArrowsStyles
 import org.jetbrains.annotations.NonNls
 import java.net.URL
 
@@ -53,7 +54,8 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    *
    * @param path the icon path
    * @param originalClassLoader the original class loader
-   * @return the plugin class loader if the icon needs to be patched, or the original class loader
+   * @return the plugin class loader if the icon needs to be patched, or the
+   *     original class loader
    */
   override fun getContextClassLoader(path: String, originalClassLoader: ClassLoader?): ClassLoader? {
     val classLoader = javaClass.classLoader
@@ -68,7 +70,8 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    *
    * @param path the path to patch
    * @param classLoader the classloader of the icon
-   * @return the patched path to the plugin icon, or the original path if the icon patcher is disabled
+   * @return the patched path to the plugin icon, or the original path if the
+   *     icon patcher is disabled
    */
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
     if (instance == null) return null
@@ -84,27 +87,36 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /**
-   * Returns the patched path by taking the original path and appending the path to append, and converting to svg
+   * Returns the patched path by taking the original path and appending the
+   * path to append, and converting to svg
    *
    * @param path
    * @return
    */
   @Suppress("kotlin:S1871", "HardCodedStringLiteral")
   private fun getPatchedPath(path: String): String? = when {
-    !enabled                -> null
+    !enabled -> null
+    path.contains("expui/gutter") -> getArrowReplacement(path)
     CACHE.containsKey(path) -> CACHE[path]
     // First try the svg version of the resource
-    getSVG(path) != null    -> {
+    getSVG(path) != null -> {
       CACHE[path] = getReplacement(path)
       CACHE[path]
     }
     // Then try the png version
-    getPNG(path) != null    -> {
+    getPNG(path) != null -> {
       CACHE[path] = getReplacement(path)
       CACHE[path]
     }
 
-    else                    -> null
+    else -> null
+  }
+
+  private fun getArrowReplacement(path: String): String? {
+    val arrowsStyle = instance?.arrowsStyle
+    if (arrowsStyle === ArrowsStyles.NONE) return null
+
+    return arrowsStyle?.getIconForPath(path)
   }
 
   /**
@@ -116,7 +128,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   private fun getReplacement(path: String): String {
     val finalPath: String = when {
       path.contains(".gif") -> GIF.replace(path, ".svg")
-      else                  -> path.replace(".png", ".svg")
+      else -> path.replace(".png", ".svg")
     }
     return (pathToAppend + finalPath.replace(pathToRemove, "")).replace("//", "/") // don't ask
   }

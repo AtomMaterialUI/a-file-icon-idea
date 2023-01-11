@@ -36,6 +36,7 @@ import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
 import com.intellij.util.ui.JBUI
 import com.mallowigi.icons.special.DirIcon
+import com.mallowigi.tree.arrows.*
 import org.jetbrains.annotations.NonNls
 import java.awt.Image
 import java.io.File
@@ -56,12 +57,6 @@ object AtomIcons {
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
-  val SEARCH_WITH_HISTORY_HOVERED: Icon = load("/icons/actions/searchWithHistoryHovered.svg")
-  val SEARCH_WITH_HISTORY: Icon = load("/icons/actions/searchWithHistory.svg")
-  val SEARCH: Icon = load("/icons/actions/search.svg")
-  val CLEAR: Icon = load("/icons/actions/clear.svg")
-  val EYE_ON: Icon = load("/icons/mt/eye.svg")
-  val EYE_OFF: Icon = load("/icons/mt/eyeOff.svg")
 
   /**
    * Get file icon from the resources folder
@@ -90,7 +85,7 @@ object AtomIcons {
    * @param path absolute path to the icon
    * @return the icon. must not be null
    */
-  private fun load(@NonNls path: String): Icon = IconLoader.findIcon(path, AtomIcons.javaClass)!!
+  internal fun load(@NonNls path: String): Icon = IconLoader.findIcon(path, AtomIcons.javaClass)!!
 
   /**
    * Tries to load a svg icon
@@ -131,35 +126,6 @@ object AtomIcons {
     virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIcon(icon, AllIcons.Nodes.Symlink)
     !virtualFile.isWritable -> LayeredIcon(icon, AllIcons.Nodes.Locked)
     else -> icon
-  }
-
-  /** Arrow Icons. */
-  object Arrows {
-    var MaterialDown: Icon = load("/icons/mac/material/down.svg")
-    var MaterialRight: Icon = load("/icons/mac/material/right.svg")
-    var MaterialDownSelected: Icon = load("/icons/mac/material/down_selected.svg")
-    var MaterialRightSelected: Icon = load("/icons/mac/material/right_selected.svg")
-    var MaterialUp: Icon = load("/icons/mac/material/up.svg")
-    var MaterialUpSelected: Icon = load("/icons/mac/material/up_selected.svg")
-
-    var DarculaDown: Icon = load("/icons/mac/darcula/down.svg")
-    var DarculaRight: Icon = load("/icons/mac/darcula/right.svg")
-    var DarculaDownSelected: Icon = load("/icons/mac/darcula/down_selected.svg")
-    var DarculaRightSelected: Icon = load("/icons/mac/darcula/right_selected.svg")
-    var DarculaUp: Icon = load("/icons/mac/darcula/up.svg")
-    var DarculaUpSelected: Icon = load("/icons/mac/darcula/up_selected.svg")
-
-    var Plus: Icon = load("/icons/mac/plusminus/plus.svg")
-    var Minus: Icon = load("/icons/mac/plusminus/minus.svg")
-    var PlusSelected: Icon = load("/icons/mac/plusminus/plus_selected.svg")
-    var MinusSelected: Icon = load("/icons/mac/plusminus/minus_selected.svg")
-
-    var Down: Icon = load("/icons/mac/arrow/down.svg")
-    var Right: Icon = load("/icons/mac/arrow/right.svg")
-    var DownSelected: Icon = load("/icons/mac/arrow/down_selected.svg")
-    var RightSelected: Icon = load("/icons/mac/arrow/right_selected.svg")
-    var Up: Icon = load("/icons/mac/arrow/up.svg")
-    var UpSelected: Icon = load("/icons/mac/arrow/up_selected.svg")
   }
 
   /** Node icons. */

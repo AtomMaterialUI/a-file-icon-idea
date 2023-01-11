@@ -33,7 +33,6 @@ import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
-import com.intellij.ui.ExperimentalUI
 import com.intellij.ui.JBColor
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle
@@ -84,9 +83,6 @@ fun replaceArrowIcons() {
   defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
   defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
 
-  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "Fold", arrowsStyle.collapseIcon) // NON-NLS
-  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "Unfold", arrowsStyle.expandIcon) // NON-NLS
-  StaticPatcher.setFinalStatic(ExperimentalUI.Icons.Gutter::class.java, "FoldBottom", arrowsStyle.expandIcon) // NON-NLS
 
   SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
 }

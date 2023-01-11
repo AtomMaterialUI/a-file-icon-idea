@@ -26,25 +26,55 @@
 package com.mallowigi.tree.arrows
 
 import icons.AtomIcons
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
+
+const val ARROW_COLLAPSE: String = "/icons/mac/arrow/down.svg"
+const val ARROW_EXPAND: String = "/icons/mac/arrow/right.svg"
+const val ARROW_COLLAPSE_SELECTED: String = "/icons/mac/arrow/down_selected.svg"
+const val ARROW_EXPAND_SELECTED: String = "/icons/mac/arrow/right_selected.svg"
+const val ARROW_UNFOLD: String = "/icons/mac/arrow/up.svg"
+const val ARROW_UNFOLD_SELECTED: String = "/icons/mac/arrow/up_selected.svg"
+
+var Down: Icon = AtomIcons.load(ARROW_COLLAPSE)
+var Right: Icon = AtomIcons.load(ARROW_EXPAND)
+var DownSelected: Icon = AtomIcons.load(ARROW_COLLAPSE_SELECTED)
+var RightSelected: Icon = AtomIcons.load(ARROW_EXPAND_SELECTED)
+var Up: Icon = AtomIcons.load(ARROW_UNFOLD)
+var UpSelected: Icon = AtomIcons.load(ARROW_UNFOLD_SELECTED)
 
 /** Arrows Arrow style. */
 class ArrowsArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = AtomIcons.Arrows.Right
+    get() = Right
+  override val expandIconPath: String
+    get() = ARROW_EXPAND
 
   override val collapseIcon: Icon
-    get() = AtomIcons.Arrows.Down
+    get() = Down
+  override val collapseIconPath: String
+    get() = ARROW_COLLAPSE
 
   override val selectedExpandIcon: Icon
-    get() = AtomIcons.Arrows.RightSelected
+    get() = RightSelected
+  override val selectedExpandIconPath: String
+    get() = ARROW_EXPAND_SELECTED
 
   override val selectedCollapseIcon: Icon
-    get() = AtomIcons.Arrows.DownSelected
+    get() = DownSelected
+  override val selectedCollapseIconPath: String
+    get() = ARROW_COLLAPSE_SELECTED
 
   override val bottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.Up
+    get() = Up
+  override val bottomIconPath: String
+    get() = ARROW_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.UpSelected
+    get() = UpSelected
+  override val selectedBottomCollapseIconPath: String
+    get() = ARROW_UNFOLD_SELECTED
+
+  override val pathId: @NonNls String
+    get() = "arrow"
 }

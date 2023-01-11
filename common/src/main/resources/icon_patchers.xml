@@ -26,6 +26,8 @@
 
 <iconPathPatchers>
   <iconPatchers>
+    <iconPatcher name="Arrows" remove="expui/gutter" append="/icons/mac/"/>
+
     <iconPatcher name="ExpUI" remove="expui" append="icons/expui"/>
     <iconPatcher name="AllIcons" remove="" append="icons"/>
     <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="icons/mt/checkboxes"/>

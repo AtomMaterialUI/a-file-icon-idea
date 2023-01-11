@@ -25,6 +25,7 @@ package com.mallowigi.utils
 
 import java.lang.reflect.Field
 import java.lang.reflect.Method
+import java.lang.reflect.Modifier
 
 /** Super hacking class to change static fields! */
 @Suppress("unused", "HardCodedStringLiteral")
@@ -46,11 +47,13 @@ object StaticPatcher {
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   fun setFinalStatic(field: Field, newValue: Any) {
     field.isAccessible = true
-    FieldHelper.makeNonFinal(field)
+    val modifiersField = Field::class.java.getDeclaredField("modifiers")
+    modifiersField.isAccessible = true
+    modifiersField.setInt(field, field.modifiers and Modifier.FINAL.inv())
 
     field[null] = newValue
-
-    FieldHelper.makeFinal(field)
+    modifiersField.setInt(field, field.modifiers or Modifier.FINAL)
+    modifiersField.isAccessible = false
     field.isAccessible = false
   }
 
@@ -63,12 +66,14 @@ object StaticPatcher {
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   fun setFinal(instance: Any, field: Field, newValue: Any) {
-    field.isAccessible = true
-    FieldHelper.makeNonFinal(field)
+    val modifiersField = Field::class.java.getDeclaredField("modifiers")
+    modifiersField.isAccessible = true
+    modifiersField.setInt(field, field.modifiers and Modifier.FINAL.inv())
 
     field[instance] = newValue
+    modifiersField.setInt(field, field.modifiers or Modifier.FINAL)
+    modifiersField.isAccessible = false
 
-    FieldHelper.makeFinal(field)
     field.isAccessible = false
   }
 

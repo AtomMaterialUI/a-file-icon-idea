@@ -26,25 +26,55 @@
 package com.mallowigi.tree.arrows
 
 import icons.AtomIcons
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
+
+const val DARCULA_COLLAPSE: String = "/icons/mac/darcula/down.svg"
+const val DARCULA_EXPAND: String = "/icons/mac/darcula/right.svg"
+const val DARCULA_EXPAND_SELECTED: String = "/icons/mac/darcula/down_selected.svg"
+const val DARCULA_COLLAPSE_SELECTED: String = "/icons/mac/darcula/right_selected.svg"
+const val DARCULA_UNFOLD: String = "/icons/mac/darcula/up.svg"
+const val DARCULA_UNFOLD_SELECTED: String = "/icons/mac/darcula/up_selected.svg"
+
+var DarculaDown: Icon = AtomIcons.load(DARCULA_COLLAPSE)
+var DarculaRight: Icon = AtomIcons.load(DARCULA_EXPAND)
+var DarculaDownSelected: Icon = AtomIcons.load(DARCULA_EXPAND_SELECTED)
+var DarculaRightSelected: Icon = AtomIcons.load(DARCULA_COLLAPSE_SELECTED)
+var DarculaUp: Icon = AtomIcons.load(DARCULA_UNFOLD)
+var DarculaUpSelected: Icon = AtomIcons.load(DARCULA_UNFOLD_SELECTED)
 
 /** Darcula arrows style (triangle) */
 class DarculaArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = AtomIcons.Arrows.DarculaRight
+    get() = DarculaRight
+  override val expandIconPath: String
+    get() = DARCULA_EXPAND
 
   override val collapseIcon: Icon
-    get() = AtomIcons.Arrows.DarculaDown
+    get() = DarculaDown
+  override val collapseIconPath: String
+    get() = DARCULA_COLLAPSE
 
   override val selectedExpandIcon: Icon
-    get() = AtomIcons.Arrows.DarculaRightSelected
+    get() = DarculaRightSelected
+  override val selectedExpandIconPath: String
+    get() = DARCULA_EXPAND_SELECTED
 
   override val selectedCollapseIcon: Icon
-    get() = AtomIcons.Arrows.DarculaDownSelected
+    get() = DarculaDownSelected
+  override val selectedCollapseIconPath: String
+    get() = DARCULA_COLLAPSE_SELECTED
 
   override val bottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.DarculaUp
+    get() = DarculaUp
+  override val bottomIconPath: String
+    get() = DARCULA_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.DarculaUp
+    get() = DarculaUp
+  override val selectedBottomCollapseIconPath: String
+    get() = DARCULA_UNFOLD_SELECTED
+
+  override val pathId: @NonNls String
+    get() = "darcula"
 }

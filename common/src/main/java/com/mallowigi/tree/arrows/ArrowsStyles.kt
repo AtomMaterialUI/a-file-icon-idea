@@ -34,7 +34,7 @@ import javax.swing.Icon
  * @property type description
  * @property arrowsStyle enum value
  */
-enum class ArrowsStyles(@param:NonNls public val type: String, private val arrowsStyle: ArrowsStyle) {
+enum class ArrowsStyles(@param:NonNls val type: String, private val arrowsStyle: ArrowsStyle) {
   /** Material Style (chevrons) */
   MATERIAL("Material", MaterialArrowsStyle()),
 
@@ -78,6 +78,16 @@ enum class ArrowsStyles(@param:NonNls public val type: String, private val arrow
   val icon: Icon
     get() = expandIcon
 
+  val pathId: String
+    get() = arrowsStyle.pathId
+
   override fun toString(): String = type
+
+  fun getIconForPath(path: String): String? = when {
+    path.contains("unfold.svg") -> arrowsStyle.expandIconPath
+    path.contains("bottomFold.svg") -> arrowsStyle.bottomIconPath
+    path.contains("fold.svg") -> arrowsStyle.collapseIconPath
+    else -> null
+  }
 
 }

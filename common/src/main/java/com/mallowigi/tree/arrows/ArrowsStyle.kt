@@ -25,6 +25,7 @@
  */
 package com.mallowigi.tree.arrows
 
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
 /** Interface for arrow styles. */
@@ -32,18 +33,33 @@ interface ArrowsStyle {
   /** Expanded icon. */
   val expandIcon: Icon
 
+  val expandIconPath: String;
+
   /** Collapsed icon. */
   val collapseIcon: Icon
+
+  val collapseIconPath: String;
 
   /** Selected item expanded icon. */
   val selectedExpandIcon: Icon
 
+  val selectedExpandIconPath: String;
+
   /** Selected item collapsed icon. */
   val selectedCollapseIcon: Icon
+
+  val selectedCollapseIconPath: String;
 
   /** Bottom collapse icon. */
   val bottomCollapseIcon: Icon
 
+  val bottomIconPath: String;
+
   /** Selected bottom collapse icon. */
   val selectedBottomCollapseIcon: Icon
+
+  val selectedBottomCollapseIconPath: String;
+
+  /** Path id. */
+  val pathId: @NonNls String;
 }

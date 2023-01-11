@@ -26,39 +26,34 @@
  */
 package com.mallowigi.utils
 
-import java.lang.invoke.MethodHandles
-import java.lang.invoke.VarHandle
-import java.lang.reflect.Field
-import java.lang.reflect.Modifier
-
 /** Helper for making fields final. */
-object FieldHelper {
-  private var MODIFIERS: VarHandle? = null
-
-  init {
-    try {
-      val lookup = MethodHandles.privateLookupIn(Field::class.java, MethodHandles.lookup())
-      MODIFIERS = lookup.findVarHandle(Field::class.java, "modifiers", Int::class.javaPrimitiveType)
-    } catch (ex: IllegalAccessException) {
-      throw RuntimeException(ex)
-    } catch (ex: NoSuchFieldException) {
-      throw RuntimeException(ex)
-    }
-  }
-
-  /** Make non final. */
-  fun makeNonFinal(field: Field) {
-    val mods = field.modifiers
-    if (Modifier.isFinal(mods)) {
-      (MODIFIERS ?: return).set(field, mods and Modifier.FINAL.inv())
-    }
-  }
-
-  /** Make final. */
-  fun makeFinal(field: Field) {
-    val mods = field.modifiers
-    if (!Modifier.isFinal(mods)) {
-      (MODIFIERS ?: return).set(field, mods and Modifier.FINAL)
-    }
-  }
-}
+//object FieldHelper {
+//  private var MODIFIERS: VarHandle? = null
+//
+//  init {
+//    try {
+//      val lookup = MethodHandles.privateLookupIn(Field::class.java, MethodHandles.lookup())
+//      MODIFIERS = lookup.findVarHandle(Field::class.java, "modifiers", Int::class.javaPrimitiveType)
+//    } catch (ex: IllegalAccessException) {
+//      throw RuntimeException(ex)
+//    } catch (ex: NoSuchFieldException) {
+//      throw RuntimeException(ex)
+//    }
+//  }
+//
+//  /** Make non final. */
+//  fun makeNonFinal(field: Field) {
+//    val mods = field.modifiers
+//    if (Modifier.isFinal(mods)) {
+//      (MODIFIERS ?: return).set(field, mods and Modifier.FINAL.inv())
+//    }
+//  }
+//
+//  /** Make final. */
+//  fun makeFinal(field: Field) {
+//    val mods = field.modifiers
+//    if (!Modifier.isFinal(mods)) {
+//      (MODIFIERS ?: return).set(field, mods and Modifier.FINAL)
+//    }
+//  }
+//}

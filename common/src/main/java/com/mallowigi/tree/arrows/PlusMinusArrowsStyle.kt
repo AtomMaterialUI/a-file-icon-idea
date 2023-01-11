@@ -26,25 +26,51 @@
 package com.mallowigi.tree.arrows
 
 import icons.AtomIcons
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
+
+const val PLUS_MINUS_EXPAND: String = "/icons/mac/plusminus/plus.svg"
+const val PLUS_MINUS_COLLAPSE: String = "/icons/mac/plusminus/minus.svg"
+const val PLUS_MINUS_EXPAND_SELECTED: String = "/icons/mac/plusminus/plus_selected.svg"
+const val PLUS_MINUS_COLLAPSE_SELECTED: String = "/icons/mac/plusminus/minus_selected.svg"
+
+var Plus: Icon = AtomIcons.load(PLUS_MINUS_EXPAND)
+var Minus: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE)
+var PlusSelected: Icon = AtomIcons.load(PLUS_MINUS_EXPAND_SELECTED)
+var MinusSelected: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE_SELECTED)
 
 /** Plus-minus arrows style. */
 class PlusMinusArrowsStyle : ArrowsStyle {
   override val expandIcon: Icon
-    get() = AtomIcons.Arrows.Plus
+    get() = Plus
+  override val expandIconPath: String
+    get() = PLUS_MINUS_EXPAND
 
   override val collapseIcon: Icon
-    get() = AtomIcons.Arrows.Minus
+    get() = Minus
+  override val collapseIconPath: String
+    get() = PLUS_MINUS_COLLAPSE
 
   override val selectedExpandIcon: Icon
-    get() = AtomIcons.Arrows.PlusSelected
+    get() = PlusSelected
+  override val selectedExpandIconPath: String
+    get() = PLUS_MINUS_EXPAND_SELECTED
 
   override val selectedCollapseIcon: Icon
-    get() = AtomIcons.Arrows.MinusSelected
+    get() = MinusSelected
+  override val selectedCollapseIconPath: String
+    get() = PLUS_MINUS_COLLAPSE_SELECTED
 
   override val bottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.Minus
+    get() = Minus
+  override val bottomIconPath: String
+    get() = PLUS_MINUS_COLLAPSE
 
   override val selectedBottomCollapseIcon: Icon
-    get() = AtomIcons.Arrows.MinusSelected
+    get() = MinusSelected
+  override val selectedBottomCollapseIconPath: String
+    get() = PLUS_MINUS_COLLAPSE_SELECTED
+
+  override val pathId: @NonNls String
+    get() = "plusminus"
 }

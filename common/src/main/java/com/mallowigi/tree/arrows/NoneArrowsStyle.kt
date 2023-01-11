@@ -34,19 +34,34 @@ class NoneArrowsStyle : ArrowsStyle {
   private val emptyIcon = EmptyIcon.create(AllIcons.General.ArrowUp)
   override val expandIcon: Icon
     get() = emptyIcon
+  override val expandIconPath: String
+    get() = ""
 
   override val collapseIcon: Icon
     get() = emptyIcon
+  override val collapseIconPath: String
+    get() = ""
 
   override val selectedExpandIcon: Icon
     get() = emptyIcon
+  override val selectedExpandIconPath: String
+    get() = ""
 
   override val selectedCollapseIcon: Icon
     get() = emptyIcon
+  override val selectedCollapseIconPath: String
+    get() = ""
 
   override val bottomCollapseIcon: Icon
     get() = emptyIcon
+  override val bottomIconPath: String
+    get() = ""
 
   override val selectedBottomCollapseIcon: Icon
     get() = emptyIcon
+  override val selectedBottomCollapseIconPath: String
+    get() = ""
+
+  override val pathId: String
+    get() = ""
 }
