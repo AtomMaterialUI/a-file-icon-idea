@@ -26,6 +26,7 @@ package com.mallowigi.icons
 import com.intellij.ide.AppLifecycleListener
 import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.LafManagerListener
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.DumbAware
@@ -70,7 +71,7 @@ class AtomSVGPatchersListener : DynamicPluginListener, AppLifecycleListener, Dum
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
     }
 
-    applySvgPatchers()
+    ApplicationManager.getApplication().invokeLater { LafManager.getInstance().updateUI() }
   }
 
 }
