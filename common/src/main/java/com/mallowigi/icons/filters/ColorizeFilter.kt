@@ -23,31 +23,25 @@
  *
  *
  */
+package com.mallowigi.icons.filters
 
-package com.mallowigi.icons.filters;
+import java.awt.Color
+import java.awt.image.RGBImageFilter
 
-import java.awt.*;
-import java.awt.image.RGBImageFilter;
+/** Applies a filter to the IDE to colorize the icons with a color. */
+abstract class ColorizeFilter : RGBImageFilter() {
+  abstract val color: Color
 
-/**
- * Applies a filter to the IDE to colorize the icons with a color
- */
-@SuppressWarnings("AbstractClassWithOnlyOneDirectInheritor")
-public abstract class ColorizeFilter extends RGBImageFilter {
-
-  abstract Color getColor();
-
-  @SuppressWarnings("OverlyComplexBooleanExpression")
-  @Override
-  public final int filterRGB(final int x, final int y, final int rgb) {
-    final float[] myBase = Color.RGBtoHSB(getColor().getRed(), getColor().getGreen(), getColor().getBlue(), null);
+  @Suppress("Detekt:MagicNumber", "HardCodedStringLiteral")
+  override fun filterRGB(x: Int, y: Int, rgb: Int): Int {
+    val myBase = Color.RGBtoHSB(color.red, color.green, color.blue, null)
     // Get color components
-    final int r = (rgb >> 16) & 0xFF;
-    final int g = (rgb >> 8) & 0xFF;
-    final int b = rgb & 0xFF;
-    final float[] hsb = new float[3];
-    Color.RGBtoHSB(r, g, b, hsb);
-    final int endColor = Color.HSBtoRGB(myBase[0], myBase[1] * hsb[1], myBase[2] * hsb[2]);
-    return (rgb & 0xFF000000) | endColor & 0x00FFFFFF;
+    val r = rgb shr 16 and 0xFF
+    val g = rgb shr 8 and 0xFF
+    val b = rgb and 0xFF
+    val hsb = FloatArray(3)
+    Color.RGBtoHSB(r, g, b, hsb)
+    val endColor = Color.HSBtoRGB(myBase[0], myBase[1] * hsb[1], myBase[2] * hsb[2])
+    return rgb and -0x1000000 or (endColor and 0xFFFFFF)
   }
 }

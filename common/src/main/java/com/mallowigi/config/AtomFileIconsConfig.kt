@@ -69,10 +69,20 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
   @Property
   var isMonochromeIcons: Boolean = false
 
+  /** Whether the saturated icons are enabled. */
+  @Property
+  var isSaturatedIcons: Boolean = false
+
   /** The monochrome color. */
   @NonNls
   @Property
   var monochromeColor: String = DEFAULT_MONOCHROME
+    private set
+
+  /** The monochrome color. */
+  @NonNls
+  @Property
+  var saturation: Int = DEFAULT_SATURATION
     private set
 
   /** Whether the PSI icons are enabled. */
@@ -255,6 +265,20 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     this.monochromeColor.lowercase() != monochromeColor.lowercase()
   //endregion
 
+  //region Saturated Icons
+  /** Is saturation icons changed. */
+  fun isSaturatedIconsChanged(isSaturated: Boolean): Boolean = isSaturatedIcons != isSaturated
+
+  /** Toggle saturation icons. */
+  fun toggleSaturatedIcons() {
+    isSaturatedIcons = !isSaturatedIcons
+  }
+
+  /** Is saturation changed. */
+  fun isSaturatedColorChanged(saturation: Int): Boolean =
+    this.saturation != saturation
+  //endregion
+
   //region UI Icons
   /** Is enabled ui icons changed. */
   fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
@@ -396,6 +420,9 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
     /** Default Monochrome. */
     const val DEFAULT_MONOCHROME: String = "546E7A" // NON-NLS
+
+    /** Default Saturation. */
+    const val DEFAULT_SATURATION: Int = 0 // NON-NLS
 
     /** Instance of the Config service. */
     @JvmStatic

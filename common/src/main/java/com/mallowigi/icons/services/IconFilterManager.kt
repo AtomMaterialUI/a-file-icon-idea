@@ -26,6 +26,7 @@ package com.mallowigi.icons.services
 import com.intellij.openapi.util.IconLoader
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.filters.MonochromeFilter
+import com.mallowigi.icons.filters.SaturationFilter
 
 /** Icon filter manager. */
 @Suppress("UseIfInsteadOfWhen")
@@ -33,8 +34,10 @@ object IconFilterManager {
   /** Apply filter. */
   fun applyFilter() {
     val monochromeIcons = instance.isMonochromeIcons
+    val saturatedIcons = instance.isSaturatedIcons
     when {
       monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
+      saturatedIcons  -> IconLoader.setFilter(SaturationFilter)
       else            -> IconLoader.setFilter(null)
     }
   }

@@ -33,9 +33,10 @@ object MonochromeFilter : ColorizeFilter() {
 
   /** Get the user monochrome color. */
   @Suppress("MagicNumber")
-  override fun getColor(): Color {
-    val color = ColorUtil.fromHex(instance.monochromeColor)
-    return JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 8))
-  }
+  override val color: Color
+    get() {
+      val color = ColorUtil.fromHex(instance.monochromeColor)
+      return JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 8))
+    }
 
 }
