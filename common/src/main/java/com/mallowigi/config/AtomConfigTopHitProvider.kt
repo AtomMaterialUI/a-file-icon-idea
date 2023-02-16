@@ -31,7 +31,6 @@ import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
 import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.util.text.StringUtil
-import com.intellij.ui.layout.PropertyBinding
 import com.mallowigi.config.AtomSettingsBundle.message
 import org.jetbrains.annotations.NonNls
 import java.util.Collections
@@ -49,92 +48,79 @@ fun getInstance(): AtomFileIconsConfig = AtomFileIconsConfig.instance
 /** Accent color enabled. */
 fun cdAccentColorEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.accentColorCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isAccentColorEnabled },
-                  { AtomFileIconsConfig.instance.isAccentColorEnabled = it })
+  AtomFileIconsConfig.instance::isAccentColorEnabled,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Directory Icons. */
 fun cdDirectoryIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.enableDirectoryIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledDirectories },
-                  { AtomFileIconsConfig.instance.isEnabledDirectories = it })
+  AtomFileIconsConfig.instance::isEnabledDirectories,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** File Icons. */
 fun cdFileIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.enableFileIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledIcons },
-                  { AtomFileIconsConfig.instance.isEnabledIcons = it })
+  AtomFileIconsConfig.instance::isEnabledIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** PSI Icons. */
 fun cdPsiIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.enablePSIIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledPsiIcons },
-                  { AtomFileIconsConfig.instance.isEnabledPsiIcons = it })
+  AtomFileIconsConfig.instance::isEnabledPsiIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** UI Icons. */
 fun cdUIIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.enableUIIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isEnabledUIIcons },
-                  { AtomFileIconsConfig.instance.isEnabledUIIcons = it })
+  AtomFileIconsConfig.instance::isEnabledUIIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Hide File Icons. */
 fun cdHideFileIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.hideFileIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isHideFileIcons },
-                  { AtomFileIconsConfig.instance.isHideFileIcons = it })
+  AtomFileIconsConfig.instance::isHideFileIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Hide Folder Icons. */
 fun cdHideFolderIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.hideFolderIconsCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isHideFolderIcons },
-                  { AtomFileIconsConfig.instance.isHideFolderIcons = it })
+  AtomFileIconsConfig.instance::isHideFolderIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Hollow Folders. */
 fun cdHollowFoldersEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.hollowFoldersCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isUseHollowFolders },
-                  { AtomFileIconsConfig.instance.isUseHollowFolders = it })
+  AtomFileIconsConfig.instance::isUseHollowFolders,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Monochrome Icons. */
 fun cdMonochromeIconsEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.monochromeCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isMonochromeIcons },
-                  { AtomFileIconsConfig.instance.isMonochromeIcons = it })
+  AtomFileIconsConfig.instance::isMonochromeIcons,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Themed Color. */
 fun cdThemedColorEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.themedColorCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isThemedColorEnabled },
-                  { AtomFileIconsConfig.instance.isThemedColorEnabled = it })
+  AtomFileIconsConfig.instance::isThemedColorEnabled,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Custom Icon Size. */
 fun cdCustomIconSizeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.customIconSizeCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.hasCustomIconSize },
-                  { AtomFileIconsConfig.instance.hasCustomIconSize = it })
+  AtomFileIconsConfig.instance::hasCustomIconSize,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Custom Line Height. */
 fun cdCustomLineHeightEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.customLineHeightCheckbox.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.hasCustomLineHeight },
-                  { AtomFileIconsConfig.instance.hasCustomLineHeight = it })
+  AtomFileIconsConfig.instance::hasCustomLineHeight,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 
 /** Low Power Mode. */
 fun cdLowPowerModeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.lowPowerSwitch.text"),
-  PropertyBinding({ AtomFileIconsConfig.instance.isLowPowerMode },
-                  { AtomFileIconsConfig.instance.isLowPowerMode = it })
+  AtomFileIconsConfig.instance::isLowPowerMode,
 ).asOptionDescriptor { AtomFileIconsConfig.instance.fireChanged() }
 // endregion
 
