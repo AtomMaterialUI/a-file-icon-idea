@@ -25,7 +25,7 @@ jobs:
           java-version: 11
 
       - name: Gradle cache
-        uses: actions/cache@v3.2.2
+        uses: actions/cache@v3.2.5
         with:
           path: |
             ~/.gradle/caches
