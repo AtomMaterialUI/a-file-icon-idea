@@ -1,26 +1,34 @@
 {
+  "extends": [
+    "config:base"
+  ],
   "labels": [
     "dependencies"
   ],
+  "automerge": true,
+  "rebaseWhen": "behind-base-branch",
+  "bumpVersion": "patch",
   "commitBodyTable": true,
   "prHourlyLimit": 6,
   "prConcurrentLimit": 6,
-  "automerge": true,
+  "gradle": {
+    "enabled": false
+  },
+  "gradle-lite": {
+    "enabled": true
+  },
   "packageRules": [
     {
+      "matchManagers": [
+        "gradle",
+        "gradle-lite"
+      ],
       "matchUpdateTypes": [
         "minor",
-        "patch",
-        "pin",
-        "digest"
+        "patch"
       ],
-      "semanticCommitType": "chore",
-      "automerge": true,
-      "semanticCommits": true
+      "groupName": "Gradle non-major dependencies",
+      "groupSlug": "gradle-minor-patch"
     }
-  ],
-  "extends": [
-    "config:base",
-    "config:semverAllMonthly"
   ]
 }
