@@ -2,6 +2,12 @@
 
 ----
 
+## 87.1.0
+
+### Fixes
+
+- Remove SVG with base64 icons temporarily since it is broken in the latest EAP
+
 ## 87.0.0 (8.7.0)
 
 ### Fixes
