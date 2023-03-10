@@ -2,7 +2,23 @@
 
 ----
 
-## 87.1.0
+## 88.0.0 (8.8.0)
+
+### Additions
+
+- File Icons:
+    - `tokei`
+    - `tokeignore`
+    - `skaffold`
+- Folder Icons
+    - `analytics`, `graphs`, `metrics`
+    - `parsers`
+
+### Fixes
+
+- Restore logo icons
+
+## 87.1.0 (8.7.1)
 
 ### Fixes
 
