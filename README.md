@@ -17,6 +17,10 @@
 This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of
 the [Material Theme UI](https://github.com/mallowigi/material-theme-issues) plugin.
 
+## VSCode Extension
+
+<https://marketplace.visualstudio.com/items?itemName=AtomMaterial.a-file-icon-vscode&ssr=false#overview>
+
 ## Chrome Extension
 
 <https://chrome.google.com/webstore/detail/atom-file-icons-web/pljfkbaipkidhmaljaaakibigbcmmpnc>
@@ -24,8 +28,6 @@ the [Material Theme UI](https://github.com/mallowigi/material-theme-issues) plug
 ## Firefox Extension
 
 <https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/>
-
-## Features
 
 - Replaces **file icons** with their relevant logo icons
     - According to their extension (Java, PHP, Ruby...)
