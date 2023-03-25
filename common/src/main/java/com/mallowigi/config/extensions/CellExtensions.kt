@@ -22,23 +22,22 @@
  * SOFTWARE.
  *
  */
-package com.mallowigi.icons.filters
 
+package com.mallowigi.config.extensions
+
+import com.intellij.ui.ColorPanel
 import com.intellij.ui.ColorUtil
-import com.intellij.ui.JBColor
-import com.mallowigi.config.AtomFileIconsConfig.Companion.DEFAULT_MONOCHROME
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
-import java.awt.Color
+import com.intellij.ui.dsl.builder.Cell
+import kotlin.reflect.KMutableProperty0
 
-/** Monochrome filter. */
-object MonochromeFilter : ColorizeFilter() {
 
-  /** Get the user monochrome color. */
-  @Suppress("MagicNumber")
-  override val color: Color
-    get() {
-      val color = ColorUtil.fromHex(instance.monochromeColor ?: DEFAULT_MONOCHROME)
-      return JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 8))
-    }
-
+public fun Cell<ColorPanel>.bind(property: KMutableProperty0<String?>, fallbackValue: String) {
+  this.component.selectedColor = ColorUtil.fromHex(property.get() ?: fallbackValue)
+  this.component.addActionListener {
+    property.set(
+      ColorUtil.toHex(
+        this.component.selectedColor ?: return@addActionListener
+      )
+    )
+  }
 }

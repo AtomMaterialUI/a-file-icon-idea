@@ -1,43 +1,37 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 package com.mallowigi.config
 
-import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.SettingsCategory
-import com.intellij.openapi.components.State
-import com.intellij.openapi.components.Storage
-import com.intellij.ui.ColorUtil
-import com.intellij.ui.JBColor
-import com.intellij.util.ui.UIUtil
+import com.intellij.openapi.components.*
 import com.intellij.util.xmlb.XmlSerializerUtil
-import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
-import org.jetbrains.annotations.NonNls
+import com.mallowigi.utils.getAccentFromTheme
+import com.mallowigi.utils.getThemedFromTheme
 
 /** Atom file icons config. */
 @Suppress("TooManyFunctions")
@@ -46,104 +40,71 @@ import org.jetbrains.annotations.NonNls
   storages = [Storage("a-file-icons.xml")],
   category = SettingsCategory.UI
 ) // NON-NLS
-class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
+class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsConfig> {
   private var firstRun: Boolean = true
 
-  /** Is enabled new ui icons. */
-  @Property
-  var isEnabledNewUiIcons: Boolean = false
-
   /** Whether the file icons are enabled. */
-  @Property
-  var isEnabledIcons: Boolean = true
+  var isEnabledIcons: Boolean by property(true)
 
   /** Whether the folder icons are enabledd. */
-  @Property
-  var isEnabledDirectories: Boolean = true
+  var isEnabledDirectories: Boolean by property(true)
 
   /** Whether the UI icons are enabled. */
-  @Property
-  var isEnabledUIIcons: Boolean = true
+  var isEnabledUIIcons: Boolean by property(true)
 
   /** Whether the monochrome icons are enabled. */
-  @Property
-  var isMonochromeIcons: Boolean = false
+  var isMonochromeIcons: Boolean by property(false)
 
   /** Whether the saturated icons are enabled. */
-  @Property
-  var isSaturatedIcons: Boolean = false
+  var isSaturatedIcons: Boolean by property(false)
 
   /** The monochrome color. */
-  @NonNls
-  @Property
-  var monochromeColor: String = DEFAULT_MONOCHROME
-    private set
+  var monochromeColor: String? by string(DEFAULT_MONOCHROME)
 
   /** The monochrome color. */
-  @NonNls
-  @Property
-  var saturation: Int = DEFAULT_SATURATION
-    private set
+  var saturation: Int by property(DEFAULT_SATURATION)
 
   /** Whether the PSI icons are enabled. */
-  @Property
-  var isEnabledPsiIcons: Boolean = true
+  var isEnabledPsiIcons: Boolean by property(true)
 
   /** Whether file icons are hidden. */
-  @Property
-  var isHideFileIcons: Boolean = false
+  var isHideFileIcons: Boolean by property(false)
 
   /** Whether folder icons are hidden. */
-  @Property
-  var isHideFolderIcons: Boolean = false
+  var isHideFolderIcons: Boolean by property(false)
 
   /** Whether the hollow folders are enabled. */
-  @Property
-  var isUseHollowFolders: Boolean = true
+  var isUseHollowFolders: Boolean by property(true)
 
   /** Style of tree expand arrows. */
-  @Property
-  var arrowsStyle: ArrowsStyles = ArrowsStyles.MATERIAL
+  var arrowsStyle: ArrowsStyles by enum(ArrowsStyles.MATERIAL)
 
   /** Whether custom accent color is enabled. */
-  @Property
-  var isAccentColorEnabled: Boolean = false
+  var isAccentColorEnabled: Boolean by property(false)
 
   /** Custom accent color. */
-  @NonNls
-  @Property
-  var accentColor: String = accentColorFromTheme
-    private set
+  var accentColor: String? by string(accentColorFromTheme)
 
   /** Whether custom theme color is enabled. */
-  @Property
-  var isThemedColorEnabled: Boolean = false
+  var isThemedColorEnabled: Boolean by property(false)
 
   /** Custom theme color. */
-  @NonNls
-  @Property
-  var themedColor: String = themedColorFromTheme
-    private set
+  var themedColor: String? by string(themedColorFromTheme)
 
   /** Whether custom icon size is enabled. */
-  @Property
-  var hasCustomIconSize: Boolean = false
+  var hasCustomIconSize: Boolean by property(false)
 
   /** Whether custom line height is enabled. */
-  @Property
-  var hasCustomLineHeight: Boolean = false
+  var hasCustomLineHeight: Boolean by property(false)
 
   /** Custom icon size. */
-  @Property
-  var customIconSize: Int = DEFAULT_ICON_SIZE
+  var customIconSize: Int by property(DEFAULT_ICON_SIZE)
 
   /** Custom line height. */
-  @Property
-  var customLineHeight: Int = DEFAULT_LINE_HEIGHT
+  var customLineHeight: Int by property(DEFAULT_LINE_HEIGHT)
 
   /** Whether low power mode is enabled. */
-  @Property
-  var isLowPowerMode: Boolean = true
+  var isLowPowerMode: Boolean by property(true)
 
   /** Config state. */
   override fun getState(): AtomFileIconsConfig = this
@@ -164,6 +125,10 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     ApplicationManager.getApplication().messageBus
       .syncPublisher(AtomConfigNotifier.TOPIC)
       .configChanged(this)
+  }
+
+  fun apply() {
+    fireChanged()
   }
 
   /**
@@ -196,7 +161,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   /** Reset settings. */
   fun resetSettings() {
-    isEnabledNewUiIcons = false
     isEnabledIcons = true
     isEnabledDirectories = true
     isEnabledUIIcons = true
@@ -219,16 +183,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     fireChanged()
   }
 
-  //region New UI Icons
-  /** Is enabled icons changed. */
-  fun isEnabledNewUiIconsChanged(isEnabledNewUiIcons: Boolean): Boolean =
-    this.isEnabledNewUiIcons != isEnabledNewUiIcons
-
-  /** Toggle enabled icons. */
-  fun toggleNewUiIcons() {
-    isEnabledNewUiIcons = !isEnabledNewUiIcons
-  }
-  //endregion
 
   //region File Icons
   /** Is enabled icons changed. */
@@ -262,7 +216,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   /** Is monochrome color changed. */
   fun isMonochromeColorChanged(monochromeColor: String): Boolean =
-    this.monochromeColor.lowercase() != monochromeColor.lowercase()
+    this.monochromeColor?.lowercase() != monochromeColor.lowercase()
   //endregion
 
   //region Saturated Icons
@@ -336,14 +290,14 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   //region Accent Color
   /** Is accent color changed. */
-  fun isAccentColorChanged(accentColor: String): Boolean = this.accentColor.lowercase() != accentColor.lowercase()
+  fun isAccentColorChanged(accentColor: String): Boolean = this.accentColor?.lowercase() != accentColor.lowercase()
 
   /** Is accent color enabled changed. */
   fun isAccentColorEnabledChanged(enabled: Boolean): Boolean = this.isAccentColorEnabled != enabled
 
   /** Get current accent color. */
   fun getCurrentAccentColor(): String {
-    if (isAccentColorEnabled) return accentColor
+    if (isAccentColorEnabled) return accentColor ?: accentColorFromTheme
     return accentColorFromTheme
   }
 
@@ -351,14 +305,14 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
 
   //region Themed Color
   /** Is themed color changed. */
-  fun isThemedColorChanged(themedColor: String): Boolean = this.themedColor.lowercase() != themedColor.lowercase()
+  fun isThemedColorChanged(themedColor: String): Boolean = this.themedColor?.lowercase() != themedColor.lowercase()
 
   /** Is themed color enabled changed. */
   fun isThemedColorEnabledChanged(enabled: Boolean): Boolean = this.isThemedColorEnabled != enabled
 
   /** Get current themed color. */
   fun getCurrentThemedColor(): String {
-    if (isThemedColorEnabled) return themedColor
+    if (isThemedColorEnabled) return themedColor ?: themedColorFromTheme
     return themedColorFromTheme
   }
   //endregion
@@ -422,7 +376,7 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     const val DEFAULT_MONOCHROME: String = "546E7A" // NON-NLS
 
     /** Default Saturation. */
-    const val DEFAULT_SATURATION: Int = 0 // NON-NLS
+    const val DEFAULT_SATURATION: Int = 100 // NON-NLS
 
     /** Instance of the Config service. */
     @JvmStatic
@@ -435,25 +389,6 @@ class AtomFileIconsConfig : PersistentStateComponent<AtomFileIconsConfig> {
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
 
-    /** Extract accent color from current theme. */
-    @Suppress("HardCodedStringLiteral")
-    private fun getAccentFromTheme(): String {
-      val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
-        "IntelliJ Light" -> "ActionButton.focusedBorderColor"
-        "Light"          -> "ActionButton.focusedBorderColor"
-        "Darcula"        -> "Button.select"
-        else             -> "Link.activeForeground"
-      }
 
-      val namedColor = JBColor.namedColor(
-        namedKey,
-        UIUtil.getButtonSelectColor() ?: UIUtil.getListSelectionForeground(true)
-      )
-      return ColorUtil.toHex(namedColor)
-    }
-
-    /** Extract themed color from current theme. */
-    private fun getThemedFromTheme(): String =
-      ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
   }
 }

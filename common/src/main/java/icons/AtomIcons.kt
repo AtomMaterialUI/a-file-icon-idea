@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  *
  */
 package icons
@@ -57,6 +56,7 @@ object AtomIcons {
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
+
 
   /**
    * Get file icon from the resources folder
@@ -126,6 +126,23 @@ object AtomIcons {
     virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIcon(icon, AllIcons.Nodes.Symlink)
     !virtualFile.isWritable -> LayeredIcon(icon, AllIcons.Nodes.Locked)
     else -> icon
+  }
+
+  object Settings {
+    val FILES: Icon = load("/icons/settings/atom.svg")
+    val FOLDERS: Icon = load("/icons/settings/compiledClassesFolder.svg")
+    val MONOCHROME: Icon = load("/icons/settings/monochrome.svg")
+    val SATURATION: Icon = load("/icons/settings/saturation.svg")
+    val UI: Icon = load("/icons/settings/plugin.svg")
+    val PSI: Icon = load("/icons/settings/psi.svg")
+    val HIDE_FILES: Icon = load("/icons/settings/hideFileAction.svg")
+    val HIDE_FOLDERS: Icon = load("/icons/settings/hideFolderAction.svg")
+    val HOLLOW: Icon = load("/icons/settings/folderOpen.svg")
+    val SIZE: Icon = load("/icons/settings/plus.svg")
+    val LINE_HEIGHT: Icon = load("/icons/settings/lineHeight.svg")
+    val ARROWS: Icon = load("/icons/settings/arrowRight.svg")
+    val ACCENT: Icon = load("/icons/settings/accentColor.svg")
+    val THEMED: Icon = load("/icons/settings/folder.svg")
   }
 
   /** Node icons. */
