@@ -56,7 +56,7 @@ object AtomIcons {
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
-
+  val LOGO: Icon = load("/logo.svg")
 
   /**
    * Get file icon from the resources folder

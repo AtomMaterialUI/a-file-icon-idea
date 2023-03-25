@@ -186,6 +186,10 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
     customIconSize = DEFAULT_ICON_SIZE
     hasCustomLineHeight = false
     customLineHeight = DEFAULT_LINE_HEIGHT
+    saturation = DEFAULT_SATURATION
+    isSaturatedIcons = false
+    opacity = DEFAULT_OPACITY
+    isOpacityIcons = false
     isLowPowerMode = true
     fireChanged()
   }
@@ -253,7 +257,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   fun isOpacityColorChanged(opacity: Int): Boolean =
     this.opacity != opacity
   //endregion
-
 
   //region UI Icons
   /** Is enabled ui icons changed. */
@@ -374,6 +377,7 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
     isLowPowerMode = !isLowPowerMode
   }
   //endregion
+
 
   companion object {
     /** Default Icon Size. */

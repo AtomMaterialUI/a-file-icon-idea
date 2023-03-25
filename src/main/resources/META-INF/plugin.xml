@@ -43,14 +43,18 @@
     <!--                             groupId="appearance" dynamic="true"-->
     <!--                             id="AtomConfig"/>-->
     <!-- New Settings -->
+    <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
+                             id="AtomHomeConfigurable"
+                             groupId="appearance"/>
     <applicationConfigurable instance="com.mallowigi.config.AtomSettingsConfigurable"
+                             parentId="AtomHomeConfigurable"
                              id="AtomSettingsConfigurable"
                              groupId="appearance"/>
 
     <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
     <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
                              groupId="appearance" dynamic="true"
-                             parentId="AtomSettingsConfigurable"
+                             parentId="AtomHomeConfigurable"
                              id="AtomSelectConfig"/>
 
 

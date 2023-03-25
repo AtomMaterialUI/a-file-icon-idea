@@ -28,9 +28,11 @@ package com.mallowigi.config
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.ui.DialogPanel
+import com.intellij.openapi.ui.Messages
 import com.intellij.ui.ColorPanel
 import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.components.OnOffButton
 import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.layout.selected
 import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_ICON_SIZE
@@ -78,7 +80,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
     lateinit var customSizeCheckbox: JBCheckBox
     lateinit var customLineHeightCheckbox: JBCheckBox
     lateinit var saturatedCheckbox: JBCheckBox
-    lateinit var opacityCheckbox: JBCheckBox
+//    lateinit var opacityCheckbox: JBCheckBox
     lateinit var monochromeCheckbox: JBCheckBox
     val arrowsRenderer = arrowsRenderer()
 
@@ -281,8 +283,34 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
           }
         ).rowComment(message("SettingsForm.arrowsStyleLabel.toolTipText"))
       }
+
+      row {
+        label(message("SettingsForm.lowPowerSwitch.text"))
+          .gap(RightGap.SMALL)
+        cell(OnOffButton())
+          .bindSelected(settings::isLowPowerMode)
+      }.rowComment(message("SettingsForm.lowPowerSwitch.toolTipText"))
+
+      row {
+        button(message("SettingsForm.resetDefaultsButton.text")) { resetSettings() }
+          .resizableColumn()
+          .align(AlignX.RIGHT)
+      }
     }
     return main
+  }
+
+  private fun resetSettings() {
+    if (Messages.showOkCancelDialog(
+        message("SettingsForm.resetDefaultsButton.confirmation"),
+        message("SettingsForm.resetDefaultsButton.confirmation.title"),
+        message("SettingsForm.resetDefaultsButton.confirmation.ok"),
+        message("SettingsForm.resetDefaultsButton.confirmation.cancel"),
+        Messages.getQuestionIcon(),
+      ) == Messages.OK) {
+      settings.resetSettings()
+      main.reset()
+    }
   }
 
   private fun arrowsRenderer(): SimpleListCellRenderer<ArrowsStyles?> {
@@ -305,7 +333,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
 
   override fun apply() {
     super.apply()
-    AtomFileIconsConfig.instance.apply()
+    settings.apply()
   }
 
   companion object {
