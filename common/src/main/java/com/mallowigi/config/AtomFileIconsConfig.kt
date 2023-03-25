@@ -400,10 +400,12 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
     const val DEFAULT_SATURATION: Int = 0
 
     /** Max Saturation. */
-    const val MAX_SATURATION: Int = 15
+    const val MAX_SATURATION: Int = 20
 
+    /** Default Opacity. */
     const val DEFAULT_OPACITY: Int = 100
 
+    /** Max Opacity. */
     const val MAX_OPACITY: Int = 100
 
     /** Instance of the Config service. */

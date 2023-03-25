@@ -27,7 +27,6 @@ package com.mallowigi.icons.services
 import com.intellij.openapi.util.IconLoader
 import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
 import com.mallowigi.icons.filters.MonochromeFilter
-import com.mallowigi.icons.filters.OpacityFilter
 import com.mallowigi.icons.filters.SaturationFilter
 
 /** Icon filter manager. */
@@ -40,7 +39,6 @@ object IconFilterManager {
     when {
       monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
       saturatedIcons -> IconLoader.setFilter(SaturationFilter)
-      opacityIcons -> IconLoader.setFilter(OpacityFilter)
       else -> IconLoader.setFilter(null)
     }
   }

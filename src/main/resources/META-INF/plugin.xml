@@ -83,7 +83,6 @@
                        key="notification.group.atom.material.notifications"/>
 
     <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
-    <!--        <backgroundPostStartupActivity implementation="com.mallowigi.utils.PostStartupActivity"/>-->
   </extensions>
 
   <!--suppress PluginXmlValidity -->
