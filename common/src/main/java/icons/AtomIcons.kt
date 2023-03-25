@@ -133,6 +133,7 @@ object AtomIcons {
     val FOLDERS: Icon = load("/icons/settings/compiledClassesFolder.svg")
     val MONOCHROME: Icon = load("/icons/settings/monochrome.svg")
     val SATURATION: Icon = load("/icons/settings/saturation.svg")
+    val OPACITY: Icon = load("/icons/settings/opacity.svg")
     val UI: Icon = load("/icons/settings/plugin.svg")
     val PSI: Icon = load("/icons/settings/psi.svg")
     val HIDE_FILES: Icon = load("/icons/settings/hideFileAction.svg")

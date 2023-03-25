@@ -39,7 +39,7 @@ import com.mallowigi.utils.getThemedFromTheme
   name = "AtomFileIconsConfig",
   storages = [Storage("a-file-icons.xml")],
   category = SettingsCategory.UI
-) // NON-NLS
+)
 class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsConfig> {
   private var firstRun: Boolean = true
 
@@ -58,11 +58,17 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   /** Whether the saturated icons are enabled. */
   var isSaturatedIcons: Boolean by property(false)
 
+  /** Whether the opacity icons are enabled. */
+  var isOpacityIcons: Boolean by property(false)
+
   /** The monochrome color. */
   var monochromeColor: String? by string(DEFAULT_MONOCHROME)
 
-  /** The monochrome color. */
+  /** The saturation. */
   var saturation: Int by property(DEFAULT_SATURATION)
+
+  /** The opacity. */
+  var opacity: Int by property(DEFAULT_OPACITY)
 
   /** Whether the PSI icons are enabled. */
   var isEnabledPsiIcons: Boolean by property(true)
@@ -233,6 +239,21 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
     this.saturation != saturation
   //endregion
 
+  //region Opacity Icons
+  /** Is opacity icons changed. */
+  fun isOpacityIconsChanged(isOpacity: Boolean): Boolean = isOpacityIcons != isOpacity
+
+  /** Toggle opacity icons. */
+  fun toggleOpacityIcons() {
+    isOpacityIcons = !isOpacityIcons
+  }
+
+  /** Is opacity changed. */
+  fun isOpacityColorChanged(opacity: Int): Boolean =
+    this.opacity != opacity
+  //endregion
+
+
   //region UI Icons
   /** Is enabled ui icons changed. */
   fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
@@ -376,7 +397,14 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
     const val DEFAULT_MONOCHROME: String = "546E7A" // NON-NLS
 
     /** Default Saturation. */
-    const val DEFAULT_SATURATION: Int = 100 // NON-NLS
+    const val DEFAULT_SATURATION: Int = 0
+
+    /** Max Saturation. */
+    const val MAX_SATURATION: Int = 15
+
+    const val DEFAULT_OPACITY: Int = 100
+
+    const val MAX_OPACITY: Int = 100
 
     /** Instance of the Config service. */
     @JvmStatic

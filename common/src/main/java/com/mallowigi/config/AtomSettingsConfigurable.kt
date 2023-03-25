@@ -33,9 +33,10 @@ import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.layout.selected
-import com.mallowigi.config.AtomFileIconsConfig.Companion.DEFAULT_SATURATION
 import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_ICON_SIZE
 import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_LINE_HEIGHT
+import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_OPACITY
+import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_SATURATION
 import com.mallowigi.config.AtomFileIconsConfig.Companion.MIN_ICON_SIZE
 import com.mallowigi.config.AtomFileIconsConfig.Companion.MIN_LINE_HEIGHT
 import com.mallowigi.config.AtomSettingsBundle.message
@@ -52,6 +53,7 @@ import icons.AtomIcons.Settings.HIDE_FILES
 import icons.AtomIcons.Settings.HIDE_FOLDERS
 import icons.AtomIcons.Settings.LINE_HEIGHT
 import icons.AtomIcons.Settings.MONOCHROME
+import icons.AtomIcons.Settings.OPACITY
 import icons.AtomIcons.Settings.PSI
 import icons.AtomIcons.Settings.SATURATION
 import icons.AtomIcons.Settings.SIZE
@@ -78,6 +80,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
     lateinit var customSizeCheckbox: JBCheckBox
     lateinit var customLineHeightCheckbox: JBCheckBox
     lateinit var saturatedCheckbox: JBCheckBox
+    lateinit var opacityCheckbox: JBCheckBox
     lateinit var monochromeCheckbox: JBCheckBox
     val arrowsRenderer = arrowsRenderer()
 
@@ -240,12 +243,29 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
               .component
           },
           {
-            spinner(0..DEFAULT_SATURATION, 1)
+            spinner(0..MAX_SATURATION, 1)
               .bindIntValue(settings::saturation)
               .enabledIf(saturatedCheckbox.selected)
               .gap(RightGap.SMALL)
           }
         ).rowComment(message("SettingsForm.saturationCheckbox.toolTipText"))
+
+        twoColumnsRow(
+          {
+            icon(OPACITY)
+              .gap(RightGap.SMALL)
+            opacityCheckbox = checkBox(message("SettingsForm.opacityCheckbox.text"))
+              .bindSelected(settings::isOpacityIcons)
+              .gap(RightGap.SMALL)
+              .component
+          },
+          {
+            spinner(0..MAX_OPACITY, 1)
+              .bindIntValue(settings::opacity)
+              .enabledIf(opacityCheckbox.selected)
+              .gap(RightGap.SMALL)
+          }
+        ).rowComment(message("SettingsForm.opacityCheckbox.toolTipText"))
 
         twoColumnsRow(
           {
