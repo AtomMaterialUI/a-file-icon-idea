@@ -32,6 +32,7 @@ import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
 import com.mallowigi.utils.getAccentFromTheme
 import com.mallowigi.utils.getThemedFromTheme
+import com.mallowigi.utils.getValue
 
 /** Atom file icons config. */
 @Suppress("TooManyFunctions")
@@ -410,8 +411,8 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
 
     /** Instance of the Config service. */
     @JvmStatic
-    val instance: AtomFileIconsConfig
-      get() = ApplicationManager.getApplication().getService(AtomFileIconsConfig::class.java)
+      /** Instance of the theme manager. */
+    val instance: AtomFileIconsConfig by lazy { service() }
 
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()

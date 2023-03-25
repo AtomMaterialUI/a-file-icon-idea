@@ -39,20 +39,19 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
-    <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"
-                             groupId="appearance" dynamic="true"
-                             id="AtomConfig"/>
+    <!--    <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"-->
+    <!--                             groupId="appearance" dynamic="true"-->
+    <!--                             id="AtomConfig"/>-->
     <!-- New Settings -->
     <applicationConfigurable instance="com.mallowigi.config.AtomSettingsConfigurable"
+                             id="AtomSettingsConfigurable"
                              groupId="appearance"/>
 
     <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
     <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
                              groupId="appearance" dynamic="true"
-                             parentId="AtomConfig"
+                             parentId="AtomSettingsConfigurable"
                              id="AtomSelectConfig"/>
-    <applicationService serviceImplementation="com.mallowigi.config.BundledAssociations"/>
-    <applicationService serviceImplementation="com.mallowigi.icons.svgpatchers.MainSvgPatcher"/>
 
 
     <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
