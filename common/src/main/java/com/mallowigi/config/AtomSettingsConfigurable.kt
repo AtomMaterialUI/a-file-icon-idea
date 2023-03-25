@@ -62,7 +62,6 @@ import javax.swing.DefaultComboBoxModel
 import javax.swing.Icon
 import javax.swing.JList
 
-
 class AtomSettingsConfigurable : BoundSearchableConfigurable(
   message("settings.title"),
   "com.mallowigi.config.AtomSettingsConfigurable",
@@ -116,6 +115,14 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             .gap(RightGap.SMALL)
         }.rowComment(message("SettingsForm.enablePSIIconsCheckbox.toolTipText"))
 
+        row {
+          icon(AtomIcons.Settings.HOLLOW)
+            .gap(RightGap.SMALL)
+          checkBox(message("SettingsForm.hollowFoldersCheckbox.text"))
+            .bindSelected(settings::isUseHollowFolders)
+            .gap(RightGap.SMALL)
+        }.rowComment(message("SettingsForm.hollowFoldersCheckbox.toolTipText"))
+
         collapsibleGroup(message("SettingsForm.groups.hide")) {
           row {
             icon(HIDE_FILES)
@@ -129,7 +136,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             icon(HIDE_FOLDERS)
               .gap(RightGap.SMALL)
             checkBox(message("SettingsForm.hideFolderIconsCheckbox.text"))
-              .bindSelected(settings::isHideFileIcons)
+              .bindSelected(settings::isHideFolderIcons)
               .gap(RightGap.SMALL)
           }.rowComment(message("SettingsForm.hideFolderIconsCheckbox.toolTipText"))
         }
@@ -179,9 +186,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .component
             },
             {
-
-              intTextField(MIN_ICON_SIZE..MAX_ICON_SIZE, 1)
-                .bindIntText(settings::customIconSize)
+              spinner(MIN_ICON_SIZE..MAX_ICON_SIZE, 1)
+                .bindIntValue(settings::customIconSize)
                 .enabledIf(customSizeCheckbox.selected)
                 .gap(RightGap.SMALL)
             }
@@ -197,8 +203,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .component
             },
             {
-              intTextField(MIN_LINE_HEIGHT..MAX_LINE_HEIGHT, 1)
-                .bindIntText(settings::customLineHeight)
+              spinner(MIN_LINE_HEIGHT..MAX_LINE_HEIGHT, 1)
+                .bindIntValue(settings::customLineHeight)
                 .enabledIf(customLineHeightCheckbox.selected)
                 .gap(RightGap.SMALL)
 
@@ -208,14 +214,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
       }
 
       collapsibleGroup(message("SettingsForm.groups.other")) {
-        row {
-          icon(AtomIcons.Settings.HOLLOW)
-            .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.hollowFoldersCheckbox.text"))
-            .bindSelected(settings::isUseHollowFolders)
-            .gap(RightGap.SMALL)
-        }.rowComment(message("SettingsForm.hollowFoldersCheckbox.toolTipText"))
-
         twoColumnsRow(
           {
             icon(MONOCHROME)
@@ -242,8 +240,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
               .component
           },
           {
-            intTextField(0..DEFAULT_SATURATION, 1)
-              .bindIntText(settings::saturation)
+            spinner(0..DEFAULT_SATURATION, 1)
+              .bindIntValue(settings::saturation)
               .enabledIf(saturatedCheckbox.selected)
               .gap(RightGap.SMALL)
           }
@@ -285,15 +283,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
       }
     }
     return renderer
-  }
-
-
-  override fun isModified(): Boolean {
-    return super.isModified()
-  }
-
-  override fun reset() {
-    super<BoundSearchableConfigurable>.reset()
   }
 
   override fun apply() {
