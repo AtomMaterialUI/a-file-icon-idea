@@ -39,9 +39,6 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
-    <!--    <applicationConfigurable instance="com.mallowigi.config.AtomConfigurable"-->
-    <!--                             groupId="appearance" dynamic="true"-->
-    <!--                             id="AtomConfig"/>-->
     <!-- New Settings -->
     <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
                              id="AtomHomeConfigurable"

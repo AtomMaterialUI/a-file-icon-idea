@@ -28,7 +28,6 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.*
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.mallowigi.config.listeners.AtomConfigNotifier
-import com.mallowigi.config.ui.SettingsForm
 import com.mallowigi.tree.arrows.ArrowsStyles
 import com.mallowigi.utils.getAccentFromTheme
 import com.mallowigi.utils.getThemedFromTheme
@@ -117,7 +116,7 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   override fun getState(): AtomFileIconsConfig = this
 
   /** Load config state from XML. */
-  override fun loadState(state: AtomFileIconsConfig): Unit {
+  override fun loadState(state: AtomFileIconsConfig) {
     val changed = state != this
     XmlSerializerUtil.copyBean(state, this)
 
@@ -135,34 +134,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   }
 
   fun apply() {
-    fireChanged()
-  }
-
-  /**
-   * Apply settings
-   *
-   * @param form
-   */
-  fun applySettings(form: SettingsForm) {
-    isEnabledIcons = form.isEnabledIcons
-    isEnabledDirectories = form.isEnabledDirectories
-    isEnabledUIIcons = form.isEnabledUIIcons
-    isMonochromeIcons = form.isEnabledMonochromeIcons
-    monochromeColor = form.monochromeColor
-    isEnabledPsiIcons = form.isEnabledPsiIcons
-    isHideFileIcons = form.isHiddenFileIcons
-    isHideFolderIcons = form.isHiddenFolderIcons
-    isUseHollowFolders = form.isHollowFoldersEnabled
-    arrowsStyle = form.arrowsStyle
-    isAccentColorEnabled = form.isAccentColorEnabled
-    accentColor = form.accentColor
-    isThemedColorEnabled = form.isThemedColorEnabled
-    themedColor = form.themedColor
-    hasCustomIconSize = form.hasCustomIconSize
-    hasCustomLineHeight = form.hasCustomLineHeight
-    customIconSize = form.customIconSize
-    customLineHeight = form.customLineHeight
-    isLowPowerMode = form.isLowPowerMode
     fireChanged()
   }
 
@@ -196,8 +167,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
 
 
   //region File Icons
-  /** Is enabled icons changed. */
-  fun isEnabledIconsChanged(isEnabledIcons: Boolean): Boolean = this.isEnabledIcons != isEnabledIcons
 
   /** Toggle enabled icons. */
   fun toggleEnabledIcons() {
@@ -206,9 +175,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Directory Icons
-  /** Is enabled directories changed. */
-  fun isEnabledDirectoriesChanged(isEnabledDirectories: Boolean): Boolean =
-    this.isEnabledDirectories != isEnabledDirectories
 
   /** Toggle directories icons. */
   fun toggleDirectoriesIcons() {
@@ -217,50 +183,33 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Monochrome Icons
-  /** Is monochrome icons changed. */
-  fun isMonochromeIconsChanged(isMonochrome: Boolean): Boolean = isMonochromeIcons != isMonochrome
 
   /** Toggle monochrome icons. */
   fun toggleMonochromeIcons() {
     isMonochromeIcons = !isMonochromeIcons
   }
 
-  /** Is monochrome color changed. */
-  fun isMonochromeColorChanged(monochromeColor: String): Boolean =
-    this.monochromeColor?.lowercase() != monochromeColor.lowercase()
   //endregion
 
   //region Saturated Icons
-  /** Is saturation icons changed. */
-  fun isSaturatedIconsChanged(isSaturated: Boolean): Boolean = isSaturatedIcons != isSaturated
 
   /** Toggle saturation icons. */
   fun toggleSaturatedIcons() {
     isSaturatedIcons = !isSaturatedIcons
   }
 
-  /** Is saturation changed. */
-  fun isSaturatedColorChanged(saturation: Int): Boolean =
-    this.saturation != saturation
   //endregion
 
   //region Opacity Icons
-  /** Is opacity icons changed. */
-  fun isOpacityIconsChanged(isOpacity: Boolean): Boolean = isOpacityIcons != isOpacity
 
   /** Toggle opacity icons. */
   fun toggleOpacityIcons() {
     isOpacityIcons = !isOpacityIcons
   }
 
-  /** Is opacity changed. */
-  fun isOpacityColorChanged(opacity: Int): Boolean =
-    this.opacity != opacity
   //endregion
 
   //region UI Icons
-  /** Is enabled ui icons changed. */
-  fun isEnabledUIIconsChanged(isEnabledUIIcons: Boolean): Boolean = this.isEnabledUIIcons != isEnabledUIIcons
 
   /** Toggle ui icons. */
   fun toggleUIIcons() {
@@ -269,8 +218,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region PSI Icons
-  /** Is enabled psi icons changed. */
-  fun isEnabledPsiIconsChanged(isEnabledPsiIcons: Boolean): Boolean = this.isEnabledPsiIcons != isEnabledPsiIcons
 
   /** Toggle psi icons. */
   fun togglePsiIcons() {
@@ -279,8 +226,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Hollow Folders
-  /** Is use hollow folders changed. */
-  fun isUseHollowFoldersChanged(useHollowFolders: Boolean): Boolean = isUseHollowFolders != useHollowFolders
 
   /** Toggle use hollow folders. */
   fun toggleUseHollowFolders() {
@@ -289,8 +234,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Hide File Icons
-  /** Is hide file icons changed. */
-  fun isHideFileIconsChanged(hideFileIcons: Boolean): Boolean = isHideFileIcons != hideFileIcons
 
   /** Toggle hide file icons. */
   fun toggleHideFileIcons() {
@@ -299,8 +242,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Hide Folder Icons
-  /** Is hide folder icons changed. */
-  fun isHideFolderIconsChanged(hideFolderIcons: Boolean): Boolean = isHideFolderIcons != hideFolderIcons
 
   /** Toggle hide folder icons. */
   fun toggleHideFolderIcons() {
@@ -308,17 +249,7 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   }
   //endregion
 
-  //region Arrows Style
-  /** Is arrows style changed? */
-  fun isArrowsStyleChanged(arrowsStyle: ArrowsStyles): Boolean = this.arrowsStyle != arrowsStyle
-  //endregion
-
   //region Accent Color
-  /** Is accent color changed. */
-  fun isAccentColorChanged(accentColor: String): Boolean = this.accentColor?.lowercase() != accentColor.lowercase()
-
-  /** Is accent color enabled changed. */
-  fun isAccentColorEnabledChanged(enabled: Boolean): Boolean = this.isAccentColorEnabled != enabled
 
   /** Get current accent color. */
   fun getCurrentAccentColor(): String {
@@ -329,11 +260,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Themed Color
-  /** Is themed color changed. */
-  fun isThemedColorChanged(themedColor: String): Boolean = this.themedColor?.lowercase() != themedColor.lowercase()
-
-  /** Is themed color enabled changed. */
-  fun isThemedColorEnabledChanged(enabled: Boolean): Boolean = this.isThemedColorEnabled != enabled
 
   /** Get current themed color. */
   fun getCurrentThemedColor(): String {
@@ -343,38 +269,10 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   //endregion
 
   //region Custom Icon size
-  /** Is custom icon size changed? */
-  fun isHasCustomIconSizeChanged(isCustomIconSize: Boolean): Boolean = hasCustomIconSize != isCustomIconSize
 
   /** Toggle big icons. */
   fun toggleHasCustomIconSize() {
     hasCustomIconSize = !hasCustomIconSize
-  }
-  //endregion
-
-  //region Custom Icon size
-  /** Is custom icon size changed? */
-  fun isCustomIconSizeChanged(newSize: Int): Boolean = newSize != customIconSize
-
-  //endregion
-
-  //region Custom Line Height
-
-  /** Is custom line height changed? */
-  fun isHasCustomLineHeightChanged(newHeight: Boolean): Boolean = hasCustomLineHeight != newHeight
-
-  /** Is custom line height changed? */
-  fun hasCustomLineHeightChanged(newSize: Int): Boolean = newSize != customLineHeight
-
-  //endregion
-
-  //region Low Power mode
-  /** Is low power mode changed. */
-  fun isLowPowerModeChanged(lowPower: Boolean): Boolean = isLowPowerMode != lowPower
-
-  /** Toggle low power mode. */
-  fun toggleLowPowerMode() {
-    isLowPowerMode = !isLowPowerMode
   }
   //endregion
 
@@ -415,7 +313,6 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
 
     /** Instance of the Config service. */
     @JvmStatic
-      /** Instance of the theme manager. */
     val instance: AtomFileIconsConfig by lazy { service() }
 
     private val accentColorFromTheme: String
