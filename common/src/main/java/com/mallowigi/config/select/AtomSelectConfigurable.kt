@@ -33,7 +33,6 @@ import com.intellij.ui.SearchTextField
 import com.intellij.ui.components.JBTabbedPane
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.util.ui.ColumnInfo
-import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.associations.ui.columns.*
 import com.mallowigi.config.associations.ui.internal.AssociationsTableItemEditor
@@ -47,7 +46,7 @@ import javax.swing.JPanel
 
 /** Configurable for Custom Associations. */
 class AtomSelectConfigurable : BoundSearchableConfigurable(
-  AtomSettingsBundle.message("AtomSelectForm.title"),
+  message("AtomSelectForm.title"),
   "com.mallowigi.config.AtomSelectConfig",
 ), Disposable {
   private lateinit var main: DialogPanel
@@ -55,8 +54,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   private lateinit var tabbedPane: JBTabbedPane
 
   // Panels for the tables
-  private var fileAssociationsPanel: JPanel = JPanel()
-  private var folderAssociationsPanel: JPanel = JPanel()
+  private lateinit var fileAssociationsPanel: JPanel
+  private lateinit var folderAssociationsPanel: JPanel
 
   // Search boxes
   private var fileSearch: SearchTextField = SearchTextField()
@@ -98,13 +97,31 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
 
   /** Configurable display name. */
   @Nls
-  override fun getDisplayName(): String = AtomSettingsBundle.message("AtomSelectForm.title")
+  override fun getDisplayName(): String = message("AtomSelectForm.title")
 
   /** Configurable ID. */
   override fun getId(): String = ID
 
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
+
+    fileAssociationsPanel = panel {
+      row {
+        cell(fileSearch)
+      }
+
+      row {
+        label("sdsdfdf")
+      }
+    }
+
+    folderAssociationsPanel = panel {
+      row {
+        cell(folderSearch)
+      }
+    }
+
+
     main = panel {
       group("Associations Editor") {
         row {
@@ -119,15 +136,11 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
         }
 
         row {
-          tabbedPane = tabbedPaneHeader(
-            listOf(
-              message("SelectForm.fileAssociationsPanel.tab.title"),
-              message("SelectForm.folderAssociationsPanel.tab.title"),
-            ),
-          ).component
+          tabbedPane = tabbedPaneHeader().component
         }
       }
     }
+
 
     init()
 
@@ -168,7 +181,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     return isModified
   }
 
-  fun setFormState() {
+  private fun setFormState() {
     ApplicationManager.getApplication().invokeLater {
       if (fileAssociationsEditor != null) {
         (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
@@ -177,6 +190,9 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
         (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
       }
     }
+
+    tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), null, fileAssociationsPanel)
+    tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), null, folderAssociationsPanel)
   }
 
   fun getFileAssociations(): SelectedAssociations {
@@ -206,7 +222,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     )
     ApplicationManager.getApplication().invokeLater {
       fileIconsTable = (fileAssociationsEditor ?: return@invokeLater).createComponent()
-      fileAssociationsPanel.add(fileIconsTable, "cell 0 1") //NON-NLS
+//      fileAssociationsPanel.add(fileIconsTable, "cell 0 1")
+//      fileAssociationsPanel.add(fileSearch, "cell 0 0")
     }
   }
 
@@ -220,7 +237,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       IconType.FOLDER)
     ApplicationManager.getApplication().invokeLater {
       folderIconsTable = (folderAssociationsEditor ?: return@invokeLater).createComponent()
-      folderAssociationsPanel.add(folderIconsTable, "cell 0 1") //NON-NLS
+//      folderAssociationsPanel.add(folderIconsTable, "cell 0 1")
+//      folderAssociationsPanel.add(folderSearch, "cell 0 0")
     }
   }
 
