@@ -31,6 +31,8 @@ import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.components.JBTabbedPane
+import com.intellij.ui.dsl.builder.Align
+import com.intellij.ui.dsl.builder.AlignX
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.util.ui.ColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
@@ -49,21 +51,21 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   message("AtomSelectForm.title"),
   "com.mallowigi.config.AtomSelectConfig",
 ), Disposable {
-  private lateinit var main: DialogPanel
+  private var main: DialogPanel
   private val settings = AtomSelectConfig.instance
   private lateinit var tabbedPane: JBTabbedPane
 
   // Panels for the tables
-  private lateinit var fileAssociationsPanel: JPanel
-  private lateinit var folderAssociationsPanel: JPanel
+  private var fileAssociationsPanel: JPanel
+  private var folderAssociationsPanel: JPanel
 
   // Search boxes
   private var fileSearch: SearchTextField = SearchTextField()
   private var folderSearch: SearchTextField = SearchTextField()
 
   // Tables
-  private var fileIconsTable: JComponent? = null
-  private var folderIconsTable: JComponent? = null
+  private lateinit var fileIconsTable: JComponent
+  private lateinit var folderIconsTable: JComponent
 
   // Editors
   private var fileAssociationsEditor: AssociationsTableModelEditor? = null
@@ -78,6 +80,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     FileIconEditableColumnInfo(this, true),
     PriorityColumnInfo(this, true),
     IconColorEditableColumnInfo(this))
+
   private val folderColumns = arrayOf<ColumnInfo<*, *>>(
     EnabledColumnInfo(),
     TouchedColumnInfo(),
@@ -88,11 +91,72 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     FolderColorEditableColumnInfo(this),
     FolderIconColorEditableColumnInfo(this))
 
-  fun init() {
-    createTables()
+  init {
+    createFileIconsTable()
+    createFolderIconsTable()
+
+    fileAssociationsPanel = panel {
+      row {
+        cell(fileSearch)
+          .align(Align.FILL)
+      }
+
+      row {
+        cell(fileIconsTable)
+          .align(Align.FILL)
+      }
+    }
+
+    folderAssociationsPanel = panel {
+      row {
+        cell(folderSearch)
+          .align(Align.FILL)
+      }
+
+      row {
+        cell(folderIconsTable)
+          .resizableColumn()
+          .align(Align.FILL)
+      }
+    }
+
+
+    main = panel {
+      row {
+        comment(message("SelectForm.explanation.text"))
+      }
+
+      row {
+        comment(message("SelectForm.customExplanation2.text"))
+        link(message("SelectForm.link.text")) {
+          BrowserUtil.browse(message("SelectForm.link.text"))
+        }
+      }
+
+      row {
+        tabbedPane = cell(JBTabbedPane())
+          .resizableColumn()
+          .align(Align.FILL)
+          .component
+      }
+
+      row {
+        comment(message("SelectForm.explanation2.text"))
+      }
+
+      row {
+        button(message("SelectForm.resetButton.text")) { reset() }
+          .resizableColumn()
+          .align(AlignX.RIGHT)
+      }
+    }
+
     fileSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
     folderSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
-    setFormState()
+    resetEditors()
+
+    tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel)
+    tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel)
   }
 
   /** Configurable display name. */
@@ -103,53 +167,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   override fun getId(): String = ID
 
   @Suppress("Detekt.LongMethod")
-  override fun createPanel(): DialogPanel {
-
-    fileAssociationsPanel = panel {
-      row {
-        cell(fileSearch)
-      }
-
-      row {
-        label("sdsdfdf")
-      }
-    }
-
-    folderAssociationsPanel = panel {
-      row {
-        cell(folderSearch)
-      }
-    }
-
-
-    main = panel {
-      group("Associations Editor") {
-        row {
-          comment(message("SelectForm.explanation.text"))
-        }
-
-        row {
-          comment(message("SelectForm.customExplanation2.text"))
-          link(message("SelectForm.link.text")) {
-            BrowserUtil.browse(message("SelectForm.link.text"))
-          }
-        }
-
-        row {
-          tabbedPane = tabbedPaneHeader().component
-        }
-      }
-    }
-
-
-    init()
-
-    return main
-  }
-
-  override fun apply() {
-    super.apply()
-  }
+  override fun createPanel(): DialogPanel = main
 
   override fun dispose() {
     fileAssociationsEditor = null
@@ -181,7 +199,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     return isModified
   }
 
-  private fun setFormState() {
+  private fun resetEditors() {
     ApplicationManager.getApplication().invokeLater {
       if (fileAssociationsEditor != null) {
         (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
@@ -190,9 +208,6 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
         (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
       }
     }
-
-    tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), null, fileAssociationsPanel)
-    tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), null, folderAssociationsPanel)
   }
 
   fun getFileAssociations(): SelectedAssociations {
@@ -205,11 +220,6 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     return SelectedAssociations(IconType.FOLDER, folderAssociationsEditor!!.getModel().allItems)
   }
 
-  private fun createTables() {
-    createFileIconsTable()
-    createFolderIconsTable()
-  }
-
   /** Create the file icons. */
   private fun createFileIconsTable() {
     val itemEditor = AssociationsTableItemEditor()
@@ -220,11 +230,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       fileSearch,
       IconType.FILE
     )
-    ApplicationManager.getApplication().invokeLater {
-      fileIconsTable = (fileAssociationsEditor ?: return@invokeLater).createComponent()
-//      fileAssociationsPanel.add(fileIconsTable, "cell 0 1")
-//      fileAssociationsPanel.add(fileSearch, "cell 0 0")
-    }
+    fileIconsTable = (fileAssociationsEditor ?: return).createComponent()
   }
 
   /** Create the folder icons. */
@@ -235,11 +241,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       message("no.folder.associations"),
       folderSearch,
       IconType.FOLDER)
-    ApplicationManager.getApplication().invokeLater {
-      folderIconsTable = (folderAssociationsEditor ?: return@invokeLater).createComponent()
-//      folderAssociationsPanel.add(folderIconsTable, "cell 0 1")
-//      folderAssociationsPanel.add(folderSearch, "cell 0 0")
-    }
+    folderIconsTable = (folderAssociationsEditor ?: return).createComponent()
   }
 
   companion object {
