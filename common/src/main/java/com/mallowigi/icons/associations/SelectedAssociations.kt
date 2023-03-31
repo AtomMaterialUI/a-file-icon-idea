@@ -40,9 +40,9 @@ class SelectedAssociations(
   /** List of associations to ignore by type. */
   override val ignoredAssociations: Set<String>
     get() = when (iconType) {
-      IconType.FILE   -> FILE_IGNORED_ASSOCIATIONS
+      IconType.FILE -> FILE_IGNORED_ASSOCIATIONS
       IconType.FOLDER -> FOLDER_IGNORED_ASSOCIATIONS
-      else            -> emptySet()
+      else -> emptySet()
     }
 
   /** All associations, mutable (from the form) */
@@ -72,24 +72,6 @@ class SelectedAssociations(
   private fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
 
   /**
-   * Get an own [Association] by name
-   *
-   * @param name
-   */
-  fun getOwn(name: String): RegexAssociation? = ownAssociations[name]
-
-  /**
-   * Inserts association to [ownAssociations]
-   *
-   * @param name
-   * @param assoc
-   */
-  fun insertOwn(name: String, assoc: RegexAssociation) {
-    ownAssociations[name] = assoc
-    ownAssociations[name]?.touched = true
-  }
-
-  /**
    * Gets the list of own [Associations]
    *
    * @return
@@ -108,7 +90,7 @@ class SelectedAssociations(
 
     return when {
       inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
-      else                               -> inOwn ?: inMutable
+      else -> inOwn ?: inMutable
     }
   }
 
@@ -161,7 +143,7 @@ class SelectedAssociations(
 
     return when {
       inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
-      else                               -> inOwn ?: inMutable
+      else -> inOwn ?: inMutable
     }
   }
 

@@ -1,46 +1,36 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 package com.mallowigi.config.associations.ui.internal
 
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.text.StringUtil
-import com.intellij.ui.ClickListener
-import com.intellij.ui.ColorPicker
-import com.intellij.ui.ColorUtil
-import com.intellij.ui.DocumentAdapter
-import com.intellij.ui.SearchTextField
-import com.intellij.ui.TableUtil
-import com.intellij.ui.ToolbarDecorator
+import com.intellij.ui.*
 import com.intellij.ui.table.JBTable
 import com.intellij.ui.table.TableView
 import com.intellij.util.containers.ContainerUtil
-import com.intellij.util.ui.CollectionItemEditor
-import com.intellij.util.ui.CollectionModelEditor
-import com.intellij.util.ui.ColumnInfo
-import com.intellij.util.ui.JBUI
-import com.intellij.util.ui.ListTableModel
-import com.intellij.util.ui.UIUtil
+import com.intellij.util.ui.*
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.icons.associations.Association
@@ -131,7 +121,7 @@ class AssociationsTableModelEditor(
     toolbarDecorator = ToolbarDecorator.createDecorator(table, this)
     toolbarDecorator.run {
       disableUpDownActions()
-//      addExtraAction(TogglePatternAction())
+      setRemoveActionUpdater { table.selectedObject?.touched == true }
     }
 
     // Search and filter table
@@ -270,8 +260,8 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on
-   * the filtered list
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list
+   * when a change occurs since we're working on the filtered list
    *
    * @param oldItem item changed (in the filtered list)
    * @param newItem new item to insert
@@ -296,7 +286,10 @@ class AssociationsTableModelEditor(
   inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<RegexAssociation>) :
     ListTableModel<RegexAssociation>(columnNames, items) {
 
-    /** This contains all items, before any filter is applied. This is also what will be persisted. */
+    /**
+     * This contains all items, before any filter is applied. This is also what
+     * will be persisted.
+     */
     var allItems: MutableList<RegexAssociation> = items.toMutableList()
 
     /** This is the currently filtered table. */
@@ -358,7 +351,7 @@ class AssociationsTableModelEditor(
 
         val comparator = when (columnInfo.columnClass) {
           String::class.java -> Comparing.strEqual(oldValue as? String, aValue as String)
-          else               -> Comparing.equal(oldValue, aValue)
+          else -> Comparing.equal(oldValue, aValue)
         }
 
         if (!comparator) {
@@ -379,18 +372,18 @@ class AssociationsTableModelEditor(
       if (modelIndex < 0 || modelIndex >= table.rowCount) return false
 
       return when (type) {
-        IconType.FILE   -> when (column) {
+        IconType.FILE -> when (column) {
           Columns.ICONCOLOR.index -> setIconColor(modelIndex)
-          else                    -> false
+          else -> false
         }
 
         IconType.FOLDER -> when (column) {
-          Columns.FOLDERCOLOR.index     -> setFolderColor(modelIndex)
+          Columns.FOLDERCOLOR.index -> setFolderColor(modelIndex)
           Columns.FOLDERICONCOLOR.index -> setFolderIconColor(modelIndex)
-          else                          -> false
+          else -> false
         }
 
-        IconType.PSI    -> false
+        IconType.PSI -> false
       }
     }
 
@@ -425,19 +418,6 @@ class AssociationsTableModelEditor(
     }
   }
 
-  /** Toggle pattern action: Toggle pattern highlighting. */
-//  private inner class TogglePatternAction :
-//    ToggleActionButton(AtomSettingsBundle.message("toggle.pattern"), AllIcons.Actions.Preview) {
-//
-//    override fun isSelected(e: AnActionEvent?): Boolean =
-//      (model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo).toggledPattern
-//
-//    override fun setSelected(e: AnActionEvent?, state: Boolean) {
-//      val patternColumn = model.columnInfos[Columns.PATTERN.index] as PatternEditableColumnInfo
-//
-//      patternColumn.toggledPattern = !patternColumn.toggledPattern
-//    }
-//  }
 
   @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {

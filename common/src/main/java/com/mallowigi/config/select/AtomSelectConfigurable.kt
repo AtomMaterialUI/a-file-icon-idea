@@ -145,7 +145,10 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       }
 
       row {
-        button(message("SelectForm.resetButton.text")) { reset() }
+        button(message("SelectForm.resetButton.text")) {
+          settings.reset()
+          reset()
+        }
           .resizableColumn()
           .align(AlignX.RIGHT)
       }
@@ -153,7 +156,6 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
 
     fileSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
     folderSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
-    resetEditors()
 
     tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel)
     tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel)
@@ -167,25 +169,33 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   override fun getId(): String = ID
 
   @Suppress("Detekt.LongMethod")
-  override fun createPanel(): DialogPanel = main
+  override fun createPanel(): DialogPanel {
+    loadAssociations()
+
+    return main
+  }
 
   override fun dispose() {
     fileAssociationsEditor = null
     folderAssociationsEditor = null
   }
 
-  override fun reset() {
-    settings.reset()
-    super.reset()
+//  override fun reset() {
+//    super.reset()
+//
+//    ApplicationManager.getApplication().invokeLater {
+//      if (fileAssociationsEditor != null) {
+//        (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
+//      }
+//      if (folderAssociationsEditor != null) {
+//        (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
+//      }
+//    }
+//  }
 
-    ApplicationManager.getApplication().invokeLater {
-      if (fileAssociationsEditor != null) {
-        (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
-      }
-      if (folderAssociationsEditor != null) {
-        (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
-      }
-    }
+  override fun apply() {
+    super.apply()
+    settings.apply(getFileAssociations(), getFolderAssociations())
   }
 
   override fun isModified(): Boolean {
@@ -199,7 +209,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     return isModified
   }
 
-  private fun resetEditors() {
+  private fun loadAssociations() {
     ApplicationManager.getApplication().invokeLater {
       if (fileAssociationsEditor != null) {
         (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
@@ -210,12 +220,12 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     }
   }
 
-  fun getFileAssociations(): SelectedAssociations {
+  private fun getFileAssociations(): SelectedAssociations {
     assert(fileAssociationsEditor != null)
     return SelectedAssociations(IconType.FILE, fileAssociationsEditor!!.getModel().allItems)
   }
 
-  fun getFolderAssociations(): SelectedAssociations {
+  private fun getFolderAssociations(): SelectedAssociations {
     assert(folderAssociationsEditor != null)
     return SelectedAssociations(IconType.FOLDER, folderAssociationsEditor!!.getModel().allItems)
   }
