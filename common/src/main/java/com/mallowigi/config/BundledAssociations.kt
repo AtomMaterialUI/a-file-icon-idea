@@ -85,7 +85,7 @@ class BundledAssociations {
    * @param name assoc name
    * @param iconType the [IconType]
    */
-  private fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
+  fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
 
   /** Load bundled associations. */
   private fun init() {

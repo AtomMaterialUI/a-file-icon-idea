@@ -29,6 +29,7 @@ import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.ui.DialogPanel
+import com.intellij.openapi.ui.Messages
 import com.intellij.ui.SearchTextField
 import com.intellij.ui.components.JBTabbedPane
 import com.intellij.ui.dsl.builder.Align
@@ -145,10 +146,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       }
 
       row {
-        button(message("SelectForm.resetButton.text")) {
-          settings.reset()
-          reset()
-        }
+        button(message("SelectForm.resetButton.text")) { resetSettings() }
           .resizableColumn()
           .align(AlignX.RIGHT)
       }
@@ -180,18 +178,26 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     folderAssociationsEditor = null
   }
 
-//  override fun reset() {
-//    super.reset()
-//
-//    ApplicationManager.getApplication().invokeLater {
-//      if (fileAssociationsEditor != null) {
-//        (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
-//      }
-//      if (folderAssociationsEditor != null) {
-//        (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
-//      }
-//    }
-//  }
+  private fun resetSettings() {
+    if (Messages.showOkCancelDialog(
+        /* message = */ message("SelectForm.resetDialog.text"),
+        /* title = */ message("SelectForm.resetDialog.title"),
+        /* okText = */ message("SelectForm.resetDialog.ok"),
+        /* cancelText = */ message("SelectForm.resetDialog.cancel"),
+        /* icon = */ Messages.getQuestionIcon()
+      ) != Messages.OK) return
+
+    settings.reset()
+
+    ApplicationManager.getApplication().invokeLater {
+      if (fileAssociationsEditor != null) {
+        (fileAssociationsEditor ?: return@invokeLater).reset(settings.selectedFileAssociations.getTheAssociations())
+      }
+      if (folderAssociationsEditor != null) {
+        (folderAssociationsEditor ?: return@invokeLater).reset(settings.selectedFolderAssociations.getTheAssociations())
+      }
+    }
+  }
 
   override fun apply() {
     super.apply()
