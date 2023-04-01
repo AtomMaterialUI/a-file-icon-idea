@@ -82,12 +82,15 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   /** Create the settings panel. */
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
+    lateinit var fileIconsCheckbox: JBCheckBox
+    lateinit var folderIconsCheckbox: JBCheckBox
+    lateinit var uiIconsCheckbox: JBCheckBox
+    lateinit var psiIconsCheckbox: JBCheckBox
     lateinit var accentColorCheckbox: JBCheckBox
     lateinit var themedColorCheckbox: JBCheckBox
     lateinit var customSizeCheckbox: JBCheckBox
     lateinit var customLineHeightCheckbox: JBCheckBox
     lateinit var saturatedCheckbox: JBCheckBox
-//    lateinit var opacityCheckbox: JBCheckBox
     lateinit var monochromeCheckbox: JBCheckBox
     val arrowsRenderer = arrowsRenderer()
 
@@ -96,33 +99,37 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         row {
           icon(FILES)
             .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.enableFileIconsCheckbox.text"))
+          fileIconsCheckbox = checkBox(message("SettingsForm.enableFileIconsCheckbox.text"))
             .bindSelected(settings::isEnabledIcons)
             .gap(RightGap.SMALL)
+            .component
         }.rowComment(message("SettingsForm.enableFileIconsCheckbox.toolTipText"))
 
         row {
           icon(FOLDERS)
             .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
+          folderIconsCheckbox = checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
             .bindSelected(settings::isEnabledDirectories)
             .gap(RightGap.SMALL)
+            .component
         }.rowComment(message("SettingsForm.enableDirectoryIconsCheckbox.toolTipText"))
 
         row {
           icon(UI)
             .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.enableUIIconsCheckbox.text"))
+          uiIconsCheckbox = checkBox(message("SettingsForm.enableUIIconsCheckbox.text"))
             .bindSelected(settings::isEnabledUIIcons)
             .gap(RightGap.SMALL)
+            .component
         }.rowComment(message("SettingsForm.enableUIIconsCheckbox.toolTipText"))
 
         row {
           icon(PSI)
             .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.enablePSIIconsCheckbox.text"))
+          psiIconsCheckbox = checkBox(message("SettingsForm.enablePSIIconsCheckbox.text"))
             .bindSelected(settings::isEnabledPsiIcons)
             .gap(RightGap.SMALL)
+            .component
         }.rowComment(message("SettingsForm.enablePSIIconsCheckbox.toolTipText"))
 
         row {
@@ -132,6 +139,25 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             .bindSelected(settings::isUseHollowFolders)
             .gap(RightGap.SMALL)
         }.rowComment(message("SettingsForm.hollowFoldersCheckbox.toolTipText"))
+
+        collapsibleGroup(message("SettingsForm.iconPacks")) {
+          twoColumnsRow(
+            {
+              checkBox("Use Ruby PSI Icons")
+                .bindSelected(settings::isUseRubyIcons)
+                .enabledIf(psiIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment("Use Ruby PSI Icons instead of File Icons")
+            },
+            {
+              checkBox(message("SettingsForm.useRailsIcons.checkbox"))
+                .bindSelected(settings::isUseRailsIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useRailsIcons.tooltip"))
+            }
+          )
+        }
 
         collapsibleGroup(message("SettingsForm.groups.hide")) {
           row {
@@ -256,23 +282,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
               .gap(RightGap.SMALL)
           }
         ).rowComment(message("SettingsForm.saturationCheckbox.toolTipText"))
-
-//        twoColumnsRow(
-//          {
-//            icon(OPACITY)
-//              .gap(RightGap.SMALL)
-//            opacityCheckbox = checkBox(message("SettingsForm.opacityCheckbox.text"))
-//              .bindSelected(settings::isOpacityIcons)
-//              .gap(RightGap.SMALL)
-//              .component
-//          },
-//          {
-//            spinner(0..MAX_OPACITY, 1)
-//              .bindIntValue(settings::opacity)
-//              .enabledIf(opacityCheckbox.selected)
-//              .gap(RightGap.SMALL)
-//          }
-//        ).rowComment(message("SettingsForm.opacityCheckbox.toolTipText"))
 
         twoColumnsRow(
           {

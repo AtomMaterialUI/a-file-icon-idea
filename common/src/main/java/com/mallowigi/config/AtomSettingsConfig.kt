@@ -82,6 +82,12 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether the hollow folders are enabled. */
   var isUseHollowFolders: Boolean by property(true)
 
+  /** Whether Ruby Psi Icons should be used. */
+  var isUseRubyIcons: Boolean by property(true)
+
+  /** Whether Rails Psi Icons should be used. */
+  var isUseRailsIcons: Boolean by property(false)
+
   /** Style of tree expand arrows. */
   var arrowsStyle: ArrowsStyles by enum(ArrowsStyles.MATERIAL)
 
@@ -149,6 +155,8 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isHideFileIcons = false
     isHideFolderIcons = false
     isUseHollowFolders = true
+    isUseRubyIcons = true
+    isUseRailsIcons = false
     arrowsStyle = ArrowsStyles.MATERIAL
     isAccentColorEnabled = false
     accentColor = accentColorFromTheme
@@ -223,6 +231,22 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Toggle psi icons. */
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
+  }
+  //endregion
+
+  //region Ruby Icons
+
+  /** Toggle ruby icons. */
+  fun toggleRubyIcons() {
+    isUseRubyIcons = !isUseRubyIcons
+  }
+  //endregion
+
+  //region Rails Icons
+
+  /** Toggle ruby icons. */
+  fun toggleRailsIcons() {
+    isUseRailsIcons = !isUseRailsIcons
   }
   //endregion
 

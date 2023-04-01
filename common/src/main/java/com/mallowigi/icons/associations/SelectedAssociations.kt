@@ -26,6 +26,7 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
@@ -40,8 +41,8 @@ class SelectedAssociations(
   /** List of associations to ignore by type. */
   override val ignoredAssociations: Set<String>
     get() = when (iconType) {
-      IconType.FILE -> FILE_IGNORED_ASSOCIATIONS
-      IconType.FOLDER -> FOLDER_IGNORED_ASSOCIATIONS
+      IconType.FILE -> FILE_IGNORED_ASSOCIATIONS.filter { it.second() }.map { it.first }.toSet()
+      IconType.FOLDER -> FOLDER_IGNORED_ASSOCIATIONS.filter { it.second() }.map { it.first }.toSet()
       else -> emptySet()
     }
 
@@ -160,7 +161,13 @@ class SelectedAssociations(
   }
 
   companion object {
-    private val FILE_IGNORED_ASSOCIATIONS: Set<String> = setOf("PHP", "Kotlin", "Java", "Ruby")
-    private val FOLDER_IGNORED_ASSOCIATIONS: Set<String> = emptySet()
+    private val FILE_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = setOf(
+      Pair("PHP") { true },
+      Pair("Kotlin") { true },
+      Pair("Java") { true },
+      Pair("Ruby") { AtomSettingsConfig.instance.isUseRubyIcons },
+      Pair("Rails") { AtomSettingsConfig.instance.isUseRailsIcons }
+    )
+    private val FOLDER_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = emptySet()
   }
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
+import com.intellij.openapi.util.NlsContexts
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
@@ -34,7 +34,10 @@ import javax.swing.Icon
  * @property type description
  * @property arrowsStyle enum value
  */
-enum class ArrowsStyles(@param:NonNls val type: String, private val arrowsStyle: ArrowsStyle) {
+enum class ArrowsStyles(
+  @NlsContexts.Label @param:NonNls val type: String,
+  private val arrowsStyle: ArrowsStyle
+) {
   /** Material Style (chevrons) */
   MATERIAL("Material", MaterialArrowsStyle()),
 
@@ -78,11 +81,10 @@ enum class ArrowsStyles(@param:NonNls val type: String, private val arrowsStyle:
   val icon: Icon
     get() = expandIcon
 
-  val pathId: String
-    get() = arrowsStyle.pathId
-
+  /** Get the icon for the given path. */
   override fun toString(): String = type
 
+  /** Gets the icon path. */
   fun getIconForPath(path: String): String? = when {
     path.contains("unfold.svg") -> arrowsStyle.expandIconPath
     path.contains("bottomFold.svg") -> arrowsStyle.bottomIconPath
