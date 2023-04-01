@@ -137,6 +137,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         collapsibleGroup(message("SettingsForm.iconPacks")) {
           twoColumnsRow(
             {
+              icon(AtomIcons.Settings.RUBY)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useRubyIcons.checkbox"))
                 .bindSelected(settings::isUseRubyIcons)
                 .enabledIf(psiIconsCheckbox.selected)
@@ -144,6 +146,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .comment(message("SettingsForm.useRubyIcons.tooltip"))
             },
             {
+              icon(AtomIcons.Settings.RAILS)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useRailsIcons.checkbox"))
                 .bindSelected(settings::isUseRailsIcons)
                 .enabledIf(fileIconsCheckbox.selected)
@@ -154,6 +158,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
 
           twoColumnsRow(
             {
+              icon(AtomIcons.Settings.ANGULAR)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useAngularIcons.checkbox"))
                 .bindSelected(settings::isUseAngularIcons)
                 .enabledIf(fileIconsCheckbox.selected)
@@ -161,6 +167,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .comment(message("SettingsForm.useAngularIcons.tooltip"))
             },
             {
+              icon(AtomIcons.Settings.NEST)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useNestIcons.checkbox"))
                 .bindSelected(settings::isUseNestIcons)
                 .enabledIf(fileIconsCheckbox.selected)
@@ -171,6 +179,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
 
           twoColumnsRow(
             {
+              icon(AtomIcons.Settings.REDUX)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useReduxIcons.checkbox"))
                 .bindSelected(settings::isUseReduxIcons)
                 .enabledIf(fileIconsCheckbox.selected)
@@ -178,6 +188,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .comment(message("SettingsForm.useReduxIcons.tooltip"))
             },
             {
+              icon(AtomIcons.Settings.NGRX)
+                .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useNgRxIcons.checkbox"))
                 .bindSelected(settings::isUseNgRxIcons)
                 .enabledIf(fileIconsCheckbox.selected)
@@ -187,6 +199,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
           )
 
           row {
+            icon(AtomIcons.Settings.RECOIL)
+              .gap(RightGap.SMALL)
             checkBox(message("SettingsForm.useRecoilIcons.checkbox"))
               .bindSelected(settings::isUseRecoilIcons)
               .enabledIf(fileIconsCheckbox.selected)
@@ -195,6 +209,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
           }
 
           row {
+            icon(AtomIcons.Settings.TESTS)
+              .gap(RightGap.SMALL)
             checkBox(message("SettingsForm.useTestsIcons.checkbox"))
               .bindSelected(settings::isUseTestsIcons)
               .enabledIf(fileIconsCheckbox.selected)

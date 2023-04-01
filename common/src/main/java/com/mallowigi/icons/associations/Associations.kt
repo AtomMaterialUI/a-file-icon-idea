@@ -60,7 +60,7 @@ abstract class Associations : Serializable {
         LOG.error(e)
       }
       // Other ignores
-      ignoredAssociations.any { matching.name.contains(it) } -> return null
+      ignoredAssociations.contains(matching.name) -> return null
     }
     return matching
   }

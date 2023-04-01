@@ -166,9 +166,6 @@ class SelectedAssociations(
       Pair("Kotlin") { true },
       Pair("Java") { true },
       Pair("Ruby") { AtomSettingsConfig.instance.isUseRubyIcons },
-      Pair("Rails") { !AtomSettingsConfig.instance.isUseRailsIcons },
-      Pair("Angular") { !AtomSettingsConfig.instance.isUseAngularIcons },
-      Pair("Nest") { !AtomSettingsConfig.instance.isUseNestIcons }
     )
     private val FOLDER_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = emptySet()
   }

@@ -144,6 +144,15 @@ object AtomIcons {
     val ARROWS: Icon = load("/icons/settings/arrowRight.svg")
     val ACCENT: Icon = load("/icons/settings/accentColor.svg")
     val THEMED: Icon = load("/icons/settings/folder.svg")
+
+    val RUBY: Icon = load("/icons/settings/ruby.svg")
+    val RAILS: Icon = load("/icons/settings/rails.svg")
+    val ANGULAR: Icon = load("/icons/settings/angular.svg")
+    val NEST: Icon = load("/icons/settings/nest.svg")
+    val REDUX: Icon = load("/icons/settings/redux.svg")
+    val NGRX: Icon = load("/icons/settings/ngrx.svg")
+    val RECOIL: Icon = load("/icons/settings/recoil.svg")
+    val TESTS: Icon = load("/icons/settings/tests.svg")
   }
 
   /** Node icons. */
