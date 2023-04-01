@@ -64,6 +64,11 @@ import javax.swing.DefaultComboBoxModel
 import javax.swing.Icon
 import javax.swing.JList
 
+/**
+ * Atom settings configurable
+ *
+ * @constructor Create empty Atom settings configurable
+ */
 class AtomSettingsConfigurable : BoundSearchableConfigurable(
   message("settings.title"),
   "com.mallowigi.config.AtomSettingsConfigurable",
@@ -71,8 +76,10 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   private lateinit var main: DialogPanel
   private val settings = AtomFileIconsConfig.instance
 
+  /** Settings ID. */
   override fun getId(): String = ID
 
+  /** Create the settings panel. */
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
     lateinit var accentColorCheckbox: JBCheckBox
@@ -331,6 +338,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
     return renderer
   }
 
+  /** Apply settings. */
   override fun apply() {
     super.apply()
     settings.apply()
@@ -339,8 +347,9 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   companion object {
     /** Configurable ID. */
     @NonNls
-    const val ID: String = "com.mallowigi.config.AtomSettingsConfigurable"
+    const val ID: String = "AtomSettingsConfigurable"
 
+    /** Instance. */
     @JvmStatic
     val instance: AtomSettingsConfigurable by lazy { service() }
   }

@@ -25,16 +25,19 @@
 
 package com.mallowigi.utils
 
+import com.intellij.ide.DataManager
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.options.ex.Settings
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
+import com.intellij.ui.components.ActionLink
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle
@@ -77,6 +80,7 @@ fun getVersion(): String {
 /** Modified color. */
 fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)
 
+/** Replace arrow icons. */
 fun replaceArrowIcons() {
   val defaults = UIManager.getLookAndFeelDefaults()
   val arrowsStyle = AtomFileIconsConfig.instance.arrowsStyle
@@ -109,3 +113,9 @@ fun getAccentFromTheme(): String {
 /** Extract themed color from current theme. */
 fun getThemedFromTheme(): String =
   ColorUtil.toHex(JBColor.namedColor("Tree.foreground", UIUtil.getLabelForeground()))
+
+/** Open a settings page from a link. */
+fun findSettingsPage(link: ActionLink, id: String) {
+  val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(link))
+  settings?.select(settings.find(id))
+}

@@ -166,6 +166,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   /** Configurable ID. */
   override fun getId(): String = ID
 
+  /** Create the file icons table. */
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
     loadAssociations()
@@ -173,6 +174,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     return main
   }
 
+  /** Dispose editors. */
   override fun dispose() {
     fileAssociationsEditor = null
     folderAssociationsEditor = null
@@ -199,11 +201,13 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     }
   }
 
+  /** Apply. */
   override fun apply() {
     super.apply()
     settings.apply(getFileAssociations(), getFolderAssociations())
   }
 
+  /** Detect if settings have been modified. */
   override fun isModified(): Boolean {
     var isModified = super.isModified()
     if (fileAssociationsEditor != null) {
