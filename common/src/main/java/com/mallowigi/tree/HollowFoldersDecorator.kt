@@ -34,7 +34,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.PlatformIcons
-import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
 import icons.AtomIcons
@@ -54,9 +54,9 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     if (project != null && file != null && !project.isDisposed) {
       when {
 //        AtomFileIconsConfig.instance.isLowPowerMode      -> return
-        !AtomFileIconsConfig.instance.isUseHollowFolders -> return
+        !AtomSettingsConfig.instance.isUseHollowFolders -> return
         !file.isDirectory -> return
-        AtomFileIconsConfig.instance.isHideFolderIcons -> return
+        AtomSettingsConfig.instance.isHideFolderIcons -> return
         isFolderContainingOpenFiles(project, file) -> setOpenDirectoryIcon(data, file, project)
       }
 

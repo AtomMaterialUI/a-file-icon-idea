@@ -35,12 +35,12 @@ import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.OnOffButton
 import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.layout.selected
-import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_ICON_SIZE
-import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_LINE_HEIGHT
-import com.mallowigi.config.AtomFileIconsConfig.Companion.MAX_SATURATION
-import com.mallowigi.config.AtomFileIconsConfig.Companion.MIN_ICON_SIZE
-import com.mallowigi.config.AtomFileIconsConfig.Companion.MIN_LINE_HEIGHT
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.AtomSettingsConfig.Companion.MAX_ICON_SIZE
+import com.mallowigi.config.AtomSettingsConfig.Companion.MAX_LINE_HEIGHT
+import com.mallowigi.config.AtomSettingsConfig.Companion.MAX_SATURATION
+import com.mallowigi.config.AtomSettingsConfig.Companion.MIN_ICON_SIZE
+import com.mallowigi.config.AtomSettingsConfig.Companion.MIN_LINE_HEIGHT
 import com.mallowigi.config.extensions.bind
 import com.mallowigi.tree.arrows.ArrowsStyles
 import com.mallowigi.utils.getAccentFromTheme
@@ -74,7 +74,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   "com.mallowigi.config.AtomSettingsConfigurable",
 ) {
   private lateinit var main: DialogPanel
-  private val settings = AtomFileIconsConfig.instance
+  private val settings = AtomSettingsConfig.instance
 
   /** Settings ID. */
   override fun getId(): String = ID
@@ -236,7 +236,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
           {
             cell(ColorPanel())
               .enabledIf(monochromeCheckbox.selected)
-              .bind(settings::monochromeColor, AtomFileIconsConfig.DEFAULT_MONOCHROME)
+              .bind(settings::monochromeColor, AtomSettingsConfig.DEFAULT_MONOCHROME)
           }
         ).rowComment(message("SettingsForm.monochromeCheckbox.toolTipText"))
 

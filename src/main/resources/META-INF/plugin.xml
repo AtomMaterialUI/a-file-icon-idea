@@ -38,7 +38,7 @@
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
   <extensions defaultExtensionNs="com.intellij">
-    <applicationService serviceImplementation="com.mallowigi.config.AtomFileIconsConfig"/>
+    <applicationService serviceImplementation="com.mallowigi.config.AtomSettingsConfig"/>
     <!-- New Settings -->
     <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
                              id="AtomHomeConfigurable"

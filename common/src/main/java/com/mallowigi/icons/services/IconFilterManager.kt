@@ -25,7 +25,7 @@
 package com.mallowigi.icons.services
 
 import com.intellij.openapi.util.IconLoader
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig.Companion.instance
 import com.mallowigi.icons.filters.MonochromeFilter
 import com.mallowigi.icons.filters.SaturationFilter
 

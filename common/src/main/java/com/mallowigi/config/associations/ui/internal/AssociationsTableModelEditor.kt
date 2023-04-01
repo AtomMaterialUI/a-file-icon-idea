@@ -32,7 +32,7 @@ import com.intellij.ui.table.TableView
 import com.intellij.util.containers.ContainerUtil
 import com.intellij.util.ui.*
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
-import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
@@ -426,8 +426,8 @@ class AssociationsTableModelEditor(
     const val ROW_HEIGHT: Int = 32
     const val LOADING_FONT_SIZE: Float = 24.0F
     const val DEFAULT_PRIORITY: Int = 10_000
-    val DEFAULT_ICON_COLOR: String = AtomFileIconsConfig.instance.getCurrentAccentColor()
-    val DEFAULT_FOLDER_COLOR: String = AtomFileIconsConfig.instance.getCurrentThemedColor()
+    val DEFAULT_ICON_COLOR: String = AtomSettingsConfig.instance.getCurrentAccentColor()
+    val DEFAULT_FOLDER_COLOR: String = AtomSettingsConfig.instance.getCurrentThemedColor()
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
 

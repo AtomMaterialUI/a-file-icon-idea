@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree
 
@@ -33,14 +32,13 @@ import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCu
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
 import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
-import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.VirtualFileInfo
 import icons.AtomIcons
 
 /**
  * Rider custom files decorator
- *
  *
  * @param project
  */
@@ -57,11 +55,11 @@ class RiderDefaultFilesDecorator(project: Project) : SolutionExplorerCustomizati
 
     if (!project.isDisposed) {
       when {
-        virtualFile == null                          -> return
-        entity.isDirectory()                         -> return
-        AtomFileIconsConfig.instance.isHideFileIcons -> hideIcon(presentation)
-        !AtomFileIconsConfig.instance.isEnabledIcons -> return
-        else                                         -> matchAssociation(virtualFile, presentation)
+        virtualFile == null -> return
+        entity.isDirectory() -> return
+        AtomSettingsConfig.instance.isHideFileIcons -> hideIcon(presentation)
+        !AtomSettingsConfig.instance.isEnabledIcons -> return
+        else -> matchAssociation(virtualFile, presentation)
       }
 
     }

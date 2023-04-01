@@ -39,8 +39,8 @@ import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
 import com.intellij.ui.components.ActionLink
 import com.intellij.util.ui.UIUtil
-import com.mallowigi.config.AtomFileIconsConfig
 import com.mallowigi.config.AtomSettingsBundle
+import com.mallowigi.config.AtomSettingsConfig
 import javax.swing.SwingUtilities
 import javax.swing.UIManager
 
@@ -83,7 +83,7 @@ fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForegroun
 /** Replace arrow icons. */
 fun replaceArrowIcons() {
   val defaults = UIManager.getLookAndFeelDefaults()
-  val arrowsStyle = AtomFileIconsConfig.instance.arrowsStyle
+  val arrowsStyle = AtomSettingsConfig.instance.arrowsStyle
   defaults["Tree.collapsedIcon"] = arrowsStyle.expandIcon
   defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
   defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon

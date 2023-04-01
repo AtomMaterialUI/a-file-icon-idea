@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree
 
@@ -33,7 +32,7 @@ import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCu
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
 import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
-import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.VirtualFileInfo
 import icons.AtomIcons
@@ -41,8 +40,8 @@ import icons.AtomIcons
 /**
  * Rider custom folders decorator
  *
- * @constructor
  * @param project
+ * @constructor
  */
 class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomization(project) {
   /** Update node icon. */
@@ -52,23 +51,23 @@ class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomiza
 
     if (!project.isDisposed) {
       when {
-        virtualFile == null                                -> return
-        !entity.isDirectory()                              -> return
-        AtomFileIconsConfig.instance.isHideFolderIcons     -> hideIcon(presentation)
-        !AtomFileIconsConfig.instance.isEnabledDirectories -> return
-        else                                               -> matchAssociation(virtualFile, presentation)
+        virtualFile == null -> return
+        !entity.isDirectory() -> return
+        AtomSettingsConfig.instance.isHideFolderIcons -> hideIcon(presentation)
+        !AtomSettingsConfig.instance.isEnabledDirectories -> return
+        else -> matchAssociation(virtualFile, presentation)
       }
 
     }
   }
 
   /**
-   * If the file is in a folder that has an association, then set the
-   * icon to the associated icon
+   * If the file is in a folder that has an association, then set the icon to
+   * the associated icon
    *
    * @param virtualFile The file that is being rendered.
-   * @param data PresentationData – This is the data that will be used
-   *   to display the file in the project view.
+   * @param data PresentationData – This is the data that will be used to
+   *     display the file in the project view.
    */
   private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
     val fileInfo = VirtualFileInfo(virtualFile)
@@ -83,11 +82,10 @@ class RiderDefaultFoldersDecorator(project: Project) : SolutionExplorerCustomiza
   }
 
   /**
-   * It takes a PresentationData object and returns a new
-   * PresentationData object with the icon set to EmptyIcon.ICON_0
+   * It takes a PresentationData object and returns a new PresentationData
+   * object with the icon set to EmptyIcon.ICON_0
    *
-   * @param data PresentationData – The presentation data of the
-   *   message.
+   * @param data PresentationData – The presentation data of the message.
    */
   private fun hideIcon(data: PresentationData) = data.setIcon(EmptyIcon.ICON_0)
 

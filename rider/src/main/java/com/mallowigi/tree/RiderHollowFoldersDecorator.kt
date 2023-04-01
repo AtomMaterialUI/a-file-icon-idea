@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree
 
@@ -35,11 +34,11 @@ import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCu
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
 import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
-import com.mallowigi.config.AtomFileIconsConfig
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
 import icons.AtomIcons
-import java.util.Objects
+import java.util.*
 import javax.swing.Icon
 
 class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomization(project) {
@@ -49,10 +48,10 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
 
     if (!project.isDisposed) {
       when {
-        !AtomFileIconsConfig.instance.isUseHollowFolders -> return
-        !entity.isDirectory()                            -> return
-        AtomFileIconsConfig.instance.isHideFolderIcons   -> return
-        isFolderContainingOpenFiles(project, entity)     -> setOpenDirectoryIcon(presentation)
+        !AtomSettingsConfig.instance.isUseHollowFolders -> return
+        !entity.isDirectory() -> return
+        AtomSettingsConfig.instance.isHideFolderIcons -> return
+        isFolderContainingOpenFiles(project, entity) -> setOpenDirectoryIcon(presentation)
       }
 
     }
@@ -66,13 +65,14 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
   private fun setOpenDirectoryIcon(data: PresentationData) {
     try {
       when {
-        data.getIcon(true) is CustomDirIcon               -> return
-        data.getIcon(true) is DirIcon                     -> {
+        data.getIcon(true) is CustomDirIcon -> return
+        data.getIcon(true) is DirIcon -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
           data.setIcon(DirIcon(openedIcon))
         }
+
         data.getIcon(false) == PlatformIcons.PACKAGE_ICON -> data.setIcon(PlatformIcons.PACKAGE_ICON)
-        else                                              -> data.setIcon(AtomIcons.Nodes2.FolderOpen)
+        else -> data.setIcon(AtomIcons.Nodes2.FolderOpen)
       }
     } catch (e: Exception) {
       thisLogger().warn(e.message)

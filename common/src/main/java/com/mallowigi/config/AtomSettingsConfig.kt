@@ -40,7 +40,7 @@ import com.mallowigi.utils.getValue
   storages = [Storage("a-file-icons.xml")],
   category = SettingsCategory.UI
 )
-class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsConfig> {
+class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsConfig> {
   private var firstRun: Boolean = true
 
   /** Whether the file icons are enabled. */
@@ -113,10 +113,10 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
   var isLowPowerMode: Boolean by property(true)
 
   /** Config state. */
-  override fun getState(): AtomFileIconsConfig = this
+  override fun getState(): AtomSettingsConfig = this
 
   /** Load config state from XML. */
-  override fun loadState(state: AtomFileIconsConfig) {
+  override fun loadState(state: AtomSettingsConfig) {
     val changed = state != this
     XmlSerializerUtil.copyBean(state, this)
 
@@ -133,6 +133,7 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
       .configChanged(this)
   }
 
+  /** Apply settings. */
   fun apply() {
     fireChanged()
   }
@@ -313,7 +314,7 @@ class AtomFileIconsConfig : BaseState(), PersistentStateComponent<AtomFileIconsC
 
     /** Instance of the Config service. */
     @JvmStatic
-    val instance: AtomFileIconsConfig by lazy { service() }
+    val instance: AtomSettingsConfig by lazy { service() }
 
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()

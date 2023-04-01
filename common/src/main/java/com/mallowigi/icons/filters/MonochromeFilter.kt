@@ -26,8 +26,8 @@ package com.mallowigi.icons.filters
 
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
-import com.mallowigi.config.AtomFileIconsConfig.Companion.DEFAULT_MONOCHROME
-import com.mallowigi.config.AtomFileIconsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig.Companion.DEFAULT_MONOCHROME
+import com.mallowigi.config.AtomSettingsConfig.Companion.instance
 import java.awt.Color
 
 /** Monochrome filter. */
