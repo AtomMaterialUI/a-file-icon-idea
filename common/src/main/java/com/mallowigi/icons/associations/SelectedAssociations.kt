@@ -102,7 +102,7 @@ class SelectedAssociations(
    * @return matching association if found
    */
   private fun findInOwn(file: FileInfo): Association? = ownValues()
-    .filter { it.enabled && it.matches(file) }
+    .filter { it.enabled && it.matches(file) && IconPackManager.instance.hasIconPack(it.iconPack) }
     .maxByOrNull { it.priority }
 
   /**
@@ -112,17 +112,17 @@ class SelectedAssociations(
    * @return matching association if found
    */
   private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.toList()
-    .filter { it.enabled && it.matches(file) && !hasOwn(it.name) }
+    .filter { it.enabled && it.matches(file) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
   /** Look for matching association in [ownAssociations]. */
   private fun findInOwnByName(path: String): Association? = ownValues()
-    .filter { it.enabled && it.matchesName(path) }
+    .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) }
     .maxByOrNull { it.priority }
 
   /** Look for matching association in [mutableAssociations]. */
   private fun findInMutableByName(path: String): Association? = mutableAssociations.values.toList()
-    .filter { it.enabled && it.matchesName(path) && !hasOwn(it.name) }
+    .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
   /**

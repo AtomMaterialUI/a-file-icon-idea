@@ -168,6 +168,39 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .comment(message("SettingsForm.useNestIcons.tooltip"))
             }
           )
+
+          twoColumnsRow(
+            {
+              checkBox(message("SettingsForm.useReduxIcons.checkbox"))
+                .bindSelected(settings::isUseReduxIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useReduxIcons.tooltip"))
+            },
+            {
+              checkBox(message("SettingsForm.useNgRxIcons.checkbox"))
+                .bindSelected(settings::isUseNgRxIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useNgRxIcons.tooltip"))
+            }
+          )
+
+          row {
+            checkBox(message("SettingsForm.useRecoilIcons.checkbox"))
+              .bindSelected(settings::isUseRecoilIcons)
+              .enabledIf(fileIconsCheckbox.selected)
+              .gap(RightGap.SMALL)
+              .comment(message("SettingsForm.useRecoilIcons.tooltip"))
+          }
+
+          row {
+            checkBox(message("SettingsForm.useTestsIcons.checkbox"))
+              .bindSelected(settings::isUseTestsIcons)
+              .enabledIf(fileIconsCheckbox.selected)
+              .gap(RightGap.SMALL)
+              .comment(message("SettingsForm.useTestsIcons.tooltip"))
+          }
         }.rowComment(message("SettingsForm.iconPacks.tooltip"))
 
         collapsibleGroup(message("SettingsForm.groups.hide")) {

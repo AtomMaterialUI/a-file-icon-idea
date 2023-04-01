@@ -85,14 +85,26 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether Ruby Psi Icons should be used. */
   var isUseRubyIcons: Boolean by property(true)
 
-  /** Whether Rails Psi Icons should be used. */
+  /** Whether Rails Icons should be used. */
   var isUseRailsIcons: Boolean by property(true)
 
-  /** Whether Nest Psi Icons should be used. */
+  /** Whether Nest Icons should be used. */
   var isUseNestIcons: Boolean by property(true)
 
-  /** Whether Angular Psi Icons should be used. */
+  /** Whether Angular Icons should be used. */
   var isUseAngularIcons: Boolean by property(true)
+
+  /** Whether Redux Icons should be used. */
+  var isUseReduxIcons: Boolean by property(true)
+
+  /** Whether NgRx Icons should be used. */
+  var isUseNgRxIcons: Boolean by property(true)
+
+  /** Whether Recoil Icons should be used. */
+  var isUseRecoilIcons: Boolean by property(true)
+
+  /** Whether Test Icons should be used. */
+  var isUseTestsIcons: Boolean by property(true)
 
   /** Style of tree expand arrows. */
   var arrowsStyle: ArrowsStyles by enum(ArrowsStyles.MATERIAL)
@@ -165,6 +177,10 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isUseRailsIcons = true
     isUseNestIcons = true
     isUseAngularIcons = true
+    isUseReduxIcons = true
+    isUseNgRxIcons = true
+    isUseRecoilIcons = true
+    isUseTestsIcons = true
     arrowsStyle = ArrowsStyles.MATERIAL
     isAccentColorEnabled = false
     accentColor = accentColorFromTheme
