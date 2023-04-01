@@ -103,51 +103,55 @@
            class="com.mallowigi.actions.ActionGroup">
       <add-to-group group-id="MainToolbarRight"/>
     </group>
-    <group id="AtomFileIcons.Actions" popup="true" icon="/icons/actions/atom.svg"
+    <group id="AtomFileIcons.Actions" popup="true" icon="/actions/atom.svg"
            class="com.mallowigi.actions.ActionGroup">
       <add-to-group group-id="MainToolBar" anchor="last"/>
       <add-to-group group-id="ToolsMenu"/>
       <add-to-group group-id="ChangeScheme" anchor="last"/>
       <add-to-group group-id="MainToolbarRight"/>
       <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
-              icon="/icons/settings/atom.svg"/>
+              icon="/actions/atom.svg"/>
       <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
-              icon="/icons/settings/compiledClassesFolder.svg"/>
+              icon="/actions/compiledClassesFolder.svg"/>
       <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
-              icon="/icons/settings/plugin.svg"/>
+              icon="/actions/plugin.svg"/>
       <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
-              icon="/icons/settings/psi.svg"/>
+              icon="/actions/psi.svg"/>
       <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
-              icon="/icons/settings/monochrome.svg"/>
+              icon="/actions/monochrome.svg"/>
+      <action class="com.mallowigi.actions.EnableSaturationIconsAction" id="EnableSaturationIconsAction"
+              icon="/actions/saturation.svg"/>
       <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
-              icon="/icons/settings/hideFileAction.svg"/>
+              icon="/actions/hideFileAction.svg"/>
       <action class="com.mallowigi.actions.HideFolderIconsAction" id="HideFolderIcons"
-              icon="/icons/settings/hideFolderAction.svg"/>
+              icon="/actions/hideFolderAction.svg"/>
       <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
-              icon="/icons/settings/folderOpen.svg"/>
+              icon="/actions/folderOpen.svg"/>
       <action class="com.mallowigi.actions.CustomIconSizeAction" id="BiggerIconsAction"
-              icon="/icons/settings/plus.svg"/>
+              icon="/actions/plus.svg"/>
+      <action class="com.mallowigi.actions.CustomLineHeightAction" id="CustomLineHeightAction"
+              icon="/actions/lineHeight.svg"/>
       <separator/>
 
       <group id="AtomFileIcons.ArrowStyles" popup="true">
         <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
                 id="MTMaterialArrows"
-                icon="/icons/actions/arrows/material.svg"/>
+                icon="/actions/arrows/material.svg"/>
         <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
                 id="MTDarculaArrows"
-                icon="/icons/actions/arrows/darcula.svg"/>
+                icon="/actions/arrows/darcula.svg"/>
         <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
                 id="MTPlusMinusArrows"
-                icon="/icons/actions/arrows/plusminus.svg"/>
+                icon="/actions/arrows/plusminus.svg"/>
         <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
                 id="MTArrowsArrows"
-                icon="/icons/actions/arrows/arrows.svg"/>
+                icon="/actions/arrows/arrows.svg"/>
         <action class="com.mallowigi.actions.arrows.MTNoneArrows"
-                icon="/icons/actions/arrows/none.svg"
+                icon="/actions/arrows/none.svg"
                 id="MTNoneArrows"/>
       </group>
       <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
-              icon="/icons/actions/refresh.svg"/>
+              icon="/actions/refresh.svg"/>
       <separator/>
     </group>
 

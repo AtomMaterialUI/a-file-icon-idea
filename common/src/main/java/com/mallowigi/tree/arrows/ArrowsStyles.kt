@@ -87,7 +87,7 @@ enum class ArrowsStyles(
   /** Gets the icon path. */
   fun getIconForPath(path: String): String? = when {
     path.contains("unfold.svg") -> arrowsStyle.expandIconPath
-    path.contains("bottomFold.svg") -> arrowsStyle.bottomIconPath
+    path.contains("foldBottom.svg") -> arrowsStyle.bottomCollapseIconPath
     path.contains("fold.svg") -> arrowsStyle.collapseIconPath
     else -> null
   }

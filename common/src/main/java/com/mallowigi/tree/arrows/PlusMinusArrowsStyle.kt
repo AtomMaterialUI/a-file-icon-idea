@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
@@ -29,15 +28,15 @@ import icons.AtomIcons
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
-const val PLUS_MINUS_EXPAND: String = "/icons/mac/plusminus/plus.svg"
-const val PLUS_MINUS_COLLAPSE: String = "/icons/mac/plusminus/minus.svg"
-const val PLUS_MINUS_EXPAND_SELECTED: String = "/icons/mac/plusminus/plus_selected.svg"
-const val PLUS_MINUS_COLLAPSE_SELECTED: String = "/icons/mac/plusminus/minus_selected.svg"
+private const val PLUS_MINUS_EXPAND: String = "/icons/mac/plusminus/plus.svg"
+private const val PLUS_MINUS_COLLAPSE: String = "/icons/mac/plusminus/minus.svg"
+private const val PLUS_MINUS_EXPAND_SELECTED: String = "/icons/mac/plusminus/plus_selected.svg"
+private const val PLUS_MINUS_COLLAPSE_SELECTED: String = "/icons/mac/plusminus/minus_selected.svg"
 
-var Plus: Icon = AtomIcons.load(PLUS_MINUS_EXPAND)
-var Minus: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE)
-var PlusSelected: Icon = AtomIcons.load(PLUS_MINUS_EXPAND_SELECTED)
-var MinusSelected: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE_SELECTED)
+private var Plus: Icon = AtomIcons.load(PLUS_MINUS_EXPAND)
+private var Minus: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE)
+private var PlusSelected: Icon = AtomIcons.load(PLUS_MINUS_EXPAND_SELECTED)
+private var MinusSelected: Icon = AtomIcons.load(PLUS_MINUS_COLLAPSE_SELECTED)
 
 /** Plus-minus arrows style. */
 class PlusMinusArrowsStyle : ArrowsStyle {
@@ -63,7 +62,7 @@ class PlusMinusArrowsStyle : ArrowsStyle {
 
   override val bottomCollapseIcon: Icon
     get() = Minus
-  override val bottomIconPath: String
+  override val bottomCollapseIconPath: String
     get() = PLUS_MINUS_COLLAPSE
 
   override val selectedBottomCollapseIcon: Icon

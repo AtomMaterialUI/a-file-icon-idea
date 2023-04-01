@@ -22,23 +22,26 @@
  * SOFTWARE.
  *
  */
-package com.mallowigi.models
+package com.mallowigi.actions
 
-import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.config.AtomSettingsConfig.Companion.instance
 
-/**
- * Virtual file info
- *
- * @constructor Create empty Virtual file info
- * @property vFile
- */
-class VirtualFileInfo(private val vFile: VirtualFile) : FileInfo {
-  override val name: String
-    get() = vFile.name
+/** Enable saturation icons action. */
+class EnableSaturationIconsAction : IconToggleAction() {
 
-  override val fileType: String
-    get() = vFile.fileType.name
+  /** Whether the menu item is selected. */
+  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isSaturatedIcons
 
-  override val path: String
-    get() = vFile.path
+  /** Upon select, toggle monochrome icons. */
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    CONFIG.toggleSaturatedIcons()
+    CONFIG.fireChanged()
+    super.setSelected(e, state)
+  }
+
+  companion object {
+    private val CONFIG = instance
+  }
+
 }

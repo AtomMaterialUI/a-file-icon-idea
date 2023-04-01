@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
@@ -29,19 +28,19 @@ import icons.AtomIcons
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
-const val DARCULA_COLLAPSE: String = "/icons/mac/darcula/down.svg"
-const val DARCULA_EXPAND: String = "/icons/mac/darcula/right.svg"
-const val DARCULA_EXPAND_SELECTED: String = "/icons/mac/darcula/down_selected.svg"
-const val DARCULA_COLLAPSE_SELECTED: String = "/icons/mac/darcula/right_selected.svg"
-const val DARCULA_UNFOLD: String = "/icons/mac/darcula/up.svg"
-const val DARCULA_UNFOLD_SELECTED: String = "/icons/mac/darcula/up_selected.svg"
+private const val DARCULA_COLLAPSE: String = "/icons/mac/darcula/down.svg"
+private const val DARCULA_EXPAND: String = "/icons/mac/darcula/right.svg"
+private const val DARCULA_EXPAND_SELECTED: String = "/icons/mac/darcula/down_selected.svg"
+private const val DARCULA_COLLAPSE_SELECTED: String = "/icons/mac/darcula/right_selected.svg"
+private const val DARCULA_UNFOLD: String = "/icons/mac/darcula/up.svg"
+private const val DARCULA_UNFOLD_SELECTED: String = "/icons/mac/darcula/up_selected.svg"
 
-var DarculaDown: Icon = AtomIcons.load(DARCULA_COLLAPSE)
-var DarculaRight: Icon = AtomIcons.load(DARCULA_EXPAND)
-var DarculaDownSelected: Icon = AtomIcons.load(DARCULA_EXPAND_SELECTED)
-var DarculaRightSelected: Icon = AtomIcons.load(DARCULA_COLLAPSE_SELECTED)
-var DarculaUp: Icon = AtomIcons.load(DARCULA_UNFOLD)
-var DarculaUpSelected: Icon = AtomIcons.load(DARCULA_UNFOLD_SELECTED)
+private var DarculaDown: Icon = AtomIcons.load(DARCULA_COLLAPSE)
+private var DarculaRight: Icon = AtomIcons.load(DARCULA_EXPAND)
+private var DarculaDownSelected: Icon = AtomIcons.load(DARCULA_EXPAND_SELECTED)
+private var DarculaRightSelected: Icon = AtomIcons.load(DARCULA_COLLAPSE_SELECTED)
+private var DarculaUp: Icon = AtomIcons.load(DARCULA_UNFOLD)
+private var DarculaUpSelected: Icon = AtomIcons.load(DARCULA_UNFOLD_SELECTED)
 
 /** Darcula arrows style (triangle) */
 class DarculaArrowsStyle : ArrowsStyle {
@@ -67,7 +66,7 @@ class DarculaArrowsStyle : ArrowsStyle {
 
   override val bottomCollapseIcon: Icon
     get() = DarculaUp
-  override val bottomIconPath: String
+  override val bottomCollapseIconPath: String
     get() = DARCULA_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon

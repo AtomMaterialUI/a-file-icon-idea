@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
@@ -29,19 +28,19 @@ import icons.AtomIcons
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
-const val MATERIAL_COLLAPSE: String = "/icons/mac/material/down.svg"
-const val MATERIAL_EXPAND: String = "/icons/mac/material/right.svg"
-const val MATERIAL_COLLAPSE_SELECTED: String = "/icons/mac/material/down_selected.svg"
-const val MATERIAL_EXPAND_SELECTED: String = "/icons/mac/material/right_selected.svg"
-const val MATERIAL_UNFOLD: String = "/icons/mac/material/up.svg"
-const val MATERIAL_UNFOLD_SELECTED: String = "/icons/mac/material/up_selected.svg"
+private const val MATERIAL_COLLAPSE: String = "/icons/mac/material/down.svg"
+private const val MATERIAL_EXPAND: String = "/icons/mac/material/right.svg"
+private const val MATERIAL_COLLAPSE_SELECTED: String = "/icons/mac/material/down_selected.svg"
+private const val MATERIAL_EXPAND_SELECTED: String = "/icons/mac/material/right_selected.svg"
+private const val MATERIAL_UNFOLD: String = "/icons/mac/material/up.svg"
+private const val MATERIAL_UNFOLD_SELECTED: String = "/icons/mac/material/up_selected.svg"
 
-var MaterialDown: Icon = AtomIcons.load(MATERIAL_COLLAPSE)
-var MaterialRight: Icon = AtomIcons.load(MATERIAL_EXPAND)
-var MaterialDownSelected: Icon = AtomIcons.load(MATERIAL_COLLAPSE_SELECTED)
-var MaterialRightSelected: Icon = AtomIcons.load(MATERIAL_EXPAND_SELECTED)
-var MaterialUp: Icon = AtomIcons.load(MATERIAL_UNFOLD)
-var MaterialUpSelected: Icon = AtomIcons.load(MATERIAL_UNFOLD_SELECTED)
+private var MaterialDown: Icon = AtomIcons.load(MATERIAL_COLLAPSE)
+private var MaterialRight: Icon = AtomIcons.load(MATERIAL_EXPAND)
+private var MaterialDownSelected: Icon = AtomIcons.load(MATERIAL_COLLAPSE_SELECTED)
+private var MaterialRightSelected: Icon = AtomIcons.load(MATERIAL_EXPAND_SELECTED)
+private var MaterialUp: Icon = AtomIcons.load(MATERIAL_UNFOLD)
+private var MaterialUpSelected: Icon = AtomIcons.load(MATERIAL_UNFOLD_SELECTED)
 
 /** Material arrows style: Chevron. */
 class MaterialArrowsStyle : ArrowsStyle {
@@ -67,7 +66,7 @@ class MaterialArrowsStyle : ArrowsStyle {
 
   override val bottomCollapseIcon: Icon
     get() = MaterialUp
-  override val bottomIconPath: String
+  override val bottomCollapseIconPath: String
     get() = MATERIAL_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon

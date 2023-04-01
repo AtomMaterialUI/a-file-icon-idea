@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
@@ -29,19 +28,19 @@ import icons.AtomIcons
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
-const val ARROW_COLLAPSE: String = "/icons/mac/arrow/down.svg"
-const val ARROW_EXPAND: String = "/icons/mac/arrow/right.svg"
-const val ARROW_COLLAPSE_SELECTED: String = "/icons/mac/arrow/down_selected.svg"
-const val ARROW_EXPAND_SELECTED: String = "/icons/mac/arrow/right_selected.svg"
-const val ARROW_UNFOLD: String = "/icons/mac/arrow/up.svg"
-const val ARROW_UNFOLD_SELECTED: String = "/icons/mac/arrow/up_selected.svg"
+private const val ARROW_COLLAPSE: String = "/icons/mac/arrow/down.svg"
+private const val ARROW_EXPAND: String = "/icons/mac/arrow/right.svg"
+private const val ARROW_COLLAPSE_SELECTED: String = "/icons/mac/arrow/down_selected.svg"
+private const val ARROW_EXPAND_SELECTED: String = "/icons/mac/arrow/right_selected.svg"
+private const val ARROW_UNFOLD: String = "/icons/mac/arrow/up.svg"
+private const val ARROW_UNFOLD_SELECTED: String = "/icons/mac/arrow/up_selected.svg"
 
-var Down: Icon = AtomIcons.load(ARROW_COLLAPSE)
-var Right: Icon = AtomIcons.load(ARROW_EXPAND)
-var DownSelected: Icon = AtomIcons.load(ARROW_COLLAPSE_SELECTED)
-var RightSelected: Icon = AtomIcons.load(ARROW_EXPAND_SELECTED)
-var Up: Icon = AtomIcons.load(ARROW_UNFOLD)
-var UpSelected: Icon = AtomIcons.load(ARROW_UNFOLD_SELECTED)
+private var Down: Icon = AtomIcons.load(ARROW_COLLAPSE)
+private var Right: Icon = AtomIcons.load(ARROW_EXPAND)
+private var DownSelected: Icon = AtomIcons.load(ARROW_COLLAPSE_SELECTED)
+private var RightSelected: Icon = AtomIcons.load(ARROW_EXPAND_SELECTED)
+private var Up: Icon = AtomIcons.load(ARROW_UNFOLD)
+private var UpSelected: Icon = AtomIcons.load(ARROW_UNFOLD_SELECTED)
 
 /** Arrows Arrow style. */
 class ArrowsArrowsStyle : ArrowsStyle {
@@ -67,7 +66,7 @@ class ArrowsArrowsStyle : ArrowsStyle {
 
   override val bottomCollapseIcon: Icon
     get() = Up
-  override val bottomIconPath: String
+  override val bottomCollapseIconPath: String
     get() = ARROW_UNFOLD
 
   override val selectedBottomCollapseIcon: Icon

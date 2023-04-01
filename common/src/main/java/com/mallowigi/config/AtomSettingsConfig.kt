@@ -294,9 +294,17 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   //region Custom Icon size
 
-  /** Toggle big icons. */
+  /** Toggle custom icon size. */
   fun toggleHasCustomIconSize() {
     hasCustomIconSize = !hasCustomIconSize
+  }
+  //endregion
+
+  //region Custom Line Height
+
+  /** Toggle custom line height. */
+  fun toggleHasCustomLineHeight() {
+    hasCustomLineHeight = !hasCustomLineHeight
   }
   //endregion
 

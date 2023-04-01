@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- *
  */
 package com.mallowigi.tree.arrows
 
@@ -33,33 +32,39 @@ interface ArrowsStyle {
   /** Expanded icon. */
   val expandIcon: Icon
 
-  val expandIconPath: String;
+  /** Expanded icon path. */
+  val expandIconPath: String
 
   /** Collapsed icon. */
   val collapseIcon: Icon
 
-  val collapseIconPath: String;
+  /** Collapsed icon path. */
+  val collapseIconPath: String
 
   /** Selected item expanded icon. */
   val selectedExpandIcon: Icon
 
-  val selectedExpandIconPath: String;
+  /** Selected item expanded icon path. */
+  val selectedExpandIconPath: String
 
   /** Selected item collapsed icon. */
   val selectedCollapseIcon: Icon
 
-  val selectedCollapseIconPath: String;
+  /** Selected item collapsed icon path. */
+  val selectedCollapseIconPath: String
 
   /** Bottom collapse icon. */
   val bottomCollapseIcon: Icon
 
-  val bottomIconPath: String;
+  /** Bottom collapse icon path. */
+  val bottomCollapseIconPath: String
 
   /** Selected bottom collapse icon. */
   val selectedBottomCollapseIcon: Icon
 
-  val selectedBottomCollapseIconPath: String;
+  /** Selected bottom collapse icon path. */
+  val selectedBottomCollapseIconPath: String
 
   /** Path id. */
-  val pathId: @NonNls String;
+  val pathId: @NonNls String
 }
