@@ -1,25 +1,26 @@
 /*
  * The MIT License (MIT)
  *
- *  Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 package com.mallowigi.icons.associations
 
@@ -38,12 +39,15 @@ import java.io.Serializable
  * @property iconType the [IconType] of icon (file/folder/psi)
  * @property name the name of the association
  * @property icon the icon path
- * @property priority association priority. Lowest priorities are used last.
- * @property matcher How the association will be matched against (regex, type)
+ * @property priority association priority. Lowest priorities are used
+ *     last.
+ * @property matcher How the association will be matched against (regex,
+ *     type)
  * @property isEmpty whether the association has empty fields
  * @property iconColor the color of the icon
  * @property folderIconColor the color of the folder icon
  * @property folderColor the color of the folder
+ * @property iconPack the icon pack of the icon
  */
 abstract class Association @PropertyMapping() internal constructor() : Serializable, Comparable<Association> {
   @field:Property
@@ -81,6 +85,10 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
   @XStreamAsAttribute
   var folderIconColor: String? = DEFAULT_COLOR
 
+  @field:Property
+  @XStreamAsAttribute
+  var iconPack: IconPack? = IconPack.DEFAULT
+
   abstract var matcher: String
 
   open val isEmpty: Boolean
@@ -109,6 +117,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
     iconColor = other.iconColor
     folderColor = other.folderColor
     folderIconColor = other.folderIconColor
+    iconPack = other.iconPack
   }
 
   override fun toString(): String = "$name: $matcher ($priority)"

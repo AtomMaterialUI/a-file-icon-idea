@@ -22,24 +22,33 @@
  * SOFTWARE.
  *
  */
-package com.mallowigi.icons.services
 
-import com.intellij.openapi.util.IconLoader
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
-import com.mallowigi.icons.filters.MonochromeFilter
-import com.mallowigi.icons.filters.SaturationFilter
+package com.mallowigi.icons.associations
 
-/** Icon filter manager. */
-object IconFilterManager {
-  /** Apply filter. */
-  fun applyFilter() {
-    val monochromeIcons = instance.isMonochromeIcons
-    val saturatedIcons = instance.isSaturatedIcons
-    when {
-      monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
-      saturatedIcons -> IconLoader.setFilter(SaturationFilter)
-      else -> IconLoader.setFilter(null)
-    }
-  }
+/** Icon pack. */
+enum class IconPack {
+  /** Default. */
+  DEFAULT,
 
+  /** Angular. */
+  ANGULAR,
+
+  /** Nest. */
+  NEST,
+
+
+  /** Redux. */
+  REDUX,
+
+  /** NgRx. */
+  NGRX,
+
+  /** Rails. */
+  RAILS,
+
+  /** Recoil. */
+  RECOIL,
+
+  /** Tests. */
+  TESTS
 }

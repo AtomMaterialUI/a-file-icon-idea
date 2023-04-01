@@ -46,7 +46,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether the file icons are enabled. */
   var isEnabledIcons: Boolean by property(true)
 
-  /** Whether the folder icons are enabledd. */
+  /** Whether the folder icons are enabled. */
   var isEnabledDirectories: Boolean by property(true)
 
   /** Whether the UI icons are enabled. */
@@ -86,7 +86,13 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   var isUseRubyIcons: Boolean by property(true)
 
   /** Whether Rails Psi Icons should be used. */
-  var isUseRailsIcons: Boolean by property(false)
+  var isUseRailsIcons: Boolean by property(true)
+
+  /** Whether Nest Psi Icons should be used. */
+  var isUseNestIcons: Boolean by property(true)
+
+  /** Whether Angular Psi Icons should be used. */
+  var isUseAngularIcons: Boolean by property(true)
 
   /** Style of tree expand arrows. */
   var arrowsStyle: ArrowsStyles by enum(ArrowsStyles.MATERIAL)
@@ -156,7 +162,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isHideFolderIcons = false
     isUseHollowFolders = true
     isUseRubyIcons = true
-    isUseRailsIcons = false
+    isUseRailsIcons = true
+    isUseNestIcons = true
+    isUseAngularIcons = true
     arrowsStyle = ArrowsStyles.MATERIAL
     isAccentColorEnabled = false
     accentColor = accentColorFromTheme
@@ -209,15 +217,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   //endregion
 
-  //region Opacity Icons
-
-  /** Toggle opacity icons. */
-  fun toggleOpacityIcons() {
-    isOpacityIcons = !isOpacityIcons
-  }
-
-  //endregion
-
   //region UI Icons
 
   /** Toggle ui icons. */
@@ -231,22 +230,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Toggle psi icons. */
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
-  }
-  //endregion
-
-  //region Ruby Icons
-
-  /** Toggle ruby icons. */
-  fun toggleRubyIcons() {
-    isUseRubyIcons = !isUseRubyIcons
-  }
-  //endregion
-
-  //region Rails Icons
-
-  /** Toggle ruby icons. */
-  fun toggleRailsIcons() {
-    isUseRailsIcons = !isUseRailsIcons
   }
   //endregion
 
@@ -315,7 +298,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     /** Default Line Height. */
     const val DEFAULT_LINE_HEIGHT: Int = 20
 
-    /** Min Line Hieght. */
+    /** Min Line Height. */
     const val MIN_LINE_HEIGHT: Int = 16
 
     /** Max Line Height. */

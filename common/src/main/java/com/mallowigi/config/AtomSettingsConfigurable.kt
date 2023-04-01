@@ -64,11 +64,7 @@ import javax.swing.DefaultComboBoxModel
 import javax.swing.Icon
 import javax.swing.JList
 
-/**
- * Atom settings configurable
- *
- * @constructor Create empty Atom settings configurable
- */
+/** Atom settings configurable. */
 class AtomSettingsConfigurable : BoundSearchableConfigurable(
   message("settings.title"),
   "com.mallowigi.config.AtomSettingsConfigurable",
@@ -83,8 +79,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
     lateinit var fileIconsCheckbox: JBCheckBox
-    lateinit var folderIconsCheckbox: JBCheckBox
-    lateinit var uiIconsCheckbox: JBCheckBox
     lateinit var psiIconsCheckbox: JBCheckBox
     lateinit var accentColorCheckbox: JBCheckBox
     lateinit var themedColorCheckbox: JBCheckBox
@@ -108,7 +102,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         row {
           icon(FOLDERS)
             .gap(RightGap.SMALL)
-          folderIconsCheckbox = checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
+          checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
             .bindSelected(settings::isEnabledDirectories)
             .gap(RightGap.SMALL)
             .component
@@ -117,7 +111,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         row {
           icon(UI)
             .gap(RightGap.SMALL)
-          uiIconsCheckbox = checkBox(message("SettingsForm.enableUIIconsCheckbox.text"))
+          checkBox(message("SettingsForm.enableUIIconsCheckbox.text"))
             .bindSelected(settings::isEnabledUIIcons)
             .gap(RightGap.SMALL)
             .component
@@ -143,11 +137,11 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         collapsibleGroup(message("SettingsForm.iconPacks")) {
           twoColumnsRow(
             {
-              checkBox("Use Ruby PSI Icons")
+              checkBox(message("SettingsForm.useRubyIcons.checkbox"))
                 .bindSelected(settings::isUseRubyIcons)
                 .enabledIf(psiIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
-                .comment("Use Ruby PSI Icons instead of File Icons")
+                .comment(message("SettingsForm.useRubyIcons.tooltip"))
             },
             {
               checkBox(message("SettingsForm.useRailsIcons.checkbox"))
@@ -157,7 +151,24 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .comment(message("SettingsForm.useRailsIcons.tooltip"))
             }
           )
-        }
+
+          twoColumnsRow(
+            {
+              checkBox(message("SettingsForm.useAngularIcons.checkbox"))
+                .bindSelected(settings::isUseAngularIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useAngularIcons.tooltip"))
+            },
+            {
+              checkBox(message("SettingsForm.useNestIcons.checkbox"))
+                .bindSelected(settings::isUseNestIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useNestIcons.tooltip"))
+            }
+          )
+        }.rowComment(message("SettingsForm.iconPacks.tooltip"))
 
         collapsibleGroup(message("SettingsForm.groups.hide")) {
           row {
