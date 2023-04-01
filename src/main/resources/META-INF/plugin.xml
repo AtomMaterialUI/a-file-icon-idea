@@ -79,26 +79,20 @@
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
 
-    <notificationGroup displayType="BALLOON" id="Atom Material Notifications" bundle="messages.AtomFileIconsBundle"
+    <notificationGroup displayType="BALLOON"
+                       id="Atom Material Notifications"
+                       bundle="messages.AtomFileIconsBundle"
                        key="notification.group.atom.material.notifications"/>
 
     <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
+
+    <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
+    <postStartupActivity implementation="com.mallowigi.icons.AtomSVGPatchersListener"/>
+    <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
   </extensions>
 
   <!--suppress PluginXmlValidity -->
   <applicationListeners>
-    <listener class="com.mallowigi.icons.AtomSettingsListener"
-              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-    <listener class="com.mallowigi.icons.AtomSettingsListener" topic="com.intellij.ide.AppLifecycleListener"/>
-
-    <listener class="com.mallowigi.icons.AtomSVGPatchersListener"
-              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-    <listener class="com.mallowigi.icons.AtomSVGPatchersListener" topic="com.intellij.ide.AppLifecycleListener"/>
-
-    <listener class="com.mallowigi.tree.ArrowIconsComponent" topic="com.intellij.ide.AppLifecycleListener"/>
-    <listener class="com.mallowigi.tree.ArrowIconsComponent"
-              topic="com.intellij.ide.plugins.DynamicPluginListener"/>
-
     <listener class="com.mallowigi.tree.RefreshTreeListener"
               topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
 

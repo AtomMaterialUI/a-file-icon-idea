@@ -24,7 +24,6 @@
  */
 package com.mallowigi.icons
 
-import com.intellij.ide.AppLifecycleListener
 import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.ui.LafManager
@@ -34,6 +33,8 @@ import com.intellij.openapi.fileTypes.FileTypeEvent
 import com.intellij.openapi.fileTypes.FileTypeListener
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.listeners.AtomSelectNotifier
@@ -43,13 +44,7 @@ import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.utils.refreshOpenedProjects
 
 /** Listener for Settings Changes. */
-class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAware {
-
-  /** Dispose on app closing. */
-  override fun appClosing(): Unit = disposeComponent()
-
-  /** Init on app started. */
-  override fun appStarted(): Unit = initComponent()
+class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
   /** Init on plugin loaded. */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
@@ -75,10 +70,6 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
         override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
       })
-
-//      subscribe(ProjectManager.TOPIC, object : ProjectManagerListener {
-//        override fun projectOpened(project: Project) = IconPatchersManager.updateIcons()
-//      })
     }
 
     UIUtil.invokeLaterIfNeeded { IconFilterManager.applyFilter() }
@@ -90,5 +81,8 @@ class AtomSettingsListener : DynamicPluginListener, AppLifecycleListener, DumbAw
     LafManager.getInstance().updateUI()
     refreshOpenedProjects()
   }
+
+  /** Run on project open. */
+  override suspend fun execute(project: Project): Unit = initComponent()
 
 }
