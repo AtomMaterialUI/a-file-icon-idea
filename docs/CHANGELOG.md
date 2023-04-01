@@ -2,6 +2,27 @@
 
 ----
 
+## 90.0.0 (9.0.0)
+
+### Features
+
+- Complete redesign of the settings pages to **Kotlin UI DSL v2**:
+  - Easier to maintain
+  - Easier to add new settings
+  - No need for a separate plugin
+  - Removal of many old code not needed any more
+- New Setting: **Icon Packs**: now you can disable certain icon packs directly from the settings rather than the Custom Associations:
+  - Angular
+  - Nest
+  - Redux
+  - NgRx
+  - Recoil
+  - Ruby
+  - Rails
+  - Tests
+- New Setting: **Saturation**: Now you can tone up the saturation of the icons
+- **Ruby** projects are now showing PSI Icons, just like PHP, Java and Kotlin (but you can disable it if you want)
+
 ## 88.0.0 (8.8.0)
 
 ### Additions
