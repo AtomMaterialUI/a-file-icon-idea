@@ -21,8 +21,9 @@
   -  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   -  SOFTWARE.
   -->
-<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="#4485F9" xmlns="http://www.w3.org/2000/svg">
-    <defs>
+<svg width="16px" height="16px" viewBox="0 0 16 16" fill="#4485F9" xmlns="http://www.w3.org/2000/svg">
+  <g big="true">
+      <defs>
         <mask id="Mask">
             <path d="M3.89729 2.03747L0.737569 7.45414C0.540805 7.79145 0.540805 8.20855 0.737569 8.54586L3.89729 13.9625C4.09144 14.2953 4.44775 14.5 4.83305 14.5H11.1719C11.5572 14.5 11.9135 14.2953 12.1077 13.9625L15.2674 8.54586C15.4642 8.20855 15.4642 7.79145 15.2674 7.45414L12.1077 2.03747C11.9135 1.70465 11.5572 1.5 11.1719 1.5H4.83305C4.44775 1.5 4.09144 1.70465 3.89729 2.03747Z"
                   fill="white"/>
@@ -55,4 +56,5 @@
               fill="#FFFEFF"/>
     </g>
 
+  </g>
 </svg>

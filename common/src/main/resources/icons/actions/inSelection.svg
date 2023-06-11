@@ -24,8 +24,9 @@
   -
   -->
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <g fill="none" fill-rule="evenodd">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g big="true">
+    <g fill="none" fill-rule="evenodd">
     <rect width="16" height="16" />
     <g fill="#BA68C8" transform="translate(2 3)">
       <polygon points="0 0 11 0 11 2 0 2" />
@@ -35,5 +36,6 @@
       <polygon points="8 4 13 4 13 5 8 5" />
       <polygon points="8 11 13 11 13 12 8 12" />
     </g>
+  </g>
   </g>
 </svg>

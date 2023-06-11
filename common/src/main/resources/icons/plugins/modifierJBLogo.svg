@@ -24,9 +24,10 @@
   -
   -->
 
-<svg big="true" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
      viewBox="0 0 120.80108 130.89788">
-    <defs>
+  <g big="true">
+      <defs>
         <radialGradient id="radial-gradient" cx="113.6915" cy="68.82519" r="98.86049" gradientUnits="userSpaceOnUse">
             <stop offset="0.04518" stop-color="#f4793b" />
             <stop offset="1" stop-color="#fff33e" />
@@ -88,4 +89,5 @@
                     fill="#fff" />
         </g>
     </g>
+  </g>
 </svg>
