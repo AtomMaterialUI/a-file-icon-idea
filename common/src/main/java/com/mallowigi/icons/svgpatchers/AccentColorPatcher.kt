@@ -25,10 +25,9 @@
 package com.mallowigi.icons.svgpatchers
 
 import com.intellij.ui.ColorUtil
-import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomSettingsConfig.Companion.instance
-import org.w3c.dom.Element
-import java.nio.charset.StandardCharsets
+import com.mallowigi.utils.toHash
+import com.mallowigi.utils.toHex
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -40,14 +39,11 @@ class AccentColorPatcher : SvgPatcher {
 
   private var accentColor: ColorUIResource = getAccentColor()
 
-  override fun digest(): ByteArray? {
-    val hasher = DigestUtil.sha512()
-    // order is significant
-    hasher.update(ColorUtil.toHex(accentColor).toByteArray(StandardCharsets.UTF_8))
-    return hasher.digest()
-  }
+  override fun digest(): LongArray = longArrayOf(
+    accentColor.toHex().toHash()
+  )
 
-  override fun patch(svg: Element, path: String?): Unit = patchTints(svg)
+  override fun patch(attributes: MutableMap<String, String>): Unit = patchTints(attributes)
 
   override fun priority(): Int = 99
 
@@ -55,15 +51,15 @@ class AccentColorPatcher : SvgPatcher {
 
   private fun getAccentColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentAccentColor()))
 
-  private fun patchTints(svg: Element) {
-    val tint = svg.getAttribute(SvgPatcher.TINT) ?: return
+  private fun patchTints(attributes: MutableMap<String, String>) {
+    val tint = attributes[SvgPatcher.TINT] ?: return
     val newAccentColor = ColorUtil.toHex(accentColor)
 
     // if tint = "true" or tint = "fill", change the fill color. If tint = "stroke", change the stroke color
     if (tint == SvgPatcher.TRUE || tint == SvgPatcher.FILL) {
-      svg.setAttribute(SvgPatcher.FILL, "#$newAccentColor")
+      attributes[SvgPatcher.FILL] = "#$newAccentColor"
     } else if (SvgPatcher.STROKE == tint) {
-      svg.setAttribute(SvgPatcher.STROKE, "#$newAccentColor")
+      attributes[SvgPatcher.STROKE] = "#$newAccentColor"
     }
   }
 

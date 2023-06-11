@@ -24,10 +24,8 @@
  */
 package com.mallowigi.icons.svgpatchers
 
-import com.intellij.util.io.DigestUtil
 import com.mallowigi.config.AtomSettingsConfig
-import org.w3c.dom.Element
-import java.nio.charset.StandardCharsets
+import com.mallowigi.utils.toHash
 import javax.swing.UIManager
 
 /** Big icons patcher. */
@@ -39,30 +37,28 @@ class BigIconsPatcher : SvgPatcher {
   private var hasCustomLineHeight = false
   private var hasCustomSize = false
 
-  override fun digest(): ByteArray? {
-    val hasher = DigestUtil.sha512()
-    hasher.update(hasCustomSize.toString().toByteArray(StandardCharsets.UTF_8))
-    hasher.update(hasCustomLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
-    hasher.update(customIconSize.toString().toByteArray(StandardCharsets.UTF_8))
-    hasher.update(customLineHeight.toString().toByteArray(StandardCharsets.UTF_8))
-    return hasher.digest()
-  }
+  override fun digest(): LongArray = longArrayOf(
+    hasCustomSize.toString().toHash(),
+    hasCustomLineHeight.toString().toHash(),
+    customIconSize.toString().toHash(),
+    customLineHeight.toString().toHash(),
+  )
 
-  override fun patch(svg: Element, path: String?): Unit = patchSizes(svg)
+  override fun patch(attributes: MutableMap<String, String>): Unit = patchSizes(attributes)
 
   override fun priority(): Int = 97
 
   override fun refresh(): Unit = refreshSizes()
 
-  private fun patchSizes(svg: Element) {
-    val isBig = svg.getAttribute(SvgPatcher.BIG)
+  private fun patchSizes(attributes: MutableMap<String, String>) {
+    val isBig = attributes[SvgPatcher.BIG]
     val customFontSize = AtomSettingsConfig.instance.customIconSize.toString()
     val hasCustomSize = AtomSettingsConfig.instance.hasCustomIconSize
     val size = if (hasCustomSize) customFontSize else REGULAR
 
     if (isBig == SvgPatcher.TRUE) {
-      svg.setAttribute(SvgPatcher.WIDTH, size.toString())
-      svg.setAttribute(SvgPatcher.HEIGHT, size.toString())
+      attributes[SvgPatcher.WIDTH] = size.toString()
+      attributes[SvgPatcher.HEIGHT] = size.toString()
     }
   }
 

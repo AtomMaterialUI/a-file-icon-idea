@@ -27,12 +27,10 @@ package com.mallowigi.icons.svgpatchers
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
+import com.intellij.ui.svg.SvgAttributePatcher
 import com.intellij.util.SVGLoader
-import com.intellij.util.SVGLoader.SvgElementColorPatcher
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
-import com.intellij.util.io.DigestUtil
 import com.mallowigi.utils.getValue
-import org.w3c.dom.Element
 import java.util.*
 import javax.swing.SwingUtilities
 
@@ -70,28 +68,17 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   }
 
   /** Create patcher for path. */
-  override fun forPath(path: String?): SvgElementColorPatcher = createPatcher(path)
+  override fun attributeForPath(path: String?): SvgAttributePatcher = createPatcher(path)
 
-  private fun createPatcher(path: String?): SvgElementColorPatcher = object : SvgElementColorPatcher {
-    override fun patchColors(svg: Element) {
-      // for each of the internal patchers, patch Colors
-      patchers.forEach { it.patch(svg, path) }
-
-      val nodes = svg.childNodes
-      val length = nodes.length
-      for (i in 0 until length) {
-        val item = nodes.item(i)
-        if (item is Element) {
-          patchColors(item)
-        }
-      }
+  private fun createPatcher(path: String?): SvgAttributePatcher = object : SvgAttributePatcher {
+    override fun patchColors(attributes: MutableMap<String, String>) {
+      patchers.forEach { it.patch(attributes) }
     }
 
-    override fun digest(): ByteArray? {
-      val hasher = DigestUtil.sha512()
-      // for each of the internal patchers, patch Colors
-      patchers.forEach { hasher.update(it.digest()) }
-      return hasher.digest()
+    override fun digest(): LongArray {
+      val longArrays = mutableListOf<LongArray>()
+      patchers.forEach { longArrays.add(it.digest()) }
+      return longArrays.flatMap { it.asIterable() }.toLongArray()
     }
   }
 
