@@ -23,8 +23,6 @@
   -
   -->
 
-<svg width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g big="true">
-    <circle cx="8" cy="8" r="3" tint="true" fill="#FFFFFF"/>
-  </g>
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="8" cy="8" r="3" tint="true" fill="#FFFFFF"/>
 </svg>
