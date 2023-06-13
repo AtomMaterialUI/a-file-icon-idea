@@ -59,36 +59,36 @@ class CustomColorPatcher : SvgPatcher {
     // do nothing
   }
 
-  private fun patchFolderColor(svg: MutableMap<String, String>) {
-    val attr = svg[SvgPatcher.FOLDERCOLOR] ?: return
+  private fun patchFolderColor(attributes: MutableMap<String, String>) {
+    val attr = attributes[SvgPatcher.FOLDERCOLOR] ?: return
     val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
     val folderColor = matchingAssociation.folderColor
 
-    svg[SvgPatcher.FILL] = "#$folderColor"
-    if (svg[SvgPatcher.STROKE] != "") {
-      svg[SvgPatcher.STROKE] = "#$folderColor"
+    attributes[SvgPatcher.FILL] = "#$folderColor"
+    if (attributes[SvgPatcher.STROKE] != null && attributes[SvgPatcher.STROKE] != "") {
+      attributes[SvgPatcher.STROKE] = "#$folderColor"
     }
   }
 
-  private fun patchFolderIconColor(svg: MutableMap<String, String>) {
-    val attr = svg[SvgPatcher.FOLDERICONCOLOR] ?: return
+  private fun patchFolderIconColor(attributes: MutableMap<String, String>) {
+    val attr = attributes[SvgPatcher.FOLDERICONCOLOR] ?: return
     val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
     val folderIconColor = matchingAssociation.folderIconColor
 
-    svg[SvgPatcher.FILL] = "#$folderIconColor"
-    if (svg[SvgPatcher.STROKE] != "") {
-      svg[SvgPatcher.STROKE] = "#$folderIconColor"
+    attributes[SvgPatcher.FILL] = "#$folderIconColor"
+    if (attributes[SvgPatcher.STROKE] != null && attributes[SvgPatcher.STROKE] != "") {
+      attributes[SvgPatcher.STROKE] = "#$folderIconColor"
     }
   }
 
-  private fun patchIconColor(svg: MutableMap<String, String>) {
-    val attr = svg[SvgPatcher.ICONCOLOR] ?: return
+  private fun patchIconColor(attributes: MutableMap<String, String>) {
+    val attr = attributes[SvgPatcher.ICONCOLOR] ?: return
     val matchingAssociation = AtomSelectConfig.instance.findFileAssociationByName(attr) ?: return
     val iconColor = matchingAssociation.iconColor
 
-    svg[SvgPatcher.FILL] = "#$iconColor"
-    if (svg[SvgPatcher.STROKE] != "") {
-      svg[SvgPatcher.STROKE] = "#$iconColor"
+    attributes[SvgPatcher.FILL] = "#$iconColor"
+    if (attributes[SvgPatcher.STROKE] != null && attributes[SvgPatcher.STROKE] != "") {
+      attributes[SvgPatcher.STROKE] = "#$iconColor"
     }
   }
 

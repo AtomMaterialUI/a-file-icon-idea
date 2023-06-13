@@ -1,28 +1,3 @@
-<!--
-  ~ The MIT License (MIT)
-  ~
-  ~ Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
-  ~
-  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~ of this software and associated documentation files (the "Software"), to deal
-  ~ in the Software without restriction, including without limitation the rights
-  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~ copies of the Software, and to permit persons to whom the Software is
-  ~ furnished to do so, subject to the following conditions:
-  ~
-  ~ The above copyright notice and this permission notice shall be included in all
-  ~ copies or substantial portions of the Software.
-  ~
-  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~ SOFTWARE.
-  ~
-  -->
-
 <h2>Changelog</h2>
 
 <hr />
@@ -31,620 +6,162 @@
 
 <h3>Features</h3>
 
-<ul>
-  <li>Complete redesign of the settings pages to <strong>Kotlin UI DSL v2</strong>:
-    <ul>
-      <li>Easier to maintain</li>
-      <li>Easier to add new settings</li>
-      <li>No need for a separate plugin</li>
-      <li>Removal of many old code not needed any more</li>
-    </ul>
-  </li>
-  <li>New Setting: <strong>Icon Packs</strong>: now you can disable certain icon packs directly from the settings rather
-    than the Custom Associations:
-    <ul>
-      <li>Angular</li>
-      <li>Nest</li>
-      <li>Redux</li>
-      <li>NgRx</li>
-      <li>Recoil</li>
-      <li>Ruby</li>
-      <li>Rails</li>
-      <li>Tests</li>
-    </ul>
-  </li>
-  <li>New Setting: <strong>Saturation</strong>: Now you can tone up the saturation of the icons</li>
-  <li><strong>Ruby</strong> projects are now showing PSI Icons, just like PHP, Java and Kotlin (but you can disable it
-    if you want)
-  </li>
-</ul>
+<ul><li>Complete redesign of the settings pages to <strong>Kotlin UI DSL v2</strong>:<ul><li>Easier to maintain</li><li>Easier to add new settings</li><li>No need for a separate plugin</li><li>Removal of many old code not needed any more</li></ul></li><li>New Setting: <strong>Icon Packs</strong>: now you can disable certain icon packs directly from the settings rather than the Custom Associations:<ul><li>Angular</li><li>Nest</li><li>Redux</li><li>NgRx</li><li>Recoil</li><li>Ruby</li><li>Rails</li><li>Tests</li></ul></li><li>New Setting: <strong>Saturation</strong>: Now you can tone up the saturation of the icons</li><li><strong>Ruby</strong> projects are now showing PSI Icons, just like PHP, Java and Kotlin (but you can disable it if you want)</li></ul>
 
 <h2>88.0.0 (8.8.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>File Icons:
-    <ul>
-      <li><code>tokei</code></li>
-      <li><code>tokeignore</code></li>
-      <li><code>skaffold</code></li>
-    </ul>
-  </li>
-  <li>Folder Icons
-    <ul>
-      <li><code>analytics</code>, <code>graphs</code>, <code>metrics</code></li>
-      <li><code>parsers</code></li>
-    </ul>
-  </li>
-</ul>
+<ul><li>File Icons:<ul><li><code>tokei</code></li><li><code>tokeignore</code></li><li><code>skaffold</code></li></ul></li><li>Folder Icons<ul><li><code>analytics</code>, <code>graphs</code>, <code>metrics</code></li><li><code>parsers</code></li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Restore logo icons</li>
-</ul>
+<ul><li>Restore logo icons</li></ul>
 
 <h2>87.1.0 (8.7.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Remove SVG with base64 icons temporarily since it is broken in the latest EAP</li>
-</ul>
+<ul><li>Remove SVG with base64 icons temporarily since it is broken in the latest EAP</li></ul>
 
 <h2>87.0.0 (8.7.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Change ngRx, Redux and Ruby associations to only check for the closest parent folder instead of any parent
-    folder
-  </li>
-  <li>Adding last UI Icons</li>
-</ul>
+<ul><li>Change ngRx, Redux and Ruby associations to only check for the closest parent folder instead of any parent folder</li><li>Adding last UI Icons</li></ul>
 
 <h2>86.0.0 (8.6.0)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2023.1 EAP</li>
-</ul>
+<ul><li>Support for 2023.1 EAP</li></ul>
 
 <h2>85.0.0 (8.5.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Use the <em>Arrow Styles</em> for the gutter folding icons</li>
-</ul>
+<ul><li>Use the <em>Arrow Styles</em> for the gutter folding icons</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix the ngRx taking priority to TypeScript files</li>
-  <li>Fix collaboration icons (GitHub PR)</li>
-</ul>
+<ul><li>Fix the ngRx taking priority to TypeScript files</li><li>Fix collaboration icons (GitHub PR)</li></ul>
 
 <h2>84.0.0 (8.4.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Execute <code>IconPathPatcher</code> action before all services, rather than <code>PostStartupActivity</code></li>
-  <li>Update Ruby Icons</li>
-</ul>
+<ul><li>Execute <code>IconPathPatcher</code> action before all services, rather than <code>PostStartupActivity</code></li><li>Update Ruby Icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Icons:
-    <ul>
-      <li>Test Kotlin</li>
-      <li>Test PHP</li>
-    </ul>
-  </li>
-  <li>Parent folders:
-    <ul>
-      <li>GitHub files: <code>.github/*.yaml</code></li>
-      <li>Plugin manifests: <code>META-INF/*.xml</code></li>
-      <li>Test files: <code>tests?/*</code>, <code>units?/*</code> and <code>specs?/*</code> (for all main languages)
-      </li>
-      <li>Ansible files: <code>ansible/*.yml</code></li>
-      <li>Bean files: <code>beans?/*.java</code></li>
-      <li>Bloc files: <code>blocs?/*.dart</code>, <code>events?/*.dart</code>, <code>states?/*.dart</code></li>
-      <li>Docker files: <code>docker/*.dockerfile</code>, <code>dockerfiles?/*.yml</code></li>
-      <li>Eslint files: <code>eslint/*.yml|json|[cm]?js|ts</code></li>
-      <li>Expo files: <code>expo/*.js|json|ts</code></li>
-      <li>Gruntfiles: <code>grunt/*.js</code>, <code>gruntfiles?/*.js</code></li>
-      <li>Gulpfiles: <code>gulp/*.js</code>, <code>gulpfiles?/*.js</code></li>
-      <li>Husky files: <code>.husky/*.js</code>, <code>.husky/*.yml</code>, <code>.husky/*.json</code></li>
-      <li>Husky Hooks: <code>hooks/*.sh</code></li>
-      <li>Lang files: <code>langs/*</code>, <code>locales?/*</code>, <code>translations?/*</code>, <code>i18n/*</code>
-      </li>
-      <li>Jest files: <code>jest/*.js|jsx|ts|tsx</code></li>
-      <li>Mock files: <code>spy/*</code>, <code>mocks?/*</code>, <code>stubs?/*</code></li>
-      <li>NgRx
-        files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>,
-        <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...
-      </li>
-      <li>Rails
-        files: <code>channels?/*.rb</code>, <code>controllers?/*.rb</code>, <code>helpers?/*.rb</code>,
-        <code>jobs?/*.rb</code>, <code>mailers?/*.rb</code>, <code>models?/*.rb</code>, <code>views?/*.rb</code>...
-      </li>
-      <li>Redux
-        files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>,
-        <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...
-      </li>
-      <li>Rspec files: <code>rspec/*.rb</code></li>
-      <li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li>
-      <li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li>
-      <li>VSCode files: <code>.vscode/*.json</code></li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Icons:<ul><li>Test Kotlin</li><li>Test PHP</li></ul></li><li>Parent folders:<ul><li>GitHub files: <code>.github/*.yaml</code></li><li>Plugin manifests: <code>META-INF/*.xml</code></li><li>Test files: <code>tests?/*</code>, <code>units?/*</code> and <code>specs?/*</code> (for all main languages)</li><li>Ansible files: <code>ansible/*.yml</code></li><li>Bean files: <code>beans?/*.java</code></li><li>Bloc files: <code>blocs?/*.dart</code>, <code>events?/*.dart</code>, <code>states?/*.dart</code></li><li>Docker files: <code>docker/*.dockerfile</code>, <code>dockerfiles?/*.yml</code></li><li>Eslint files: <code>eslint/*.yml|json|[cm]?js|ts</code></li><li>Expo files: <code>expo/*.js|json|ts</code></li><li>Gruntfiles: <code>grunt/*.js</code>, <code>gruntfiles?/*.js</code></li><li>Gulpfiles: <code>gulp/*.js</code>, <code>gulpfiles?/*.js</code></li><li>Husky files: <code>.husky/*.js</code>, <code>.husky/*.yml</code>, <code>.husky/*.json</code></li><li>Husky Hooks: <code>hooks/*.sh</code></li><li>Lang files: <code>langs/*</code>, <code>locales?/*</code>, <code>translations?/*</code>, <code>i18n/*</code></li><li>Jest files: <code>jest/*.js|jsx|ts|tsx</code></li><li>Mock files: <code>spy/*</code>, <code>mocks?/*</code>, <code>stubs?/*</code></li><li>NgRx
+      files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rails
+      files: <code>channels?/*.rb</code>, <code>controllers?/*.rb</code>, <code>helpers?/*.rb</code>, <code>jobs?/*.rb</code>, <code>mailers?/*.rb</code>, <code>models?/*.rb</code>, <code>views?/*.rb</code>...</li><li>Redux
+      files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rspec files: <code>rspec/*.rb</code></li><li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li><li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li><li>VSCode files: <code>.vscode/*.json</code></li></ul></li></ul>
 
 <h2>83.0.0 (8.3.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Correctly reload the UI upon settings sync</li>
-</ul>
+<ul><li>Correctly reload the UI upon settings sync</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Icons:
-    <ul>
-      <li>Github Files</li>
-      <li>i18n Bundle Files</li>
-      <li>JetBrains Color Schemes</li>
-      <li>JetBrains' plugin manifests</li>
-      <li>Ansible Files</li>
-      <li>React Native</li>
-      <li>OpenShift</li>
-      <li>Metro</li>
-    </ul>
-  </li>
-  <li>Folders:
-    <ul>
-      <li>OpenShift</li>
-      <li>Red Hat</li>
-      <li>Notebooks</li>
-      <li>Toolkits</li>
-      <li>Toolboxes</li>
-      <li>Managers</li>
-      <li>Moderators</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Icons:<ul><li>Github Files</li><li>i18n Bundle Files</li><li>JetBrains Color Schemes</li><li>JetBrains' plugin manifests</li><li>Ansible Files</li><li>React Native</li><li>OpenShift</li><li>Metro</li></ul></li><li>Folders:<ul><li>OpenShift</li><li>Red Hat</li><li>Notebooks</li><li>Toolkits</li><li>Toolboxes</li><li>Managers</li><li>Moderators</li></ul></li></ul>
 
 <h2>82.0.0 (8.2.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Pest</li>
-  <li>SVGO</li>
-  <li>Justfile</li>
-  <li>JTE</li>
-  <li>ArangoDB</li>
-  <li>Candid</li>
-</ul>
+<ul><li>Pest</li><li>SVGO</li><li>Justfile</li><li>JTE</li><li>ArangoDB</li><li>Candid</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix fatal error on LayeredIcon</li>
-  <li>Merged the &quot;New UI Icons&quot; setting with the &quot;UI Icons&quot;. Now it automatically uses the New UI's
-    icons when the plugin's
-    UI Icons are disabled and the user is on
-    the new UI.
-  </li>
-  <li>Added newest UI Icons</li>
-</ul>
+<ul><li>Fix fatal error on LayeredIcon</li><li>Merged the &quot;New UI Icons&quot; setting with the &quot;UI Icons&quot;. Now it automatically uses the New UI's icons when the plugin's
+  UI Icons are disabled and the user is on
+  the new UI.</li><li>Added newest UI Icons</li></ul>
 
 <h2>81.0.0 (8.1.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Support parent directory matching if the pattern contains slash (Thanks @Yogesh!)</li>
-  <li>Add support for EditorGroups</li>
-  <li>Add support for GitToolbox</li>
-  <li>Add missing Docker icons</li>
-  <li>Support for Sync Settings framework</li>
-</ul>
+<ul><li>Support parent directory matching if the pattern contains slash (Thanks @Yogesh!)</li><li>Add support for EditorGroups</li><li>Add support for GitToolbox</li><li>Add missing Docker icons</li><li>Support for Sync Settings framework</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Add cjs, ts, and mjs where js is used</li>
-  <li>Add R associations</li>
-  <li>Hide Dropdown icon</li>
-  <li>Fix PostStartupActivity</li>
-  <li>Other UI Icons</li>
-</ul>
+<ul><li>Add cjs, ts, and mjs where js is used</li><li>Add R associations</li><li>Hide Dropdown icon</li><li>Fix PostStartupActivity</li><li>Other UI Icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li><p>Icons:</p>
-    <ul>
-      <li>RedwoodJS</li>
-      <li>Cypress Files</li>
-      <li>Moon</li>
-      <li>CodeSandbox</li>
-      <li>Electron Files</li>
-      <li>Japafile</li>
-      <li>Palettes</li>
-      <li>Pinia</li>
-      <li>Quantum</li>
-      <li>RBS Config</li>
-      <li>Size-Limit</li>
-      <li>Systemd</li>
-      <li>Vuepress</li>
-      <li>Abell</li>
-      <li>BFBF</li>
-      <li>Docusaurus</li>
-      <li>GameMaker</li>
-      <li>JSON Schema</li>
-      <li>Madge</li>
-      <li>Roblox</li>
-      <li>Rojo</li>
-      <li>Wally</li>
-      <li>Taskfile</li>
-      <li>Craco</li>
-      <li>Volar</li>
-      <li>Calyx</li>
-      <li>Yggdrasil</li>
-      <li>Concord</li>
-      <li>Woodpecker</li>
-    </ul>
-  </li>
-  <li><p>Folders:</p>
-    <ul>
-      <li>Contacts</li>
-      <li>Info</li>
-      <li>FAQ</li>
-      <li>ADR</li>
-      <li>CodeSandbox</li>
-      <li>Domain</li>
-      <li>Elixir</li>
-      <li>Pinia</li>
-      <li>Quantum</li>
-      <li>Trait</li>
-      <li>ACF</li>
-      <li>Helm</li>
-      <li>Nuxt</li>
-      <li>Queries</li>
-      <li>Storyblok</li>
-      <li>Playwright</li>
-      <li>Taskfile</li>
-      <li>Vitepress</li>
-    </ul>
-  </li>
-</ul>
+<ul><li><p>Icons:</p><ul><li>RedwoodJS</li><li>Cypress Files</li><li>Moon</li><li>CodeSandbox</li><li>Electron Files</li><li>Japafile</li><li>Palettes</li><li>Pinia</li><li>Quantum</li><li>RBS Config</li><li>Size-Limit</li><li>Systemd</li><li>Vuepress</li><li>Abell</li><li>BFBF</li><li>Docusaurus</li><li>GameMaker</li><li>JSON Schema</li><li>Madge</li><li>Roblox</li><li>Rojo</li><li>Wally</li><li>Taskfile</li><li>Craco</li><li>Volar</li><li>Calyx</li><li>Yggdrasil</li><li>Concord</li><li>Woodpecker</li></ul></li><li><p>Folders:</p><ul><li>Contacts</li><li>Info</li><li>FAQ</li><li>ADR</li><li>CodeSandbox</li><li>Domain</li><li>Elixir</li><li>Pinia</li><li>Quantum</li><li>Trait</li><li>ACF</li><li>Helm</li><li>Nuxt</li><li>Queries</li><li>Storyblok</li><li>Playwright</li><li>Taskfile</li><li>Vitepress</li></ul></li></ul>
 
 <h2>80.0.0 (8.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Support for 2022.3</li>
-  <li>New UI Icons for the data providers</li>
-  <li>Add latest UI Icons</li>
-</ul>
+<ul><li>Support for 2022.3</li><li>New UI Icons for the data providers</li><li>Add latest UI Icons</li></ul>
 
 <h2>73.0.0 (7.3.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New Icons:
-    <ul>
-      <li>Dart Bloc</li>
-      <li>Cue</li>
-      <li>HypeStyle</li>
-      <li>JWT</li>
-      <li>Parquet</li>
-      <li>Tauri</li>
-      <li>UnoCSS</li>
-      <li>Compose.yml</li>
-      <li>Amplication</li>
-      <li>Histoire</li>
-      <li>Bun</li>
-      <li>Bunlock</li>
-      <li>SonarCloud</li>
-      <li>Cadence</li>
-      <li>Ansible Galaxy</li>
-      <li>Enc</li>
-      <li>WGSL</li>
-      <li>Wikitext</li>
-      <li>Unison</li>
-      <li>EAS Metadata</li>
-      <li>Carbon</li>
-      <li>Deepsource.io</li>
-      <li>mdsvex</li>
-      <li>Jellycut</li>
-    </ul>
-  </li>
-  <li>New Folders:
-    <ul>
-      <li>cue</li>
-      <li>jwt</li>
-      <li>tauri</li>
-      <li>navigation</li>
-      <li>mac</li>
-      <li>linux</li>
-      <li>windows</li>
-      <li>amplication</li>
-      <li>histoire</li>
-      <li>playbooks</li>
-      <li>adapters</li>
-      <li>decorators</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New Icons:<ul><li>Dart Bloc</li><li>Cue</li><li>HypeStyle</li><li>JWT</li><li>Parquet</li><li>Tauri</li><li>UnoCSS</li><li>Compose.yml</li><li>Amplication</li><li>Histoire</li><li>Bun</li><li>Bunlock</li><li>SonarCloud</li><li>Cadence</li><li>Ansible Galaxy</li><li>Enc</li><li>WGSL</li><li>Wikitext</li><li>Unison</li><li>EAS Metadata</li><li>Carbon</li><li>Deepsource.io</li><li>mdsvex</li><li>Jellycut</li></ul></li><li>New Folders:<ul><li>cue</li><li>jwt</li><li>tauri</li><li>navigation</li><li>mac</li><li>linux</li><li>windows</li><li>amplication</li><li>histoire</li><li>playbooks</li><li>adapters</li><li>decorators</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix SVG (Dark) not being recognized by Image Icon Loader</li>
-</ul>
+<ul><li>Fix SVG (Dark) not being recognized by Image Icon Loader</li></ul>
 
 <h2>72.0.0 (7.2.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Setting: <strong>New UI Icons</strong>, to allow using the New UI icons for people that have access to the New
-    UI plugin.
-    <ul>
-      <li>Please note that this setting can go in the way of the plugin's own icons, such as the UI and PSI Icons.</li>
-    </ul>
-  </li>
-  <li>New Setting: <strong>Custom Line Height</strong>. Allows you to customize the line height in the tree views.</li>
-  <li>Add &quot;<em>Reset Settings</em>&quot; button for easy restoring default settings.</li>
-  <li>Added back <strong>Dark variants</strong> of specific icons in the <em>Associations Settings</em>. Now you can
-    customize dark themes'
-    icons' colors.
-  </li>
-</ul>
+<ul><li>New Setting: <strong>New UI Icons</strong>, to allow using the New UI icons for people that have access to the New UI plugin.<ul><li>Please note that this setting can go in the way of the plugin's own icons, such as the UI and PSI Icons.</li></ul></li><li>New Setting: <strong>Custom Line Height</strong>. Allows you to customize the line height in the tree views.</li><li>Add &quot;<em>Reset Settings</em>&quot; button for easy restoring default settings.</li><li>Added back <strong>Dark variants</strong> of specific icons in the <em>Associations Settings</em>. Now you can customize dark themes'
+  icons' colors.</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix the Quick Switches (Action Palette)</li>
-  <li>Added the names of the <em>Arrow Styles</em> in the settings</li>
-</ul>
+<ul><li>Fix the Quick Switches (Action Palette)</li><li>Added the names of the <em>Arrow Styles</em> in the settings</li></ul>
 
 <h2>71.0.0 (7.1.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add <strong>Old Toolbar</strong> menu to New UI Toolbar to get back the original toolbar's actions at hand.</li>
-</ul>
+<ul><li>Add <strong>Old Toolbar</strong> menu to New UI Toolbar to get back the original toolbar's actions at hand.</li></ul>
 
 <h2>70.0.0 (7.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>You can now override <strong>File and Folder Icons' colors</strong> through <em>Custom File Associations</em>!
-    <ul>
-      <li>Use the color picker to override the icon color</li>
-      <li>Folder Icons let you specify the Folder Color and Icon Color separately</li>
-      <li>Multicolored icons would only let you change the &quot;main color&quot;</li>
-      <li>Currently this affects both &quot;light&quot; and &quot;dark&quot; icons</li>
-      <li><strong>Important</strong>: To make it work for custom icons, you will need to add specific attributes on your
-        SVG files:
-        <ul>
-          <li>Add <code>iconColor=&lt;icon name&gt;</code> for file icons, with <code>Icon Name</code> being the exact
-            name of the icon association (&quot;
-            Kotlin&quot;, &quot;Index&quot;, etc)
-          </li>
-          <li>Add <code>folderColor=&lt;folder icon name&gt;</code> and <code>folderIconColor=&lt;folder icon
-            name&gt;</code> for folder icons, with the same
-            requirement
-          </li>
-        </ul>
-      </li>
-      <li>On the same note, <strong>do not change the pre-bundled associations' names</strong>, or the icon coloring
-        will stop working!
-      </li>
-    </ul>
-  </li>
-</ul>
+<ul><li>You can now override <strong>File and Folder Icons' colors</strong> through <em>Custom File Associations</em>!<ul><li>Use the color picker to override the icon color</li><li>Folder Icons let you specify the Folder Color and Icon Color separately</li><li>Multicolored icons would only let you change the &quot;main color&quot;</li><li>Currently this affects both &quot;light&quot; and &quot;dark&quot; icons</li><li><strong>Important</strong>: To make it work for custom icons, you will need to add specific attributes on your SVG files:<ul><li>Add <code>iconColor=&lt;icon name&gt;</code> for file icons, with <code>Icon Name</code> being the exact name of the icon association (&quot;
+          Kotlin&quot;, &quot;Index&quot;, etc)</li><li>Add <code>folderColor=&lt;folder icon name&gt;</code> and <code>folderIconColor=&lt;folder icon name&gt;</code> for folder icons, with the same
+          requirement</li></ul></li><li>On the same note, <strong>do not change the pre-bundled associations' names</strong>, or the icon coloring will stop working!</li></ul></li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Some icons have been duplicated to support multiple colorings. Those are (long list ahead):
-    <ul>
-      <li>Android Manifest</li>
-      <li>Android Smali</li>
-      <li>Apache Config</li>
-      <li>APK</li>
-      <li>Artisan</li>
-      <li>Astro Config</li>
-      <li>Azure Pipelines</li>
-      <li>Arch Linux Pacman</li>
-      <li>Babel Config</li>
-      <li>Visual Basic</li>
-      <li>Bazel Config</li>
-      <li>Behat Config</li>
-      <li>Bootstrap RC</li>
-      <li>Berksfile</li>
-      <li>Cabal Project</li>
-      <li>CMakeLists</li>
-      <li>CoffeeLint</li>
-      <li>CommitLint Config</li>
-      <li>Compass Config</li>
-      <li>Composer Phar</li>
-      <li>Composer Lock</li>
-      <li>Cucumber Config</li>
-      <li>Deno Lock</li>
-      <li>Django Config</li>
-      <li>Docz Config</li>
-      <li>Doxyfile</li>
-      <li>Eclipse AspectJ</li>
-      <li>Electron ASAR</li>
-      <li>Electron Forge</li>
-      <li>Emacs Cask</li>
-      <li>Emacs Lisp</li>
-      <li>Ember CLI</li>
-      <li>Firebase RC</li>
-      <li>Firestore</li>
-      <li>Flutter Lock</li>
-      <li>Go Config</li>
-      <li>Gradle KTS</li>
-      <li>Gradle Wrapper</li>
-      <li>GraphQL Config</li>
-      <li>Haskell Config</li>
-      <li>Hasura Config</li>
-      <li>Haxe Lib</li>
-      <li>Helm Chart</li>
-      <li>Istanbul Config</li>
-      <li>Jakefile</li>
-      <li>Jekyll Config</li>
-      <li>Jest RC</li>
-      <li>Kubernetes DEPL</li>
-      <li>Pug Lint</li>
-      <li>Make</li>
-      <li>Nest Config</li>
-      <li>NextFlow Config</li>
-      <li>NPM Lock</li>
-      <li>NPM Shrinkwrap</li>
-      <li>NuGet Config</li>
-      <li>OpenGL Shader</li>
-      <li>OpenGL Vertex</li>
-      <li>Pipfile Lock</li>
-      <li>Perl Config</li>
-      <li>PNPM File</li>
-      <li>Polymer Config</li>
-      <li>Prettier Config</li>
-      <li>Prisma Config</li>
-      <li>Python Version</li>
-      <li>Rakefile</li>
-      <li>React CLI</li>
-      <li>Redis DB</li>
-      <li>RestQL Config</li>
-      <li>Routes</li>
-      <li>RSpec Config</li>
-      <li>Stencil Config</li>
-      <li>Swagger Config</li>
-      <li>Swift Lock</li>
-      <li>Tern Config</li>
-      <li>UnibeautifyRC</li>
-      <li>UOS</li>
-      <li>VSCode Settings</li>
-      <li>Vue Config</li>
-      <li>Vue RC</li>
-      <li>XCode</li>
-      <li>Yarn Clean</li>
-      <li>Yarn Lock</li>
-      <li>ZSRC</li>
-    </ul>
-  </li>
-  <li>New File Icons:
-    <ul>
-      <li>GitHub Actions</li>
-      <li>GitHub Code of conduct</li>
-      <li>GitHub Commit Guidelines</li>
-      <li>GitHub Contributing</li>
-      <li>GitHub Template</li>
-      <li>i18n Properties</li>
-      <li>Angular App Routing</li>
-      <li>Angular CLI</li>
-      <li>Contributors</li>
-      <li>CU Header</li>
-      <li>Danmakufu</li>
-      <li>DLL</li>
-      <li>Elastic Config</li>
-      <li>Apache Do</li>
-      <li>Fakefile</li>
-      <li>Husky Hooks</li>
-      <li>i18n Lang</li>
-      <li>index.html</li>
-      <li>Kazel</li>
-      <li>Lakefile</li>
-      <li>Publish Token</li>
-      <li>More</li>
-      <li>Node Version</li>
-      <li>NVM</li>
-      <li>NgRx Repositories</li>
-      <li>NgRx JS</li>
-      <li>Proxy</li>
-      <li>RBS</li>
-      <li>Rails DB</li>
-      <li>Rails Routes</li>
-      <li>Redux Slice</li>
-      <li>Ruby Gemset</li>
-      <li>RubyGems</li>
-      <li>Ruby EX</li>
-      <li>Ruby Version</li>
-      <li>RVM</li>
-      <li>Vercel</li>
-      <li>Vercel Ignore</li>
-      <li>WSDL</li>
-      <li>XML (new Icon)</li>
-      <li>XSD</li>
-    </ul>
-  </li>
-  <li>New Folder Icons:
-    <ul>
-      <li>admin</li>
-      <li>deploy</li>
-      <li>channels</li>
-      <li>cron</li>
-      <li>features</li>
-      <li>molecules</li>
-      <li>init</li>
-      <li>iosApp</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Some icons have been duplicated to support multiple colorings. Those are (long list ahead):<ul><li>Android Manifest</li><li>Android Smali</li><li>Apache Config</li><li>APK</li><li>Artisan</li><li>Astro Config</li><li>Azure Pipelines</li><li>Arch Linux Pacman</li><li>Babel Config</li><li>Visual Basic</li><li>Bazel Config</li><li>Behat Config</li><li>Bootstrap RC</li><li>Berksfile</li><li>Cabal Project</li><li>CMakeLists</li><li>CoffeeLint</li><li>CommitLint Config</li><li>Compass Config</li><li>Composer Phar</li><li>Composer Lock</li><li>Cucumber Config</li><li>Deno Lock</li><li>Django Config</li><li>Docz Config</li><li>Doxyfile</li><li>Eclipse AspectJ</li><li>Electron ASAR</li><li>Electron Forge</li><li>Emacs Cask</li><li>Emacs Lisp</li><li>Ember CLI</li><li>Firebase RC</li><li>Firestore</li><li>Flutter Lock</li><li>Go Config</li><li>Gradle KTS</li><li>Gradle Wrapper</li><li>GraphQL Config</li><li>Haskell Config</li><li>Hasura Config</li><li>Haxe Lib</li><li>Helm Chart</li><li>Istanbul Config</li><li>Jakefile</li><li>Jekyll Config</li><li>Jest RC</li><li>Kubernetes DEPL</li><li>Pug Lint</li><li>Make</li><li>Nest Config</li><li>NextFlow Config</li><li>NPM Lock</li><li>NPM Shrinkwrap</li><li>NuGet Config</li><li>OpenGL Shader</li><li>OpenGL Vertex</li><li>Pipfile Lock</li><li>Perl Config</li><li>PNPM File</li><li>Polymer Config</li><li>Prettier Config</li><li>Prisma Config</li><li>Python Version</li><li>Rakefile</li><li>React CLI</li><li>Redis DB</li><li>RestQL Config</li><li>Routes</li><li>RSpec Config</li><li>Stencil Config</li><li>Swagger Config</li><li>Swift Lock</li><li>Tern Config</li><li>UnibeautifyRC</li><li>UOS</li><li>VSCode Settings</li><li>Vue Config</li><li>Vue RC</li><li>XCode</li><li>Yarn Clean</li><li>Yarn Lock</li><li>ZSRC</li></ul></li><li>New File Icons:<ul><li>GitHub Actions</li><li>GitHub Code of conduct</li><li>GitHub Commit Guidelines</li><li>GitHub Contributing</li><li>GitHub Template</li><li>i18n Properties</li><li>Angular App Routing</li><li>Angular CLI</li><li>Contributors</li><li>CU Header</li><li>Danmakufu</li><li>DLL</li><li>Elastic Config</li><li>Apache Do</li><li>Fakefile</li><li>Husky Hooks</li><li>i18n Lang</li><li>index.html</li><li>Kazel</li><li>Lakefile</li><li>Publish Token</li><li>More</li><li>Node Version</li><li>NVM</li><li>NgRx Repositories</li><li>NgRx JS</li><li>Proxy</li><li>RBS</li><li>Rails DB</li><li>Rails Routes</li><li>Redux Slice</li><li>Ruby Gemset</li><li>RubyGems</li><li>Ruby EX</li><li>Ruby Version</li><li>RVM</li><li>Vercel</li><li>Vercel Ignore</li><li>WSDL</li><li>XML (new Icon)</li><li>XSD</li></ul></li><li>New Folder Icons:<ul><li>admin</li><li>deploy</li><li>channels</li><li>cron</li><li>features</li><li>molecules</li><li>init</li><li>iosApp</li></ul></li></ul>
 
 <h2>65.1.0 (6.5.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix new Class Loader exception</li>
-</ul>
+<ul><li>Fix new Class Loader exception</li></ul>
 
 <h2>65.0.0 (6.5.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Support for JBR 17 and Experimental UI</li>
-  <li>Add the <strong>Atom Material Icons</strong> settings on the Experimental UI toolbar</li>
-  <li>Enable Experimental UI icons when <em>UI Icons</em> is disabled.</li>
-</ul>
+<ul><li>Support for JBR 17 and Experimental UI</li><li>Add the <strong>Atom Material Icons</strong> settings on the Experimental UI toolbar</li><li>Enable Experimental UI icons when <em>UI Icons</em> is disabled.</li></ul>
 
 <h2>64.0.0 (6.4.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Feature: <strong>Custom Icon Size</strong>. Now you can set a custom icon size for icons (replaces the
-    <strong>Bigger Icons</strong>
-    setting)
-  </li>
-  <li>Adapt <em>Project View</em> Items' height according to the custom size.</li>
-</ul>
+<ul><li>New Feature: <strong>Custom Icon Size</strong>. Now you can set a custom icon size for icons (replaces the <strong>Bigger Icons</strong>
+  setting)</li><li>Adapt <em>Project View</em> Items' height according to the custom size.</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix <strong>Folder Icons</strong> not applying in Rider when not using the <em>Solution Explorer</em></li>
-  <li>Fix Settings being exported as <code>UNKNOWN</code> when using <em>Settings Sync</em></li>
-</ul>
+<ul><li>Fix <strong>Folder Icons</strong> not applying in Rider when not using the <em>Solution Explorer</em></li><li>Fix Settings being exported as <code>UNKNOWN</code> when using <em>Settings Sync</em></li></ul>
 
 <hr />
 
@@ -652,2370 +169,546 @@
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Updated icons</li>
-</ul>
+<ul><li>Updated icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Icons:
-    <ul>
-      <li>amplify</li>
-      <li>bandit</li>
-      <li>catala</li>
-      <li>cnab</li>
-      <li>cspell</li>
-      <li>earthly</li>
-      <li>geojson</li>
-      <li>hardhat</li>
-      <li>master UI</li>
-      <li>npm check updates</li>
-      <li>noc</li>
-      <li>plop</li>
-      <li>publiccode</li>
-      <li>recoil</li>
-      <li>remix run</li>
-      <li>rust object notation</li>
-      <li>siyuan</li>
-      <li>styleguidist</li>
-      <li>xstate</li>
-    </ul>
-  </li>
-  <li>Folders:
-    <ul>
-      <li>archetypes</li>
-      <li>schematics</li>
-      <li>crates</li>
-      <li>gallery</li>
-      <li>recoil</li>
-      <li>flux</li>
-      <li>polyfills</li>
-      <li>queries</li>
-      <li>strategies</li>
-      <li>woocommerce</li>
-      <li>xstate</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Icons:<ul><li>amplify</li><li>bandit</li><li>catala</li><li>cnab</li><li>cspell</li><li>earthly</li><li>geojson</li><li>hardhat</li><li>master UI</li><li>npm check updates</li><li>noc</li><li>plop</li><li>publiccode</li><li>recoil</li><li>remix run</li><li>rust object notation</li><li>siyuan</li><li>styleguidist</li><li>xstate</li></ul></li><li>Folders:<ul><li>archetypes</li><li>schematics</li><li>crates</li><li>gallery</li><li>recoil</li><li>flux</li><li>polyfills</li><li>queries</li><li>strategies</li><li>woocommerce</li><li>xstate</li></ul></li></ul>
 
 <h2>62.0.0 (6.2.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix icons invisible when UI Icons is disabled</li>
-</ul>
+<ul><li>Fix icons invisible when UI Icons is disabled</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Icons:
-    <ul>
-      <li>kustomize</li>
-      <li>vitest</li>
-      <li>steadybit</li>
-      <li>turborepo</li>
-      <li>poetry</li>
-      <li>supabase</li>
-      <li>allcontributorsrc</li>
-      <li>publishToken</li>
-    </ul>
-  </li>
-  <li>Folders:
-    <ul>
-      <li>kustomize</li>
-      <li>jest</li>
-      <li>storage</li>
-      <li>supabase</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Icons:<ul><li>kustomize</li><li>vitest</li><li>steadybit</li><li>turborepo</li><li>poetry</li><li>supabase</li><li>allcontributorsrc</li><li>publishToken</li></ul></li><li>Folders:<ul><li>kustomize</li><li>jest</li><li>storage</li><li>supabase</li></ul></li></ul>
 
 <h2>61.0.0 (6.1.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix #271 – Add symlink/readonly overlay icon</li>
-  <li>Fix #274 - External Libraries</li>
-  <li>Update newer UI Icons</li>
-  <li>Remove Experimental UI custom icons to use the plugin ones</li>
-  <li>Fix deprecations</li>
-</ul>
+<ul><li>Fix #271 – Add symlink/readonly overlay icon</li><li>Fix #274 - External Libraries</li><li>Update newer UI Icons</li><li>Remove Experimental UI custom icons to use the plugin ones</li><li>Fix deprecations</li></ul>
 
 <h2>60.0.0 (6.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New mode: <strong>Low Power Mode</strong>. Reduce icon patching by turning off Project View Decorators</li>
-  <li>New icons for Rails:
-    <ul>
-      <li>controllers</li>
-      <li>mailers</li>
-      <li>helpers</li>
-      <li>jobs</li>
-      <li>serializers</li>
-      <li>factories</li>
-      <li>concerns</li>
-      <li>fixtures</li>
-      <li>channels</li>
-      <li>schemas</li>
-      <li>services</li>
-      <li>seed</li>
-      <li>database.yml</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New mode: <strong>Low Power Mode</strong>. Reduce icon patching by turning off Project View Decorators</li><li>New icons for Rails:<ul><li>controllers</li><li>mailers</li><li>helpers</li><li>jobs</li><li>serializers</li><li>factories</li><li>concerns</li><li>fixtures</li><li>channels</li><li>schemas</li><li>services</li><li>seed</li><li>database.yml</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Support for 2022.1</li>
-</ul>
+<ul><li>Support for 2022.1</li></ul>
 
 <h2>54.1.0 (5.4.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix the regression about icons not being replaced in tabs.</li>
-  <li>Fix the regression about Java and Images icons getting the default icon instead of the PSI icons</li>
-</ul>
+<ul><li>Fix the regression about icons not being replaced in tabs.</li><li>Fix the regression about Java and Images icons getting the default icon instead of the PSI icons</li></ul>
 
 <h2>54.0.0 (5.4.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Refactor the project to use the <code>ProjectViewDecorators</code> instead of <code>FileIconProvider</code>, thus
-    fixing the problems with
-    plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.
-  </li>
-</ul>
+<ul><li>Refactor the project to use the <code>ProjectViewDecorators</code> instead of <code>FileIconProvider</code>, thus fixing the problems with
+  plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>File Icons
-    <ul>
-      <li>Playwright</li>
-      <li>Gymfile, Matchfile, Pluginfile</li>
-      <li>Koka</li>
-    </ul>
-  </li>
-  <li>Folder Icons
-    <ul>
-      <li>fastlane</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>File Icons<ul><li>Playwright</li><li>Gymfile, Matchfile, Pluginfile</li><li>Koka</li></ul></li><li>Folder Icons<ul><li>fastlane</li></ul></li></ul>
 
 <h2>53.0.0 (5.3.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix Kotlin PSI Icons not showing on the tabs</li>
-  <li>Fix issue where adding associations would show up at the top of the list while scrolling down</li>
-  <li>Fix issue where disabled associations would be enabled nonetheless</li>
-  <li>Hollow Folders are now working in Rider!</li>
-  <li>Folder Decorators and Custom Folder Icons are now working in Rider!</li>
-</ul>
+<ul><li>Fix Kotlin PSI Icons not showing on the tabs</li><li>Fix issue where adding associations would show up at the top of the list while scrolling down</li><li>Fix issue where disabled associations would be enabled nonetheless</li><li>Hollow Folders are now working in Rider!</li><li>Folder Decorators and Custom Folder Icons are now working in Rider!</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Many new UI Icons:
-    <ul>
-      <li>Resharper</li>
-      <li>Rider</li>
-      <li>Spring</li>
-      <li>Gateway</li>
-      <li>Space</li>
-      <li>Logos</li>
-    </ul>
-  </li>
-  <li>Files:
-    <ul>
-      <li>Qodana</li>
-      <li>Safari</li>
-      <li>JFormDesigner</li>
-      <li>nsriignore</li>
-      <li>retextignore</li>
-      <li>remarkignore</li>
-      <li>rehypeignore</li>
-      <li>boringignore</li>
-      <li>bazelignore</li>
-      <li>pubignore</li>
-      <li>Fitbit</li>
-      <li>Go-zero</li>
-      <li>Luau</li>
-      <li>Toit</li>
-      <li>Vanilla Extract</li>
-      <li>Changelog</li>
-      <li>CodeOwners</li>
-      <li>Bundle files in Java and Kotlin</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Many new UI Icons:<ul><li>Resharper</li><li>Rider</li><li>Spring</li><li>Gateway</li><li>Space</li><li>Logos</li></ul></li><li>Files:<ul><li>Qodana</li><li>Safari</li><li>JFormDesigner</li><li>nsriignore</li><li>retextignore</li><li>remarkignore</li><li>rehypeignore</li><li>boringignore</li><li>bazelignore</li><li>pubignore</li><li>Fitbit</li><li>Go-zero</li><li>Luau</li><li>Toit</li><li>Vanilla Extract</li><li>Changelog</li><li>CodeOwners</li><li>Bundle files in Java and Kotlin</li></ul></li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Reorganization of the whole project by modules: <code>common</code> and <code>Rider</code></li>
-  <li>Add linters</li>
-  <li>Removed deprecated <em>Custom File Associations</em> settings</li>
-</ul>
+<ul><li>Reorganization of the whole project by modules: <code>common</code> and <code>Rider</code></li><li>Add linters</li><li>Removed deprecated <em>Custom File Associations</em> settings</li></ul>
 
 <h2>52.0.0 (5.2.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Files: Add MobX and Mock</li>
-  <li>Folders: Add objects</li>
-</ul>
+<ul><li>Files: Add MobX and Mock</li><li>Folders: Add objects</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix associations not being persisted</li>
-</ul>
+<ul><li>Fix associations not being persisted</li></ul>
 
 <h2>51.0.0 (5.1.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Add Preact association</li>
-  <li>Add i18n language codes association (en.js, fr.yml, de.json...)</li>
-  <li>More UI icons</li>
-</ul>
+<ul><li>Add Preact association</li><li>Add i18n language codes association (en.js, fr.yml, de.json...)</li><li>More UI icons</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Remove the Binary File association to prevent the plugin to replace fallback icons with the binary file.</li>
-</ul>
+<ul><li>Remove the Binary File association to prevent the plugin to replace fallback icons with the binary file.</li></ul>
 
 <h2>50.0.0 (5.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Settings page: <strong>Associations Editor</strong>. The Custom Associations page has been revamped with more
-    features:
-    <ul>
-      <li>View all icon and folder associations from the settings page</li>
-      <li>Toggle, Add, Remove and Edit associations easily</li>
-      <li>Search by name and pattern</li>
-      <li>Tweak the associations priorities</li>
-      <li>Reset all custom associations at once</li>
-    </ul>
-  </li>
-  <li>Deprecation of the old <em>Custom Associations</em> page. Please migrate your currently defined associations in
-    the new page.
-  </li>
-</ul>
+<ul><li>New Settings page: <strong>Associations Editor</strong>. The Custom Associations page has been revamped with more features:<ul><li>View all icon and folder associations from the settings page</li><li>Toggle, Add, Remove and Edit associations easily</li><li>Search by name and pattern</li><li>Tweak the associations priorities</li><li>Reset all custom associations at once</li></ul></li><li>Deprecation of the old <em>Custom Associations</em> page. Please migrate your currently defined associations in the new page.</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>More and more conversions to Kotlin</li>
-  <li>Refactor xStream to use annotations</li>
-  <li>Rename &quot;<em>Custom Folder Color</em>&quot; to &quot;<em>Custom Themed Color</em>&quot;</li>
-</ul>
+<ul><li>More and more conversions to Kotlin</li><li>Refactor xStream to use annotations</li><li>Rename &quot;<em>Custom Folder Color</em>&quot; to &quot;<em>Custom Themed Color</em>&quot;</li></ul>
 
 <h2>42.0.0 (4.4.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>add missing optional underscores for some folder associations</li>
-  <li>fix composer, husky, maven folder icons</li>
-  <li>change pm2 icon</li>
-</ul>
+<ul><li>add missing optional underscores for some folder associations</li><li>fix composer, husky, maven folder icons</li><li>change pm2 icon</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li><em>Files</em>:
-    <ul>
-      <li>coala, parcel, distignore</li>
-      <li>clio and stalebot</li>
-      <li>lolcode, nuxt, skript, textlint, grain</li>
-      <li>dockercompose, spectral, mdsvex</li>
-      <li>bundle.properties, mybatis</li>
-    </ul>
-  </li>
-  <li><em>Folders</em>:
-    <ul>
-      <li>kotlin, java</li>
-      <li>perl, lua</li>
-      <li>input/output</li>
-      <li>connection, nuxt, quasar, scala, vuepress, article, base, cart, home, mobile, kivy, project</li>
-      <li>infra</li>
-      <li>stencil, scala, svelte, tech, terraform, venv</li>
-    </ul>
-  </li>
-</ul>
+<ul><li><em>Files</em>:<ul><li>coala, parcel, distignore</li><li>clio and stalebot</li><li>lolcode, nuxt, skript, textlint, grain</li><li>dockercompose, spectral, mdsvex</li><li>bundle.properties, mybatis</li></ul></li><li><em>Folders</em>:<ul><li>kotlin, java</li><li>perl, lua</li><li>input/output</li><li>connection, nuxt, quasar, scala, vuepress, article, base, cart, home, mobile, kivy, project</li><li>infra</li><li>stencil, scala, svelte, tech, terraform, venv</li></ul></li></ul>
 
 <h2>41.1.0 (4.3.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix icons not showing because of duplicate attribute.</li>
-</ul>
+<ul><li>Fix icons not showing because of duplicate attribute.</li></ul>
 
 <h2>41.0.0 (4.3.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix accent and tinted colors not being applied during theme switch</li>
-  <li>First attempt on trying to fix the BaseConnection NPE</li>
-</ul>
+<ul><li>Fix accent and tinted colors not being applied during theme switch</li><li>First attempt on trying to fix the BaseConnection NPE</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Gauge</li>
-  <li>Go Template</li>
-  <li>SemGrep</li>
-  <li>NgRx Actions, Reducers, Selectors, State</li>
-  <li>Coconut</li>
-  <li>DenizenScript</li>
-  <li>Fastlane</li>
-  <li>Dune</li>
-  <li>Forth</li>
-  <li>FoxPro</li>
-  <li>OPAM</li>
-  <li>Percy</li>
-  <li>SML</li>
-  <li>Gleam</li>
-  <li>Rust Folders</li>
-  <li>Act</li>
-  <li>ThunderClient</li>
-  <li>Nest dto, schema, provider, strategy</li>
-  <li>CAP</li>
-  <li>Hasura config</li>
-  <li>YueScript</li>
-  <li>Eleventy</li>
-  <li>dialogs, to, entities folder icons</li>
-  <li>atoms, molecules, redux, organisms folder icons</li>
-  <li>install.md files</li>
-  <li>workflows/ci.yml github files</li>
-  <li>png, jpg, gif, bmp, icon files</li>
-  <li>funding</li>
-  <li>artisan</li>
-  <li>robots.txt</li>
-  <li>pictures folder associations</li>
-</ul>
+<ul><li>Gauge</li><li>Go Template</li><li>SemGrep</li><li>NgRx Actions, Reducers, Selectors, State</li><li>Coconut</li><li>DenizenScript</li><li>Fastlane</li><li>Dune</li><li>Forth</li><li>FoxPro</li><li>OPAM</li><li>Percy</li><li>SML</li><li>Gleam</li><li>Rust Folders</li><li>Act</li><li>ThunderClient</li><li>Nest dto, schema, provider, strategy</li><li>CAP</li><li>Hasura config</li><li>YueScript</li><li>Eleventy</li><li>dialogs, to, entities folder icons</li><li>atoms, molecules, redux, organisms folder icons</li><li>install.md files</li><li>workflows/ci.yml github files</li><li>png, jpg, gif, bmp, icon files</li><li>funding</li><li>artisan</li><li>robots.txt</li><li>pictures folder associations</li></ul>
 
 <h2>40.0.0 (4.2.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add support for optional <code>.</code> and <code>_</code> prefix for folder icons</li>
-  <li>Make all icons bigger with the <em>Bigger Icons</em> setting</li>
-  <li>Add action for <em>Bigger Icons</em></li>
-</ul>
+<ul><li>Add support for optional <code>.</code> and <code>_</code> prefix for folder icons</li><li>Make all icons bigger with the <em>Bigger Icons</em> setting</li><li>Add action for <em>Bigger Icons</em></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix Bigger Icons not being applied at start</li>
-</ul>
+<ul><li>Fix Bigger Icons not being applied at start</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Convert more code to Kotlin</li>
-  <li>Upgrade dependencies</li>
-  <li>Add Urls to assocations (for the icon generator)</li>
-</ul>
+<ul><li>Convert more code to Kotlin</li><li>Upgrade dependencies</li><li>Add Urls to assocations (for the icon generator)</li></ul>
 
 <h2>39.0.0 (4.1.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Caught up with latest UI Icons, except <a href='https://github.com/mallowigi/a-file-icon-idea/issues/212'>https://github.com/mallowigi/a-file-icon-idea/issues/212</a>
-  </li>
-</ul>
+<ul><li>Caught up with latest UI Icons, except <a href="https://github.com/mallowigi/a-file-icon-idea/issues/212">https://github.com/mallowigi/a-file-icon-idea/issues/212</a></li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Caught up with <strong>Atom File Icons</strong> and <strong>VSCode Icons</strong> (non exhaustive list):
-    <ul>
-      <li>Tea</li>
-      <li>Telegram</li>
-      <li>Tex</li>
-      <li>Tfsignore</li>
-      <li>Table Of Contents</li>
-      <li>Template Toolkit</li>
-      <li>Subtitles</li>
-      <li>Terser</li>
-      <li>Thor</li>
-      <li>Tipe</li>
-      <li>Tla</li>
-      <li>Tmux</li>
-      <li>Truffle</li>
-      <li>TTCN</li>
-      <li>Twine</li>
-      <li>Txl</li>
-      <li>Typedoc</li>
-      <li>Typo3</li>
-      <li>Db2</li>
-      <li>Db3</li>
-      <li>Udf</li>
-      <li>SSH</li>
-      <li>Kdbx</li>
-      <li>Passwd</li>
-      <li>Sassrc</li>
-      <li>Kojo</li>
-      <li>Solidity</li>
-      <li>Cql</li>
-      <li>4GL</li>
-      <li>Do</li>
-      <li>Ihlp</li>
-      <li>Sthlp</li>
-      <li>Mata</li>
-      <li>Matah</li>
-      <li>Stylelintignore</li>
-      <li>Nomad</li>
-      <li>Noon</li>
-      <li>Normalize</li>
-      <li>NSRI</li>
-      <li>Nu</li>
-      <li>Numpy</li>
-      <li>NXC</li>
-      <li>OpenOffice</li>
-      <li>OCaml</li>
-      <li>Finder</li>
-      <li>Oberon</li>
-      <li>Obj-J</li>
-      <li>Octave</li>
-      <li>Odin</li>
-      <li>Ooc</li>
-      <li>Opa</li>
-      <li>OpenCL</li>
-      <li>OpenGL</li>
-      <li>OpenPolicy</li>
-      <li>OpenScad</li>
-      <li>OpenVMS</li>
-      <li>OpenVPN</li>
-      <li>Org-mode</li>
-      <li>Oxygene</li>
-      <li>Oz</li>
-      <li>Progress</li>
-      <li>Sac</li>
-      <li>Sage</li>
-      <li>Sails</li>
-      <li>Saltstack</li>
-      <li>Sas</li>
-      <li>Scilab</li>
-      <li>Scilla</li>
-      <li>Scratch</li>
-      <li>Scrutinizer</li>
-      <li>Secret</li>
-      <li>Self</li>
-      <li>Sencha</li>
-      <li>Sentry</li>
-      <li>Serverless</li>
-      <li>ServiceFabric</li>
-      <li>Shadowcljs</li>
-      <li>Shen</li>
-      <li>Shipit</li>
-      <li>Shippable</li>
-      <li>Sigils</li>
-      <li>SketchMake</li>
-      <li>SketchUp</li>
-      <li>Skipper</li>
-      <li>Slash</li>
-      <li>SnapCraft</li>
-      <li>Snap.svg</li>
-      <li>Snort</li>
-      <li>Snyk</li>
-      <li>Solidarity</li>
-      <li>Sophia</li>
-      <li>Sorbet</li>
-      <li>Spacemacs</li>
-      <li>Sqf</li>
-      <li>Squarespace</li>
-      <li>Squirrel</li>
-      <li>Stan</li>
-      <li>Stdlib</li>
-      <li>Storyist</li>
-      <li>Stylable</li>
-      <li>StyledComponents</li>
-      <li>Stylish-haskell</li>
-      <li>Automator</li>
-      <li>Bitcoin</li>
-      <li>Bloc</li>
-      <li>Buildkite</li>
-      <li>Cnab</li>
-      <li>Cubit</li>
-      <li>Dub</li>
-      <li>Dvc</li>
-      <li>Macosx</li>
-      <li>Wine</li>
-      <li>ApiExtractor</li>
-      <li>Apollo</li>
-      <li>Binder</li>
-      <li>Bitcoin</li>
-      <li>BlitzBasic</li>
-      <li>Bors</li>
-      <li>Bosque</li>
-      <li>Calva</li>
-      <li>Casc</li>
-      <li>Codemeta</li>
-      <li>Commitizen</li>
-      <li>Dafny</li>
-      <li>TSS</li>
-      <li>JsonL</li>
-      <li>LdJSON</li>
-      <li>Deps</li>
-      <li>Pydeps</li>
-      <li>Cpc</li>
-      <li>Python Configs</li>
-      <li>Shell History</li>
-      <li>Son</li>
-      <li>Rdjson</li>
-      <li>Ston</li>
-      <li>Ejson</li>
-      <li>More Db Associations</li>
-      <li>Dependabot</li>
-      <li>Drawio</li>
-      <li>Dub</li>
-      <li>Fabfile</li>
-      <li>Fabric</li>
-      <li>Fauna</li>
-      <li>Figma</li>
-      <li>Fthtml</li>
-      <li>Gitpod</li>
-      <li>GoReleaser</li>
-      <li>Gql Codegen</li>
-      <li>Grapher</li>
-      <li>Hie</li>
-      <li>Arm</li>
-      <li>Avr</li>
-      <li>Bison</li>
-      <li>CkEditor</li>
-      <li>Hygen</li>
-      <li>Imgbot</li>
-      <li>Mixin</li>
-      <li>Photorec</li>
-      <li>Shellcheck</li>
-      <li>Windi.css</li>
-      <li>Jscpd</li>
-      <li>Kaitai</li>
-      <li>Kibo</li>
-      <li>Kusto</li>
-      <li>Lark</li>
-      <li>Latino</li>
-      <li>Lgtm</li>
-      <li>Lighthouse</li>
-      <li>Linqpad</li>
-      <li>Macaulay2</li>
-      <li>Mermaid</li>
-      <li>Metapost</li>
-      <li>Modernweb</li>
-      <li>Sourcemap</li>
-      <li>Neon</li>
-      <li>Nokogiri</li>
-      <li>Nwscript</li>
-      <li>Nx</li>
-      <li>Pytest</li>
-      <li>Readthedocs</li>
-      <li>Ftr</li>
-      <li>Omnigraffle</li>
-      <li>Ogone</li>
-      <li>Openexr</li>
-      <li>Openzfs</li>
-      <li>Rsync</li>
-      <li>Sandbox</li>
-      <li>Warcraft3</li>
-      <li>Winui</li>
-      <li>Wolfram</li>
-      <li>Qsharp</li>
-      <li>Xmake</li>
-      <li>Rescript</li>
-      <li>Stitches</li>
-      <li>Expo</li>
-      <li>Testcafe</li>
-      <li>Tilt</li>
-      <li>Ufo</li>
-      <li>Unicode</li>
-      <li>W3c</li>
-      <li>Yamllint</li>
-      <li>Yandex</li>
-      <li>Yvm</li>
-      <li>Vercel</li>
-      <li>Detekt</li>
-      <li>Al</li>
-      <li>Apex</li>
-      <li>Bats</li>
-      <li>Bicep</li>
-      <li>Cddl</li>
-      <li>Fork</li>
-      <li>AmigaOS</li>
-      <li>Codemirror</li>
-      <li>Cairo</li>
-      <li>Codeql</li>
-      <li>Confluence</li>
-      <li>Donejs</li>
-      <li>Dylan</li>
-      <li>Dal</li>
-      <li>Dojo</li>
-      <li>Dosbox</li>
-      <li>Drupal</li>
-      <li>Dustjs</li>
-      <li>Deno</li>
-      <li>Nest Land</li>
-      <li>E</li>
-      <li>Edge</li>
-      <li>Elastic</li>
-      <li>Fossil</li>
-      <li>Freedos</li>
-      <li>Fiddle</li>
-      <li>Freemat</li>
-      <li>Asar</li>
-      <li>Floobits</li>
-      <li>Freedesktop</li>
-      <li>Baboon</li>
-      <li>Tinymce</li>
-      <li>Gcode</li>
-      <li>Spray</li>
-      <li>Hosts</li>
-      <li>Hlsl</li>
-      <li>Hunspell</li>
-      <li>Hypr</li>
-      <li>Haxedevelop</li>
-      <li>Hugo</li>
-      <li>Icl</li>
-      <li>Informix</li>
-      <li>Janet</li>
-      <li>Zorinos</li>
-      <li>Xubuntu</li>
-      <li>Zquery</li>
-      <li>Webp</li>
-      <li>Wpml</li>
-      <li>Wxml</li>
-      <li>Wxs</li>
-      <li>Wxss</li>
-      <li>Vertex</li>
-      <li>Vmware</li>
-      <li>Volt</li>
-      <li>Vsix</li>
-      <li>Unlicense</li>
-      <li>Teal</li>
-      <li>Tera</li>
-      <li>Tox</li>
-      <li>Tuc</li>
-      <li>Sdlang</li>
-      <li>Slang</li>
-      <li>Slice</li>
-      <li>Spaceengine</li>
-      <li>Sparql</li>
-      <li>SSS</li>
-      <li>Reactos</li>
-      <li>Rehype</li>
-      <li>Remark</li>
-      <li>Retext</li>
-      <li>Rproj</li>
-      <li>Rust-toolchain</li>
-      <li>Pipeline</li>
-      <li>Pddl</li>
-      <li>Phpcs</li>
-      <li>Pipeline</li>
-      <li>Pkgsrc</li>
-      <li>Precision</li>
-      <li>Prometheus</li>
-      <li>Pytyped</li>
-      <li>Nodemon</li>
-      <li>Prisma</li>
-      <li>DragonFlyBSD</li>
-      <li>ElementaryOS</li>
-      <li>Manjaro</li>
-      <li>OpenBSD</li>
-      <li>Openhab</li>
-      <li>OpenIndiana</li>
-      <li>OpenSolaris</li>
-      <li>OpenStack</li>
-      <li>SmartOS</li>
-      <li>N64</li>
-      <li>Nearley</li>
-      <li>Nix</li>
-      <li>Stencil</li>
-      <li>Xliff</li>
-      <li>Svnignore</li>
-      <li>Magit</li>
-      <li>Manifest</li>
-      <li>Matlab</li>
-      <li>Mlang</li>
-      <li>Mojolicious</li>
-      <li>Mongo</li>
-      <li>Ms-dos</li>
-      <li>Mson</li>
-      <li>Libuv</li>
-      <li>License.bat</li>
-      <li>Kite</li>
-      <li>JSS</li>
-      <li>Jsp</li>
-      <li>JBuiler</li>
-      <li>Iodine</li>
-      <li>Jshintignore</li>
-      <li>Helix</li>
-      <li>Helixignore</li>
-      <li>Homeassistant</li>
-      <li>Horusec</li>
-      <li>Haxe Develop</li>
-      <li>Haxelib</li>
-      <li>Jekyll</li>
-      <li>Appsemble</li>
-      <li>Astro</li>
-      <li>Avif</li>
-      <li>Drools</li>
-      <li>Dvc</li>
-      <li>Glitter</li>
-      <li>Docz Config</li>
-      <li>Dojorc</li>
-      <li>Dox</li>
-      <li>Emakerfile</li>
-      <li>Flutter Lock</li>
-      <li>Flutter Pacakges</li>
-      <li>Angular Module</li>
-      <li>Angular Controller</li>
-      <li>Angular Container Ngrx</li>
-      <li>Angular Page Ionic</li>
-      <li>Angular App Routing</li>
-      <li>Angular Tailwind</li>
-      <li>Nest Adapter</li>
-      <li>Nest Controller</li>
-      <li>Nest Decorator</li>
-      <li>Nest Filter</li>
-      <li>Nest Gateway</li>
-      <li>Nest Interceptor</li>
-      <li>Nest Guard</li>
-      <li>Nest Middleware</li>
-      <li>Nest Service</li>
-      <li>Nest Pipe</li>
-      <li>Nest Module</li>
-      <li>Azure Pipelines</li>
-      <li>Blueprint</li>
-      <li>Cake</li>
-      <li>Composer,</li>
-      <li>GCloud</li>
-      <li>Haxelib</li>
-      <li>Husky</li>
-      <li>Mjml</li>
-      <li>Mongo</li>
-      <li>Next</li>
-      <li>Nuget</li>
-      <li>Platformio</li>
-      <li>Redis</li>
-      <li>Sso</li>
-      <li>Vs</li>
-      <li>Cmake</li>
-      <li>Dapr</li>
-      <li>Debian</li>
-      <li>Elastic</li>
-      <li>Electron</li>
-      <li>Abc</li>
-      <li>Astyle</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Caught up with <strong>Atom File Icons</strong> and <strong>VSCode Icons</strong> (non exhaustive list):<ul><li>Tea</li><li>Telegram</li><li>Tex</li><li>Tfsignore</li><li>Table Of Contents</li><li>Template Toolkit</li><li>Subtitles</li><li>Terser</li><li>Thor</li><li>Tipe</li><li>Tla</li><li>Tmux</li><li>Truffle</li><li>TTCN</li><li>Twine</li><li>Txl</li><li>Typedoc</li><li>Typo3</li><li>Db2</li><li>Db3</li><li>Udf</li><li>SSH</li><li>Kdbx</li><li>Passwd</li><li>Sassrc</li><li>Kojo</li><li>Solidity</li><li>Cql</li><li>4GL</li><li>Do</li><li>Ihlp</li><li>Sthlp</li><li>Mata</li><li>Matah</li><li>Stylelintignore</li><li>Nomad</li><li>Noon</li><li>Normalize</li><li>NSRI</li><li>Nu</li><li>Numpy</li><li>NXC</li><li>OpenOffice</li><li>OCaml</li><li>Finder</li><li>Oberon</li><li>Obj-J</li><li>Octave</li><li>Odin</li><li>Ooc</li><li>Opa</li><li>OpenCL</li><li>OpenGL</li><li>OpenPolicy</li><li>OpenScad</li><li>OpenVMS</li><li>OpenVPN</li><li>Org-mode</li><li>Oxygene</li><li>Oz</li><li>Progress</li><li>Sac</li><li>Sage</li><li>Sails</li><li>Saltstack</li><li>Sas</li><li>Scilab</li><li>Scilla</li><li>Scratch</li><li>Scrutinizer</li><li>Secret</li><li>Self</li><li>Sencha</li><li>Sentry</li><li>Serverless</li><li>ServiceFabric</li><li>Shadowcljs</li><li>Shen</li><li>Shipit</li><li>Shippable</li><li>Sigils</li><li>SketchMake</li><li>SketchUp</li><li>Skipper</li><li>Slash</li><li>SnapCraft</li><li>Snap.svg</li><li>Snort</li><li>Snyk</li><li>Solidarity</li><li>Sophia</li><li>Sorbet</li><li>Spacemacs</li><li>Sqf</li><li>Squarespace</li><li>Squirrel</li><li>Stan</li><li>Stdlib</li><li>Storyist</li><li>Stylable</li><li>StyledComponents</li><li>Stylish-haskell</li><li>Automator</li><li>Bitcoin</li><li>Bloc</li><li>Buildkite</li><li>Cnab</li><li>Cubit</li><li>Dub</li><li>Dvc</li><li>Macosx</li><li>Wine</li><li>ApiExtractor</li><li>Apollo</li><li>Binder</li><li>Bitcoin</li><li>BlitzBasic</li><li>Bors</li><li>Bosque</li><li>Calva</li><li>Casc</li><li>Codemeta</li><li>Commitizen</li><li>Dafny</li><li>TSS</li><li>JsonL</li><li>LdJSON</li><li>Deps</li><li>Pydeps</li><li>Cpc</li><li>Python Configs</li><li>Shell History</li><li>Son</li><li>Rdjson</li><li>Ston</li><li>Ejson</li><li>More Db Associations</li><li>Dependabot</li><li>Drawio</li><li>Dub</li><li>Fabfile</li><li>Fabric</li><li>Fauna</li><li>Figma</li><li>Fthtml</li><li>Gitpod</li><li>GoReleaser</li><li>Gql Codegen</li><li>Grapher</li><li>Hie</li><li>Arm</li><li>Avr</li><li>Bison</li><li>CkEditor</li><li>Hygen</li><li>Imgbot</li><li>Mixin</li><li>Photorec</li><li>Shellcheck</li><li>Windi.css</li><li>Jscpd</li><li>Kaitai</li><li>Kibo</li><li>Kusto</li><li>Lark</li><li>Latino</li><li>Lgtm</li><li>Lighthouse</li><li>Linqpad</li><li>Macaulay2</li><li>Mermaid</li><li>Metapost</li><li>Modernweb</li><li>Sourcemap</li><li>Neon</li><li>Nokogiri</li><li>Nwscript</li><li>Nx</li><li>Pytest</li><li>Readthedocs</li><li>Ftr</li><li>Omnigraffle</li><li>Ogone</li><li>Openexr</li><li>Openzfs</li><li>Rsync</li><li>Sandbox</li><li>Warcraft3</li><li>Winui</li><li>Wolfram</li><li>Qsharp</li><li>Xmake</li><li>Rescript</li><li>Stitches</li><li>Expo</li><li>Testcafe</li><li>Tilt</li><li>Ufo</li><li>Unicode</li><li>W3c</li><li>Yamllint</li><li>Yandex</li><li>Yvm</li><li>Vercel</li><li>Detekt</li><li>Al</li><li>Apex</li><li>Bats</li><li>Bicep</li><li>Cddl</li><li>Fork</li><li>AmigaOS</li><li>Codemirror</li><li>Cairo</li><li>Codeql</li><li>Confluence</li><li>Donejs</li><li>Dylan</li><li>Dal</li><li>Dojo</li><li>Dosbox</li><li>Drupal</li><li>Dustjs</li><li>Deno</li><li>Nest Land</li><li>E</li><li>Edge</li><li>Elastic</li><li>Fossil</li><li>Freedos</li><li>Fiddle</li><li>Freemat</li><li>Asar</li><li>Floobits</li><li>Freedesktop</li><li>Baboon</li><li>Tinymce</li><li>Gcode</li><li>Spray</li><li>Hosts</li><li>Hlsl</li><li>Hunspell</li><li>Hypr</li><li>Haxedevelop</li><li>Hugo</li><li>Icl</li><li>Informix</li><li>Janet</li><li>Zorinos</li><li>Xubuntu</li><li>Zquery</li><li>Webp</li><li>Wpml</li><li>Wxml</li><li>Wxs</li><li>Wxss</li><li>Vertex</li><li>Vmware</li><li>Volt</li><li>Vsix</li><li>Unlicense</li><li>Teal</li><li>Tera</li><li>Tox</li><li>Tuc</li><li>Sdlang</li><li>Slang</li><li>Slice</li><li>Spaceengine</li><li>Sparql</li><li>SSS</li><li>Reactos</li><li>Rehype</li><li>Remark</li><li>Retext</li><li>Rproj</li><li>Rust-toolchain</li><li>Pipeline</li><li>Pddl</li><li>Phpcs</li><li>Pipeline</li><li>Pkgsrc</li><li>Precision</li><li>Prometheus</li><li>Pytyped</li><li>Nodemon</li><li>Prisma</li><li>DragonFlyBSD</li><li>ElementaryOS</li><li>Manjaro</li><li>OpenBSD</li><li>Openhab</li><li>OpenIndiana</li><li>OpenSolaris</li><li>OpenStack</li><li>SmartOS</li><li>N64</li><li>Nearley</li><li>Nix</li><li>Stencil</li><li>Xliff</li><li>Svnignore</li><li>Magit</li><li>Manifest</li><li>Matlab</li><li>Mlang</li><li>Mojolicious</li><li>Mongo</li><li>Ms-dos</li><li>Mson</li><li>Libuv</li><li>License.bat</li><li>Kite</li><li>JSS</li><li>Jsp</li><li>JBuiler</li><li>Iodine</li><li>Jshintignore</li><li>Helix</li><li>Helixignore</li><li>Homeassistant</li><li>Horusec</li><li>Haxe Develop</li><li>Haxelib</li><li>Jekyll</li><li>Appsemble</li><li>Astro</li><li>Avif</li><li>Drools</li><li>Dvc</li><li>Glitter</li><li>Docz Config</li><li>Dojorc</li><li>Dox</li><li>Emakerfile</li><li>Flutter Lock</li><li>Flutter Pacakges</li><li>Angular Module</li><li>Angular Controller</li><li>Angular Container Ngrx</li><li>Angular Page Ionic</li><li>Angular App Routing</li><li>Angular Tailwind</li><li>Nest Adapter</li><li>Nest Controller</li><li>Nest Decorator</li><li>Nest Filter</li><li>Nest Gateway</li><li>Nest Interceptor</li><li>Nest Guard</li><li>Nest Middleware</li><li>Nest Service</li><li>Nest Pipe</li><li>Nest Module</li><li>Azure Pipelines</li><li>Blueprint</li><li>Cake</li><li>Composer,</li><li>GCloud</li><li>Haxelib</li><li>Husky</li><li>Mjml</li><li>Mongo</li><li>Next</li><li>Nuget</li><li>Platformio</li><li>Redis</li><li>Sso</li><li>Vs</li><li>Cmake</li><li>Dapr</li><li>Debian</li><li>Elastic</li><li>Electron</li><li>Abc</li><li>Astyle</li></ul></li></ul>
 
 <h2>38.0.0 (4.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Setting: <strong>Bigger Icons</strong></li>
-  <li>Support for <strong>Sync Settings</strong> plugin. Now you can finally sync your settings between IDEs</li>
-</ul>
+<ul><li>New Setting: <strong>Bigger Icons</strong></li><li>Support for <strong>Sync Settings</strong> plugin. Now you can finally sync your settings between IDEs</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Added many many more <strong>UI Icons</strong>:
-    <ul>
-      <li>Big Data Tools</li>
-      <li>UI Designer</li>
-      <li>Package Search</li>
-      <li>ColdFusion</li>
-      <li>Resharper/Rider</li>
-      <li>Ruby</li>
-      <li>Rust</li>
-      <li>Tailwind</li>
-      <li>Space</li>
-      <li>Swagger</li>
-      <li>Swift</li>
-      <li>Lombok</li>
-      <li>JavaEE</li>
-      <li>CodeWithMe</li>
-      <li>Chooser</li>
-      <li>Thumbnail Viewer</li>
-      <li>JetBrains Logos</li>
-      <li>Project Analysis</li>
-    </ul>
-  </li>
-  <li>New <em>file icons</em>:
-    <ul>
-      <li>CoffeelintIgnore</li>
-      <li>Csslint</li>
-      <li>htmlhint</li>
-      <li>jsbeautify</li>
-      <li>jscs</li>
-      <li>jshint</li>
-      <li>pythonconfig</li>
-      <li>yard</li>
-      <li>nant</li>
-      <li>nasm</li>
-      <li>ndepend</li>
-      <li>neko</li>
-      <li>neo4j</li>
-      <li>nessus</li>
-      <li>netlinx</li>
-      <li>netlogo</li>
-      <li>newrelic</li>
-      <li>nextflow</li>
-      <li>nextjs</li>
-      <li>nickle</li>
-      <li>nightwatch</li>
-      <li>nimble</li>
-      <li>nimrod</li>
-      <li>nit</li>
-      <li>nmap</li>
-      <li>nodemonignore</li>
-      <li>ninja</li>
-    </ul>
-  </li>
-  <li>New <em>folder icons</em>:
-    <ul>
-      <li>cypress</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Added many many more <strong>UI Icons</strong>:<ul><li>Big Data Tools</li><li>UI Designer</li><li>Package Search</li><li>ColdFusion</li><li>Resharper/Rider</li><li>Ruby</li><li>Rust</li><li>Tailwind</li><li>Space</li><li>Swagger</li><li>Swift</li><li>Lombok</li><li>JavaEE</li><li>CodeWithMe</li><li>Chooser</li><li>Thumbnail Viewer</li><li>JetBrains Logos</li><li>Project Analysis</li></ul></li><li>New <em>file icons</em>:<ul><li>CoffeelintIgnore</li><li>Csslint</li><li>htmlhint</li><li>jsbeautify</li><li>jscs</li><li>jshint</li><li>pythonconfig</li><li>yard</li><li>nant</li><li>nasm</li><li>ndepend</li><li>neko</li><li>neo4j</li><li>nessus</li><li>netlinx</li><li>netlogo</li><li>newrelic</li><li>nextflow</li><li>nextjs</li><li>nickle</li><li>nightwatch</li><li>nimble</li><li>nimrod</li><li>nit</li><li>nmap</li><li>nodemonignore</li><li>ninja</li></ul></li><li>New <em>folder icons</em>:<ul><li>cypress</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix the fatal error when triggering the actions from the &quot;Tools&quot; menu</li>
-</ul>
+<ul><li>Fix the fatal error when triggering the actions from the &quot;Tools&quot; menu</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Migrate to gradle.kts</li>
-  <li>Rewrite changelog to suit the changelog standard (<a href='https://keepachangelog.com/en/1.0.0/'>https://keepachangelog.com/en/1.0.0/</a>)
-  </li>
-</ul>
+<ul><li>Migrate to gradle.kts</li><li>Rewrite changelog to suit the changelog standard (<a href="https://keepachangelog.com/en/1.0.0/">https://keepachangelog.com/en/1.0.0/</a>)</li></ul>
 
 <h2>37.0.0 (3.12.2)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2021.2</li>
-  <li>Java version update to 11</li>
-  <li>Verification automated workflow with Github Actions</li>
-  <li>Fix selected checkbox size</li>
-</ul>
+<ul><li>Support for 2021.2</li><li>Java version update to 11</li><li>Verification automated workflow with Github Actions</li><li>Fix selected checkbox size</li></ul>
 
 <h2>36.0.0 (3.12.1)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2021.1</li>
-</ul>
+<ul><li>Support for 2021.1</li></ul>
 
 <h2>35.0.0 (3.12.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>genstat</li>
-      <li>gentoo</li>
-      <li>gimp</li>
-      <li>gitcommit</li>
-      <li>gitmerge</li>
-      <li>glade</li>
-      <li>glide</li>
-      <li>gltf</li>
-      <li>gnome</li>
-      <li>golo</li>
-      <li>gauss</li>
-      <li>grammatical framework</li>
-      <li>glyphs</li>
-      <li>gn</li>
-      <li>gnuplot</li>
-      <li>gosu</li>
-      <li>gravit</li>
-      <li>greenkeeper</li>
-      <li>pointwise</li>
-      <li>snowpack</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>genstat</li><li>gentoo</li><li>gimp</li><li>gitcommit</li><li>gitmerge</li><li>glade</li><li>glide</li><li>gltf</li><li>gnome</li><li>golo</li><li>gauss</li><li>grammatical framework</li><li>glyphs</li><li>gn</li><li>gnuplot</li><li>gosu</li><li>gravit</li><li>greenkeeper</li><li>pointwise</li><li>snowpack</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix bundle size</li>
-  <li>Fix bad associations</li>
-</ul>
+<ul><li>Fix bundle size</li><li>Fix bad associations</li></ul>
 
 <h2>34.0.0 (3.11.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>mapbox</li>
-      <li>markdownlint</li>
-      <li>materialize</li>
-      <li>mathjax</li>
-      <li>max</li>
-      <li>mdx</li>
-      <li>mediawiki</li>
-      <li>mercury</li>
-      <li>nano</li>
-      <li>nanoc</li>
-      <li>MS infopath</li>
-      <li>lync</li>
-      <li>visio</li>
-      <li>publisher</li>
-      <li>outlook</li>
-      <li>project</li>
-      <li>meson</li>
-      <li>metal</li>
-      <li>minecraft</li>
-      <li>minizinc</li>
-      <li>mirah</li>
-      <li>mirc</li>
-      <li>mkdocs</li>
-      <li>modelica</li>
-      <li>modernizr</li>
-      <li>modo</li>
-      <li>moho</li>
-      <li>modula2</li>
-      <li>modula3</li>
-      <li>moleculer</li>
-      <li>moment</li>
-      <li>monkey</li>
-      <li>reasonstudios</li>
-      <li>rebol</li>
-      <li>red2</li>
-      <li>redhat</li>
-      <li>reek</li>
-      <li>rneovate</li>
-      <li>requirejs</li>
-      <li>rexx</li>
-      <li>rhino3d</li>
-      <li>riemann</li>
-      <li>ring</li>
-      <li>riot2</li>
-      <li>robot2</li>
-      <li>rss</li>
-      <li>rstudio</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>mapbox</li><li>markdownlint</li><li>materialize</li><li>mathjax</li><li>max</li><li>mdx</li><li>mediawiki</li><li>mercury</li><li>nano</li><li>nanoc</li><li>MS infopath</li><li>lync</li><li>visio</li><li>publisher</li><li>outlook</li><li>project</li><li>meson</li><li>metal</li><li>minecraft</li><li>minizinc</li><li>mirah</li><li>mirc</li><li>mkdocs</li><li>modelica</li><li>modernizr</li><li>modo</li><li>moho</li><li>modula2</li><li>modula3</li><li>moleculer</li><li>moment</li><li>monkey</li><li>reasonstudios</li><li>rebol</li><li>red2</li><li>redhat</li><li>reek</li><li>rneovate</li><li>requirejs</li><li>rexx</li><li>rhino3d</li><li>riemann</li><li>ring</li><li>riot2</li><li>robot2</li><li>rss</li><li>rstudio</li></ul></li></ul>
 
 <h2>33.0.0 (3.10.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>fix <code>init.py</code></li>
-</ul>
+<ul><li>fix <code>init.py</code></li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>eclipselang</li>
-      <li>eagle</li>
-      <li>easybuild</li>
-      <li>ec</li>
-      <li>ecere</li>
-      <li>electron</li>
-      <li>email</li>
-      <li>emberscript</li>
-      <li>eq</li>
-      <li>esdoc</li>
-      <li>extjs</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>eclipselang</li><li>eagle</li><li>easybuild</li><li>ec</li><li>ecere</li><li>electron</li><li>email</li><li>emberscript</li><li>eq</li><li>esdoc</li><li>extjs</li></ul></li></ul>
 
 <h2>32.0.0 (3.9.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add the ability to disable associations</li>
-</ul>
+<ul><li>Add the ability to disable associations</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>folder associations</strong>:
-    <ul>
-      <li>ios</li>
-      <li>iosApp</li>
-      <li>androidApp</li>
-      <li>backend</li>
-      <li>desktop</li>
-      <li>buildSrc</li>
-      <li>repository</li>
-      <li>exception</li>
-      <li>usecase</li>
-    </ul>
-  </li>
-  <li>Add django associations and <code>eslintignore</code></li>
-</ul>
+<ul><li>New <strong>folder associations</strong>:<ul><li>ios</li><li>iosApp</li><li>androidApp</li><li>backend</li><li>desktop</li><li>buildSrc</li><li>repository</li><li>exception</li><li>usecase</li></ul></li><li>Add django associations and <code>eslintignore</code></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix the bug with Edit/Clone associations</li>
-</ul>
+<ul><li>Fix the bug with Edit/Clone associations</li></ul>
 
 <h2>31.0.0 (3.8.0)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Remove dependency to the Material Theme and add Javassist to fix the IconLoader issue.</li>
-  <li>Fix possible NPE</li>
-  <li>Recolored some icons</li>
-</ul>
+<ul><li>Remove dependency to the Material Theme and add Javassist to fix the IconLoader issue.</li><li>Fix possible NPE</li><li>Recolored some icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>UIKit</li>
-      <li>Unibeautify</li>
-      <li>Uno</li>
-      <li>Urweb</li>
-      <li>Paket</li>
-      <li>Pan</li>
-      <li>Papyrus</li>
-      <li>Parrot</li>
-      <li>Pascal</li>
-      <li>Patreon</li>
-      <li>Pawn</li>
-      <li>PCD</li>
-      <li>Pegjs</li>
-      <li>Phoenix</li>
-      <li>Oracle</li>
-      <li>Phrase</li>
-      <li>Pickle</li>
-      <li>Pico8</li>
-      <li>Picolisp</li>
-      <li>Pike</li>
-      <li>Pinescript</li>
-      <li>Platform.IO</li>
-      <li>PM2</li>
-      <li>Pod</li>
-      <li>PgSQL</li>
-      <li>PogoScript</li>
-      <li>Pony</li>
-      <li>Povray</li>
-      <li>Powwerbuilder</li>
-      <li>Precommit</li>
-      <li>Propellet</li>
-      <li>PROS</li>
-      <li>Proselint</li>
-      <li>Pullapprove</li>
-      <li>Pure</li>
-      <li>PHP2</li>
-      <li>LabView</li>
-      <li>Lasso</li>
-      <li>Leaflet</li>
-      <li>Lean</li>
-      <li>Lefthook</li>
-      <li>Leiningen</li>
-      <li>Lekto</li>
-      <li>Lex</li>
-      <li>LFE</li>
-      <li>Lightwave</li>
-      <li>Lilypond</li>
-      <li>Link</li>
-      <li>Lime</li>
-      <li>Lisp</li>
-      <li>LLVM</li>
-      <li>LogTalk</li>
-      <li>Lolcode</li>
-      <li>LSL</li>
-      <li>Lua</li>
-      <li>Livescript</li>
-      <li>alexignore</li>
-      <li>boringignore</li>
-      <li>D3</li>
-      <li>darcsignore</li>
-      <li>darcs</li>
-      <li>deps</li>
-      <li>dockerignore</li>
-      <li>fossaignore</li>
-      <li>gitignore</li>
-      <li>helmignore</li>
-      <li>herokuignore</li>
-      <li>dashboard</li>
-      <li>dataweave</li>
-      <li>dbase</li>
-      <li>debian</li>
-      <li>devcontainer</li>
-      <li>devicetree</li>
-      <li>dhall</li>
-      <li>Dia</li>
-      <li>Digdag</li>
-      <li>DNS</li>
-      <li>Docbook</li>
-      <li>Doclets</li>
-      <li>Docpad</li>
-      <li>Docz</li>
-      <li>Dogescript</li>
-      <li>Dojo</li>
-      <li>Dosbox</li>
-      <li>Doxygen</li>
-      <li>Dragula</li>
-      <li>Drone</li>
-      <li>Dyalog</li>
-    </ul>
-  </li>
-  <li>Add <code>index.scss</code>, <code>index.css</code> and <code>index.html</code> to the index family</li>
-  <li>Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache</li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>UIKit</li><li>Unibeautify</li><li>Uno</li><li>Urweb</li><li>Paket</li><li>Pan</li><li>Papyrus</li><li>Parrot</li><li>Pascal</li><li>Patreon</li><li>Pawn</li><li>PCD</li><li>Pegjs</li><li>Phoenix</li><li>Oracle</li><li>Phrase</li><li>Pickle</li><li>Pico8</li><li>Picolisp</li><li>Pike</li><li>Pinescript</li><li>Platform.IO</li><li>PM2</li><li>Pod</li><li>PgSQL</li><li>PogoScript</li><li>Pony</li><li>Povray</li><li>Powwerbuilder</li><li>Precommit</li><li>Propellet</li><li>PROS</li><li>Proselint</li><li>Pullapprove</li><li>Pure</li><li>PHP2</li><li>LabView</li><li>Lasso</li><li>Leaflet</li><li>Lean</li><li>Lefthook</li><li>Leiningen</li><li>Lekto</li><li>Lex</li><li>LFE</li><li>Lightwave</li><li>Lilypond</li><li>Link</li><li>Lime</li><li>Lisp</li><li>LLVM</li><li>LogTalk</li><li>Lolcode</li><li>LSL</li><li>Lua</li><li>Livescript</li><li>alexignore</li><li>boringignore</li><li>D3</li><li>darcsignore</li><li>darcs</li><li>deps</li><li>dockerignore</li><li>fossaignore</li><li>gitignore</li><li>helmignore</li><li>herokuignore</li><li>dashboard</li><li>dataweave</li><li>dbase</li><li>debian</li><li>devcontainer</li><li>devicetree</li><li>dhall</li><li>Dia</li><li>Digdag</li><li>DNS</li><li>Docbook</li><li>Doclets</li><li>Docpad</li><li>Docz</li><li>Dogescript</li><li>Dojo</li><li>Dosbox</li><li>Doxygen</li><li>Dragula</li><li>Drone</li><li>Dyalog</li></ul></li><li>Add <code>index.scss</code>, <code>index.css</code> and <code>index.html</code> to the index family</li><li>Add more associations to markdown, manpage, manifest, maya, mercurial, mjml, mustache</li></ul>
 
 <h2>30.0.0 (3.7.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New icons and folder associations: <code>public_html</code>, redis db</li>
-  <li>New <strong>UI Icons</strong>: Checkboxes, Inlay icons, CodeWithMe, Emoji Picker, Tool Window Analyze...</li>
-</ul>
+<ul><li>New icons and folder associations: <code>public_html</code>, redis db</li><li>New <strong>UI Icons</strong>: Checkboxes, Inlay icons, CodeWithMe, Emoji Picker, Tool Window Analyze...</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Pseudo-fix: Add leading slash relatively to new EAP refactor</li>
-</ul>
+<ul><li>Pseudo-fix: Add leading slash relatively to new EAP refactor</li></ul>
 
 <h2>29.0.0 (3.6.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Add new <strong>UI icon sets</strong>:
-    <ul>
-      <li>Spring</li>
-      <li>Kubernetes</li>
-      <li>Slim</li>
-      <li>Swagger</li>
-      <li>Sass</li>
-      <li>Swift</li>
-      <li>Rider</li>
-      <li>PostCSS</li>
-      <li>XSLT</li>
-    </ul>
-  </li>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>ngrx</li>
-      <li>RxJs</li>
-      <li>Protobuf</li>
-      <li>R</li>
-      <li>Swagger</li>
-      <li>Tapestry</li>
-    </ul>
-  </li>
-  <li><strong>New associations</strong>:
-    <ul>
-      <li>command</li>
-      <li>console folders</li>
-      <li>public_html</li>
-      <li>entities</li>
-      <li>effects</li>
-      <li>stylelintrc</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Add new <strong>UI icon sets</strong>:<ul><li>Spring</li><li>Kubernetes</li><li>Slim</li><li>Swagger</li><li>Sass</li><li>Swift</li><li>Rider</li><li>PostCSS</li><li>XSLT</li></ul></li><li>New <strong>file icons</strong>:<ul><li>ngrx</li><li>RxJs</li><li>Protobuf</li><li>R</li><li>Swagger</li><li>Tapestry</li></ul></li><li><strong>New associations</strong>:<ul><li>command</li><li>console folders</li><li>public_html</li><li>entities</li><li>effects</li><li>stylelintrc</li></ul></li></ul>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Feature: <strong>Hide Folders</strong></li>
-  <li>Feature: Show Custom and Default file icons in the Commit Window and Panel</li>
-  <li>Add more UI Icons</li>
-</ul>
+<ul><li>Feature: <strong>Hide Folders</strong></li><li>Feature: Show Custom and Default file icons in the Commit Window and Panel</li><li>Add more UI Icons</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix: regression issue with UI icons not disabling</li>
-  <li>Fix: popup menus: restore active indicator</li>
-</ul>
+<ul><li>Fix: regression issue with UI icons not disabling</li><li>Fix: popup menus: restore active indicator</li></ul>
 
 <h2>28.0.0 (3.5.1)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2020.3</li>
-  <li>Support for more UI icons</li>
-</ul>
+<ul><li>Support for 2020.3</li><li>Support for more UI icons</li></ul>
 
 <h2>27.0.0 (3.5.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add new action: <strong>Refresh Icons</strong>. This will manually refresh all icons and reload the panes.
-    <ul>
-      <li>This should fix bugs such as <a href='https://github.com/mallowigi/a-file-icon-idea/issues/93'>https://github.com/mallowigi/a-file-icon-idea/issues/93</a>
-        and <a href='https://github.com/mallowigi/a-file-icon-idea/issues/79'>https://github.com/mallowigi/a-file-icon-idea/issues/79</a>
-      </li>
-    </ul>
-  </li>
-  <li>Reorganized icons: now icons belonging to the <em>Files</em> category and <em>PSI</em> category are separate from
-    the rest of icons.
-    As a result, toggling <em>UI Icons</em> should not affect <em>File Icons</em> and <em>PSI Icons</em> and vice-versa.
-  </li>
-  <li>Add icons to the <strong>Atom Material Settings Toolbar Menu</strong>.</li>
-  <li>Add actions for switching between <strong>Arrow Styles</strong></li>
-</ul>
+<ul><li>Add new action: <strong>Refresh Icons</strong>. This will manually refresh all icons and reload the panes.<ul><li>This should fix bugs such as <a href="https://github.com/mallowigi/a-file-icon-idea/issues/93">https://github.com/mallowigi/a-file-icon-idea/issues/93</a>
+      and <a href="https://github.com/mallowigi/a-file-icon-idea/issues/79">https://github.com/mallowigi/a-file-icon-idea/issues/79</a></li></ul></li><li>Reorganized icons: now icons belonging to the <em>Files</em> category and <em>PSI</em> category are separate from the rest of icons.
+  As a result, toggling <em>UI Icons</em> should not affect <em>File Icons</em> and <em>PSI Icons</em> and vice-versa.</li><li>Add icons to the <strong>Atom Material Settings Toolbar Menu</strong>.</li><li>Add actions for switching between <strong>Arrow Styles</strong></li></ul>
 
 <h2>26.0.0 (3.4.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Option: &quot;<strong>Folder Color</strong>&quot; to customize Folder Colors from the current theme.</li>
-  <li>Better detection of the current theme's accent color</li>
-  <li>Add Checkboxes to <strong>Accent Color</strong> and <strong>Folder Color</strong> to allow customizing such colors
-    instead of picking them from
-    the theme
-  </li>
-</ul>
+<ul><li>New Option: &quot;<strong>Folder Color</strong>&quot; to customize Folder Colors from the current theme.</li><li>Better detection of the current theme's accent color</li><li>Add Checkboxes to <strong>Accent Color</strong> and <strong>Folder Color</strong> to allow customizing such colors instead of picking them from
+  the theme</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>brew</li>
-      <li>harbour</li>
-      <li>holyc</li>
-      <li>hjson</li>
-      <li>hoplon</li>
-      <li>houndci</li>
-      <li>hp</li>
-      <li>hy</li>
-      <li>hyper, question</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>brew</li><li>harbour</li><li>holyc</li><li>hjson</li><li>hoplon</li><li>houndci</li><li>hp</li><li>hy</li><li>hyper, question</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Improve Hollow Folders opened files detection</li>
-  <li>Put <em>Custom file associations</em> under the &quot;Atom File Icon Settings&quot;</li>
-</ul>
+<ul><li>Improve Hollow Folders opened files detection</li><li>Put <em>Custom file associations</em> under the &quot;Atom File Icon Settings&quot;</li></ul>
 
 <h2>25.3.0 (3.3.3)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fixes many issues with custom associations</li>
-</ul>
+<ul><li>Fixes many issues with custom associations</li></ul>
 
 <h2>25.2.0 (3.3.2)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2020.2 EAP</li>
-</ul>
+<ul><li>Support for 2020.2 EAP</li></ul>
 
 <h2>25.1.0 (3.3.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix Psi Icons for PHP files</li>
-</ul>
+<ul><li>Fix Psi Icons for PHP files</li></ul>
 
 <h2>25.0.0 (3.3.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>The finally awaited <strong>Custom Icon Associations</strong> is here! This is an alpha version so it can contain
-    bugs :)
-    <ul>
-      <li>Assign custom file associations and folder associations from the Settings</li>
-      <li>Preview Default File and Folder Associations from the Settings</li>
-      <li>Assign icons from your file system</li>
-      <li><strong>Important note</strong>: most of the settings won't be applied to custom icons, so use them sparingly!
-      </li>
-    </ul>
-  </li>
-</ul>
+<ul><li>The finally awaited <strong>Custom Icon Associations</strong> is here! This is an alpha version so it can contain bugs :)<ul><li>Assign custom file associations and folder associations from the Settings</li><li>Preview Default File and Folder Associations from the Settings</li><li>Assign icons from your file system</li><li><strong>Important note</strong>: most of the settings won't be applied to custom icons, so use them sparingly!</li></ul></li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li><strong>New folder associations</strong>:
-    <ul>
-      <li>widgets</li>
-      <li>elements</li>
-      <li>users</li>
-      <li>members</li>
-      <li>partners</li>
-      <li>friends</li>
-      <li>projects</li>
-      <li>ui</li>
-      <li>dev</li>
-      <li>staging</li>
-      <li>qa</li>
-      <li>prod</li>
-      <li>serializers</li>
-      <li>types</li>
-      <li>io</li>
-      <li>stdlib</li>
-      <li>deps</li>
-    </ul>
-  </li>
-  <li><strong>New file associations</strong>:
-    <ul>
-      <li><code>*_test.go</code></li>
-      <li><code>*_spec.go</code></li>
-      <li><code>Chart.yaml</code></li>
-      <li><code>values.yaml</code></li>
-      <li><code>helmfile.yaml</code></li>
-      <li>scala test files</li>
-    </ul>
-  </li>
-  <li>Added <code>jsconfig</code> and <code>tsconfig</code></li>
-</ul>
+<ul><li><strong>New folder associations</strong>:<ul><li>widgets</li><li>elements</li><li>users</li><li>members</li><li>partners</li><li>friends</li><li>projects</li><li>ui</li><li>dev</li><li>staging</li><li>qa</li><li>prod</li><li>serializers</li><li>types</li><li>io</li><li>stdlib</li><li>deps</li></ul></li><li><strong>New file associations</strong>:<ul><li><code>*_test.go</code></li><li><code>*_spec.go</code></li><li><code>Chart.yaml</code></li><li><code>values.yaml</code></li><li><code>helmfile.yaml</code></li><li>scala test files</li></ul></li><li>Added <code>jsconfig</code> and <code>tsconfig</code></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix issue with monospace colors not being persisted</li>
-  <li>Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons</li>
-  <li>Now the <em>PSI Icons setting</em> is dependent on the <em>UI Icons setting</em>, as this wouldn't work without
-    it.
-  </li>
-  <li>And the <em>Hollow Folders Setting</em> is dependent on the <em>Folder Decorations Setting</em> as well.</li>
-</ul>
+<ul><li>Fix issue with monospace colors not being persisted</li><li>Changed color scheme of Kotlin PSI Icons, to differentiate with Java PSI Icons</li><li>Now the <em>PSI Icons setting</em> is dependent on the <em>UI Icons setting</em>, as this wouldn't work without it.</li><li>And the <em>Hollow Folders Setting</em> is dependent on the <em>Folder Decorations Setting</em> as well.</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)</li>
-</ul>
+<ul><li>The project has been revamped to Kotlin! This is a huge step so please report any issues you can find :)</li></ul>
 
 <h2>24.0.0 (3.2.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Added accent color selection in the settings</li>
-</ul>
+<ul><li>Added accent color selection in the settings</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>new <strong>UI/PSI icons</strong>: <code>Scala, Ruby, Typescript</code></li>
-  <li>new <em>redux</em> icons: <code>redux saga</code> and <code>redux epics</code>, tweaked other colors too</li>
-  <li>new <em>test</em> icons: ``test dart<code>,</code>test go<code>,</code>test haskell<code>,</code>test
-    perl<code>,</code>test rust`
-  </li>
-  <li>switched typescript and tslint icons</li>
-  <li>new <strong>file icons</strong>:
-    <ul>
-      <li>icomoon</li>
-      <li>idl</li>
-      <li>igor</li>
-      <li>imba</li>
-      <li>index</li>
-      <li>inform</li>
-      <li>ink</li>
-      <li>inkscape</li>
-      <li>inno</li>
-      <li>ioke</li>
-      <li>isabelle</li>
-      <li>jake</li>
-      <li>jasmine</li>
-      <li>jison</li>
-      <li>jolie</li>
-      <li>json5</li>
-      <li>jsonld</li>
-      <li>jsonnet</li>
-      <li>junos</li>
-    </ul>
-  </li>
-  <li>new/updated <strong>folder icons</strong>:
-    <ul>
-      <li>acre</li>
-      <li>agda</li>
-      <li>alacritty</li>
-      <li>app</li>
-      <li>appstore</li>
-      <li>arttext</li>
-      <li>atom</li>
-      <li>aurelia</li>
-      <li>bazaar</li>
-      <li>cabal</li>
-      <li>chef</li>
-      <li>client</li>
-      <li>cluster</li>
-      <li>container</li>
-      <li>content</li>
-      <li>controllers</li>
-      <li>coverage</li>
-      <li>cvs</li>
-      <li>messages,</li>
-      <li>viewmodel</li>
-      <li>deno</li>
-      <li>dependabot</li>
-      <li>devcontainer</li>
-      <li>dropbox</li>
-      <li>gitlab</li>
-      <li>istanbul</li>
-      <li>yarn</li>
-      <li>ruby</li>
-      <li>mercurial</li>
-      <li>meteor</li>
-      <li>svn</li>
-      <li>textmate</li>
-      <li>vagrant</li>
-      <li>vim</li>
-      <li>svg</li>
-      <li>firebase</li>
-      <li>xcassets</li>
-      <li>glyph</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>new <strong>UI/PSI icons</strong>: <code>Scala, Ruby, Typescript</code></li><li>new <em>redux</em> icons: <code>redux saga</code> and <code>redux epics</code>, tweaked other colors too</li><li>new <em>test</em> icons: ``test dart<code>,</code>test go<code>,</code>test haskell<code>,</code>test perl<code>,</code>test rust`</li><li>switched typescript and tslint icons</li><li>new <strong>file icons</strong>:<ul><li>icomoon</li><li>idl</li><li>igor</li><li>imba</li><li>index</li><li>inform</li><li>ink</li><li>inkscape</li><li>inno</li><li>ioke</li><li>isabelle</li><li>jake</li><li>jasmine</li><li>jison</li><li>jolie</li><li>json5</li><li>jsonld</li><li>jsonnet</li><li>junos</li></ul></li><li>new/updated <strong>folder icons</strong>:<ul><li>acre</li><li>agda</li><li>alacritty</li><li>app</li><li>appstore</li><li>arttext</li><li>atom</li><li>aurelia</li><li>bazaar</li><li>cabal</li><li>chef</li><li>client</li><li>cluster</li><li>container</li><li>content</li><li>controllers</li><li>coverage</li><li>cvs</li><li>messages,</li><li>viewmodel</li><li>deno</li><li>dependabot</li><li>devcontainer</li><li>dropbox</li><li>gitlab</li><li>istanbul</li><li>yarn</li><li>ruby</li><li>mercurial</li><li>meteor</li><li>svn</li><li>textmate</li><li>vagrant</li><li>vim</li><li>svg</li><li>firebase</li><li>xcassets</li><li>glyph</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Try to fix the weird border at start</li>
-  <li>Fix wrong associations</li>
-</ul>
+<ul><li>Try to fix the weird border at start</li><li>Fix wrong associations</li></ul>
 
 <h2>23.0.0 (3.1.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li><strong>File icons</strong>:
-    <ul>
-      <li>walt</li>
-      <li>watchman</li>
-      <li>wdl</li>
-      <li>webgl</li>
-      <li>owl</li>
-      <li>webvtt</li>
-      <li>wenyan</li>
-      <li>wget</li>
-      <li>wix</li>
-      <li>wordpress</li>
-      <li>workbox</li>
-      <li>wurst</li>
-      <li>x10</li>
-      <li>x11</li>
-      <li>xmos</li>
-      <li>xojo</li>
-      <li>xpages</li>
-      <li>xproc</li>
-      <li>xtend</li>
-      <li>yara</li>
-      <li>yorick</li>
-      <li>yui</li>
-      <li>yasm</li>
-      <li>zbrush</li>
-      <li>zeit</li>
-      <li>zenscript</li>
-      <li>zig</li>
-      <li>zilog</li>
-      <li>zimpl</li>
-      <li>zork</li>
-      <li>awk</li>
-      <li>bazaar</li>
-      <li>brewfile</li>
-      <li>hitachi</li>
-      <li>intel</li>
-      <li>vax</li>
-      <li>kerboscript</li>
-      <li>keybase</li>
-      <li>keynote</li>
-      <li>kicad</li>
-      <li>kitchenci</li>
-      <li>kml</li>
-      <li>knime</li>
-      <li>kotlin</li>
-      <li>knockout</li>
-      <li>krl</li>
-      <li>kubernetes</li>
-      <li>q</li>
-      <li>qasm</li>
-      <li>qlikview</li>
-      <li>qt</li>
-      <li>quasar</li>
-    </ul>
-  </li>
-  <li>New angular icon: <code>interceptor</code></li>
-  <li>New redux icons: <code>saga</code> and <code>selector</code></li>
-  <li>New pattern: <code>main.js</code> is now associated with nodejs</li>
-  <li>Add <code>cron/scheduler</code> folder icons</li>
-</ul>
+<ul><li><strong>File icons</strong>:<ul><li>walt</li><li>watchman</li><li>wdl</li><li>webgl</li><li>owl</li><li>webvtt</li><li>wenyan</li><li>wget</li><li>wix</li><li>wordpress</li><li>workbox</li><li>wurst</li><li>x10</li><li>x11</li><li>xmos</li><li>xojo</li><li>xpages</li><li>xproc</li><li>xtend</li><li>yara</li><li>yorick</li><li>yui</li><li>yasm</li><li>zbrush</li><li>zeit</li><li>zenscript</li><li>zig</li><li>zilog</li><li>zimpl</li><li>zork</li><li>awk</li><li>bazaar</li><li>brewfile</li><li>hitachi</li><li>intel</li><li>vax</li><li>kerboscript</li><li>keybase</li><li>keynote</li><li>kicad</li><li>kitchenci</li><li>kml</li><li>knime</li><li>kotlin</li><li>knockout</li><li>krl</li><li>kubernetes</li><li>q</li><li>qasm</li><li>qlikview</li><li>qt</li><li>quasar</li></ul></li><li>New angular icon: <code>interceptor</code></li><li>New redux icons: <code>saga</code> and <code>selector</code></li><li>New pattern: <code>main.js</code> is now associated with nodejs</li><li>Add <code>cron/scheduler</code> folder icons</li></ul>
 
 <h2>22.0.0 (3.0.0)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>You can now preview icons at <a href='https://github.com/mallowigi/a-file-icon-idea'>https://github.com/mallowigi/a-file-icon-idea</a>
-    !
-  </li>
-  <li>You can now get the list of available associations at <a
-    href='http://www.material-theme.com/docs/reference/associations/'>http://www.material-theme.com/docs/reference/associations/</a>
-    and <a href='http://www.material-theme.com/docs/reference/folder_associations/'>http://www.material-theme.com/docs/reference/folder_associations/</a>
-    !
-  </li>
-  <li>Extracted icons to its own repository so it can be used with multiple projects</li>
-  <li>Optimized icons (reduce icons size, set colors in paths, etc)
-    <ul>
-      <li>Also the icons look much more like the Atom original plugin ones</li>
-    </ul>
-  </li>
-  <li>Added fileNames in associations, to be used with the examples generator</li>
-  <li>Added colors in associations, for use with the font generator</li>
-  <li>Update UI Icons with latest icons</li>
-</ul>
+<ul><li>You can now preview icons at <a href="https://github.com/mallowigi/a-file-icon-idea">https://github.com/mallowigi/a-file-icon-idea</a> !</li><li>You can now get the list of available associations at <a href="http://www.material-theme.com/docs/reference/associations/">http://www.material-theme.com/docs/reference/associations/</a>
+  and <a href="http://www.material-theme.com/docs/reference/folder_associations/">http://www.material-theme.com/docs/reference/folder_associations/</a> !</li><li>Extracted icons to its own repository so it can be used with multiple projects</li><li>Optimized icons (reduce icons size, set colors in paths, etc)<ul><li>Also the icons look much more like the Atom original plugin ones</li></ul></li><li>Added fileNames in associations, to be used with the examples generator</li><li>Added colors in associations, for use with the font generator</li><li>Update UI Icons with latest icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li><strong>New/Updated UI Icons</strong>:
-    <ul>
-      <li>Ant</li>
-      <li>Haml</li>
-      <li>Handlebars</li>
-      <li>DataGrip</li>
-      <li>JavaScript</li>
-      <li>Kotlin</li>
-      <li>DevKit</li>
-      <li>Dart</li>
-      <li>Docker</li>
-    </ul>
-  </li>
-  <li><strong>New icons</strong>:
-    <ul>
-      <li>4d</li>
-      <li>agda</li>
-      <li>alpine linux</li>
-      <li>analytica</li>
-      <li>adobe animate</li>
-      <li>ansible</li>
-      <li>antwar</li>
-      <li>aplus</li>
-      <li>buck</li>
-      <li>build boot</li>
-      <li>caddy</li>
-      <li>caffe</li>
-      <li>caffe2</li>
-      <li>cakefile</li>
-      <li>carthage</li>
-      <li>chai</li>
-      <li>chapel</li>
-      <li>chartjs</li>
-      <li>cheetah</li>
-      <li>chocolatey</li>
-      <li>cpp</li>
-      <li>csharp</li>
-      <li>cdf</li>
-      <li>chrome</li>
-      <li>chuck</li>
-      <li>circuit</li>
-      <li>cirru</li>
-      <li>clarion</li>
-      <li>clean</li>
-      <li>click</li>
-      <li>clips</li>
-      <li>closuretpl</li>
-      <li>cloudfoundry</li>
-      <li>cocoapods</li>
-      <li>codacy</li>
-      <li>codeclimate</li>
-      <li>cokekit</li>
-      <li>codeship</li>
-      <li>conan</li>
-      <li>conda</li>
-      <li>conll</li>
-      <li>coq</li>
-      <li>corel</li>
-      <li>coveralls</li>
-      <li>cp</li>
-      <li>cpan</li>
-      <li>credits</li>
-      <li>creole</li>
-      <li>crowdin</li>
-      <li>csound</li>
-      <li>cuneiform</li>
-      <li>curl</li>
-      <li>curry</li>
-      <li>cwl</li>
-      <li>collada</li>
-      <li>nvidia</li>
-      <li>fabric</li>
-      <li>factor</li>
-      <li>falcon</li>
-      <li>fancy</li>
-      <li>fantom</li>
-      <li>fexl</li>
-      <li>fbx</li>
-      <li>faust</li>
-      <li>fasta</li>
-      <li>finaldraft</li>
-      <li>firebase bolt</li>
-      <li>firefox</li>
-      <li>flask</li>
-      <li>flutter</li>
-      <li>flux</li>
-      <li>font bitmap</li>
-      <li>fontforge</li>
-      <li>fossa</li>
-      <li>fountain</li>
-      <li>fanca</li>
-      <li>frege</li>
-      <li>fuel ux</li>
-      <li>fusebox</li>
-      <li>futhark</li>
-      <li>JetBrains Theme Files</li>
-    </ul>
-  </li>
-  <li><em>Update icon associations</em>:
-    <ul>
-      <li>actionscript</li>
-      <li>ansible</li>
-      <li>antlr</li>
-      <li>applescript</li>
-      <li>asciidoc</li>
-      <li>asm</li>
-      <li>atom</li>
-      <li>atoum</li>
-      <li>babel</li>
-      <li>backbone</li>
-      <li>behat</li>
-      <li>bison</li>
-      <li>bootstrap</li>
-      <li>bower</li>
-      <li>cabal</li>
-      <li>c</li>
-      <li>composer.lock</li>
-      <li>chef</li>
-      <li>credits</li>
-      <li>csharp</li>
-      <li>cypress</li>
-      <li>todo</li>
-      <li>finder</li>
-      <li>firebase</li>
-      <li>flash</li>
-      <li>fortran</li>
-      <li>gem</li>
-      <li>archives</li>
-      <li>audio</li>
-      <li>video</li>
-    </ul>
-  </li>
-</ul>
+<ul><li><strong>New/Updated UI Icons</strong>:<ul><li>Ant</li><li>Haml</li><li>Handlebars</li><li>DataGrip</li><li>JavaScript</li><li>Kotlin</li><li>DevKit</li><li>Dart</li><li>Docker</li></ul></li><li><strong>New icons</strong>:<ul><li>4d</li><li>agda</li><li>alpine linux</li><li>analytica</li><li>adobe animate</li><li>ansible</li><li>antwar</li><li>aplus</li><li>buck</li><li>build boot</li><li>caddy</li><li>caffe</li><li>caffe2</li><li>cakefile</li><li>carthage</li><li>chai</li><li>chapel</li><li>chartjs</li><li>cheetah</li><li>chocolatey</li><li>cpp</li><li>csharp</li><li>cdf</li><li>chrome</li><li>chuck</li><li>circuit</li><li>cirru</li><li>clarion</li><li>clean</li><li>click</li><li>clips</li><li>closuretpl</li><li>cloudfoundry</li><li>cocoapods</li><li>codacy</li><li>codeclimate</li><li>cokekit</li><li>codeship</li><li>conan</li><li>conda</li><li>conll</li><li>coq</li><li>corel</li><li>coveralls</li><li>cp</li><li>cpan</li><li>credits</li><li>creole</li><li>crowdin</li><li>csound</li><li>cuneiform</li><li>curl</li><li>curry</li><li>cwl</li><li>collada</li><li>nvidia</li><li>fabric</li><li>factor</li><li>falcon</li><li>fancy</li><li>fantom</li><li>fexl</li><li>fbx</li><li>faust</li><li>fasta</li><li>finaldraft</li><li>firebase bolt</li><li>firefox</li><li>flask</li><li>flutter</li><li>flux</li><li>font bitmap</li><li>fontforge</li><li>fossa</li><li>fountain</li><li>fanca</li><li>frege</li><li>fuel ux</li><li>fusebox</li><li>futhark</li><li>JetBrains Theme Files</li></ul></li><li><em>Update icon associations</em>:<ul><li>actionscript</li><li>ansible</li><li>antlr</li><li>applescript</li><li>asciidoc</li><li>asm</li><li>atom</li><li>atoum</li><li>babel</li><li>backbone</li><li>behat</li><li>bison</li><li>bootstrap</li><li>bower</li><li>cabal</li><li>c</li><li>composer.lock</li><li>chef</li><li>credits</li><li>csharp</li><li>cypress</li><li>todo</li><li>finder</li><li>firebase</li><li>flash</li><li>fortran</li><li>gem</li><li>archives</li><li>audio</li><li>video</li></ul></li></ul>
 
 <h2>21.0.0 (2.10.1)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add new 2020.1 UI Icons</li>
-</ul>
+<ul><li>Add new 2020.1 UI Icons</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>folder associations</strong>: bin and units</li>
-</ul>
+<ul><li>New <strong>folder associations</strong>: bin and units</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix issue with <em>Arrow Colors</em> being black in Darcula</li>
-  <li>Fix issue with <em>Plugins</em> labels being black in Darcula</li>
-</ul>
+<ul><li>Fix issue with <em>Arrow Colors</em> being black in Darcula</li><li>Fix issue with <em>Plugins</em> labels being black in Darcula</li></ul>
 
 <h2>20.0.0 (2.10.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Restore the <strong>Accent Color</strong> function to colorize icons with the Accent color (defined from Material
-    Theme, or from
-    the current active tab indicator color)
-  </li>
-</ul>
+<ul><li>Restore the <strong>Accent Color</strong> function to colorize icons with the Accent color (defined from Material Theme, or from
+  the current active tab indicator color)</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>Add <code>bz2</code>, <code>xar</code>, <code>egg</code> and <code>sit</code> to &quot;Archive&quot; file
-    association
-  </li>
-  <li>Add <code>sql/mysql/pgsql</code> folder</li>
-</ul>
+<ul><li>Add <code>bz2</code>, <code>xar</code>, <code>egg</code> and <code>sit</code> to &quot;Archive&quot; file association</li><li>Add <code>sql/mysql/pgsql</code> folder</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix issue where arrows style were not persisted</li>
-  <li>Fix Kotlin icons being unaffected by PSI File Icons setting</li>
-  <li>Make Icon Settings &quot;dumb aware&quot; (not affected by the indexing process)</li>
-</ul>
+<ul><li>Fix issue where arrows style were not persisted</li><li>Fix Kotlin icons being unaffected by PSI File Icons setting</li><li>Make Icon Settings &quot;dumb aware&quot; (not affected by the indexing process)</li></ul>
 
 <h2>19.0.0 (2.9.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New feature: <strong>Arrows Style</strong></li>
-  <li>New pattern: <code>angular controller</code></li>
-</ul>
+<ul><li>New feature: <strong>Arrows Style</strong></li><li>New pattern: <code>angular controller</code></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix issue with icons not being applied on start</li>
-</ul>
+<ul><li>Fix issue with icons not being applied on start</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Add missing icons since Nov 2019</li>
-</ul>
+<ul><li>Add missing icons since Nov 2019</li></ul>
 
 <h2>18.0.0 (2.8.1)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2020.1</li>
-</ul>
+<ul><li>Support for 2020.1</li></ul>
 
 <h2>17.0.0 (2.8.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>File Icons</strong>:
-    <ul>
-      <li>1c</li>
-      <li>3dmodel</li>
-      <li>3dsmax</li>
-      <li>abap</li>
-      <li>abif</li>
-      <li>acre</li>
-      <li>advpl</li>
-      <li>affectscript</li>
-      <li>affinity</li>
-      <li>alacritty</li>
-      <li>alex</li>
-      <li>alloy</li>
-      <li>ampl</li>
-      <li>amusewiki</li>
-      <li>angelscript</li>
-      <li>animestudio</li>
-      <li>ant</li>
-      <li>apache</li>
-      <li>apl</li>
-      <li>appcelerator</li>
-      <li>arc</li>
-      <li>archlinux</li>
-      <li>asymptote</li>
-      <li>atoum</li>
-      <li>ats</li>
-      <li>audacity</li>
-      <li>augeas</li>
-      <li>avro</li>
-      <li>backbone</li>
-      <li>bnf</li>
-      <li>bem</li>
-      <li>bibtext</li>
-      <li>biml</li>
-      <li>bintray</li>
-      <li>blender</li>
-      <li>bluespec</li>
-      <li>boo</li>
-      <li>bootstrap</li>
-      <li>brakeman</li>
-      <li>broccoli</li>
-      <li>brotli</li>
-      <li>browsersync</li>
-      <li>brunch</li>
-      <li>byond</li>
-      <li>gnu</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>File Icons</strong>:<ul><li>1c</li><li>3dmodel</li><li>3dsmax</li><li>abap</li><li>abif</li><li>acre</li><li>advpl</li><li>affectscript</li><li>affinity</li><li>alacritty</li><li>alex</li><li>alloy</li><li>ampl</li><li>amusewiki</li><li>angelscript</li><li>animestudio</li><li>ant</li><li>apache</li><li>apl</li><li>appcelerator</li><li>arc</li><li>archlinux</li><li>asymptote</li><li>atoum</li><li>ats</li><li>audacity</li><li>augeas</li><li>avro</li><li>backbone</li><li>bnf</li><li>bem</li><li>bibtext</li><li>biml</li><li>bintray</li><li>blender</li><li>bluespec</li><li>boo</li><li>bootstrap</li><li>brakeman</li><li>broccoli</li><li>brotli</li><li>browsersync</li><li>brunch</li><li>byond</li><li>gnu</li></ul></li></ul>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New Feature: <strong>Hide File Icons</strong></li>
-  <li>New Feature: <strong>Hollow Directories</strong></li>
-</ul>
+<ul><li>New Feature: <strong>Hide File Icons</strong></li><li>New Feature: <strong>Hollow Directories</strong></li></ul>
 
 <h2>16.0.0 (2.7.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>Cargo</li>
-      <li>Codecov</li>
-      <li>codeowners</li>
-      <li>cypress</li>
-      <li>cython</li>
-      <li>gridsome</li>
-      <li>netlify</li>
-      <li>pnpm</li>
-      <li>posthtml</li>
-      <li>sapper</li>
-      <li>svelte-config</li>
-      <li>uml</li>
-      <li>v</li>
-      <li>vala</li>
-    </ul>
-  </li>
-  <li>New <strong>folder icons</strong>:
-    <ul>
-      <li>events</li>
-      <li>gulp</li>
-      <li>json</li>
-      <li>netlify</li>
-      <li>relay</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>Cargo</li><li>Codecov</li><li>codeowners</li><li>cypress</li><li>cython</li><li>gridsome</li><li>netlify</li><li>pnpm</li><li>posthtml</li><li>sapper</li><li>svelte-config</li><li>uml</li><li>v</li><li>vala</li></ul></li><li>New <strong>folder icons</strong>:<ul><li>events</li><li>gulp</li><li>json</li><li>netlify</li><li>relay</li></ul></li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Sync with new UI Icons</li>
-</ul>
+<ul><li>Sync with new UI Icons</li></ul>
 
 <h2>15.0.0 (2.6.1)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2019.3 EAP</li>
-</ul>
+<ul><li>Support for 2019.3 EAP</li></ul>
 
 <h2>14.0.0 (2.6.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>File Icons</strong>:
-    <ul>
-      <li>edge</li>
-      <li>autoit</li>
-      <li>azure</li>
-      <li>bithound</li>
-      <li>blink</li>
-      <li>bucklescript</li>
-      <li>buildkite</li>
-      <li>certificate</li>
-      <li>commitlint</li>
-      <li>credits</li>
-      <li>history</li>
-      <li>graphcoo</li>
-      <li>hel</li>
-      <li>istanbu</li>
-      <li>ke</li>
-      <li>kiv</li>
-      <li>li</li>
-      <li>livescrip</li>
-      <li>markoj</li>
-      <li>md</li>
-      <li>merli</li>
-      <li>min</li>
-      <li>moonscrip</li>
-      <li>mxm</li>
-      <li>nest</li>
-      <li>houdini</li>
-      <li>no</li>
-      <li>nunjuck</li>
-      <li>prism</li>
-      <li>processin</li>
-      <li>restq</li>
-      <li>sa</li>
-      <li>sequeliz</li>
-      <li>sw</li>
-      <li>unit</li>
-      <li>velocit</li>
-      <li>v</li>
-      <li>webassembl</li>
-      <li>webhin</li>
-      <li>wep</li>
-      <li>yang</li>
-    </ul>
-  </li>
-  <li>New <strong>Folder Icons</strong>:
-    <ul>
-      <li>ci</li>
-      <li>class</li>
-      <li>container</li>
-      <li>content</li>
-      <li>css</li>
-      <li>delta</li>
-      <li>dump</li>
-      <li>error</li>
-      <li>examples</li>
-      <li>flow</li>
-      <li>helper</li>
-      <li>modals</li>
-      <li>maps</li>
-      <li>pipe</li>
-      <li>prisma</li>
-      <li>private</li>
-      <li>stack</li>
-      <li>utils</li>
-      <li>vm</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>File Icons</strong>:<ul><li>edge</li><li>autoit</li><li>azure</li><li>bithound</li><li>blink</li><li>bucklescript</li><li>buildkite</li><li>certificate</li><li>commitlint</li><li>credits</li><li>history</li><li>graphcoo</li><li>hel</li><li>istanbu</li><li>ke</li><li>kiv</li><li>li</li><li>livescrip</li><li>markoj</li><li>md</li><li>merli</li><li>min</li><li>moonscrip</li><li>mxm</li><li>nest</li><li>houdini</li><li>no</li><li>nunjuck</li><li>prism</li><li>processin</li><li>restq</li><li>sa</li><li>sequeliz</li><li>sw</li><li>unit</li><li>velocit</li><li>v</li><li>webassembl</li><li>webhin</li><li>wep</li><li>yang</li></ul></li><li>New <strong>Folder Icons</strong>:<ul><li>ci</li><li>class</li><li>container</li><li>content</li><li>css</li><li>delta</li><li>dump</li><li>error</li><li>examples</li><li>flow</li><li>helper</li><li>modals</li><li>maps</li><li>pipe</li><li>prisma</li><li>private</li><li>stack</li><li>utils</li><li>vm</li></ul></li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Sync with Material Icons</li>
-</ul>
+<ul><li>Sync with Material Icons</li></ul>
 
 <h2>13.0.0 (2.5.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New Icons and associations</li>
-</ul>
+<ul><li>New Icons and associations</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Sync with Material Icons</li>
-</ul>
+<ul><li>Sync with Material Icons</li></ul>
 
 <h2>12.0.0 (2.4.0)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Support for 2019.2</li>
-  <li>Sync with Material Icons</li>
-</ul>
+<ul><li>Support for 2019.2</li><li>Sync with Material Icons</li></ul>
 
 <h2>11.0.0 (2.3.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add light equivalents of icons</li>
-  <li>Update new icons: Resharper (Rider)</li>
-  <li>Sync with Material Icons</li>
-</ul>
+<ul><li>Add light equivalents of icons</li><li>Update new icons: Resharper (Rider)</li><li>Sync with Material Icons</li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix errors</li>
-</ul>
+<ul><li>Fix errors</li></ul>
 
 <h2>10.0.0 (2.2.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>New setting: <strong>PSI Icons</strong>. Replaces icons about program structure: classes, interfaces, methods,
-    enums etc.
-  </li>
-  <li>Import last set of UI Icons from the Material Theme</li>
-</ul>
+<ul><li>New setting: <strong>PSI Icons</strong>. Replaces icons about program structure: classes, interfaces, methods, enums etc.</li><li>Import last set of UI Icons from the Material Theme</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Update for 2019.1</li>
-</ul>
+<ul><li>Update for 2019.1</li></ul>
 
 <h2>9.0.0 (2.1.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add Monochrome Icons' tint color selection</li>
-</ul>
+<ul><li>Add Monochrome Icons' tint color selection</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>folder icons</strong>:
-    <ul>
-      <li>guard</li>
-      <li>providers</li>
-      <li>animations</li>
-      <li>grunt</li>
-      <li>icons</li>
-      <li>e2e</li>
-      <li>custom</li>
-      <li>rules</li>
-      <li>screens</li>
-      <li>storybook</li>
-      <li>stylus</li>
-      <li>syntax</li>
-      <li>security</li>
-      <li>meta-inf</li>
-      <li>fixtures</li>
-      <li>channels</li>
-      <li>concerns</li>
-      <li>support</li>
-      <li>features</li>
-      <li>fabricators</li>
-      <li>nyc</li>
-      <li>reviews</li>
-    </ul>
-  </li>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>ANTLR</li>
-      <li>brainfuck</li>
-      <li>cobol</li>
-      <li>delphi</li>
-      <li>eiffel</li>
-      <li>fortran</li>
-      <li>idris</li>
-      <li>io</li>
-      <li>j</li>
-      <li>lerna</li>
-      <li>postscript</li>
-      <li>prolog</li>
-      <li>racket</li>
-      <li>red</li>
-      <li>supercollider</li>
-      <li>scheme</li>
-      <li>terraform</li>
-      <li>test-react</li>
-      <li>turing</li>
-      <li>toml</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>folder icons</strong>:<ul><li>guard</li><li>providers</li><li>animations</li><li>grunt</li><li>icons</li><li>e2e</li><li>custom</li><li>rules</li><li>screens</li><li>storybook</li><li>stylus</li><li>syntax</li><li>security</li><li>meta-inf</li><li>fixtures</li><li>channels</li><li>concerns</li><li>support</li><li>features</li><li>fabricators</li><li>nyc</li><li>reviews</li></ul></li><li>New <strong>file icons</strong>:<ul><li>ANTLR</li><li>brainfuck</li><li>cobol</li><li>delphi</li><li>eiffel</li><li>fortran</li><li>idris</li><li>io</li><li>j</li><li>lerna</li><li>postscript</li><li>prolog</li><li>racket</li><li>red</li><li>supercollider</li><li>scheme</li><li>terraform</li><li>test-react</li><li>turing</li><li>toml</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix UI Icons setting needing the IDE to be restarted</li>
-  <li>Fix settings not being persisted</li>
-  <li>Add more contrast to monochrome icons</li>
-  <li>Fix some directories icons' contrast between the directory and the icon</li>
-</ul>
+<ul><li>Fix UI Icons setting needing the IDE to be restarted</li><li>Fix settings not being persisted</li><li>Add more contrast to monochrome icons</li><li>Fix some directories icons' contrast between the directory and the icon</li></ul>
 
 <h2>8.0.0 (2.0.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material
-    Icons
-  </li>
-  <li>New Option: <strong>Monochrome Icons</strong></li>
-</ul>
+<ul><li>Atom File Icons has now the complete UI Icons feature, allowing you to replace IntelliJ icons with Material Icons</li><li>New Option: <strong>Monochrome Icons</strong></li></ul>
 
 <h2>7.0.0 (1.6.1)</h2>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>Fix fatal error</li>
-</ul>
+<ul><li>Fix fatal error</li></ul>
 
 <h2>6.0.0 (1.6.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>Jenkins</li>
-      <li>Rspec</li>
-      <li>Rubocop</li>
-    </ul>
-  </li>
-  <li>New <strong>folder icons</strong>:
-    <ul>
-      <li>android</li>
-      <li>deploy</li>
-      <li>api</li>
-      <li>archives</li>
-      <li>config</li>
-      <li>constants</li>
-      <li>core</li>
-      <li>download</li>
-      <li>env</li>
-      <li>exclude</li>
-      <li>functions</li>
-      <li>generated</li>
-      <li>hooks</li>
-      <li>ios</li>
-      <li>include</li>
-      <li>jinja</li>
-      <li>job</li>
-      <li>keys</li>
-      <li>layouts</li>
-      <li>mailers</li>
-      <li>meta</li>
-      <li>middleware</li>
-      <li>notification</li>
-      <li>other</li>
-      <li>packages</li>
-      <li>posts</li>
-      <li>react</li>
-      <li>resourceIOS</li>
-      <li>routes</li>
-      <li>scripts</li>
-      <li>server</li>
-      <li>serverless</li>
-      <li>shared</li>
-      <li>sublime</li>
-      <li>tasks</li>
-      <li>themes</li>
-      <li>utils</li>
-      <li>upload</li>
-      <li>vendors</li>
-      <li>views</li>
-      <li>vue</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>Jenkins</li><li>Rspec</li><li>Rubocop</li></ul></li><li>New <strong>folder icons</strong>:<ul><li>android</li><li>deploy</li><li>api</li><li>archives</li><li>config</li><li>constants</li><li>core</li><li>download</li><li>env</li><li>exclude</li><li>functions</li><li>generated</li><li>hooks</li><li>ios</li><li>include</li><li>jinja</li><li>job</li><li>keys</li><li>layouts</li><li>mailers</li><li>meta</li><li>middleware</li><li>notification</li><li>other</li><li>packages</li><li>posts</li><li>react</li><li>resourceIOS</li><li>routes</li><li>scripts</li><li>server</li><li>serverless</li><li>shared</li><li>sublime</li><li>tasks</li><li>themes</li><li>utils</li><li>upload</li><li>vendors</li><li>views</li><li>vue</li></ul></li></ul>
 
 <h2>5.0.0 (1.5.0)</h2>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New <strong>file icons</strong>:
-    <ul>
-      <li>Arduino</li>
-      <li>Assembly</li>
-      <li>Authors</li>
-      <li>Ballerina</li>
-      <li>Crystal</li>
-      <li>CSSMap</li>
-      <li>Dotjs</li>
-      <li>DTS</li>
-      <li>Favicon</li>
-      <li>Firebase</li>
-      <li>Flash</li>
-      <li>Gatsby</li>
-      <li>Gemfile</li>
-      <li>Po</li>
-      <li>JSMap</li>
-      <li>MJML</li>
-      <li>Nimble</li>
-      <li>Raml</li>
-      <li>Razor</li>
-      <li>Redux Actions/Stores/Reducers</li>
-      <li>Smarty</li>
-      <li>Solidity</li>
-      <li>Sonar</li>
-      <li>Stencil</li>
-      <li>Storybook</li>
-      <li>Wallaby</li>
-    </ul>
-  </li>
-  <li>New <strong>folder icons</strong>:
-    <ul>
-      <li>benchmarks</li>
-      <li>coverage</li>
-      <li>controllers</li>
-      <li>debug</li>
-      <li>excluded</li>
-      <li>expo</li>
-      <li>jinja</li>
-      <li>less</li>
-      <li>maven</li>
-      <li>messages</li>
-      <li>models</li>
-      <li>plugin</li>
-      <li>python</li>
-      <li>react</li>
-      <li>redux</li>
-      <li>routes</li>
-      <li>scripts</li>
-      <li>sublime</li>
-      <li>sync</li>
-      <li>tasks</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New <strong>file icons</strong>:<ul><li>Arduino</li><li>Assembly</li><li>Authors</li><li>Ballerina</li><li>Crystal</li><li>CSSMap</li><li>Dotjs</li><li>DTS</li><li>Favicon</li><li>Firebase</li><li>Flash</li><li>Gatsby</li><li>Gemfile</li><li>Po</li><li>JSMap</li><li>MJML</li><li>Nimble</li><li>Raml</li><li>Razor</li><li>Redux Actions/Stores/Reducers</li><li>Smarty</li><li>Solidity</li><li>Sonar</li><li>Stencil</li><li>Storybook</li><li>Wallaby</li></ul></li><li>New <strong>folder icons</strong>:<ul><li>benchmarks</li><li>coverage</li><li>controllers</li><li>debug</li><li>excluded</li><li>expo</li><li>jinja</li><li>less</li><li>maven</li><li>messages</li><li>models</li><li>plugin</li><li>python</li><li>react</li><li>redux</li><li>routes</li><li>scripts</li><li>sublime</li><li>sync</li><li>tasks</li></ul></li></ul>
 
 <h2>4.0.0 (1.4.0)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Convert icons to SVG</li>
-  <li>Add more system UI icons</li>
-</ul>
+<ul><li>Convert icons to SVG</li><li>Add more system UI icons</li></ul>
 
 <h2>3.0.0 (1.3.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add <strong>settings page</strong> to control which components to enable or disable.
-    <ul>
-      <li>Components: <strong>File Icons</strong>, <strong>Directory Icons</strong> and <strong>UI Icons</strong>
-        (experimental)
-      </li>
-    </ul>
-  </li>
-</ul>
+<ul><li>Add <strong>settings page</strong> to control which components to enable or disable.<ul><li>Components: <strong>File Icons</strong>, <strong>Directory Icons</strong> and <strong>UI Icons</strong> (experimental)</li></ul></li></ul>
 
 <h2>2.0.0 (1.2.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add <strong>folder icons</strong> feature</li>
-  <li>Add more UI icons</li>
-</ul>
+<ul><li>Add <strong>folder icons</strong> feature</li><li>Add more UI icons</li></ul>
 
 <h2>1.2.0 (1.1.0)</h2>
 
 <h3>Features</h3>
 
-<ul>
-  <li>Add PHPStorm and PyCharm files and plugin support</li>
-  <li>Add &quot;nodes&quot; icons for various file trees</li>
-</ul>
+<ul><li>Add PHPStorm and PyCharm files and plugin support</li><li>Add &quot;nodes&quot; icons for various file trees</li></ul>
 
 <h3>Additions</h3>
 
-<ul>
-  <li>New icons
-    <ul>
-      <li>Github Code of conduct, Github Contributing, Commit message convention, Github Template</li>
-      <li>README</li>
-      <li>Prefs</li>
-      <li>Atom files</li>
-      <li>Angular component, service, directive, guard, pipe, routing, resolver</li>
-      <li>Autohotkey</li>
-      <li>API Blueprint</li>
-      <li>Appveyor</li>
-      <li>Java Beans</li>
-      <li>Browserslist</li>
-      <li>Cabal</li>
-      <li>CNAME</li>
-      <li>Compass files</li>
-      <li>C++</li>
-      <li>Dockerignore</li>
-      <li>Doxygen</li>
-      <li>Dylib</li>
-      <li>Eslintignore</li>
-      <li>MAC OSX files</li>
-      <li>Flow Config</li>
-      <li>Ghostscript</li>
-      <li>Godot</li>
-      <li>Gradlew</li>
-      <li>H files</li>
-      <li>Adobe Indesign</li>
-      <li>Jekyll config.yml</li>
-      <li>jQuery</li>
-      <li>Makefile</li>
-      <li>Markdown</li>
-      <li>Manpage</li>
-      <li>Mathematica</li>
-      <li>Maven pom.xml</li>
-      <li>Maya</li>
-      <li>Mocha</li>
-      <li>Nib</li>
-      <li>NPM package.lock</li>
-      <li>NVM</li>
-      <li>OpenOffice</li>
-      <li>Objective C</li>
-      <li>Patch files</li>
-      <li>Phalcon</li>
-      <li>PostCSS Config</li>
-      <li>Prettier</li>
-      <li>Powershell</li>
-      <li>ReasonML</li>
-      <li>Restructured</li>
-      <li>Robot</li>
-      <li>RVM</li>
-      <li>Spring</li>
-      <li>Tern</li>
-      <li>Tomcat</li>
-      <li>Travis</li>
-      <li>VHDL</li>
-      <li>Webpack</li>
-      <li>XCode</li>
-      <li>Yarn files</li>
-      <li>Minified javascripts</li>
-    </ul>
-  </li>
-</ul>
+<ul><li>New icons<ul><li>Github Code of conduct, Github Contributing, Commit message convention, Github Template</li><li>README</li><li>Prefs</li><li>Atom files</li><li>Angular component, service, directive, guard, pipe, routing, resolver</li><li>Autohotkey</li><li>API Blueprint</li><li>Appveyor</li><li>Java Beans</li><li>Browserslist</li><li>Cabal</li><li>CNAME</li><li>Compass files</li><li>C++</li><li>Dockerignore</li><li>Doxygen</li><li>Dylib</li><li>Eslintignore</li><li>MAC OSX files</li><li>Flow Config</li><li>Ghostscript</li><li>Godot</li><li>Gradlew</li><li>H files</li><li>Adobe Indesign</li><li>Jekyll config.yml</li><li>jQuery</li><li>Makefile</li><li>Markdown</li><li>Manpage</li><li>Mathematica</li><li>Maven pom.xml</li><li>Maya</li><li>Mocha</li><li>Nib</li><li>NPM package.lock</li><li>NVM</li><li>OpenOffice</li><li>Objective C</li><li>Patch files</li><li>Phalcon</li><li>PostCSS Config</li><li>Prettier</li><li>Powershell</li><li>ReasonML</li><li>Restructured</li><li>Robot</li><li>RVM</li><li>Spring</li><li>Tern</li><li>Tomcat</li><li>Travis</li><li>VHDL</li><li>Webpack</li><li>XCode</li><li>Yarn files</li><li>Minified javascripts</li></ul></li></ul>
 
 <h3>Fixes</h3>
 
-<ul>
-  <li>make it DumbAware</li>
-</ul>
+<ul><li>make it DumbAware</li></ul>
 
 <h3>Other</h3>
 
-<ul>
-  <li>Add markdown to html for changelog</li>
-  <li>add gradle.properties for easy installing</li>
-</ul>
+<ul><li>Add markdown to html for changelog</li><li>add gradle.properties for easy installing</li></ul>
 
 <h2>1.0.0 (1.0.0)</h2>
 
 <h3>Other</h3>
 
-<ul>
-  <li>First commit, migrated from the Material Theme UI</li>
-</ul>
+<ul><li>First commit, migrated from the Material Theme UI</li></ul>

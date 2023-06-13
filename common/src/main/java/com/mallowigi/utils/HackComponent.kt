@@ -22,46 +22,34 @@
  * SOFTWARE.
  *
  */
-package com.mallowigi.icons.svgpatchers
+package com.mallowigi.utils
 
-/** Interface for all svg patchers. */
-@Suppress("KDocMissingDocumentation")
-interface SvgPatcher {
+import javassist.ClassPool
+import javassist.expr.ExprEditor
+import javassist.expr.MethodCall
 
-  /** Get digest of patcher properties. */
-  fun digest(): LongArray
-
-  /**
-   * Patch colors
-   *
-   * @param attributes
-   * @param path
-   */
-  fun patch(attributes: MutableMap<String, String>)
-
-  /**
-   * Priority in the list of patchers
-   *
-   * @return
-   */
-  fun priority(): Int = 1
-
-  /** Refresh. */
-  fun refresh()
-
-  companion object {
-    const val ICONCOLOR: String = "iconColor"
-    const val FOLDERCOLOR: String = "folderColor"
-    const val FOLDERICONCOLOR: String = "folderIconColor"
-    const val STROKE: String = "stroke"
-    const val FILL: String = "fill"
-    const val WIDTH: String = "width"
-    const val HEIGHT: String = "height"
-    const val TRUE: String = "true"
-    const val BIG: String = "big"
-    const val TINT: String = "tint"
-    const val THEMED: String = "themed"
-    const val PX: String = "px"
+class HackComponent {
+  init {
+    hackBigIcons()
   }
 
+  private fun hackBigIcons() {
+    try {
+      val cp = ClassPool(true)
+
+      val uiClass = cp["com.intellij.ui.svg.JSvgDocumentFactoryKt"]
+      uiClass.getDeclaredMethod("buildDocument").apply {
+        instrument(object : ExprEditor() {
+          override fun edit(m: MethodCall) {
+            if ("readAttributes" != m.methodName) return
+            // language=JShellLanguage
+            m.replace("{ \$2 = attributeMutator; \$_ = \$proceed($$); }")
+          }
+        })
+      }
+      uiClass.toClass()
+    } catch (e: Throwable) {
+      e.printStackTrace()
+    }
+  }
 }

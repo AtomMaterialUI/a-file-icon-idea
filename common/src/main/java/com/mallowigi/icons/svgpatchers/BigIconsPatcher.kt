@@ -57,8 +57,8 @@ class BigIconsPatcher : SvgPatcher {
     val size = if (hasCustomSize) customFontSize else REGULAR
 
     if (isBig == SvgPatcher.TRUE) {
-      attributes[SvgPatcher.WIDTH] = size.toString()
-      attributes[SvgPatcher.HEIGHT] = size.toString()
+      attributes[SvgPatcher.WIDTH] = size.toString() + SvgPatcher.PX
+      attributes[SvgPatcher.HEIGHT] = size.toString() + SvgPatcher.PX
     }
   }
 

@@ -91,6 +91,13 @@
     <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
   </extensions>
 
+  <!--suppress PluginXmlDynamicPlugin -->
+  <application-components>
+    <component>
+      <implementation-class>com.mallowigi.utils.HackComponent</implementation-class>
+    </component>
+  </application-components>
+
   <!--suppress PluginXmlValidity -->
   <applicationListeners>
     <listener class="com.mallowigi.tree.RefreshTreeListener"
