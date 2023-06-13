@@ -25,13 +25,11 @@
   -->
 
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24"
+<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24"
      fill="#7986CB">
-  <g big="true">
-      <path fill="#7986CB"
+    <path fill="#7986CB"
           d="M4,18V20H8V18H4M4,14V16H14V14H4M10,18V20H14V18H10M16,14V16H20V14H16M16,18V20H20V18H16M2,22V8L7,12V8L12,12V8L17,12L18,2H21L22,12V22H2Z"
           transform="scale(1)" />
     <path fill="#E57373" transform="scale(0.75) translate(12 -4)"
           d="M14,20H10V11L6.5,14.5L4.08,12.08L12,4.16L19.92,12.08L17.5,14.5L14,11V20Z" />
-  </g>
 </svg>

@@ -21,9 +21,8 @@
   -  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   -  SOFTWARE.
   -->
-<svg width="16px" height="16px" viewBox="0 0 16 16" fill="#FB8835" xmlns="http://www.w3.org/2000/svg">
-  <g big="true">
-      <path d="M8 11.7V15.1L1 11.6V9.60002L8 11.7Z"/>
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="#FB8835" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 11.7V15.1L1 11.6V9.60002L8 11.7Z"/>
     <path d="M8 11.7V15.1L15 11.6V9.60001L8 11.7Z" fill="#FB8835"/>
     <path d="M1.00781 6.65623V8.6367L1.90114 8.81087V6.65623H1.00781Z" fill="none"/>
     <path d="M2.44141 6.65623L2.44141 8.75389L1.90114 8.81087V6.65623H2.44141Z" fill="#FB8835"/>
@@ -39,5 +38,4 @@
     <path d="M9.09427 9.42121L10.095 9.59244V3.67969L9.09427 3.82248V9.42121Z" fill="none"/>
     <path d="M8.00001 1.54463V9.99998L6.91193 9.78783V1.91117L8.00001 1.54463Z" fill="none"/>
     <path d="M8.00002 1.54163V10L9.10848 9.78436V1.89052L8.00002 1.54163Z" fill="#FB8835"/>
-  </g>
 </svg>

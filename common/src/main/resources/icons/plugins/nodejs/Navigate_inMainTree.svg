@@ -24,9 +24,8 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <g big="true">
-      <rect id="frame" width="16" height="16" fill="none" />
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <rect id="frame" width="16" height="16" fill="none" />
     <g fill="#FF8A65" fill-rule="evenodd">
         <path d="M0 3h7v4H0z" />
         <path d="M4 14h5v1H4z" />
@@ -36,5 +35,4 @@
         <path d="M15 9v2h-4V9z" />
         <path d="M7 10l4 4V6z" />
     </g>
-  </g>
 </svg>

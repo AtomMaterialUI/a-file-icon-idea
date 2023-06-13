@@ -22,13 +22,11 @@
   -  SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
+<svg big="true" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
      stroke-miterlimit="1.414" viewBox="0 0 24 24" width="16px" height="16px">
-  <g big="true">
-      <g fill="#4DB6AC">
+    <g fill="#4DB6AC">
         <circle cx="7" cy="14" r="3"/>
         <circle cx="11" cy="6" r="3"/>
         <circle cx="16.6" cy="17.6" r="3"/>
     </g>
-  </g>
 </svg>

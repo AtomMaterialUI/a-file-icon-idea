@@ -24,12 +24,10 @@
   -
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-  <g big="true">
-    <g fill="#50ABF1" fill-rule="evenodd" transform="translate(1 2)">
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+  <g fill="#50ABF1" fill-rule="evenodd" transform="translate(1 2)">
     <path fill-opacity=".5" d="M11.6666667,8 L14,9 L7,12 L0,9 L2.33333333,8 L7,10 L11.6666667,8 Z" />
     <path fill-opacity=".7" d="M11.6666667,5 L14,6 L7,9 L0,6 L2.33333333,5 L7,7 L11.6666667,5 Z" />
     <polygon points="7 0 14 3 7 6 0 3" />
-  </g>
   </g>
 </svg>

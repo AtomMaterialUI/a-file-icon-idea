@@ -26,10 +26,9 @@
   -->
 
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px"
+<svg big="true" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px"
      viewBox="-48 -48 620 620" xml:space="preserve">
-  <g big="true">
-      <g transform="translate(-50 -50)" fill="#3949AB">   <polygon
+    <g transform="translate(-50 -50)" fill="#3949AB">   <polygon
       points="392.538,163.392 392.538,132.877 217.621,236.233 255.322,246.447 " />
       <path
         d="M194.617,230.004l197.922-116.949V96.713c0-6.656-2.398-12.706-6.246-17.553l-235.29,139.034L194.617,230.004z" />
@@ -76,5 +75,4 @@ c18.833,0,34.133-15.309,34.133-34.133c0-6.11-1.741-11.776-4.574-16.751L131.78,31
   <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" fill="#FF8A65"
         transform="scale(20) translate(6 6)" />
 
-  </g>
 </svg>

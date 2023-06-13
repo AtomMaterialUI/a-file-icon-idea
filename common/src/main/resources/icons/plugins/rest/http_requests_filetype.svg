@@ -26,11 +26,10 @@
   -->
 
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512"
+<svg big="true" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512"
      width="16px"
      height="16px" xml:space="preserve" fill="#29B6F6">
-  <g big="true">
-     <g>
+   <g>
 <g>
 <path d="M467,73.56H45c-24.813,0-45,20.187-45,45v274.881c0,24.813,20.187,45,45,45h422c24.813,0,45-20.187,45-45V118.56
 C512,93.746,491.813,73.56,467,73.56z M482,393.441c0,8.271-6.729,15-15,15H45c-8.271,0-15-6.729-15-15V177.965h452V393.441z
@@ -57,5 +56,4 @@ c7.041,0,12.77,5.729,12.77,12.77C308.025,267.077,302.296,272.803,295.255,272.803
 C388.771,223.98,382.055,217.264,373.771,217.264z" />
 </g>
 </g>
-  </g>
 </svg>
