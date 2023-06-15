@@ -30,6 +30,7 @@ val platformType: String by project
 
 dependencies {
   implementation("org.javassist:javassist:3.29.2-GA")
+  implementation("com.fasterxml:aalto-xml:1.3.2")
 }
 
 plugins {

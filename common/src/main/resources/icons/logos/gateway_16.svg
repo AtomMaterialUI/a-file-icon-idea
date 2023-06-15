@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   - The MIT License (MIT)
   -
@@ -28,8 +27,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
      y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">  <image
-        id="image0" width="16" height="16" x="0" y="0"
-        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+  id="image0" width="16" height="16" x="0" y="0"
+  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAulBMVEUAAADmIpfeIabVILXN
 IMPFH8+8Ht61HuuvHfX2I33uI4vmIpjdIabVILTNIMLFH9C8Ht+0Hez+JHAAAAD+Lmb9JHD+OF2z
 He7+QlX+N167HuD+TEv+QVXDH9O7HuH/VUP+Sk3LH8bCH9T/XzvTILj/aTL/Xjv////aIazSILn/

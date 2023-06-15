@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   - The MIT License (MIT)
   -
@@ -28,7 +27,7 @@
 
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
      width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">  <image
-  id="image0" width="16" height="16" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+        id="image0" width="16" height="16" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAACA
 AElEQVR42uz9ebxtR1UngH9X7XPuffPLS14mMkISIBDCaCICogxphsYBEXFo5Gdrt7TggMS5RTA4
 YDM1P9BGW5x+Nio20gINCgQZtEHABEICgUDIPJD5Dffdc3at3x9Vq2qt2vvc4b1377n3vPrm83LP
@@ -1531,5 +1530,5 @@ oaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGh
 oaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGh
 oaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhYQL/P+MXrFEAQf8XAAAA
 JXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTA2LTE4VDA5OjU4OjQ4LTA3OjAwa+MgSgAAACV0RVh0ZGF0
-ZTptb2RpZnkAMjAyMS0wNi0xOFQwOTo1ODo0OC0wNzowMBq+mPYAAAAASUVORK5CYII=" />
+ZTptb2RpZnkAMjAyMS0wNi0xOFQwOTo1ODo0OC0wNzowMBq+mPYAAAAASUVORK5CYII="/>
 </svg>

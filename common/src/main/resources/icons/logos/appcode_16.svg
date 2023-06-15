@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   - The MIT License (MIT)
   -
@@ -28,8 +27,8 @@
 
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
      width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">  <image
-        id="image0" width="16" height="16" x="0" y="0"
-        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+  id="image0" width="16" height="16" x="0" y="0"
+  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAACA
 AElEQVR42uy9d7wlRZk3/n36nJvvnTt5BocsOYPkIaiAIEMGEUHACL76e3fV3XdfXd913aSu6+Zd
 dRHWhKjIigoIKAqSgyCgSI5DnsDkcO89Xb8/uqvqqerqPn3OPX1CT33nc+b26a7U3XXqyU8BHh4e
