@@ -1,0 +1,33 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -->
+
+
+<svg big="true" xmlns="http://www.w3.org/2000/svg" viewBox="120 -840 720 720" width="16px" height="16px">
+  <path fill="#FF5370"
+        d="M480-120q-65 0-121-31t-83-89h-87q-12 0-20.5-9t-8.5-21q0-13 8.5-21.5T190-300h62q-7-26-7-52.5V-406h-57q-12 0-20.5-9t-8.5-21q0-13 8.5-21.5T189-466h56q0-29 .5-57.5T254-580h-65q-12 0-20.5-9t-8.5-21q0-13 8.5-21.5T190-640h90q14-28 37-49t51-35l-58-57q-8-8-7.5-19.5T311-820q8-8 20-8t20 8l74 74q28-10 56.5-10t56.5 10l75-75q8-8 19.5-7.5T652-820q8 8 8 20t-8 20l-56 56q28 14 49.5 35.5T683-640h89q12 0 20.5 9t8.5 21q0 13-8.5 21.5T771-580h-65q9 28 8.5 56.5T714-466h58q12 0 20.5 9t8.5 21q0 13-8.5 21.5T771-406h-57q0 27 .5 53.5T708-300h64q12 0 20.5 9t8.5 21q0 13-8.5 21.5T771-240h-86q-26 59-82.5 89.5T480-120Zm0-60q72 0 123-50.5T654-353v-167q0-72-51-122.5T480-693q-72 0-123 50.5T306-520v167q0 72 51 122.5T480-180Zm-50-140h101q12 0 20.5-8.5T560-350q0-13-8.5-21.5T530-380H429q-12 0-20.5 8.5T400-350q0 13 8.5 21.5T430-320Zm0-173h101q12 0 20.5-8.5T560-523q0-13-8.5-21.5T530-553H429q-12 0-20.5 8.5T400-523q0 13 8.5 21.5T430-493Zm50 57h.5-.5.5-.5.5-.5.5-.5Z"/>
+  <path fill="#66BB6A" transform="scale(0.6) translate(600 -40)"
+        d="M480-160q-133 0-226.5-93.5T160-480q0-133 93.5-226.5T480-800q85 0 149 34.5T740-671v-99q0-13 8.5-21.5T770-800q13 0 21.5 8.5T800-770v194q0 13-8.5 21.5T770-546H576q-13 0-21.5-8.5T546-576q0-13 8.5-21.5T576-606h138q-38-60-97-97t-137-37q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220q75 0 140-39.5T717-366q5-11 16.5-16.5t22.5-.5q12 5 16 16.5t-1 23.5q-39 84-117.5 133.5T480-160Z"/>
+
+</svg>
