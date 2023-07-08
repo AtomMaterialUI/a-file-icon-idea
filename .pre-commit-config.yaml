@@ -31,15 +31,6 @@ repos:
         args:
           - --autofix
           - --no-sort-keys
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 3.0.0
-    hooks:
-      - id: forbid-binary
-        exclude: ^\.idea
-        exclude_types:
-          - image
-          - icon
-      - id: git-check
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
     rev: 0.2.3
     hooks:
@@ -162,7 +153,7 @@ repos:
     hooks:
       - id: markdownlint-fix
         name: Lint Markdown files
-        exclude: ^CHANGELOG\.md$
+        exclude: .*/CHANGELOG\.md$
   - repo: https://github.com/maxwinterstein/shfmt-py
     rev: v3.4.3.1
     hooks:
@@ -179,7 +170,7 @@ repos:
       - id: prettier
         additional_dependencies:
           - prettier
-        exclude: ^CHANGELOG\.md$ # managed by semantic-release
+        exclude: .*/CHANGELOG\.md$ # managed by semantic-release
         stages:
           - manual
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
