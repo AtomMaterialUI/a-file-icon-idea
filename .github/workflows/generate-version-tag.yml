@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Set the plugin version'
+        description: Set the plugin version
         default: ''
         required: true
 
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: zulu
           java-version: 11
 
       - name: Gradle cache
@@ -41,7 +41,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           tags: true
-          github_token: '${{ secrets.GITHUB_TOKEN }}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Stop Gradle daemons
         run: ./gradlew --stop

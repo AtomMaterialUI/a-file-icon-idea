@@ -27,7 +27,6 @@ repos:
         exclude: ^\.idea
       - id: mixed-line-ending
       - id: trailing-whitespace
-      - id: no-commit-to-branch
       - id: pretty-format-json
         args:
           - --autofix

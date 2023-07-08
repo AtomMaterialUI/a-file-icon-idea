@@ -34,4 +34,3 @@ class FileIconEditableColumnInfo(private val parent: Disposable, private val edi
 
   override fun loadIcon(path: String): Icon = AtomIcons.getFileIcon(path)
 }
-

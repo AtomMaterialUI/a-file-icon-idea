@@ -3,10 +3,10 @@ name: publish
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 env:
-  INTELLIJ_PUBLISH_TOKEN: '${{ secrets.INTELLIJ_PUBLISH_TOKEN }}'
+  INTELLIJ_PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
 
 jobs:
   publish:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: zulu
           java-version: 11
 
       - name: Gradle cache

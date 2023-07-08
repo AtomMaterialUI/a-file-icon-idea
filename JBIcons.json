@@ -21862,7 +21862,7 @@
         "java": "ClionExecutionIcons.Icons.CoreDumpDebug"
       },
       {
-        "name": "сoreDumpDebug",
+        "name": "\u0441oreDumpDebug",
         "set": "ClionExecutionIcons",
         "area": "icons",
         "section": "icons",
@@ -21876,7 +21876,7 @@
           ]
         ],
         "kind": "svg",
-        "java": "ClionExecutionIcons.Icons.СoreDumpDebug"
+        "java": "ClionExecutionIcons.Icons.\u0421oreDumpDebug"
       }
     ]
   },

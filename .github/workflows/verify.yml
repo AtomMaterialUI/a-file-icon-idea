@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        ideVersion: [ '11' ]
+        ideVersion: ['11']
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -26,8 +26,8 @@ jobs:
       - name: Build the plugin using Gradle
         run: ./gradlew buildPlugin
         env:
-          pluginUntilBuild: "212.*"
-          pluginVersion: "37"
+          pluginUntilBuild: 212.*
+          pluginVersion: '37'
           javaVersion: ${{ matrix.java }}
 
       - name: Verify Plugin on IntelliJ Platforms

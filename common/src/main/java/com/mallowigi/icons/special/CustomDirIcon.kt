@@ -33,4 +33,3 @@ import javax.swing.Icon
  * @constructor
  */
 class CustomDirIcon(icon: Icon) : DirIcon(icon)
-
