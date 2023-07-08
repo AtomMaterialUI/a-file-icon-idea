@@ -42,17 +42,17 @@
     <!-- New Settings -->
     <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
                              id="AtomHomeConfigurable"
-                             key="com.mallowigi.config.AtomHomeConfigurable"
+                             key="settings.titles.main"
                              groupId="appearance"/>
     <applicationConfigurable instance="com.mallowigi.config.AtomSettingsConfigurable"
                              parentId="AtomHomeConfigurable"
-                             key="com.mallowigi.config.AtomSettingsConfigurable"
+                             key="settings.title"
                              id="AtomSettingsConfigurable"
                              groupId="appearance"/>
 
     <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
     <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
-                             key="com.mallowigi.config.AtomSelectConfig"
+                             key="AtomSelectForm.title"
                              groupId="appearance" dynamic="true"
                              parentId="AtomHomeConfigurable"
                              id="AtomSelectConfig"/>

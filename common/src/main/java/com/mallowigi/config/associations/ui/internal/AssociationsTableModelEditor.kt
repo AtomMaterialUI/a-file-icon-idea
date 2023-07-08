@@ -36,6 +36,7 @@ import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
+import com.mallowigi.utils.toHex
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.event.KeyAdapter
@@ -391,9 +392,10 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.FOLDERCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERCOLOR.index)
-      }
+      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+        color?.let { model.setValueAt(it.toHex(), row, Columns.FOLDERCOLOR.index) }
+      })
+
       return true
     }
 
@@ -401,9 +403,10 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.FOLDERICONCOLOR.index)
-      }
+      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+        color?.let { model.setValueAt(it.toHex(), row, Columns.FOLDERICONCOLOR.index) }
+      })
+
       return true
     }
 
@@ -411,9 +414,10 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorPicker.showColorPickerPopup(null, modelColor) { color: Color?, _: Any? ->
-        model.setValueAt(ColorUtil.toHex(color ?: return@showColorPickerPopup), row, Columns.ICONCOLOR.index)
-      }
+      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+        color?.let { model.setValueAt(it.toHex(), row, Columns.ICONCOLOR.index) }
+      })
+
       return true
     }
   }
