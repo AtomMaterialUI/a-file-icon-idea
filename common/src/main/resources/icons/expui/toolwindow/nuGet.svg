@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,10 @@
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
   -
-  -
   -->
 
 <svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 13 13">
-    <path
-            d="M2,.5A1.5,1.5,0,1,1,.5,2,1.5,1.5,0,0,1,2,.5ZM10,3H5A2,2,0,0,0,3,5v5a2,2,0,0,0,2,2h5a2,2,0,0,0,2-2V5A2,2,0,0,0,10,3ZM4,5.5A1.5,1.5,0,1,1,5.5,7,1.5,1.5,0,0,1,4,5.5ZM8.75,11A2.25,2.25,0,1,1,11,8.75,2.25,2.25,0,0,1,8.75,11Z"
-            fill="#A1887F"/>
+  <path
+    d="M2,.5A1.5,1.5,0,1,1,.5,2,1.5,1.5,0,0,1,2,.5ZM10,3H5A2,2,0,0,0,3,5v5a2,2,0,0,0,2,2h5a2,2,0,0,0,2-2V5A2,2,0,0,0,10,3ZM4,5.5A1.5,1.5,0,1,1,5.5,7,1.5,1.5,0,0,1,4,5.5ZM8.75,11A2.25,2.25,0,1,1,11,8.75,2.25,2.25,0,0,1,8.75,11Z"
+    fill="#A1887F"/>
 </svg>
