@@ -7,6 +7,7 @@
 ### Fixes
 
 - Fix performance issue caused by the new DSL for the IconPatchers
+- Fix the "Customize Toolbar"
 
 ## 90.0.0 (9.0.0)
 
