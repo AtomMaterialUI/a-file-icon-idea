@@ -29,6 +29,7 @@
 
     <iconPatcher name="ExpUI" remove="expui" append="icons/expui"/>
     <iconPatcher name="AI" remove="icons" append="icons/plugins/ai"/>
+    <iconPatcher name="Aqua" remove="icons" append="icons/plugins/aqua"/>
     <iconPatcher name="AllIcons" remove="" append="icons"/>
     <iconPatcher name="Checkboxes" remove="com/intellij/ide/ui/laf/icons" append="icons/mt/checkboxes"/>
 
@@ -105,6 +106,7 @@
     <glyphPatcher name="Actions" remove="actions" append="glyphs/actions"/>
     <glyphPatcher name="AOP" remove="icons" append="glyphs/plugins/aop"/>
     <glyphPatcher name="AppCode" remove="icons" append="glyphs/plugins/appcode"/>
+    <glyphPatcher name="Aqua" remove="icons" append="glyphs/plugins/aqua"/>
     <glyphPatcher name="CLion" remove="icons" append="glyphs/plugins/clion"/>
     <glyphPatcher name="CSS" remove="icons/css" append="glyphs/css"/>
     <glyphPatcher name="DataGrip" remove="icons" append="glyphs/plugins/datagrip"/>
