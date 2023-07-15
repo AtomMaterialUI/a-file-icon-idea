@@ -148,6 +148,7 @@
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="files/plugins/coffee"/>
     <filePatcher name="Cucumber" remove="org/jetbrains/plugins/cucumber/icons" append="icons/plugins/cucumber"/>
     <filePatcher name="Dart" remove="icons" append="files/plugins/dart"/>
+    <filePatcher name="DataGrip" remove="fileTypes" append="files/plugins/datagrip"/>
     <filePatcher name="Freemarker" remove="icons" append="files/plugins/freemarker"/>
     <filePatcher name="Goland" remove="icons" append="icons/plugins/goland"/>
     <filePatcher name="Groovy" remove="icons/groovy" append="files/plugins/groovy"/>
