@@ -1,0 +1,36 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -->
+
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="#F9C438" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.36393 5.42134C4.45435 4.39067 2.37408 5.70339 1.16878 7.21457C1.1231 7.27028 1.03525 7.23546 1.04579 7.16234C1.11607 6.76191 1.28123 5.97846 1.60452 5.26117C2.91875 2.34674 6.41515 0.929569 8.49543 1.00269C10.5757 1.07581 13.0671 2.43728 12.2027 4.35934C11.4401 6.05855 10.407 6.50076 7.36393 5.42134Z"/>
+  <path
+    d="M5.18201 5.37342C5.18201 5.33511 5.1539 5.30029 5.11173 5.30029C4.14539 5.32467 2.08972 5.96535 1.02498 7.90134C1.02146 7.90831 1.01795 7.91527 1.01795 7.92572C0.687635 10.2413 5.02388 11.7524 5.18201 5.37342Z"/>
+  <path
+    d="M8.64852 10.5785C11.5581 11.6092 13.6384 10.2965 14.8437 8.7853C14.8893 8.72958 14.9772 8.7644 14.9666 8.83752C14.8963 9.23796 14.7312 10.0214 14.4079 10.7387C13.0972 13.6532 9.60081 15.0703 7.52053 14.9972C5.44025 14.924 2.94885 13.5626 3.81328 11.6405C4.5723 9.94483 5.60892 9.50259 8.64852 10.5785Z"/>
+  <path
+    d="M10.811 10.6863C10.811 10.7246 10.8392 10.7594 10.8813 10.7594C11.8476 10.7351 13.9104 10.063 14.9752 8.12355C14.9787 8.11658 14.9822 8.10962 14.9822 8.09917C15.3125 5.78712 10.9691 4.30728 10.811 10.6863Z"/>
+
+</svg>
