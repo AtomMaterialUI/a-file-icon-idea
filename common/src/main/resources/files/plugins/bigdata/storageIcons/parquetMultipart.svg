@@ -24,8 +24,10 @@
   -
   -->
 
-
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-    <path fill="#FF5370"
-          d="M2.2,16.06L3.88,12L2.2,7.94L6.26,6.26L7.94,2.2L12,3.88L16.06,2.2L17.74,6.26L21.8,7.94L20.12,12L21.8,16.06L17.74,17.74L16.06,21.8L12,20.12L7.94,21.8L6.26,17.74L2.2,16.06M13,17V15H11V17H13M13,13V7H11V13H13Z" />
+<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+  <g fill="#50ABF1" fill-rule="evenodd" transform="translate(1 2)">
+    <path fill-opacity=".5" d="M11.6666667,8 L14,9 L7,12 L0,9 L2.33333333,8 L7,10 L11.6666667,8 Z" />
+    <path fill-opacity=".7" d="M11.6666667,5 L14,6 L7,9 L0,6 L2.33333333,5 L7,7 L11.6666667,5 Z" />
+    <polygon points="7 0 14 3 7 6 0 3" />
+  </g>
 </svg>

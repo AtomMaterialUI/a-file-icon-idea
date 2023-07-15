@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,9 @@
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
   -
-  -
   -->
 
-
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-    <path fill="#FF5370"
-          d="M2.2,16.06L3.88,12L2.2,7.94L6.26,6.26L7.94,2.2L12,3.88L16.06,2.2L17.74,6.26L21.8,7.94L20.12,12L21.8,16.06L17.74,17.74L16.06,21.8L12,20.12L7.94,21.8L6.26,17.74L2.2,16.06M13,17V15H11V17H13M13,13V7H11V13H13Z" />
+<svg big="true" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="100 -860 720 720">
+  <path fill="#9575CD"
+        d="M244-360q-10.4 0-17.2-6.8-6.8-6.8-6.8-17.2v-168h-36q-10.4 0-17.2-6.8-6.8-6.8-6.8-17.2 0-10.4 6.8-17.2 6.8-6.8 17.2-6.8h54q12.75 0 21.375 8.625T268-570v186q0 10.4-6.8 17.2-6.8 6.8-17.2 6.8Zm138 0q-12.75 0-21.375-8.625T352-390v-80q0-15 9.5-24.5T386-504h98v-48H376q-10.4 0-17.2-6.8-6.8-6.8-6.8-17.2 0-10.4 6.8-17.2 6.8-6.8 17.2-6.8h122q15 0 24.5 9.5T532-566v76q0 15-9.5 24.5T498-456h-98v48h108q10.4 0 17.2 6.8 6.8 6.8 6.8 17.2 0 10.4-6.8 17.2-6.8 6.8-17.2 6.8H382Zm242 0q-10.4 0-17.2-6.8-6.8-6.8-6.8-17.2 0-10.4 6.8-17.2 6.8-6.8 17.2-6.8h108v-48h-68q-9.6 0-16.8-7.2-7.2-7.2-7.2-16.8 0-9.6 7.2-16.8 7.2-7.2 16.8-7.2h68v-48H624q-10.4 0-17.2-6.8-6.8-6.8-6.8-17.2 0-10.4 6.8-17.2 6.8-6.8 17.2-6.8h122q15 0 24.5 9.5T780-566v172q0 15-9.5 24.5T746-360H624Z"/>
 </svg>

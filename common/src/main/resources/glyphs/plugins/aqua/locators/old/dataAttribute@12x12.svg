@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,11 @@
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
   -
-  -
   -->
 
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px" viewBox="0 0 24 24">
-    <path fill="#FF5370"
-          d="M2.2,16.06L3.88,12L2.2,7.94L6.26,6.26L7.94,2.2L12,3.88L16.06,2.2L17.74,6.26L21.8,7.94L20.12,12L21.8,16.06L17.74,17.74L16.06,21.8L12,20.12L7.94,21.8L6.26,17.74L2.2,16.06M13,17V15H11V17H13M13,13V7H11V13H13Z" />
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="12px" height="12px" fill="#FFA726"
+     viewBox="0 0 24 24">
+  <path
+    d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z"/>
 </svg>
