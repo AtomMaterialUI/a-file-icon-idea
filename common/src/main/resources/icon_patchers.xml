@@ -120,6 +120,7 @@
     <glyphPatcher name="JavaScript" remove="icons" append="glyphs/plugins/javascript"/>
     <glyphPatcher name="JavaScript PSI" remove="icons/classes" append="glyphs/plugins/javascript"/>
     <glyphPatcher name="JavaScript PSI 2" remove="icons/members" append="glyphs/plugins/javascript"/>
+    <glyphPatcher name="JavaEE" remove="icons" append="glyphs/javaee"/>
     <glyphPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="glyphs/plugins/kotlin"/>
     <glyphPatcher name="Less" remove="org/jetbrains/plugins/less" append="glyphs/plugins/less"/>
     <glyphPatcher name="Lombok" remove="icons" append="glyphs/plugins/lombok"/>
@@ -147,7 +148,7 @@
     <filePatcher name="CLion" remove="" append="files/plugins/clion"/>
     <filePatcher name="CLionEmbedded" remove="" append="files/plugins/clionEmbedded"/>
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="files/plugins/coffee"/>
-    <filePatcher name="Cucumber" remove="org/jetbrains/plugins/cucumber/icons" append="icons/plugins/cucumber"/>
+    <filePatcher name="Cucumber" remove="org/jetbrains/plugins/cucumber/icons" append="files/plugins/cucumber"/>
     <filePatcher name="Dart" remove="icons" append="files/plugins/dart"/>
     <filePatcher name="DataGrip" remove="fileTypes" append="files/plugins/datagrip"/>
     <filePatcher name="Freemarker" remove="icons" append="files/plugins/freemarker"/>
