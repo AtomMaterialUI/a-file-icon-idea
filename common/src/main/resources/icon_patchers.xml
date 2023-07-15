@@ -42,6 +42,7 @@
     <iconPatcher name="Coffeescript" remove="org/coffeescript/images" append="icons/plugins/coffee"/>
     <iconPatcher name="Collaboration" remove="icons" append="icons/plugins/collaboration"/>
     <iconPatcher name="Collaboration2" remove="icons/review" append="icons/plugins/collaboration"/>
+    <iconPatcher name="Cucumber" remove="org/jetbrains/plugins/cucumber" append="icons/plugins/cucumber"/>
     <iconPatcher name="Database" remove="icons" append="icons/plugins/datagrip"/>
     <iconPatcher name="Datalore" remove="icons/org/jetbrains/plugins/notebooks/jupyter/ui"
                  append="icons/plugins/datalore"/>
@@ -145,6 +146,7 @@
     <filePatcher name="CLion" remove="" append="files/plugins/clion"/>
     <filePatcher name="CLionEmbedded" remove="" append="files/plugins/clionEmbedded"/>
     <filePatcher name="Coffeescript" remove="org/coffeescript/images" append="files/plugins/coffee"/>
+    <filePatcher name="Cucumber" remove="org/jetbrains/plugins/cucumber/icons" append="icons/plugins/cucumber"/>
     <filePatcher name="Dart" remove="icons" append="files/plugins/dart"/>
     <filePatcher name="Freemarker" remove="icons" append="files/plugins/freemarker"/>
     <filePatcher name="Goland" remove="icons" append="icons/plugins/goland"/>
