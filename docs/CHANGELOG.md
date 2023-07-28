@@ -2,6 +2,14 @@
 
 ----
 
+## 92.0.0 (9.2.0)
+
+### Other
+
+- Add a lot more UI icons, mostly related to the New UI
+- Fix deprecations
+- Fix some wrong svg files
+
 ## 91.0.0 (9.1.0)
 
 ### Fixes
