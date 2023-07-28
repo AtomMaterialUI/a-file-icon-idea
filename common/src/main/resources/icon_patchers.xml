@@ -81,6 +81,7 @@
     <iconPatcher name="Ruby" remove="icons" append="icons/plugins/ruby"/>
     <iconPatcher name="Rust" remove="" append="icons/plugins/rust"/>
     <iconPatcher name="Scala" remove="" append="icons/plugins/scala"/>
+    <iconPatcher name="Selenium" remove="" append="icons/plugins/selenium"/>
     <iconPatcher name="Space" remove="icons" append="icons/plugins/space"/>
     <iconPatcher name="Spark" remove="com/jetbrains/spark" append="icons/plugins/bigdata"/>
     <iconPatcher name="Spring" remove="icons" append="icons/plugins/spring"/>
