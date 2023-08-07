@@ -48,14 +48,14 @@ plugins {
   // Gradle Qodana Plugin
   id("org.jetbrains.qodana") version "0.1.13"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.23.0"
+  id("io.gitlab.arturbosch.detekt") version "1.23.1"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
+  id("org.jlleitschuh.gradle.ktlint") version "11.5.1"
 }
 
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.20")
   implementation("org.javassist:javassist:3.29.2-GA")
