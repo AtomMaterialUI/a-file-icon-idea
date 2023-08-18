@@ -30,6 +30,7 @@ import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
+import com.mallowigi.utils.isPluginEnabled
 
 /** Represents a list of [SelectedAssociations]. */
 @Suppress("MemberNameEqualsClassName")
@@ -162,11 +163,14 @@ class SelectedAssociations(
 
   companion object {
     private val FILE_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = setOf(
-      Pair("PHP") { true },
-      Pair("Kotlin") { true },
-      Pair("Java") { true },
+      Pair("PHP") { isPluginEnabled("com.jetbrains.php") },
+      Pair("Kotlin") { isPluginEnabled("Kotlin") },
+      Pair("Java") { isPluginEnabled("java") },
       Pair("Ruby") { AtomSettingsConfig.instance.isUseRubyIcons },
     )
+
     private val FOLDER_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = emptySet()
+
+
   }
 }

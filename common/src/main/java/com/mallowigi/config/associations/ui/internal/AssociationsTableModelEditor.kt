@@ -368,6 +368,7 @@ class AssociationsTableModelEditor(
       val point = event.point
       val row: Int = table.rowAtPoint(point)
       val column: Int = table.columnAtPoint(point) + 1 // Because the touched takes a slot...
+      if (row < 0 || column < 0) return false
       val modelIndex = table.convertRowIndexToModel(row)
 
       if (modelIndex < 0 || modelIndex >= table.rowCount) return false
@@ -421,7 +422,6 @@ class AssociationsTableModelEditor(
       return true
     }
   }
-
 
   @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation")
   companion object {

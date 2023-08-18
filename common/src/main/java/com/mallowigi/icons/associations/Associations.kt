@@ -42,9 +42,10 @@ abstract class Associations : Serializable {
    * Find the [Association] which matches the file info
    *
    * @param fileInfo the file information
+   * @param includeIgnored whether to include ignored associations
    * @return the [Association] if found
    */
-  fun findAssociation(fileInfo: FileInfo): Association? {
+  fun findAssociation(fileInfo: FileInfo, includeIgnored: Boolean = false): Association? {
     // First check in custom assocs
     val matching: Association = findMatchingAssociation(fileInfo) ?: return null
 
@@ -60,7 +61,7 @@ abstract class Associations : Serializable {
         LOG.error(e)
       }
       // Other ignores
-      ignoredAssociations.contains(matching.name) -> return null
+      !includeIgnored && ignoredAssociations.contains(matching.name) -> return null
     }
     return matching
   }

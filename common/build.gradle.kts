@@ -45,6 +45,7 @@ intellij {
     listOf(
       "java",
       "Git4Idea",
+      "com.jetbrains.php:232.8660.185",
     )
   )
 }

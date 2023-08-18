@@ -34,6 +34,7 @@
   <depends>com.intellij.modules.platform</depends>
   <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
   <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
+  <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
 
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
@@ -264,10 +265,10 @@
     <hr>
     <h3>Donate</h3>
     <p>This theme is backed up by <a
-      href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
+        href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
       If you like this plugin, don't hesitate to give it a star or donate via <a
-        href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
-        href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
+          href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
+          href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
     ]]></description>
 
   <change-notes>

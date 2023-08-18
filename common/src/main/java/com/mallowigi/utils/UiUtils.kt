@@ -119,3 +119,6 @@ fun findSettingsPage(link: ActionLink, id: String) {
   val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(link))
   settings?.select(settings.find(id))
 }
+
+fun isPluginEnabled(pluginId: String) = PluginManagerCore.getPlugin(PluginId.getId(pluginId))?.isEnabled
+  ?: false
