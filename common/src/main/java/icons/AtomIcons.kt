@@ -61,6 +61,8 @@ object AtomIcons {
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
   val LOGO: Icon = load("/logo.svg")
+  private const val WIDTH = 16
+  private const val HEIGHT = 16
 
   /**
    * Get file icon from the resources folder
@@ -68,7 +70,8 @@ object AtomIcons {
    * @param iconPath path without the prefix
    * @return the full path
    */
-  fun getFileIcon(iconPath: String): Icon = IconLoader.getIcon(toCanonicalPath(FILES_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass)
+  fun getFileIcon(iconPath: String): Icon =
+    IconLoader.getIcon(toCanonicalPath(FILES_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass)
 
   /**
    * Get folder icons from the resources folder
@@ -76,12 +79,10 @@ object AtomIcons {
    * @param iconPath path without the prefix
    * @return the DirIcon (closed+opened)
    */
-  fun getFolderIcon(iconPath: String): DirIcon {
-    return DirIcon(
-      IconLoader.getIcon(toCanonicalPath(FOLDERS_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
-      IconLoader.getIcon(toCanonicalPath(FOLDERS_OPEN_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
-    )
-  }
+  fun getFolderIcon(iconPath: String): DirIcon = DirIcon(
+    IconLoader.getIcon(toCanonicalPath(FOLDERS_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
+    IconLoader.getIcon(toCanonicalPath(FOLDERS_OPEN_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
+  )
 
   /**
    * Loads an icon
@@ -107,7 +108,7 @@ object AtomIcons {
       Logger.getAnonymousLogger().info(e.message)
     }
     val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
-    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(WIDTH), JBUI.scale(HEIGHT))
   }
 
   /**
