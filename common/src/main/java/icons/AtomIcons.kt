@@ -27,6 +27,9 @@ package icons
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.Ref
+import com.intellij.openapi.util.io.FileUtil
+import com.intellij.openapi.util.io.FileUtil.join
+import com.intellij.openapi.util.io.FileUtil.toCanonicalPath
 import com.intellij.openapi.vfs.VFileProperty
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.LayeredIcon
@@ -43,6 +46,7 @@ import java.io.FileInputStream
 import java.io.IOException
 import java.net.MalformedURLException
 import java.net.URL
+import java.nio.file.Paths
 import java.util.logging.Logger
 import javax.swing.Icon
 
@@ -64,7 +68,7 @@ object AtomIcons {
    * @param iconPath path without the prefix
    * @return the full path
    */
-  fun getFileIcon(iconPath: String): Icon = IconLoader.getIcon(FILES_PATH + iconPath, AtomIcons.javaClass)
+  fun getFileIcon(iconPath: String): Icon = IconLoader.getIcon(toCanonicalPath(FILES_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass)
 
   /**
    * Get folder icons from the resources folder
@@ -74,8 +78,8 @@ object AtomIcons {
    */
   fun getFolderIcon(iconPath: String): DirIcon {
     return DirIcon(
-      IconLoader.getIcon(FOLDERS_PATH + iconPath, AtomIcons.javaClass),
-      IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath, AtomIcons.javaClass)
+      IconLoader.getIcon(toCanonicalPath(FOLDERS_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
+      IconLoader.getIcon(toCanonicalPath(FOLDERS_OPEN_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
     )
   }
 
@@ -85,7 +89,7 @@ object AtomIcons {
    * @param path absolute path to the icon
    * @return the icon. must not be null
    */
-  internal fun load(@NonNls path: String): Icon = IconLoader.findIcon(path, AtomIcons.javaClass)!!
+  internal fun load(@NonNls path: String): Icon = IconLoader.findIcon(toCanonicalPath(path), AtomIcons.javaClass)!!
 
   /**
    * Tries to load a svg icon
@@ -93,6 +97,7 @@ object AtomIcons {
    * @param canonicalPath
    * @return
    */
+  @Suppress("UnstableApiUsage")
   @Throws(IOException::class)
   fun loadSVGIcon(canonicalPath: String): Icon {
     val url = Ref.create<URL>()
