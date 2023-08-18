@@ -13,6 +13,7 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/common/src/main/resources/iconGenerator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/iconGenerator" vcs="Git" />
   </component>
 </project>
