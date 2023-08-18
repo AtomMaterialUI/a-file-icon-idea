@@ -35,8 +35,9 @@ import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.PlatformIcons
 import com.mallowigi.config.AtomSettingsConfig
-import com.mallowigi.icons.special.CustomDirIcon
+import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.icons.special.DirIcon
+import com.mallowigi.models.VirtualFileInfo
 import icons.AtomIcons
 import java.util.*
 import javax.swing.Icon
@@ -53,13 +54,11 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
     if (project != null && file != null && !project.isDisposed) {
       when {
-//        AtomFileIconsConfig.instance.isLowPowerMode      -> return
         !AtomSettingsConfig.instance.isUseHollowFolders -> return
         !file.isDirectory -> return
         AtomSettingsConfig.instance.isHideFolderIcons -> return
         isFolderContainingOpenFiles(project, file) -> setOpenDirectoryIcon(data, file, project)
       }
-
     }
   }
 
@@ -77,13 +76,14 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
    */
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      if (data.getIcon(/* open = */ true) is CustomDirIcon) return
-
+      val matchedAssociation = matchAssociation(file, data)
       val icon = when {
         data.getIcon(/* open = */ true) is DirIcon -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
           DirIcon(openedIcon)
         }
+
+        matchedAssociation != null -> matchedAssociation
 
         ProjectRootManager.getInstance(project).fileIndex.isExcluded(file) -> AtomIcons.EXCLUDED
         ProjectRootsUtil.isModuleContentRoot(file, project) -> AtomIcons.MODULE
@@ -98,6 +98,19 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     } catch (e: Exception) {
       thisLogger().warn(e.message)
     }
+  }
+
+  private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData): Icon? {
+    val fileInfo = VirtualFileInfo(virtualFile)
+    val associations = AtomSelectConfig.instance.selectedFolderAssociations
+
+    val matchingAssociation = associations.findAssociation(fileInfo)
+    if (matchingAssociation != null) {
+      val iconPath = matchingAssociation.icon
+      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
+      return AtomIcons.getLayeredIcon(icon, virtualFile)
+    }
+    return null
   }
 
   companion object {
