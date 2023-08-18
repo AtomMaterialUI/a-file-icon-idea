@@ -27,8 +27,6 @@ package icons
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.Ref
-import com.intellij.openapi.util.io.FileUtil
-import com.intellij.openapi.util.io.FileUtil.join
 import com.intellij.openapi.util.io.FileUtil.toCanonicalPath
 import com.intellij.openapi.vfs.VFileProperty
 import com.intellij.openapi.vfs.VirtualFile
@@ -46,7 +44,6 @@ import java.io.FileInputStream
 import java.io.IOException
 import java.net.MalformedURLException
 import java.net.URL
-import java.nio.file.Paths
 import java.util.logging.Logger
 import javax.swing.Icon
 
