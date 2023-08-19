@@ -31,8 +31,8 @@ import javax.swing.UIManager
 /** Big icons patcher. */
 class BigIconsPatcher : SvgPatcher {
 
-  private var customIconSize = REGULAR
-  private var customLineHeight = REGULAR
+  private var customIconSize = DEFAULT_ICON_SIZE
+  private var customLineHeight = DEFAULT_ICON_SIZE
   private var defaultRowHeight = UIManager.getInt(ROW_HEIGHT)
   private var hasCustomLineHeight = false
   private var hasCustomSize = false
@@ -54,7 +54,7 @@ class BigIconsPatcher : SvgPatcher {
     val isBig = attributes[SvgPatcher.BIG]
     val customFontSize = AtomSettingsConfig.instance.customIconSize.toString()
     val hasCustomSize = AtomSettingsConfig.instance.hasCustomIconSize
-    val size = if (hasCustomSize) customFontSize else REGULAR
+    val size = if (hasCustomSize) customFontSize else DEFAULT_ICON_SIZE
 
     if (isBig == SvgPatcher.TRUE) {
       attributes[SvgPatcher.WIDTH] = size.toString() + SvgPatcher.PX
@@ -72,20 +72,23 @@ class BigIconsPatcher : SvgPatcher {
   }
 
   private fun updateRowHeight() {
-    val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_SIZE else defaultRowHeight
+    val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_LINE_HEIGHT else null
     val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
     val materialHeight = UIManager.getInt(MATERIAL_ROW_HEIGHT)
 
     if (materialHeight != 0) {
       UIManager.put(ROW_HEIGHT, materialHeight)
-    } else {
+    } else if (customRowHeight != null) {
       UIManager.put(ROW_HEIGHT, customRowHeight)
+    } else {
+      UIManager.put(ROW_HEIGHT, null)
     }
   }
 
   companion object {
-    private const val MIN_SIZE = 12
-    private const val REGULAR = 16
+    private const val MIN_LINE_HEIGHT = 16
+    private const val DEFAULT_LINE_HEIGHT = 20
+    private const val DEFAULT_ICON_SIZE = 16
     private const val ROW_HEIGHT = "Tree.rowHeight"
     private const val MATERIAL_ROW_HEIGHT = "Tree.materialRowHeight"
   }
