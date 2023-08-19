@@ -28,6 +28,9 @@
 
 - Add NestJS resolvers
 - Add NestJS models
+- Icons: C, CSharp, QSharp, Turborepo, SWCRC, SyncPack, FormKit, Lottie, Containerfile, Containerignore, CSharpier,
+  Docker Bake, HappyX, Panda, Plastic SCM, Taurignore
+- Folders: Bot, Plastic SCM, UI, Swagger, Gitea, Lottie, Turborepo
 
 ## 92.0.0 (9.2.0)
 
