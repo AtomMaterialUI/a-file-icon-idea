@@ -44,6 +44,9 @@ class BundledAssociations {
   /** All loaded folder [Associations]. */
   private var defaultFolderAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
+  /** All loaded folder open [Associations]. */
+  private var defaultFolderOpenAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+
   /** Default psi associations. */
   private var defaultPsiAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
@@ -76,6 +79,7 @@ class BundledAssociations {
   fun getMap(iconType: IconType): MutableMap<String, RegexAssociation> = when (iconType) {
     IconType.FILE -> defaultFileAssociations
     IconType.FOLDER -> defaultFolderAssociations
+    IconType.FOLDER_OPEN -> defaultFolderOpenAssociations
     IconType.PSI -> defaultPsiAssociations
   }
 
@@ -85,13 +89,17 @@ class BundledAssociations {
    * @param name assoc name
    * @param iconType the [IconType]
    */
-  fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
+  private fun hasDefault(name: String, iconType: IconType): Boolean = getMap(iconType).containsKey(name)
 
   /** Load bundled associations. */
   private fun init() {
     folderAssociations.getTheAssociations()
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FOLDER) }
+
+    folderOpenAssociations.getTheAssociations()
+      .filterIsInstance<RegexAssociation>()
+      .forEach { insert(it.name, it, IconType.FOLDER_OPEN) }
 
     fileAssociations.getTheAssociations()
       .filterIsInstance<RegexAssociation>()
@@ -120,6 +128,10 @@ class BundledAssociations {
 
     /** Load folder associations from XML. */
     val folderAssociations: DefaultAssociations =
+      AssociationsFactory.create("/iconGenerator/folder_associations.xml")
+
+    /** Load folder open associations from XML. */
+    val folderOpenAssociations: DefaultAssociations =
       AssociationsFactory.create("/iconGenerator/folder_associations.xml")
 
     /** Load file associations from XML. */

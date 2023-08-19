@@ -102,12 +102,12 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
   private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData): Icon? {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFolderAssociations
+    val associations = AtomSelectConfig.instance.selectedFolderOpenAssociations
 
     val matchingAssociation = associations.findAssociation(fileInfo)
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
-      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)
+      val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath).openedIcon, iconPath)
       return AtomIcons.getLayeredIcon(icon, virtualFile)
     }
     return null

@@ -26,16 +26,14 @@
 package com.mallowigi.config.select
 
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.SettingsCategory
-import com.intellij.openapi.components.State
-import com.intellij.openapi.components.Storage
+import com.intellij.openapi.components.*
 import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.SelectedAssociations
 import com.mallowigi.models.IconType
+import com.mallowigi.utils.getValue
 import java.util.*
 
 /** Configuration for [SelectedAssociations]. */
@@ -56,16 +54,24 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   @Property
   var selectedFolderAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
 
+  /** List of user folder open [Association]s. */
+  @Property
+  var selectedFolderOpenAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
+
   init {
     init()
   }
 
-  fun apply(fileAssociations: SelectedAssociations, folderAssociations: SelectedAssociations) {
+  fun apply(fileAssociations: SelectedAssociations,
+            folderAssociations: SelectedAssociations,
+            folderOpenAssociations: SelectedAssociations) {
     selectedFileAssociations = fileAssociations
     selectedFolderAssociations = folderAssociations
+    selectedFolderOpenAssociations = folderOpenAssociations
 
     selectedFileAssociations.registerOwnAssociations()
     selectedFolderAssociations.registerOwnAssociations()
+    selectedFolderOpenAssociations.registerOwnAssociations()
 
     fireChanged()
   }
@@ -75,6 +81,9 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
   /** Find folder association by name. */
   fun findFolderAssociationByName(name: String): Association? = selectedFolderAssociations.findAssociationByName(name)
+
+  /** Find folder open association by name. */
+  fun findFolderOpenAssociationByName(name: String): Association? = selectedFolderOpenAssociations.findAssociationByName(name)
 
   /**
    * Is file icons modified
@@ -100,10 +109,17 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     return !Objects.deepEquals(this.selectedFolderAssociations.ownValues(), touched)
   }
 
+  fun isFolderOpenIconsModified(folderOpenAssociations: List<Association>): Boolean {
+    val touched = folderOpenAssociations.filter { it.touched }
+
+    return !Objects.deepEquals(this.selectedFolderOpenAssociations.ownValues(), touched)
+  }
+
   /** Resets the associations. */
   fun reset() {
     selectedFolderAssociations.reset()
     selectedFileAssociations.reset()
+    selectedFolderOpenAssociations.reset()
   }
 
   /** The config state. */
@@ -130,13 +146,12 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   private fun init() {
     selectedFolderAssociations.initMutableListFromDefaults()
     selectedFileAssociations.initMutableListFromDefaults()
+    selectedFolderOpenAssociations.initMutableListFromDefaults()
   }
 
   companion object {
     /** Instance of the [AtomSelectConfig]. */
     @JvmStatic
-    val instance: AtomSelectConfig
-      get() = ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)
+    val instance: AtomSelectConfig by lazy { service() }
   }
-
 }

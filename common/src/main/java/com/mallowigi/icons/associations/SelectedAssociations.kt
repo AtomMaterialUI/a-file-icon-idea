@@ -43,7 +43,6 @@ class SelectedAssociations(
   override val ignoredAssociations: Set<String>
     get() = when (iconType) {
       IconType.FILE -> FILE_IGNORED_ASSOCIATIONS.filter { it.second() }.map { it.first }.toSet()
-      IconType.FOLDER -> FOLDER_IGNORED_ASSOCIATIONS.filter { it.second() }.map { it.first }.toSet()
       else -> emptySet()
     }
 
@@ -168,9 +167,5 @@ class SelectedAssociations(
       Pair("Java") { isPluginEnabled("java") },
       Pair("Ruby") { AtomSettingsConfig.instance.isUseRubyIcons },
     )
-
-    private val FOLDER_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = emptySet()
-
-
   }
 }

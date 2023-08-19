@@ -35,7 +35,6 @@ import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
 import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
 import com.mallowigi.config.AtomSettingsConfig
-import com.mallowigi.icons.special.CustomDirIcon
 import com.mallowigi.icons.special.DirIcon
 import icons.AtomIcons
 import java.util.*
@@ -65,7 +64,6 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
   private fun setOpenDirectoryIcon(data: PresentationData) {
     try {
       when {
-        data.getIcon(true) is CustomDirIcon -> return
         data.getIcon(true) is DirIcon -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
           data.setIcon(DirIcon(openedIcon))

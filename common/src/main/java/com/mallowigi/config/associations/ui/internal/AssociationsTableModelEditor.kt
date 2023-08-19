@@ -385,6 +385,12 @@ class AssociationsTableModelEditor(
           else -> false
         }
 
+        IconType.FOLDER_OPEN -> when (column) {
+          Columns.FOLDERCOLOR.index -> setFolderColor(modelIndex)
+          Columns.FOLDERICONCOLOR.index -> setFolderIconColor(modelIndex)
+          else -> false
+        }
+
         IconType.PSI -> false
       }
     }

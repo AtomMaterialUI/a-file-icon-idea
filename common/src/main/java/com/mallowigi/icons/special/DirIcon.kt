@@ -34,7 +34,7 @@ import javax.swing.Icon
  * @property closedIcon
  * @property openedIcon
  */
-open class DirIcon(val closedIcon: Icon, val openedIcon: Icon) : Icon {
+open class DirIcon(private val closedIcon: Icon, val openedIcon: Icon) : Icon {
   internal constructor() : this(AtomIcons.Nodes2.FolderOpen, AtomIcons.Nodes2.FolderOpen)
 
   constructor(icon: Icon) : this(icon, icon)

@@ -32,5 +32,5 @@ import javax.swing.Icon
 class FolderIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
-  override fun loadIcon(path: String): Icon = AtomIcons.getFolderIcon(path)
+  override fun loadIcon(path: String): Icon = AtomIcons.getFolderIcon(path).openedIcon
 }

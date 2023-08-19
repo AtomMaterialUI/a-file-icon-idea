@@ -89,7 +89,6 @@ abstract class Associations : Serializable {
   abstract fun getTheAssociations(): List<Association>
 
   companion object {
-    private const val serialVersionUID: Long = -1L
     private val LOG = Logger.getInstance(Associations::class.java)
 
     @NonNls

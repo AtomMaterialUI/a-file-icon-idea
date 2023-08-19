@@ -33,6 +33,12 @@ enum class IconType {
   /** Folder icon. */
   FOLDER,
 
+  /**
+   * Folder Open
+   *
+   */
+  FOLDER_OPEN,
+
   /** Psi icon. */
   PSI
 }
