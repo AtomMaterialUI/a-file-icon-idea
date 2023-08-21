@@ -2,6 +2,25 @@
 
 <hr />
 
+<h2>93.0.0 (9.3.0)</h2>
+
+<h3>Features</h3>
+
+<ul><li>Support for <strong>Custom Folder Open Icons</strong>. You can now define your custom hollow folders!<ul><li>If you define a <em>Custom Folder Icon</em> without a <em>Custom Folder Open Icon</em>, the folder icon will be set for both the
+      closed and open states</li><li>You can define a <em>Custom Folder Open Icon</em> without a <em>Custom Folder Icon</em>, it will be displayed only when you have
+      an opened file of that folder.</li><li>You need the <em>Hollow Folders</em> option enabled.</li><li>For Rider, you need to disable the <em>Low Power Mode</em>.</li></ul></li><li>Add back <em>Custom Associations</em> for <strong>PHP, Java and Kotlin</strong>!</li></ul>
+
+<h3>Fixes</h3>
+
+<ul><li>Improve <em>line height</em>: now the line height is changed only if one of the options &quot;Custom Size&quot; or &quot;Custom Line Height&quot;
+  are set. Otherwise it will use the IDE default.</li><li>Fix the search icon color.</li><li>Duplicate some icons in order for the color feature to work properly (for example, in associations such as &quot;Kotlin
+  Tests Folder&quot; or &quot;Jest Files&quot;, to be separated from the regular Kotlin/Jest icons).</li><li>Fix Custom Associations not working on Windows (hopefully!)</li></ul>
+
+<h3>Additions</h3>
+
+<ul><li>Add NestJS resolvers</li><li>Add NestJS models</li><li>Icons: C, CSharp, QSharp, Turborepo, SWCRC, SyncPack, FormKit, Lottie, Containerfile, Containerignore, CSharpier,
+  Docker Bake, HappyX, Panda, Plastic SCM, Taurignore</li><li>Folders: Bot, Plastic SCM, UI, Swagger, Gitea, Lottie, Turborepo</li></ul>
+
 <h2>92.0.0 (9.2.0)</h2>
 
 <h3>Other</h3>
@@ -68,9 +87,9 @@
 <h3>Additions</h3>
 
 <ul><li>Icons:<ul><li>Test Kotlin</li><li>Test PHP</li></ul></li><li>Parent folders:<ul><li>GitHub files: <code>.github/*.yaml</code></li><li>Plugin manifests: <code>META-INF/*.xml</code></li><li>Test files: <code>tests?/*</code>, <code>units?/*</code> and <code>specs?/*</code> (for all main languages)</li><li>Ansible files: <code>ansible/*.yml</code></li><li>Bean files: <code>beans?/*.java</code></li><li>Bloc files: <code>blocs?/*.dart</code>, <code>events?/*.dart</code>, <code>states?/*.dart</code></li><li>Docker files: <code>docker/*.dockerfile</code>, <code>dockerfiles?/*.yml</code></li><li>Eslint files: <code>eslint/*.yml|json|[cm]?js|ts</code></li><li>Expo files: <code>expo/*.js|json|ts</code></li><li>Gruntfiles: <code>grunt/*.js</code>, <code>gruntfiles?/*.js</code></li><li>Gulpfiles: <code>gulp/*.js</code>, <code>gulpfiles?/*.js</code></li><li>Husky files: <code>.husky/*.js</code>, <code>.husky/*.yml</code>, <code>.husky/*.json</code></li><li>Husky Hooks: <code>hooks/*.sh</code></li><li>Lang files: <code>langs/*</code>, <code>locales?/*</code>, <code>translations?/*</code>, <code>i18n/*</code></li><li>Jest files: <code>jest/*.js|jsx|ts|tsx</code></li><li>Mock files: <code>spy/*</code>, <code>mocks?/*</code>, <code>stubs?/*</code></li><li>NgRx
-    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rails
-    files: <code>channels?/*.rb</code>, <code>controllers?/*.rb</code>, <code>helpers?/*.rb</code>, <code>jobs?/*.rb</code>, <code>mailers?/*.rb</code>, <code>models?/*.rb</code>, <code>views?/*.rb</code>...</li><li>Redux
-    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rspec files: <code>rspec/*.rb</code></li><li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li><li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li><li>VSCode files: <code>.vscode/*.json</code></li></ul></li></ul>
+      files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rails
+      files: <code>channels?/*.rb</code>, <code>controllers?/*.rb</code>, <code>helpers?/*.rb</code>, <code>jobs?/*.rb</code>, <code>mailers?/*.rb</code>, <code>models?/*.rb</code>, <code>views?/*.rb</code>...</li><li>Redux
+      files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rspec files: <code>rspec/*.rb</code></li><li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li><li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li><li>VSCode files: <code>.vscode/*.json</code></li></ul></li></ul>
 
 <h2>83.0.0 (8.3.0)</h2>
 
@@ -146,8 +165,8 @@
 <h3>Features</h3>
 
 <ul><li>You can now override <strong>File and Folder Icons' colors</strong> through <em>Custom File Associations</em>!<ul><li>Use the color picker to override the icon color</li><li>Folder Icons let you specify the Folder Color and Icon Color separately</li><li>Multicolored icons would only let you change the &quot;main color&quot;</li><li>Currently this affects both &quot;light&quot; and &quot;dark&quot; icons</li><li><strong>Important</strong>: To make it work for custom icons, you will need to add specific attributes on your SVG files:<ul><li>Add <code>iconColor=&lt;icon name&gt;</code> for file icons, with <code>Icon Name</code> being the exact name of the icon association (&quot;
-      Kotlin&quot;, &quot;Index&quot;, etc)</li><li>Add <code>folderColor=&lt;folder icon name&gt;</code> and <code>folderIconColor=&lt;folder icon name&gt;</code> for folder icons, with the same
-      requirement</li></ul></li><li>On the same note, <strong>do not change the pre-bundled associations' names</strong>, or the icon coloring will stop working!</li></ul></li></ul>
+          Kotlin&quot;, &quot;Index&quot;, etc)</li><li>Add <code>folderColor=&lt;folder icon name&gt;</code> and <code>folderIconColor=&lt;folder icon name&gt;</code> for folder icons, with the same
+          requirement</li></ul></li><li>On the same note, <strong>do not change the pre-bundled associations' names</strong>, or the icon coloring will stop working!</li></ul></li></ul>
 
 <h3>Additions</h3>
 
@@ -440,7 +459,7 @@
 <h3>Features</h3>
 
 <ul><li>Add new action: <strong>Refresh Icons</strong>. This will manually refresh all icons and reload the panes.<ul><li>This should fix bugs such as <a href="https://github.com/mallowigi/a-file-icon-idea/issues/93">https://github.com/mallowigi/a-file-icon-idea/issues/93</a>
-    and <a href="https://github.com/mallowigi/a-file-icon-idea/issues/79">https://github.com/mallowigi/a-file-icon-idea/issues/79</a></li></ul></li><li>Reorganized icons: now icons belonging to the <em>Files</em> category and <em>PSI</em> category are separate from the rest of icons.
+      and <a href="https://github.com/mallowigi/a-file-icon-idea/issues/79">https://github.com/mallowigi/a-file-icon-idea/issues/79</a></li></ul></li><li>Reorganized icons: now icons belonging to the <em>Files</em> category and <em>PSI</em> category are separate from the rest of icons.
   As a result, toggling <em>UI Icons</em> should not affect <em>File Icons</em> and <em>PSI Icons</em> and vice-versa.</li><li>Add icons to the <strong>Atom Material Settings Toolbar Menu</strong>.</li><li>Add actions for switching between <strong>Arrow Styles</strong></li></ul>
 
 <h2>26.0.0 (3.4.0)</h2>
