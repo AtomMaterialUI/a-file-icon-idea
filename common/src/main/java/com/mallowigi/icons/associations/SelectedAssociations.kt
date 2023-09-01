@@ -163,8 +163,8 @@ class SelectedAssociations(
   companion object {
     private val FILE_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = setOf(
       Pair("PHP") { isPluginEnabled("com.jetbrains.php") },
-      Pair("Kotlin") { isPluginEnabled("Kotlin") },
-      Pair("Java") { isPluginEnabled("java") },
+      Pair("Kotlin") { true },
+      Pair("Java") { true },
       Pair("Ruby") { AtomSettingsConfig.instance.isUseRubyIcons },
     )
   }
