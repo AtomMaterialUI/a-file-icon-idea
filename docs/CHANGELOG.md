@@ -2,6 +2,13 @@
 
 ----
 
+## 93.1.0 (9.3.1)
+
+### Fixes
+
+- Fix typo for `binaryOther` leading to icon not existing.
+- Restore PSI icons not applied for Java and Kotlin
+
 ## 93.0.0 (9.3.0)
 
 ### Features
