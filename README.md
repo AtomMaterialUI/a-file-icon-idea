@@ -50,7 +50,7 @@ the [Material Theme UI](https://github.com/mallowigi/material-theme-issues) plug
   - Plus-Minus: Plus and Minus signs
   - Arrows: Simple Arrows
   - None: No arrows
-- **Hollow Folders**: Add custom decorations on folders contianing opened files
+- **Hollow Folders**: Add custom decorations on folders containing opened files
 - **Custom Icon Size**: Assign a custom icon size (between 12 and 24)
 - **Accent Color**: Change the color of specific icons
   - Closing tab button
