@@ -30,7 +30,15 @@ import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /** Get a property from the gradle.properties file. */
-fun properties(key: String) = project.findProperty(key).toString()
+fun properties(key: String) = providers.gradleProperty(key).get()
+
+/**
+ * Returns the value of the environment variable associated with the specified key.
+ *
+ * @param key the key of the environment variable
+ * @return the value of the environment variable as a Provider<String>
+ */
+fun environment(key: String) = providers.environmentVariable(key)
 
 /** Get a property from a file. */
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
@@ -39,18 +47,13 @@ plugins {
   signing
   // Java support
   id("java")
-  // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.9.0"
-  // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.15.0"
-  // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-  id("org.jetbrains.changelog") version "2.1.2"
-  // Gradle Qodana Plugin
-  id("org.jetbrains.qodana") version "0.1.13"
-  // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.23.1"
-  // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "11.5.1"
+  alias(libs.plugins.kotlin)
+  alias(libs.plugins.gradleIntelliJPlugin)
+  alias(libs.plugins.changelog)
+  alias(libs.plugins.qodana)
+  alias(libs.plugins.detekt)
+  alias(libs.plugins.ktlint)
+  alias(libs.plugins.kover)
 }
 
 
@@ -84,8 +87,12 @@ allprojects {
 
   java {
     toolchain {
-      languageVersion.set(JavaLanguageVersion.of(17))
+      languageVersion = JavaLanguageVersion.of(17)
     }
+  }
+
+  kotlin {
+    jvmToolchain(17)
   }
 
   tasks {
@@ -113,7 +120,6 @@ allprojects {
       }
     }
 
-
     buildSearchableOptions {
       enabled = false
     }
@@ -121,51 +127,60 @@ allprojects {
   }
 }
 
+koverReport {
+  defaults {
+    xml {
+      onCheck = true
+    }
+  }
+}
+
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-  pluginName.set(properties("pluginName"))
-  version.set(properties("platformVersion"))
-  type.set(properties("platformType"))
-  downloadSources.set(true)
-  instrumentCode.set(true)
-  updateSinceUntilBuild.set(true)
-//  plugins.set(
+  pluginName = properties("pluginName")
+  version = properties("platformVersion")
+  type = properties("platformType")
+  downloadSources = true
+  instrumentCode = true
+  updateSinceUntilBuild = true
+//  plugins
 //    listOf(
 //      "zielu.gittoolbox:213.10.3"
 //    )
 //  )
-  //  localPath.set(properties("idePath"))
-//  sandboxDir.set("/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app")
+  //  localPath = properties("idePath")
+//  sandboxDir = "/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app"
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path.set("${project.projectDir}/docs/CHANGELOG.md")
-  version.set(properties("pluginVersion"))
-  header.set(provider { version.get() })
-  headerParserRegex.set("(\\d+\\.\\d+\\.\\d+)")
-  itemPrefix.set("-")
-  keepUnreleasedSection.set(true)
-  unreleasedTerm.set("Changelog")
-  groups.set(listOf("Features", "Fixes", "Removals", "Additions", "Other"))
+  path = "${project.projectDir}/docs/CHANGELOG.md"
+  version = properties("pluginVersion")
+  header = provider { version.get() }
+  headerParserRegex = "(\\d+\\.\\d+\\.\\d+)"
+  itemPrefix = "-"
+  keepUnreleasedSection = true
+  unreleasedTerm = "Changelog"
+  groups = listOf("Features", "Fixes", "Removals", "Additions", "Other")
 }
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
-  config = files("./detekt-config.yml")
+  config.setFrom("./detekt-config.yml")
   buildUponDefaultConfig = true
   autoCorrect = true
+  ignoreFailures = true
 }
 
 // Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
 qodana {
-  cachePath.set(projectDir.resolve(".qodana").canonicalPath)
-  reportPath.set(projectDir.resolve("build/reports/inspections").canonicalPath)
-  saveReport.set(true)
-  showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
+  cachePath = provider { file(".qodana").canonicalPath }
+  reportPath = provider { file("build/reports/inspections").canonicalPath }
+  saveReport = true
+  showReport = environment("QODANA_SHOW_REPORT").map { it.toBoolean() }.getOrElse(false)
 }
 
 tasks {
@@ -174,24 +189,23 @@ tasks {
     gradleVersion = properties("gradleVersion")
   }
 
-
   withType<Detekt> {
     jvmTarget = properties("javaVersion")
-    reports.xml.required.set(true)
+    reports.xml.required = true
   }
 
 
   patchPluginXml {
-    version.set(properties("pluginVersion"))
-    sinceBuild.set(properties("pluginSinceBuild"))
-    untilBuild.set(properties("pluginUntilBuild"))
+    version = properties("pluginVersion")
+    sinceBuild = properties("pluginSinceBuild")
+    untilBuild = properties("pluginUntilBuild")
 
     // Get the latest available change notes from the changelog file
-    changeNotes.set(changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML))
+    changeNotes = changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML)
   }
 
   runPluginVerifier {
-    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
+    ideVersions = properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList()
   }
 
   // Configure UI tests plugin
@@ -209,31 +223,18 @@ tasks {
 //  }
 
   signPlugin {
-    certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-    privateKey.set(System.getenv("PRIVATE_KEY"))
-    password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+    certificateChain = environment("CERTIFICATE_CHAIN")
+    privateKey = environment("PRIVATE_KEY")
+    password = environment("PRIVATE_KEY_PASSWORD")
   }
 
-
   publishPlugin {
-//    dependsOn("patchChangelog")
-    token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN") ?: file("./publishToken").readText().trim())
-    channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
+    token = environment("PUBLISH_TOKEN")
+    channels = listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
   }
 
   runIde {
-    ideDir.set(fileProperties("idePath"))
-  }
-
-  register("bumpPluginVersion") {
-    doLast {
-      val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
-      val gradleProperties = file("gradle.properties")
-      val updatedText = gradleProperties.readLines().joinToString("\n") {
-        if (it.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else it
-      }
-      gradleProperties.writeText(updatedText)
-    }
+    ideDir = fileProperties("idePath")
   }
 
   register("markdownToHtml") {
