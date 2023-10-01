@@ -94,9 +94,9 @@ fun replaceArrowIcons() {
 }
 
 /** Extract accent color from current theme. */
-@Suppress("HardCodedStringLiteral")
+@Suppress("HardCodedStringLiteral", "UnstableApiUsage")
 fun getAccentFromTheme(): String {
-  val namedKey = when (LafManager.getInstance().currentLookAndFeel?.name) {
+  val namedKey = when (LafManager.getInstance().currentUIThemeLookAndFeel?.name) {
     "IntelliJ Light" -> "ActionButton.focusedBorderColor"
     "Light" -> "ActionButton.focusedBorderColor"
     "Darcula" -> "Button.select"
