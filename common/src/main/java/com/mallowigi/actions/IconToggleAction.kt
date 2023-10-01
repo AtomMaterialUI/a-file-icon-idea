@@ -28,13 +28,13 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.ToggleAction
 import com.intellij.openapi.actionSystem.Toggleable
-import com.intellij.ui.LayeredIcon
 import com.intellij.util.IconUtil
 import com.intellij.util.ObjectUtils
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.JBUI
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.utils.AtomNotifications.showSimple
+import com.mallowigi.utils.LayeredIconService
 import java.awt.Component
 import java.awt.Graphics
 import javax.swing.Icon
@@ -73,7 +73,7 @@ abstract class IconToggleAction : ToggleAction() {
 
     // Recreate the action button look
     when {
-      selected -> e.presentation.icon = LayeredIcon(actionButtonIcon, regularIcon(icon))
+      selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon))
       else -> e.presentation.icon = regularIcon(icon)
     }
   }

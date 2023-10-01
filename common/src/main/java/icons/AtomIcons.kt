@@ -30,13 +30,13 @@ import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.io.FileUtil.toCanonicalPath
 import com.intellij.openapi.vfs.VFileProperty
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.ui.LayeredIcon
 import com.intellij.ui.scale.ScaleContext
 import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
 import com.intellij.util.ui.JBUI
 import com.mallowigi.icons.special.DirIcon
 import com.mallowigi.tree.arrows.*
+import com.mallowigi.utils.LayeredIconService
 import org.jetbrains.annotations.NonNls
 import java.awt.Image
 import java.io.File
@@ -126,8 +126,8 @@ object AtomIcons {
    * @param virtualFile VirtualFile — the file to get the icon for
    */
   fun getLayeredIcon(icon: Icon, virtualFile: VirtualFile): Icon = when {
-    virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIcon(icon, AllIcons.Nodes.Symlink)
-    !virtualFile.isWritable -> LayeredIcon(icon, AllIcons.Nodes.Locked)
+    virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIconService.create(icon, AllIcons.Nodes.Symlink)
+    !virtualFile.isWritable -> LayeredIconService.create(icon, AllIcons.Nodes.Locked)
     else -> icon
   }
 
