@@ -68,7 +68,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   }
 
   /** Create patcher for path. */
-  override fun attributeForPath(path: String?): SvgAttributePatcher = createPatcher()
+  override fun attributeForPath(path: String): SvgAttributePatcher = createPatcher()
 
   private fun createPatcher(): SvgAttributePatcher = object : SvgAttributePatcher {
     override fun patchColors(attributes: MutableMap<String, String>) {
