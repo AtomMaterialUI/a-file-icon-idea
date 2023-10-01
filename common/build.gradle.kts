@@ -25,8 +25,13 @@
 
 @file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
 
+fun properties(key: String): Provider<String> = providers.gradleProperty(key)
+
+fun environment(key: String): Provider<String> = providers.environmentVariable(key)
+
 val platformVersion: String by project
 val platformType: String by project
+val pluginsVersion: String = properties("pluginsVersion").get()
 
 dependencies {
   implementation("org.javassist:javassist:3.29.2-GA")
@@ -38,15 +43,13 @@ plugins {
 }
 
 intellij {
-  version.set(platformVersion)
-  type.set(platformType)
+  version = platformVersion
+  type = platformType
 
-  plugins.set(
-    listOf(
-      "java",
-      "Git4Idea",
-      "com.jetbrains.php:232.8660.185",
-    )
+  plugins = listOf(
+    "java",
+    "Git4Idea",
+    "com.jetbrains.php:$pluginsVersion",
   )
 }
 

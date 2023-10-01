@@ -25,6 +25,10 @@
  */
 @file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
 
+fun properties(key: String): Provider<String> = providers.gradleProperty(key)
+
+fun environment(key: String): Provider<String> = providers.environmentVariable(key)
+
 val riderVersion: String by project
 
 dependencies {
@@ -36,10 +40,10 @@ plugins {
 }
 
 intellij {
-  version.set(riderVersion)
-  type.set("RD")
-  downloadSources.set(false)
-  instrumentCode.set(false)
+  version = riderVersion
+  type = "RD"
+  downloadSources = false
+  instrumentCode = false
 }
 
 tasks {
