@@ -22,25 +22,21 @@
  * SOFTWARE.
  *
  */
-package com.mallowigi.icons.services
+package com.mallowigi.icons.filters
 
-import com.intellij.openapi.util.IconLoader
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
-import com.mallowigi.icons.filters.MonochromeFilter
-import com.mallowigi.icons.filters.NoFilter
-import com.mallowigi.icons.filters.SaturationFilter
+import com.intellij.ui.ColorUtil
+import java.awt.Color
+import java.awt.image.RGBImageFilter
 
-/** Icon filter manager. */
-object IconFilterManager {
-  /** Apply filter. */
-  fun applyFilter() {
-    val monochromeIcons = instance.isMonochromeIcons
-    val saturatedIcons = instance.isSaturatedIcons
-    when {
-      monochromeIcons -> IconLoader.setFilter(MonochromeFilter)
-      saturatedIcons -> IconLoader.setFilter(SaturationFilter)
-      else -> IconLoader.setFilter(NoFilter)
-    }
+/** Monochrome filter. */
+object NoFilter : RGBImageFilter() {
+
+  override fun filterRGB(x: Int, y: Int, rgba: Int): Int {
+    val originalColor = Color(rgba, true)
+    return ColorUtil.toAlpha(
+      originalColor,
+      originalColor.alpha
+    ).rgb
   }
 
 }

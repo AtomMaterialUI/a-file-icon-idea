@@ -36,6 +36,7 @@ import java.util.*
 typealias PatcherProvider = SVGLoader.SvgElementColorPatcherProvider
 
 /** Svg loader hacker. */
+@Suppress("UnstableTypeUsedInSignature")
 object SvgLoaderHacker {
 
   private lateinit var collectedPatcherProvider: PatcherProvider
@@ -44,7 +45,7 @@ object SvgLoaderHacker {
     object : PatcherProvider {
       override fun attributeForPath(path: String): SvgAttributePatcher? = null
 
-//      override fun forURL(url: URL?): SVGLoader.SvgElementColorPatcher? = null
+      override fun digest(): LongArray = longArrayOf()
     }
 
   /** Collect the "other patcher" */

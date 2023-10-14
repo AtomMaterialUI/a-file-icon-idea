@@ -74,12 +74,12 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     override fun patchColors(attributes: MutableMap<String, String>) {
       patchers.forEach { it.patch(attributes) }
     }
+  }
 
-    override fun digest(): LongArray {
-      val longArrays = mutableListOf<LongArray>()
-      patchers.forEach { longArrays.add(it.digest()) }
-      return longArrays.flatMap { it.asIterable() }.toLongArray()
-    }
+  override fun digest(): LongArray {
+    val longArrays = mutableListOf<LongArray>()
+    patchers.forEach { longArrays.add(it.digest()) }
+    return longArrays.flatMap { it.asIterable() }.toLongArray()
   }
 
   companion object {
