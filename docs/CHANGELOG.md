@@ -2,6 +2,12 @@
 
 ----
 
+## 94.1.0 (9.4.1)
+
+### Fixes
+
+- Fix the issue with Filter making the IDE crash
+
 ## 94.0.0 (9.4.0)
 
 ### Additions
