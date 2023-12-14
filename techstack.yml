@@ -1,8 +1,8 @@
 repo_name: mallowigi/a-file-icon-idea
-report_id: 2b9dd88764850817994168718bdeb706
+report_id: 8cc0ec2e5e4866eba6fb23b841e016e9
 repo_type: Public
-timestamp: '2023-11-19T08:00:21+00:00'
-requested_by: mallowigi
+timestamp: '2023-12-14T13:15:41+00:00'
+requested_by: renovate[bot]
 provider: github
 branch: master
 detected_tools_count: 6
@@ -34,7 +34,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/1756/1uNl_IZX.png
-  detection_source: common/src/main/resources/icons/javaee/javaee/newui/hibernate.svg
+  detection_source: common/src/main/resources/icons/javaee/javaee/hibernate.svg
   last_updated_by: Elior
   last_updated_on: 2021-09-08 13:06:56.000000000 Z
 - name: Git
@@ -55,7 +55,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
-  detection_source: gradlew.bat
+  detection_source: gradlew
   last_updated_by: renovate[bot]
   last_updated_on: 2023-08-17 11:44:27.000000000 Z
 - name: HTML
