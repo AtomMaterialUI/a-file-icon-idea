@@ -19,9 +19,6 @@
       </map>
     </option>
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
   <component name="EntryPointsManager">
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="com.intellij.util.xmlb.annotations.Property" />
