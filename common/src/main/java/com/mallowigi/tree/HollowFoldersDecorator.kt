@@ -76,7 +76,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
    */
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      val matchedAssociation = matchAssociation(file, data)
+      val matchedAssociation = matchAssociation(file)
       val icon = when {
         data.getIcon(/* open = */ true) is DirIcon -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
@@ -100,7 +100,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     }
   }
 
-  private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData): Icon? {
+  private fun matchAssociation(virtualFile: VirtualFile): Icon? {
     val fileInfo = VirtualFileInfo(virtualFile)
     val associations = AtomSelectConfig.instance.selectedFolderOpenAssociations
 

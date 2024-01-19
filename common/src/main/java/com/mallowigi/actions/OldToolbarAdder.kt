@@ -32,7 +32,10 @@ import com.intellij.ui.ExperimentalUI
 import org.jetbrains.annotations.NonNls
 
 /** Utility to add older icons to new UI. */
-class OldToolbarAdder : ActionConfigurationCustomizer {
+@Suppress("UnstableApiUsage")
+internal class OldToolbarAdder : ActionConfigurationCustomizer, ActionConfigurationCustomizer.SyncHeavyCustomizeStrategy {
+  /** Prevents an infinite loop. */
+  private var alreadyRunOnce: Boolean = false
 
   /** Customize. */
   override fun customize(actionManager: ActionManager) {
@@ -60,9 +63,6 @@ class OldToolbarAdder : ActionConfigurationCustomizer {
   }
 
   companion object {
-    /** Prevents an infinite loop. */
-    var alreadyRunOnce: Boolean = false
-
     /** Old Toolbar key. */
     const val OLD_TOOLBAR: String = "AtomFileIcons.OldToolbar"
 

@@ -77,7 +77,7 @@ abstract class AbstractFileIconProvider : IconProvider() {
   }
 
   private fun loadIcon(association: Association?): Icon? {
-    var icon: Icon? = null
+    val icon: Icon?
     val iconPath = (association ?: return null).icon
     icon = getIcon(iconPath)
     return icon
