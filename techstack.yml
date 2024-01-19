@@ -1,7 +1,8 @@
 repo_name: mallowigi/a-file-icon-idea
-report_id: 8cc0ec2e5e4866eba6fb23b841e016e9
+report_id: 2b9dd88764850817994168718bdeb706
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T13:15:41+00:00'
+timestamp: '2024-01-05T08:37:16+00:00'
 requested_by: renovate[bot]
 provider: github
 branch: master
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea
   detection_source: Repo Metadata
 - name: Kotlin
   description: Statically typed Programming Language targeting JVM and JavaScript
@@ -25,6 +27,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/3750/pCfEzr6L.png
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea
   detection_source: Repo Metadata
 - name: Hibernate
   description: Idiomatic persistence for Java and relational databases.
@@ -34,6 +37,7 @@ tools:
   category: Data Stores
   sub_category: Object Relational Mapper (ORM)
   image_url: https://img.stackshare.io/service/1756/1uNl_IZX.png
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea/blob/master/common/src/main/resources/icons/javaee/javaee/hibernate.svg
   detection_source: common/src/main/resources/icons/javaee/javaee/hibernate.svg
   last_updated_by: Elior
   last_updated_on: 2021-09-08 13:06:56.000000000 Z
@@ -45,6 +49,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea
   detection_source: Repo Metadata
 - name: Gradle
   description: A powerful build system for the JVM
@@ -55,6 +60,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea/blob/master/gradlew
   detection_source: gradlew
   last_updated_by: renovate[bot]
   last_updated_on: 2023-08-17 11:44:27.000000000 Z
@@ -64,6 +70,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/mallowigi/a-file-icon-idea/blob/master/docs/CHANGELOG.html
   detection_source: docs/CHANGELOG.html
   last_updated_by: Elior
   last_updated_on: 2021-12-18 14:39:19.000000000 Z
