@@ -2,6 +2,13 @@
 
 ----
 
+## 95.0.0 (9.5.0)
+
+### Fixes
+
+- Fix conflict with the Randomness plugin
+- Support for 2024.1
+
 ## 94.1.0 (9.4.1)
 
 ### Fixes
