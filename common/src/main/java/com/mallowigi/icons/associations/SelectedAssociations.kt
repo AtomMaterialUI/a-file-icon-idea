@@ -31,6 +31,7 @@ import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 import com.mallowigi.utils.isPluginEnabled
+import org.jetbrains.annotations.NonNls
 
 /** Represents a list of [SelectedAssociations]. */
 @Suppress("MemberNameEqualsClassName")
@@ -161,6 +162,7 @@ class SelectedAssociations(
   }
 
   companion object {
+    @NonNls
     private val FILE_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = setOf(
       Pair("PHP") { isPluginEnabled("com.jetbrains.php") },
       Pair("Kotlin") { true },

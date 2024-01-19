@@ -24,6 +24,7 @@
  */
 package com.mallowigi.icons.patchers
 
+import com.intellij.ide.plugins.cl.PluginClassLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.tree.arrows.ArrowsStyles
@@ -76,6 +77,9 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    */
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
     if (instance == null) return null
+
+    @Suppress("UnstableApiUsage") val pluginName = (classLoader as? PluginClassLoader)?.pluginDescriptor?.name
+    if (pluginName != null && IGNORED_PLUGINS.contains(pluginName)) return null
 
     val patchedPath = getPatchedPath(path)
     return if (!enabled) null else patchedPath
@@ -141,11 +145,14 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   companion object {
-    private val CACHE: MutableMap<String, String> = HashMap(100)
+    private val CACHE: MutableMap<String, String?> = HashMap(100)
     private val CL_CACHE: MutableMap<String, ClassLoader?> = HashMap(100)
     private val PNG = ".png".toRegex(RegexOption.LITERAL)
     private val SVG = ".svg".toRegex(RegexOption.LITERAL)
     private val GIF = ".gif".toRegex(RegexOption.LITERAL)
+
+    @NonNls
+    private val IGNORED_PLUGINS = setOf("Randomness")
 
     /** Clear all caches. */
     @JvmStatic

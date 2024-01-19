@@ -31,6 +31,7 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.ui.ExperimentalUI
+import com.intellij.ui.NewUI
 import com.mallowigi.config.AtomSettingsConfig.Companion.instance
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
@@ -76,7 +77,7 @@ object IconPatchersManager {
 
   @Suppress("UnstableApiUsage")
   private fun fixExperimentalUI() {
-    if (!ExperimentalUI.isNewUI()) return
+    if (!NewUI.isEnabled()) return
 
     val forName = Class.forName("com.intellij.ui.ExperimentalUI")
     forName.declaredFields.forEach {
