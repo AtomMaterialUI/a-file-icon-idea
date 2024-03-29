@@ -3,12 +3,12 @@
 annotations = "24.1.0"
 
 # plugins
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 changelog = "2.2.0"
-gradleIntelliJPlugin = "1.17.0"
-qodana = "2023.2.1"
-kover = "0.7.5"
-detekt = "1.23.4"
+gradleIntelliJPlugin = "1.17.3"
+qodana = "2023.3.2"
+kover = "0.7.6"
+detekt = "1.23.6"
 ktlint = "12.1.0"
 
 [libraries]

@@ -58,7 +58,7 @@ plugins {
 
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.20")
   implementation("org.javassist:javassist:3.30.2-GA")
