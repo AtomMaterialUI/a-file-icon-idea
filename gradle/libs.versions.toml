@@ -3,12 +3,10 @@
 annotations = "24.1.0"
 
 # plugins
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 changelog = "2.2.0"
-gradleIntelliJPlugin = "1.17.0"
-qodana = "2023.2.1"
-kover = "0.7.5"
-detekt = "1.23.4"
+gradleIntelliJPlugin = "2.0.0-beta1"
+detekt = "1.23.6"
 ktlint = "12.1.0"
 
 [libraries]
@@ -16,9 +14,7 @@ annotations = { group = "org.jetbrains", name = "annotations", version.ref = "an
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
-gradleIntelliJPlugin = { id = "org.jetbrains.intellij", version.ref = "gradleIntelliJPlugin" }
+gradleIntelliJPlugin = { id = "org.jetbrains.intellij.platform", version.ref = "gradleIntelliJPlugin" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-qodana = { id = "org.jetbrains.qodana", version.ref = "qodana" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

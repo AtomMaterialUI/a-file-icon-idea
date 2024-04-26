@@ -23,34 +23,33 @@
  *
  */
 
-@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
-
 fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-
 fun environment(key: String): Provider<String> = providers.environmentVariable(key)
+fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
-val platformVersion: String by project
-val platformType: String by project
 val pluginsVersion: String = properties("pluginsVersion").get()
 
 dependencies {
+  intellijPlatform {
+    intellijIdeaUltimate(properties("platformVersion").get())
+    instrumentationTools()
+
+    pluginVerifier()
+    zipSigner()
+
+    bundledPlugins(
+      "com.intellij.java",
+      "org.jetbrains.kotlin",
+      "Git4Idea",
+    )
+
+    plugins(
+      "com.jetbrains.php:${pluginsVersion}"
+    )
+  }
+
   implementation("org.javassist:javassist:3.30.2-GA")
   implementation("com.fasterxml:aalto-xml:1.3.2")
-}
-
-plugins {
-  kotlin("jvm")
-}
-
-intellij {
-  version = platformVersion
-  type = platformType
-
-  plugins = listOf(
-    "java",
-    "Git4Idea",
-    "com.jetbrains.php:$pluginsVersion",
-  )
 }
 
 tasks {

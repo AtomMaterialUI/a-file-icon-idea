@@ -26,15 +26,15 @@
 @file:Suppress("HardCodedStringLiteral")
 
 rootProject.name = "a-file-icon-idea"
-include("common", "rider")
+//include("common", "rider")
+include("common")
+include("rider")
 
 pluginManagement {
   repositories {
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven {
+      url = java.net.URI("https://oss.sonatype.org/content/repositories/snapshots/")
+    }
     gradlePluginPortal()
   }
-}
-
-plugins {
-  id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }

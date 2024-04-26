@@ -23,27 +23,18 @@
  *
  *
  */
-@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
 
 fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-
 fun environment(key: String): Provider<String> = providers.environmentVariable(key)
-
-val riderVersion: String by project
+fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
 dependencies {
+  intellijPlatform {
+    rider(properties("riderVersion").get())
+    instrumentationTools()
+  }
+
   implementation(project(":common"))
-}
-
-plugins {
-  kotlin("jvm")
-}
-
-intellij {
-  version = riderVersion
-  type = "RD"
-  downloadSources = false
-  instrumentCode = false
 }
 
 tasks {

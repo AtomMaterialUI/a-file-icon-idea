@@ -29,36 +29,42 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-/** Get a property from the gradle.properties file. */
-fun properties(key: String) = providers.gradleProperty(key).get()
-
-/**
- * Returns the value of the environment variable associated with the specified key.
- *
- * @param key the key of the environment variable
- * @return the value of the environment variable as a Provider<String>
- */
-fun environment(key: String) = providers.environmentVariable(key)
-
-/** Get a property from a file. */
-fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
+fun properties(key: String): Provider<String> = providers.gradleProperty(key)
+fun environment(key: String): Provider<String> = providers.environmentVariable(key)
+fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
 plugins {
-  signing
-  // Java support
   id("java")
   alias(libs.plugins.kotlin)
   alias(libs.plugins.gradleIntelliJPlugin)
   alias(libs.plugins.changelog)
-  alias(libs.plugins.qodana)
   alias(libs.plugins.detekt)
   alias(libs.plugins.ktlint)
-  alias(libs.plugins.kover)
 }
 
+group = properties("pluginID").get()
+version = properties("pluginVersion").get()
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+  intellijPlatform {
+    intellijIdeaUltimate(properties("platformVersion").get())
+    instrumentationTools()
+
+    //    local(properties("idePath").get())
+
+    pluginVerifier()
+    zipSigner()
+
+//    jetbrainsRuntime("21")
+
+    bundledPlugins(
+      "com.intellij.java",
+      "org.jetbrains.kotlin",
+      "Git4Idea",
+    )
+  }
+
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.20")
   implementation("org.javassist:javassist:3.30.2-GA")
@@ -66,23 +72,22 @@ dependencies {
   runtimeOnly(project(":rider"))
 }
 
-
-group = properties("pluginGroup")
-version = properties("pluginVersion")
-
 allprojects {
   apply {
     plugin("java")
     plugin("org.jetbrains.kotlin.jvm")
-    plugin("org.jetbrains.intellij")
+    plugin("org.jetbrains.intellij.platform")
   }
 
   repositories {
     mavenCentral()
-    maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-    maven(url = "https://repo.eclipse.org/content/groups/releases/")
-    maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-    maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+
+    intellijPlatform {
+      defaultRepositories()
+
+      marketplace()
+      // localPlatformArtifacts()
+    }
   }
 
   java {
@@ -95,8 +100,13 @@ allprojects {
     jvmToolchain(17)
   }
 
+  intellijPlatform {
+    buildSearchableOptions = false
+    instrumentCode = true
+  }
+
   tasks {
-    properties("javaVersion").let {
+    properties("javaVersion").get().let {
       // Set the compatibility versions to 1.8
       withType<JavaCompile> {
         sourceCompatibility = it
@@ -108,6 +118,10 @@ allprojects {
       }
     }
 
+    withType<Detekt> {
+      jvmTarget = properties("javaVersion").get()
+      reports.xml.required.set(true)
+    }
 
     withType<Copy> {
       duplicatesStrategy = DuplicatesStrategy.INCLUDE
@@ -120,113 +134,75 @@ allprojects {
       }
     }
 
-    buildSearchableOptions {
-      enabled = false
-    }
-
   }
 }
 
-koverReport {
-  defaults {
-    xml {
-      onCheck = true
-    }
-  }
-}
-
-// Configure gradle-intellij-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-intellij-plugin
-intellij {
-  pluginName = properties("pluginName")
-  version = properties("platformVersion")
-  type = properties("platformType")
-  downloadSources = true
+intellijPlatform {
+  buildSearchableOptions = false
   instrumentCode = true
-  updateSinceUntilBuild = true
-//  plugins
-//    listOf(
-//      "zielu.gittoolbox:213.10.3"
-//    )
-//  )
-  //  localPath = properties("idePath")
-//  sandboxDir = "/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app"
+
+  projectName = properties("pluginName").get()
+
+  pluginConfiguration {
+    id = properties("pluginID").get()
+    name = properties("pluginName").get()
+    version = properties("pluginVersion").get()
+//    description.set(properties("pluginDescription").get())
+
+    // Get the latest available change notes from the changelog file
+    val changelog = project.changelog // local variable for configuration cache compatibility
+    // Get the latest available change notes from the changelog file
+    val pluginVersion = properties("pluginVersion").get()
+    changeNotes.set(provider {
+      with(changelog) {
+        renderItem(
+          (getOrNull(pluginVersion) ?: getUnreleased())
+            .withHeader(false)
+            .withEmptySections(false),
+          Changelog.OutputType.HTML,
+        )
+      }
+    })
+
+    ideaVersion {
+      sinceBuild = properties("pluginSinceBuild").get()
+      untilBuild = properties("pluginUntilBuild").get()
+    }
+
+    vendor {
+      name = properties("pluginVendorName").get()
+      email = properties("pluginVendorEmail").get()
+      url = properties("pluginVendorUrl").get()
+    }
+  }
 }
 
-// Configure gradle-changelog-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path = "${project.projectDir}/docs/CHANGELOG.md"
-  version = properties("pluginVersion")
-  header = provider { version.get() }
-  headerParserRegex = "(\\d+\\.\\d+\\.\\d+)"
-  itemPrefix = "-"
-  keepUnreleasedSection = true
-  unreleasedTerm = "Changelog"
-  groups = listOf("Features", "Fixes", "Removals", "Additions", "Other")
+  path.set("${project.projectDir}/docs/CHANGELOG.md")
+  version.set(properties("pluginVersion").get())
+  header.set(provider { version.get() })
+  headerParserRegex.set("(\\d+\\.\\d+\\.\\d+)")
+  itemPrefix.set("-")
+  keepUnreleasedSection.set(true)
+  unreleasedTerm.set("Changelog")
+  groups.set(listOf("Features", "Fixes", "Removals", "Additions", "Other"))
 }
 
-// Configure detekt plugin.
-// Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
-  config.setFrom("./detekt-config.yml")
+  config.from(files("./detekt-config.yml"))
   buildUponDefaultConfig = true
   autoCorrect = true
   ignoreFailures = true
 }
 
-
 tasks {
   wrapper {
-    gradleVersion = properties("gradleVersion")
+    gradleVersion = properties("gradleVersion").get()
   }
 
   withType<Detekt> {
-    jvmTarget = properties("javaVersion")
-    reports.xml.required = true
-  }
-
-
-  patchPluginXml {
-    version = properties("pluginVersion")
-    sinceBuild = properties("pluginSinceBuild")
-    untilBuild = properties("pluginUntilBuild")
-
-    // Get the latest available change notes from the changelog file
-    changeNotes = changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML)
-  }
-
-  runPluginVerifier {
-    ideVersions = properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList()
-  }
-
-  // Configure UI tests plugin
-  // Read more: https://github.com/JetBrains/intellij-ui-test-robot
-  runIdeForUiTests {
-    systemProperty("robot-server.port", "8082")
-    systemProperty("ide.mac.message.dialogs.as.sheets", "false")
-    systemProperty("jb.privacy.policy.text", "<!--999.999-->")
-    systemProperty("jb.consents.confirmation.enabled", "false")
-  }
-
-//  runIde {
-//    jvmArgs = properties("jvmArgs").split("")
-//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
-//  }
-
-  signPlugin {
-    certificateChain = environment("CERTIFICATE_CHAIN")
-    privateKey = environment("PRIVATE_KEY")
-    password = environment("PRIVATE_KEY_PASSWORD")
-  }
-
-  publishPlugin {
-    token = environment("PUBLISH_TOKEN")
-    channels = listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
-  }
-
-  runIde {
-    ideDir = fileProperties("idePath")
+    jvmTarget = properties("javaVersion").get()
+    reports.xml.required.set(true)
   }
 
   register("markdownToHtml") {
