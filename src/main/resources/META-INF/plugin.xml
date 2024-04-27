@@ -88,8 +88,10 @@
                        bundle="messages.AtomFileIconsBundle"
                        key="notification.group.atom.material.notifications"/>
 
+    <!--suppress PluginXmlValidity -->
     <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
 
+    <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSVGPatchersListener"/>
     <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
@@ -265,10 +267,10 @@
     <hr>
     <h3>Donate</h3>
     <p>This theme is backed up by <a
-        href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
+      href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
       If you like this plugin, don't hesitate to give it a star or donate via <a
-          href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
-          href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
+        href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
+        href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
     ]]></description>
 
   <change-notes>

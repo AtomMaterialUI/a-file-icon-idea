@@ -27,25 +27,27 @@ package com.mallowigi.icons.services
 
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.components.Service
+import com.intellij.openapi.components.service
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.ui.ExperimentalUI
 import com.intellij.ui.NewUI
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 
 /** Icon patchers manager. */
-@Suppress("Detekt:TooManyFunctions", "HardCodedStringLiteral")
-object IconPatchersManager {
+@Service(Service.Level.APP)
+class IconPatchersManager {
 
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
 
   /** Init the patchers. */
   fun init() {
-    val atomFileIconsConfig = instance
+    val atomFileIconsConfig = AtomSettingsConfig.instance
 
     fixExperimentalUI()
 
@@ -69,7 +71,7 @@ object IconPatchersManager {
     AbstractIconPatcher.clearCache()
     fixExperimentalUI()
 
-    val atomFileIconsConfig = instance
+    val atomFileIconsConfig = AtomSettingsConfig.instance
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
@@ -85,7 +87,7 @@ object IconPatchersManager {
         it.isAccessible = true
         val patcher = it.get(ExperimentalUI.getInstance())
 
-        if (!instance.isEnabledUIIcons) {
+        if (!AtomSettingsConfig.instance.isEnabledUIIcons) {
           IconLoader.installPathPatcher(patcher as IconPathPatcher)
         } else {
           IconLoader.removePathPatcher(patcher as IconPathPatcher)
@@ -141,4 +143,8 @@ object IconPatchersManager {
     }
   }
 
+  companion object {
+    @JvmStatic
+    val instance: IconPatchersManager by lazy { service() }
+  }
 }

@@ -58,7 +58,6 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   }
 
   private fun initComponent() {
-    IconPatchersManager.init()
     val connect = ApplicationManager.getApplication().messageBus.connect()
     with(connect) {
       subscribe(UISettingsListener.TOPIC, UISettingsListener { IconFilterManager.applyFilter() })
@@ -68,7 +67,7 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
       subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged() })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
-        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
+        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.instance.updateIcons()
       })
     }
 
@@ -76,8 +75,8 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   }
 
   private fun onSettingsChanged() {
-    IconPatchersManager.updateFileIcons()
-    IconPatchersManager.updateIcons()
+    IconPatchersManager.instance.updateFileIcons()
+    IconPatchersManager.instance.updateIcons()
     LafManager.getInstance().updateUI()
     refreshOpenedProjects()
   }
