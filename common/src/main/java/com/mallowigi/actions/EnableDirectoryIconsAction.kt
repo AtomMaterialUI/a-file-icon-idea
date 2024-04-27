@@ -25,23 +25,18 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable directory icons action. */
 class EnableDirectoryIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledDirectories
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isEnabledDirectories
 
   /** Upon select, toggle directory icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleDirectoriesIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleDirectoriesIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

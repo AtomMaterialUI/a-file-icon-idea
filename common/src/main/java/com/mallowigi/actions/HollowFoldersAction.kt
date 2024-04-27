@@ -25,23 +25,18 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Hollow folders action. */
 class HollowFoldersAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isUseHollowFolders
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isUseHollowFolders
 
   /** Upon select, toggle hollow icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleUseHollowFolders()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleUseHollowFolders()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

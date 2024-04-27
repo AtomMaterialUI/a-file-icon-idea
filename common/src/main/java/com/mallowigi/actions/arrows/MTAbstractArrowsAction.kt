@@ -28,7 +28,7 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.mallowigi.actions.IconToggleAction
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.tree.arrows.ArrowsStyles
 
 /** Abstract base class for arrows action. */
@@ -38,22 +38,18 @@ abstract class MTAbstractArrowsAction : IconToggleAction() {
   protected abstract val arrowsStyle: ArrowsStyles
 
   /** Whether this menu is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.arrowsStyle === arrowsStyle
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.arrowsStyle === arrowsStyle
 
   /** On selection, update all toolbars. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.arrowsStyle = this.arrowsStyle
+    AtomSettingsConfig.instance.arrowsStyle = this.arrowsStyle
     ActionToolbarImpl.updateAllToolbarsImmediately()
 
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
 
   /** Runs on background. */
   override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
-
-  companion object {
-    private val CONFIG = instance
-  }
 
 }

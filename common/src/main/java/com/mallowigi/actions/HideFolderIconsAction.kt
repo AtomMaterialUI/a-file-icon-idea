@@ -25,23 +25,19 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Hide folder icons action. */
 class HideFolderIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isHideFolderIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isHideFolderIcons
 
   /** Upon select, toggle hidden directory icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleHideFolderIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleHideFolderIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
-  }
-
-  companion object {
-    private val CONFIG = instance
   }
 
 }

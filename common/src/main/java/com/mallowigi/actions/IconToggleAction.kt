@@ -62,7 +62,6 @@ abstract class IconToggleAction : ToggleAction() {
   }
 
   /** Add selected layer instead of selected icon. */
-  @Suppress("UseIfInsteadOfWhen")
   override fun update(e: AnActionEvent) {
     val selected = isSelected(e)
     val presentation = e.presentation
@@ -87,7 +86,6 @@ abstract class IconToggleAction : ToggleAction() {
         GraphicsUtil.setupAAPainting(g2d)
         g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
 
-        @Suppress("MagicNumber")
         g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
       } finally {
         g2d.dispose()

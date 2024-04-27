@@ -25,23 +25,18 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Bigger Icons action. */
 class CustomLineHeightAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.hasCustomLineHeight
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.hasCustomLineHeight
 
   /** Upon select, toggle big icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleHasCustomLineHeight()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleHasCustomLineHeight()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

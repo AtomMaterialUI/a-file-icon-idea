@@ -25,23 +25,19 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable monochrome icons action. */
 class EnableMonochromeIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isMonochromeIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isMonochromeIcons
 
   /** Upon select, toggle monochrome icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleMonochromeIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleMonochromeIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
-  }
-
-  companion object {
-    private val CONFIG = instance
   }
 
 }
