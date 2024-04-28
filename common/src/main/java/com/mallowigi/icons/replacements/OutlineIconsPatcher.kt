@@ -27,11 +27,11 @@ package com.mallowigi.icons.replacements
 import com.intellij.openapi.util.IconPathPatcher
 import com.mallowigi.icons.services.IconReplacementsFactory
 
-class IconReplacementPatcher : IconPathPatcher() {
+class OutlineIconsPatcher : IconPathPatcher() {
   private val outlineIcons: IconReplacements = IconReplacementsFactory.create("/outline_icons.xml")
 
   /** Whether the patcher should be enabled or not. */
-  var enabled: Boolean = false
+  var enabled: Boolean = true
 
   /**
    * Get the plugin context class loader if an icon needs to be patched
@@ -61,6 +61,10 @@ class IconReplacementPatcher : IconPathPatcher() {
     if (CACHE.containsKey(path)) return CACHE[path]
 
     val replacement = outlineIcons.getReplacement(path)
+    if (replacement == null || !enabled) return null
+
+    if (javaClass.getResource(replacement) == null) return null
+
     CACHE[path] = replacement
     return replacement
   }

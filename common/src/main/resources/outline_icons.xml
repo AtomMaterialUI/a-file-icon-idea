@@ -24,10 +24,11 @@
 
 <root>
   <iconReplacements>
-    <iconReplacement icon="icons/NoEmojiFound.svg">
+    <iconReplacement icon="/outline/run.svg">
       <replacePaths>
         <replacePath path="/toolwindows/toolWindowProject.svg"/>
         <replacePath path="/expui/toolwindow/project@20x20.svg"/>
+        <replacePath path="/expui/toolwindow/project.svg"/>
         <replacePath path="/nodes/project.svg"/>
       </replacePaths>
     </iconReplacement>

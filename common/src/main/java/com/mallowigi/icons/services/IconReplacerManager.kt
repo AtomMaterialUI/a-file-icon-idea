@@ -27,7 +27,7 @@ package com.mallowigi.icons.services
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.openapi.util.IconLoader
-import com.mallowigi.icons.replacements.IconReplacementPatcher
+import com.mallowigi.icons.replacements.OutlineIconsPatcher
 
 @Service(Service.Level.APP)
 class IconReplacerManager {
@@ -42,7 +42,7 @@ class IconReplacerManager {
     //  }
     //}
 
-    IconLoader.installPathPatcher(IconReplacementPatcher())
+    IconLoader.installPathPatcher(OutlineIconsPatcher())
   }
 
   companion object {
