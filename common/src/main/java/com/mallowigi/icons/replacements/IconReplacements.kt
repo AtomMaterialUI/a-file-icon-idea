@@ -26,6 +26,7 @@ package com.mallowigi.icons.replacements
 import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
 import com.thoughtworks.xstream.annotations.XStreamAlias
+import com.thoughtworks.xstream.annotations.XStreamImplicit
 import java.util.*
 
 @XStreamAlias("root")
@@ -33,6 +34,7 @@ class IconReplacements {
   @Property
   @XCollection
   @XStreamAlias("iconReplacements")
+  @XStreamImplicit
   val iconReplacements: Set<IconReplacement> = emptySet()
     get() = Collections.unmodifiableSet(field)
 

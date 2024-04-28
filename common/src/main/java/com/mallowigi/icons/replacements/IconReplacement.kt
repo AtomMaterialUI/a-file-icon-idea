@@ -27,12 +27,14 @@ import com.intellij.util.xmlb.annotations.Property
 import com.intellij.util.xmlb.annotations.XCollection
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
+import com.thoughtworks.xstream.annotations.XStreamImplicit
 import java.util.*
 
 @XStreamAlias("iconReplacement")
 class IconReplacement {
   @Property
   @XCollection
+  @XStreamImplicit
   @XStreamAlias("replacePath")
   val replacePaths: Set<ReplacePath> = emptySet()
     get() = Collections.unmodifiableSet(field)
