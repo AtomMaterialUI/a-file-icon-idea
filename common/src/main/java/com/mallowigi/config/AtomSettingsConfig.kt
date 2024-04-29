@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.config
 
@@ -99,6 +98,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   /** Whether NgRx Icons should be used. */
   var isUseNgRxIcons: Boolean by property(true)
+
+  /** Is use next icons. */
+  var isUseNextIcons: Boolean by property(true)
 
   /** Whether Recoil Icons should be used. */
   var isUseRecoilIcons: Boolean by property(true)
@@ -179,6 +181,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isUseAngularIcons = true
     isUseReduxIcons = true
     isUseNgRxIcons = true
+    isUseNextIcons = true
     isUseRecoilIcons = true
     isUseTestsIcons = true
     arrowsStyle = ArrowsStyles.MATERIAL
@@ -197,7 +200,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isLowPowerMode = true
     fireChanged()
   }
-
 
   //region File Icons
 
@@ -308,7 +310,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   }
   //endregion
 
-
   companion object {
     /** Default Icon Size. */
     const val DEFAULT_ICON_SIZE: Int = 16
@@ -352,7 +353,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
-
 
   }
 }
