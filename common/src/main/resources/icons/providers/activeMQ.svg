@@ -1,0 +1,37 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -->
+<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#C12766">
+    <path d="M11.4687 10.1813L8.84073 10.1734L7.53383 7.97899L8.85486 5.79241L11.4828 5.80027L12.7897 7.9947L11.4687 10.1813Z"
+    />
+    <path d="M7.09644 12.5955L4.46852 12.5877L3.16163 10.3933L4.48265 8.20668L7.11058 8.21453L8.41747 10.409L7.09644 12.5955Z"
+    />
+    <path d="M11.4415 15.0216L8.81355 15.0138L7.50666 12.8194L8.82768 10.6328L11.4556 10.6406L12.7625 12.8351L11.4415 15.0216Z"
+    />
+    <path d="M7.11945 7.78483L4.49153 7.77698L3.18464 5.58255L4.50566 3.39597L7.13359 3.40382L8.44048 5.59825L7.11945 7.78483Z"
+    />
+    <path d="M11.4937 5.40802L8.87363 5.38165L7.55465 3.17039L8.85569 0.985504L11.4757 1.01188L12.7947 3.22314L11.4937 5.40802Z"
+    />
+  </g>
+</svg>
