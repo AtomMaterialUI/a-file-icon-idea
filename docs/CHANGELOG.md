@@ -2,6 +2,68 @@
 
 ----
 
+## 96.0.0 (9.6.0)
+
+### Additions
+- **Folders**:
+  - astro
+  - conductor
+  - fluig
+  - TOTVS
+  - internal
+  - parcel
+  - scons
+  - sst
+  - styled
+  - webcomponents
+  - rpc
+  - seeds
+  - interceptor
+  - mindsdb
+- **Icons**:
+  - Benchmark
+  - garden
+  - nest commands
+  - nest cron
+  - nest handlers
+  - nest listeners
+  - nest queues
+  - nest types
+  - nest utils
+  - phpstan
+  - scons
+  - sst
+  - swlang
+  - umi
+  - velociraptor
+  - Next.JS icons
+  - alfred
+  - gleam
+  - kdu
+  - rindo
+  - wite
+  - knip
+  - quokka
+  - payload CMS
+  - pkl
+  - eslintconfig
+  - pdm
+  - huff
+  - vedic
+  - biome
+  - concourse
+  - mindsdb
+  - puppeteer
+  - nest args
+  - Nest GQL
+  - Nest Input
+  - Nest loader
+  - Nest scalars
+- Newer UI Icons
+
+### Other
+- Move to Gradle Plugin 2.0
+
 ## 95.0.0 (9.5.0)
 
 ### Fixes
