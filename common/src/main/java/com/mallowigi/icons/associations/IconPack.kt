@@ -32,6 +32,9 @@ enum class IconPack {
   /** Angular. */
   ANGULAR,
 
+  /** Angular2. */
+  ANGULAR2,
+
   /** Nest. */
   NEST,
 

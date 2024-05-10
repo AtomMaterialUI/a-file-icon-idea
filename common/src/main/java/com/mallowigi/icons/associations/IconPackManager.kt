@@ -36,6 +36,7 @@ class IconPackManager {
     return when (iconPack) {
       IconPack.DEFAULT -> return true
       IconPack.ANGULAR -> AtomSettingsConfig.instance.isUseAngularIcons
+      IconPack.ANGULAR2 -> AtomSettingsConfig.instance.isUseAngular2Icons
       IconPack.NEST -> AtomSettingsConfig.instance.isUseNestIcons
       IconPack.REDUX -> AtomSettingsConfig.instance.isUseReduxIcons
       IconPack.NextJS -> AtomSettingsConfig.instance.isUseNextIcons

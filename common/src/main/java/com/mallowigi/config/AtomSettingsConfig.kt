@@ -91,7 +91,10 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   var isUseNestIcons: Boolean by property(true)
 
   /** Whether Angular Icons should be used. */
-  var isUseAngularIcons: Boolean by property(true)
+  var isUseAngularIcons: Boolean by property(false)
+
+  /** Is use angular2icons. */
+  var isUseAngular2Icons: Boolean by property(true)
 
   /** Whether Redux Icons should be used. */
   var isUseReduxIcons: Boolean by property(true)
@@ -178,7 +181,8 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isUseRubyIcons = true
     isUseRailsIcons = true
     isUseNestIcons = true
-    isUseAngularIcons = true
+    isUseAngularIcons = false
+    isUseAngular2Icons = true
     isUseReduxIcons = true
     isUseNgRxIcons = true
     isUseNextIcons = true
