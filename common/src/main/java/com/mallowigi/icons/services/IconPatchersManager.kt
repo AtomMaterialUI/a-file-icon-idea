@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.icons.services
@@ -34,9 +33,11 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.ui.ExperimentalUI
 import com.intellij.ui.NewUI
+import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
+import javax.swing.UIManager
 
 /** Icon patchers manager. */
 @Service(Service.Level.APP)
@@ -70,6 +71,7 @@ class IconPatchersManager {
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
     fixExperimentalUI()
+    fixRunIcons()
 
     val atomFileIconsConfig = AtomSettingsConfig.instance
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
@@ -94,6 +96,26 @@ class IconPatchersManager {
         }
 
       }
+    }
+  }
+
+  private fun fixRunIcons() {
+    val resources = setOf(
+      "RunToolbar.Debug.activeBackground",
+      "RunToolbar.Profile.activeBackground",
+      "RunToolbar.Run.activeBackground",
+      "RunWidget.Debug.activeBackground",
+      "RunWidget.Profile.activeBackground",
+      "RunWidget.Run.activeBackground",
+      "RunWidget.Running.background",
+      "RunWidget.Running.leftHoverBackground",
+      "RunWidget.StopButton.leftHoverBackground",
+      "RunWidget.hoverBackground",
+      "RunWidget.leftHoverBackground",
+      "RunWidget.runningBackground",
+    )
+    resources.forEach {
+      UIManager.put(it, UIUtil.getButtonSelectColor())
     }
   }
 
