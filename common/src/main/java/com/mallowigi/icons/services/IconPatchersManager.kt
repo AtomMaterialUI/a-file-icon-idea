@@ -33,7 +33,7 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.ui.ExperimentalUI
 import com.intellij.ui.NewUI
-import com.intellij.util.ui.UIUtil
+import com.intellij.util.ui.JBUI
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
@@ -51,6 +51,7 @@ class IconPatchersManager {
     val atomFileIconsConfig = AtomSettingsConfig.instance
 
     fixExperimentalUI()
+    fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
@@ -101,6 +102,8 @@ class IconPatchersManager {
 
   private fun fixRunIcons() {
     val resources = setOf(
+      "ActionButton.hoverBackground",
+      "ActionButton.pressedBackground",
       "RunToolbar.Debug.activeBackground",
       "RunToolbar.Profile.activeBackground",
       "RunToolbar.Run.activeBackground",
@@ -113,9 +116,16 @@ class IconPatchersManager {
       "RunWidget.hoverBackground",
       "RunWidget.leftHoverBackground",
       "RunWidget.runningBackground",
+      "RunWidget.Running.leftPressedBackground",
+      "RunWidget.StopButton.leftPressedBackground",
+      "RunWidget.leftPressedBackground",
+      "RunWidget.pressedBackground",
+      "RunWidget.StopButton.background",
+      "RunWidget.background",
+      "RunWidget.stopBackground"
     )
     resources.forEach {
-      UIManager.put(it, UIUtil.getButtonSelectColor())
+      UIManager.put(it, JBUI.CurrentTheme.ActionButton.hoverBackground())
     }
   }
 
