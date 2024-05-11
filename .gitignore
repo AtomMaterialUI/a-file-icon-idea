@@ -330,3 +330,5 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,sass,node,git,visualstudiocode,macos,jetbrains+all
+
+src/main/resources/assets

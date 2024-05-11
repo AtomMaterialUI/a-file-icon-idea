@@ -49,9 +49,9 @@ import javax.swing.Icon
 /** Loader for Plugin's Icons. */
 @Suppress("KDocMissingDocumentation")
 object AtomIcons {
-  private const val FILES_PATH: String = "/iconGenerator/assets"
-  private const val FOLDERS_PATH: String = "/iconGenerator/assets/icons/folders"
-  private const val FOLDERS_OPEN_PATH: String = "/iconGenerator/assets/icons/foldersOpen"
+  private const val FILES_PATH: String = "/assets"
+  private const val FOLDERS_PATH: String = "/assets/icons/folders"
+  private const val FOLDERS_OPEN_PATH: String = "/assets/icons/foldersOpen"
   val EXCLUDED: Icon = load("/icons/mt/modules/ExcludedTreeOpen.svg")
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
