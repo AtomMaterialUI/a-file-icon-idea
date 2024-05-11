@@ -155,7 +155,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             }
           )
 
-          threeColumnsRow(
+          twoColumnsRow(
             {
               icon(AtomIcons.Settings.ANGULAR2)
                 .gap(RightGap.SMALL)
@@ -174,6 +174,9 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useAngularIconsOld.tooltip"))
             },
+          )
+
+          twoColumnsRow(
             {
               icon(AtomIcons.Settings.NEST)
                 .gap(RightGap.SMALL)
@@ -182,10 +185,19 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useNestIcons.tooltip"))
-            }
+            },
+            {
+              icon(AtomIcons.Settings.NEXTJS)
+                .gap(RightGap.SMALL)
+              checkBox(message("SettingsForm.useNextJSIcons.checkbox"))
+                .bindSelected(settings::isUseNextIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useNextJSIcons.tooltip"))
+            },
           )
 
-          threeColumnsRow(
+          twoColumnsRow(
             {
               icon(AtomIcons.Settings.REDUX)
                 .gap(RightGap.SMALL)
@@ -203,15 +215,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useNgRxIcons.tooltip"))
-            },
-            {
-              icon(AtomIcons.Settings.NEXTJS)
-                .gap(RightGap.SMALL)
-              checkBox(message("SettingsForm.useNextJSIcons.checkbox"))
-                .bindSelected(settings::isUseNextIcons)
-                .enabledIf(fileIconsCheckbox.selected)
-                .gap(RightGap.SMALL)
-                .comment(message("SettingsForm.useNextJSIcons.tooltip"))
             },
           )
 
