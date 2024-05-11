@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,9 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-    <path fill="#9575CD" fill-rule="evenodd"
-          d="M5.995,10.953 L0.737,8.522 L0.737,7.334 L5.995,4.903 L5.995,6.168 L2.057,7.917 L5.995,9.677 L5.995,10.953 Z M8.272,9.358 L7.854,4.485 L7.854,4.1 L9.416,4.1 L9.416,4.485 L9.009,9.358 L8.272,9.358 Z M7.909,11.8 L7.909,10.282 L9.372,10.282 L9.372,11.8 L7.909,11.8 Z M10.912,9.083 L10.912,7.774 L14.168,7.774 L14.168,9.083 L10.912,9.083 Z" />
+<svg data-big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+  <path fill="#9575CD" fill-rule="evenodd"
+        d="M5.995,10.953 L0.737,8.522 L0.737,7.334 L5.995,4.903 L5.995,6.168 L2.057,7.917 L5.995,9.677 L5.995,10.953 Z M8.272,9.358 L7.854,4.485 L7.854,4.1 L9.416,4.1 L9.416,4.485 L9.009,9.358 L8.272,9.358 Z M7.909,11.8 L7.909,10.282 L9.372,10.282 L9.372,11.8 L7.909,11.8 Z M10.912,9.083 L10.912,7.774 L14.168,7.774 L14.168,9.083 L10.912,9.083 Z"/>
 </svg>

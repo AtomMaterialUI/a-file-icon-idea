@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,13 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" ti:v='1' width='16' height='16' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'
+<svg data-big="true" ti:v='1' width='16' height='16' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'
      xmlns:ti='urn:schemas-jetbrains-com:tisvg'>
   <g>
-    <path fill-rule='evenodd' d='M8,15L1,15L1,8L8,8L8,15Z' fill='#673AB7' />
+    <path fill-rule='evenodd' d='M8,15L1,15L1,8L8,8L8,15Z' fill='#673AB7'/>
     <path fill-rule='evenodd' d='M3,9L2,10L4,10L4.5,10.5L2,13L2,14L3,14L5.5,11.5L6,12L6,14L7,13L7,9L3,9Z'
-          fill='#EBEBEB' />
+          fill='#EBEBEB'/>
   </g>
 </svg>

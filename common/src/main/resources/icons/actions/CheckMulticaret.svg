@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,18 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" width="16px" height="16px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g>
-        <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1" />
-    </g>
-    <g>
-        <path id="svg_1"
-              d="m18.757572,19.30303a1,1 0 0 0 1,1l2,0l0,2l-2.5,0c-0.55,0 -1.5,-0.45 -1.5,-1c0,0.55 -0.95,1 -1.5,1l-2.5,0l0,-2l2,0a1,1 0 0 0 1,-1l0,-14a1,1 0 0 0 -1,-1l-2,0l0,-2l2.5,0c0.55,0 1.5,0.45 1.5,1c0,-0.55 0.95,-1 1.5,-1l2.5,0l0,2l-2,0a1,1 0 0 0 -1,1l0,14z"
-              fill="#80cbc4" />
-        <path id="svg_3"
-              d="m7.848487,19.30303a1,1 0 0 0 1,1l2,0l0,2l-2.5,0c-0.55,0 -1.5,-0.45 -1.5,-1c0,0.55 -0.95,1 -1.5,1l-2.5,0l0,-2l2,0a1,1 0 0 0 1,-1l0,-14a1,1 0 0 0 -1,-1l-2,0l0,-2l2.5,0c0.55,0 1.5,0.45 1.5,1c0,-0.55 0.95,-1 1.5,-1l2.5,0l0,2l-2,0a1,1 0 0 0 -1,1l0,14z"
-              fill="#80cbc4" />
-    </g>
+<svg data-big="true" width="16px" height="16px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  </g>
+  <g>
+    <path id="svg_1"
+          d="m18.757572,19.30303a1,1 0 0 0 1,1l2,0l0,2l-2.5,0c-0.55,0 -1.5,-0.45 -1.5,-1c0,0.55 -0.95,1 -1.5,1l-2.5,0l0,-2l2,0a1,1 0 0 0 1,-1l0,-14a1,1 0 0 0 -1,-1l-2,0l0,-2l2.5,0c0.55,0 1.5,0.45 1.5,1c0,-0.55 0.95,-1 1.5,-1l2.5,0l0,2l-2,0a1,1 0 0 0 -1,1l0,14z"
+          fill="#80cbc4"/>
+    <path id="svg_3"
+          d="m7.848487,19.30303a1,1 0 0 0 1,1l2,0l0,2l-2.5,0c-0.55,0 -1.5,-0.45 -1.5,-1c0,0.55 -0.95,1 -1.5,1l-2.5,0l0,-2l2,0a1,1 0 0 0 1,-1l0,-14a1,1 0 0 0 -1,-1l-2,0l0,-2l2.5,0c0.55,0 1.5,0.45 1.5,1c0,-0.55 0.95,-1 1.5,-1l2.5,0l0,2l-2,0a1,1 0 0 0 -1,1l0,14z"
+          fill="#80cbc4"/>
+  </g>
 </svg>

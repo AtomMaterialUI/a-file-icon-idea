@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,13 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+<svg data-big="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-    <polygon fill="#BCAE79" points="5.465 4.675 2.795 9.304 2.795 9.304 .127 4.675 2.796 .053" />
-    <polygon fill="#BCAE79" fill-rule="nonzero" points="8.135 .053 2.797 .053 5.466 4.675 10.805 4.675" />
-    <polygon fill="#BCAE79" points="8.134 9.306 10.803 4.677 10.803 4.677 13.471 9.306 10.802 13.929" />
-    <polygon fill="#BCAE79" fill-rule="nonzero" points="5.463 13.928 10.801 13.928 8.132 9.306 2.793 9.306" />
+    <polygon fill="#BCAE79" points="5.465 4.675 2.795 9.304 2.795 9.304 .127 4.675 2.796 .053"/>
+    <polygon fill="#BCAE79" fill-rule="nonzero" points="8.135 .053 2.797 .053 5.466 4.675 10.805 4.675"/>
+    <polygon fill="#BCAE79" points="8.134 9.306 10.803 4.677 10.803 4.677 13.471 9.306 10.802 13.929"/>
+    <polygon fill="#BCAE79" fill-rule="nonzero" points="5.463 13.928 10.801 13.928 8.132 9.306 2.793 9.306"/>
   </g>
 </svg>

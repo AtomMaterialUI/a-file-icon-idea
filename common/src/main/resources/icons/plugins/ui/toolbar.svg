@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,9 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-    <path stroke="#A1887F" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-miterlimit="1.4142"
-          d="M1,5 L15,5 L15,11 L1,11 L1,5 Z M3,7 L3,9 L5,9 L5,7 L3,7 Z M7,7 L7,9 L9,9 L9,7 L7,7 Z M11,7 L11,9 L13,9 L13,7 L11,7 Z" />
+<svg data-big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+  <path stroke="#A1887F" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-miterlimit="1.4142"
+        d="M1,5 L15,5 L15,11 L1,11 L1,5 Z M3,7 L3,9 L5,9 L5,7 L3,7 Z M7,7 L7,9 L9,9 L9,7 L7,7 Z M11,7 L11,9 L13,9 L13,7 L11,7 Z"/>
 </svg>

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons.svgpatchers
 
@@ -50,17 +49,17 @@ interface SvgPatcher {
   fun refresh()
 
   companion object {
-    const val ICONCOLOR: String = "iconColor"
-    const val FOLDERCOLOR: String = "folderColor"
-    const val FOLDERICONCOLOR: String = "folderIconColor"
+    const val ICONCOLOR: String = "data-iconColor"
+    const val FOLDERCOLOR: String = "data-folderColor"
+    const val FOLDERICONCOLOR: String = "data-folderIconColor"
     const val STROKE: String = "stroke"
     const val FILL: String = "fill"
     const val WIDTH: String = "width"
     const val HEIGHT: String = "height"
     const val TRUE: String = "true"
-    const val BIG: String = "big"
-    const val TINT: String = "tint"
-    const val THEMED: String = "themed"
+    const val BIG: String = "data-big"
+    const val TINT: String = "data-tint"
+    const val THEMED: String = "data-themed"
     const val PX: String = "px"
   }
 

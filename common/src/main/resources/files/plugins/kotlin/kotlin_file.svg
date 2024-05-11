@@ -1,7 +1,7 @@
 <!--
   - The MIT License (MIT)
   -
-  - Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   -
   - Permission is hereby granted, free of charge, to any person obtaining a copy
   - of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,13 @@
   - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
-  -
-  -
   -->
 
-<svg big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
-    <g fill="#497CE3" fill-rule="evenodd" iconColor="Kotlin">
-        <polygon fill-rule="nonzero" points="1 15 8.023 7.977 15 15"/>
-        <polygon fill-rule="nonzero" points="1 1 8.023 1 1 8.583"/>
-        <path fill-rule="nonzero"
-              d="M 8.1913021,1 14.796875,0.98828125 7.8202083,7.9649479 0.99609375,14.800781 0.99999995,8.7677604 Z"/>
-    </g>
+<svg data-big="true" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16">
+  <g fill="#497CE3" fill-rule="evenodd" data-iconColor="Kotlin">
+    <polygon fill-rule="nonzero" points="1 15 8.023 7.977 15 15"/>
+    <polygon fill-rule="nonzero" points="1 1 8.023 1 1 8.583"/>
+    <path fill-rule="nonzero"
+          d="M 8.1913021,1 14.796875,0.98828125 7.8202083,7.9649479 0.99609375,14.800781 0.99999995,8.7677604 Z"/>
+  </g>
 </svg>

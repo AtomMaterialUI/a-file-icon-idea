@@ -51,7 +51,7 @@ class ThemeColorPatcher : SvgPatcher {
     val themed = attributes[SvgPatcher.THEMED] ?: return
     val newThemedColor = ColorUtil.toHex(themedColor)
 
-    // if themed="true" or themed="fill", change the fill color, or change the stroke color if "stroke"
+    // if data-themed="true" or themed="fill", change the fill color, or change the stroke color if "stroke"
     when (themed) {
       SvgPatcher.TRUE, SvgPatcher.FILL -> attributes[SvgPatcher.FILL] = "#$newThemedColor"
       SvgPatcher.STROKE -> attributes[SvgPatcher.STROKE] = "#$newThemedColor"

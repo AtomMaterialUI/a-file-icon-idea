@@ -21,7 +21,7 @@
   - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   - SOFTWARE.
   -->
-<svg big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg data-big="true" width="16px" height="16px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g fill="#C12766">
     <path d="M11.4687 10.1813L8.84073 10.1734L7.53383 7.97899L8.85486 5.79241L11.4828 5.80027L12.7897 7.9947L11.4687 10.1813Z"
     />
