@@ -4,6 +4,14 @@
 
 ## 96.0.0 (9.6.0)
 
+### Features
+- **Angular** Icon Pack
+- **NextJS** Icon Pack
+- New Arrow Style: **Circle**
+
+### Other
+- Optimize SVG icons
+
 ### Additions
 - **Folders**:
   - astro
