@@ -132,6 +132,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether custom line height is enabled. */
   var hasCustomLineHeight: Boolean by property(false)
 
+  /** Whether colored buttons are enabled. */
+  var fixActionButtonsColor: Boolean by property(true)
+
   /** Custom icon size. */
   var customIconSize: Int by property(DEFAULT_ICON_SIZE)
 
@@ -169,39 +172,40 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   /** Reset settings. */
   fun resetSettings() {
-    isEnabledIcons = true
+    accentColor = accentColorFromTheme
+    arrowsStyle = ArrowsStyles.MATERIAL
+    customIconSize = DEFAULT_ICON_SIZE
+    customLineHeight = DEFAULT_LINE_HEIGHT
+    hasCustomIconSize = false
+    hasCustomLineHeight = false
+    fixActionButtonsColor = true
+    isAccentColorEnabled = false
     isEnabledDirectories = true
-    isEnabledUIIcons = true
-    isMonochromeIcons = false
-    monochromeColor = DEFAULT_MONOCHROME // NON-NLS
+    isEnabledIcons = true
     isEnabledPsiIcons = true
+    isEnabledUIIcons = true
     isHideFileIcons = false
     isHideFolderIcons = false
-    isUseHollowFolders = true
-    isUseRubyIcons = true
-    isUseRailsIcons = true
-    isUseNestIcons = true
-    isUseAngularIcons = false
-    isUseAngular2Icons = true
-    isUseReduxIcons = true
-    isUseNgRxIcons = true
-    isUseNextIcons = true
-    isUseRecoilIcons = true
-    isUseTestsIcons = true
-    arrowsStyle = ArrowsStyles.MATERIAL
-    isAccentColorEnabled = false
-    accentColor = accentColorFromTheme
-    isThemedColorEnabled = false
-    themedColor = themedColorFromTheme
-    hasCustomIconSize = false
-    customIconSize = DEFAULT_ICON_SIZE
-    hasCustomLineHeight = false
-    customLineHeight = DEFAULT_LINE_HEIGHT
-    saturation = DEFAULT_SATURATION
-    isSaturatedIcons = false
-    opacity = DEFAULT_OPACITY
-    isOpacityIcons = false
     isLowPowerMode = true
+    isMonochromeIcons = false
+    isOpacityIcons = false
+    isSaturatedIcons = false
+    isThemedColorEnabled = false
+    isUseAngular2Icons = true
+    isUseAngularIcons = false
+    isUseHollowFolders = true
+    isUseNestIcons = true
+    isUseNextIcons = true
+    isUseNgRxIcons = true
+    isUseRailsIcons = true
+    isUseRecoilIcons = true
+    isUseReduxIcons = true
+    isUseRubyIcons = true
+    isUseTestsIcons = true
+    monochromeColor = DEFAULT_MONOCHROME // NON-NLS
+    opacity = DEFAULT_OPACITY
+    saturation = DEFAULT_SATURATION
+    themedColor = themedColorFromTheme
     fireChanged()
   }
 

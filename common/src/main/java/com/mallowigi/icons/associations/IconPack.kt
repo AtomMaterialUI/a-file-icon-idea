@@ -45,7 +45,7 @@ enum class IconPack {
   NGRX,
 
   /** NextJS. */
-  NextJS,
+  NEXTJS,
 
   /** Rails. */
   RAILS,

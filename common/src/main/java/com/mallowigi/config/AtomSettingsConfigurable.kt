@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.config
@@ -156,15 +155,24 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             }
           )
 
-          twoColumnsRow(
+          threeColumnsRow(
             {
-              icon(AtomIcons.Settings.ANGULAR)
+              icon(AtomIcons.Settings.ANGULAR2)
                 .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useAngularIcons.checkbox"))
-                .bindSelected(settings::isUseAngularIcons)
+                .bindSelected(settings::isUseAngular2Icons)
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useAngularIcons.tooltip"))
+            },
+            {
+              icon(AtomIcons.Settings.ANGULAR)
+                .gap(RightGap.SMALL)
+              checkBox(message("SettingsForm.useAngularIconsOld.checkbox"))
+                .bindSelected(settings::isUseAngularIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useAngularIconsOld.tooltip"))
             },
             {
               icon(AtomIcons.Settings.NEST)
@@ -177,7 +185,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             }
           )
 
-          twoColumnsRow(
+          threeColumnsRow(
             {
               icon(AtomIcons.Settings.REDUX)
                 .gap(RightGap.SMALL)
@@ -195,7 +203,16 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useNgRxIcons.tooltip"))
-            }
+            },
+            {
+              icon(AtomIcons.Settings.NEXTJS)
+                .gap(RightGap.SMALL)
+              checkBox(message("SettingsForm.useNextJSIcons.checkbox"))
+                .bindSelected(settings::isUseNextIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useNextJSIcons.tooltip"))
+            },
           )
 
           row {
@@ -361,6 +378,13 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
       }
 
       row {
+        label(message("SettingsForm.fixActionsButtonsColor.text"))
+          .gap(RightGap.SMALL)
+        cell(OnOffButton())
+          .bindSelected(settings::fixActionButtonsColor)
+      }.rowComment(message("SettingsForm.fixActionsButtonsColor.toolTipText"))
+
+      row {
         label(message("SettingsForm.lowPowerSwitch.text"))
           .gap(RightGap.SMALL)
         cell(OnOffButton())
@@ -383,7 +407,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         message("SettingsForm.resetDefaultsButton.confirmation.ok"),
         message("SettingsForm.resetDefaultsButton.confirmation.cancel"),
         Messages.getQuestionIcon(),
-      ) == Messages.OK) {
+      ) == Messages.OK
+    ) {
       settings.resetSettings()
       main.reset()
     }

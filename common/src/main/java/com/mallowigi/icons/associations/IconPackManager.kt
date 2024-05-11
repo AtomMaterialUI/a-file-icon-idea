@@ -39,7 +39,7 @@ class IconPackManager {
       IconPack.ANGULAR2 -> AtomSettingsConfig.instance.isUseAngular2Icons
       IconPack.NEST -> AtomSettingsConfig.instance.isUseNestIcons
       IconPack.REDUX -> AtomSettingsConfig.instance.isUseReduxIcons
-      IconPack.NextJS -> AtomSettingsConfig.instance.isUseNextIcons
+      IconPack.NEXTJS -> AtomSettingsConfig.instance.isUseNextIcons
       IconPack.NGRX -> AtomSettingsConfig.instance.isUseNgRxIcons
       IconPack.RAILS -> AtomSettingsConfig.instance.isUseRailsIcons
       IconPack.RECOIL -> AtomSettingsConfig.instance.isUseRecoilIcons

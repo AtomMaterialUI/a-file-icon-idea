@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package icons
 
@@ -151,9 +150,11 @@ object AtomIcons {
     val RUBY: Icon = load("/settings/ruby.svg")
     val RAILS: Icon = load("/settings/rails.svg")
     val ANGULAR: Icon = load("/settings/angular.svg")
+    val ANGULAR2: Icon = load("/settings/angular2.svg")
     val NEST: Icon = load("/settings/nest.svg")
     val REDUX: Icon = load("/settings/redux.svg")
     val NGRX: Icon = load("/settings/ngrx.svg")
+    val NEXTJS: Icon = load("/settings/nextjs.svg")
     val RECOIL: Icon = load("/settings/recoil.svg")
     val TESTS: Icon = load("/settings/tests.svg")
   }
