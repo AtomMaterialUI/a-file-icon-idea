@@ -8,9 +8,7 @@
 - **Angular** Icon Pack
 - **NextJS** Icon Pack
 - New Arrow Style: **Circle**
-
-### Other
-- Optimize SVG icons
+- New option: **Fix Action Buttons Color**. This will change the color of the Toolbar buttons to a darker color for a better contrast with the plugin icons.
 
 ### Additions
 - **Folders**:
@@ -30,6 +28,8 @@
   - mindsdb
 - **Icons**:
   - Benchmark
+  - contenthook
+  - duc
   - garden
   - nest commands
   - nest cron
@@ -71,6 +71,7 @@
 
 ### Other
 - Move to Gradle Plugin 2.0
+- Optimize SVG icons
 
 ## 95.0.0 (9.5.0)
 

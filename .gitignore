@@ -323,6 +323,9 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
+*.crt
+*.pem
+
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
