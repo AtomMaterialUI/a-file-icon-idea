@@ -1,0 +1,476 @@
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<root>
+  <iconReplacement icon="/outline/add.svg">
+    <replacePath path="/actions/addFile.svg"/>
+    <replacePath path="/expui/general/add.svg"/>
+    <replacePath path="/fileTypes/addAny.svg"/>
+    <replacePath path="/general/add.svg"/>
+    <replacePath path="/general/addJdk.svg"/>
+    <replacePath path="/other/add_sdk.svg"/>
+    <replacePath path="/plugins/datagrip/add.svg"/>
+    <replacePath path="/plugins/python.com.jetbrains.python.jupyter/addJupyterConnection.svg"/>
+    <replacePath path="/plugins/resharper/AssemblyExplorer/AddFromNugetCache.svg"/>
+    <replacePath path="/plugins/resharper/CallHierarchy/Add.svg"/>
+    <replacePath path="/plugins/resharper/Common/Create.svg"/>
+    <replacePath path="/plugins/resharper/FeaturesEnvironment/AddFile.svg"/>
+    <replacePath path="/plugins/resharper/LiveTemplates/AddLiveTemplate.svg"/>
+    <replacePath path="/plugins/resharper/LiveTemplates/AddSurroundTemplate.svg"/>
+    <replacePath path="/plugins/resharper/RefactoringsInplace/AddedParameter.svg"/>
+    <replacePath path="/plugins/resharper/SkipItemsDialog/SkipItemsAddMask.svg"/>
+    <replacePath path="/plugins/ruby/expui/rails/addAny.svg"/>
+    <replacePath path="/plugins/ruby/rails/addAny.svg"/>
+    <replacePath path="/plugins/scala/addClause.svg"/>
+    <replacePath path="/toolbar/addSlot.svg"/>
+    <replacePath path="/toolbarDecorator/add.svg"/>
+    <replacePath path="/toolbarDecorator/mac/add.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/back.svg">
+    <replacePath path="/actions/back.svg"/>
+    <replacePath path="/actions/findBackward.svg"/>
+    <replacePath path="/actions/play_back.svg"/>
+    <replacePath path="/actions/prevfile.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bookmarkAdd.svg">
+    <replacePath path="/actions/addToDictionary.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bottomPane.svg">
+    <replacePath path="/actions/previewDetailsVertically.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/build.svg">
+    <replacePath path="/actions/compile.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/camera.svg">
+    <replacePath path="/actions/dump.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/case.svg">
+    <replacePath path="/actions/matchCase.svg"/>
+    <replacePath path="/actions/preserveCase.svg"/>
+    <replacePath path="/actions/matchCaseHovered.svg"/>
+    <replacePath path="/actions/preserveCaseHover.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/caseSelected.svg">
+    <replacePath path="/actions/matchCaseSelected.svg"/>
+    <replacePath path="/actions/preserveCaseSelected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/close.svg">
+    <replacePath path="/actions/cancel.svg"/>
+    <replacePath path="/actions/delete.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/closeCircle.svg">
+    <replacePath path="/actions/clean.svg"/>
+    <replacePath path="/actions/clear.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/collapse.svg">
+    <replacePath path="/actions/collapseall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/computer.svg">
+    <replacePath path="/actions/projectDirectory.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/copy.svg">
+    <replacePath path="/actions/copy.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cut.svg">
+    <replacePath path="/actions/menu-cut.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/debug.svg">
+    <replacePath path="/actions/startDebugger.svg"/>
+    <replacePath path="/actions/startDebugger_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/diff.svg">
+    <replacePath path="/actions/diff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/dropdown.svg">
+    <replacePath path="/actions/inlayDropTriangle.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/download.svg">
+    <replacePath path="/actions/checkOut.svg"/>
+    <replacePath path="/actions/download.svg"/>
+    <replacePath path="/actions/get.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/down.svg">
+    <replacePath path="/actions/findAndShowNextMatches.svg"/>
+    <replacePath path="/actions/findAndShowNextMatchesSelected.svg"/>
+    <replacePath path="/actions/moveDown.svg"/>
+    <replacePath path="/actions/nextOccurence.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/edit.svg">
+    <replacePath path="/actions/edit.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/editSquare.svg">
+    <replacePath path="/actions/refactoringBulb.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/editSource.svg">
+    <replacePath path="/actions/editSource.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/expand.svg">
+    <replacePath path="/actions/expandall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/export.svg">
+    <replacePath path="/actions/export.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/eye.svg">
+    <replacePath path="/actions/preview.svg"/>
+    <replacePath path="/actions/show.svg"/>
+    <replacePath path="/actions/toggleVisibility.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/filter.svg">
+    <replacePath path="/actions/filter.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/findInPage.svg">
+    <replacePath path="/actions/showViewer.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/forward.svg">
+    <replacePath path="/actions/forward.svg"/>
+    <replacePath path="/actions/findForward.svg"/>
+    <replacePath path="/actions/nextfile.svg"/>
+    <replacePath path="/actions/play_forward.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folder.svg">
+    <replacePath path="/actions/menu-folder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/grid.svg">
+    <replacePath path="/actions/groupBy.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/help.svg">
+    <replacePath path="/actions/help.svg"/>
+    <replacePath path="/actions/menu-help.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/hidden.svg">
+    <replacePath path="/actions/showHidden.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/inlayGear.svg">
+    <replacePath path="/actions/inlayGear.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/install.svg">
+    <replacePath path="/actions/install.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/highlight.svg">
+    <replacePath path="/actions/highlighting.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/leftClose.svg">
+    <replacePath path="/actions/arrowCollapse.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/leftOpen.svg">
+    <replacePath path="/actions/arrowExpand.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/lightning.svg">
+    <replacePath path="/actions/lightning.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/list.svg">
+    <replacePath path="/actions/addList.svg"/>
+    <replacePath path="/actions/moveToAnotherChangelist.svg"/>
+    <replacePath path="/actions/properties.svg"/>
+    <replacePath path="/actions/quickList.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/magic.svg">
+    <replacePath path="/actions/realIntentionBulb.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/magicOff.svg">
+    <replacePath path="/actions/realIntentionOffBulb.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/memory.svg">
+    <replacePath path="/actions/profileCPU.svg"/>
+    <replacePath path="/actions/profileMemory.svg"/>
+    <replacePath path="/actions/startMemoryProfile.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/more.svg">
+    <replacePath path="/actions/more.svg"/>
+    <replacePath path="/actions/more_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/moveToToolWindow.svg">
+    <replacePath path="/actions/move-to-button.svg"/>
+    <replacePath path="/actions/move-to-button-top.svg"/>
+    <replacePath path="/actions/MoveTo2.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/new.svg">
+    <replacePath path="/actions/enableNewUi.svg"/>
+    <replacePath path="/actions/enableNewUiSelected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/newFolder.svg">
+    <replacePath path="/actions/newFolder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/offline.svg">
+    <replacePath path="/actions/offlineMode.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/palette.svg">
+    <replacePath path="/actions/editScheme.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/paste.svg">
+    <replacePath path="/actions/menu-paste.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/pause.svg">
+    <replacePath path="/actions/pause.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/pin.svg">
+    <replacePath path="/actions/pinTab.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/read.svg">
+    <replacePath path="/actions/showReadAccess.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/refresh.svg">
+    <replacePath path="/actions/refresh.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/redo.svg">
+    <replacePath path="/actions/redo.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/regex.svg">
+    <replacePath path="/actions/regex.svg"/>
+    <replacePath path="/actions/regexHovered.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/regexSelected.svg">
+    <replacePath path="/actions/regexSelected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/remove.svg">
+    <replacePath path="/actions/exclude.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/replace.svg">
+    <replacePath path="/actions/menu-replace.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/rerun.svg">
+    <replacePath path="/actions/rerun.svg"/>
+    <replacePath path="/actions/rerun_stroke.svg"/>
+    <replacePath path="/actions/runAll.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/reset.svg">
+    <replacePath path="/actions/reset.svg"/>
+    <replacePath path="/actions/resetView.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/restart.svg">
+    <replacePath path="/actions/buildAutoReloadChanges.svg"/>
+    <replacePath path="/actions/buildLoadChanges.svg"/>
+    <replacePath path="/actions/restart.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/restartDebugger.svg">
+    <replacePath path="/actions/restartDebugger.svg"/>
+    <replacePath path="/actions/restartDebugger_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/resume.svg">
+    <replacePath path="/actions/resume.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/return.svg">
+    <replacePath path="/actions/searchNewLine.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/returnSelected.svg">
+    <replacePath path="/actions/searchNewLineHover.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/rollback.svg">
+    <replacePath path="/actions/rollback.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/run.svg">
+    <replacePath path="/actions/execute.svg"/>
+    <replacePath path="/actions/execute_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/runAnything.svg">
+    <replacePath path="/actions/runAnything.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/runToCursor.svg">
+    <replacePath path="/actions/runToCursor.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/save.svg">
+    <replacePath path="/actions/menu-saveall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/search.svg">
+    <replacePath path="/actions/find.svg"/>
+    <replacePath path="/actions/findEntireFile.svg"/>
+    <replacePath path="/actions/findWhite.svg"/>
+    <replacePath path="/actions/menu-find.svg"/>
+    <replacePath path="/actions/search.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/searchWithHistory.svg">
+    <replacePath path="/actions/searchWithHistory.svg"/>
+    <replacePath path="/actions/searchWithHistoryHovered.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/send.svg">
+    <replacePath path="/actions/commit.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/selectAll.svg">
+    <replacePath path="/actions/selectall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/share.svg">
+    <replacePath path="/actions/share.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/shortcutFilter.svg">
+    <replacePath path="/actions/shortcutFilter.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/showCode.svg">
+    <replacePath path="/actions/showCode.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/sidePane.svg">
+    <replacePath path="/actions/previewDetails.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/status.svg">
+    <replacePath path="/actions/fileStatus.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/stepInto.svg">
+    <replacePath path="/actions/traceInto.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/stepOut.svg">
+    <replacePath path="/actions/stepOut.svg"/>
+    <replacePath path="/actions/stepOutCodeBlock.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/stepOver.svg">
+    <replacePath path="/actions/traceOver.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/stop.svg">
+    <replacePath path="/actions/suspend.svg"/>
+    <replacePath path="/actions/suspend_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/swap.svg">
+    <replacePath path="/actions/swapPanels.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/sync.svg">
+    <replacePath path="/actions/forceRefresh.svg"/>
+    <replacePath path="/actions/synchronizeFS.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/trash.svg">
+    <replacePath path="/actions/gc.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/up.svg">
+    <replacePath path="/actions/findAndShowPrevMatches.svg"/>
+    <replacePath path="/actions/findAndShowPrevMatchesSelected.svg"/>
+    <replacePath path="/actions/moveUp.svg"/>
+    <replacePath path="/actions/previousOccurence.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/undo.svg">
+    <replacePath path="/actions/undo.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/uninstall.svg">
+    <replacePath path="/actions/uninstall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/unselect.svg">
+    <replacePath path="/actions/unselectall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/unshare.svg">
+    <replacePath path="/actions/unshare.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/upload.svg">
+    <replacePath path="/actions/upload.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/valid.svg">
+    <replacePath path="/actions/valid.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/wrap.svg">
+    <replacePath path="/actions/toggleSoftWrap.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/write.svg">
+    <replacePath path="/actions/showWriteAccess.svg"/>
+  </iconReplacement>
+
+</root>
