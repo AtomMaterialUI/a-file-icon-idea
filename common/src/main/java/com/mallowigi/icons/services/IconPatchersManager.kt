@@ -125,7 +125,7 @@ class IconPatchersManager {
       "RunWidget.stopBackground"
     )
     resources.forEach {
-      UIManager.put(it, JBUI.CurrentTheme.ActionButton.hoverBackground())
+      UIManager.put(it, JBUI.CurrentTheme.ActionButton.pressedBackground())
     }
   }
 

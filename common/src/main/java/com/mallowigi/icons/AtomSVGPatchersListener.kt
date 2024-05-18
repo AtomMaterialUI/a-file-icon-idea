@@ -33,6 +33,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.util.SVGLoader
 import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.icons.providers.CacheIconProvider
 import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
@@ -67,7 +68,10 @@ class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAwar
         applySvgPatchers()
         IconPatchersManager.instance.fixRunIcons()
       })
-      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
+      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier {
+        applySvgPatchers()
+        CacheIconProvider.instance.invalidateIconCache()
+      })
     }
 
     ApplicationManager.getApplication().invokeLater { LafManager.getInstance().updateUI() }
