@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,18 +20,18 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons.replacements
 
 import com.intellij.openapi.util.IconPathPatcher
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.services.IconReplacementsFactory
 
 class OutlineIconsPatcher : IconPathPatcher() {
   private val outlineIcons: IconReplacements = IconReplacementsFactory.create("/outline_icons.xml")
 
   /** Whether the patcher should be enabled or not. */
-  var enabled: Boolean = true
+  var enabled: Boolean = AtomSettingsConfig.instance.isNewIconsEnabeld
 
   /**
    * Get the plugin context class loader if an icon needs to be patched

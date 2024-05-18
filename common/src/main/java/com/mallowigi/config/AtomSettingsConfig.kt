@@ -144,6 +144,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether low power mode is enabled. */
   var isLowPowerMode: Boolean by property(true)
 
+  /** Is new icons enabeld. */
+  var isNewIconsEnabeld: Boolean by property(false)
+
   /** Config state. */
   override fun getState(): AtomSettingsConfig = this
 
@@ -202,6 +205,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isUseReduxIcons = true
     isUseRubyIcons = true
     isUseTestsIcons = true
+    isNewIconsEnabeld = false
     monochromeColor = DEFAULT_MONOCHROME // NON-NLS
     opacity = DEFAULT_OPACITY
     saturation = DEFAULT_SATURATION
