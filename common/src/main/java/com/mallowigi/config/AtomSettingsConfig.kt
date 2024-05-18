@@ -133,7 +133,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   var hasCustomLineHeight: Boolean by property(false)
 
   /** Whether colored buttons are enabled. */
-  var fixActionButtonsColor: Boolean by property(true)
+  var fixActionButtonsColor: Boolean by property(false)
 
   /** Custom icon size. */
   var customIconSize: Int by property(DEFAULT_ICON_SIZE)
@@ -178,7 +178,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     customLineHeight = DEFAULT_LINE_HEIGHT
     hasCustomIconSize = false
     hasCustomLineHeight = false
-    fixActionButtonsColor = true
+    fixActionButtonsColor = false
     isAccentColorEnabled = false
     isEnabledDirectories = true
     isEnabledIcons = true
