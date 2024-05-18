@@ -21,16 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.mallowigi.icons
 
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.startup.ProjectActivity
-import com.mallowigi.icons.services.IconPatchersManager
-import com.mallowigi.icons.services.IconReplacerManager
+package com.mallowigi.icons.services
 
-class IconPathPatcherActivity : ProjectActivity {
-  override suspend fun execute(project: Project) {
-    IconReplacerManager.instance.init()
-    IconPatchersManager.instance.init()
+import com.intellij.openapi.components.Service
+import com.intellij.openapi.components.service
+import com.intellij.openapi.util.IconLoader
+import com.mallowigi.icons.replacements.OutlineIconsPatcher
+
+@Service(Service.Level.APP)
+class IconReplacerManager {
+  fun init() {
+    //val iconPathPatchers = IconPathPatcher.EP_NAME.extensions
+    //val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
+    //
+    //iconPathPatchers.forEach {
+    //  if (it !in installedPatchers) {
+    //    IconLoader.installPathPatcher(it)
+    //    installedPatchers.add(it)
+    //  }
+    //}
+
+    IconLoader.installPathPatcher(OutlineIconsPatcher())
+  }
+
+  companion object {
+    @JvmStatic
+    val instance: IconReplacerManager by lazy { service() }
   }
 }

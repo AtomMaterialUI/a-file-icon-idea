@@ -1,0 +1,16 @@
+{
+  "name": "a-file-icon-idea",
+  "version": "1.0.0",
+  "description": "<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --> [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-) <!-- ALL-CONTRIBUTORS-BADGE:END -->",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "svgo": "^3.3.2"
+  },
+  "scripts": {
+    "svgo": "svgo -f iconGenerator/assets -r -o src/main/resources/assets"
+  },
+  "author": "",
+  "license": "ISC"
+}
