@@ -2,6 +2,15 @@
 
 ----
 
+## 97.0.0 (9.7.0)
+
+### Fixes
+
+- Performance Improvement by using a cache for associations
+- Fix "Fix Actions Buttons Color" color
+- Update Action Buttons Color on theme change when the setting is enabled
+- Added missing New UI icons
+
 ## 96.0.0 (9.6.0)
 
 ### Features
