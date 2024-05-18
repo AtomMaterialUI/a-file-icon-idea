@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons
 
@@ -34,6 +33,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.util.SVGLoader
 import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
 import com.mallowigi.utils.getPluginId
@@ -63,7 +63,10 @@ class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAwar
     // Listen for changes on the settings
     val connect = ApplicationManager.getApplication().messageBus.connect()
     connect.run {
-      subscribe(LafManagerListener.TOPIC, LafManagerListener { applySvgPatchers() })
+      subscribe(LafManagerListener.TOPIC, LafManagerListener {
+        applySvgPatchers()
+        IconPatchersManager.instance.fixRunIcons()
+      })
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { applySvgPatchers() })
     }
 

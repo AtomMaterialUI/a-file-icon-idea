@@ -39,7 +39,6 @@ dependencies {
 
     bundledPlugins(
       "com.intellij.java",
-      "org.jetbrains.kotlin",
       "Git4Idea",
     )
 

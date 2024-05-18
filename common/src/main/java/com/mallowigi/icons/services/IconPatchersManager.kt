@@ -100,12 +100,10 @@ class IconPatchersManager {
     }
   }
 
-  private fun fixRunIcons() {
+  fun fixRunIcons() {
     if (!AtomSettingsConfig.instance.fixActionButtonsColor) return;
 
     val resources = setOf(
-      "ActionButton.hoverBackground",
-      "ActionButton.pressedBackground",
       "RunToolbar.Debug.activeBackground",
       "RunToolbar.Profile.activeBackground",
       "RunToolbar.Run.activeBackground",
