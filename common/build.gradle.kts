@@ -47,7 +47,7 @@ dependencies {
   }
 
   implementation("org.javassist:javassist:3.30.2-GA")
-  implementation("com.fasterxml:aalto-xml:1.3.2")
+  implementation("com.fasterxml:aalto-xml:1.3.3")
 }
 
 tasks {
