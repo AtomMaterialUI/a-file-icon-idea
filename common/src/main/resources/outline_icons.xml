@@ -137,6 +137,7 @@
 
   <iconReplacement icon="/outline/edit.svg">
     <replacePath path="/actions/edit.svg"/>
+    <replacePath path="/codeWithMe/cwmPermissionEdit.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/editSquare.svg">
@@ -159,6 +160,7 @@
     <replacePath path="/actions/preview.svg"/>
     <replacePath path="/actions/show.svg"/>
     <replacePath path="/actions/toggleVisibility.svg"/>
+    <replacePath path="/codeWithMe/cwmPermissionView.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/filter.svg">
@@ -178,6 +180,10 @@
 
   <iconReplacement icon="/outline/folder.svg">
     <replacePath path="/actions/menu-folder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/gear.svg">
+    <replacePath path="/codeStyle/Gear.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/grid.svg">
@@ -203,6 +209,10 @@
 
   <iconReplacement icon="/outline/highlight.svg">
     <replacePath path="/actions/highlighting.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/key.svg">
+    <replacePath path="/codeWithMe/cwmPermissions.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/leftClose.svg">
@@ -385,6 +395,7 @@
 
   <iconReplacement icon="/outline/share.svg">
     <replacePath path="/actions/share.svg"/>
+    <replacePath path="/codeWithMe/cwmShared.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/shortcutFilter.svg">
@@ -463,6 +474,7 @@
 
   <iconReplacement icon="/outline/valid.svg">
     <replacePath path="/actions/valid.svg"/>
+    <replacePath path="/codeWithMe/cwmVerified.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/wrap.svg">
@@ -473,4 +485,130 @@
     <replacePath path="/actions/showWriteAccess.svg"/>
   </iconReplacement>
 
+  <!-- region Build Tools -->
+  <iconReplacement icon="/outline/grunt.svg">
+    <replacePath path="/buildTools/grunt/grunt.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/gruntToolWindow.svg">
+    <replacePath path="/buildTools/grunt/grunt_toolwindow.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/gulp.svg">
+    <replacePath path="/buildTools/gulp/gulp.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/gulpToolWindow.svg">
+    <replacePath path="/buildTools/gulp/gulp_toolwindow.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/shell.svg">
+    <replacePath path="/buildTools/buildToolTask.svg"/>
+  </iconReplacement>
+  <!--endregion-->
+
+  <!--region Code With Me -->
+  <iconReplacement icon="/outline/users.svg">
+    <replacePath path="/codeWithMe/cwmAccess.svg"/>
+    <replacePath path="/codeWithMe/cwmLogoToolbar.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/usersOff.svg">
+    <replacePath path="/codeWithMe/cwmAccessOff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/usersOn.svg">
+    <replacePath path="/codeWithMe/cwmAccessOn.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/videoOn.svg">
+    <replacePath path="/codeWithMe/cwmCamAvatarOn.svg"/>
+    <replacePath path="/codeWithMe/cwmCamOn.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/videoOff.svg">
+    <replacePath path="/codeWithMe/cwmCamAvatarOff.svg"/>
+    <replacePath path="/codeWithMe/cwmCamOff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/phoneOn.svg">
+    <replacePath path="/codeWithMe/cwmEnableCall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/phoneOff.svg">
+    <replacePath path="/codeWithMe/cwmDisableCall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmFollow.svg">
+    <replacePath path="/codeWithMe/cwmFollow.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmFollowMe.svg">
+    <replacePath path="/codeWithMe/cwmFollowMe.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmForceFollowMe.svg">
+    <replacePath path="/codeWithMe/cwmForceFollowMe.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmFullSync.svg">
+    <replacePath path="/codeWithMe/cwmFullSync.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmInvite.svg">
+    <replacePath path="/codeWithMe/cwmInvite.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmJoin.svg">
+    <replacePath path="/codeWithMe/cwmJoin.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmJump.svg">
+    <replacePath path="/codeWithMe/cwmJump.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmKick.svg">
+    <replacePath path="/codeWithMe/cwmKick.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmLeaveCall.svg">
+    <replacePath path="/codeWithMe/cwmLeaveCall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/micOn.svg">
+    <replacePath path="/codeWithMe/cwmMicAvatarOn.svg"/>
+    <replacePath path="/codeWithMe/cwmMicOn.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/micOff.svg">
+    <replacePath path="/codeWithMe/cwmMicAvatarOff.svg"/>
+    <replacePath path="/codeWithMe/cwmMicOff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmPermissionFull.svg">
+    <replacePath path="/codeWithMe/cwmPermissionFull.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmPermissionDenied.svg">
+    <replacePath path="/codeWithMe/cwmPermissionDenied.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmPermissionGranted.svg">
+    <replacePath path="/codeWithMe/cwmPermissionGranted.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/screenOn.svg">
+    <replacePath path="/codeWithMe/cwmScreenInBrowserOn.svg"/>
+    <replacePath path="/codeWithMe/cwmScreenOn.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/screenOff.svg">
+    <replacePath path="/codeWithMe/cwmScreenInBrowserOff.svg"/>
+    <replacePath path="/codeWithMe/cwmScreenOff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/cwmUsers.svg">
+    <replacePath path="/codeWithMe/users.svg"/>
+  </iconReplacement>
+  <!--endregion-->
 </root>
