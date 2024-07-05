@@ -48,6 +48,20 @@
     <replacePath path="/toolbarDecorator/mac/add.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/AddMulticaret.svg">
+    <replacePath path="/actions/AddMulticaret.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/allLeft.svg">
+    <replacePath path="/actions/allLeft.svg"/>
+    <replacePath path="/actions/play_first.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/allRight.svg">
+    <replacePath path="/actions/allRight.svg"/>
+    <replacePath path="/actions/play_last.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/back.svg">
     <replacePath path="/actions/back.svg"/>
     <replacePath path="/actions/findBackward.svg"/>
@@ -67,6 +81,14 @@
     <replacePath path="/actions/compile.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/bulb.svg">
+    <replacePath path="/actions/quickfixBulb.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bulbOff.svg">
+    <replacePath path="/actions/quickfixOffBulb.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/camera.svg">
     <replacePath path="/actions/dump.svg"/>
   </iconReplacement>
@@ -83,6 +105,35 @@
     <replacePath path="/actions/preserveCaseSelected.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/changeView.svg">
+    <replacePath path="/actions/changeView.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/CheckMulticaret.svg">
+    <replacePath path="/actions/CheckMulticaret.svg"/>
+    <replacePath path="/actions/multicaret.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/chevronUp.svg">
+    <replacePath path="/chooser/top.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/chevronDown.svg">
+    <replacePath path="/chooser/bottom.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/chevronLeft.svg">
+    <replacePath path="/chooser/left.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/chevronRight.svg">
+    <replacePath path="/chooser/right.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/clipboard.svg">
+    <replacePath path="/actions/diffWithClipboard.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/close.svg">
     <replacePath path="/actions/cancel.svg"/>
     <replacePath path="/actions/delete.svg"/>
@@ -91,6 +142,11 @@
   <iconReplacement icon="/outline/closeCircle.svg">
     <replacePath path="/actions/clean.svg"/>
     <replacePath path="/actions/clear.svg"/>
+    <replacePath path="/darcula/clear.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/codeBlocks.svg">
+    <replacePath path="/actions/showCode.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/collapse.svg">
@@ -112,6 +168,10 @@
   <iconReplacement icon="/outline/debug.svg">
     <replacePath path="/actions/startDebugger.svg"/>
     <replacePath path="/actions/startDebugger_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/diagram.svg">
+    <replacePath path="/actions/diagramDiff.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/diff.svg">
@@ -148,6 +208,10 @@
     <replacePath path="/actions/editSource.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/exit.svg">
+    <replacePath path="/actions/exit.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/expand.svg">
     <replacePath path="/actions/expandall.svg"/>
   </iconReplacement>
@@ -161,6 +225,10 @@
     <replacePath path="/actions/show.svg"/>
     <replacePath path="/actions/toggleVisibility.svg"/>
     <replacePath path="/codeWithMe/cwmPermissionView.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/featureSearch.svg">
+    <replacePath path="/actions/dependencyAnalyzer.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/filter.svg">
@@ -196,7 +264,11 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/hidden.svg">
-    <replacePath path="/actions/showHidden.svg"/>
+    <replacePath path="/actions/showHiddens.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/horizontalSplit.svg">
+    <replacePath path="/actions/splitHorizontally.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/inlayGear.svg">
@@ -205,6 +277,14 @@
 
   <iconReplacement icon="/outline/install.svg">
     <replacePath path="/actions/install.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/inSelection.svg">
+    <replacePath path="/actions/inSelection.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/import.svg">
+    <replacePath path="/css/import.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/highlight.svg">
@@ -242,6 +322,10 @@
     <replacePath path="/actions/realIntentionOffBulb.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/map.svg">
+    <replacePath path="/actions/minimap.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/memory.svg">
     <replacePath path="/actions/profileCPU.svg"/>
     <replacePath path="/actions/profileMemory.svg"/>
@@ -251,6 +335,7 @@
   <iconReplacement icon="/outline/more.svg">
     <replacePath path="/actions/more.svg"/>
     <replacePath path="/actions/more_stroke.svg"/>
+    <replacePath path="/actions/presentationAssistantSettings.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/moveToToolWindow.svg">
@@ -270,6 +355,10 @@
 
   <iconReplacement icon="/outline/offline.svg">
     <replacePath path="/actions/offlineMode.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/object.svg">
+    <replacePath path="/actions/prettyPrint.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/palette.svg">
@@ -292,6 +381,10 @@
     <replacePath path="/actions/showReadAccess.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/rebuild.svg">
+    <replacePath path="/actions/rebuild.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/refresh.svg">
     <replacePath path="/actions/refresh.svg"/>
   </iconReplacement>
@@ -301,6 +394,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/regex.svg">
+    <replacePath path="/actions/dynamicUsages.svg"/>
     <replacePath path="/actions/regex.svg"/>
     <replacePath path="/actions/regexHovered.svg"/>
   </iconReplacement>
@@ -313,14 +407,16 @@
     <replacePath path="/actions/exclude.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/RemoveMulticaret.svg">
+    <replacePath path="/actions/RemoveMulticaret.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/replace.svg">
     <replacePath path="/actions/menu-replace.svg"/>
   </iconReplacement>
 
-  <iconReplacement icon="/outline/rerun.svg">
-    <replacePath path="/actions/rerun.svg"/>
-    <replacePath path="/actions/rerun_stroke.svg"/>
-    <replacePath path="/actions/runAll.svg"/>
+  <iconReplacement icon="/outline/report.svg">
+    <replacePath path="/actions/report.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/reset.svg">
@@ -331,6 +427,8 @@
   <iconReplacement icon="/outline/restart.svg">
     <replacePath path="/actions/buildAutoReloadChanges.svg"/>
     <replacePath path="/actions/buildLoadChanges.svg"/>
+    <replacePath path="/actions/rerun.svg"/>
+    <replacePath path="/actions/rerun_stroke.svg"/>
     <replacePath path="/actions/restart.svg"/>
   </iconReplacement>
 
@@ -358,6 +456,10 @@
   <iconReplacement icon="/outline/run.svg">
     <replacePath path="/actions/execute.svg"/>
     <replacePath path="/actions/execute_stroke.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/runAll.svg">
+    <replacePath path="/actions/runAll.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/runAnything.svg">
@@ -402,12 +504,20 @@
     <replacePath path="/actions/shortcutFilter.svg"/>
   </iconReplacement>
 
-  <iconReplacement icon="/outline/showCode.svg">
-    <replacePath path="/actions/showCode.svg"/>
+  <iconReplacement icon="/outline/showChangesOnly.svg">
+    <replacePath path="/actions/showChangesOnly.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/sidePane.svg">
     <replacePath path="/actions/previewDetails.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/sortAsc.svg">
+    <replacePath path="/actions/sortAsc.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/sort.svg">
+    <replacePath path="/actions/sortDesc.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/status.svg">
@@ -432,6 +542,10 @@
     <replacePath path="/actions/suspend_stroke.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/stopRefresh.svg">
+    <replacePath path="/actions/stopRefresh.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/swap.svg">
     <replacePath path="/actions/swapPanels.svg"/>
   </iconReplacement>
@@ -441,8 +555,17 @@
     <replacePath path="/actions/synchronizeFS.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/syncScrolling.svg">
+    <replacePath path="/actions/synchronizeScrolling.svg"/>
+    <replacePath path="/actions/syncPanels.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/trash.svg">
     <replacePath path="/actions/gc.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/tree.svg">
+    <replacePath path="/actions/showAsTree.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/up.svg">
@@ -475,6 +598,30 @@
   <iconReplacement icon="/outline/valid.svg">
     <replacePath path="/actions/valid.svg"/>
     <replacePath path="/codeWithMe/cwmVerified.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/validSmall.svg">
+    <replacePath path="/actions/checked.svg"/>
+    <replacePath path="/actions/checked_selected.svg"/>
+    <replacePath path="/actions/checked_small.svg"/>
+    <replacePath path="/actions/checked_small_selected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/verified.svg">
+    <replacePath path="/actions/setDefault.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/verticalSplit.svg">
+    <replacePath path="/actions/splitVertically.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/words.svg">
+    <replacePath path="/actions/words.svg"/>
+    <replacePath path="/actions/wordsHovered.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/wordsSelected.svg">
+    <replacePath path="/actions/wordsSelected.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/wrap.svg">

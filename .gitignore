@@ -336,3 +336,6 @@ gradle-app.setting
 
 src/main/resources/assets
 .intellijPlatform
+
+# Eagle files
+*.library
