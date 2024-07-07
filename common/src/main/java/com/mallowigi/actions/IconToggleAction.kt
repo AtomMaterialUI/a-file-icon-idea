@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -72,8 +72,8 @@ abstract class IconToggleAction : ToggleAction() {
 
     // Recreate the action button look
     when {
-      selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon))
-      else -> e.presentation.icon = regularIcon(icon)
+      selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon!!))
+      else -> e.presentation.icon = regularIcon(icon!!)
     }
   }
 
