@@ -71,8 +71,8 @@ abstract class IconToggleAction : ToggleAction() {
 
     // Recreate the action button look
     when {
-      selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon))
-      else -> e.presentation.icon = regularIcon(icon)
+      selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon!!))
+      else -> e.presentation.icon = regularIcon(icon!!)
     }
   }
 
