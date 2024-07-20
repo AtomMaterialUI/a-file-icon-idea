@@ -139,9 +139,6 @@
     <replacePath path="/diff/gutterCheckBox.svg"/>
   </iconReplacement>
 
-  <iconReplacement icon="/outline/checkboxIndeterminate.svg">
-  </iconReplacement>
-
   <iconReplacement icon="/outline/checkboxSelected.svg">
     <replacePath path="/darcula/checkBoxSelected.svg"/>
     <replacePath path="/diff/gutterCheckBoxSelected.svg"/>
