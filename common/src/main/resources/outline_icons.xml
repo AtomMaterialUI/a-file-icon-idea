@@ -395,6 +395,10 @@
     <replacePath path="/general/showError.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/error@28x28.svg">
+    <replacePath path="/expui/general/errorDialog.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/exclamationMark.svg">
     <replacePath path="/general/exclMark.svg"/>
   </iconReplacement>
@@ -517,6 +521,10 @@
 
   <iconReplacement icon="/outline/gear@20x20.svg">
     <replacePath path="/expui/general/settings@20x20.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/git.svg">
+    <replacePath path="/expui/general/vcs.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/grid.svg">
@@ -1026,6 +1034,10 @@
     <replacePath path="/general/successLogin.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/success@28x28.svg">
+    <replacePath path="/expui/general/successDialog.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/selectAll.svg">
     <replacePath path="/actions/selectall.svg"/>
   </iconReplacement>
@@ -1290,6 +1302,10 @@
     <replacePath path="/general/notificationWarning.svg"/>
     <replacePath path="/general/showWarning.svg"/>
     <replacePath path="/general/warning.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/warning@28x28.svg">
+    <replacePath path="/expui/general/warningDialog.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/watch.svg">
@@ -1646,6 +1662,7 @@
   </iconReplacement>
   <!--endregion-->
 
+  <!--region General -->
   <iconReplacement icon="/outline/projectWideAnalysisOff.svg">
     <replacePath path="/actions/projectWideAnalysisOff.svg"/>
     <replacePath path="/expui/general/projectWideAnalysisOff.svg"/>
@@ -1654,6 +1671,130 @@
   <iconReplacement icon="/outline/projectWideAnalysis.svg">
     <replacePath path="/actions/projectWideAnalysisOn.svg"/>
     <replacePath path="/expui/general/projectWideAnalysisOn.svg"/>
+  </iconReplacement>
+  <!--endregion-->
+  <iconReplacement icon="/outline/annotation@14x14.svg">
+    <replacePath path="/expui/gutter/extAnnotation.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/applyNotConflicts@14x14.svg">
+    <replacePath path="/expui/gutter/diff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bookmark@14x14.svg">
+    <replacePath path="/expui/gutter/bookmark.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/file@14x14.svg">
+    <replacePath path="/expui/gutter/descriptionFile.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/module@14x14.svg">
+    <replacePath path="/expui/gutter/ejbModule.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/palette@14x14.svg">
+    <replacePath path="/expui/gutter/colors.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/table@14x14.svg">
+    <replacePath path="/expui/gutter/dataSchema.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/implementingMethod.svg">
+    <replacePath path="/expui/gutter/implementingMethod.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/implementedMethod.svg">
+    <replacePath path="/expui/gutter/implementedMethod.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/implementingFunction.svg">
+    <replacePath path="/expui/gutter/implementingFunctionalInterface.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/implementedFunction.svg">
+    <replacePath path="/expui/gutter/implementedFunctionInterface.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/inheritedMethod.svg">
+    <replacePath path="/expui/gutter/inheritedMethod.svg"/>
+    <replacePath path="/expui/gutter/siblingInheritedMethod.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/inheritingMethod.svg">
+    <replacePath path="/expui/gutter/showToImplement.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/showToOverride.svg">
+    <replacePath path="/expui/gutter/overridingMethod.svg"/>
+    <replacePath path="/expui/gutter/showToOverride.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/overridenMethod.svg">
+    <replacePath path="/expui/gutter/overridenMethod.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/server@14x14.svg">
+    <replacePath path="/expui/gutter/java9Service.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/edit@14x14.svg">
+    <replacePath path="/expui/gutter/javadocEdit.svg"/>
+    <replacePath path="/expui/gutter/writeAccess.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/read@14x14.svg">
+    <replacePath path="/expui/gutter/javadocRead.svg"/>
+    <replacePath path="/expui/gutter/readAccess.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/mnemonic@14x14.svg">
+    <replacePath path="/expui/gutter/mnemonic.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/i18n@14x14.svg">
+    <replacePath path="/expui/gutter/properties.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/recursion@14x14.svg">
+    <replacePath path="/expui/gutter/recursive.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/recursiveMethod.svg">
+    <replacePath path="/expui/gutter/recursiveMethod.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/rerun@14x14.svg">
+    <replacePath path="/expui/gutter/rerun.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/run@14x14.svg">
+    <replacePath path="/expui/gutter/run.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/error@14x14.svg">
+    <replacePath path="/expui/gutter/runError.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/warning@14x14.svg">
+    <replacePath path="/expui/gutter/runFailed.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/success@14x14.svg">
+    <replacePath path="/expui/gutter/runSuccess.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/editSquare@14x14.svg">
+    <replacePath path="/expui/gutter/suggestedRefactoring.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/editOff@14x14.svg">
+    <replacePath path="/expui/gutter/suggestedRefactoringDisabled.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/unique@14x14.svg">
+    <replacePath path="/expui/gutter/unique.svg"/>
   </iconReplacement>
 
 </root>
