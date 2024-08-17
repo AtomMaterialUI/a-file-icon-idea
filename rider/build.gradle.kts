@@ -22,13 +22,15 @@
  * SOFTWARE.
  */
 
-fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-fun environment(key: String): Provider<String> = providers.environmentVariable(key)
-fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
+fun properties(key: String) = providers.gradleProperty(key).get()
+fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
+
+val riderVersion: String by project
 
 dependencies {
   intellijPlatform {
-    rider(properties("riderVersion").get())
+    rider(riderVersion, useInstaller = false)
     instrumentationTools()
 
     pluginVerifier()

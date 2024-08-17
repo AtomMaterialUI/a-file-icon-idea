@@ -22,15 +22,16 @@
  * SOFTWARE.
  */
 
-fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-fun environment(key: String): Provider<String> = providers.environmentVariable(key)
-fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
+fun properties(key: String) = providers.gradleProperty(key).get()
+fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
-val pluginsVersion: String = properties("pluginsVersion").get()
+val pluginsVersion: String by project
+val platformVersion: String by project
 
 dependencies {
   intellijPlatform {
-    intellijIdeaUltimate(properties("platformVersion").get())
+    intellijIdeaUltimate(platformVersion, useInstaller = false)
     instrumentationTools()
 
     pluginVerifier()

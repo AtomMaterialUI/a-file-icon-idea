@@ -27,6 +27,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -34,9 +35,38 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
 
-fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-fun environment(key: String): Provider<String> = providers.environmentVariable(key)
-fun fileContents(filePath: String): Provider<String> = providers.fileContents(layout.projectDirectory.file(filePath)).asText
+fun properties(key: String) = providers.gradleProperty(key).get()
+fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
+
+val pluginsVersion: String by project
+val rustVersion: String by project
+
+val platformType: String by project
+val platformVersion: String by project
+
+val pluginName: String by project
+val pluginID: String by project
+val pluginVersion: String by project
+val pluginDescription: String by project
+val pluginSinceBuild: String by project
+val pluginUntilBuild: String by project
+
+val pluginCode: String by project
+val pluginReleaseDate: String by project
+val pluginReleaseVersion: String by project
+
+val pluginVendorName: String by project
+val pluginVendorEmail: String by project
+val pluginVendorUrl: String by project
+
+val pluginChannels: String by project
+
+val javaVersion: String by project
+val gradleVersion: String by project
+
+group = pluginID
+version = pluginsVersion
 
 plugins {
   id("java")
@@ -47,14 +77,10 @@ plugins {
   alias(libs.plugins.ktlint)
 }
 
-group = properties("pluginID").get()
-version = properties("pluginVersion").get()
-
 dependencies {
   intellijPlatform {
-    intellijIdeaUltimate(properties("platformVersion").get())
+    intellijIdeaUltimate(platformVersion, useInstaller = false)
     instrumentationTools()
-
     //    local(properties("idePath").get())
 
     pluginVerifier()
@@ -85,6 +111,15 @@ allprojects {
 
   repositories {
     mavenCentral()
+    mavenLocal()
+    gradlePluginPortal()
+
+    intellijPlatform {
+      defaultRepositories()
+
+      // marketplace()
+      // localPlatformArtifacts()
+    }
 
     intellijPlatform {
       defaultRepositories()
@@ -94,23 +129,76 @@ allprojects {
     }
   }
 
-  java {
-    toolchain {
-      languageVersion = JavaLanguageVersion.of(17)
-    }
-  }
-
-  kotlin {
-    jvmToolchain(17)
-  }
-
   intellijPlatform {
     buildSearchableOptions = false
     instrumentCode = true
+
+    projectName = pluginName
+
+    pluginConfiguration {
+      id = pluginID
+      name = pluginName
+      version = pluginVersion
+      description = pluginDescription
+
+      //Get the latest available change notes from the changelog file
+      val changelog = project.changelog // local variable for configuration cache compatibility
+      // Get the latest available change notes from the changelog file
+      val pluginVersion = pluginVersion
+      changeNotes.set(provider {
+        with(changelog) {
+          renderItem(
+            (getOrNull(pluginVersion) ?: getUnreleased())
+              .withHeader(false)
+              .withEmptySections(false),
+            Changelog.OutputType.HTML,
+          )
+        }
+      })
+
+      productDescriptor {
+        code = pluginCode
+        releaseDate = pluginReleaseDate
+        releaseVersion = pluginReleaseVersion
+        optional = true
+      }
+
+      ideaVersion {
+        sinceBuild = pluginSinceBuild
+        untilBuild = pluginUntilBuild
+      }
+
+      vendor {
+        name = pluginVendorName
+        email = pluginVendorEmail
+        url = pluginVendorUrl
+      }
+    }
+
+    publishing {
+      token = environment("INTELLIJ_PUBLISH_TOKEN")
+      channels = pluginChannels.split(',').map { it.trim() }
+    }
+
+    signing {
+      certificateChain = fileContents("./chain.crt")
+      privateKey = fileContents("./private.pem")
+      password = fileContents("./private_encrypted.pem")
+    }
+
+    pluginVerification {
+      ides {
+        recommended()
+        select {
+          sinceBuild = pluginSinceBuild
+          untilBuild = pluginUntilBuild
+        }
+      }
+    }
   }
 
   tasks {
-    properties("javaVersion").get().let {
+    javaVersion.let {
       // Set the compatibility versions to 1.8
       withType<JavaCompile> {
         sourceCompatibility = it
@@ -120,11 +208,6 @@ allprojects {
         kotlinOptions.jvmTarget = it
         kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
       }
-    }
-
-    withType<Detekt> {
-      jvmTarget = properties("javaVersion").get()
-      reports.xml.required.set(true)
     }
 
     withType<Copy> {
@@ -141,61 +224,9 @@ allprojects {
   }
 }
 
-intellijPlatform {
-  buildSearchableOptions = false
-  instrumentCode = true
-
-  projectName = properties("pluginName").get()
-
-  pluginConfiguration {
-    id = properties("pluginID").get()
-    name = properties("pluginName").get()
-    version = properties("pluginVersion").get()
-//    description.set(properties("pluginDescription").get())
-
-    // Get the latest available change notes from the changelog file
-    val changelog = project.changelog // local variable for configuration cache compatibility
-    // Get the latest available change notes from the changelog file
-    val pluginVersion = properties("pluginVersion").get()
-    changeNotes.set(provider {
-      with(changelog) {
-        renderItem(
-          (getOrNull(pluginVersion) ?: getUnreleased())
-            .withHeader(false)
-            .withEmptySections(false),
-          Changelog.OutputType.HTML,
-        )
-      }
-    })
-
-    ideaVersion {
-      sinceBuild = properties("pluginSinceBuild").get()
-      untilBuild = properties("pluginUntilBuild").get()
-    }
-
-    vendor {
-      name = properties("pluginVendorName").get()
-      email = properties("pluginVendorEmail").get()
-      url = properties("pluginVendorUrl").get()
-    }
-  }
-
-  publishing {
-    token = environment("INTELLIJ_PUBLISH_TOKEN")
-    channels = properties("pluginChannels").get().split(',').map { it.trim() }
-//    hidden = properties("pluginHidden").get().toBoolean()
-  }
-
-  signing {
-    certificateChain = fileContents("./chain.crt")
-    privateKey = fileContents("./private.pem")
-    password = fileContents("./private_encrypted.pem")
-  }
-}
-
 changelog {
   path.set("${project.projectDir}/docs/CHANGELOG.md")
-  version.set(properties("pluginVersion").get())
+  version.set(pluginVersion)
   header.set(provider { version.get() })
   headerParserRegex.set("(\\d+\\.\\d+\\.\\d+)")
   itemPrefix.set("-")
@@ -213,11 +244,11 @@ detekt {
 
 tasks {
   wrapper {
-    gradleVersion = properties("gradleVersion").get()
+    gradleVersion = properties("gradleVersion")
   }
 
   withType<Detekt> {
-    jvmTarget = properties("javaVersion").get()
+    jvmTarget = javaVersion
     reports.xml.required.set(true)
   }
 

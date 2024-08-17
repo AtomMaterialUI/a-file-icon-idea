@@ -61,5 +61,15 @@
       <option name="name" value="IntelliJ Repository (Releases)" />
       <option name="url" value="https://cache-redirector.jetbrains.com/www.jetbrains.com/intellij-repository/releases" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="MavenLocal" />
+      <option name="name" value="MavenLocal" />
+      <option name="url" value="file:$USER_HOME$/.m2/repository/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Gradle Central Plugin Repository" />
+      <option name="name" value="Gradle Central Plugin Repository" />
+      <option name="url" value="https://plugins.gradle.org/m2" />
+    </remote-repository>
   </component>
 </project>
