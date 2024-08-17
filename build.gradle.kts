@@ -32,7 +32,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.net.HttpURLConnection
-import java.net.URL
+import java.nio.file.Paths
 import java.util.*
 
 fun properties(key: String) = providers.gradleProperty(key).get()
@@ -109,6 +109,12 @@ allprojects {
     plugin("org.jetbrains.intellij.platform")
   }
 
+  intellijPlatform {
+    buildSearchableOptions = false
+    instrumentCode = true
+  }
+
+
   repositories {
     mavenCentral()
     mavenLocal()
@@ -126,74 +132,6 @@ allprojects {
 
       marketplace()
       // localPlatformArtifacts()
-    }
-  }
-
-  intellijPlatform {
-    buildSearchableOptions = false
-    instrumentCode = true
-
-    projectName = pluginName
-
-    pluginConfiguration {
-      id = pluginID
-      name = pluginName
-      version = pluginVersion
-      description = pluginDescription
-
-      //Get the latest available change notes from the changelog file
-      val changelog = project.changelog // local variable for configuration cache compatibility
-      // Get the latest available change notes from the changelog file
-      val pluginVersion = pluginVersion
-      changeNotes.set(provider {
-        with(changelog) {
-          renderItem(
-            (getOrNull(pluginVersion) ?: getUnreleased())
-              .withHeader(false)
-              .withEmptySections(false),
-            Changelog.OutputType.HTML,
-          )
-        }
-      })
-
-      productDescriptor {
-        code = pluginCode
-        releaseDate = pluginReleaseDate
-        releaseVersion = pluginReleaseVersion
-        optional = true
-      }
-
-      ideaVersion {
-        sinceBuild = pluginSinceBuild
-        untilBuild = pluginUntilBuild
-      }
-
-      vendor {
-        name = pluginVendorName
-        email = pluginVendorEmail
-        url = pluginVendorUrl
-      }
-    }
-
-    publishing {
-      token = environment("INTELLIJ_PUBLISH_TOKEN")
-      channels = pluginChannels.split(',').map { it.trim() }
-    }
-
-    signing {
-      certificateChain = fileContents("./chain.crt")
-      privateKey = fileContents("./private.pem")
-      password = fileContents("./private_encrypted.pem")
-    }
-
-    pluginVerification {
-      ides {
-        recommended()
-        select {
-          sinceBuild = pluginSinceBuild
-          untilBuild = pluginUntilBuild
-        }
-      }
     }
   }
 
@@ -221,6 +159,67 @@ allprojects {
       }
     }
 
+  }
+}
+
+intellijPlatform {
+  buildSearchableOptions = false
+  instrumentCode = true
+
+  projectName = pluginName
+
+  pluginConfiguration {
+    id = pluginID
+    name = pluginName
+    version = pluginVersion
+    description = pluginDescription
+
+    //Get the latest available change notes from the changelog file
+    val changelog = project.changelog // local variable for configuration cache compatibility
+    // Get the latest available change notes from the changelog file
+    val pluginVersion = pluginVersion
+    changeNotes.set(provider {
+      with(changelog) {
+        renderItem(
+          (getOrNull(pluginVersion) ?: getUnreleased())
+            .withHeader(false)
+            .withEmptySections(false),
+          Changelog.OutputType.HTML,
+        )
+      }
+    })
+
+    ideaVersion {
+      sinceBuild = pluginSinceBuild
+      untilBuild = pluginUntilBuild
+    }
+
+    vendor {
+      name = pluginVendorName
+      email = pluginVendorEmail
+      url = pluginVendorUrl
+    }
+  }
+
+  publishing {
+    token = environment("INTELLIJ_PUBLISH_TOKEN")
+    channels = pluginChannels.split(',').map { it.trim() }
+  }
+
+  signing {
+    certificateChain = fileContents("./chain.crt")
+    privateKey = fileContents("./private.pem")
+    password = fileContents("./private_encrypted.pem")
+  }
+
+  pluginVerification {
+    ides {
+      recommended()
+      select {
+        sinceBuild = pluginSinceBuild
+        untilBuild = pluginUntilBuild
+      }
+    }
   }
 }
 
@@ -270,7 +269,7 @@ tasks {
 
 
 fun fetchPluginVersion(id: String, property: String) {
-  val url = URL("https://plugins.jetbrains.com/plugins/list?pluginId=$id")
+  val url = Paths.get("https://plugins.jetbrains.com/plugins/list?pluginId=$id").toUri().toURL()
   val connection = url.openConnection() as HttpURLConnection
   connection.requestMethod = "GET"
 

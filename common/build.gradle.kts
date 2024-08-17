@@ -37,11 +37,6 @@ dependencies {
     pluginVerifier()
     zipSigner()
 
-    bundledPlugins(
-      "com.intellij.java",
-      "Git4Idea",
-    )
-
     plugins(
       "com.jetbrains.php:${pluginsVersion}"
     )
