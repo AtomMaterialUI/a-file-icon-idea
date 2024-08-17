@@ -28,7 +28,6 @@ import kotlinx.coroutines.runBlocking
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.net.HttpURLConnection
@@ -137,15 +136,15 @@ allprojects {
 
   tasks {
     javaVersion.let {
-      // Set the compatibility versions to 1.8
       withType<JavaCompile> {
         sourceCompatibility = it
         targetCompatibility = it
       }
-      withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = it
-        kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
-      }
+      //withType<KotlinCompile> {
+      //  compilerOptions {
+      //    jvmTarget.set(it)
+      //  }
+      //}
     }
 
     withType<Copy> {
