@@ -24,9 +24,15 @@
 @file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
 
 import io.gitlab.arturbosch.detekt.Detekt
+import kotlinx.coroutines.runBlocking
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.*
 
 fun properties(key: String): Provider<String> = providers.gradleProperty(key)
 fun environment(key: String): Provider<String> = providers.environmentVariable(key)
@@ -221,4 +227,51 @@ tasks {
       writeText(markdownToHTML(input.readText()))
     }
   }
+
+  register("fetchPluginVersion") {
+    doLast {
+      runBlocking {
+        fetchPluginVersion("PythonCore", "pluginsVersion")
+      }
+    }
+  }
+}
+
+
+fun fetchPluginVersion(id: String, property: String) {
+  val url = URL("https://plugins.jetbrains.com/plugins/list?pluginId=$id")
+  val connection = url.openConnection() as HttpURLConnection
+  connection.requestMethod = "GET"
+
+  if (connection.responseCode == 200) {
+    val xml = connection.inputStream.bufferedReader().use { it.readText() }
+    val version = parseXml(xml)
+
+    if (version != null) {
+      updateGradleProperties(property, version)
+    }
+
+  } else {
+    println("Failed to fetch XML: ${connection.responseCode}")
+  }
+}
+
+fun parseXml(xml: String): String? {
+  val document: Document = Jsoup.parse(xml, "", org.jsoup.parser.Parser.xmlParser())
+  val version = document.select("plugin-repository > category > idea-plugin").first()?.select("version")?.text()
+  println("Version: $version")
+  return version
+}
+
+fun updateGradleProperties(propertyName: String, propertyValue: String) {
+  val propertiesFile = File("gradle.properties")
+  val properties = Properties()
+
+  if (propertiesFile.exists()) {
+    propertiesFile.inputStream().use { properties.load(it) }
+  }
+
+  properties[propertyName] = propertyValue
+  propertiesFile.outputStream().use { properties.store(it, null) }
+  println("Updated $propertyName in gradle.properties to $propertyValue")
 }

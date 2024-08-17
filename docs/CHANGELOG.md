@@ -2,6 +2,12 @@
 
 ----
 
+## 98.0.0 (9.8.0)
+
+### Fixes
+
+- Fix bigger test icons
+
 ## 97.0.0 (9.7.0)
 
 ### Fixes
@@ -14,12 +20,15 @@
 ## 96.0.0 (9.6.0)
 
 ### Features
+
 - **Angular** Icon Pack
 - **NextJS** Icon Pack
 - New Arrow Style: **Circle**
-- New option: **Fix Action Buttons Color**. This will change the color of the Toolbar buttons to a darker color for a better contrast with the plugin icons.
+- New option: **Fix Action Buttons Color**. This will change the color of the Toolbar buttons to a darker color for a better contrast with
+  the plugin icons.
 
 ### Additions
+
 - **Folders**:
   - astro
   - conductor
@@ -79,6 +88,7 @@
 - Newer UI Icons
 
 ### Other
+
 - Move to Gradle Plugin 2.0
 - Optimize SVG icons
 
@@ -262,11 +272,13 @@
   - Jest files: `jest/*.js|jsx|ts|tsx`
   - Mock files: `spy/*`, `mocks?/*`, `stubs?/*`
   - NgRx
-    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
+    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`,
+    `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
   - Rails
     files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`, `views?/*.rb`...
   - Redux
-    files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
+    files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`,
+    `repo/*.js|jsx|ts|tsx`...
   - Rspec files: `rspec/*.rb`
   - Slug files: `slugs?/*.js|jsx|ts|tsx`
   - Storybook files: `storybook/*.js|jsx|ts|tsx`
