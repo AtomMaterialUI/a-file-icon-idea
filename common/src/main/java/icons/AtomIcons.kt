@@ -56,6 +56,7 @@ object AtomIcons {
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
+  val PACKAGE: Icon = load("/icons/mt/modules/package.svg")
   val LOGO: Icon = load("/logo.svg")
   private const val WIDTH = 16
   private const val HEIGHT = 16
