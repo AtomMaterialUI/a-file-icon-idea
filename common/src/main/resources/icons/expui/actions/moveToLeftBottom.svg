@@ -22,6 +22,8 @@
   - SOFTWARE.
   -->
 
+
 <svg data-big="true" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path fill="#80cbc4" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z"/>
+  <path fill="#80cbc4"
+        d="M20 4V6H13.5C11 6 9 8 9 10.5V16.17L12.09 13.09L13.5 14.5L8 20L2.5 14.5L3.91 13.08L7 16.17V10.5C7 6.91 9.91 4 13.5 4H20Z"/>
 </svg>
