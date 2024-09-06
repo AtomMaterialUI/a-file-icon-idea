@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
   -->
 
 <iconPathPatchers>
@@ -36,6 +35,7 @@
     <iconPatcher name="Ant" remove="icons" append="icons/plugins/ant"/>
     <iconPatcher name="AppCode" remove="icons" append="icons/plugins/appcode"/>
     <iconPatcher name="BuildTools" remove="icons/buildTools" append="icons/buildTools"/>
+    <iconPatcher name="BeanValidation" remove="icons" append="icons/plugins/beanValidation"/>
     <iconPatcher name="BigData" remove="icons" append="icons/plugins/bigdata"/>
     <iconPatcher name="CLion" remove="" append="icons/plugins/clion"/>
     <iconPatcher name="CLionEmbedded" remove="" append="icons/plugins/clionEmbedded"/>
@@ -110,6 +110,7 @@
     <glyphPatcher name="AOP" remove="icons" append="glyphs/plugins/aop"/>
     <glyphPatcher name="AppCode" remove="icons" append="glyphs/plugins/appcode"/>
     <glyphPatcher name="Aqua" remove="icons" append="glyphs/plugins/aqua"/>
+    <glyphPatcher name="BeanValidation" remove="icons" append="glyphs/plugins/beanValidation"/>
     <glyphPatcher name="CLion" remove="icons" append="glyphs/plugins/clion"/>
     <glyphPatcher name="CSS" remove="icons/css" append="glyphs/css"/>
     <glyphPatcher name="DataGrip" remove="icons" append="glyphs/plugins/datagrip"/>
