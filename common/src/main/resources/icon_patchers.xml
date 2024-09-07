@@ -58,6 +58,7 @@
     <iconPatcher name="Github2" remove="com.intellij.codeReview" append="icons/plugins/github"/>
     <iconPatcher name="Gitlab" remove="org/jetbrains/plugins/gitlab" append="icons/plugins/gitlab"/>
     <iconPatcher name="Gradle" remove="icons" append="icons/plugins/gradle"/>
+    <iconPatcher name="GraphQL" remove="icons" append="icons/plugins/graphql"/>
     <iconPatcher name="Groovy" remove="icons/groovy" append="icons/plugins/groovy"/>
     <iconPatcher name="Handlebars" remove="icons" append="icons/plugins/handlebars"/>
     <iconPatcher name="Images" remove="org/intellij/images/icons" append="icons/images"/>
@@ -118,6 +119,7 @@
     <glyphPatcher name="Freemarker" remove="icons" append="glyphs/plugins/freemarker"/>
     <glyphPatcher name="General" remove="general" append="glyphs/general"/>
     <glyphPatcher name="Goland" remove="icons" append="glyphs/plugins/goland"/>
+    <glyphPatcher name="GraphQL" remove="icons" append="glyphs/plugins/graphql"/>
     <glyphPatcher name="Groovy" remove="icons/groovy" append="glyphs/plugins/groovy"/>
     <glyphPatcher name="Gutter" remove="gutter" append="glyphs/gutter"/>
     <glyphPatcher name="JavaScript" remove="icons" append="glyphs/plugins/javascript"/>
@@ -142,7 +144,6 @@
     <glyphPatcher name="Rider" remove="rider" append="glyphs/plugins/rider"/>
     <glyphPatcher name="Resharper" remove="resharper" append="glyphs/plugins/resharper"/>
     <glyphPatcher name="Other" remove="icons" append="glyphs/other"/>
-
   </glyphPatchers>
   <filePatchers>
     <filePatcher name="ExpUI" remove="expui" append="files/expui"/>
@@ -156,6 +157,7 @@
     <filePatcher name="DataGrip" remove="fileTypes" append="files/plugins/datagrip"/>
     <filePatcher name="Freemarker" remove="icons" append="files/plugins/freemarker"/>
     <filePatcher name="Goland" remove="icons" append="icons/plugins/goland"/>
+    <filePatcher name="GraphQL" remove="icons" append="icons/plugins/graphql"/>
     <filePatcher name="Groovy" remove="icons/groovy" append="files/plugins/groovy"/>
     <filePatcher name="Haml" remove="org/jetbrains/plugins/haml" append="files/plugins/haml"/>
     <filePatcher name="Handlebars" remove="icons" append="files/plugins/handlebars"/>
