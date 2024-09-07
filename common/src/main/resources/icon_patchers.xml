@@ -51,6 +51,7 @@
     <iconPatcher name="DataGrip" remove="" append="icons/plugins/datagrip"/>
     <iconPatcher name="Docker" remove="icons" append="icons/plugins/docker"/>
     <iconPatcher name="FeatureTrainer" remove="img" append="icons/plugins/features"/>
+    <iconPatcher name="FullLine" remove="icons" append="icons/plugins/fullLine"/>
     <iconPatcher name="Gateway" remove="" append="icons/plugins/gateway"/>
     <iconPatcher name="Goland" remove="icons" append="icons/plugins/goland"/>
     <iconPatcher name="Github" remove="org/jetbrains/plugins/github" append="icons/plugins/github"/>
