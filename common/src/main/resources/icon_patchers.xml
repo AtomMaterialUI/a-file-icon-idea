@@ -162,7 +162,7 @@
     <filePatcher name="Haml" remove="org/jetbrains/plugins/haml" append="files/plugins/haml"/>
     <filePatcher name="Handlebars" remove="icons" append="files/plugins/handlebars"/>
     <filePatcher name="I18n" remove="icons/com/jetbrains/localization" append="files/plugins/i18n"/>
-    <filePatcher name="JavaScript" remove="icons/fileTypes" append="files/plugins/javascript"/>
+    <filePatcher name="JavaScript" remove="icons" append="files/plugins/javascript"/>
     <filePatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="files/plugins/kotlin"/>
     <filePatcher name="Less" remove="org/jetbrains/plugins/less" append="files/plugins/less"/>
     <filePatcher name="Other" remove="icons" append="files/other"/>
