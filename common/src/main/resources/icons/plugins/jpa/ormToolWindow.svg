@@ -22,6 +22,11 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="#8D6E63" viewBox="0 0 24 24" data-big="true">
-  <path d="m12 10-4 4h3v6h2v-6h3m3-10H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4v-2H5V8h14v10h-4v2h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="13px" height="13px" viewBox="0 0 16 16">
+  <g fill="#BCAE79" fill-rule="evenodd">
+    <path d="m6.465 5.675-2.67 4.629-2.668-4.629 2.669-4.622z"/>
+    <path fill-rule="nonzero" d="M9.135 1.053H3.797l2.669 4.622h5.339z"/>
+    <path d="m9.134 10.306 2.669-4.629 2.668 4.629-2.669 4.623z"/>
+    <path fill-rule="nonzero" d="M6.463 14.928h5.338l-2.669-4.622H3.793z"/>
+  </g>
 </svg>

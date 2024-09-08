@@ -64,6 +64,7 @@
     <iconPatcher name="Images" remove="org/intellij/images/icons" append="icons/images"/>
     <iconPatcher name="JavaScript" remove="icons" append="icons/plugins/javascript"/>
     <iconPatcher name="JavaEE" remove="icons" append="icons/javaee"/>
+    <iconPatcher name="JPA" remove="icons" append="icons/plugins/jpa"/>
     <iconPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="icons/plugins/kotlin"/>
     <iconPatcher name="Kubernetes" remove="icons" append="icons/plugins/kubernetes"/>
     <iconPatcher name="Markdown" remove="icons/editor_actions" append="icons/plugins/markdown"/>
@@ -126,6 +127,7 @@
     <glyphPatcher name="JavaScript PSI" remove="icons/classes" append="glyphs/plugins/javascript"/>
     <glyphPatcher name="JavaScript PSI 2" remove="icons/members" append="glyphs/plugins/javascript"/>
     <glyphPatcher name="JavaEE" remove="icons" append="glyphs/javaee"/>
+    <glyphPatcher name="JPA" remove="icons" append="glyphs/plugins/jpa"/>
     <glyphPatcher name="Kotlin" remove="org/jetbrains/kotlin/idea/icons" append="glyphs/plugins/kotlin"/>
     <glyphPatcher name="Less" remove="org/jetbrains/plugins/less" append="glyphs/plugins/less"/>
     <glyphPatcher name="Lombok" remove="icons" append="glyphs/plugins/lombok"/>
