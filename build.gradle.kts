@@ -20,6 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
  */
 @file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
 
@@ -65,7 +66,7 @@ val javaVersion: String by project
 val gradleVersion: String by project
 
 group = pluginID
-version = pluginsVersion
+version = pluginVersion
 
 plugins {
   id("java")
@@ -176,7 +177,6 @@ intellijPlatform {
     //Get the latest available change notes from the changelog file
     val changelog = project.changelog // local variable for configuration cache compatibility
     // Get the latest available change notes from the changelog file
-    val pluginVersion = pluginVersion
     changeNotes.set(provider {
       with(changelog) {
         renderItem(
