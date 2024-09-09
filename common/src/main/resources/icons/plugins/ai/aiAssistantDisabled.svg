@@ -1,0 +1,32 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -->
+
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#808080" data-themed="true">
+    <path fill-rule="evenodd"
+          d="M13.646 1.646a.5.5 0 0 1 .708.708l-12 12a.5.5 0 0 1-.708-.708l1.713-1.712C2.494 11.073 2 9.99 2 8.774c0-2.42 2.048-4.161 4.871-4.161 1.241 0 2.302.284 3.037.772l1.245-1.245C10.05 3.422 8.521 3 6.758 3c-.887 0-2.08.21-2.855.548-.548.226-.903 0-.903-.354 0-.275.194-.468.58-.63C4.356 2.227 5.678 2 6.759 2c2.053 0 3.83.53 5.111 1.423l1.777-1.777ZM9.211 6.082c-.545-.328-1.342-.534-2.292-.534C4.677 5.548 3 6.935 3 8.774c0 .938.385 1.778 1.063 2.456l1.31-1.31A2.033 2.033 0 0 1 5 8.743C5 7.365 6.384 6.64 8.118 7.176l1.093-1.093ZM7.418 7.875C6.564 7.765 6 8.087 6 8.742c0 .157.034.308.1.452l1.318-1.32Z"
+          clip-rule="evenodd"/>
+    <path d="M9.242 14c-1.63 0-3.086-.334-4.257-.918l.748-.749c.982.426 2.179.667 3.509.667.887 0 2.08-.21 2.855-.548.548-.226.903 0 .903.354 0 .275-.194.468-.58.63-.775.338-2.097.564-3.178.564Zm-2.234-2.941.756-.756c.39.095.834.149 1.317.149 2.16 0 3.919-1.355 3.919-3.226 0-.613-.164-1.183-.466-1.693l.723-.724c.48.712.743 1.53.743 2.417 0 2.42-2.048 4.161-4.871 4.161-.794 0-1.513-.116-2.121-.328Z"/>
+    <path d="M10.994 7.072c.004.05.006.102.006.154 0 1.07-.798 1.764-1.942 1.782l1.936-1.936Z"/>
+</svg>

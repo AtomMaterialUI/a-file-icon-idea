@@ -1,0 +1,30 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="16px" height="16px"
+     viewBox="0 0 100 100" xml:space="preserve" data-big="true">
+  <path fill="#EC407A"
+        d="M93.134,79.982l-0.347-0.347c-6.601-3.012-12.855-6.601-18.531-10.771c-5.326-3.938-10.192-8.339-14.592-13.668   c10.076-3.82,17.256-9.033,21.888-15.518c4.981-6.833,7.066-14.939,6.719-24.204v-0.231c-0.349-1.391-1.044-2.432-1.969-3.012   c-0.581-0.463-1.159-0.694-1.854-0.81c-0.696-0.116-1.391-0.116-1.969,0c-1.159,0.231-2.316,0.926-3.128,2.085l-0.115,0.231   c-2.664,6.717-10.887,7.413-18.877,8.107c-1.275,0.116-2.432,0.232-3.822,0.347c-4.401,0.463-6.486,1.969-8.223,3.359   c-0.578,0.347-1.159,0.694-1.622,1.041c-3.823-3.01-7.18-4.632-10.074-5.442c-3.244-0.928-5.907-0.928-8.57-0.928   c-4.054,0-7.297-0.463-9.845-1.738c-2.431-1.157-4.285-3.01-5.557-6.02l-0.233-0.465l-0.579-0.231   c-1.737-0.578-3.125-0.463-4.285,0.116C6.391,12.463,5.463,13.62,5,15.358v0.463c0.926,12.508,4.864,21.541,11.234,28.027   c6.023,6.254,14.015,10.076,23.279,12.624c0.579,7.642,2.085,15.518,4.286,21.425c2.2,6.139,5.21,10.423,8.454,10.771h0.116   l38.913-0.231l0.694-0.232c1.969-1.275,2.897-2.665,3.012-4.054C95.103,82.645,94.407,81.254,93.134,79.982z"/>
+</svg>
