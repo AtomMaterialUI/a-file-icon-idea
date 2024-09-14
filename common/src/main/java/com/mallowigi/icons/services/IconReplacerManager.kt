@@ -20,6 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
  */
 
 package com.mallowigi.icons.services
@@ -32,16 +33,6 @@ import com.mallowigi.icons.replacements.OutlineIconsPatcher
 @Service(Service.Level.APP)
 class IconReplacerManager {
   fun init() {
-    //val iconPathPatchers = IconPathPatcher.EP_NAME.extensions
-    //val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
-    //
-    //iconPathPatchers.forEach {
-    //  if (it !in installedPatchers) {
-    //    IconLoader.installPathPatcher(it)
-    //    installedPatchers.add(it)
-    //  }
-    //}
-
     IconLoader.installPathPatcher(OutlineIconsPatcher())
   }
 

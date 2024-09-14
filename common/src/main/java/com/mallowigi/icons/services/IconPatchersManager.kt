@@ -20,6 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
  */
 
 package com.mallowigi.icons.services
@@ -31,8 +32,6 @@ import com.intellij.openapi.components.service
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
-import com.intellij.ui.ExperimentalUI
-import com.intellij.ui.NewUI
 import com.intellij.util.ui.JBUI
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
@@ -50,7 +49,6 @@ class IconPatchersManager {
   fun init() {
     val atomFileIconsConfig = AtomSettingsConfig.instance
 
-    fixExperimentalUI()
     fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
@@ -71,33 +69,12 @@ class IconPatchersManager {
   /** Update patchers on save. */
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
-    fixExperimentalUI()
     fixRunIcons()
 
     val atomFileIconsConfig = AtomSettingsConfig.instance
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
-  }
-
-  @Suppress("UnstableApiUsage")
-  private fun fixExperimentalUI() {
-    if (!NewUI.isEnabled()) return
-
-    val forName = Class.forName("com.intellij.ui.ExperimentalUI")
-    forName.declaredFields.forEach {
-      if (it.name == "iconPathPatcher") {
-        it.isAccessible = true
-        val patcher = it.get(ExperimentalUI.getInstance())
-
-        if (!AtomSettingsConfig.instance.isEnabledUIIcons) {
-          IconLoader.installPathPatcher(patcher as IconPathPatcher)
-        } else {
-          IconLoader.removePathPatcher(patcher as IconPathPatcher)
-        }
-
-      }
-    }
   }
 
   fun fixRunIcons() {
