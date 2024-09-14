@@ -24,7 +24,7 @@
   -->
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-     viewBox="0 0 16 16" xml:space="preserve" width="16px" height="16px" data-big="true">
+     viewBox="0 0 16 16" xml:space="preserve" width="16px" height="16px" >
 	<g>
 		<g fill="#FFB74D">
 			<path d="M9.7,13.7H7.9c0.6,0.5,0.7,1.2,1,2C8.9,15.8,9.1,16,9.4,16h0.4c0.1,0,0.2-0.1,0.2-0.2c0,0,0-0.1,0-0.1

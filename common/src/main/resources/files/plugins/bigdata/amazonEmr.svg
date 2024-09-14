@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFB74D" data-big="true" viewBox="0 0 13 13"><path fill-rule="evenodd" d="M6.5 12.294v-.627l.5-.148v.012l4.5-1.963V6.997H7V7h-.5v-.503H12v3.399l-5 2.18zM1.542 6.5v3.64L1 9.9V6.5zm1.354 4.198V6.497h-.665v3.906zm1.578-4.201v4.9l-.835-.37v-4.53zm.945 0v5.32l1.08.477V6.497zM1 3.055V5.28l5.5.391 5.5-.39V3.103L7 1.021 6.5.813zM6.5 1.25V4l5 1-.007-.295.007.001V3.438l-.035-.015V3.4zm0 3.256" clip-rule="evenodd"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFB74D" viewBox="0 0 13 13">
+  <path fill-rule="evenodd"
+        d="M6.5 12.294v-.627l.5-.148v.012l4.5-1.963V6.997H7V7h-.5v-.503H12v3.399l-5 2.18zM1.542 6.5v3.64L1 9.9V6.5zm1.354 4.198V6.497h-.665v3.906zm1.578-4.201v4.9l-.835-.37v-4.53zm.945 0v5.32l1.08.477V6.497zM1 3.055V5.28l5.5.391 5.5-.39V3.103L7 1.021 6.5.813zM6.5 1.25V4l5 1-.007-.295.007.001V3.438l-.035-.015V3.4zm0 3.256"
+        clip-rule="evenodd"/>
+</svg>

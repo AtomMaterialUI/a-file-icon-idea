@@ -22,8 +22,9 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"
-     clip-rule="evenodd" data-big="true" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-rule="evenodd" stroke-linejoin="round"
+     stroke-miterlimit="1.414"
+     clip-rule="evenodd" viewBox="0 0 24 24">
   <g fill="#7986CB" transform="rotate(90 12 12)">
     <circle cx="7" cy="14" r="3"/>
     <circle cx="11" cy="6" r="3"/>

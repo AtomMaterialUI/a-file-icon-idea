@@ -22,7 +22,7 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  viewBox="0 0 24 24">
   <path fill="#FF5370" d="M18 18H6V6h12z"/>
   <path fill="#66BB6A"
         d="M20.755 12.845A5.57 5.57 0 0 0 16.8 11.2a5.6 5.6 0 0 0-5.6 5.6 5.6 5.6 0 0 0 5.6 5.6 5.59 5.59 0 0 0 5.411-4.2h-1.456A4.19 4.19 0 0 1 16.8 21a4.2 4.2 0 0 1-4.2-4.2 4.2 4.2 0 0 1 4.2-4.2 4.14 4.14 0 0 1 2.954 1.246L17.5 16.1h4.9v-4.9z"/>

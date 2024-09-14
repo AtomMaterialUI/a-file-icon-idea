@@ -22,7 +22,7 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  viewBox="0 0 24 24">
   <g fill="#80cbc4" stroke="#80cbc4" stroke-width="1" stroke-linejoin="round">
     <path
       d="M18.758 19.303a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1 0 .55-.95 1-1.5 1h-2.5v-2h2a1 1 0 0 0 1-1v-14a1 1 0 0 0-1-1h-2v-2h2.5c.55 0 1.5.45 1.5 1 0-.55.95-1 1.5-1h2.5v2h-2a1 1 0 0 0-1 1zM7.848 19.303a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1 0 .55-.95 1-1.5 1h-2.5v-2h2a1 1 0 0 0 1-1v-14a1 1 0 0 0-1-1h-2v-2h2.5c.55 0 1.5.45 1.5 1 0-.55.95-1 1.5-1h2.5v2h-2a1 1 0 0 0-1 1z"/>

@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 24 24"><path fill="#C792EA" d="m2 21 21-9L2 3v7l15 2-15 2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <path fill="#C792EA" d="m2 21 21-9L2 3v7l15 2-15 2z"/>
+</svg>

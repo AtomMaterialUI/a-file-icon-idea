@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 24 24"><path fill="#FF5370" d="M18 18H6V6h12z"/><circle cx="12" cy="12" r="12" data-tint="true" opacity=".5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <path fill="#FF5370" d="M18 18H6V6h12z"/>
+  <circle cx="12" cy="12" r="12" data-tint="true" opacity=".5"/>
+</svg>

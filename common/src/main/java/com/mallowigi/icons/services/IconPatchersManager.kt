@@ -25,7 +25,6 @@
 
 package com.mallowigi.icons.services
 
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
@@ -61,7 +60,6 @@ class IconPatchersManager {
     ApplicationManager.getApplication().invokeLater {
       val app = ApplicationManager.getApplication()
       app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-      app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
       applyFilter()
     }
   }

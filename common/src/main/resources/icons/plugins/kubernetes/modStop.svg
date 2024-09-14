@@ -22,6 +22,6 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  viewBox="0 0 24 24">
   <path fill="#FF5370" d="M18 18H6V6h12z" transform="scale(0.7) translate(12 12)"/>
 </svg>

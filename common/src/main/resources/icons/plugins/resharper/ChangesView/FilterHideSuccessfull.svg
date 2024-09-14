@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#81C784" data-big="true" viewBox="0 0 24 24"><mask id="a"><path fill="#fff" d="M0 0h24v24H0z"/><path stroke="#000" stroke-width="2" d="m0-2 24 24"/></mask><path stroke="#81C784" stroke-width="2" d="m0 0 24 24" mask="url(#a)"/><path d="M14 10H2v2h12zm0-4H2v2h12zM2 16h8v-2H2zm19.5-4.5L23 13l-7 7-4.5-4.5L13 14l3 3z" mask="url(#a)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#81C784" viewBox="0 0 24 24">
+  <mask id="a">
+    <path fill="#fff" d="M0 0h24v24H0z"/>
+    <path stroke="#000" stroke-width="2" d="m0-2 24 24"/>
+  </mask>
+  <path stroke="#81C784" stroke-width="2" d="m0 0 24 24" mask="url(#a)"/>
+  <path d="M14 10H2v2h12zm0-4H2v2h12zM2 16h8v-2H2zm19.5-4.5L23 13l-7 7-4.5-4.5L13 14l3 3z" mask="url(#a)"/>
+</svg>

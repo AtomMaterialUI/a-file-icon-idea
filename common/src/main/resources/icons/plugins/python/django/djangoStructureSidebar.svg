@@ -22,7 +22,7 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="-4 -4 40 40">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  viewBox="-4 -4 40 40">
   <defs>
     <mask id="Mask">
       <path fill="white"

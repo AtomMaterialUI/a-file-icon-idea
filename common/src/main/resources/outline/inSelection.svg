@@ -22,7 +22,7 @@
   - SOFTWARE.
   -->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" >
   <g fill="none" fill-rule="evenodd">
     <path d="M0 0h16v16H0z"/>
     <g stroke="#BA68C8" fill="none" fill-rule="evenodd" stroke-linejoin="round">

@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" data-big="true" viewBox="0 0 455 512"><path fill="#1E9CEF" d="M435.28 113.284 247.19 4.692c-10.835-6.256-28.567-6.256-39.402 0L19.701 113.284C8.865 119.54 0 134.896 0 147.408v217.184c.843 14.572 8.286 26.64 19.7 34.124l188.09 108.591c10.834 6.257 28.566 6.257 39.401 0L435.28 398.716c12.248-8.146 19.22-20.408 19.701-34.124V147.408c-.44-13.165-8.323-26.443-19.7-34.124M75.83 256.001c-.891-148.09 197.46-213.48 282.996-75.878l-65.634 37.98c-39.622-65.533-138.001-42.1-141.532 37.898 1.06 73.729 97.754 107.978 141.536 37.892l65.635 37.98c-75.383 130.862-279.2 83.78-283-75.872m303.32 8.424h-16.852v16.852H345.45v-16.852h-16.852v-16.85h16.852v-16.85h16.85v16.85h16.851zm63.192 0H425.49v16.852h-16.85v-16.852H391.79v-16.85h16.852v-16.85h16.849v16.85h16.852z" data-iconColor="C++"/></svg>
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  viewBox="0 0 455 512"><path fill="#1E9CEF" d="M435.28 113.284 247.19 4.692c-10.835-6.256-28.567-6.256-39.402 0L19.701 113.284C8.865 119.54 0 134.896 0 147.408v217.184c.843 14.572 8.286 26.64 19.7 34.124l188.09 108.591c10.834 6.257 28.566 6.257 39.401 0L435.28 398.716c12.248-8.146 19.22-20.408 19.701-34.124V147.408c-.44-13.165-8.323-26.443-19.7-34.124M75.83 256.001c-.891-148.09 197.46-213.48 282.996-75.878l-65.634 37.98c-39.622-65.533-138.001-42.1-141.532 37.898 1.06 73.729 97.754 107.978 141.536 37.892l65.635 37.98c-75.383 130.862-279.2 83.78-283-75.872m303.32 8.424h-16.852v16.852H345.45v-16.852h-16.852v-16.85h16.852v-16.85h16.85v16.85h16.851zm63.192 0H425.49v16.852h-16.85v-16.852H391.79v-16.85h16.852v-16.85h16.849v16.85h16.852z" data-iconColor="C++"/></svg>

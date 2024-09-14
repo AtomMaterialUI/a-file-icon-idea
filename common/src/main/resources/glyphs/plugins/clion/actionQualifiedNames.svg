@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#BA68C8" data-big="true"><path d="M1 2h1v12H1zM2 2h2v1H2zM2 13h2v1H2zM14 2h1v12h-1z"/><path d="M12 2h3v1h-3zM12 13h2v1h-2z"/><rect width="1.5" height="1.5" x="9.5" y="7" rx=".75"/><rect width="1.5" height="1.5" x="9.5" y="9.5" rx=".75"/><rect width="1.5" height="1.5" x="11.5" y="7" rx=".75"/><rect width="1.5" height="1.5" x="11.5" y="9.5" rx=".75"/><path d="M8.008 9.149 4.934 5H4v6h.992V6.731L8.156 11H9V5h-.992z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#BA68C8">
+  <path d="M1 2h1v12H1zM2 2h2v1H2zM2 13h2v1H2zM14 2h1v12h-1z"/>
+  <path d="M12 2h3v1h-3zM12 13h2v1h-2z"/>
+  <rect width="1.5" height="1.5" x="9.5" y="7" rx=".75"/>
+  <rect width="1.5" height="1.5" x="9.5" y="9.5" rx=".75"/>
+  <rect width="1.5" height="1.5" x="11.5" y="7" rx=".75"/>
+  <rect width="1.5" height="1.5" x="11.5" y="9.5" rx=".75"/>
+  <path d="M8.008 9.149 4.934 5H4v6h.992V6.731L8.156 11H9V5h-.992z"/>
+</svg>
