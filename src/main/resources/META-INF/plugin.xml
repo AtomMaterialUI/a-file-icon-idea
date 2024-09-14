@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -87,9 +87,6 @@
                        id="Atom Material Notifications"
                        bundle="messages.AtomFileIconsBundle"
                        key="notification.group.atom.material.notifications"/>
-
-    <!--suppress PluginXmlValidity -->
-    <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
 
     <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
@@ -267,10 +264,10 @@
     <hr>
     <h3>Donate</h3>
     <p>This theme is backed up by <a
-      href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
+        href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
       If you like this plugin, don't hesitate to give it a star or donate via <a
-        href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
-        href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
+          href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
+          href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
     ]]></description>
 
   <change-notes>
