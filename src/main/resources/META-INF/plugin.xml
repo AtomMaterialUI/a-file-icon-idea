@@ -109,10 +109,6 @@
   </applicationListeners>
 
   <actions>
-    <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
-           class="com.mallowigi.actions.ActionGroup">
-      <add-to-group group-id="MainToolbarRight"/>
-    </group>
     <group id="AtomFileIcons.Actions" popup="true" icon="/actions/atom.svg"
            class="com.mallowigi.actions.ActionGroup">
       <add-to-group group-id="MainToolBar" anchor="last"/>
