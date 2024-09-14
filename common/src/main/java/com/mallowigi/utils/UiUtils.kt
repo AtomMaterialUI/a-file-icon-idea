@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,6 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.ide.ui.LafManager
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.options.ex.Settings
 import com.intellij.openapi.project.Project
@@ -41,7 +40,6 @@ import com.intellij.ui.components.ActionLink
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.AtomSettingsConfig
-import javax.swing.SwingUtilities
 import javax.swing.UIManager
 
 /**
@@ -88,9 +86,6 @@ fun replaceArrowIcons() {
   defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
   defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
   defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
-
-
-  SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
 }
 
 /** Extract accent color from current theme. */
@@ -98,9 +93,9 @@ fun replaceArrowIcons() {
 fun getAccentFromTheme(): String {
   val namedKey = when (LafManager.getInstance().currentUIThemeLookAndFeel?.name) {
     "IntelliJ Light" -> "ActionButton.focusedBorderColor"
-    "Light" -> "ActionButton.focusedBorderColor"
-    "Darcula" -> "Button.select"
-    else -> "Link.activeForeground"
+    "Light"          -> "ActionButton.focusedBorderColor"
+    "Darcula"        -> "Button.select"
+    else             -> "Link.activeForeground"
   }
 
   val namedColor = JBColor.namedColor(
