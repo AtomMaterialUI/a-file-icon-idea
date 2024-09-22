@@ -29,40 +29,40 @@ the [Material Theme UI](https://github.com/mallowigi/material-theme-issues) plug
 <https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/>
 
 - Replaces **file icons** with their relevant logo icons
-  - According to their extension (Java, PHP, Ruby...)
-  - According to the framework (Android, NPM, RSpec...)
-  - According to the program used with (Babel, Docker, CircleCI...)
+    - According to their extension (Java, PHP, Ruby...)
+    - According to the framework (Android, NPM, RSpec...)
+    - According to the program used with (Babel, Docker, CircleCI...)
 - Replaces **directories**:
-  - With a common pattern: src, main, app, img, docs...
-  - With a specific pattern: node_modules, .vscode, .git...
+    - With a common pattern: src, main, app, img, docs...
+    - With a specific pattern: node_modules, .vscode, .git...
 - Replaces the **PSI (Program Structure Interface)** icons:
-  - Classes, Interfaces, Enums, Abstract...
-  - Methods, Lambdas, Inherits, Overrides...
+    - Classes, Interfaces, Enums, Abstract...
+    - Methods, Lambdas, Inherits, Overrides...
 - Replaces the **UI Icons**:
-  - Toolbar icons (actions)
-  - Gutter icons (debugger)
-  - Node icons (folders)...
+    - Toolbar icons (actions)
+    - Gutter icons (debugger)
+    - Node icons (folders)...
 - **Monochrome filter**: Set a monochrome filter to the whole UI
-  - Ability to select the color
+    - Ability to select the color
 - **Arrows Style**: Customize the look of the arrows in Tree components
-  - Material: Chevron-like arrows
-  - Darcula: Regular triangle arrows
-  - Plus-Minus: Plus and Minus signs
-  - Arrows: Simple Arrows
-  - None: No arrows
+    - Material: Chevron-like arrows
+    - Darcula: Regular triangle arrows
+    - Plus-Minus: Plus and Minus signs
+    - Arrows: Simple Arrows
+    - None: No arrows
 - **Hollow Folders**: Add custom decorations on folders containing opened files
 - **Custom Icon Size**: Assign a custom icon size (between 12 and 24)
 - **Accent Color**: Change the color of specific icons
-  - Closing tab button
-  - Highlighted arrows
-  - Loading indicator...
+    - Closing tab button
+    - Highlighted arrows
+    - Loading indicator...
 - **Customizability**: Custom Settings
-  - Settings Pages
-  - Toolbar Action Buttons
+    - Settings Pages
+    - Toolbar Action Buttons
 - **Custom File and Directory associations** Customize your own associations
-  - File associations by Regex
-  - Folder associations
-  - Preview default icons
+    - File associations by Regex
+    - Folder associations
+    - Preview default icons
 
 ## File Icons
 
@@ -113,3 +113,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 Contributions of any kind welcome!
+
+image::https://www.yourkit.com/images/yklogo.png
+
+![YourKit](https://www.yourkit.com/images/yklogo.png)
+
+YourKit supports open source projects with its full-featured Java Profiler.
+YourKit, LLC is the creator of https://www.yourkit.com/java/profiler/[YourKit Java Profiler]
+and https://www.yourkit.com/.net/profiler/[YourKit .NET Profiler],
+innovative and intelligent tools for profiling Java and .NET applications.

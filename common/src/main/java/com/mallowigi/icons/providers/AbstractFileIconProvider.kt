@@ -20,11 +20,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
  */
 
 package com.mallowigi.icons.providers
 
 import com.intellij.ide.IconProvider
+import com.intellij.openapi.project.DumbAware
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
 import com.mallowigi.icons.associations.Association
@@ -35,7 +37,7 @@ import com.mallowigi.models.VirtualFileInfo
 import javax.swing.Icon
 
 /** Abstract file icon provider. */
-abstract class AbstractFileIconProvider : IconProvider() {
+abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   /**
    * Get the icon for the given psiElement
    *
@@ -45,7 +47,7 @@ abstract class AbstractFileIconProvider : IconProvider() {
   override fun getIcon(element: PsiElement, flags: Int): Icon? = when {
     isNotApplicable() -> null
     isOfType(element) -> findIcon(element)
-    else -> null
+    else              -> null
   }
 
   /**
