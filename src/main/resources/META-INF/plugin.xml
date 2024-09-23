@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
   -->
 
 <idea-plugin>
@@ -89,7 +88,6 @@
                        key="notification.group.atom.material.notifications"/>
 
     <!--suppress PluginXmlValidity -->
-    <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
 
     <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
@@ -112,6 +110,13 @@
   </applicationListeners>
 
   <actions>
+    <group id="AtomFileIcons.OldToolbar" popup="true" icon="/actions/tools.svg"
+           class="com.mallowigi.actions.OldToolbarGroup">
+      <add-to-group group-id="MainToolBar" anchor="last"/>
+      <add-to-group group-id="MainToolbarRight"/>
+
+    </group>
+
     <group id="AtomFileIcons.Actions" popup="true" icon="/actions/atom.svg"
            class="com.mallowigi.actions.ActionGroup">
       <add-to-group group-id="MainToolBar" anchor="last"/>
@@ -159,8 +164,9 @@
                 icon="/actions/arrows/none.svg"
                 id="MTNoneArrows"/>
       </group>
-      <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
-              icon="/actions/refresh.svg"/>
+      <action class="com.mallowigi.actions.RefreshIconsAction"
+              id="RefreshIconsAction"
+              icon="/actions/reload.svg"/>
       <separator/>
     </group>
 
