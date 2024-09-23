@@ -114,9 +114,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 Contributions of any kind welcome!
 
+## Sponsors
+
 ![YourKit](https://www.yourkit.com/images/yklogo.png)
 
 YourKit supports open source projects with its full-featured Java Profiler.
-YourKit, LLC is the creator of https://www.yourkit.com/java/profiler/ Java Profiler]
-and https://www.yourkit.com/dotnet-profiler/ .NET Profiler],
+YourKit, LLC is the creator of [Java Profiler](https://www.yourkit.com/java/profiler/)
+and [.NET Profiler](https://www.yourkit.com/dotnet-profiler/),
 innovative and intelligent tools for profiling Java and .NET applications.
