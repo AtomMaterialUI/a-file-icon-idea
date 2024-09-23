@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons.associations
 
@@ -112,7 +111,7 @@ class SelectedAssociations(
    * @param file a file's [FileInfo]
    * @return matching association if found
    */
-  private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.toList()
+  private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.asSequence()
     .filter { it.enabled && it.matches(file) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
@@ -122,7 +121,7 @@ class SelectedAssociations(
     .maxByOrNull { it.priority }
 
   /** Look for matching association in [mutableAssociations]. */
-  private fun findInMutableByName(path: String): Association? = mutableAssociations.values.toList()
+  private fun findInMutableByName(path: String): Association? = mutableAssociations.values.asSequence()
     .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 

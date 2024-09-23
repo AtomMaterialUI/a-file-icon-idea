@@ -20,28 +20,22 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package icons
 
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader
-import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.io.FileUtil.toCanonicalPath
 import com.intellij.openapi.vfs.VFileProperty
 import com.intellij.openapi.vfs.VirtualFile
 import com.mallowigi.icons.special.DirIcon
 import com.mallowigi.utils.LayeredIconService
 import org.jetbrains.annotations.NonNls
-import java.io.File
 import java.io.IOException
-import java.net.MalformedURLException
-import java.net.URL
 import java.util.logging.Logger
 import javax.swing.Icon
 
 /** Loader for Plugin's Icons. */
-@Suppress("KDocMissingDocumentation")
 object AtomIcons {
   private const val FILES_PATH: String = "/assets"
   private const val FOLDERS_PATH: String = "/assets/icons/folders"
@@ -88,13 +82,12 @@ object AtomIcons {
    */
   @Throws(IOException::class)
   fun loadSVGIcon(canonicalPath: String): Icon {
-    val url = Ref.create<URL>()
-    try {
-      url.set(File(canonicalPath).toURI().toURL())
-    } catch (e: MalformedURLException) {
+    return try {
+      IconLoader.getIcon(canonicalPath, AtomIcons.javaClass)
+    } catch (e: Exception) {
       Logger.getAnonymousLogger().info(e.message)
+      throw e
     }
-    return IconLoader.getIcon(canonicalPath, AtomIcons.javaClass)
   }
 
   /**
@@ -116,8 +109,8 @@ object AtomIcons {
    */
   fun getLayeredIcon(icon: Icon, virtualFile: VirtualFile): Icon = when {
     virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIconService.create(icon, AllIcons.Nodes.Symlink)
-    !virtualFile.isWritable                 -> LayeredIconService.create(icon, AllIcons.Nodes.Locked)
-    else                                    -> icon
+    !virtualFile.isWritable -> LayeredIconService.create(icon, AllIcons.Nodes.Locked)
+    else -> icon
   }
 
   object Settings {
