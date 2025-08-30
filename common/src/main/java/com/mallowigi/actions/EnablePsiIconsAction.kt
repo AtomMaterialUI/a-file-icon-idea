@@ -25,31 +25,26 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable psi icons action. */
 class EnablePsiIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledPsiIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isEnabledPsiIcons
 
   /** Upon select, toggle psi icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.togglePsiIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.togglePsiIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
 
   /** Disable PSI Icons if UI icons is disabled. */
   override fun update(e: AnActionEvent) {
     super.update(e)
-    if (!CONFIG.isEnabledUIIcons) {
+    if (!AtomSettingsConfig.instance.isEnabledUIIcons) {
       e.presentation.isEnabled = false
     }
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

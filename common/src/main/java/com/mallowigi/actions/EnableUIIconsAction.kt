@@ -25,23 +25,19 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable UI icons action. */
 class EnableUIIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledUIIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isEnabledUIIcons
 
   /** Upon select, toggle UI icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleUIIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleUIIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
-  }
-
-  companion object {
-    private val CONFIG = instance
   }
 
 }

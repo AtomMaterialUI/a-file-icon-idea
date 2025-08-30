@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.config.select
 
@@ -84,7 +83,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     PatternEditableColumnInfo(this, true),
     FileIconEditableColumnInfo(this, true),
     PriorityColumnInfo(this, true),
-    IconColorEditableColumnInfo(this))
+    IconColorEditableColumnInfo(this)
+  )
 
   private val folderColumns = arrayOf<ColumnInfo<*, *>>(
     EnabledColumnInfo(),
@@ -94,7 +94,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     FolderIconEditableColumnInfo(this, true),
     PriorityColumnInfo(this, true),
     FolderColorEditableColumnInfo(this),
-    FolderIconColorEditableColumnInfo(this))
+    FolderIconColorEditableColumnInfo(this)
+  )
 
   private val folderOpenColumns = arrayOf<ColumnInfo<*, *>>(
     EnabledColumnInfo(),
@@ -104,7 +105,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     FolderIconEditableColumnInfo(this, true),
     PriorityColumnInfo(this, true),
     FolderColorEditableColumnInfo(this),
-    FolderIconColorEditableColumnInfo(this))
+    FolderIconColorEditableColumnInfo(this)
+  )
 
   init {
     createFileIconsTable()
@@ -179,9 +181,9 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       }
     }
 
-    fileSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
-    folderSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
-    folderOpenSearch.textEditor.emptyText.setText(message("fileSearch.placeholder"))
+    fileSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
+    folderSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
+    folderOpenSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
 
     tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel)
     tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel)
@@ -217,7 +219,8 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
         /* okText = */ message("SelectForm.resetDialog.ok"),
         /* cancelText = */ message("SelectForm.resetDialog.cancel"),
         /* icon = */ Messages.getQuestionIcon()
-      ) != Messages.OK) return
+      ) != Messages.OK
+    ) return
 
     settings.reset()
 
@@ -302,21 +305,25 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   /** Create the folder icons. */
   private fun createFolderIconsTable() {
     val itemEditor = AssociationsTableItemEditor()
-    folderAssociationsEditor = AssociationsTableModelEditor(folderColumns,
+    folderAssociationsEditor = AssociationsTableModelEditor(
+      folderColumns,
       itemEditor,
       message("no.folder.associations"),
       folderSearch,
-      IconType.FOLDER)
+      IconType.FOLDER
+    )
     folderIconsTable = (folderAssociationsEditor ?: return).createComponent()
   }
 
   private fun createFolderOpenIconsTable() {
     val itemEditor = AssociationsTableItemEditor()
-    folderOpenAssociationsEditor = AssociationsTableModelEditor(folderOpenColumns,
+    folderOpenAssociationsEditor = AssociationsTableModelEditor(
+      folderOpenColumns,
       itemEditor,
       message("no.folder.associations"),
       folderSearch,
-      IconType.FOLDER_OPEN)
+      IconType.FOLDER_OPEN
+    )
     folderOpenIconsTable = (folderOpenAssociationsEditor ?: return).createComponent()
   }
 

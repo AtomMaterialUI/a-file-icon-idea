@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,35 +20,38 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.icons.providers
 
 import com.intellij.ide.IconProvider
+import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
+import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiUtilCore
+import com.intellij.util.indexing.FileBasedIndex
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.associations.FileAssociationsIndex
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
-import com.mallowigi.utils.toOptional
 import javax.swing.Icon
 
 /** Abstract file icon provider. */
-abstract class AbstractFileIconProvider : IconProvider() {
+abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   /**
    * Get the icon for the given psiElement
    *
    * @param element The psiElement to get the icon for
    * @param flags The flags (unused)
    */
-  override fun getIcon(element: PsiElement, flags: Int): Icon? {
-    if (isNotApplicable()) return null
-
-    if (isOfType(element)) return findIcon(element)
-    return null
+  override fun getIcon(element: PsiElement, flags: Int): Icon? = when {
+    isNotApplicable() -> null
+    isOfType(element) -> findIcon(element)
+    else              -> null
   }
 
   /**
@@ -58,32 +61,40 @@ abstract class AbstractFileIconProvider : IconProvider() {
    * @return icon if found
    */
   private fun findIcon(element: PsiElement): Icon? {
-    var icon: Icon? = null
     val virtualFile = PsiUtilCore.getVirtualFile(element)
-
-    if (virtualFile != null) {
-      val file: FileInfo = VirtualFileInfo(virtualFile)
-      val association = findAssociation(file)
-      icon = getIconForAssociation(association)
-
+    return virtualFile?.let {
+      val file: FileInfo = VirtualFileInfo(it)
+      val association = findAssociation(file, element.project)
+      getIconForAssociation(association)
     }
-    return icon
   }
 
-  private fun getIconForAssociation(association: Association?): Icon? {
-    return association.toOptional()
-      .map { loadIcon(association) }
-      .orElseGet { null }
-  }
+  /** Get icon for association. */
+  private fun getIconForAssociation(association: Association?): Icon? = association?.let { loadIcon(it) }
 
-  private fun loadIcon(association: Association?): Icon? {
-    var icon: Icon? = null
-    val iconPath = (association ?: return null).icon
-    icon = getIcon(iconPath)
-    return icon
-  }
+  /** Load icon. */
+  private fun loadIcon(association: Association): Icon? =
+    CacheIconProvider.instance.iconCache.getOrPut(association.icon) { getIcon(association.icon) }
 
-  private fun findAssociation(file: FileInfo): Association? = getSource().findAssociation(file)
+  /** Finds and retrieves the first matching association for the given file within the specified project scope. */
+  private fun findAssociation(file: FileInfo, project: Project): Association? = when {
+    getType() == IconType.FOLDER                -> getSource().findAssociation(file)
+    AtomSettingsConfig.instance.disableIndexing -> getSource().findAssociation(file)
+    CACHE.containsKey(file.path)                -> CACHE[file.path]
+    else                                        -> {
+      val fileBasedIndex = FileBasedIndex.getInstance()
+      val associations = fileBasedIndex.getValues(
+        FileAssociationsIndex.NAME,
+        file.path,
+        GlobalSearchScope.projectScope(project)
+      )
+
+      val association = associations.firstOrNull()
+      if (association != null) CACHE[file.path] = association
+
+      association
+    }
+  }
 
   /**
    * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider
@@ -124,4 +135,12 @@ abstract class AbstractFileIconProvider : IconProvider() {
    * @return true if default assoc provider
    */
   abstract fun isDefault(): Boolean
+
+  companion object {
+    private val CACHE: MutableMap<String, Association> = mutableMapOf()
+
+    fun clearCache() {
+      CACHE.clear()
+    }
+  }
 }

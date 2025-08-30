@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,12 +51,12 @@ class BigIconsPatcher : SvgPatcher {
   override fun refresh(): Unit = refreshSizes()
 
   private fun patchSizes(attributes: MutableMap<String, String>) {
-    val isBig = attributes[SvgPatcher.BIG]
+    val hasWidth = attributes[SvgPatcher.WIDTH]
     val customFontSize = AtomSettingsConfig.instance.customIconSize.toString()
     val hasCustomSize = AtomSettingsConfig.instance.hasCustomIconSize
     val size = if (hasCustomSize) customFontSize else DEFAULT_ICON_SIZE
 
-    if (isBig == SvgPatcher.TRUE) {
+    if (hasWidth == "16" || hasWidth == "16px") {
       attributes[SvgPatcher.WIDTH] = size.toString() + SvgPatcher.PX
       attributes[SvgPatcher.HEIGHT] = size.toString() + SvgPatcher.PX
     }

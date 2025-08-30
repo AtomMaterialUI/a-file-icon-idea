@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,12 +20,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.config
 
-import com.intellij.openapi.components.service
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.ui.Messages
@@ -79,6 +77,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
   @Suppress("Detekt.LongMethod")
   override fun createPanel(): DialogPanel {
     lateinit var fileIconsCheckbox: JBCheckBox
+    lateinit var folderIconsCheckbox: JBCheckBox
     lateinit var psiIconsCheckbox: JBCheckBox
     lateinit var accentColorCheckbox: JBCheckBox
     lateinit var themedColorCheckbox: JBCheckBox
@@ -102,7 +101,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         row {
           icon(FOLDERS)
             .gap(RightGap.SMALL)
-          checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
+          folderIconsCheckbox = checkBox(message("SettingsForm.enableDirectoryIconsCheckbox.text"))
             .bindSelected(settings::isEnabledDirectories)
             .gap(RightGap.SMALL)
             .component
@@ -131,6 +130,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
             .gap(RightGap.SMALL)
           checkBox(message("SettingsForm.hollowFoldersCheckbox.text"))
             .bindSelected(settings::isUseHollowFolders)
+            .enabledIf(folderIconsCheckbox.selected)
             .gap(RightGap.SMALL)
         }.rowComment(message("SettingsForm.hollowFoldersCheckbox.toolTipText"))
 
@@ -158,14 +158,26 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
 
           twoColumnsRow(
             {
-              icon(AtomIcons.Settings.ANGULAR)
+              icon(AtomIcons.Settings.ANGULAR2)
                 .gap(RightGap.SMALL)
               checkBox(message("SettingsForm.useAngularIcons.checkbox"))
-                .bindSelected(settings::isUseAngularIcons)
+                .bindSelected(settings::isUseAngular2Icons)
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useAngularIcons.tooltip"))
             },
+            {
+              icon(AtomIcons.Settings.ANGULAR)
+                .gap(RightGap.SMALL)
+              checkBox(message("SettingsForm.useAngularIconsOld.checkbox"))
+                .bindSelected(settings::isUseAngularIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useAngularIconsOld.tooltip"))
+            },
+          )
+
+          twoColumnsRow(
             {
               icon(AtomIcons.Settings.NEST)
                 .gap(RightGap.SMALL)
@@ -174,7 +186,16 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useNestIcons.tooltip"))
-            }
+            },
+            {
+              icon(AtomIcons.Settings.NEXTJS)
+                .gap(RightGap.SMALL)
+              checkBox(message("SettingsForm.useNextJSIcons.checkbox"))
+                .bindSelected(settings::isUseNextIcons)
+                .enabledIf(fileIconsCheckbox.selected)
+                .gap(RightGap.SMALL)
+                .comment(message("SettingsForm.useNextJSIcons.tooltip"))
+            },
           )
 
           twoColumnsRow(
@@ -195,8 +216,18 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .enabledIf(fileIconsCheckbox.selected)
                 .gap(RightGap.SMALL)
                 .comment(message("SettingsForm.useNgRxIcons.tooltip"))
-            }
+            },
           )
+
+          row {
+            icon(AtomIcons.Settings.CSS)
+              .gap(RightGap.SMALL)
+            checkBox(message("SettingsForm.useCssIcon.checkbox"))
+              .bindSelected(settings::isUseCssIcons)
+              .enabledIf(fileIconsCheckbox.selected)
+              .gap(RightGap.SMALL)
+              .comment(message("SettingsForm.useCssIcon.tooltip"))
+          }
 
           row {
             icon(AtomIcons.Settings.RECOIL)
@@ -351,7 +382,7 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
               .gap(RightGap.SMALL)
           },
           {
-            val model = DefaultComboBoxModel(ArrowsStyles.values())
+            val model = DefaultComboBoxModel(ArrowsStyles.entries.toTypedArray())
             comboBox(model, arrowsRenderer)
               .bindItem(settings::arrowsStyle) {
                 settings.arrowsStyle = it ?: ArrowsStyles.MATERIAL
@@ -361,11 +392,32 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
       }
 
       row {
+        label(message("SettingsForm.isNewIconsEnabled.text"))
+          .gap(RightGap.SMALL)
+        cell(OnOffButton())
+          .bindSelected(settings::isNewIconsEnabeld)
+      }.rowComment(message("SettingsForm.isNewIconsEnabled.toolTipText"))
+
+      row {
+        label(message("SettingsForm.fixActionsButtonsColor.text"))
+          .gap(RightGap.SMALL)
+        cell(OnOffButton())
+          .bindSelected(settings::fixActionButtonsColor)
+      }.rowComment(message("SettingsForm.fixActionsButtonsColor.toolTipText"))
+
+      row {
         label(message("SettingsForm.lowPowerSwitch.text"))
           .gap(RightGap.SMALL)
         cell(OnOffButton())
           .bindSelected(settings::isLowPowerMode)
       }.rowComment(message("SettingsForm.lowPowerSwitch.toolTipText"))
+
+      row {
+        label(message("SettingsForm.disableIndexing.text"))
+          .gap(RightGap.SMALL)
+        cell(OnOffButton())
+          .bindSelected(settings::disableIndexing)
+      }.rowComment(message("SettingsForm.disableIndexing.toolTipText"))
 
       row {
         button(message("SettingsForm.resetDefaultsButton.text")) { resetSettings() }
@@ -383,7 +435,8 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
         message("SettingsForm.resetDefaultsButton.confirmation.ok"),
         message("SettingsForm.resetDefaultsButton.confirmation.cancel"),
         Messages.getQuestionIcon(),
-      ) == Messages.OK) {
+      ) == Messages.OK
+    ) {
       settings.resetSettings()
       main.reset()
     }
@@ -417,10 +470,6 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
     /** Configurable ID. */
     @NonNls
     const val ID: String = "AtomSettingsConfigurable"
-
-    /** Instance. */
-    @JvmStatic
-    val instance: AtomSettingsConfigurable by lazy { service() }
   }
 
 }

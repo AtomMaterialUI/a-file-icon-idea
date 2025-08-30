@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,97 +20,142 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 @file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
 
 import io.gitlab.arturbosch.detekt.Detekt
+import kotlinx.coroutines.runBlocking
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import java.net.HttpURLConnection
+import java.nio.file.Paths
+import java.util.*
 
-/** Get a property from the gradle.properties file. */
 fun properties(key: String) = providers.gradleProperty(key).get()
-
-/**
- * Returns the value of the environment variable associated with the specified key.
- *
- * @param key the key of the environment variable
- * @return the value of the environment variable as a Provider<String>
- */
 fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
-/** Get a property from a file. */
-fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
+val pluginsVersion: String by project
+val rustVersion: String by project
+
+val platformType: String by project
+val platformVersion: String by project
+
+val pluginName: String by project
+val pluginID: String by project
+val pluginVersion: String by project
+val pluginDescription: String by project
+val pluginSinceBuild: String by project
+val pluginUntilBuild: String by project
+
+val pluginCode: String by project
+val pluginReleaseDate: String by project
+val pluginReleaseVersion: String by project
+
+val pluginVendorName: String by project
+val pluginVendorEmail: String by project
+val pluginVendorUrl: String by project
+
+val pluginChannels: String by project
+
+val javaVersion: String by project
+val gradleVersion: String by project
+
+group = pluginID
+version = pluginVersion
 
 plugins {
-  signing
-  // Java support
   id("java")
   alias(libs.plugins.kotlin)
   alias(libs.plugins.gradleIntelliJPlugin)
   alias(libs.plugins.changelog)
-  alias(libs.plugins.qodana)
   alias(libs.plugins.detekt)
   alias(libs.plugins.ktlint)
-  alias(libs.plugins.kover)
 }
 
-
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1")
+  intellijPlatform {
+    intellijIdeaUltimate(platformVersion, useInstaller = false)
+    instrumentationTools()
+    //    local(properties("idePath").get())
+
+    pluginVerifier()
+    zipSigner()
+
+//    jetbrainsRuntime("21")
+
+    bundledPlugins(
+      "com.intellij.java",
+      "Git4Idea",
+    )
+  }
+
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
   implementation("com.jgoodies:jgoodies-forms:1.9.0")
-  implementation("com.thoughtworks.xstream:xstream:1.4.20")
-  implementation("org.javassist:javassist:3.29.2-GA")
+  implementation("com.thoughtworks.xstream:xstream:1.4.21")
+  implementation("org.javassist:javassist:3.30.2-GA")
   implementation(project(":common"))
   runtimeOnly(project(":rider"))
 }
-
-
-group = properties("pluginGroup")
-version = properties("pluginVersion")
 
 allprojects {
   apply {
     plugin("java")
     plugin("org.jetbrains.kotlin.jvm")
-    plugin("org.jetbrains.intellij")
+    plugin("org.jetbrains.intellij.platform")
   }
+
+  intellijPlatform {
+    buildSearchableOptions = false
+    instrumentCode = true
+  }
+
 
   repositories {
     mavenCentral()
-    maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-    maven(url = "https://repo.eclipse.org/content/groups/releases/")
-    maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-    maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
-  }
+    mavenLocal()
+    gradlePluginPortal()
 
-  java {
-    toolchain {
-      languageVersion = JavaLanguageVersion.of(17)
+    intellijPlatform {
+      defaultRepositories()
+
+      // marketplace()
+      // localPlatformArtifacts()
+    }
+
+    intellijPlatform {
+      defaultRepositories()
+
+      marketplace()
+      // localPlatformArtifacts()
     }
   }
 
-  kotlin {
-    jvmToolchain(17)
-  }
-
   tasks {
-    properties("javaVersion").let {
-      // Set the compatibility versions to 1.8
+    javaVersion.let {
       withType<JavaCompile> {
         sourceCompatibility = it
         targetCompatibility = it
       }
-      withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = it
-        kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
+      withType<KotlinJvmCompile> {
+        compilerOptions {
+          jvmTarget.set(JvmTarget.fromTarget(it))
+        }
       }
     }
 
-
     withType<Copy> {
       duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
+    withType<KtLintCheckTask> {
+      enabled = false
     }
 
     sourceSets {
@@ -120,121 +165,93 @@ allprojects {
       }
     }
 
-    buildSearchableOptions {
-      enabled = false
-    }
-
   }
 }
 
-koverReport {
-  defaults {
-    xml {
-      onCheck = true
-    }
-  }
-}
-
-// Configure gradle-intellij-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-intellij-plugin
-intellij {
-  pluginName = properties("pluginName")
-  version = properties("platformVersion")
-  type = properties("platformType")
-  downloadSources = true
+intellijPlatform {
+  buildSearchableOptions = false
   instrumentCode = true
-  updateSinceUntilBuild = true
-//  plugins
-//    listOf(
-//      "zielu.gittoolbox:213.10.3"
-//    )
-//  )
-  //  localPath = properties("idePath")
-//  sandboxDir = "/Applications/apps/datagrip/ch-1/212.4416.10/DataGrip 2021.2 EAP.app"
+
+  projectName = pluginName
+
+  pluginConfiguration {
+    id = pluginID
+    name = pluginName
+    version = pluginVersion
+    // description = pluginDescription
+
+    val changelog = project.changelog
+    changeNotes.set(provider {
+      with(changelog) {
+        renderItem(
+          (getOrNull(pluginVersion) ?: getUnreleased())
+            .withHeader(false)
+            .withEmptySections(false),
+          Changelog.OutputType.HTML,
+        )
+      }
+    })
+
+    ideaVersion {
+      sinceBuild = pluginSinceBuild
+      untilBuild = pluginUntilBuild
+    }
+
+    vendor {
+      name = pluginVendorName
+      email = pluginVendorEmail
+      url = pluginVendorUrl
+    }
+  }
+
+  publishing {
+    token = environment("INTELLIJ_PUBLISH_TOKEN")
+    channels = pluginChannels.split(',').map { it.trim() }
+  }
+
+  signing {
+    certificateChain = fileContents("./chain.crt")
+    privateKey = fileContents("./private.pem")
+    password = fileContents("./private_encrypted.pem")
+  }
+
+  pluginVerification {
+    ides {
+      recommended()
+      select {
+        sinceBuild = pluginSinceBuild
+        untilBuild = pluginUntilBuild
+      }
+    }
+  }
 }
 
-// Configure gradle-changelog-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path = "${project.projectDir}/docs/CHANGELOG.md"
-  version = properties("pluginVersion")
-  header = provider { version.get() }
-  headerParserRegex = "(\\d+\\.\\d+\\.\\d+)"
-  itemPrefix = "-"
-  keepUnreleasedSection = true
-  unreleasedTerm = "Changelog"
-  groups = listOf("Features", "Fixes", "Removals", "Additions", "Other")
+  path.set("${project.projectDir}/docs/CHANGELOG.md")
+  version.set(pluginVersion)
+  header.set(provider { version.get() })
+  headerParserRegex.set("(\\d+\\.\\d+\\.\\d+)")
+  itemPrefix.set("-")
+  keepUnreleasedSection.set(true)
+  unreleasedTerm.set("Changelog")
+  groups.set(listOf("Features", "Fixes", "Removals", "Additions", "Other"))
 }
 
-// Configure detekt plugin.
-// Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
-  config.setFrom("./detekt-config.yml")
+  config.from(files("./detekt-config.yml"))
   buildUponDefaultConfig = true
   autoCorrect = true
   ignoreFailures = true
 }
 
-// Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
-qodana {
-  cachePath = provider { file(".qodana").canonicalPath }
-  reportPath = provider { file("build/reports/inspections").canonicalPath }
-  saveReport = true
-  showReport = environment("QODANA_SHOW_REPORT").map { it.toBoolean() }.getOrElse(false)
-}
-
 tasks {
-
   wrapper {
     gradleVersion = properties("gradleVersion")
   }
 
   withType<Detekt> {
-    jvmTarget = properties("javaVersion")
-    reports.xml.required = true
-  }
-
-
-  patchPluginXml {
-    version = properties("pluginVersion")
-    sinceBuild = properties("pluginSinceBuild")
-    untilBuild = properties("pluginUntilBuild")
-
-    // Get the latest available change notes from the changelog file
-    changeNotes = changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML)
-  }
-
-  runPluginVerifier {
-    ideVersions = properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList()
-  }
-
-  // Configure UI tests plugin
-  // Read more: https://github.com/JetBrains/intellij-ui-test-robot
-  runIdeForUiTests {
-    systemProperty("robot-server.port", "8082")
-    systemProperty("ide.mac.message.dialogs.as.sheets", "false")
-    systemProperty("jb.privacy.policy.text", "<!--999.999-->")
-    systemProperty("jb.consents.confirmation.enabled", "false")
-  }
-
-//  runIde {
-//    jvmArgs = properties("jvmArgs").split("")
-//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
-//  }
-
-  signPlugin {
-    certificateChain = environment("CERTIFICATE_CHAIN")
-    privateKey = environment("PRIVATE_KEY")
-    password = environment("PRIVATE_KEY_PASSWORD")
-  }
-
-  publishPlugin {
-    token = environment("PUBLISH_TOKEN")
-    channels = listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
-  }
-
-  runIde {
-    ideDir = fileProperties("idePath")
+    jvmTarget = javaVersion
+    reports.xml.required.set(true)
   }
 
   register("markdownToHtml") {
@@ -243,4 +260,51 @@ tasks {
       writeText(markdownToHTML(input.readText()))
     }
   }
+
+  register("fetchPluginVersion") {
+    doLast {
+      runBlocking {
+        fetchPluginVersion("PythonCore", "pluginsVersion")
+      }
+    }
+  }
+}
+
+
+fun fetchPluginVersion(id: String, property: String) {
+  val url = Paths.get("https://plugins.jetbrains.com/plugins/list?pluginId=$id").toUri().toURL()
+  val connection = url.openConnection() as HttpURLConnection
+  connection.requestMethod = "GET"
+
+  if (connection.responseCode == 200) {
+    val xml = connection.inputStream.bufferedReader().use { it.readText() }
+    val version = parseXml(xml)
+
+    if (version != null) {
+      updateGradleProperties(property, version)
+    }
+
+  } else {
+    println("Failed to fetch XML: ${connection.responseCode}")
+  }
+}
+
+fun parseXml(xml: String): String? {
+  val document: Document = Jsoup.parse(xml, "", org.jsoup.parser.Parser.xmlParser())
+  val version = document.select("plugin-repository > category > idea-plugin").first()?.select("version")?.text()
+  println("Version: $version")
+  return version
+}
+
+fun updateGradleProperties(propertyName: String, propertyValue: String) {
+  val propertiesFile = File("gradle.properties")
+  val properties = Properties()
+
+  if (propertiesFile.exists()) {
+    propertiesFile.inputStream().use { properties.load(it) }
+  }
+
+  properties[propertyName] = propertyValue
+  propertiesFile.outputStream().use { properties.store(it, null) }
+  println("Updated $propertyName in gradle.properties to $propertyValue")
 }

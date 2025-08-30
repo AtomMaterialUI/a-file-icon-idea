@@ -2,6 +2,73 @@
 
 <hr />
 
+<h2>101.0.0 (10.1.0)</h2>
+
+<h3>Features</h3>
+
+<ul><li>Add an option in the settings to disable indexing in the case it causes the IDE to crash!</li><li><strong>New Icon Pack</strong>: CSS (New Icon)</li></ul>
+
+<h3>Fixes</h3>
+
+<ul><li>Fix infinite indexing loop</li><li>Add a caching map to avoid recalculating indexed icons</li><li>Trying to fix the rare error of <code>Class initialization must not depend on services</code></li><li>Support <em>Icon Viewer 2</em> plugin</li></ul>
+
+<h3>Additions</h3>
+
+<ul><li><em>File Icons</em>:<ul><li>Ruff</li><li>Stryker</li><li>Wrangler</li><li>Beancount</li><li>Keystatic</li><li>Lyric</li><li>Markdoc</li><li>Nest Healthchecks</li><li>Nest Fixtures</li><li>ShadCN Config</li><li>Copilot</li><li>Stackblitz</li><li>Taze</li><li>Sway</li><li>Wxt</li><li>Zeabur</li><li>C3</li><li>Mise</li><li>Textlint Ignore</li></ul></li><li><em>Folder Icons</em>:<ul><li>Liquibase</li><li>Obsidian</li><li>Trash</li><li>Nx</li></ul></li></ul>
+
+<h2>100.0.0 (10.0.0)</h2>
+
+<h3>Features</h3>
+
+<ul><li><strong>Performance Improvement</strong>: Using an index for querying associations instead of iterating over the list</li><li><strong>New Feature</strong>: Adding associations on the fly via the context menu</li></ul>
+
+<h3>Fixes</h3>
+
+<ul><li>Disable <em>Hollow Folders</em> when the <em>Enable Folder Icons</em> option is disabled.</li><li>Fix the <em>Old Toolbar</em> menu</li><li>Fix Custom Associations' icon selector</li></ul>
+
+<h2>98.0.0 (9.8.0)</h2>
+
+<h3>Fixes</h3>
+
+<ul><li>Fix bigger test icons</li><li>Improve some icons' colors in Light themes</li><li>Use a better API for the &quot;Old Toolbar&quot; action</li><li>Add some optimizations</li></ul>
+
+<h3>Other</h3>
+
+<ul><li>Add more UI Icons and New UI Icons</li><li>Remove <code>data-big</code> svg attribute and use the <code>width</code> attribute instead</li></ul>
+
+<h2>97.0.0 (9.7.0)</h2>
+
+<h3>Fixes</h3>
+
+<ul><li>Performance Improvement by using a cache for associations</li><li>Fix &quot;Fix Actions Buttons Color&quot; color</li><li>Update Action Buttons Color on theme change when the setting is enabled</li><li>Added missing New UI icons</li></ul>
+
+<h2>96.0.0 (9.6.0)</h2>
+
+<h3>Features</h3>
+
+<ul><li><strong>Angular</strong> Icon Pack</li><li><strong>NextJS</strong> Icon Pack</li><li>New Arrow Style: <strong>Circle</strong></li><li>New option: <strong>Fix Action Buttons Color</strong>. This will change the color of the Toolbar buttons to a darker color for a better contrast with
+  the plugin icons.</li></ul>
+
+<h3>Additions</h3>
+
+<ul><li><strong>Folders</strong>:<ul><li>astro</li><li>conductor</li><li>fluig</li><li>TOTVS</li><li>internal</li><li>parcel</li><li>scons</li><li>sst</li><li>styled</li><li>webcomponents</li><li>rpc</li><li>seeds</li><li>interceptor</li><li>mindsdb</li></ul></li><li><strong>Icons</strong>:<ul><li>Benchmark</li><li>contenthook</li><li>duc</li><li>garden</li><li>nest commands</li><li>nest cron</li><li>nest handlers</li><li>nest listeners</li><li>nest queues</li><li>nest types</li><li>nest utils</li><li>phpstan</li><li>scons</li><li>sst</li><li>swlang</li><li>umi</li><li>velociraptor</li><li>Next.JS icons</li><li>alfred</li><li>gleam</li><li>kdu</li><li>rindo</li><li>wite</li><li>knip</li><li>quokka</li><li>payload CMS</li><li>pkl</li><li>eslintconfig</li><li>pdm</li><li>huff</li><li>vedic</li><li>biome</li><li>concourse</li><li>mindsdb</li><li>puppeteer</li><li>nest args</li><li>Nest GQL</li><li>Nest Input</li><li>Nest loader</li><li>Nest scalars</li></ul></li><li>Newer UI Icons</li></ul>
+
+<h3>Other</h3>
+
+<ul><li>Move to Gradle Plugin 2.0</li><li>Optimize SVG icons</li></ul>
+
+<h2>95.0.0 (9.5.0)</h2>
+
+<h3>Fixes</h3>
+
+<ul><li>Fix conflict with the Randomness plugin</li><li>Support for 2024.1</li></ul>
+
+<h2>94.1.0 (9.4.1)</h2>
+
+<h3>Fixes</h3>
+
+<ul><li>Fix the issue with Filter making the IDE crash</li></ul>
+
 <h2>94.0.0 (9.4.0)</h2>
 
 <h3>Additions</h3>
@@ -103,9 +170,11 @@
 <h3>Additions</h3>
 
 <ul><li>Icons:<ul><li>Test Kotlin</li><li>Test PHP</li></ul></li><li>Parent folders:<ul><li>GitHub files: <code>.github/*.yaml</code></li><li>Plugin manifests: <code>META-INF/*.xml</code></li><li>Test files: <code>tests?/*</code>, <code>units?/*</code> and <code>specs?/*</code> (for all main languages)</li><li>Ansible files: <code>ansible/*.yml</code></li><li>Bean files: <code>beans?/*.java</code></li><li>Bloc files: <code>blocs?/*.dart</code>, <code>events?/*.dart</code>, <code>states?/*.dart</code></li><li>Docker files: <code>docker/*.dockerfile</code>, <code>dockerfiles?/*.yml</code></li><li>Eslint files: <code>eslint/*.yml|json|[cm]?js|ts</code></li><li>Expo files: <code>expo/*.js|json|ts</code></li><li>Gruntfiles: <code>grunt/*.js</code>, <code>gruntfiles?/*.js</code></li><li>Gulpfiles: <code>gulp/*.js</code>, <code>gulpfiles?/*.js</code></li><li>Husky files: <code>.husky/*.js</code>, <code>.husky/*.yml</code>, <code>.husky/*.json</code></li><li>Husky Hooks: <code>hooks/*.sh</code></li><li>Lang files: <code>langs/*</code>, <code>locales?/*</code>, <code>translations?/*</code>, <code>i18n/*</code></li><li>Jest files: <code>jest/*.js|jsx|ts|tsx</code></li><li>Mock files: <code>spy/*</code>, <code>mocks?/*</code>, <code>stubs?/*</code></li><li>NgRx
-    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rails
+    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>effects/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>,
+    <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rails
     files: <code>channels?/*.rb</code>, <code>controllers?/*.rb</code>, <code>helpers?/*.rb</code>, <code>jobs?/*.rb</code>, <code>mailers?/*.rb</code>, <code>models?/*.rb</code>, <code>views?/*.rb</code>...</li><li>Redux
-    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>, <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rspec files: <code>rspec/*.rb</code></li><li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li><li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li><li>VSCode files: <code>.vscode/*.json</code></li></ul></li></ul>
+    files: <code>actions/*.js|jsx|ts|tsx</code>, <code>reducers/*.js|jsx|ts|tsx</code>, <code>selectors/*.js|jsx|ts|tsx</code>, <code>states/*.js|jsx|ts|tsx</code>,
+    <code>repo/*.js|jsx|ts|tsx</code>...</li><li>Rspec files: <code>rspec/*.rb</code></li><li>Slug files: <code>slugs?/*.js|jsx|ts|tsx</code></li><li>Storybook files: <code>storybook/*.js|jsx|ts|tsx</code></li><li>VSCode files: <code>.vscode/*.json</code></li></ul></li></ul>
 
 <h2>83.0.0 (8.3.0)</h2>
 

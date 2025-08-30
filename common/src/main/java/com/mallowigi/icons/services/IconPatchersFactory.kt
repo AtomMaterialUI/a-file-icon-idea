@@ -24,17 +24,15 @@
 package com.mallowigi.icons.services
 
 import com.intellij.openapi.diagnostic.thisLogger
-import com.mallowigi.icons.patchers.ExternalIconsPatcher
-import com.mallowigi.icons.patchers.FileIconsPatcher
-import com.mallowigi.icons.patchers.GlyphIconsPatcher
-import com.mallowigi.icons.patchers.IconPathPatchers
-import com.mallowigi.icons.patchers.UIIconsPatcher
+import com.mallowigi.icons.patchers.*
 import com.thoughtworks.xstream.XStream
+import org.jetbrains.annotations.NonNls
 
 /** Load patchers from xml. */
 object IconPatchersFactory {
 
-  private const val iconPatchersFile = "/icon_patchers.xml"
+  @NonNls
+  private const val FILE = "/icon_patchers.xml"
 
   /**
    * Generate the list of [IconPathPatchers] from XML
@@ -42,7 +40,7 @@ object IconPatchersFactory {
    * @return list of [IconPathPatchers]
    */
   fun create(): IconPathPatchers {
-    val xml = IconPatchersFactory::class.java.getResource(iconPatchersFile)
+    val xml = IconPatchersFactory::class.java.getResource(FILE)
     val xStream = XStream()
 
     xStream.run {

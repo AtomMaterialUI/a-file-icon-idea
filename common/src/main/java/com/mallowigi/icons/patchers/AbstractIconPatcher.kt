@@ -24,6 +24,7 @@
  */
 package com.mallowigi.icons.patchers
 
+import com.intellij.ide.plugins.cl.PluginClassLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.tree.arrows.ArrowsStyles
@@ -77,13 +78,16 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
     if (instance == null) return null
 
+    @Suppress("UnstableApiUsage") val pluginName = (classLoader as? PluginClassLoader)?.pluginDescriptor?.name
+    if (pluginName != null && IGNORED_PLUGINS.contains(pluginName)) return null
+
     val patchedPath = getPatchedPath(path)
     return if (!enabled) null else patchedPath
   }
 
   /** Check whether a png version of a resource exists. */
-  private fun getPNG(path: String): URL? {
-    val replacement = SVG.replace(getReplacement(path), ".png") // NON-NLS
+  private fun getPNG(replacementPath: String): URL? {
+    val replacement = SVG.replace(replacementPath, ".png") // NON-NLS
     return javaClass.getResource("/$replacement")
   }
 
@@ -95,22 +99,39 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
    * @return
    */
   @Suppress("kotlin:S1871", "HardCodedStringLiteral")
-  private fun getPatchedPath(path: String): String? = when {
-    !enabled -> null
-    path.contains("expui/gutter") -> getArrowReplacement(path)
-    CACHE.containsKey(path) -> CACHE[path]
-    // First try the svg version of the resource
-    getSVG(path) != null -> {
-      CACHE[path] = getReplacement(path)
-      CACHE[path]
-    }
-    // Then try the png version
-    getPNG(path) != null -> {
-      CACHE[path] = getReplacement(path)
-      CACHE[path]
+  private fun getPatchedPath(path: String): String? {
+    if (!enabled) {
+      return null
     }
 
-    else -> null
+    if (path.contains("expui/gutter")) {
+      return this.getArrowReplacement(path)
+    }
+
+    if (CACHE.containsKey(path)) {
+      return CACHE[path]
+    }
+
+    val replacementPath = getReplacement(path)
+
+    if (NULL_CACHE.contains(replacementPath)) {
+      return null
+    }
+
+    // First try the svg version of the resource
+    if (getSVG(replacementPath) != null) {
+      CACHE[path] = replacementPath
+      return CACHE[path]
+    }
+
+    // Then try the png version
+    if (getPNG(replacementPath) != null) {
+      CACHE[path] = replacementPath
+      return CACHE[path]
+    }
+
+    NULL_CACHE.add(replacementPath)
+    return null
   }
 
   private fun getArrowReplacement(path: String): String? {
@@ -135,23 +156,28 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /** Check whether a svg version of a resource exists. */
-  private fun getSVG(path: String): URL? {
-    val svgFile = PNG.replace(getReplacement(path), ".svg") // NON-NLS
+  private fun getSVG(replacementPath: String): URL? {
+    val svgFile = PNG.replace(replacementPath, ".svg") // NON-NLS
     return javaClass.getResource("/$svgFile")
   }
 
   companion object {
-    private val CACHE: MutableMap<String, String> = HashMap(100)
+    private val CACHE: MutableMap<String, String?> = HashMap(100)
     private val CL_CACHE: MutableMap<String, ClassLoader?> = HashMap(100)
+    private val NULL_CACHE: MutableSet<String> = HashSet(100)
     private val PNG = ".png".toRegex(RegexOption.LITERAL)
     private val SVG = ".svg".toRegex(RegexOption.LITERAL)
     private val GIF = ".gif".toRegex(RegexOption.LITERAL)
+
+    @NonNls
+    private val IGNORED_PLUGINS = setOf("Randomness")
 
     /** Clear all caches. */
     @JvmStatic
     fun clearCache() {
       CACHE.clear()
       CL_CACHE.clear()
+      NULL_CACHE.clear()
     }
   }
 

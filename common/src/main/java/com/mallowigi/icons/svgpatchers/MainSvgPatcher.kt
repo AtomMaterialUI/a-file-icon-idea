@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
  */
 package com.mallowigi.icons.svgpatchers
 
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.ui.svg.SvgAttributePatcher
@@ -32,7 +31,6 @@ import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
 import com.mallowigi.utils.getValue
 import java.util.*
-import javax.swing.SwingUtilities
 
 /**
  * Main svg patcher: run all registered svg patchers
@@ -64,7 +62,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   fun applySvgPatchers() {
     SVGLoader.colorPatcherProvider = this
     patchers.forEach { it.refresh() }
-    SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
+    // SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
 
   /** Create patcher for path. */

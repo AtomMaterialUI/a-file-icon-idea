@@ -24,11 +24,10 @@
  */
 package com.mallowigi.icons.associations
 
-import com.intellij.ide.plugins.PluginManagerCore
-import com.intellij.openapi.diagnostic.Logger
-import com.intellij.openapi.extensions.PluginId
-import com.mallowigi.config.AtomSettingsBundle.message
+import com.intellij.openapi.diagnostic.thisLogger
 import com.mallowigi.models.FileInfo
+import com.mallowigi.utils.ICON_PLUGINS
+import com.mallowigi.utils.isPluginEnabled
 import org.jetbrains.annotations.NonNls
 import java.io.Serializable
 
@@ -51,14 +50,11 @@ abstract class Associations : Serializable {
 
     when {
       // Specific plugin handling
-      IMAGE_TYPES.contains(matching.name) -> try {
+      IMAGE_TYPES.contains(matching.name)                            -> try {
         // If those plugins are installed, let them handle the icon
-        val imageIconViewerID = message("plugins.imageIconViewer")
-        val plugin = PluginManagerCore.getPlugin(PluginId.getId(imageIconViewerID))
-
-        if (plugin != null) return null
+        if (ICON_PLUGINS.any { isPluginEnabled(it) }) return null
       } catch (e: RuntimeException) {
-        LOG.error(e)
+        thisLogger().error(e)
       }
       // Other ignores
       !includeIgnored && ignoredAssociations.contains(matching.name) -> return null
@@ -89,8 +85,6 @@ abstract class Associations : Serializable {
   abstract fun getTheAssociations(): List<Association>
 
   companion object {
-    private val LOG = Logger.getInstance(Associations::class.java)
-
     @NonNls
     private val IMAGE_TYPES: Set<String> = setOf(
       "Images",

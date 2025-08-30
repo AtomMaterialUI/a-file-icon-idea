@@ -25,23 +25,18 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable saturation icons action. */
 class EnableSaturationIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isSaturatedIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isSaturatedIcons
 
   /** Upon select, toggle monochrome icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleSaturatedIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleSaturatedIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

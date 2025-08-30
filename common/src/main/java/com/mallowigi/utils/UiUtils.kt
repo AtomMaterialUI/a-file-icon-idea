@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.utils
@@ -30,7 +29,6 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.ide.ui.LafManager
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.options.ex.Settings
 import com.intellij.openapi.project.Project
@@ -38,17 +36,19 @@ import com.intellij.openapi.project.ProjectManager
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
 import com.intellij.ui.components.ActionLink
+import com.intellij.util.indexing.FileBasedIndex
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.AtomSettingsConfig
-import javax.swing.SwingUtilities
+import com.mallowigi.icons.associations.FileAssociationsIndex
+import com.mallowigi.icons.providers.AbstractFileIconProvider
 import javax.swing.UIManager
 
-/**
- * Refresh
- *
- * @param project
- */
+const val IMAGE_ICON_PLUGIN = "com.mallowigi.imageicon"
+const val ICON_VIEWER_PLUGIN = "lermitage.intellij.iconviewer"
+val ICON_PLUGINS = setOf(IMAGE_ICON_PLUGIN, ICON_VIEWER_PLUGIN)
+
+/** Refresh. */
 fun refresh(project: Project?) {
   if (project != null) {
     val view = ProjectView.getInstance(project)
@@ -88,9 +88,6 @@ fun replaceArrowIcons() {
   defaults["Tree.expandedIcon"] = arrowsStyle.collapseIcon
   defaults["Tree.collapsedSelectedIcon"] = arrowsStyle.selectedExpandIcon
   defaults["Tree.expandedSelectedIcon"] = arrowsStyle.selectedCollapseIcon
-
-
-  SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
 }
 
 /** Extract accent color from current theme. */
@@ -98,9 +95,9 @@ fun replaceArrowIcons() {
 fun getAccentFromTheme(): String {
   val namedKey = when (LafManager.getInstance().currentUIThemeLookAndFeel?.name) {
     "IntelliJ Light" -> "ActionButton.focusedBorderColor"
-    "Light" -> "ActionButton.focusedBorderColor"
-    "Darcula" -> "Button.select"
-    else -> "Link.activeForeground"
+    "Light"          -> "ActionButton.focusedBorderColor"
+    "Darcula"        -> "Button.select"
+    else             -> "Link.activeForeground"
   }
 
   val namedColor = JBColor.namedColor(
@@ -120,5 +117,9 @@ fun findSettingsPage(link: ActionLink, id: String) {
   settings?.select(settings.find(id))
 }
 
-fun isPluginEnabled(pluginId: String) = PluginManagerCore.getPlugin(PluginId.getId(pluginId))?.isEnabled
-  ?: false
+fun isPluginEnabled(pluginId: String) = PluginManagerCore.getPlugin(PluginId.getId(pluginId))?.isEnabled == true
+
+fun refreshIndex() {
+  FileBasedIndex.getInstance().requestRebuild(FileAssociationsIndex.NAME)
+  AbstractFileIconProvider.clearCache()
+}

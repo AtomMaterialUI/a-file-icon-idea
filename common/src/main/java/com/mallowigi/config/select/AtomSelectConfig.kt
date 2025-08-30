@@ -33,7 +33,6 @@ import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.SelectedAssociations
 import com.mallowigi.models.IconType
-import com.mallowigi.utils.getValue
 import java.util.*
 
 /** Configuration for [SelectedAssociations]. */
@@ -42,6 +41,7 @@ import java.util.*
   storages = [Storage("atom-icon-associations.xml")],
   category = SettingsCategory.UI
 )
+@Service(Service.Level.APP)
 class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
 
   private var firstRun: Boolean = true
@@ -62,9 +62,11 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     init()
   }
 
-  fun apply(fileAssociations: SelectedAssociations,
-            folderAssociations: SelectedAssociations,
-            folderOpenAssociations: SelectedAssociations) {
+  fun apply(
+    fileAssociations: SelectedAssociations,
+    folderAssociations: SelectedAssociations,
+    folderOpenAssociations: SelectedAssociations
+  ) {
     selectedFileAssociations = fileAssociations
     selectedFolderAssociations = folderAssociations
     selectedFolderOpenAssociations = folderOpenAssociations
@@ -152,6 +154,8 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   companion object {
     /** Instance of the [AtomSelectConfig]. */
     @JvmStatic
-    val instance: AtomSelectConfig by lazy { service() }
+    val instance: AtomSelectConfig by lazy {
+      ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)
+    }
   }
 }

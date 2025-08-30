@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons.associations
 
@@ -31,6 +30,7 @@ import com.mallowigi.config.BundledAssociations
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 import com.mallowigi.utils.isPluginEnabled
+import org.jetbrains.annotations.NonNls
 
 /** Represents a list of [SelectedAssociations]. */
 @Suppress("MemberNameEqualsClassName")
@@ -63,6 +63,21 @@ class SelectedAssociations(
   /** Reinitializes the [mutableAssociations]. */
   fun initMutableListFromDefaults() {
     mutableAssociations.putAll(BundledAssociations.instance.getMap(iconType))
+  }
+
+  /**
+   * Adds a new [RegexAssociation] to the collection of associations. If an association with the same name already exists, the new
+   * association's name is appended with "(1)" to ensure uniqueness before adding it to the collection.
+   *
+   * @param association the [RegexAssociation] to be added
+   */
+  fun addAssociation(association: RegexAssociation) {
+    if (hasOwn(association.name)) {
+      association.name = "${association.name} (1)"
+      ownAssociations[association.name] = association
+    } else {
+      ownAssociations[association.name] = association
+    }
   }
 
   /**
@@ -111,7 +126,7 @@ class SelectedAssociations(
    * @param file a file's [FileInfo]
    * @return matching association if found
    */
-  private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.toList()
+  private fun findInMutable(file: FileInfo): Association? = mutableAssociations.values.asSequence()
     .filter { it.enabled && it.matches(file) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
@@ -121,7 +136,7 @@ class SelectedAssociations(
     .maxByOrNull { it.priority }
 
   /** Look for matching association in [mutableAssociations]. */
-  private fun findInMutableByName(path: String): Association? = mutableAssociations.values.toList()
+  private fun findInMutableByName(path: String): Association? = mutableAssociations.values.asSequence()
     .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
@@ -161,6 +176,7 @@ class SelectedAssociations(
   }
 
   companion object {
+    @NonNls
     private val FILE_IGNORED_ASSOCIATIONS: Set<Pair<String, () -> Boolean>> = setOf(
       Pair("PHP") { isPluginEnabled("com.jetbrains.php") },
       Pair("Kotlin") { true },

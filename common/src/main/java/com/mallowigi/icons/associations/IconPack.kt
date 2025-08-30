@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.icons.associations
@@ -33,15 +32,23 @@ enum class IconPack {
   /** Angular. */
   ANGULAR,
 
+  /** Angular2. */
+  ANGULAR2,
+
+  /** New CSS Icon */
+  CSS,
+
   /** Nest. */
   NEST,
-
 
   /** Redux. */
   REDUX,
 
   /** NgRx. */
   NGRX,
+
+  /** NextJS. */
+  NEXTJS,
 
   /** Rails. */
   RAILS,

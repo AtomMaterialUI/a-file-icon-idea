@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.tree
 
@@ -42,10 +41,7 @@ import icons.AtomIcons
 import java.util.*
 import javax.swing.Icon
 
-/**
- * Hollow folders' decorator: Decorate directories as "open" when one of
- * its files is open.
- */
+/** Hollow folders' decorator: Decorate directories as "open" when one of its files is open. */
 class HollowFoldersDecorator : ProjectViewNodeDecorator {
   /** Decorate nodes with icon associations. */
   override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
@@ -55,6 +51,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     if (project != null && file != null && !project.isDisposed) {
       when {
         !AtomSettingsConfig.instance.isUseHollowFolders -> return
+        !AtomSettingsConfig.instance.isEnabledDirectories -> return
         !file.isDirectory -> return
         AtomSettingsConfig.instance.isHideFolderIcons -> return
         isFolderContainingOpenFiles(project, file) -> setOpenDirectoryIcon(data, file, project)
@@ -76,7 +73,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
    */
   private fun setOpenDirectoryIcon(data: PresentationData, file: VirtualFile, project: Project) {
     try {
-      val matchedAssociation = matchAssociation(file, data)
+      val matchedAssociation = matchAssociation(file)
       val icon = when {
         data.getIcon(/* open = */ true) is DirIcon -> {
           val openedIcon: Icon = (Objects.requireNonNull(data.getIcon(true)) as DirIcon).openedIcon
@@ -100,7 +97,7 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
     }
   }
 
-  private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData): Icon? {
+  private fun matchAssociation(virtualFile: VirtualFile): Icon? {
     val fileInfo = VirtualFileInfo(virtualFile)
     val associations = AtomSelectConfig.instance.selectedFolderOpenAssociations
 

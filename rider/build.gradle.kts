@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2022 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,31 +20,26 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- *
  */
-@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
 
-fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-
-fun environment(key: String): Provider<String> = providers.environmentVariable(key)
+fun properties(key: String) = providers.gradleProperty(key).get()
+fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
 val riderVersion: String by project
 
 dependencies {
+  intellijPlatform {
+    rider(riderVersion, useInstaller = false)
+    instrumentationTools()
+
+    pluginVerifier()
+    zipSigner()
+  }
+
   implementation(project(":common"))
 }
 
-plugins {
-  kotlin("jvm")
-}
-
-intellij {
-  version = riderVersion
-  type = "RD"
-  downloadSources = false
-  instrumentCode = false
-}
 
 tasks {
   verifyPlugin {
@@ -52,6 +47,10 @@ tasks {
   }
 
   publishPlugin {
+    enabled = false
+  }
+
+  signPlugin {
     enabled = false
   }
 

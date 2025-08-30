@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package icons
 
@@ -35,7 +34,6 @@ import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
 import com.intellij.util.ui.JBUI
 import com.mallowigi.icons.special.DirIcon
-import com.mallowigi.tree.arrows.*
 import com.mallowigi.utils.LayeredIconService
 import org.jetbrains.annotations.NonNls
 import java.awt.Image
@@ -48,18 +46,15 @@ import java.util.logging.Logger
 import javax.swing.Icon
 
 /** Loader for Plugin's Icons. */
-@Suppress("KDocMissingDocumentation")
 object AtomIcons {
-  private const val FILES_PATH: String = "/iconGenerator/assets"
-  private const val FOLDERS_PATH: String = "/iconGenerator/assets/icons/folders"
-  private const val FOLDERS_OPEN_PATH: String = "/iconGenerator/assets/icons/foldersOpen"
+  private const val FILES_PATH: String = "/assets"
+  private const val FOLDERS_PATH: String = "/assets/icons/folders"
+  private const val FOLDERS_OPEN_PATH: String = "/assets/icons/foldersOpen"
   val EXCLUDED: Icon = load("/icons/mt/modules/ExcludedTreeOpen.svg")
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
   val TEST: Icon = load("/icons/mt/modules/testRootOpen.svg")
   val LOGO: Icon = load("/logo.svg")
-  private const val WIDTH = 16
-  private const val HEIGHT = 16
 
   /**
    * Get file icon from the resources folder
@@ -87,7 +82,10 @@ object AtomIcons {
    * @param path absolute path to the icon
    * @return the icon. must not be null
    */
-  internal fun load(@NonNls path: String): Icon = IconLoader.findIcon(toCanonicalPath(path), AtomIcons.javaClass)!!
+  internal fun load(
+    @NonNls
+    path: String
+  ): Icon = IconLoader.findIcon(toCanonicalPath(path), AtomIcons.javaClass)!!
 
   /**
    * Tries to load a svg icon
@@ -105,12 +103,11 @@ object AtomIcons {
       Logger.getAnonymousLogger().info(e.message)
     }
     val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
-    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(WIDTH), JBUI.scale(HEIGHT))
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
   }
 
   /**
-   * If the icon's height is 1, load a fallback icon, otherwise return the
-   * icon
+   * If the icon's height is 1, load a fallback icon, otherwise return the icon
    *
    * @param icon The icon to use if the SVG icon can't be loaded.
    * @param path The path to the SVG file.
@@ -118,8 +115,7 @@ object AtomIcons {
   fun loadIconWithFallback(icon: Icon, path: String): Icon = if (icon.iconHeight == 1) loadSVGIcon(path) else icon
 
   /**
-   * If the file is a symlink, add the symlink icon to the file's icon;
-   * if the file is not writable, add the locked icon the file's icon;
+   * If the file is a symlink, add the symlink icon to the file's icon; if the file is not writable, add the locked icon the file's icon;
    * otherwise, return the file's icon
    *
    * @param icon The icon to be decorated.
@@ -127,8 +123,8 @@ object AtomIcons {
    */
   fun getLayeredIcon(icon: Icon, virtualFile: VirtualFile): Icon = when {
     virtualFile.`is`(VFileProperty.SYMLINK) -> LayeredIconService.create(icon, AllIcons.Nodes.Symlink)
-    !virtualFile.isWritable -> LayeredIconService.create(icon, AllIcons.Nodes.Locked)
-    else -> icon
+    !virtualFile.isWritable                 -> LayeredIconService.create(icon, AllIcons.Nodes.Locked)
+    else                                    -> icon
   }
 
   object Settings {
@@ -136,7 +132,6 @@ object AtomIcons {
     val FOLDERS: Icon = load("/settings/compiledClassesFolder.svg")
     val MONOCHROME: Icon = load("/settings/monochrome.svg")
     val SATURATION: Icon = load("/settings/saturation.svg")
-    val OPACITY: Icon = load("/settings/opacity.svg")
     val UI: Icon = load("/settings/plugin.svg")
     val PSI: Icon = load("/settings/psi.svg")
     val HIDE_FILES: Icon = load("/settings/hideFileAction.svg")
@@ -151,10 +146,13 @@ object AtomIcons {
     val RUBY: Icon = load("/settings/ruby.svg")
     val RAILS: Icon = load("/settings/rails.svg")
     val ANGULAR: Icon = load("/settings/angular.svg")
+    val ANGULAR2: Icon = load("/settings/angular2.svg")
     val NEST: Icon = load("/settings/nest.svg")
     val REDUX: Icon = load("/settings/redux.svg")
     val NGRX: Icon = load("/settings/ngrx.svg")
+    val NEXTJS: Icon = load("/settings/nextjs.svg")
     val RECOIL: Icon = load("/settings/recoil.svg")
+    val CSS: Icon = load("/settings/css.svg")
     val TESTS: Icon = load("/settings/tests.svg")
   }
 

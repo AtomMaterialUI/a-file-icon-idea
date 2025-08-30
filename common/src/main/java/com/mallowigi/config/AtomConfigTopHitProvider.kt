@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 @file:Suppress("Detekt.TooManyFunctions")
 
@@ -118,6 +117,12 @@ fun cdCustomLineHeightEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   AtomSettingsConfig.instance::hasCustomLineHeight,
 ).asOptionDescriptor { AtomSettingsConfig.instance.fireChanged() }
 
+/** Has Custom Colored Buttons. */
+fun cdFixActionsButtonColor(): BooleanOptionDescription = CheckboxDescriptor(
+  getText("SettingsForm.fixActionsButtonsColor.text"),
+  AtomSettingsConfig.instance::fixActionButtonsColor,
+).asOptionDescriptor { AtomSettingsConfig.instance.fireChanged() }
+
 /** Low Power Mode. */
 fun cdLowPowerModeEnabled(): BooleanOptionDescription = CheckboxDescriptor(
   getText("SettingsForm.lowPowerSwitch.text"),
@@ -135,28 +140,24 @@ class AtomConfigTopHitProvider : ApplicationLevelProvider {
 
   /** Option list. */
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS
-
-  companion object {
-
-    @NonNls
-    private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(
-      listOf(
-        cdAccentColorEnabled(),
-        cdDirectoryIconsEnabled(),
-        cdFileIconsEnabled(),
-        cdPsiIconsEnabled(),
-        cdUIIconsEnabled(),
-        cdHideFileIconsEnabled(),
-        cdHideFolderIconsEnabled(),
-        cdHollowFoldersEnabled(),
-        cdMonochromeIconsEnabled(),
-        cdThemedColorEnabled(),
-        cdCustomLineHeightEnabled(),
-        cdCustomIconSizeEnabled(),
-        cdLowPowerModeEnabled()
-      )
-    )
-
-  }
-
 }
+
+@NonNls
+private val OPTION_DESCRIPTIONS: Collection<OptionDescription> = Collections.unmodifiableCollection(
+  listOf(
+    cdAccentColorEnabled(),
+    cdCustomIconSizeEnabled(),
+    cdCustomLineHeightEnabled(),
+    cdDirectoryIconsEnabled(),
+    cdFileIconsEnabled(),
+    cdFixActionsButtonColor(),
+    cdHideFileIconsEnabled(),
+    cdHideFolderIconsEnabled(),
+    cdHollowFoldersEnabled(),
+    cdMonochromeIconsEnabled(),
+    cdPsiIconsEnabled(),
+    cdThemedColorEnabled(),
+    cdUIIconsEnabled(),
+    cdLowPowerModeEnabled()
+  )
+)

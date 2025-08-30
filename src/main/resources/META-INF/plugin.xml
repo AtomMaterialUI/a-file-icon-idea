@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
   -->
 
 <idea-plugin>
@@ -39,7 +38,6 @@
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
   <extensions defaultExtensionNs="com.intellij">
-    <applicationService serviceImplementation="com.mallowigi.config.AtomSettingsConfig"/>
     <!-- New Settings -->
     <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
                              id="AtomHomeConfigurable"
@@ -51,7 +49,6 @@
                              id="AtomSettingsConfigurable"
                              groupId="appearance"/>
 
-    <applicationService serviceImplementation="com.mallowigi.config.select.AtomSelectConfig"/>
     <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
                              key="AtomSelectForm.title"
                              groupId="appearance" dynamic="true"
@@ -79,6 +76,8 @@
                   order="first, after HiddenFolderIconProvider"
                   id="DefaultFolderIconProvider"/>
 
+    <fileBasedIndex implementation="com.mallowigi.icons.associations.FileAssociationsIndex"/>
+
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator"/>
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
@@ -88,8 +87,9 @@
                        bundle="messages.AtomFileIconsBundle"
                        key="notification.group.atom.material.notifications"/>
 
-    <actionConfigurationCustomizer implementation="com.mallowigi.actions.OldToolbarAdder"/>
+    <!--suppress PluginXmlValidity -->
 
+    <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSVGPatchersListener"/>
     <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
@@ -110,10 +110,13 @@
   </applicationListeners>
 
   <actions>
-    <group id="AtomFileIcons.OldToolbar" popup="true" icon="AllIcons.Ide.ConfigFile"
-           class="com.mallowigi.actions.ActionGroup">
+    <group id="AtomFileIcons.OldToolbar" popup="true" icon="/actions/tools.svg"
+           class="com.mallowigi.actions.OldToolbarGroup">
+      <add-to-group group-id="MainToolBar" anchor="last"/>
       <add-to-group group-id="MainToolbarRight"/>
+
     </group>
+
     <group id="AtomFileIcons.Actions" popup="true" icon="/actions/atom.svg"
            class="com.mallowigi.actions.ActionGroup">
       <add-to-group group-id="MainToolBar" anchor="last"/>
@@ -161,10 +164,25 @@
                 icon="/actions/arrows/none.svg"
                 id="MTNoneArrows"/>
       </group>
-      <action class="com.mallowigi.actions.RefreshIconsAction" id="RefreshIconsAction"
-              icon="/actions/refresh.svg"/>
+      <action class="com.mallowigi.actions.RefreshIconsAction"
+              id="RefreshIconsAction"
+              icon="/actions/reload.svg"/>
       <separator/>
     </group>
+
+    <group id="AtomFileIcons.Menus">
+      <action class="com.mallowigi.actions.AddFileAssociationAction"
+              id="AddFileAssociationAction"
+              icon="/actions/add.svg">
+      </action>
+      <action class="com.mallowigi.actions.AddFolderAssociationAction"
+              id="AddFolderAssociationAction"
+              icon="/actions/addFolder.svg">
+      </action>
+
+      <add-to-group group-id="NewGroup"/>
+    </group>
+
 
   </actions>
 
@@ -265,10 +283,10 @@
     <hr>
     <h3>Donate</h3>
     <p>This theme is backed up by <a
-        href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
+      href='https://opencollective.com/atom-material-themes-and-plugins'>OpenCollective</a>.
       If you like this plugin, don't hesitate to give it a star or donate via <a
-          href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
-          href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
+        href='https://www.paypal.me/mallowigi'>Paypal</a> or <a
+        href='https://opencollective.com/atom-material-themes-and-plugins#sponsor'>OpenCollective</a></p>
     ]]></description>
 
   <change-notes>

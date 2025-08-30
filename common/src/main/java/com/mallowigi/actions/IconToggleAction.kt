@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.actions
 
@@ -62,11 +61,10 @@ abstract class IconToggleAction : ToggleAction() {
   }
 
   /** Add selected layer instead of selected icon. */
-  @Suppress("UseIfInsteadOfWhen")
   override fun update(e: AnActionEvent) {
     val selected = isSelected(e)
     val presentation = e.presentation
-    val icon = presentation.icon
+    val icon = presentation.icon ?: return
     Toggleable.setSelected(presentation, selected)
     val fallbackIcon = selectedFallbackIcon()
     val actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon)
@@ -87,7 +85,6 @@ abstract class IconToggleAction : ToggleAction() {
         GraphicsUtil.setupAAPainting(g2d)
         g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
 
-        @Suppress("MagicNumber")
         g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
       } finally {
         g2d.dispose()

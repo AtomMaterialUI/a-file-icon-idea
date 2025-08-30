@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.config
 
@@ -40,6 +39,7 @@ import com.mallowigi.utils.getValue
   storages = [Storage("a-file-icons.xml")],
   category = SettingsCategory.UI
 )
+@Service(Service.Level.APP)
 class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsConfig> {
   private var firstRun: Boolean = true
 
@@ -92,13 +92,22 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   var isUseNestIcons: Boolean by property(true)
 
   /** Whether Angular Icons should be used. */
-  var isUseAngularIcons: Boolean by property(true)
+  var isUseAngularIcons: Boolean by property(false)
+
+  /** Is use angular2icons. */
+  var isUseAngular2Icons: Boolean by property(true)
 
   /** Whether Redux Icons should be used. */
   var isUseReduxIcons: Boolean by property(true)
 
   /** Whether NgRx Icons should be used. */
   var isUseNgRxIcons: Boolean by property(true)
+
+  /** Whether NgRx Icons should be used. */
+  var isUseCssIcons: Boolean by property(true)
+
+  /** Is use next icons. */
+  var isUseNextIcons: Boolean by property(true)
 
   /** Whether Recoil Icons should be used. */
   var isUseRecoilIcons: Boolean by property(true)
@@ -127,6 +136,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   /** Whether custom line height is enabled. */
   var hasCustomLineHeight: Boolean by property(false)
 
+  /** Whether colored buttons are enabled. */
+  var fixActionButtonsColor: Boolean by property(false)
+
   /** Custom icon size. */
   var customIconSize: Int by property(DEFAULT_ICON_SIZE)
 
@@ -135,6 +147,12 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   /** Whether low power mode is enabled. */
   var isLowPowerMode: Boolean by property(true)
+
+  /** Disable indexing for the case it causes the IDE to crash */
+  var disableIndexing: Boolean by property(false)
+
+  /** Is new icons enabeld. */
+  var isNewIconsEnabeld: Boolean by property(false)
 
   /** Config state. */
   override fun getState(): AtomSettingsConfig = this
@@ -164,116 +182,121 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   /** Reset settings. */
   fun resetSettings() {
-    isEnabledIcons = true
+    accentColor = accentColorFromTheme
+    arrowsStyle = ArrowsStyles.MATERIAL
+    customIconSize = DEFAULT_ICON_SIZE
+    customLineHeight = DEFAULT_LINE_HEIGHT
+    disableIndexing = false
+    hasCustomIconSize = false
+    hasCustomLineHeight = false
+    fixActionButtonsColor = false
+    isAccentColorEnabled = false
     isEnabledDirectories = true
-    isEnabledUIIcons = true
-    isMonochromeIcons = false
-    monochromeColor = DEFAULT_MONOCHROME // NON-NLS
+    isEnabledIcons = true
     isEnabledPsiIcons = true
+    isEnabledUIIcons = true
     isHideFileIcons = false
     isHideFolderIcons = false
-    isUseHollowFolders = true
-    isUseRubyIcons = true
-    isUseRailsIcons = true
-    isUseNestIcons = true
-    isUseAngularIcons = true
-    isUseReduxIcons = true
-    isUseNgRxIcons = true
-    isUseRecoilIcons = true
-    isUseTestsIcons = true
-    arrowsStyle = ArrowsStyles.MATERIAL
-    isAccentColorEnabled = false
-    accentColor = accentColorFromTheme
-    isThemedColorEnabled = false
-    themedColor = themedColorFromTheme
-    hasCustomIconSize = false
-    customIconSize = DEFAULT_ICON_SIZE
-    hasCustomLineHeight = false
-    customLineHeight = DEFAULT_LINE_HEIGHT
-    saturation = DEFAULT_SATURATION
-    isSaturatedIcons = false
-    opacity = DEFAULT_OPACITY
-    isOpacityIcons = false
     isLowPowerMode = true
+    isMonochromeIcons = false
+    isOpacityIcons = false
+    isSaturatedIcons = false
+    isThemedColorEnabled = false
+    isUseAngular2Icons = true
+    isUseAngularIcons = false
+    isUseHollowFolders = true
+    isUseNestIcons = true
+    isUseNextIcons = true
+    isUseNgRxIcons = true
+    isUseCssIcons = true
+    isUseRailsIcons = true
+    isUseRecoilIcons = true
+    isUseReduxIcons = true
+    isUseRubyIcons = true
+    isUseTestsIcons = true
+    isNewIconsEnabeld = false
+    monochromeColor = DEFAULT_MONOCHROME // NON-NLS
+    opacity = DEFAULT_OPACITY
+    saturation = DEFAULT_SATURATION
+    themedColor = themedColorFromTheme
     fireChanged()
   }
 
-
-  //region File Icons
+  // region File Icons
 
   /** Toggle enabled icons. */
   fun toggleEnabledIcons() {
     isEnabledIcons = !isEnabledIcons
   }
-  //endregion
+  // endregion
 
-  //region Directory Icons
+  // region Directory Icons
 
   /** Toggle directories icons. */
   fun toggleDirectoriesIcons() {
     isEnabledDirectories = !isEnabledDirectories
   }
-  //endregion
+  // endregion
 
-  //region Monochrome Icons
+  // region Monochrome Icons
 
   /** Toggle monochrome icons. */
   fun toggleMonochromeIcons() {
     isMonochromeIcons = !isMonochromeIcons
   }
 
-  //endregion
+  // endregion
 
-  //region Saturated Icons
+  // region Saturated Icons
 
   /** Toggle saturation icons. */
   fun toggleSaturatedIcons() {
     isSaturatedIcons = !isSaturatedIcons
   }
 
-  //endregion
+  // endregion
 
-  //region UI Icons
+  // region UI Icons
 
   /** Toggle ui icons. */
   fun toggleUIIcons() {
     isEnabledUIIcons = !isEnabledUIIcons
   }
-  //endregion
+  // endregion
 
-  //region PSI Icons
+  // region PSI Icons
 
   /** Toggle psi icons. */
   fun togglePsiIcons() {
     isEnabledPsiIcons = !isEnabledPsiIcons
   }
-  //endregion
+  // endregion
 
-  //region Hollow Folders
+  // region Hollow Folders
 
   /** Toggle use hollow folders. */
   fun toggleUseHollowFolders() {
     isUseHollowFolders = !isUseHollowFolders
   }
-  //endregion
+  // endregion
 
-  //region Hide File Icons
+  // region Hide File Icons
 
   /** Toggle hide file icons. */
   fun toggleHideFileIcons() {
     isHideFileIcons = !isHideFileIcons
   }
-  //endregion
+  // endregion
 
-  //region Hide Folder Icons
+  // region Hide Folder Icons
 
   /** Toggle hide folder icons. */
   fun toggleHideFolderIcons() {
     isHideFolderIcons = !isHideFolderIcons
   }
-  //endregion
+  // endregion
 
-  //region Accent Color
+  // region Accent Color
 
   /** Get current accent color. */
   fun getCurrentAccentColor(): String {
@@ -281,33 +304,32 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     return accentColorFromTheme
   }
 
-  //endregion
+  // endregion
 
-  //region Themed Color
+  // region Themed Color
 
   /** Get current themed color. */
   fun getCurrentThemedColor(): String {
     if (isThemedColorEnabled) return themedColor ?: themedColorFromTheme
     return themedColorFromTheme
   }
-  //endregion
+  // endregion
 
-  //region Custom Icon size
+  // region Custom Icon size
 
   /** Toggle custom icon size. */
   fun toggleHasCustomIconSize() {
     hasCustomIconSize = !hasCustomIconSize
   }
-  //endregion
+  // endregion
 
-  //region Custom Line Height
+  // region Custom Line Height
 
   /** Toggle custom line height. */
   fun toggleHasCustomLineHeight() {
     hasCustomLineHeight = !hasCustomLineHeight
   }
-  //endregion
-
+  // endregion
 
   companion object {
     /** Default Icon Size. */
@@ -352,7 +374,6 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
     private val themedColorFromTheme: String
       get() = getThemedFromTheme()
-
 
   }
 }

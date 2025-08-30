@@ -2,6 +2,191 @@
 
 ----
 
+## 101.2.1 (10.1.3)
+
+### Fixes
+
+- Performance Improvement by using cache for known non-existent resources
+
+
+## 101.2.0 (10.1.2)
+
+### Fixes
+
+- Fix `Reindexing icons` action not working since last update
+- Fix metadata icon too large
+
+### Additions
+
+- New Icons: Typst and ePub
+- Change Unity icons
+
+## 101.1.0 (10.1.1)
+
+### Fixes
+
+- Fix custom associations not loaded
+
+## 101.0.0 (10.1.0)
+
+### Features
+
+- Add an option in the settings to disable indexing in the case it causes the IDE to crash!
+- **New Icon Pack**: CSS (New Icon)
+
+### Fixes
+
+- Fix infinite indexing loop
+- Add a caching map to avoid recalculating indexed icons
+- Trying to fix the rare error of `Class initialization must not depend on services`
+- Support *Icon Viewer 2* plugin
+
+### Additions
+
+- *File Icons*:
+  - Ruff
+  - Stryker
+  - Wrangler
+  - Beancount
+  - Keystatic
+  - Lyric
+  - Markdoc
+  - Nest Healthchecks
+  - Nest Fixtures
+  - ShadCN Config
+  - Copilot
+  - Stackblitz
+  - Taze
+  - Sway
+  - Wxt
+  - Zeabur
+  - C3
+  - Mise
+  - Textlint Ignore
+- *Folder Icons*:
+  - Liquibase
+  - Obsidian
+  - Trash
+  - Nx
+
+## 100.0.0 (10.0.0)
+
+### Features
+
+- **Performance Improvement**: Using an index for querying associations instead of iterating over the list
+- **New Feature**: Adding associations on the fly via the context menu
+
+### Fixes
+
+- Disable *Hollow Folders* when the *Enable Folder Icons* option is disabled.
+- Fix the *Old Toolbar* menu
+- Fix Custom Associations' icon selector
+
+## 98.0.0 (9.8.0)
+
+### Fixes
+
+- Fix bigger test icons
+- Improve some icons' colors in Light themes
+- Use a better API for the "Old Toolbar" action
+- Add some optimizations
+
+### Other
+
+- Add more UI Icons and New UI Icons
+- Remove `data-big` svg attribute and use the `width` attribute instead
+
+## 97.0.0 (9.7.0)
+
+### Fixes
+
+- Performance Improvement by using a cache for associations
+- Fix "Fix Actions Buttons Color" color
+- Update Action Buttons Color on theme change when the setting is enabled
+- Added missing New UI icons
+
+## 96.0.0 (9.6.0)
+
+### Features
+
+- **Angular** Icon Pack
+- **NextJS** Icon Pack
+- New Arrow Style: **Circle**
+- New option: **Fix Action Buttons Color**. This will change the color of the Toolbar buttons to a darker color for a better contrast with
+  the plugin icons.
+
+### Additions
+
+- **Folders**:
+  - astro
+  - conductor
+  - fluig
+  - TOTVS
+  - internal
+  - parcel
+  - scons
+  - sst
+  - styled
+  - webcomponents
+  - rpc
+  - seeds
+  - interceptor
+  - mindsdb
+- **Icons**:
+  - Benchmark
+  - contenthook
+  - duc
+  - garden
+  - nest commands
+  - nest cron
+  - nest handlers
+  - nest listeners
+  - nest queues
+  - nest types
+  - nest utils
+  - phpstan
+  - scons
+  - sst
+  - swlang
+  - umi
+  - velociraptor
+  - Next.JS icons
+  - alfred
+  - gleam
+  - kdu
+  - rindo
+  - wite
+  - knip
+  - quokka
+  - payload CMS
+  - pkl
+  - eslintconfig
+  - pdm
+  - huff
+  - vedic
+  - biome
+  - concourse
+  - mindsdb
+  - puppeteer
+  - nest args
+  - Nest GQL
+  - Nest Input
+  - Nest loader
+  - Nest scalars
+- Newer UI Icons
+
+### Other
+
+- Move to Gradle Plugin 2.0
+- Optimize SVG icons
+
+## 95.0.0 (9.5.0)
+
+### Fixes
+
+- Fix conflict with the Randomness plugin
+- Support for 2024.1
+
 ## 94.1.0 (9.4.1)
 
 ### Fixes
@@ -175,11 +360,13 @@
   - Jest files: `jest/*.js|jsx|ts|tsx`
   - Mock files: `spy/*`, `mocks?/*`, `stubs?/*`
   - NgRx
-    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
+    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`,
+    `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
   - Rails
     files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`, `views?/*.rb`...
   - Redux
-    files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
+    files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`,
+    `repo/*.js|jsx|ts|tsx`...
   - Rspec files: `rspec/*.rb`
   - Slug files: `slugs?/*.js|jsx|ts|tsx`
   - Storybook files: `storybook/*.js|jsx|ts|tsx`

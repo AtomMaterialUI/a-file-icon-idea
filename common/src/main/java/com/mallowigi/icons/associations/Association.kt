@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons.associations
 
@@ -39,10 +38,8 @@ import java.io.Serializable
  * @property iconType the [IconType] of icon (file/folder/psi)
  * @property name the name of the association
  * @property icon the icon path
- * @property priority association priority. Lowest priorities are used
- *     last.
- * @property matcher How the association will be matched against (regex,
- *     type)
+ * @property priority association priority. Lowest priorities are used last.
+ * @property matcher How the association will be matched against (regex, type)
  * @property isEmpty whether the association has empty fields
  * @property iconColor the color of the icon
  * @property folderIconColor the color of the folder icon
@@ -129,8 +126,49 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
   /** Check if matches icon name. */
   fun matchesName(assocName: String): Boolean = name == assocName
 
+  @Suppress("detekt:UnnecessaryParentheses")
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as Association
+
+    if (enabled != other.enabled) return false
+    if (priority != other.priority) return false
+    if (iconType != other.iconType) return false
+    if (name != other.name) return false
+    if (icon != other.icon) return false
+    if ((iconColor ?: DEFAULT_COLOR) != (other.iconColor ?: DEFAULT_COLOR)) return false
+    if ((folderColor ?: DEFAULT_COLOR) != (other.folderColor ?: DEFAULT_COLOR)) return false
+    if ((folderIconColor ?: DEFAULT_COLOR) != (other.folderIconColor ?: DEFAULT_COLOR)) return false
+
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    var result = enabled.hashCode()
+    result = 31 * result + priority
+    result = 31 * result + iconType.hashCode()
+    result = 31 * result + name.hashCode()
+    result = 31 * result + icon.hashCode()
+    result = 31 * result + (iconColor ?: DEFAULT_COLOR).hashCode()
+    result = 31 * result + (folderColor ?: DEFAULT_COLOR).hashCode()
+    result = 31 * result + (folderIconColor ?: DEFAULT_COLOR).hashCode()
+
+    return result
+  }
+
+  open fun isValid(): Boolean {
+    if (name.isBlank()) return false
+    if (icon.isBlank() || !icon.endsWith("svg")) return false
+    if (priority < 0) return false
+
+    return true
+  }
+
   companion object {
     private const val serialVersionUID: Long = -1L
-    private const val DEFAULT_COLOR = "808080"
+    const val DEFAULT_COLOR = "808080"
   }
 }

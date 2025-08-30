@@ -28,20 +28,9 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DefaultActionGroup
-import com.mallowigi.icons.services.IconPatchersManager
-import com.mallowigi.utils.replaceArrowIcons
 
 /** Overrides default action group to have icons on menus. */
 class ActionGroup : DefaultActionGroup() {
-
-  // Init IconPatchersManager here because it needs to be ran before everything
-  init {
-    if (isFirstRun) {
-      IconPatchersManager.init()
-      replaceArrowIcons()
-      isFirstRun = false
-    }
-  }
 
   /** Update menu. */
   override fun update(event: AnActionEvent) {
@@ -55,8 +44,4 @@ class ActionGroup : DefaultActionGroup() {
 
   /** Run on background thread. */
   override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
-
-  companion object {
-    private var isFirstRun: Boolean = true
-  }
 }

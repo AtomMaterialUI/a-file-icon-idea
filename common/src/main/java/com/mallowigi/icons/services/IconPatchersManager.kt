@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,28 +25,30 @@
 
 package com.mallowigi.icons.services
 
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.components.Service
+import com.intellij.openapi.components.service
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
-import com.intellij.ui.ExperimentalUI
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.intellij.util.ui.JBUI
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
+import javax.swing.UIManager
 
 /** Icon patchers manager. */
-@Suppress("Detekt:TooManyFunctions", "HardCodedStringLiteral")
-object IconPatchersManager {
+@Service(Service.Level.APP)
+class IconPatchersManager {
 
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
 
   /** Init the patchers. */
   fun init() {
-    val atomFileIconsConfig = instance
+    val atomFileIconsConfig = AtomSettingsConfig.instance
 
-    fixExperimentalUI()
+    fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
@@ -58,7 +60,6 @@ object IconPatchersManager {
     ApplicationManager.getApplication().invokeLater {
       val app = ApplicationManager.getApplication()
       app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-      app.runWriteAction { ActionToolbarImpl.updateAllToolbarsImmediately() }
       applyFilter()
     }
   }
@@ -66,31 +67,40 @@ object IconPatchersManager {
   /** Update patchers on save. */
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
-    fixExperimentalUI()
+    fixRunIcons()
 
-    val atomFileIconsConfig = instance
+    val atomFileIconsConfig = AtomSettingsConfig.instance
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
 
-  @Suppress("UnstableApiUsage")
-  private fun fixExperimentalUI() {
-    if (!ExperimentalUI.isNewUI()) return
+  fun fixRunIcons() {
+    if (!AtomSettingsConfig.instance.fixActionButtonsColor) return;
 
-    val forName = Class.forName("com.intellij.ui.ExperimentalUI")
-    forName.declaredFields.forEach {
-      if (it.name == "iconPathPatcher") {
-        it.isAccessible = true
-        val patcher = it.get(ExperimentalUI.getInstance())
-
-        if (!instance.isEnabledUIIcons) {
-          IconLoader.installPathPatcher(patcher as IconPathPatcher)
-        } else {
-          IconLoader.removePathPatcher(patcher as IconPathPatcher)
-        }
-
-      }
+    val resources = setOf(
+      "RunToolbar.Debug.activeBackground",
+      "RunToolbar.Profile.activeBackground",
+      "RunToolbar.Run.activeBackground",
+      "RunWidget.Debug.activeBackground",
+      "RunWidget.Profile.activeBackground",
+      "RunWidget.Run.activeBackground",
+      "RunWidget.Running.background",
+      "RunWidget.Running.leftHoverBackground",
+      "RunWidget.StopButton.leftHoverBackground",
+      "RunWidget.hoverBackground",
+      "RunWidget.leftHoverBackground",
+      "RunWidget.runningBackground",
+      "RunWidget.Running.leftPressedBackground",
+      "RunWidget.StopButton.leftPressedBackground",
+      "RunWidget.leftPressedBackground",
+      "RunWidget.pressedBackground",
+      "RunWidget.StopButton.background",
+      "RunWidget.background",
+      "RunWidget.stopBackground"
+    )
+    resources.forEach {
+      UIManager.put(it, JBUI.CurrentTheme.ActionButton.pressedBackground())
     }
   }
 
@@ -140,4 +150,8 @@ object IconPatchersManager {
     }
   }
 
+  companion object {
+    @JvmStatic
+    val instance: IconPatchersManager by lazy { service() }
+  }
 }

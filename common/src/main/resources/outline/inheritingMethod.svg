@@ -1,0 +1,37 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="40 -920 880 880" width="14px" fill="#C792EA">
+  <defs>
+    <mask id="mask1">
+      <rect x="0" y="-960" width="960" height="960" fill="white"/>
+      <circle cx="720" cy="-240" r="200" fill="black"/>
+    </mask>
+  </defs>
+  <path mask="url(#mask1)"
+        d="M624-216v-36H516q-29.7 0-50.85-21.15Q444-294.3 444-324v-312H336v36q0 29.7-21.15 50.85Q293.7-528 264-528h-96q-29.7 0-50.85-21.18Q96-570.35 96-600.09v-144.17Q96-774 117.15-795q21.15-21 50.85-21h96q29.7 0 50.85 21.15Q336-773.7 336-744v36h288v-36.16Q624-774 645.15-795q21.15-21 50.85-21h96q29.7 0 50.85 21.18Q864-773.65 864-743.91v144.17Q864-570 842.85-549 821.7-528 792-528h-96q-29.7 0-50.85-21.15Q624-570.3 624-600v-36H516v312h108v-36.16Q624-390 645.15-411q21.15-21 50.85-21h96q29.7 0 50.85 21.18Q864-389.65 864-359.91v144.17Q864-186 842.85-165 821.7-144 792-144h-96q-29.7 0-50.85-21.15Q624-186.3 624-216ZM168-744v144-144Zm528 384v144-144Zm0-384v144-144Zm0 144h96v-144h-96v144Zm0 384h96v-144h-96v144ZM168-600h96v-144h-96v144Z"/>
+  <path fill="#E57373" transform="scale(0.5) translate(960 0)"
+        d="M440-647 244-451q-12 12-28 11.5T188-452q-11-12-11.5-28t11.5-28l264-264q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l264 264q11 11 11 27.5T772-452q-12 12-28.5 12T715-452L520-647v447q0 17-11.5 28.5T480-160q-17 0-28.5-11.5T440-200v-447Z"/>
+
+</svg>

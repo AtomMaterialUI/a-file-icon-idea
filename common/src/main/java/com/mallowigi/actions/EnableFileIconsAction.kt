@@ -25,23 +25,18 @@
 package com.mallowigi.actions
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 
 /** Enable file icons action. */
 class EnableFileIconsAction : IconToggleAction() {
 
   /** Whether the menu item is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.isEnabledIcons
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.isEnabledIcons
 
   /** Upon select, toggle file icons. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.toggleEnabledIcons()
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.toggleEnabledIcons()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
-
-  companion object {
-    private val CONFIG = instance
-  }
-
 }

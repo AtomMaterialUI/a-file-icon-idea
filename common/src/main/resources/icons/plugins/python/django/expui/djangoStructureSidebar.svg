@@ -1,0 +1,45 @@
+<!--
+  - The MIT License (MIT)
+  -
+  - Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
+  -
+  - Permission is hereby granted, free of charge, to any person obtaining a copy
+  - of this software and associated documentation files (the "Software"), to deal
+  - in the Software without restriction, including without limitation the rights
+  - to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  - copies of the Software, and to permit persons to whom the Software is
+  - furnished to do so, subject to the following conditions:
+  -
+  - The above copyright notice and this permission notice shall be included in all
+  - copies or substantial portions of the Software.
+  -
+  - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  - IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  - FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  - AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  - LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  - OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  - SOFTWARE.
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="-4 -4 40 40">
+  <defs>
+    <mask id="Mask">
+      <path fill="white"
+            d="M14.861 0h5.232v24.22c-2.684.509-4.655.713-6.795.713-6.388 0-9.717-2.888-9.717-8.427 0-5.335 3.533-8.8 9.004-8.8.849 0 1.495.068 2.276.272V-.001zm0 12.191a5.1 5.1 0 0 0-1.662-.273l-.111.001h.005c-2.651 0-4.179 1.631-4.179 4.485 0 2.787 1.461 4.315 4.145 4.315.577 0 1.053-.033 1.8-.136V12.19z"/>
+      <path fill="white"
+            d="M28.419 8.08v12.129c0 4.179-.305 6.184-1.223 7.916-.849 1.665-1.971 2.719-4.281 3.873l-4.859-2.311c2.311-1.087 3.432-2.039 4.145-3.5.748-1.495.985-3.228.985-7.78V8.078h5.232zM23.187.028h5.232v5.368h-5.232z"/>
+      <circle fill="black" cx="24" cy="24" r="13"/>
+      <path fill="white" transform="translate(12 12)"
+            d="M7 9a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2m13-6H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1M7 19a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2m13-6H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1"/>
+    </mask>
+  </defs>
+  <g mask='url(#Mask)' fill="#EA7130">
+    <path
+      d="M14.861 0h5.232v24.22c-2.684.509-4.655.713-6.795.713-6.388 0-9.717-2.888-9.717-8.427 0-5.335 3.533-8.8 9.004-8.8.849 0 1.495.068 2.276.272V-.001zm0 12.191a5.1 5.1 0 0 0-1.662-.273l-.111.001h.005c-2.651 0-4.179 1.631-4.179 4.485 0 2.787 1.461 4.315 4.145 4.315.577 0 1.053-.033 1.8-.136V12.19z"/>
+    <path
+      d="M28.419 8.08v12.129c0 4.179-.305 6.184-1.223 7.916-.849 1.665-1.971 2.719-4.281 3.873l-4.859-2.311c2.311-1.087 3.432-2.039 4.145-3.5.748-1.495.985-3.228.985-7.78V8.078h5.232zM23.187.028h5.232v5.368h-5.232z"/>
+    <path transform="translate(12 12)"
+          d="M7 9a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2m13-6H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1M7 19a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2m13-6H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1"/>
+  </g>
+</svg>

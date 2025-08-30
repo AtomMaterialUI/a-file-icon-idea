@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,8 @@ package com.mallowigi.actions.arrows
 
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
 import com.mallowigi.actions.IconToggleAction
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.tree.arrows.ArrowsStyles
 
 /** Abstract base class for arrows action. */
@@ -38,22 +37,17 @@ abstract class MTAbstractArrowsAction : IconToggleAction() {
   protected abstract val arrowsStyle: ArrowsStyles
 
   /** Whether this menu is selected. */
-  override fun isSelected(e: AnActionEvent): Boolean = CONFIG.arrowsStyle === arrowsStyle
+  override fun isSelected(e: AnActionEvent): Boolean = AtomSettingsConfig.instance.arrowsStyle === arrowsStyle
 
   /** On selection, update all toolbars. */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    CONFIG.arrowsStyle = this.arrowsStyle
-    ActionToolbarImpl.updateAllToolbarsImmediately()
+    AtomSettingsConfig.instance.arrowsStyle = this.arrowsStyle
 
-    CONFIG.fireChanged()
+    AtomSettingsConfig.instance.fireChanged()
     super.setSelected(e, state)
   }
 
   /** Runs on background. */
   override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
-
-  companion object {
-    private val CONFIG = instance
-  }
 
 }

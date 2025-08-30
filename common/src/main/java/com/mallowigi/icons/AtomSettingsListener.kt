@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package com.mallowigi.icons
 
@@ -29,6 +28,7 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.UISettingsListener
 import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.fileTypes.FileTypeEvent
 import com.intellij.openapi.fileTypes.FileTypeListener
 import com.intellij.openapi.fileTypes.FileTypeManager
@@ -41,6 +41,7 @@ import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
+import com.mallowigi.utils.refreshIndex
 import com.mallowigi.utils.refreshOpenedProjects
 
 /** Listener for Settings Changes. */
@@ -58,7 +59,6 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   }
 
   private fun initComponent() {
-    IconPatchersManager.init()
     val connect = ApplicationManager.getApplication().messageBus.connect()
     with(connect) {
       subscribe(UISettingsListener.TOPIC, UISettingsListener { IconFilterManager.applyFilter() })
@@ -68,7 +68,7 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
       subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged() })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
-        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.updateIcons()
+        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.instance.updateIcons()
       })
     }
 
@@ -76,8 +76,11 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   }
 
   private fun onSettingsChanged() {
-    IconPatchersManager.updateFileIcons()
-    IconPatchersManager.updateIcons()
+    thisLogger().debug("Settings Changed")
+    refreshIndex()
+    IconPatchersManager.instance.updateFileIcons()
+    IconPatchersManager.instance.updateIcons()
+
     LafManager.getInstance().updateUI()
     refreshOpenedProjects()
   }

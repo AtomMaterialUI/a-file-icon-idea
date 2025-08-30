@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,34 +23,28 @@
  *
  */
 
-@file:Suppress("KDocMissingDocumentation", "HardCodedStringLiteral")
+fun properties(key: String) = providers.gradleProperty(key).get()
+fun environment(key: String) = providers.environmentVariable(key)
+fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
-fun properties(key: String): Provider<String> = providers.gradleProperty(key)
-
-fun environment(key: String): Provider<String> = providers.environmentVariable(key)
-
+val pluginsVersion: String by project
 val platformVersion: String by project
-val platformType: String by project
-val pluginsVersion: String = properties("pluginsVersion").get()
 
 dependencies {
-  implementation("org.javassist:javassist:3.29.2-GA")
-  implementation("com.fasterxml:aalto-xml:1.3.2")
-}
+  intellijPlatform {
+    intellijIdeaUltimate(platformVersion, useInstaller = false)
+    instrumentationTools()
 
-plugins {
-  kotlin("jvm")
-}
+    pluginVerifier()
+    zipSigner()
 
-intellij {
-  version = platformVersion
-  type = platformType
+    plugins(
+      "com.jetbrains.php:${pluginsVersion}"
+    )
+  }
 
-  plugins = listOf(
-    "java",
-    "Git4Idea",
-    "com.jetbrains.php:$pluginsVersion",
-  )
+  implementation("org.javassist:javassist:3.30.2-GA")
+  implementation("com.fasterxml:aalto-xml:1.3.3")
 }
 
 tasks {
@@ -60,6 +54,10 @@ tasks {
 
   publishPlugin {
     enabled = false
+  }
+
+  signPlugin {
+    enabled = true
   }
 
   runIde {

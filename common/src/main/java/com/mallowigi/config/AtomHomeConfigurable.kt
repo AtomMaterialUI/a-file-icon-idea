@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2023 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2024 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,12 +20,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 package com.mallowigi.config
 
-import com.intellij.openapi.components.service
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.ui.components.ActionLink
@@ -91,7 +89,6 @@ class AtomHomeConfigurable : BoundSearchableConfigurable(
     return main
   }
 
-
   companion object {
     /** Configurable ID. */
     @NonNls
@@ -102,10 +99,6 @@ class AtomHomeConfigurable : BoundSearchableConfigurable(
 
     /** Title Font size. */
     private const val PARAGRAPH_FONT_SIZE: Float = 16f
-
-    /** INSTANCE. */
-    @JvmStatic
-    val instance: AtomHomeConfigurable by lazy { service() }
   }
 
 }
