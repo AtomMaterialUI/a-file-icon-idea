@@ -91,6 +91,12 @@
     <replacePath path="/expui/diff/applyNotConflicts.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/app.svg">
+    <replacePath path="/expui/runConfigurations/application.svg"/>
+    <replacePath path="/runConfigurations/application.svg"/>
+    <replacePath path="/plugins/rider/runConfigurations/application.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/array.svg">
     <replacePath path="/debugger/db_array.svg"/>
     <replacePath path="/expui/debugger/dbArray.svg"/>
@@ -282,6 +288,10 @@
     <replacePath path="/linux/theme/gnome/closeHovered.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/cmd.svg">
+    <replacePath path="/general/keyboardShortcut.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/code.svg">
     <replacePath path="/expui/general/editorOnly.svg"/>
     <replacePath path="/general/layoutEditorOnly.svg"/>
@@ -316,8 +326,9 @@
     <replacePath path="/objectBrowser/compactEmptyPackages.svg"/>
   </iconReplacement>
 
-  <iconReplacement icon="/outline/cmd.svg">
-    <replacePath path="/general/keyboardShortcut.svg"/>
+  <iconReplacement icon="/outline/compound.svg">
+    <replacePath path="/expui/runConfigurations/compound.svg"/>
+    <replacePath path="/runConfigurations/compound.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/computer.svg">
@@ -685,6 +696,11 @@
     <replacePath path="/plugins/rider/toolbar/splitBottom.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/ignoredTest.svg">
+    <replacePath path="/expui/runConfigurations/ignoredTest.svg"/>
+    <replacePath path="/runConfigurations/ignoredTest.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/info.svg">
     <replacePath path="/general/balloonInformation.svg"/>
     <replacePath path="/general/information.svg"/>
@@ -1005,6 +1021,11 @@
     <replacePath path="/expui/image/colorPicker.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/play-all.svg">
+    <replacePath path="/expui/runConfigurations/multiLaunch.svg"/>
+    <replacePath path="/runConfigurations/multiLaunch.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/plug.svg">
     <replacePath path="/debugger/attachToProcess.svg"/>
     <replacePath path="/expui/debugger/attachToProcess.svg"/>
@@ -1113,6 +1134,27 @@
   <iconReplacement icon="/outline/regexSelected.svg">
     <replacePath path="/actions/regexSelected.svg"/>
     <replacePath path="/expui/inline/regexSelected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/remote.svg">
+    <replacePath path="/expui/runConfigurations/applicationRemote.svg"/>
+    <replacePath path="/other/expui/remoteMapping.svg"/>
+    <replacePath path="/other/remoteMapping.svg"/>
+    <replacePath path="/other/remote_access.svg"/>
+    <replacePath path="/plugins/bigdata/remoteFS.svg"/>
+    <replacePath path="/plugins/bigdata/rfsIcons/remoteFS.svg"/>
+    <replacePath path="/plugins/bigdata/storageIcons/remoteFS.svg"/>
+    <replacePath path="/plugins/clion/expui/remoteToolSet.svg"/>
+    <replacePath path="/plugins/clion/remoteToolSet.svg"/>
+    <replacePath path="/plugins/javascript/JavaScript_remote_debug_configuration.svg"/>
+    <replacePath path="/plugins/javascript/expui/javaScriptRemote.svg"/>
+    <replacePath path="/plugins/php/expui/phpRemote.svg"/>
+    <replacePath path="/plugins/php/php-remote.svg"/>
+    <replacePath path="/plugins/php/expui/runRemoteDebug.svg"/>
+    <replacePath path="/plugins/swift/expui/remoteSwiftPackageDependency.svg"/>
+    <replacePath path="/plugins/swift/remoteSwiftPackageDependency.svg"/>
+    <replacePath path="/runConfigurations/remote.svg"/>
+    <replacePath path="/runConfigurations/remoteDebug.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/remove.svg">
@@ -1410,7 +1452,12 @@
   <iconReplacement icon="/outline/sort.svg">
     <replacePath path="/actions/sortDesc.svg"/>
     <replacePath path="/expui/objectBrowser/sortByType.svg"/>
+    <replacePath path="/expui/runConfigurations/sortByDuration.svg"/>
+    <replacePath path="/nodes/sortBySeverity.svg"/>
     <replacePath path="/objectBrowser/sortByType.svg"/>
+    <replacePath path="/objectBrowser/sortedByUsage.svg"/>
+    <replacePath path="/other/sortHistory.svg"/>
+    <replacePath path="/runConfigurations/sortByDuration.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/squares.svg">
@@ -1500,6 +1547,13 @@
     <replacePath path="/actions/syncPanels.svg"/>
     <replacePath path="/actions/synchronizeScrolling.svg"/>
     <replacePath path="/expui/actions/synchronizeScrolling.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/test.svg">
+    <replacePath path="/expui/runConfigurations/junit.svg"/>
+    <replacePath path="/expui/nodes/test.svg"/>
+    <replacePath path="/nodes/test.svg"/>
+    <replacePath path="/runConfigurations/junit.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/thread.svg">
