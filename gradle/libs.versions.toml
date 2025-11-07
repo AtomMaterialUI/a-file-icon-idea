@@ -1,13 +1,13 @@
 [versions]
 # libraries
-annotations = "24.1.0"
+annotations = "26.0.2-1"
 
 # plugins
-kotlin = "2.1.20"
-changelog = "2.2.1"
-gradleIntelliJPlugin = "2.6.0"
-detekt = "1.23.6"
-ktlint = "12.1.1"
+kotlin = "2.2.10"
+changelog = "2.4.0"
+gradleIntelliJPlugin = "2.9.0"
+detekt = "1.23.8"
+ktlint = "13.1.0"
 
 [libraries]
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }
