@@ -375,6 +375,12 @@
     <replacePath path="/actions/delete.svg"/>
     <replacePath path="/diff/remove.svg"/>
     <replacePath path="/expui/diff/remove.svg"/>
+    <replacePath path="/expui/windows/close.svg"/>
+    <replacePath path="/expui/windows/closeActive.svg"/>
+    <replacePath path="/expui/windows/closeHover.svg"/>
+    <replacePath path="/expui/windows/closeInactive.svg"/>
+    <replacePath path="/expui/windows/closeSmall.svg"/>
+    <replacePath path="/expui/windows/closeSmallHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/closeSmall.svg">
@@ -821,6 +827,10 @@
     <replacePath path="/expui/inline/browseHover.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/folderOpen@20x20.svg">
+    <replacePath path="/expui/welcome/open.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/folders.svg">
     <replacePath path="/general/projectTab.svg"/>
     <replacePath path="/toolbar/folders.svg"/>
@@ -865,6 +875,13 @@
     <replacePath path="/vcs/branchNode.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/git@20x20.svg">
+    <replacePath path="/expui/welcome/fromVCSTab.svg"/>
+    <replacePath path="/welcome/fromVCS.svg"/>
+    <replacePath path="/welcome/fromVCSTab.svg"/>
+    <replacePath path="/welcome/fromVCSTabSelected.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/grid.svg">
     <replacePath path="/expui/image/grid.svg"/>
     <replacePath path="/graph/grid.svg"/>
@@ -904,6 +921,7 @@
     <replacePath path="/expui/windows/helpButton.svg"/>
     <replacePath path="/expui/windows/helpButtonInactive.svg"/>
     <replacePath path="/expui/windows/helpInactive.svg"/>
+    <replacePath path="/expui/windows/winHelp.svg"/>
     <replacePath path="/general/contextHelp.svg"/>
     <replacePath path="/general/help.svg"/>
     <replacePath path="/plugins/ruby/expui/ruby/nodes/help.svg"/>
@@ -1152,6 +1170,24 @@
     <replacePath path="/expui/actions/minimap.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/maximize.svg">
+    <replacePath path="/expui/windows/maximize.svg"/>
+    <replacePath path="/expui/windows/maximizeInactive.svg"/>
+    <replacePath path="/expui/windows/maximizeSmall.svg"/>
+    <replacePath path="/linux/maximize.svg"/>
+    <replacePath path="/linux/maximizeInactive.svg"/>
+    <replacePath path="/linux/maximizeSmall.svg"/>
+    <replacePath path="/linux/themes/gnome/maximize.svg"/>
+    <replacePath path="/linux/themes/gnome/maximizeInactive.svg"/>
+    <replacePath path="/linux/themes/gnome/maximizeSmall.svg"/>
+    <replacePath path="/linux/themes/kde/maximize.svg"/>
+    <replacePath path="/linux/themes/kde/maximizeInactive.svg"/>
+    <replacePath path="/linux/themes/kde/maximizeSmall.svg"/>
+    <replacePath path="/windows/maximize.svg"/>
+    <replacePath path="/windows/maximizeInactive.svg"/>
+    <replacePath path="/windows/maximizeSmall.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/memory.svg">
     <replacePath path="/actions/profileCPU.svg"/>
     <replacePath path="/actions/profileMemory.svg"/>
@@ -1192,8 +1228,23 @@
 
   <iconReplacement icon="/outline/minimize.svg">
     <replacePath path="/expui/general/hide.svg"/>
+    <replacePath path="/expui/windows/minimize.svg"/>
+    <replacePath path="/expui/windows/minimizeInactive.svg"/>
+    <replacePath path="/expui/windows/minimizeSmall.svg"/>
     <replacePath path="/general/hideToolWindow.svg"/>
     <replacePath path="/general/hideToolWindowInactive.svg"/>
+    <replacePath path="/linux/minimize.svg"/>
+    <replacePath path="/linux/minimizeInactive.svg"/>
+    <replacePath path="/linux/minimizeSmall.svg"/>
+    <replacePath path="/linux/themes/gnome/minimize.svg"/>
+    <replacePath path="/linux/themes/gnome/minimizeInactive.svg"/>
+    <replacePath path="/linux/themes/gnome/minimizeSmall.svg"/>
+    <replacePath path="/linux/themes/kde/minimize.svg"/>
+    <replacePath path="/linux/themes/kde/minimizeInactive.svg"/>
+    <replacePath path="/linux/themes/kde/minimizeSmall.svg"/>
+    <replacePath path="/windows/minimize.svg"/>
+    <replacePath path="/windows/minimizeInactive.svg"/>
+    <replacePath path="/windows/minimizeSmall.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/mnemonic.svg">
@@ -1269,6 +1320,12 @@
   <iconReplacement icon="/outline/newFolder.svg">
     <replacePath path="/actions/newFolder.svg"/>
     <replacePath path="/expui/actions/newFolder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/newProject@20x20.svg">
+    <replacePath path="/expui/welcome/createNewProjectTab.svg"/>
+    <replacePath path="/welcome/createNewProjectTab.svg"/>
+    <replacePath path="/welcome/createNewProjectTabSelected.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/newTab.svg">
@@ -1806,6 +1863,7 @@
     <replacePath path="/actions/menu-find.svg"/>
     <replacePath path="/actions/search.svg"/>
     <replacePath path="/expui/general/search.svg"/>
+    <replacePath path="/expui/windows/searchField.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/search@20x20.svg">
@@ -1835,6 +1893,11 @@
     <replacePath path="/expui/vcs/commit.svg"/>
     <replacePath path="/plugins/resharper/RemoteRun/Commit.svg"/>
     <replacePath path="/plugins/resharper/ChangesView/CommitAnyway.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/server.svg">
+    <replacePath path="/expui/webReferences/server.svg"/>
+    <replacePath path="/webreferences/server.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/server@14x14.svg">
@@ -2337,6 +2400,28 @@
     <replacePath path="/javaee/newui/webArtifact.svg"/>
     <replacePath path="/javaee/web_artifact.svg"/>
     <replacePath path="/runConfigurations/web_app.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/windows.svg">
+    <replacePath path="/expui/windows/restore.svg"/>
+    <replacePath path="/expui/windows/restoreInactive.svg"/>
+    <replacePath path="/expui/windows/restoreSmall.svg"/>
+    <replacePath path="/linux/restore.svg"/>
+    <replacePath path="/linux/restoreHover.svg"/>
+    <replacePath path="/linux/restoreInactive.svg"/>
+    <replacePath path="/linux/restoreSmall.svg"/>
+    <replacePath path="/linux/themes/gnome/restore.svg"/>
+    <replacePath path="/linux/themes/gnome/restoreHover.svg"/>
+    <replacePath path="/linux/themes/gnome/restoreInactive.svg"/>
+    <replacePath path="/linux/themes/gnome/restoreSmall.svg"/>
+    <replacePath path="/linux/themes/kde/restore.svg"/>
+    <replacePath path="/linux/themes/kde/restoreHover.svg"/>
+    <replacePath path="/linux/themes/kde/restoreInactive.svg"/>
+    <replacePath path="/linux/themes/kde/restoreSmall.svg"/>
+    <replacePath path="/windows/restore.svg"/>
+    <replacePath path="/windows/restoreHover.svg"/>
+    <replacePath path="/windows/restoreInactive.svg"/>
+    <replacePath path="/windows/restoreSmall.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/words.svg">
