@@ -26,9 +26,9 @@
   <iconReplacement icon="/outline/123.svg">
     <replacePath path="/expui/table/pagination.svg"/>
     <replacePath path="/table/pagination.svg"/>
-    <replacePath path="/plugins/bigdata/table/pagination.svg"/>
-    <replacePath path="/plugins/bigdata/pagination.svg"/>
-    <replacePath path="/plugins/r/table/pagination.svg"/>
+    <replacePath path="/icons/table/pagination.svg"/>
+    <replacePath path="/icons/pagination.svg"/>
+    <replacePath path="/icons/table/pagination.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/abc.svg">
@@ -51,18 +51,10 @@
     <replacePath path="/general/inlineAdd.svg"/>
     <replacePath path="/general/inlineAddHover.svg"/>
     <replacePath path="/other/add_sdk.svg"/>
-    <replacePath path="/plugins/datagrip/add.svg"/>
+    <replacePath path="/icons/add.svg"/>
     <replacePath path="/plugins/python.com.jetbrains.python.jupyter/addJupyterConnection.svg"/>
-    <replacePath path="/plugins/resharper/AssemblyExplorer/AddFromNugetCache.svg"/>
-    <replacePath path="/plugins/resharper/CallHierarchy/Add.svg"/>
-    <replacePath path="/plugins/resharper/Common/Create.svg"/>
-    <replacePath path="/plugins/resharper/FeaturesEnvironment/AddFile.svg"/>
-    <replacePath path="/plugins/resharper/LiveTemplates/AddLiveTemplate.svg"/>
-    <replacePath path="/plugins/resharper/LiveTemplates/AddSurroundTemplate.svg"/>
-    <replacePath path="/plugins/resharper/RefactoringsInplace/AddedParameter.svg"/>
-    <replacePath path="/plugins/resharper/SkipItemsDialog/SkipItemsAddMask.svg"/>
-    <replacePath path="/plugins/ruby/expui/rails/addAny.svg"/>
-    <replacePath path="/plugins/ruby/rails/addAny.svg"/>
+    <replacePath path="/icons/expui/rails/addAny.svg"/>
+    <replacePath path="/icons/rails/addAny.svg"/>
     <replacePath path="/plugins/scala/addClause.svg"/>
     <replacePath path="/toolbar/addSlot.svg"/>
     <replacePath path="/toolbarDecorator/add.svg"/>
@@ -137,8 +129,8 @@
 
   <iconReplacement icon="/outline/ant.svg">
     <replacePath path="/expui/toolwindows/ant.svg"/>
-    <replacePath path="/plugins/ant/expui/ant.svg"/>
-    <replacePath path="/plugins/ant/ant.svg"/>
+    <replacePath path="/icons/expui/ant.svg"/>
+    <replacePath path="/icons/ant.svg"/>
     <replacePath path="/plugins/groovy/ant_task.svg"/>
   </iconReplacement>
 
@@ -220,13 +212,13 @@
 
   <iconReplacement icon="/outline/bigdata.svg">
     <replacePath path="/expui/toolwindows/bigData.svg"/>
-    <replacePath path="/plugins/bigdata/toolWindowBigData.svg"/>
-    <replacePath path="/plugins/bigdata/expui/toolWindowBigData.svg"/>
+    <replacePath path="/icons/toolWindowBigData.svg"/>
+    <replacePath path="/icons/expui/toolWindowBigData.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bigdata@20x20.svg">
     <replacePath path="/expui/toolwindows/bigData@20x20.svg"/>
-    <replacePath path="/plugins/bigdata/expui/toolWindowBigData@20x20.svg"/>
+    <replacePath path="/icons/expui/toolWindowBigData@20x20.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bookmark.svg">
@@ -243,9 +235,8 @@
     <replacePath path="/expui/toolwindows/bookmarks.svg"/>
     <replacePath path="/nodes/bookmarkGroup.svg"/>
     <replacePath path="/nodes/bookmarksGroup.svg"/>
-    <replacePath path="/plugins/ai/bookmarks.svg"/>
-    <replacePath path="/plugins/ai/expui/bookmarks.svg"/>
-    <replacePath path="/plugins/resharper/FeaturesInspections/Bookmarks.svg"/>
+    <replacePath path="/icons/bookmarks.svg"/>
+    <replacePath path="/icons/expui/bookmarks.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bookmarks@20x20.svg">
@@ -294,7 +285,7 @@
     <replacePath path="/actions/compile.svg"/>
     <replacePath path="/expui/build/build.svg"/>
     <replacePath path="/expui/run/widget/build.svg"/>
-    <replacePath path="/plugins/ant/build.svg"/>
+    <replacePath path="/icons/build.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bulb.svg">
@@ -327,7 +318,6 @@
     <replacePath path="/modules/merge.svg"/>
     <replacePath path="/other/expui/mergeCallees.svg"/>
     <replacePath path="/other/mergeCallees.svg"/>
-    <replacePath path="/plugins/resharper/SubsystemsManagementView/Merge.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/camera.svg">
@@ -386,8 +376,8 @@
     <replacePath path="/expui/toolwindows/changes.svg"/>
     <replacePath path="/expui/vcs/changelist.svg"/>
     <replacePath path="/expui/vcs/changes.svg"/>
-    <replacePath path="/plugins/jpa/changeset.svg"/>
-    <replacePath path="/plugins/jpa/newui/changeset.svg"/>
+    <replacePath path="/icons/changeset.svg"/>
+    <replacePath path="/icons/newui/changeset.svg"/>
     <replacePath path="/vcs/changelist.svg"/>
     <replacePath path="/vcs/changes.svg"/>
   </iconReplacement>
@@ -404,7 +394,7 @@
   <iconReplacement icon="/outline/cherry.svg">
     <replacePath path="/expui/vcs/cherryPick.svg"/>
     <replacePath path="/expui/vcs/new/cherryPick.svg"/>
-    <replacePath path="/plugins/vcs/cherryPick.svg"/>
+    <replacePath path="/icons/cherryPick.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/chevronUp.svg">
@@ -542,7 +532,7 @@
 
   <iconReplacement icon="/outline/commit.svg">
     <replacePath path="/expui/toolwindows/commit.svg"/>
-    <replacePath path="/plugins/ai/login/featureCommit.svg"/>
+    <replacePath path="/icons/login/featureCommit.svg"/>
     <replacePath path="/toolwindows/toolWindowCommit.svg"/>
     <replacePath path="/vcs/commitNode.svg"/>
   </iconReplacement>
@@ -570,8 +560,8 @@
     <replacePath path="/general/inlineCopy.svg"/>
     <replacePath path="/general/inlineCopyHover.svg"/>
     <replacePath path="/other/copy.svg"/>
-    <replacePath path="/plugins/markdown/Copy_exported_html_mime.svg"/>
-    <replacePath path="/plugins/markdown/Menu_copy.svg"/>
+    <replacePath path="/icons/editor_actions/Copy_exported_html_mime.svg"/>
+    <replacePath path="/icons/editor_actions/Menu_copy.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/copy@20x20.svg">
@@ -670,11 +660,11 @@
 
   <iconReplacement icon="/outline/database.svg">
     <replacePath path="/expui/toolwindows/database.svg"/>
-    <replacePath path="/plugins/bigdata/databases.svg"/>
-    <replacePath path="/plugins/datagrip/database.svg"/>
-    <replacePath path="/plugins/datagrip/dbms.svg"/>
-    <replacePath path="/plugins/datagrip/expui/database.svg"/>
-    <replacePath path="/plugins/datagrip/toolWindowDatabase.svg"/>
+    <replacePath path="/icons/databases.svg"/>
+    <replacePath path="/icons/database.svg"/>
+    <replacePath path="/icons/dbms.svg"/>
+    <replacePath path="/icons/expui/database.svg"/>
+    <replacePath path="/icons/toolWindowDatabase.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/database@20x20.svg">
@@ -688,10 +678,10 @@
     <replacePath path="/expui/run/debug_stroke.svg"/>
     <replacePath path="/expui/run/widget/debug.svg"/>
     <replacePath path="/expui/toolwindows/debug.svg"/>
-    <replacePath path="/plugins/ant/logDebug.svg"/>
-    <replacePath path="/plugins/goland/recordDebug.svg"/>
-    <replacePath path="/plugins/markdown/Debug_preview.svg"/>
-    <replacePath path="/plugins/r/run/debugCurrent.svg"/>
+    <replacePath path="/icons/logDebug.svg"/>
+    <replacePath path="/icons/recordDebug.svg"/>
+    <replacePath path="/icons/editor_actions/Debug_preview.svg"/>
+    <replacePath path="/icons/run/debugCurrent.svg"/>
     <replacePath path="/plugins/rider/debugger/debugger.svg"/>
   </iconReplacement>
 
@@ -726,7 +716,6 @@
     <replacePath path="/diff/Diff.svg"/>
     <replacePath path="/expui/diff/Diff.svg"/>
     <replacePath path="/expui/vcs/diff.svg"/>
-    <replacePath path="/plugins/resharper/LocalHistory/Diff.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/dropdown.svg">
@@ -817,10 +806,10 @@
     <replacePath path="/other/endpointsAction.svg"/>
     <replacePath path="/other/expui/endpoints.svg"/>
     <replacePath path="/other/toolWindowEndpoints.svg"/>
-    <replacePath path="/plugins/kubernetes/endpoints.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/endpoints.svg"/>
-    <replacePath path="/plugins/ruby/expui/rails/endpoints.svg"/>
-    <replacePath path="/plugins/ruby/rails/endpoints.svg"/>
+    <replacePath path="/icons/endpoints.svg"/>
+    <replacePath path="/icons/newui/endpoints.svg"/>
+    <replacePath path="/icons/expui/rails/endpoints.svg"/>
+    <replacePath path="/icons/rails/endpoints.svg"/>
     <replacePath path="/plugins/spring/expui/springBootEndpoint.svg"/>
     <replacePath path="/plugins/spring/springBootEndpoint.svg"/>
     <replacePath path="/plugins/swagger/endpointGutter.svg"/>
@@ -870,8 +859,8 @@
     <replacePath path="/expui/inline/expandHover.svg"/>
     <replacePath path="/general/expandComponent.svg"/>
     <replacePath path="/general/expandComponentHover.svg"/>
-    <replacePath path="/plugins/r/chart/expandHover.svg"/>
-    <replacePath path="/plugins/ruby/ExpandMerges.svg"/>
+    <replacePath path="/icons/chart/expandHover.svg"/>
+    <replacePath path="/icons/ExpandMerges.svg"/>
     <replacePath path="/toolbar/expand.svg"/>
   </iconReplacement>
 
@@ -887,7 +876,7 @@
     <replacePath path="/expui/image/export.svg"/>
     <replacePath path="/general/ExportSettings.svg"/>
     <replacePath path="/graph/export.svg"/>
-    <replacePath path="/plugins/datagrip/exportDDL.svg"/>
+    <replacePath path="/icons/exportDDL.svg"/>
     <replacePath path="/toolbarDecorator/export.svg"/>
     <replacePath path="/toolbarDecorator/mac/export.svg"/>
   </iconReplacement>
@@ -907,8 +896,8 @@
     <replacePath path="/expui/objectBrowser/sortByVisibility.svg"/>
     <replacePath path="/general/inspectionsEye.svg"/>
     <replacePath path="/objectBrowser/sortByVisibility.svg"/>
-    <replacePath path="/plugins/datagrip/expui/previewChanges.svg"/>
-    <replacePath path="/plugins/datagrip/previewChanges.svg"/>
+    <replacePath path="/icons/expui/previewChanges.svg"/>
+    <replacePath path="/icons/previewChanges.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/eyeOff.svg">
@@ -926,7 +915,7 @@
   <iconReplacement icon="/outline/favoriteTag.svg">
     <replacePath path="/expui/vcs/currentBranchFavorite.svg"/>
     <replacePath path="/expui/vcs/new/currentBranchFavoriteLabel.svg"/>
-    <replacePath path="/plugins/vcs/currentBranchFavoriteLabel.svg"/>
+    <replacePath path="/icons/currentBranchFavoriteLabel.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/featureSearch.svg">
@@ -947,8 +936,8 @@
     <replacePath path="/general/filter.svg"/>
     <replacePath path="/other/expui/filterHistory.svg"/>
     <replacePath path="/other/filterHistory.svg"/>
-    <replacePath path="/plugins/datagrip/filterAndOrder.svg"/>
-    <replacePath path="/plugins/datagrip/filterHistory.svg"/>
+    <replacePath path="/icons/filterAndOrder.svg"/>
+    <replacePath path="/icons/filterHistory.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/filterDups.svg">
@@ -993,8 +982,8 @@
     <replacePath path="/expui/run/nextStatement.svg"/>
     <replacePath path="/expui/general/right.svg"/>
     <replacePath path="/other/forward.svg"/>
-    <replacePath path="/plugins/datagrip/expui/playForward.svg"/>
-    <replacePath path="/plugins/datagrip/play_forward.svg"/>
+    <replacePath path="/icons/expui/playForward.svg"/>
+    <replacePath path="/icons/play_forward.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/folder.svg">
@@ -1036,8 +1025,8 @@
     <replacePath path="/expui/general/settings.svg"/>
     <replacePath path="/general/ImportSettings.svg"/>
     <replacePath path="/general/settings.svg"/>
-    <replacePath path="/plugins/jpa/newui/settings.svg"/>
-    <replacePath path="/plugins/jpa/settings.svg"/>
+    <replacePath path="/icons/newui/settings.svg"/>
+    <replacePath path="/icons/settings.svg"/>
     <replacePath path="/plugins/rider/wizard/settings.svg"/>
     <replacePath path="/wizard/settings.svg"/>
   </iconReplacement>
@@ -1055,7 +1044,7 @@
     <replacePath path="/plugins/collaboration/branch.svg"/>
     <replacePath path="/plugins/collaboration/review/branch.svg"/>
     <replacePath path="/plugins/github/branch.svg"/>
-    <replacePath path="/plugins/vcs/branch.svg"/>
+    <replacePath path="/icons/branch.svg"/>
     <replacePath path="/vcs/branch.svg"/>
     <replacePath path="/vcs/branchNode.svg"/>
   </iconReplacement>
@@ -1098,8 +1087,8 @@
     <replacePath path="/actions/groupBy.svg"/>
     <replacePath path="/expui/general/groups.svg"/>
     <replacePath path="/other/groupBy.svg"/>
-    <replacePath path="/plugins/kubernetes/group.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/group.svg"/>
+    <replacePath path="/icons/group.svg"/>
+    <replacePath path="/icons/newui/group.svg"/>
     <replacePath path="/plugins/rider/toolbar/grouping.svg"/>
   </iconReplacement>
 
@@ -1130,8 +1119,8 @@
     <replacePath path="/expui/windows/winHelp.svg"/>
     <replacePath path="/general/contextHelp.svg"/>
     <replacePath path="/general/help.svg"/>
-    <replacePath path="/plugins/ruby/expui/ruby/nodes/help.svg"/>
-    <replacePath path="/plugins/ruby/ruby/nodes/help.svg"/>
+    <replacePath path="/icons/expui/ruby/nodes/help.svg"/>
+    <replacePath path="/icons/ruby/nodes/help.svg"/>
     <replacePath path="/plugins/space/contextHelp.svg"/>
     <replacePath path="/windows/help.svg"/>
     <replacePath path="/windows/helpButton.svg"/>
@@ -1415,7 +1404,7 @@
 
   <iconReplacement icon="/outline/maven.svg">
     <replacePath path="/expui/toolwindows/maven.svg"/>
-    <replacePath path="/plugins/bigdata/maven.svg"/>
+    <replacePath path="/icons/maven.svg"/>
     <replacePath path="/plugins/maven/expui/toolwindow/maven.svg"/>
     <replacePath path="/other/expui/maven.svg"/>
   </iconReplacement>
@@ -1539,7 +1528,7 @@
     <replacePath path="/general/gearPlainHover.svg"/>
     <replacePath path="/general/webSettings.svg"/>
     <replacePath path="/other/settings.svg"/>
-    <replacePath path="/plugins/bigdata/more.svg"/>
+    <replacePath path="/icons/more.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/mouse.svg">
@@ -1640,8 +1629,8 @@
     <replacePath path="/general/openInToolWindow.svg"/>
     <replacePath path="/ide/externalLinkArrowWhite.svg"/>
     <replacePath path="/ide/external_link_arrow.svg"/>
-    <replacePath path="/plugins/datagrip/expui/externalLink.svg"/>
-    <replacePath path="/plugins/datagrip/external_link_arrow.svg"/>
+    <replacePath path="/icons/expui/externalLink.svg"/>
+    <replacePath path="/icons/external_link_arrow.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/outlet.svg">
@@ -1745,7 +1734,7 @@
   <iconReplacement icon="/outline/preview.svg">
     <replacePath path="/general/layoutPreviewOnly.svg"/>
     <replacePath path="/expui/general/previewOnly.svg"/>
-    <replacePath path="/plugins/markdown/Preview_only.svg"/>
+    <replacePath path="/icons/editor_actions/Preview_only.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/print.svg">
@@ -1758,7 +1747,7 @@
   <iconReplacement icon="/outline/printPreview.svg">
     <replacePath path="/graph/printPreview.svg"/>
     <replacePath path="/expui/image/printPreview.svg"/>
-    <replacePath path="/plugins/markdown/Print_preview.svg"/>
+    <replacePath path="/icons/editor_actions/Print_preview.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/profile.svg">
@@ -1875,14 +1864,14 @@
     <replacePath path="/general/inlineRefreshHover.svg"/>
     <replacePath path="/other/refresh.svg"/>
     <replacePath path="/plugins/aqua/structure/autoRefresh.svg"/>
-    <replacePath path="/plugins/datagrip/expui/refreshMaterializedView.svg"/>
-    <replacePath path="/plugins/datagrip/refreshMaterializedView.svg"/>
-    <replacePath path="/plugins/datagrip/schemaRefresh.svg"/>
+    <replacePath path="/icons/expui/refreshMaterializedView.svg"/>
+    <replacePath path="/icons/refreshMaterializedView.svg"/>
+    <replacePath path="/icons/schemaRefresh.svg"/>
     <replacePath path="/plugins/javascript/buildTools/Refresh.svg"/>
-    <replacePath path="/plugins/kubernetes/autorefresh.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/autorefresh.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/refreshKubernetesConfiguration.svg"/>
-    <replacePath path="/plugins/kubernetes/refreshKubernetesConfiguration.svg"/>
+    <replacePath path="/icons/autorefresh.svg"/>
+    <replacePath path="/icons/newui/autorefresh.svg"/>
+    <replacePath path="/icons/newui/refreshKubernetesConfiguration.svg"/>
+    <replacePath path="/icons/refreshKubernetesConfiguration.svg"/>
     <replacePath path="/vcs/fetch.svg"/>
   </iconReplacement>
 
@@ -1910,9 +1899,9 @@
     <replacePath path="/other/expui/remoteMapping.svg"/>
     <replacePath path="/other/remoteMapping.svg"/>
     <replacePath path="/other/remote_access.svg"/>
-    <replacePath path="/plugins/bigdata/remoteFS.svg"/>
-    <replacePath path="/plugins/bigdata/rfsIcons/remoteFS.svg"/>
-    <replacePath path="/plugins/bigdata/storageIcons/remoteFS.svg"/>
+    <replacePath path="/icons/remoteFS.svg"/>
+    <replacePath path="/icons/rfsIcons/remoteFS.svg"/>
+    <replacePath path="/icons/storageIcons/remoteFS.svg"/>
     <replacePath path="/plugins/clion/expui/remoteToolSet.svg"/>
     <replacePath path="/plugins/clion/remoteToolSet.svg"/>
     <replacePath path="/plugins/javascript/JavaScript_remote_debug_configuration.svg"/>
@@ -1931,8 +1920,8 @@
     <replacePath path="/actions/remove.svg"/>
     <replacePath path="/expui/general/remove.svg"/>
     <replacePath path="/general/remove.svg"/>
-    <replacePath path="/plugins/jpa/newui/remove.svg"/>
-    <replacePath path="/plugins/jpa/remove.svg"/>
+    <replacePath path="/icons/newui/remove.svg"/>
+    <replacePath path="/icons/remove.svg"/>
     <replacePath path="/toolbar/removeSlot.svg"/>
     <replacePath path="/toolbarDecorator/mac/remove.svg"/>
     <replacePath path="/toolbarDecorator/remove.svg"/>
@@ -1951,8 +1940,8 @@
 
   <iconReplacement icon="/outline/repositories.svg">
     <replacePath path="/expui/toolwindows/repositories.svg"/>
-    <replacePath path="/plugins/jpa/repository.svg"/>
-    <replacePath path="/plugins/jpa/newui/repository.svg"/>
+    <replacePath path="/icons/repository.svg"/>
+    <replacePath path="/icons/newui/repository.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/repositories@20x20.svg">
@@ -2046,8 +2035,8 @@
     <replacePath path="/expui/diff/revert.svg"/>
     <replacePath path="/expui/diff/revert@14x14.svg"/>
     <replacePath path="/expui/vcs/revert.svg"/>
-    <replacePath path="/plugins/datagrip/expui/rollback.svg"/>
-    <replacePath path="/plugins/datagrip/rollbackDB.svg"/>
+    <replacePath path="/icons/expui/rollback.svg"/>
+    <replacePath path="/icons/rollbackDB.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/run.svg">
@@ -2063,12 +2052,12 @@
     <replacePath path="/expui/toolwindows/run.svg"/>
     <replacePath path="/general/run.svg"/>
     <replacePath path="/other/executeSelection.svg"/>
-    <replacePath path="/plugins/bigdata/sparkRun.svg"/>
-    <replacePath path="/plugins/goland/runApplication.svg"/>
-    <replacePath path="/plugins/r/run/runCurrent.svg"/>
-    <replacePath path="/plugins/r/run/runJob.svg"/>
-    <replacePath path="/plugins/ruby/expui/testUnit/testUnitRunConfiguration.svg"/>
-    <replacePath path="/plugins/ruby/testUnit/testUnitRunConfiguration.svg"/>
+    <replacePath path="/icons/sparkRun.svg"/>
+    <replacePath path="/icons/runApplication.svg"/>
+    <replacePath path="/icons/run/runCurrent.svg"/>
+    <replacePath path="/icons/run/runJob.svg"/>
+    <replacePath path="/icons/expui/testUnit/testUnitRunConfiguration.svg"/>
+    <replacePath path="/icons/testUnit/testUnitRunConfiguration.svg"/>
     <replacePath path="/runConfigurations/testState/run.svg"/>
   </iconReplacement>
 
@@ -2092,12 +2081,12 @@
     <replacePath path="/expui/debugger/toolConsole.svg"/>
     <replacePath path="/expui/run/toolConsole.svg"/>
     <replacePath path="/expui/general/runAnything.svg"/>
-    <replacePath path="/plugins/ruby/expui/ruby/rbenvRunAnything.svg"/>
-    <replacePath path="/plugins/ruby/expui/ruby/rvmRunAnything.svg"/>
-    <replacePath path="/plugins/ruby/rbenvRunAnything.svg"/>
-    <replacePath path="/plugins/ruby/ruby/rbenvRunAnything.svg"/>
-    <replacePath path="/plugins/ruby/ruby/rvmRunAnything.svg"/>
-    <replacePath path="/plugins/ruby/rvmRunAnything.svg"/>
+    <replacePath path="/icons/expui/ruby/rbenvRunAnything.svg"/>
+    <replacePath path="/icons/expui/ruby/rvmRunAnything.svg"/>
+    <replacePath path="/icons/rbenvRunAnything.svg"/>
+    <replacePath path="/icons/ruby/rbenvRunAnything.svg"/>
+    <replacePath path="/icons/ruby/rvmRunAnything.svg"/>
+    <replacePath path="/icons/rvmRunAnything.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/runToCursor.svg">
@@ -2190,8 +2179,6 @@
   <iconReplacement icon="/outline/send.svg">
     <replacePath path="/actions/commit.svg"/>
     <replacePath path="/expui/vcs/commit.svg"/>
-    <replacePath path="/plugins/resharper/RemoteRun/Commit.svg"/>
-    <replacePath path="/plugins/resharper/ChangesView/CommitAnyway.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/server.svg">
@@ -2211,8 +2198,8 @@
   <iconReplacement icon="/outline/services.svg">
     <replacePath path="/expui/toolwindows/services.svg"/>
     <replacePath path="/nodes/services.svg"/>
-    <replacePath path="/plugins/kubernetes/services.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/services.svg"/>
+    <replacePath path="/icons/services.svg"/>
+    <replacePath path="/icons/newui/services.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/services@20x20.svg">
@@ -2312,8 +2299,8 @@
   <iconReplacement icon="/outline/skull.svg">
     <replacePath path="/debugger/killProcess.svg"/>
     <replacePath path="/expui/run/killProcess.svg"/>
-    <replacePath path="/plugins/datagrip/expui/killDataSourceProcess.svg"/>
-    <replacePath path="/plugins/datagrip/killDataSourceProcess.svg"/>
+    <replacePath path="/icons/expui/killDataSourceProcess.svg"/>
+    <replacePath path="/icons/killDataSourceProcess.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/sortAlphabetically.svg">
@@ -2361,8 +2348,8 @@
     <replacePath path="/expui/toolwindows/favorites.svg"/>
     <replacePath path="/nodes/favorite.svg"/>
     <replacePath path="/nodes/favoriteOnHover.svg"/>
-    <replacePath path="/plugins/clion/favorite.svg"/>
-    <replacePath path="/plugins/ruby/favorite.svg"/>
+    <replacePath path="/favorite.svg"/>
+    <replacePath path="/icons/favorite.svg"/>
     <replacePath path="/toolwindows/toolWindowFavorites.svg"/>
     <replacePath path="/vcs/favorite.svg"/>
     <replacePath path="/vcs/favoriteOnHover.svg"/>
@@ -2432,7 +2419,7 @@
   <iconReplacement icon="/outline/structure.svg">
     <replacePath path="/expui/toolwindows/structure.svg"/>
     <replacePath path="/toolwindows/toolWindowStructure.svg"/>
-    <replacePath path="/plugins/datagrip/dataStructure.svg"/>
+    <replacePath path="/icons/dataStructure.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/structure@20x20.svg">
@@ -2468,11 +2455,10 @@
     <replacePath path="/expui/vcs/new/branchLabel.svg"/>
     <replacePath path="/expui/vcs/new/currentBranchLabel.svg"/>
     <replacePath path="/other/branchLabel.svg"/>
-    <replacePath path="/plugins/jpa/setLabel.svg"/>
-    <replacePath path="/plugins/kubernetes/labels_gutter.svg"/>
-    <replacePath path="/plugins/kubernetes/newui/labelsGutter.svg"/>
-    <replacePath path="/plugins/resharper/PsiJavaScript/JsLabel.svg"/>
-    <replacePath path="/plugins/vcs/currentBranchLabel.svg"/>
+    <replacePath path="/icons/setLabel.svg"/>
+    <replacePath path="/icons/labels_gutter.svg"/>
+    <replacePath path="/icons/newui/labelsGutter.svg"/>
+    <replacePath path="/icons/currentBranchLabel.svg"/>
     <replacePath path="/vcs/new/currentBranchLabel.svg"/>
   </iconReplacement>
 
@@ -2558,7 +2544,6 @@
     <replacePath path="/general/tree.svg"/>
     <replacePath path="/general/treeHovered.svg"/>
     <replacePath path="/general/treeSelected.svg"/>
-    <replacePath path="/plugins/ui/tree.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/typo.svg">
@@ -2641,10 +2626,10 @@
   <iconReplacement icon="/outline/user.svg">
     <replacePath path="/expui/general/user.svg"/>
     <replacePath path="/general/user.svg"/>
-    <replacePath path="/plugins/datagrip/expui/user.svg"/>
-    <replacePath path="/plugins/datagrip/user.svg"/>
-    <replacePath path="/plugins/kubernetes/user.svg"/>
-    <replacePath path="/plugins/selenium/gutter/user.svg"/>
+    <replacePath path="/icons/expui/user.svg"/>
+    <replacePath path="/icons/user.svg"/>
+    <replacePath path="/icons/user.svg"/>
+    <replacePath path="/icons/gutter/user.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/users.svg">
@@ -2696,7 +2681,7 @@
 
   <iconReplacement icon="/outline/variable.svg">
     <replacePath path="/general/pathVariables.svg"/>
-    <replacePath path="/plugins/clion/expui/variables.svg"/>
+    <replacePath path="/expui/variables.svg"/>
     <replacePath path="/runConfigurations/variables.svg"/>
     <replacePath path="/expui/toolwindows/toolWindowVariableView.svg"/>
   </iconReplacement>
@@ -2808,8 +2793,8 @@
   <iconReplacement icon="/outline/widgets.svg">
     <replacePath path="/expui/toolwindows/dependencies.svg"/>
     <replacePath path="/expui/toolwindows/toolWindowComponents.svg"/>
-    <replacePath path="/plugins/uml/dependencies.svg"/>
-    <replacePath path="/plugins/uml/expui/dependencies.svg"/>
+    <replacePath path="/resources/icons/dependencies.svg"/>
+    <replacePath path="/resources/icons/expui/dependencies.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/widgets@20x20.svg">
@@ -2854,7 +2839,7 @@
   <iconReplacement icon="/outline/wrap.svg">
     <replacePath path="/actions/toggleSoftWrap.svg"/>
     <replacePath path="/expui/general/softWrap.svg"/>
-    <replacePath path="/plugins/markdown/Wrap_in_typing.svg"/>
+    <replacePath path="/icons/editor_actions/Wrap_in_typing.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/write.svg">
