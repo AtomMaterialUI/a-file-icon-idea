@@ -70,6 +70,10 @@ val gradleVersion: String by project
 group = pluginID
 version = pluginVersion
 
+kotlin {
+  jvmToolchain(javaVersion.toInt())
+}
+
 plugins {
   id("java")
   alias(libs.plugins.kotlin)
@@ -81,15 +85,9 @@ plugins {
 
 dependencies {
   intellijPlatform {
-    intellijIdeaUltimate(platformVersion, useInstaller = false)
-    // instrumentationTools()
-    //    local(properties("idePath").get())
-
+    create(platformType, platformVersion, useInstaller = false)
     pluginVerifier()
     zipSigner()
-
-//    jetbrainsRuntime("21")
-
     bundledPlugins(
       "com.intellij.java",
       "Git4Idea",
@@ -113,7 +111,6 @@ allprojects {
 
   intellijPlatform {
     buildSearchableOptions = false
-    // instrumentCode = true
   }
 
 
@@ -124,16 +121,7 @@ allprojects {
 
     intellijPlatform {
       defaultRepositories()
-
-      // marketplace()
-      // localPlatformArtifacts()
-    }
-
-    intellijPlatform {
-      defaultRepositories()
-
       marketplace()
-      // localPlatformArtifacts()
     }
   }
 
@@ -170,15 +158,12 @@ allprojects {
 
 intellijPlatform {
   buildSearchableOptions = false
-  // instrumentCode = true
-
   projectName = pluginName
 
   pluginConfiguration {
     id = pluginID
     name = pluginName
     version = pluginVersion
-    // description = pluginDescription
 
     val changelog = project.changelog
     changeNotes.set(provider {
