@@ -395,7 +395,7 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.FOLDERCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+      ColorChooserService.getInstance().showPopup(null, modelColor, { color, _ ->
         color?.let { model.setValueAt(it.toHex(), row, Columns.FOLDERCOLOR.index) }
       })
 
@@ -406,7 +406,7 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.FOLDERICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+      ColorChooserService.getInstance().showPopup(null, modelColor, { color, _ ->
         color?.let { model.setValueAt(it.toHex(), row, Columns.FOLDERICONCOLOR.index) }
       })
 
@@ -417,7 +417,7 @@ class AssociationsTableModelEditor(
       val colorValue: Any = model.getValueAt(row, Columns.ICONCOLOR.index)
       val modelColor: Color = ColorUtil.fromHex(colorValue as String)
 
-      ColorChooserService.instance.showPopup(null, modelColor, { color, _ ->
+      ColorChooserService.getInstance().showPopup(null, modelColor, { color, _ ->
         color?.let { model.setValueAt(it.toHex(), row, Columns.ICONCOLOR.index) }
       })
 
