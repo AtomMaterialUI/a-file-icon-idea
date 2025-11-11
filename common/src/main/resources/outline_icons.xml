@@ -34,7 +34,7 @@
   <iconReplacement icon="/outline/abc.svg">
     <replacePath path="/objectBrowser/abbreviatePackageNames.svg"/>
     <replacePath path="/expui/objectBrowser/abbreviatePackageNames.svg"/>
-    <replacePath path="/plugins/rider/unitTesting/abbreviatePackageNames.svg"/>
+    <replacePath path="/rider/unitTesting/abbreviatePackageNames.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/add.svg">
@@ -52,10 +52,10 @@
     <replacePath path="/general/inlineAddHover.svg"/>
     <replacePath path="/other/add_sdk.svg"/>
     <replacePath path="/icons/add.svg"/>
-    <replacePath path="/plugins/python.com.jetbrains.python.jupyter/addJupyterConnection.svg"/>
+    <replacePath path="/icons/com/jetbrains/addJupyterConnection.svg"/>
     <replacePath path="/icons/expui/rails/addAny.svg"/>
     <replacePath path="/icons/rails/addAny.svg"/>
-    <replacePath path="/plugins/scala/addClause.svg"/>
+    <replacePath path="/addClause.svg"/>
     <replacePath path="/toolbar/addSlot.svg"/>
     <replacePath path="/toolbarDecorator/add.svg"/>
     <replacePath path="/toolbarDecorator/mac/add.svg"/>
@@ -131,7 +131,7 @@
     <replacePath path="/expui/toolwindows/ant.svg"/>
     <replacePath path="/icons/expui/ant.svg"/>
     <replacePath path="/icons/ant.svg"/>
-    <replacePath path="/plugins/groovy/ant_task.svg"/>
+    <replacePath path="/icons/groovy/ant_task.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/ant@20x20.svg">
@@ -151,7 +151,7 @@
   <iconReplacement icon="/outline/app.svg">
     <replacePath path="/expui/runConfigurations/application.svg"/>
     <replacePath path="/runConfigurations/application.svg"/>
-    <replacePath path="/plugins/rider/runConfigurations/application.svg"/>
+    <replacePath path="/rider/runConfigurations/application.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/array.svg">
@@ -682,7 +682,7 @@
     <replacePath path="/icons/recordDebug.svg"/>
     <replacePath path="/icons/editor_actions/Debug_preview.svg"/>
     <replacePath path="/icons/run/debugCurrent.svg"/>
-    <replacePath path="/plugins/rider/debugger/debugger.svg"/>
+    <replacePath path="/rider/debugger/debugger.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/debug@20x20.svg">
@@ -704,7 +704,7 @@
     <replacePath path="/expui/graph/graphLayout.svg"/>
     <replacePath path="/expui/hierarchy/classHierarchy.svg"/>
     <replacePath path="/expui/toolwindows/projectDiagram.svg"/>
-    <replacePath path="/plugins/rider/toolwindows/toolwindowProjectDiagram.svg"/>
+    <replacePath path="/rider/toolwindows/toolwindowProjectDiagram.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/diagram@20x20.svg">
@@ -810,10 +810,10 @@
     <replacePath path="/icons/newui/endpoints.svg"/>
     <replacePath path="/icons/expui/rails/endpoints.svg"/>
     <replacePath path="/icons/rails/endpoints.svg"/>
-    <replacePath path="/plugins/spring/expui/springBootEndpoint.svg"/>
-    <replacePath path="/plugins/spring/springBootEndpoint.svg"/>
-    <replacePath path="/plugins/swagger/endpointGutter.svg"/>
-    <replacePath path="/plugins/swagger/endpoints.svg"/>
+    <replacePath path="/icons/expui/springBootEndpoint.svg"/>
+    <replacePath path="/icons/springBootEndpoint.svg"/>
+    <replacePath path="/icons/endpointGutter.svg"/>
+    <replacePath path="/icons/endpoints.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/endpoints@20x20.svg">
@@ -1027,7 +1027,7 @@
     <replacePath path="/general/settings.svg"/>
     <replacePath path="/icons/newui/settings.svg"/>
     <replacePath path="/icons/settings.svg"/>
-    <replacePath path="/plugins/rider/wizard/settings.svg"/>
+    <replacePath path="/rider/wizard/settings.svg"/>
     <replacePath path="/wizard/settings.svg"/>
   </iconReplacement>
 
@@ -1040,10 +1040,10 @@
     <replacePath path="/expui/vcs/branch.svg"/>
     <replacePath path="/expui/vcs/vcs.svg"/>
     <replacePath path="/expui/toolwindows/vcs.svg"/>
-    <replacePath path="/plugins/clion/branch.svg"/>
-    <replacePath path="/plugins/collaboration/branch.svg"/>
-    <replacePath path="/plugins/collaboration/review/branch.svg"/>
-    <replacePath path="/plugins/github/branch.svg"/>
+    <replacePath path="/icons/branch.svg"/>
+    <replacePath path="/icons/branch.svg"/>
+    <replacePath path="/icons/review/branch.svg"/>
+    <replacePath path="/org/jetbrains/plugins/github/branch.svg"/>
     <replacePath path="/icons/branch.svg"/>
     <replacePath path="/vcs/branch.svg"/>
     <replacePath path="/vcs/branchNode.svg"/>
@@ -1059,8 +1059,8 @@
 
   <iconReplacement icon="/outline/github.svg">
     <replacePath path="/expui/toolwindows/pullRequests.svg"/>
-    <replacePath path="/plugins/github/expui/pullRequests.svg"/>
-    <replacePath path="/plugins/github/pullRequestsToolWindow.svg"/>
+    <replacePath path="/org/jetbrains/plugins/github/expui/pullRequests.svg"/>
+    <replacePath path="/org/jetbrains/plugins/github/pullRequestsToolWindow.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/github@20x20.svg">
@@ -1069,8 +1069,8 @@
 
   <iconReplacement icon="/outline/gradle.svg">
     <replacePath path="/expui/toolwindows/gradle.svg"/>
-    <replacePath path="/plugins/gradle/gradle.svg"/>
-    <replacePath path="/plugins/gradle/expui/gradle.svg"/>
+    <replacePath path="/icons/gradle.svg"/>
+    <replacePath path="/icons/expui/gradle.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/gradle@20x20.svg">
@@ -1089,7 +1089,7 @@
     <replacePath path="/other/groupBy.svg"/>
     <replacePath path="/icons/group.svg"/>
     <replacePath path="/icons/newui/group.svg"/>
-    <replacePath path="/plugins/rider/toolbar/grouping.svg"/>
+    <replacePath path="/rider/toolbar/grouping.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/grunt.svg">
@@ -1121,7 +1121,7 @@
     <replacePath path="/general/help.svg"/>
     <replacePath path="/icons/expui/ruby/nodes/help.svg"/>
     <replacePath path="/icons/ruby/nodes/help.svg"/>
-    <replacePath path="/plugins/space/contextHelp.svg"/>
+    <replacePath path="/icons/contextHelp.svg"/>
     <replacePath path="/windows/help.svg"/>
     <replacePath path="/windows/helpButton.svg"/>
     <replacePath path="/windows/helpButtonInactive.svg"/>
@@ -1183,7 +1183,7 @@
     <replacePath path="/expui/general/previewHorizontally.svg"/>
     <replacePath path="/expui/general/splitHorizontally.svg"/>
     <replacePath path="/general/splitCenterH.svg"/>
-    <replacePath path="/plugins/rider/toolbar/splitBottom.svg"/>
+    <replacePath path="/rider/toolbar/splitBottom.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/ignoredTest.svg">
@@ -1270,7 +1270,7 @@
   <iconReplacement icon="/outline/install.svg">
     <replacePath path="/actions/install.svg"/>
     <replacePath path="/expui/actions/install.svg"/>
-    <replacePath path="/plugins/package/operations/install.svg"/>
+    <replacePath path="/icons/operations/install.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/inSelection.svg">
@@ -1319,12 +1319,12 @@
 
   <iconReplacement icon="/outline/learn.svg">
     <replacePath path="/expui/toolwindows/learn.svg"/>
-    <replacePath path="/plugins/feature/expui/toolwindow/learn.svg"/>
+    <replacePath path="/img/expui/toolwindow/learn.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/learn@20x20.svg">
     <replacePath path="/expui/toolwindows/learn@20x20.svg"/>
-    <replacePath path="/plugins/feature/expui/toolwindow/learn@20x20.svg"/>
+    <replacePath path="/img/expui/toolwindow/learn@20x20.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/leftClose.svg">
@@ -1405,7 +1405,7 @@
   <iconReplacement icon="/outline/maven.svg">
     <replacePath path="/expui/toolwindows/maven.svg"/>
     <replacePath path="/icons/maven.svg"/>
-    <replacePath path="/plugins/maven/expui/toolwindow/maven.svg"/>
+    <replacePath path="/images/expui/toolwindow/maven.svg"/>
     <replacePath path="/other/expui/maven.svg"/>
   </iconReplacement>
 
@@ -1505,8 +1505,8 @@
     <replacePath path="/nodes/moduleGroup.svg"/>
     <replacePath path="/objectBrowser/flattenModules.svg"/>
     <replacePath path="/objectBrowser/showModules.svg"/>
-    <replacePath path="/plugins/maven/mavenModule.svg"/>
-    <replacePath path="/plugins/maven/modulesClosed.svg"/>
+    <replacePath path="/images/mavenModule.svg"/>
+    <replacePath path="/images/modulesClosed.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/module@14x14.svg">
@@ -1613,8 +1613,8 @@
   <iconReplacement icon="/outline/offline.svg">
     <replacePath path="/actions/offlineMode.svg"/>
     <replacePath path="/expui/build/toggleOfflineMode.svg"/>
-    <replacePath path="/plugins/gradle/expui/offlineMode.svg"/>
-    <replacePath path="/plugins/gradle/offlineMode.svg"/>
+    <replacePath path="/icons/expui/offlineMode.svg"/>
+    <replacePath path="/icons/offlineMode.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/one.svg">
@@ -1863,11 +1863,11 @@
     <replacePath path="/general/inlineRefresh.svg"/>
     <replacePath path="/general/inlineRefreshHover.svg"/>
     <replacePath path="/other/refresh.svg"/>
-    <replacePath path="/plugins/aqua/structure/autoRefresh.svg"/>
+    <replacePath path="/icons/structure/autoRefresh.svg"/>
     <replacePath path="/icons/expui/refreshMaterializedView.svg"/>
     <replacePath path="/icons/refreshMaterializedView.svg"/>
     <replacePath path="/icons/schemaRefresh.svg"/>
-    <replacePath path="/plugins/javascript/buildTools/Refresh.svg"/>
+    <replacePath path="/icons/buildTools/Refresh.svg"/>
     <replacePath path="/icons/autorefresh.svg"/>
     <replacePath path="/icons/newui/autorefresh.svg"/>
     <replacePath path="/icons/newui/refreshKubernetesConfiguration.svg"/>
@@ -1902,15 +1902,15 @@
     <replacePath path="/icons/remoteFS.svg"/>
     <replacePath path="/icons/rfsIcons/remoteFS.svg"/>
     <replacePath path="/icons/storageIcons/remoteFS.svg"/>
-    <replacePath path="/plugins/clion/expui/remoteToolSet.svg"/>
-    <replacePath path="/plugins/clion/remoteToolSet.svg"/>
-    <replacePath path="/plugins/javascript/JavaScript_remote_debug_configuration.svg"/>
-    <replacePath path="/plugins/javascript/expui/javaScriptRemote.svg"/>
-    <replacePath path="/plugins/php/expui/phpRemote.svg"/>
-    <replacePath path="/plugins/php/php-remote.svg"/>
-    <replacePath path="/plugins/php/expui/runRemoteDebug.svg"/>
-    <replacePath path="/plugins/swift/expui/remoteSwiftPackageDependency.svg"/>
-    <replacePath path="/plugins/swift/remoteSwiftPackageDependency.svg"/>
+    <replacePath path="/icons/expui/remoteToolSet.svg"/>
+    <replacePath path="/icons/remoteToolSet.svg"/>
+    <replacePath path="/icons/JavaScript_remote_debug_configuration.svg"/>
+    <replacePath path="/icons/expui/javaScriptRemote.svg"/>
+    <replacePath path="/icons/expui/phpRemote.svg"/>
+    <replacePath path="/icons/php-remote.svg"/>
+    <replacePath path="/icons/expui/runRemoteDebug.svg"/>
+    <replacePath path="/icons/expui/remoteSwiftPackageDependency.svg"/>
+    <replacePath path="/icons/remoteSwiftPackageDependency.svg"/>
     <replacePath path="/runConfigurations/remote.svg"/>
     <replacePath path="/runConfigurations/remoteDebug.svg"/>
   </iconReplacement>
@@ -1958,12 +1958,12 @@
     <replacePath path="/actions/resetView.svg"/>
     <replacePath path="/expui/general/reset.svg"/>
     <replacePath path="/general/reset.svg"/>
-    <replacePath path="/plugins/clion/ResetMcu.svg"/>
-    <replacePath path="/plugins/clion/expui/resetMcu.svg"/>
-    <replacePath path="/plugins/clion/reset.svg"/>
-    <replacePath path="/plugins/clionEmbedded/ResetMcu.svg"/>
-    <replacePath path="/plugins/features/expui/resetLesson.svg"/>
-    <replacePath path="/plugins/features/resetLesson.svg"/>
+    <replacePath path="/icons/ResetMcu.svg"/>
+    <replacePath path="/icons/expui/resetMcu.svg"/>
+    <replacePath path="/icons/reset.svg"/>
+    <replacePath path="/iconsEmbedded/ResetMcu.svg"/>
+    <replacePath path="/img/expui/resetLesson.svg"/>
+    <replacePath path="/img/resetLesson.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/restart@14x14.svg">
