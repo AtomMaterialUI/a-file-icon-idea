@@ -2373,13 +2373,17 @@
     <replacePath path="/icons/expui/debugger/evaluateExpression.svg"/>
     <replacePath path="/icons/expui/run/console.svg"/>
     <replacePath path="/icons/expui/run/evaluateExpression.svg"/>
-    <replacePath path="/icons/expui/toolwindows/task.svg"/>
-    <replacePath path="/icons/expui/toolwindows/terminal.svg"/>
+    <replacePath path="/icons/expui/toolwindow/task.svg"/>
+    <replacePath path="/icons/expui/toolwindow/terminal.svg"/>
+    <replacePath path="/icons/terminal/OpenTerminal.svg"/>
+    <replacePath path="/icons/terminal/OpenTerminal_13x13.svg"/>
+    <replacePath path="/icons/terminal/shFile.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/shell@20x20.svg">
-    <replacePath path="/icons/expui/toolwindows/task@20x20.svg"/>
-    <replacePath path="/icons/expui/toolwindows/terminal@20x20.svg"/>
+    <replacePath path="/icons/expui/toolwindow/task@20x20.svg"/>
+    <replacePath path="/icons/expui/toolwindow/terminal@20x20.svg"/>
+    <replacePath path="/icons/terminal/OpenTerminal_13x13@20x20.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/shelve.svg">
