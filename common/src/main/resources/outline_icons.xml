@@ -45,6 +45,7 @@
     <replacePath path="/general/addJdk.svg"/>
     <replacePath path="/general/inlineAdd.svg"/>
     <replacePath path="/general/inlineAddHover.svg"/>
+    <replacePath path="/hierarchy/methodDefined.svg"/>
     <replacePath path="/icons/add.svg"/>
     <replacePath path="/icons/com/jetbrains/addJupyterConnection.svg"/>
     <replacePath path="/icons/expui/actions/addFile.svg"/>
@@ -128,6 +129,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/annotation@14x14.svg">
+    <replacePath path="/gutter/extAnnotation.svg"/>
     <replacePath path="/icons/expui/gutter/extAnnotation.svg"/>
     <replacePath path="/icons/expui/gutter/extAnnotation@14x14.svg"/>
   </iconReplacement>
@@ -144,6 +146,8 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/applyNotConflicts@14x14.svg">
+    <replacePath path="/gutter/diff.svg"/>
+    <replacePath path="/icons/gutter/diff.svg"/>
     <replacePath path="/icons/expui/gutter/diff.svg"/>
     <replacePath path="/icons/expui/gutter/diff@14x14.svg"/>
   </iconReplacement>
@@ -215,6 +219,17 @@
     <replacePath path="/vcs/patch_applied.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/bell.svg">
+    <replacePath path="/ide/emptyFatalError.svg"/>
+    <replacePath path="/ide/fatalError-read.svg"/>
+    <replacePath path="/toolwindows/problemsEmpty.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bellAlarm.svg">
+    <replacePath path="/ide/fatalError.svg"/>
+    <replacePath path="/toolwindows/problems.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/bigdata.svg">
     <replacePath path="/icons/expui/toolWindowBigData.svg"/>
     <replacePath path="/icons/expui/toolwindows/bigData.svg"/>
@@ -233,6 +248,7 @@
 
   <iconReplacement icon="/outline/bookmark@14x14.svg">
     <replacePath path="/icons/expui/gutter/bookmark.svg"/>
+    <replacePath path="/gutter/bookmark.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bookmarks.svg">
@@ -288,6 +304,11 @@
     <replacePath path="/icons/expui/toolwindows/build@20x20.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/brush.svg">
+    <replacePath path="/images/EditExternally.svg"/>
+    <replacePath path="/vcs/patch_applied.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/build.svg">
     <replacePath path="/actions/compile.svg"/>
     <replacePath path="/icons/build.svg"/>
@@ -320,6 +341,14 @@
     <replacePath path="/debugger/evaluationResult.svg"/>
     <replacePath path="/icons/expui/debugger/evaluationResult.svg"/>
     <replacePath path="/icons/expui/run/evaluationResult.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/callee.svg">
+    <replacePath path="/hierarchy/callee.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/caller.svg">
+    <replacePath path="/hierarchy/caller.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/callMerge.svg">
@@ -405,11 +434,18 @@
     <replacePath path="/icons/expui/vcs/new/cherryPick.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/chessboard.svg">
+    <replacePath path="/images/ToggleTransparencyChessboard.svg"/>
+    <replacePath path="/images/expui/chessboard.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/chevronUp.svg">
     <replacePath path="/chooser/top.svg"/>
     <replacePath path="/general/arrowUp.svg"/>
     <replacePath path="/general/chevron-up.svg"/>
     <replacePath path="/icons/expui/general/chevronUp.svg"/>
+    <replacePath path="/ide/notifications/collapse.svg"/>
+    <replacePath path="/ide/notifications/collapseHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/chevronDown.svg">
@@ -425,6 +461,8 @@
     <replacePath path="/icons/expui/general/chevronDown.svg"/>
     <replacePath path="/icons/expui/general/chevronDownLarge.svg"/>
     <replacePath path="/icons/expui/general/chevronDownLargeWhite.svg"/>
+    <replacePath path="/ide/notifications/expand.svg"/>
+    <replacePath path="/ide/notifications/expandHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/chevronLeft.svg">
@@ -460,7 +498,9 @@
     <replacePath path="/actions/cancel.svg"/>
     <replacePath path="/actions/delete.svg"/>
     <replacePath path="/diff/remove.svg"/>
+    <replacePath path="/hierarchy/methodNotDefined.svg"/>
     <replacePath path="/icons/expui/diff/remove.svg"/>
+    <replacePath path="/ide/notifications/close.svg"/>
     <replacePath path="/icons/expui/windows/close.svg"/>
     <replacePath path="/icons/expui/windows/closeActive.svg"/>
     <replacePath path="/icons/expui/windows/closeHover.svg"/>
@@ -480,6 +520,7 @@
     <replacePath path="/general/balloonClose.svg"/>
     <replacePath path="/icons/expui/general/close.svg"/>
     <replacePath path="/icons/expui/general/closeSmallHovered.svg"/>
+    <replacePath path="/ide/notifications/closeHover.svg"/>
     <replacePath path="/linux/close.svg"/>
     <replacePath path="/linux/closeHovered.svg"/>
     <replacePath path="/linux/theme/gnome/close.svg"/>
@@ -717,6 +758,7 @@
 
   <iconReplacement icon="/outline/diagram.svg">
     <replacePath path="/actions/diagramDiff.svg"/>
+    <replacePath path="/hierarchy/class.svg"/>
     <replacePath path="/icons/expui/actions/diagramDiff.svg"/>
     <replacePath path="/icons/expui/graph/graphLayout.svg"/>
     <replacePath path="/icons/expui/hierarchy/classHierarchy.svg"/>
@@ -735,6 +777,12 @@
     <replacePath path="/icons/expui/vcs/diff.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/dislike.svg">
+    <replacePath path="/ide/dislike.svg"/>
+    <replacePath path="/ide/dislikeDimmed.svg"/>
+    <replacePath path="/ide/dislikeDimmed.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/dropdown.svg">
     <replacePath path="/actions/inlayDropTriangle.svg"/>
   </iconReplacement>
@@ -750,6 +798,7 @@
     <replacePath path="/icons/expui/vcs/new/changesUpdate@12x12.svg"/>
     <replacePath path="/icons/expui/vcs/new/incomingUpdate.svg"/>
     <replacePath path="/icons/expui/vcs/update.svg"/>
+    <replacePath path="/ide/notifications/ideUpdate.svg"/>
     <replacePath path="/vcs/new/changesUpdate@12x12.svg"/>
   </iconReplacement>
 
@@ -779,21 +828,31 @@
     <replacePath path="/icons/expui/general/edit.svg"/>
     <replacePath path="/icons/expui/inline/inlineEdit.svg"/>
     <replacePath path="/icons/expui/inline/inlineEditHovered.svg"/>
+    <replacePath path="/ide/incomingChangesOn.svg"/>
+    <replacePath path="/ide/outgoingChangesOn.svg"/>
     <replacePath path="/modules/edit.svg"/>
     <replacePath path="/toolbarDecorator/edit.svg"/>
     <replacePath path="/toolbarDecorator/mac/edit.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/edit@14x14.svg">
+    <replacePath path="/gutter/javadocEdit.svg"/>
     <replacePath path="/icons/expui/gutter/javadocEdit.svg"/>
     <replacePath path="/icons/expui/gutter/writeAccess.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/editSquare@14x14.svg">
+    <replacePath path="/gutter/suggestedRefactoring.svg"/>
     <replacePath path="/icons/expui/gutter/suggestedRefactoring.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/editOff.svg">
+    <replacePath path="/ide/incomingChangesOff.svg"/>
+    <replacePath path="/ide/outgoingChangesOff.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/editOff@14x14.svg">
+    <replacePath path="/gutter/suggestedRefactoringDisabled.svg"/>
     <replacePath path="/icons/expui/gutter/suggestedRefactoringDisabled.svg"/>
   </iconReplacement>
 
@@ -812,6 +871,7 @@
     <replacePath path="/general/moreTabs.svg"/>
     <replacePath path="/general/secondaryGroup.svg"/>
     <replacePath path="/icons/expui/general/moreHorizontal.svg"/>
+    <replacePath path="/ide/link.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/ellipsis@20x20.svg">
@@ -820,7 +880,6 @@
 
   <iconReplacement icon="/outline/endpoints.svg">
     <replacePath path="/icons/endpointGutter.svg"/>
-    <replacePath path="/icons/endpoints.svg"/>
     <replacePath path="/icons/endpoints.svg"/>
     <replacePath path="/icons/expui/rails/endpoints.svg"/>
     <replacePath path="/icons/expui/springBootEndpoint.svg"/>
@@ -862,6 +921,7 @@
 
   <iconReplacement icon="/outline/exclamationMark.svg">
     <replacePath path="/general/exclMark.svg"/>
+    <replacePath path="/hierarchy/shouldDefineMethod.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/exit.svg">
@@ -927,6 +987,7 @@
   <iconReplacement icon="/outline/fatal.svg">
     <replacePath path="/general/balloonError.svg"/>
     <replacePath path="/general/notificationError.svg"/>
+    <replacePath path="/ide/error_notifications.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/favoriteTag.svg">
@@ -942,6 +1003,8 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/file@14x14.svg">
+    <replacePath path="/gutter/descriptionFile.svg"/>
+    <replacePath path="/icons/gutter/descriptionFile.svg"/>
     <replacePath path="/icons/expui/gutter/descriptionFile.svg"/>
     <replacePath path="/icons/expui/gutter/descriptionFile@14x14.svg"/>
   </iconReplacement>
@@ -1000,6 +1063,7 @@
     <replacePath path="/icons/expui/playForward.svg"/>
     <replacePath path="/icons/expui/run/nextStatement.svg"/>
     <replacePath path="/icons/play_forward.svg"/>
+    <replacePath path="/hierarchy/base.svg"/>
     <replacePath path="/other/forward.svg"/>
   </iconReplacement>
 
@@ -1010,6 +1074,7 @@
     <replacePath path="/icons/expui/general/open.svg"/>
     <replacePath path="/icons/expui/inline/browse.svg"/>
     <replacePath path="/icons/expui/inline/browseHover.svg"/>
+    <replacePath path="/images/ThumbnailDirectory.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/folderOpen@20x20.svg">
@@ -1044,12 +1109,17 @@
     <replacePath path="/icons/expui/general/settings.svg"/>
     <replacePath path="/icons/newui/settings.svg"/>
     <replacePath path="/icons/settings.svg"/>
+    <replacePath path="/ide/notifications/gear.svg"/>
     <replacePath path="/rider/wizard/settings.svg"/>
     <replacePath path="/wizard/settings.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/gear@20x20.svg">
     <replacePath path="/icons/expui/general/settings@20x20.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/gift.svg">
+    <replacePath path="/ide/gift.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/git.svg">
@@ -1154,6 +1224,7 @@
     <replacePath path="/general/hideDownHover.svg"/>
     <replacePath path="/general/hideDownPart.svg"/>
     <replacePath path="/general/hideDownPartHover.svg"/>
+    <replacePath path="/ide/dnd/top.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/hideLeft.svg">
@@ -1161,6 +1232,7 @@
     <replacePath path="/general/hideLeftHover.svg"/>
     <replacePath path="/general/hideLeftPart.svg"/>
     <replacePath path="/general/hideLeftPartHover.svg"/>
+    <replacePath path="/ide/dnd/right.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/hideRight.svg">
@@ -1168,6 +1240,15 @@
     <replacePath path="/general/hideRightHover.svg"/>
     <replacePath path="/general/hideRightPart.svg"/>
     <replacePath path="/general/hideRightPartHover.svg"/>
+    <replacePath path="/ide/dnd/left.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/hideUp.svg">
+    <replacePath path="/general/hideUp.svg"/>
+    <replacePath path="/general/hideUpHover.svg"/>
+    <replacePath path="/general/hideUpPart.svg"/>
+    <replacePath path="/general/hideUpPartHover.svg"/>
+    <replacePath path="/ide/dnd/bottom.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/hideWarnings.svg">
@@ -1215,13 +1296,23 @@
     <replacePath path="/general/notificationInfo.svg"/>
     <replacePath path="/general/showInfos.svg"/>
     <replacePath path="/icons/expui/status/info.svg"/>
+    <replacePath path="/ide/info_notifications.svg"/>
     <replacePath path="/status/info.svg"/>
     <replacePath path="/toolwindows/infoEvents.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/i18n@14x14.svg">
+    <replacePath path="/gutter/properties.svg"/>
     <replacePath path="/icons/expui/gutter/properties.svg"/>
     <replacePath path="/icons/expui/gutter/properties@14x14.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/image.svg">
+    <replacePath path="/images/ImagesFileType.svg"/>
+    <replacePath path="/images/ThumbnailToolWindow.svg"/>
+    <replacePath path="/icons/expui/fileTypes/image.svg"/>
+    <replacePath path="/icons/imageGutter.svg"/>
+    <replacePath path="/icons/SingleImage.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/implementingMethod.svg">
@@ -1359,9 +1450,19 @@
     <replacePath path="/icons/expui/actions/lightning.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/like.svg">
+    <replacePath path="/ide/like.svg"/>
+    <replacePath path="/ide/likeDimmed.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/list.svg">
     <replacePath path="/actions/quickList.svg"/>
     <replacePath path="/icons/expui/general/listFiles.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/loading.svg">
+    <replacePath path="/icons/loading.svg"/>
+    <replacePath path="/icons/expui/run/widget/loader.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/lock.svg">
@@ -1370,10 +1471,12 @@
     <replacePath path="/icons/expui/diff/lock.svg"/>
     <replacePath path="/icons/expui/general/locked.svg"/>
     <replacePath path="/icons/expui/ultimate/lock.svg"/>
+    <replacePath path="/ide/readonly.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/lowPower.svg">
     <replacePath path="/general/inspectionsPowerSaveMode.svg"/>
+    <replacePath path="/ide/powerSaveMode.svg"/>
     <replacePath path="/icons/expui/general/inspections/inspectionsPowerSaveMode.svg"/>
     <replacePath path="/icons/expui/general/inspectionsPowerSaveMode.svg"/>
   </iconReplacement>
@@ -1505,6 +1608,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/mnemonic@14x14.svg">
+    <replacePath path="/gutter/mnemonic.svg"/>
     <replacePath path="/icons/expui/gutter/mnemonic.svg"/>
   </iconReplacement>
 
@@ -1529,6 +1633,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/module@14x14.svg">
+    <replacePath path="/gutter/ejbModule.svg"/>
     <replacePath path="/icons/expui/gutter/ejbModule.svg"/>
     <replacePath path="/icons/expui/gutter/ejbModule@14x14.svg"/>
   </iconReplacement>
@@ -1603,6 +1708,8 @@
 
   <iconReplacement icon="/outline/notifications.svg">
     <replacePath path="/icons/expui/toolwindows/notifications.svg"/>
+    <replacePath path="/ide/notifications.svg"/>
+    <replacePath path="/ide/noNotifications13.svg"/>
     <replacePath path="/toolwindows/notifications.svg"/>
     <replacePath path="/toolwindows/notificationsNew.svg"/>
     <replacePath path="/toolwindows/notificationsNewImportant.svg"/>
@@ -1677,6 +1784,7 @@
 
   <iconReplacement icon="/outline/palette@14x14.svg">
     <replacePath path="/icons/expui/gutter/colors.svg"/>
+    <replacePath path="/gutter/colors.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/palette@20x20.svg">
@@ -1736,6 +1844,8 @@
 
   <iconReplacement icon="/outline/pipette.svg">
     <replacePath path="/icons/expui/image/colorPicker.svg"/>
+    <replacePath path="/ide/pipette.svg"/>
+    <replacePath path="/ide/pipette_rollover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/play-all.svg">
@@ -1747,6 +1857,10 @@
     <replacePath path="/debugger/attachToProcess.svg"/>
     <replacePath path="/icons/expui/debugger/attachToProcess.svg"/>
     <replacePath path="/icons/expui/run/attachToProcess.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/plugin.svg">
+    <replacePath path="/icons/gutter/plugin.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/plugin@14x14.svg">
@@ -1852,6 +1966,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/read@14x14.svg">
+    <replacePath path="/gutter/javadocRead.svg"/>
     <replacePath path="/icons/expui/gutter/javadocRead.svg"/>
     <replacePath path="/icons/expui/gutter/readAccess.svg"/>
   </iconReplacement>
@@ -2328,6 +2443,7 @@
 
   <iconReplacement icon="/outline/sortAlphabetically.svg">
     <replacePath path="/icons/expui/objectBrowser/sortAlphabetically.svg"/>
+    <replacePath path="/ide/lookupAlphanumeric.svg"/>
     <replacePath path="/objectBrowser/sortAlphabetically.svg"/>
   </iconReplacement>
 
@@ -2348,6 +2464,7 @@
 
   <iconReplacement icon="/outline/sortByUsage.svg">
     <replacePath path="/icons/expui/objectBrowser/sortByUsage.svg"/>
+    <replacePath path="/ide/lookupRelevance.svg"/>
     <replacePath path="/objectBrowser/sortByUsage.svg"/>
   </iconReplacement>
 
@@ -2371,6 +2488,12 @@
     <replacePath path="/favorite.svg"/>
     <replacePath path="/icons/expui/toolwindows/favorites.svg"/>
     <replacePath path="/icons/favorite.svg"/>
+    <replacePath path="/ide/feedbackRating.svg"/>
+    <replacePath path="/ide/feedbackRatingFocused.svg"/>
+    <replacePath path="/ide/feedbackRatingFocusedOn.svg"/>
+    <replacePath path="/ide/feedbackRatingOn.svg"/>
+    <replacePath path="/ide/feedbackRatingOnFocused.svg"/>
+    <replacePath path="/ide/rating.svg"/>
     <replacePath path="/nodes/favorite.svg"/>
     <replacePath path="/nodes/favoriteOnHover.svg"/>
     <replacePath path="/toolwindows/toolWindowFavorites.svg"/>
@@ -2380,6 +2503,13 @@
 
   <iconReplacement icon="/outline/star@20x20.svg">
     <replacePath path="/icons/expui/toolwindows/favorites@20x20.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/starHalf.svg">
+    <replacePath path="/ide/rating1.svg"/>
+    <replacePath path="/ide/rating2.svg"/>
+    <replacePath path="/ide/rating3.svg"/>
+    <replacePath path="/ide/rating4.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/status.svg">
@@ -2425,6 +2555,7 @@
     <replacePath path="/icons/expui/run/widget/stop.svg"/>
     <replacePath path="/icons/expui/vcs/abort.svg"/>
     <replacePath path="/icons/expui/vcs/abort_stroke.svg"/>
+    <replacePath path="/ide/macro/recording_stop.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/stopCircle.svg">
@@ -2460,6 +2591,7 @@
     <replacePath path="/actions/forceRefresh.svg"/>
     <replacePath path="/actions/synchronizeFS.svg"/>
     <replacePath path="/icons/expui/toolwindows/settingSync.svg"/>
+    <replacePath path="/images/updateFolders.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/sync@20x20.svg">
@@ -2495,6 +2627,7 @@
 
   <iconReplacement icon="/outline/table@14x14.svg">
     <replacePath path="/icons/expui/gutter/dataSchema.svg"/>
+    <replacePath path="/gutter/dataSchema.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/test.svg">
@@ -2610,10 +2743,12 @@
 
   <iconReplacement icon="/outline/unique@14x14.svg">
     <replacePath path="/icons/expui/gutter/unique.svg"/>
+    <replacePath path="/gutter/unique.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/unlock.svg">
     <replacePath path="/icons/expui/general/unlocked.svg"/>
+    <replacePath path="/ide/readwrite.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/unpin.svg">
@@ -2778,9 +2913,8 @@
     <replacePath path="/icons/expui/general/inspectionsWarning.svg"/>
     <replacePath path="/icons/expui/general/inspectionsWarningEmpty.svg"/>
     <replacePath path="/icons/expui/status/warning.svg"/>
+    <replacePath path="/ide/warning_notifications.svg"/>
     <replacePath path="/status/warning.svg"/>
-    <replacePath path="/toolwindows/problems.svg"/>
-    <replacePath path="/toolwindows/problemsEmpty.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/warning@14x14.svg">
