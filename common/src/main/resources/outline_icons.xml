@@ -87,6 +87,7 @@
 
   <iconReplacement icon="/outline/alert.svg">
     <replacePath path="/icons/expui/toolwindows/problems.svg"/>
+    <replacePath path="/javaee/cdi/gutte/interceptors.svg"/>
     <replacePath path="/toolwindows/errorEvents.svg"/>
     <replacePath path="/toolwindows/toolWindowProblems.svg"/>
     <replacePath path="/toolwindows/toolWindowProblemsEmpty.svg"/>
@@ -170,6 +171,8 @@
   <iconReplacement icon="/outline/array.svg">
     <replacePath path="/debugger/db_array.svg"/>
     <replacePath path="/icons/expui/debugger/dbArray.svg"/>
+    <replacePath path="/json/array.svg"/>
+    <replacePath path="/json/property_brackets.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/arrowLeftDown.svg">
@@ -221,6 +224,29 @@
     <replacePath path="/icons/expui/fileTypes/patch.svg"/>
     <replacePath path="/icons/expui/vcs/patch.svg"/>
     <replacePath path="/vcs/patch_applied.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bean.svg">
+    <replacePath path="/javaee/cdi/bean.svg"/>
+    <replacePath path="/javaee/cdi/cdi.svg"/>
+    <replacePath path="/javaee/cdi/cdiToolWindow.svg"/>
+    <replacePath path="/javaee/cdi/gutter/bean.svg"/>
+    <replacePath path="/javaee/cdi/gutter/cdi.svg"/>
+    <replacePath path="/javaee/cdi/newui/cdi.svg"/>
+    <replacePath path="/javaee/cdi/newui/cdi@14x14.svg"/>
+    <replacePath path="/javaee/cdi/newui/cdiToolWindow.svg"/>
+    <replacePath path="/javaee/ejb_artifact.svg"/>
+    <replacePath path="/javaee/javaee/ejb.svg"/>
+    <replacePath path="/javaee/javaee/entityBean.svg"/>
+    <replacePath path="/javaee/javaee/newui/sessionBean.svg"/>
+    <replacePath path="/javaee/javaee/sessionBean.svg"/>
+    <replacePath path="/javaee/jsf/managedBean.svg"/>
+    <replacePath path="/javaee/jsf/newui/managedBean.svg"/>
+    <replacePath path="/javaee/newui/ejbArtifact.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/bean@20x20.svg">
+    <replacePath path="/javaee/cdi/newui/cdiToolWindow@20x20.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/bell.svg">
@@ -302,6 +328,8 @@
 
   <iconReplacement icon="/outline/box.svg">
     <replacePath path="/icons/expui/toolwindows/build.svg"/>
+    <replacePath path="/javaee/javaee/ejb-jar_xml.svg"/>
+    <replacePath path="/javaee/javaee/newui/ejb-jarXml.svg"/>
     <replacePath path="/toolwindows/toolWindowBuild.svg"/>
   </iconReplacement>
 
@@ -319,6 +347,8 @@
     <replacePath path="/icons/build.svg"/>
     <replacePath path="/icons/expui/build/build.svg"/>
     <replacePath path="/icons/expui/run/widget/build.svg"/>
+    <replacePath path="/javaee/javaee/buildOnFrameDeactivation.svg"/>
+    <replacePath path="/javaee/javaee/newui/buildOnFrameDeactivation.svg"/>
     <replacePath path="/toolwindows/toolWindowInternal.svg"/>
   </iconReplacement>
 
@@ -556,6 +586,10 @@
     <replacePath path="/general/layoutEditorOnly.svg"/>
     <replacePath path="/icons/expui/general/editorOnly.svg"/>
     <replacePath path="/icons/expui/toolwindows/toolWindowDevMode.svg"/>
+    <replacePath path="/javaee/javaee/application_xml.svg"/>
+    <replacePath path="/javaee/javaee/newui/applicationXml.svg"/>
+    <replacePath path="/javaee/javaee/newui/webXml.svg"/>
+    <replacePath path="/javaee/javaee/web_xml.svg"/>
     <replacePath path="/toolwindows/toolWindowJsonPath.svg"/>
   </iconReplacement>
 
@@ -571,6 +605,10 @@
 
   <iconReplacement icon="/outline/codeBlocksVertical.svg">
     <replacePath path="/icons/expui/general/editorPreviewVertical.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/coffee.svg">
+    <replacePath path="/javaee/ejbClass.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/collapse.svg">
@@ -748,10 +786,17 @@
     <replacePath path="/icons/expui/database.svg"/>
     <replacePath path="/icons/expui/toolwindows/database.svg"/>
     <replacePath path="/icons/toolWindowDatabase.svg"/>
+    <replacePath path="/javaee/persistenceEntity.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/database@20x20.svg">
     <replacePath path="/icons/expui/toolwindows/database@20x20.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/dataImport.svg">
+    <replacePath path="/javaee/dataSourceImport.svg"/>
+    <replacePath path="/javaee/dataSourceImportBig.svg"/>
+    <replacePath path="/javaee/dbSchemaImportBig.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/debug.svg">
@@ -789,6 +834,8 @@
     <replacePath path="/icons/expui/graph/graphLayout.svg"/>
     <replacePath path="/icons/expui/hierarchy/classHierarchy.svg"/>
     <replacePath path="/icons/expui/toolwindows/projectDiagram.svg"/>
+    <replacePath path="/javaee/erDiagram.svg"/>
+    <replacePath path="/javaee/newui/erDiagram.svg"/>
     <replacePath path="/rider/toolwindows/toolwindowProjectDiagram.svg"/>
   </iconReplacement>
 
@@ -1004,6 +1051,8 @@
     <replacePath path="/icons/expui/objectBrowser/sortByVisibility.svg"/>
     <replacePath path="/icons/expui/previewChanges.svg"/>
     <replacePath path="/icons/previewChanges.svg"/>
+    <replacePath path="/javaee/jsf/renderKit.svg"/>
+    <replacePath path="/javaee/jsf/newui/renderKit.svg"/>
     <replacePath path="/objectBrowser/sortByVisibility.svg"/>
     <replacePath path="/toolwindows/toolWindowPreview.svg"/>
   </iconReplacement>
@@ -1013,6 +1062,13 @@
     <replacePath path="/general/inspectionsOff.svg"/>
     <replacePath path="/icons/expui/general/inspections/inspectionsOff.svg"/>
     <replacePath path="/icons/expui/general/inspectionsOff.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/factory.svg">
+    <replacePath path="/javaee/cdi/beanFactory.svg"/>
+    <replacePath path="/javaee/cdi/gutter/beanFactory.svg"/>
+    <replacePath path="/javaee/cdi/newui/beanFactory.svg"/>
+    <replacePath path="/javaee/cdi/newui/beanFactory@14x14.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/fatal.svg">
@@ -1048,6 +1104,8 @@
     <replacePath path="/icons/expui/general/filter.svg"/>
     <replacePath path="/icons/filterAndOrder.svg"/>
     <replacePath path="/icons/filterHistory.svg"/>
+    <replacePath path="/javaee/cdi/gutter/scopes.svg"/>
+    <replacePath path="/javaee/cdi/scopes.svg"/>
     <replacePath path="/other/expui/filterHistory.svg"/>
     <replacePath path="/other/filterHistory.svg"/>
   </iconReplacement>
@@ -1145,6 +1203,8 @@
     <replacePath path="/icons/newui/settings.svg"/>
     <replacePath path="/icons/settings.svg"/>
     <replacePath path="/ide/notifications/gear.svg"/>
+    <replacePath path="/javaee/WebService.svg"/>
+    <replacePath path="/javaee/WebServiceClient.svg"/>
     <replacePath path="/rider/wizard/settings.svg"/>
     <replacePath path="/wizard/settings.svg"/>
   </iconReplacement>
@@ -1212,6 +1272,7 @@
     <replacePath path="/icons/expui/general/groups.svg"/>
     <replacePath path="/icons/group.svg"/>
     <replacePath path="/icons/newui/group.svg"/>
+    <replacePath path="/javaee/webModuleGroup.svg"/>
     <replacePath path="/other/groupBy.svg"/>
     <replacePath path="/rider/toolbar/grouping.svg"/>
   </iconReplacement>
@@ -1230,6 +1291,15 @@
 
   <iconReplacement icon="/outline/gulpToolWindow.svg">
     <replacePath path="/buildTools/gulp/gulp_toolwindow.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/home.svg">
+    <replacePath path="/icons/expui/javaee/home.svg"/>
+    <replacePath path="/icons/expui/nodes/homeFolder.svg"/>
+    <replacePath path="/javaee/javaee/home.svg"/>
+    <replacePath path="/javaee/javaee/newui/home.svg"/>
+    <replacePath path="/javaee/localHome.svg"/>
+    <replacePath path="/nodes/homeFolder.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/help.svg">
@@ -1308,6 +1378,10 @@
     <replacePath path="/icons/expui/debugger/promptInputHistory.svg"/>
     <replacePath path="/icons/expui/general/history.svg"/>
     <replacePath path="/icons/expui/run/promptInputHistory.svg"/>
+    <replacePath path="/javaee/cdi/gutter/scheduledEvent.svg"/>
+    <replacePath path="/javaee/cdi/newui/scheduledEvent.svg"/>
+    <replacePath path="/javaee/cdi/newui/scheduledEvent@14x14.svg"/>
+    <replacePath path="/javaee/cdi/scheduledEvent.svg"/>
     <replacePath path="/toolwindows/toolWindowSettingsSyncHistory.svg"/>
     <replacePath path="/vcs/history.svg"/>
     <replacePath path="/vcs/historyInline.svg"/>
@@ -1462,6 +1536,7 @@
     <replacePath path="/general/layout.svg"/>
     <replacePath path="/icons/expui/breakpoints/restoreLayout.svg"/>
     <replacePath path="/icons/expui/general/layout.svg"/>
+    <replacePath path="/javaee/cdi/gutter/beanInfrastructure.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/learn.svg">
@@ -1486,6 +1561,7 @@
   <iconReplacement icon="/outline/lightning.svg">
     <replacePath path="/actions/lightning.svg"/>
     <replacePath path="/icons/expui/actions/lightning.svg"/>
+    <replacePath path="/javaee/cdi/gutter/event.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/like.svg">
@@ -1501,6 +1577,17 @@
   <iconReplacement icon="/outline/loading.svg">
     <replacePath path="/icons/loading.svg"/>
     <replacePath path="/icons/expui/run/widget/loader.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/localhost.svg">
+    <replacePath path="/icons/local.svg"/>
+    <replacePath path="/icons/rfsIcons/local.svg"/>
+    <replacePath path="/icons/storageIcons/local.svg"/>
+    <replacePath path="/javaee/local.svg"/>
+    <replacePath path="/javaee/localHome.svg"/>
+    <replacePath path="/settingSync/expui/localChanges.svg"/>
+    <replacePath path="/settingSync/localChanges.svg"/>
+    <replacePath path="/webDeployment/local.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/lock.svg">
@@ -1582,6 +1669,14 @@
     <replacePath path="/icons/expui/actions/profileMemory.svg"/>
     <replacePath path="/icons/expui/actions/profileRed.svg"/>
     <replacePath path="/icons/expui/actions/startMemoryProfile.svg"/>
+    <replacePath path="/icons/expui/gutter/showCacheable@12x12.svg"/>
+    <replacePath path="/icons/expui/showCacheable.svg"/>
+    <replacePath path="/icons/gutter/showCacheable.svg"/>
+    <replacePath path="/icons/showCacheable.svg"/>
+    <replacePath path="/javaee/cdi/gutter/showCacheable.svg"/>
+    <replacePath path="/javaee/cdi/newui/showCacheable.svg"/>
+    <replacePath path="/javaee/cdi/newui/showCacheable@14x14.svg"/>
+    <replacePath path="/javaee/cdi/showCacheable.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/menu.svg">
@@ -1660,6 +1755,10 @@
     <replacePath path="/icons/expui/objectBrowser/showModules.svg"/>
     <replacePath path="/images/mavenModule.svg"/>
     <replacePath path="/images/modulesClosed.svg"/>
+    <replacePath path="/javaee/javaee/JavaeeAppModule.svg"/>
+    <replacePath path="/javaee/javaee/newui/javaeeAppModule.svg"/>
+    <replacePath path="/javaee/javaee/newui/javaeeAppModule@14x14.svg"/>
+    <replacePath path="/javaee/webModule.svg"/>
     <replacePath path="/modules/modulesNode.svg"/>
     <replacePath path="/nodes/Module.svg"/>
     <replacePath path="/nodes/ModuleOpen.svg"/>
@@ -1766,6 +1865,8 @@
     <replacePath path="/icons/expui/debugger/dbObject.svg"/>
     <replacePath path="/icons/expui/debugger/value.svg"/>
     <replacePath path="/icons/expui/run/value.svg"/>
+    <replacePath path="/json/object.svg"/>
+    <replacePath path="/json/property_braces.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/octogonMark.svg">
@@ -1856,6 +1957,8 @@
   <iconReplacement icon="/outline/phoneOn.svg">
     <replacePath path="/codeWithMe/cwmEnableCall.svg"/>
     <replacePath path="/icons/expui/codeWithMe/cwmEnableCall.svg"/>
+    <replacePath path="/javaee/cdi/gutter/listener.svg"/>
+    <replacePath path="/javaee/persistenceEntityListener.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/phoneOff.svg">
@@ -2054,6 +2157,7 @@
     <replacePath path="/icons/structure/autoRefresh.svg"/>
     <replacePath path="/inline/refresh.svg"/>
     <replacePath path="/inline/refreshHover.svg"/>
+    <replacePath path="/javaee/updateRunningApplication.svg"/>
     <replacePath path="/other/refresh.svg"/>
     <replacePath path="/vcs/fetch.svg"/>
   </iconReplacement>
@@ -2210,7 +2314,14 @@
 
   <iconReplacement icon="/outline/rhombusLarge.svg">
     <replacePath path="/hierarchy/supertypes.svg"/>
+    <replacePath path="/icons/expui/gutter/showAutowiredCandidates@12x12.svg"/>
     <replacePath path="/icons/expui/hierarchy/supertypes.svg"/>
+    <replacePath path="/icons/gutter/showAutowiredCandidates.svg"/>
+    <replacePath path="/javaee/cdi/gutter/showAutowiredCandidates.svg"/>
+    <replacePath path="/javaee/cdi/newui/gutter/showAutowiredCandidates.svg"/>
+    <replacePath path="/javaee/cdi/newui/showAutowiredCandidates.svg"/>
+    <replacePath path="/javaee/cdi/newui/showAutowiredCandidates@14x14.svg"/>
+    <replacePath path="/javaee/cdi/showAutowiredCandidates.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/rhombusSmall.svg">
@@ -2246,6 +2357,8 @@
     <replacePath path="/icons/runApplication.svg"/>
     <replacePath path="/icons/sparkRun.svg"/>
     <replacePath path="/icons/testUnit/testUnitRunConfiguration.svg"/>
+    <replacePath path="/javaee/cdi/newui/scheduledEventRun.svg"/>
+    <replacePath path="/javaee/cdi/newui/scheduledEventRun@14x14.svg"/>
     <replacePath path="/other/executeSelection.svg"/>
     <replacePath path="/runConfigurations/testState/run.svg"/>
     <replacePath path="/toolwindows/toolWindowRun.svg"/>
@@ -2286,6 +2399,8 @@
     <replacePath path="/icons/expui/breakpoints/force_run_to_cursor.svg"/>
     <replacePath path="/icons/expui/run/forceRunToCursor.svg"/>
     <replacePath path="/icons/expui/run/runToCursor.svg"/>
+    <replacePath path="/javaee/jsf/navigationRule.svg"/>
+    <replacePath path="/javaee/jsf/newui/navigationRule.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/runWithCoverage.svg">
@@ -2343,6 +2458,9 @@
     <replacePath path="/actions/search.svg"/>
     <replacePath path="/icons/expui/general/search.svg"/>
     <replacePath path="/icons/expui/windows/searchField.svg"/>
+    <replacePath path="/javaee/cdi/gutter/configurationScan.svg"/>
+    <replacePath path="/javaee/cdi/newui/configurationScan.svg"/>
+    <replacePath path="/javaee/cdi/newui/configurationScan@14x14.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/search@20x20.svg">
@@ -2414,12 +2532,15 @@
     <replacePath path="/icons/terminal/OpenTerminal.svg"/>
     <replacePath path="/icons/terminal/OpenTerminal_13x13.svg"/>
     <replacePath path="/icons/terminal/shFile.svg"/>
+    <replacePath path="/javaee/jpaConsoleToolWindow.svg"/>
+    <replacePath path="/javaee/newui/jpaConsoleToolWindow.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/shell@20x20.svg">
     <replacePath path="/icons/expui/toolwindow/task@20x20.svg"/>
     <replacePath path="/icons/expui/toolwindow/terminal@20x20.svg"/>
     <replacePath path="/icons/terminal/OpenTerminal_13x13@20x20.svg"/>
+    <replacePath path="/javaee/newui/jpaConsoleToolWindow@20x20.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/shelve.svg">
@@ -2445,6 +2566,8 @@
     <replacePath path="/general/successLogin.svg"/>
     <replacePath path="/icons/expui/general/successLogin.svg"/>
     <replacePath path="/icons/expui/status/success.svg"/>
+    <replacePath path="/javaee/jsf/validator.svg"/>
+    <replacePath path="/javaee/jsf/newui/validator.svg"/>
     <replacePath path="/status/success.svg"/>
   </iconReplacement>
 
@@ -2646,6 +2769,8 @@
     <replacePath path="/diff/arrowLeftRight.svg"/>
     <replacePath path="/icons/expui/actions/swapPanels.svg"/>
     <replacePath path="/icons/expui/diff/arrowLeftRight.svg"/>
+    <replacePath path="/javaee/jsf/converter.svg"/>
+    <replacePath path="/javaee/jsf/newui/converter.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/sync.svg">
@@ -2842,6 +2967,7 @@
     <replacePath path="/icons/expui/vcs/changesPush@12x12.svg"/>
     <replacePath path="/icons/expui/vcs/new/changesPush@12x12.svg"/>
     <replacePath path="/icons/expui/vcs/new/outgoingPush.svg"/>
+    <replacePath path="/javaee/cdi/gutter/publisher.svg"/>
     <replacePath path="/vcs/new/changesPush@12x12.svg"/>
     <replacePath path="/webDeployment/upload.svg"/>
   </iconReplacement>
@@ -3010,6 +3136,8 @@
     <replacePath path="/general/web.svg"/>
     <replacePath path="/icons/expui/runConfigurations/webApp.svg"/>
     <replacePath path="/icons/expui/toolwindows/web.svg"/>
+    <replacePath path="/javaee/WebService2.svg"/>
+    <replacePath path="/javaee/WebServiceClient2.svg"/>
     <replacePath path="/javaee/newui/webArtifact.svg"/>
     <replacePath path="/javaee/web_artifact.svg"/>
     <replacePath path="/runConfigurations/web_app.svg"/>
@@ -3020,8 +3148,20 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/widgets.svg">
+    <replacePath path="/icons/expui/gutter/showAutowiredDependencies@12x12.svg"/>
+    <replacePath path="/icons/expui/showAutowiredDependencies.svg"/>
     <replacePath path="/icons/expui/toolwindows/dependencies.svg"/>
     <replacePath path="/icons/expui/toolwindows/toolWindowComponents.svg"/>
+    <replacePath path="/icons/gutter/showAutowiredDependencies.svg"/>
+    <replacePath path="/icons/showAutowiredDependencies.svg"/>
+    <replacePath path="/javaee/cdi/gutter/showAutowiredDependencies.svg"/>
+    <replacePath path="/javaee/cdi/newui/showAutowiredDependencies.svg"/>
+    <replacePath path="/javaee/cdi/newui/showAutowiredDependencies@14x14.svg"/>
+    <replacePath path="/javaee/cdi/showAutowiredDependencies.svg"/>
+    <replacePath path="/javaee/javaee_artifact.svg"/>
+    <replacePath path="/javaee/newui/javaeeArtifact.svg"/>
+    <replacePath path="/javaee/jsf/component.svg"/>
+    <replacePath path="/javaee/jsf/newui/component.svg"/>
     <replacePath path="/resources/icons/dependencies.svg"/>
     <replacePath path="/resources/icons/expui/dependencies.svg"/>
   </iconReplacement>
