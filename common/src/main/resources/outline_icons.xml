@@ -56,6 +56,8 @@
     <replacePath path="/icons/expui/inline/inlineAddHover.svg"/>
     <replacePath path="/icons/expui/rails/addAny.svg"/>
     <replacePath path="/icons/rails/addAny.svg"/>
+    <replacePath path="/inline/inlineAdd.svg"/>
+    <replacePath path="/inline/inlineAddHover.svg"/>
     <replacePath path="/other/add_sdk.svg"/>
     <replacePath path="/toolbar/addSlot.svg"/>
     <replacePath path="/toolbarDecorator/add.svg"/>
@@ -369,19 +371,31 @@
   <iconReplacement icon="/outline/case.svg">
     <replacePath path="/actions/matchCase.svg"/>
     <replacePath path="/actions/matchCaseHovered.svg"/>
-    <replacePath path="/actions/preserveCase.svg"/>
-    <replacePath path="/actions/preserveCaseHover.svg"/>
     <replacePath path="/icons/expui/inline/matchCase.svg"/>
     <replacePath path="/icons/expui/inline/matchCaseHovered.svg"/>
-    <replacePath path="/icons/expui/inline/preserveCase.svg"/>
-    <replacePath path="/icons/expui/inline/preserveCaseHover.svg"/>
+    <replacePath path="/inline/matchCase.svg"/>
+    <replacePath path="/inline/matchCaseHovered.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/caseSelected.svg">
     <replacePath path="/actions/matchCaseSelected.svg"/>
-    <replacePath path="/actions/preserveCaseSelected.svg"/>
     <replacePath path="/icons/expui/inline/matchCaseSelected.svg"/>
+    <replacePath path="/inline/matchCaseSelected.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/casePreserve.svg">
+    <replacePath path="/actions/preserveCase.svg"/>
+    <replacePath path="/actions/preserveCaseHover.svg"/>
+    <replacePath path="/icons/expui/inline/preserveCase.svg"/>
+    <replacePath path="/icons/expui/inline/preserveCaseHover.svg"/>
+    <replacePath path="/inline/preserveCase.svg"/>
+    <replacePath path="/inline/preserveCaseHover.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/casePreserved.svg">
+    <replacePath path="/actions/preserveCaseSelected.svg"/>
     <replacePath path="/icons/expui/inline/preserveCaseSelected.svg"/>
+    <replacePath path="/inline/preserveCaseSelected.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/changeView.svg">
@@ -566,6 +580,8 @@
     <replacePath path="/icons/expui/inline/collapse.svg"/>
     <replacePath path="/icons/expui/inline/collapseHover.svg"/>
     <replacePath path="/icons/expui/windows/collapse.svg"/>
+    <replacePath path="/inline/collapse.svg"/>
+    <replacePath path="/inline/collapseHover.svg"/>
     <replacePath path="/toolbar/collapse.svg"/>
   </iconReplacement>
 
@@ -626,6 +642,8 @@
     <replacePath path="/icons/expui/inline/copy.svg"/>
     <replacePath path="/icons/expui/inline/copyHover.svg"/>
     <replacePath path="/icons/expui/toolwindows/toolWindowDuplicates.svg"/>
+    <replacePath path="/inline/copy.svg"/>
+    <replacePath path="/inline/copyHover.svg"/>
     <replacePath path="/other/copy.svg"/>
   </iconReplacement>
 
@@ -838,6 +856,8 @@
     <replacePath path="/icons/expui/inline/inlineEditHovered.svg"/>
     <replacePath path="/ide/incomingChangesOn.svg"/>
     <replacePath path="/ide/outgoingChangesOn.svg"/>
+    <replacePath path="/inline/inlineEdit.svg"/>
+    <replacePath path="/inline/inlineEditHovered.svg"/>
     <replacePath path="/modules/edit.svg"/>
     <replacePath path="/toolbarDecorator/edit.svg"/>
     <replacePath path="/toolbarDecorator/mac/edit.svg"/>
@@ -946,6 +966,8 @@
     <replacePath path="/icons/expui/general/expandComponent.svg"/>
     <replacePath path="/icons/expui/inline/expand.svg"/>
     <replacePath path="/icons/expui/inline/expandHover.svg"/>
+    <replacePath path="/inline/expand.svg"/>
+    <replacePath path="/inline/expandHover.svg"/>
     <replacePath path="/toolbar/expand.svg"/>
   </iconReplacement>
 
@@ -1086,6 +1108,8 @@
     <replacePath path="/icons/expui/inline/browse.svg"/>
     <replacePath path="/icons/expui/inline/browseHover.svg"/>
     <replacePath path="/images/ThumbnailDirectory.svg"/>
+    <replacePath path="/inline/browse.svg"/>
+    <replacePath path="/inline/browseHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/folderOpen@20x20.svg">
@@ -1667,6 +1691,8 @@
     <replacePath path="/icons/expui/inline/inlineSettings.svg"/>
     <replacePath path="/icons/expui/inline/inlineSettingsHover.svg"/>
     <replacePath path="/icons/more.svg"/>
+    <replacePath path="/inline/inlineSettings.svg"/>
+    <replacePath path="/inline/inlineSettingsHover.svg"/>
     <replacePath path="/other/settings.svg"/>
   </iconReplacement>
 
@@ -2026,6 +2052,8 @@
     <replacePath path="/icons/refreshMaterializedView.svg"/>
     <replacePath path="/icons/schemaRefresh.svg"/>
     <replacePath path="/icons/structure/autoRefresh.svg"/>
+    <replacePath path="/inline/refresh.svg"/>
+    <replacePath path="/inline/refreshHover.svg"/>
     <replacePath path="/other/refresh.svg"/>
     <replacePath path="/vcs/fetch.svg"/>
   </iconReplacement>
@@ -2041,12 +2069,15 @@
     <replacePath path="/actions/regexHovered.svg"/>
     <replacePath path="/icons/expui/inline/regex.svg"/>
     <replacePath path="/icons/expui/inline/regexHovered.svg"/>
+    <replacePath path="/inline/regex.svg"/>
+    <replacePath path="/inline/regexHovered.svg"/>
     <replacePath path="/other/regex.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/regexSelected.svg">
     <replacePath path="/actions/regexSelected.svg"/>
     <replacePath path="/icons/expui/inline/regexSelected.svg"/>
+    <replacePath path="/inline/regexSelected.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/remote.svg">
@@ -2167,11 +2198,14 @@
     <replacePath path="/actions/searchNewLine.svg"/>
     <replacePath path="/icons/expui/inline/newLine.svg"/>
     <replacePath path="/icons/expui/inline/newLineHover.svg"/>
+    <replacePath path="/inline/newLine.svg"/>
+    <replacePath path="/inline/newLineHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/returnSelected.svg">
     <replacePath path="/actions/searchNewLineHover.svg"/>
     <replacePath path="/icons/expui/inline/newLineHover.svg"/>
+    <replacePath path="/inline/newLineHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/rhombusLarge.svg">
@@ -2320,6 +2354,8 @@
     <replacePath path="/actions/searchWithHistoryHovered.svg"/>
     <replacePath path="/icons/expui/inline/searchHistory.svg"/>
     <replacePath path="/icons/expui/inline/searchHistoryHovered.svg"/>
+    <replacePath path="/inline/searchHistory.svg"/>
+    <replacePath path="/inline/searchHistoryHovered.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/searchEverywhere.svg">
@@ -2887,6 +2923,8 @@
     <replacePath path="/icons/expui/inline/variables.svg"/>
     <replacePath path="/icons/expui/inline/variablesHover.svg"/>
     <replacePath path="/icons/expui/run/variablesTab.svg"/>
+    <replacePath path="/inline/variables.svg"/>
+    <replacePath path="/inline/variablesHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/verified.svg">
@@ -3020,11 +3058,14 @@
     <replacePath path="/actions/wordsHovered.svg"/>
     <replacePath path="/icons/expui/inline/exactWords.svg"/>
     <replacePath path="/icons/expui/inline/exactWordsHovered.svg"/>
+    <replacePath path="/inline/exactWords.svg"/>
+    <replacePath path="/inline/exactWordsHovered.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/wordsSelected.svg">
     <replacePath path="/actions/wordsSelected.svg"/>
     <replacePath path="/icons/expui/inline/exactWordsSelected.svg"/>
+    <replacePath path="/inline/exactWordsSelected.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/wrap.svg">
