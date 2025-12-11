@@ -549,13 +549,29 @@
     <replacePath path="/diff/remove.svg"/>
     <replacePath path="/hierarchy/methodNotDefined.svg"/>
     <replacePath path="/icons/expui/diff/remove.svg"/>
-    <replacePath path="/ide/notifications/close.svg"/>
     <replacePath path="/icons/expui/windows/close.svg"/>
     <replacePath path="/icons/expui/windows/closeActive.svg"/>
     <replacePath path="/icons/expui/windows/closeHover.svg"/>
     <replacePath path="/icons/expui/windows/closeInactive.svg"/>
     <replacePath path="/icons/expui/windows/closeSmall.svg"/>
     <replacePath path="/icons/expui/windows/closeSmallHover.svg"/>
+    <replacePath path="/ide/notifications/close.svg"/>
+    <replacePath path="/linux/close.svg"/>
+    <replacePath path="/linux/closeInactive.svg"/>
+    <replacePath path="/linux/closeSmall.svg"/>
+    <replacePath path="/linux/theme/gnome/close.svg"/>
+    <replacePath path="/linux/theme/gnome/closeInactive.svg"/>
+    <replacePath path="/linux/theme/gnome/closeSmall.svg"/>
+    <replacePath path="/linux/theme/kde/close.svg"/>
+    <replacePath path="/linux/theme/kde/closeInactive.svg"/>
+    <replacePath path="/linux/theme/kde/closeSmall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/closePressed.svg">
+    <replacePath path="/icons/expui/windows/closePressed.svg"/>
+    <replacePath path="/linux/closePressed.svg"/>
+    <replacePath path="/linux/theme/gnome/closePressed.svg"/>
+    <replacePath path="/linux/theme/kde/closePressed.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/closeSmall.svg">
@@ -1252,9 +1268,11 @@
     <replacePath path="/icons/expui/gradle.svg"/>
     <replacePath path="/icons/expui/toolwindows/gradle.svg"/>
     <replacePath path="/icons/gradle.svg"/>
+    <replacePath path="/icons/toolWindowGradle.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/gradle@20x20.svg">
+    <replacePath path="/icons/expui/gradle@20x20.svg"/>
     <replacePath path="/icons/expui/toolwindows/gradle@20x20.svg"/>
   </iconReplacement>
 
@@ -1635,15 +1653,23 @@
     <replacePath path="/linux/maximize.svg"/>
     <replacePath path="/linux/maximizeInactive.svg"/>
     <replacePath path="/linux/maximizeSmall.svg"/>
-    <replacePath path="/linux/themes/gnome/maximize.svg"/>
-    <replacePath path="/linux/themes/gnome/maximizeInactive.svg"/>
-    <replacePath path="/linux/themes/gnome/maximizeSmall.svg"/>
-    <replacePath path="/linux/themes/kde/maximize.svg"/>
-    <replacePath path="/linux/themes/kde/maximizeInactive.svg"/>
-    <replacePath path="/linux/themes/kde/maximizeSmall.svg"/>
+    <replacePath path="/linux/theme/gnome/maximize.svg"/>
+    <replacePath path="/linux/theme/gnome/maximizeInactive.svg"/>
+    <replacePath path="/linux/theme/gnome/maximizeSmall.svg"/>
+    <replacePath path="/linux/theme/kde/maximize.svg"/>
+    <replacePath path="/linux/theme/kde/maximizeInactive.svg"/>
+    <replacePath path="/linux/theme/kde/maximizeSmall.svg"/>
     <replacePath path="/windows/maximize.svg"/>
     <replacePath path="/windows/maximizeInactive.svg"/>
     <replacePath path="/windows/maximizeSmall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/maximizePressed.svg">
+    <replacePath path="/icons/expui/windows/maximizePressed.svg"/>
+    <replacePath path="/linux/maximizePressed.svg"/>
+    <replacePath path="/linux/theme/gnome/maximizePressed.svg"/>
+    <replacePath path="/linux/theme/kde/maximizePressed.svg"/>
+    <replacePath path="/windows/maximizePressed.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/maven.svg">
@@ -1722,15 +1748,23 @@
     <replacePath path="/linux/minimize.svg"/>
     <replacePath path="/linux/minimizeInactive.svg"/>
     <replacePath path="/linux/minimizeSmall.svg"/>
-    <replacePath path="/linux/themes/gnome/minimize.svg"/>
-    <replacePath path="/linux/themes/gnome/minimizeInactive.svg"/>
-    <replacePath path="/linux/themes/gnome/minimizeSmall.svg"/>
-    <replacePath path="/linux/themes/kde/minimize.svg"/>
-    <replacePath path="/linux/themes/kde/minimizeInactive.svg"/>
-    <replacePath path="/linux/themes/kde/minimizeSmall.svg"/>
+    <replacePath path="/linux/theme/gnome/minimize.svg"/>
+    <replacePath path="/linux/theme/gnome/minimizeInactive.svg"/>
+    <replacePath path="/linux/theme/gnome/minimizeSmall.svg"/>
+    <replacePath path="/linux/theme/kde/minimize.svg"/>
+    <replacePath path="/linux/theme/kde/minimizeInactive.svg"/>
+    <replacePath path="/linux/theme/kde/minimizeSmall.svg"/>
     <replacePath path="/windows/minimize.svg"/>
     <replacePath path="/windows/minimizeInactive.svg"/>
     <replacePath path="/windows/minimizeSmall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/minimizePressed.svg">
+    <replacePath path="/icons/expui/windows/minimizePressed.svg"/>
+    <replacePath path="/linux/minimizePressed.svg"/>
+    <replacePath path="/linux/theme/gnome/minimizePressed.svg"/>
+    <replacePath path="/linux/theme/kde/minimizePressed.svg"/>
+    <replacePath path="/windows/minimizePressed.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/mnemonic.svg">
@@ -3176,18 +3210,26 @@
     <replacePath path="/linux/restoreHover.svg"/>
     <replacePath path="/linux/restoreInactive.svg"/>
     <replacePath path="/linux/restoreSmall.svg"/>
-    <replacePath path="/linux/themes/gnome/restore.svg"/>
-    <replacePath path="/linux/themes/gnome/restoreHover.svg"/>
-    <replacePath path="/linux/themes/gnome/restoreInactive.svg"/>
-    <replacePath path="/linux/themes/gnome/restoreSmall.svg"/>
-    <replacePath path="/linux/themes/kde/restore.svg"/>
-    <replacePath path="/linux/themes/kde/restoreHover.svg"/>
-    <replacePath path="/linux/themes/kde/restoreInactive.svg"/>
-    <replacePath path="/linux/themes/kde/restoreSmall.svg"/>
+    <replacePath path="/linux/theme/gnome/restore.svg"/>
+    <replacePath path="/linux/theme/gnome/restoreHover.svg"/>
+    <replacePath path="/linux/theme/gnome/restoreInactive.svg"/>
+    <replacePath path="/linux/theme/gnome/restoreSmall.svg"/>
+    <replacePath path="/linux/theme/kde/restore.svg"/>
+    <replacePath path="/linux/theme/kde/restoreHover.svg"/>
+    <replacePath path="/linux/theme/kde/restoreInactive.svg"/>
+    <replacePath path="/linux/theme/kde/restoreSmall.svg"/>
     <replacePath path="/windows/restore.svg"/>
     <replacePath path="/windows/restoreHover.svg"/>
     <replacePath path="/windows/restoreInactive.svg"/>
     <replacePath path="/windows/restoreSmall.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/windowsPressed.svg">
+    <replacePath path="/icons/expui/windows/restorePressed.svg"/>
+    <replacePath path="/linux/restorePressed.svg"/>
+    <replacePath path="/linux/theme/gnome/restorePressed.svg"/>
+    <replacePath path="/linux/theme/kde/restorePressed.svg"/>
+    <replacePath path="/windows/restorePressed.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/words.svg">
