@@ -464,7 +464,6 @@
     <replacePath path="/icons/expui/vcs/changelist.svg"/>
     <replacePath path="/icons/expui/vcs/changes.svg"/>
     <replacePath path="/icons/newui/changeset.svg"/>
-    <replacePath path="/toolwindows/toolWindowChanges.svg"/>
     <replacePath path="/vcs/changelist.svg"/>
     <replacePath path="/vcs/changes.svg"/>
   </iconReplacement>
@@ -1218,8 +1217,6 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/git.svg">
-    <replacePath path="/icons/branch.svg"/>
-    <replacePath path="/icons/branch.svg"/>
     <replacePath path="/icons/branch.svg"/>
     <replacePath path="/icons/expui/general/vcs.svg"/>
     <replacePath path="/icons/expui/toolwindows/vcs.svg"/>
