@@ -27,7 +27,7 @@
     <replacePath path="/icons/expui/table/pagination.svg"/>
     <replacePath path="/icons/pagination.svg"/>
     <replacePath path="/icons/table/pagination.svg"/>
-    <replacePath path="/icons/table/pagination.svg"/>
+    <replacePath path="/modules/output.svg"/>
     <replacePath path="/table/pagination.svg"/>
   </iconReplacement>
 
@@ -58,6 +58,7 @@
     <replacePath path="/icons/rails/addAny.svg"/>
     <replacePath path="/inline/inlineAdd.svg"/>
     <replacePath path="/inline/inlineAddHover.svg"/>
+    <replacePath path="/modules/addContentEntry.svg"/>
     <replacePath path="/other/add_sdk.svg"/>
     <replacePath path="/toolbar/addSlot.svg"/>
     <replacePath path="/toolbarDecorator/add.svg"/>
@@ -130,6 +131,10 @@
   <iconReplacement icon="/outline/android@20x20.svg">
     <replacePath path="/icons/expui/toolwindows/profilerAndroid@20x20.svg"/>
     <replacePath path="/icons/expui/toolwindows/toolWindowProfilerAndroid@20x20.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/annotation.svg">
+    <replacePath path="/modules/extAnnotation.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/annotation@14x14.svg">
@@ -565,6 +570,8 @@
     <replacePath path="/linux/theme/kde/close.svg"/>
     <replacePath path="/linux/theme/kde/closeInactive.svg"/>
     <replacePath path="/linux/theme/kde/closeSmall.svg"/>
+    <replacePath path="/modules/deleteContentFolder.svg"/>
+    <replacePath path="/modules/deleteContentRoot.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/closePressed.svg">
@@ -590,6 +597,8 @@
     <replacePath path="/linux/closeHovered.svg"/>
     <replacePath path="/linux/theme/gnome/close.svg"/>
     <replacePath path="/linux/theme/gnome/closeHovered.svg"/>
+    <replacePath path="/modules/deleteContentFolderRollover.svg"/>
+    <replacePath path="/modules/deleteContentRootRollover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/cmd.svg">
@@ -605,6 +614,7 @@
     <replacePath path="/javaee/javaee/newui/applicationXml.svg"/>
     <replacePath path="/javaee/javaee/newui/webXml.svg"/>
     <replacePath path="/javaee/javaee/web_xml.svg"/>
+    <replacePath path="/modules/sources.svg"/>
     <replacePath path="/toolwindows/toolWindowJsonPath.svg"/>
   </iconReplacement>
 
@@ -1150,29 +1160,6 @@
     <replacePath path="/icons/expui/image/fitContent.svg"/>
   </iconReplacement>
 
-  <iconReplacement icon="/outline/folderGenerated.svg">
-    <replacePath path="/actions/generated.svg"/>
-    <replacePath path="/actions/generatedFolder.svg"/>
-    <replacePath path="/icons/expui/actions/generated.svg"/>
-    <replacePath path="/modules/generatedFolder.svg"/>
-  </iconReplacement>
-
-  <iconReplacement icon="/outline/forward.svg">
-    <replacePath path="/actions/findForward.svg"/>
-    <replacePath path="/actions/forward.svg"/>
-    <replacePath path="/actions/nextfile.svg"/>
-    <replacePath path="/actions/play_forward.svg"/>
-    <replacePath path="/debugger/nextStatement.svg"/>
-    <replacePath path="/icons/expui/actions/playForward.svg"/>
-    <replacePath path="/icons/expui/breakpoints/nextStatement.svg"/>
-    <replacePath path="/icons/expui/general/right.svg"/>
-    <replacePath path="/icons/expui/playForward.svg"/>
-    <replacePath path="/icons/expui/run/nextStatement.svg"/>
-    <replacePath path="/icons/play_forward.svg"/>
-    <replacePath path="/hierarchy/base.svg"/>
-    <replacePath path="/other/forward.svg"/>
-  </iconReplacement>
-
   <iconReplacement icon="/outline/folder.svg">
     <replacePath path="/actions/menu-folder.svg"/>
     <replacePath path="/actions/openDisk.svg"/>
@@ -1183,6 +1170,31 @@
     <replacePath path="/images/ThumbnailDirectory.svg"/>
     <replacePath path="/inline/browse.svg"/>
     <replacePath path="/inline/browseHover.svg"/>
+    <replacePath path="/modules/folderClosed.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderCode.svg">
+    <replacePath path="/modules/generatedSourceRoot.svg"/>
+    <replacePath path="/modules/sourceRoot.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderEdit.svg">
+    <replacePath path="/modules/editFolder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderExcluded.svg">
+    <replacePath path="/modules/addExcludedRoot.svg"/>
+    <replacePath path="/modules/excludeRoot.svg"/>
+    <replacePath path="/modules/unloadedModule.svg"/>
+    <replacePath path="/modules/unmarkWebroot.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderGenerated.svg">
+    <replacePath path="/actions/generated.svg"/>
+    <replacePath path="/actions/generatedFolder.svg"/>
+    <replacePath path="/icons/expui/actions/generated.svg"/>
+    <replacePath path="/modules/generatedFolder.svg"/>
+    <replacePath path="/modules/excludedGeneratedRoot.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/folderOpen@20x20.svg">
@@ -1200,9 +1212,40 @@
     <replacePath path="/icons/expui/toolwindows/fileSystem@20x20.svg"/>
   </iconReplacement>
 
+  <iconReplacement icon="/outline/folderResources.svg">
+    <replacePath path="/modules/resourcesRoot.svg"/>
+  </iconReplacement>
+
   <iconReplacement icon="/outline/folderSettings.svg">
     <replacePath path="/icons/expui/build/taskGroup.svg"/>
     <replacePath path="/tasks/taskGroup.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderSource.svg">
+    <replacePath path="/modules/sourceFolder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/folderTest.svg">
+    <replacePath path="/modules/generatedTestRoot.svg"/>
+    <replacePath path="/modules/testResourcesRoot.svg"/>
+    <replacePath path="/modules/testRoot.svg"/>
+    <replacePath path="/modules/testSourceFolder.svg"/>
+  </iconReplacement>
+
+  <iconReplacement icon="/outline/forward.svg">
+    <replacePath path="/actions/findForward.svg"/>
+    <replacePath path="/actions/forward.svg"/>
+    <replacePath path="/actions/nextfile.svg"/>
+    <replacePath path="/actions/play_forward.svg"/>
+    <replacePath path="/debugger/nextStatement.svg"/>
+    <replacePath path="/icons/expui/actions/playForward.svg"/>
+    <replacePath path="/icons/expui/breakpoints/nextStatement.svg"/>
+    <replacePath path="/icons/expui/general/right.svg"/>
+    <replacePath path="/icons/expui/playForward.svg"/>
+    <replacePath path="/icons/expui/run/nextStatement.svg"/>
+    <replacePath path="/icons/play_forward.svg"/>
+    <replacePath path="/hierarchy/base.svg"/>
+    <replacePath path="/other/forward.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/function.svg">
@@ -1409,6 +1452,7 @@
     <replacePath path="/icons/expui/general/previewHorizontally.svg"/>
     <replacePath path="/icons/expui/general/splitHorizontally.svg"/>
     <replacePath path="/rider/toolbar/splitBottom.svg"/>
+    <replacePath path="/modules/split.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/ignoredTest.svg">
@@ -1791,6 +1835,7 @@
     <replacePath path="/javaee/javaee/newui/javaeeAppModule@14x14.svg"/>
     <replacePath path="/javaee/webModule.svg"/>
     <replacePath path="/modules/modulesNode.svg"/>
+    <replacePath path="/modules/webRoot.svg"/>
     <replacePath path="/nodes/Module.svg"/>
     <replacePath path="/nodes/ModuleOpen.svg"/>
     <replacePath path="/nodes/javaModule.svg"/>
@@ -2139,6 +2184,7 @@
     <replacePath path="/icons/expui/actions/showReadAccess.svg"/>
     <replacePath path="/icons/expui/general/readerMode.svg"/>
     <replacePath path="/icons/expui/objectBrowser/showLibraryContents.svg"/>
+    <replacePath path="/modules/library.svg"/>
     <replacePath path="/objectBrowser/showLibraryContents.svg"/>
   </iconReplacement>
 
@@ -2831,6 +2877,8 @@
     <replacePath path="/icons/labels_gutter.svg"/>
     <replacePath path="/icons/newui/labelsGutter.svg"/>
     <replacePath path="/icons/setLabel.svg"/>
+    <replacePath path="/modules/setPackagePrefix.svg"/>
+    <replacePath path="/modules/setPackagePrefixRollover.svg"/>
     <replacePath path="/other/branchLabel.svg"/>
     <replacePath path="/vcs/new/currentBranchLabel.svg"/>
   </iconReplacement>
@@ -3009,7 +3057,7 @@
     <replacePath path="/icons/expui/user.svg"/>
     <replacePath path="/icons/gutter/user.svg"/>
     <replacePath path="/icons/user.svg"/>
-    <replacePath path="/icons/user.svg"/>
+    <replacePath path="/modules/types/userDefined.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/users.svg">
