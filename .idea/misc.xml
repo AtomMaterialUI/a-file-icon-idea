@@ -35,9 +35,10 @@
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
+    <option name="myOrdered" value="true" />
     <option name="myNullables">
       <value>
-        <list size="17">
+        <list size="18">
           <item index="0" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
@@ -55,12 +56,13 @@
           <item index="14" class="java.lang.String" itemvalue="org.jspecify.nullness.Nullable" />
           <item index="15" class="java.lang.String" itemvalue="jakarta.annotation.Nullable" />
           <item index="16" class="java.lang.String" itemvalue="org.jspecify.annotations.Nullable" />
+          <item index="17" class="java.lang.String" itemvalue="android.annotation.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="17">
+        <list size="18">
           <item index="0" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
           <item index="1" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
           <item index="2" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
@@ -78,12 +80,13 @@
           <item index="14" class="java.lang.String" itemvalue="jakarta.annotation.Nonnull" />
           <item index="15" class="java.lang.String" itemvalue="org.jspecify.nullness.NonNull" />
           <item index="16" class="java.lang.String" itemvalue="org.jspecify.annotations.NonNull" />
+          <item index="17" class="java.lang.String" itemvalue="android.annotation.NonNull" />
         </list>
       </value>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-21" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK" />
   <component name="SuppressKotlinCodeStyleNotification">
     <option name="disableForAll" value="true" />
   </component>
