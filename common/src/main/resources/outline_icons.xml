@@ -1229,8 +1229,6 @@
 
   <iconReplacement icon="/outline/folderExcluded.svg">
     <replacePath path="/modules/addExcludedRoot.svg"/>
-    <replacePath path="/modules/excludeRoot.svg"/>
-    <replacePath path="/modules/unloadedModule.svg"/>
     <replacePath path="/modules/unmarkWebroot.svg"/>
     <replacePath path="/nodes/unmarkWebroot.svg"/>
   </iconReplacement>
@@ -2920,7 +2918,6 @@
     <replacePath path="/ide/feedbackRatingFocusedOn.svg"/>
     <replacePath path="/ide/feedbackRatingOn.svg"/>
     <replacePath path="/ide/feedbackRatingOnFocused.svg"/>
-    <replacePath path="/ide/rating.svg"/>
     <replacePath path="/nodes/favorite.svg"/>
     <replacePath path="/nodes/favoriteOnHover.svg"/>
     <replacePath path="/toolwindows/toolWindowFavorites.svg"/>
@@ -2930,14 +2927,6 @@
 
   <iconReplacement icon="/outline/star@20x20.svg">
     <replacePath path="/icons/expui/toolwindows/favorites@20x20.svg"/>
-  </iconReplacement>
-
-  <iconReplacement icon="/outline/starHalf.svg">
-    <replacePath path="/ide/rating1.svg"/>
-    <replacePath path="/ide/rating2.svg"/>
-    <replacePath path="/ide/rating3.svg"/>
-    <replacePath path="/ide/rating4.svg"/>
-    <replacePath path="/nodes/notFavoriteOnHover.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/status.svg">
