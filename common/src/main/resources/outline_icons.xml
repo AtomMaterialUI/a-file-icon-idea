@@ -1943,6 +1943,7 @@
     <replacePath path="/nodes/javaModuleRoot.svg"/>
     <replacePath path="/nodes/moduleGroup.svg"/>
     <replacePath path="/nodes/ideaModule.svg"/>
+    <replacePath path="/nodes/package.svg"/>
     <replacePath path="/objectBrowser/flattenModules.svg"/>
     <replacePath path="/objectBrowser/showModules.svg"/>
   </iconReplacement>
@@ -2098,7 +2099,6 @@
 
   <iconReplacement icon="/outline/package.svg">
     <replacePath path="/icons/expui/objectBrowser/flattenPackages.svg"/>
-    <replacePath path="/nodes/package.svg"/>
     <replacePath path="/objectBrowser/flattenPackages.svg"/>
   </iconReplacement>
 
