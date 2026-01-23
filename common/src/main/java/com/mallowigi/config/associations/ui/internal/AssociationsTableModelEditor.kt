@@ -153,7 +153,7 @@ class AssociationsTableModelEditor(
     type: IconType,
   ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField, type)
 
-  /** Inits the unfiltered list (before any search) */
+  /** Inits the unfiltered list (before any search). */
   private fun initUnfilteredList() {
     myList.clear()
     myList.addAll(model.items)
@@ -180,7 +180,7 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Convenience method to disable/enable the table
+   * Convenience method to disable/enable the table.
    *
    * @param isEnabled new enabled state
    * @return self
@@ -191,7 +191,7 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Returns the [AssociationTableModel]
+   * Returns the [AssociationTableModel].
    *
    * @return the [AssociationTableModel]
    */
@@ -201,7 +201,7 @@ class AssociationsTableModelEditor(
   fun createComponent(): JComponent = toolbarDecorator.createPanel()
 
   /**
-   * Apply changes to elements
+   * Apply changes to elements.
    *
    * @return the new items after changes
    */
@@ -225,14 +225,14 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Return the model items
+   * Return the model items.
    *
    * @return the model items
    */
   override fun getItems(): List<RegexAssociation> = model.items
 
   /**
-   * Resets the [model]'s items
+   * Resets the [model]'s items.
    *
    * @param originalItems the elements
    */
@@ -259,7 +259,7 @@ class AssociationsTableModelEditor(
   }
 
   /**
-   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on the filtered list
+   * Overrides [silentlyReplaceItem] - we need to modify the unfiltered list when a change occurs since we're working on the filtered list.
    *
    * @param oldItem item changed (in the filtered list)
    * @param newItem new item to insert
@@ -295,14 +295,14 @@ class AssociationsTableModelEditor(
       }
 
     /**
-     * We display only the filtered items
+     * We display only the filtered items.
      *
      * @return the [filteredItems]
      */
     override fun getItems(): MutableList<RegexAssociation> = filteredItems
 
     /**
-     * When items are set, we reset the table's items
+     * When items are set, we reset the table's items.
      *
      * @param items
      */
@@ -313,7 +313,7 @@ class AssociationsTableModelEditor(
     }
 
     /**
-     * Remove a row @unused
+     * Remove a row @unused.
      *
      * @param index
      */
@@ -332,7 +332,7 @@ class AssociationsTableModelEditor(
     }
 
     /**
-     * Set the value at the given row and column using the [helper]
+     * Set the value at the given row and column using the [helper].
      *
      * @param aValue value to set
      * @param rowIndex row number

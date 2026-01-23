@@ -54,7 +54,7 @@ class BundledAssociations {
   }
 
   /**
-   * Get a default [Association] by name and [IconType]
+   * Get a default [Association] by name and [IconType].
    *
    * @param name the name
    * @param iconType the [IconType]
@@ -62,7 +62,7 @@ class BundledAssociations {
   fun getDefault(name: String, iconType: IconType): RegexAssociation? = getMap(iconType)[name]
 
   /**
-   * Get the list of [RegexAssociation]s
+   * Get the list of [RegexAssociation]s.
    *
    * @param iconType the [IconType]
    * @return the list
@@ -70,20 +70,20 @@ class BundledAssociations {
   fun getList(iconType: IconType): List<RegexAssociation> = getMap(iconType).values.toList()
 
   /**
-   * Returns the relevant list according to the [IconType]
+   * Returns the relevant list according to the [IconType].
    *
    * @param iconType
    * @return
    */
   fun getMap(iconType: IconType): MutableMap<String, RegexAssociation> = when (iconType) {
-    IconType.FILE -> defaultFileAssociations
-    IconType.FOLDER -> defaultFolderAssociations
+    IconType.FILE        -> defaultFileAssociations
+    IconType.FOLDER      -> defaultFolderAssociations
     IconType.FOLDER_OPEN -> defaultFolderOpenAssociations
-    IconType.PSI -> defaultPsiAssociations
+    IconType.PSI         -> defaultPsiAssociations
   }
 
   /**
-   * Checks if an [Association] is already registered in the defaults
+   * Checks if an [Association] is already registered in the defaults.
    *
    * @param name assoc name
    * @param iconType the [IconType]
@@ -106,7 +106,7 @@ class BundledAssociations {
   }
 
   /**
-   * Insert a new default [RegexAssociation]
+   * Insert a new default [RegexAssociation].
    *
    * @param name assoc name
    * @param assoc the [RegexAssociation]
@@ -118,7 +118,7 @@ class BundledAssociations {
     val map = getMap(iconType)
 
     map[name] = assoc
-    map[name]?.enabled = true
+    map[name]?.enabled = true//(assoc.defaultState != "false")
   }
 
   companion object {

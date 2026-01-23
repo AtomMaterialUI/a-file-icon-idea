@@ -31,7 +31,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 import java.io.Serializable
 
 /**
- * Represents an Association
+ * Represents an Association.
  *
  * @property enabled whether the association is used
  * @property touched whether the association is touched by the user
@@ -49,6 +49,10 @@ import java.io.Serializable
 abstract class Association @PropertyMapping() internal constructor() : Serializable, Comparable<Association> {
   @field:Property
   var enabled: Boolean = true
+
+  @field:Property
+  @XStreamAsAttribute
+  var defaultState: String = ""
 
   @field:Property
   @XStreamAsAttribute
@@ -92,7 +96,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
     get() = name.isEmpty() || icon.isEmpty()
 
   /**
-   * Check whether the file matches the association
+   * Check whether the file matches the association.
    *
    * @param file file information
    * @return true if matches
@@ -100,7 +104,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
   abstract fun matches(file: FileInfo): Boolean
 
   /**
-   * Apply changes to the association
+   * Apply changes to the association.
    *
    * @param other the other assoc to apply from
    */
