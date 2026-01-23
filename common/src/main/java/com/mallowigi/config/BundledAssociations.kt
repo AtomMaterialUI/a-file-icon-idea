@@ -118,7 +118,7 @@ class BundledAssociations {
     val map = getMap(iconType)
 
     map[name] = assoc
-    map[name]?.enabled = true//(assoc.defaultState != "false")
+    map[name]?.enabled = (assoc.defaultState != "false") // true
   }
 
   companion object {

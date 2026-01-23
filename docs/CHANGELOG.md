@@ -2,6 +2,17 @@
 
 ----
 
+## 104.0.0 (10.4.0)
+
+### Features
+
+- Disable most associations except the most popular ones to improve performance
+- Add more New UI Icons
+
+### Fixes
+
+- Support for 2026.1 EAP
+
 ## 103.0.0 (10.3.0)
 
 ### Fixes
