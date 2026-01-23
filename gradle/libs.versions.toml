@@ -3,9 +3,9 @@
 annotations = "26.0.2-1"
 
 # plugins
-kotlin = "2.2.10"
+kotlin = "2.3.0"
 changelog = "2.4.0"
-gradleIntelliJPlugin = "2.9.0"
+gradleIntelliJPlugin = "2.10.5"
 detekt = "1.23.8"
 ktlint = "13.1.0"
 
