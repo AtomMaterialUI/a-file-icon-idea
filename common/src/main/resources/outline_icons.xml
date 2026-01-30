@@ -170,6 +170,8 @@
 
   <iconReplacement icon="/outline/app.svg">
     <replacePath path="/icons/expui/runConfigurations/application.svg"/>
+    <replacePath path="/runConfigurations/applet.svg"/>
+    <replacePath path="/runConfigurations/application.svg"/>
     <replacePath path="/icons/softwareFramework.svg"/>
     <replacePath path="/rider/runConfigurations/application.svg"/>
     <replacePath path="/runConfigurations/application.svg"/>
@@ -2876,6 +2878,7 @@
     <replacePath path="/nodes/servlet.svg"/>
     <replacePath path="/toolwindows/webToolWindow.svg"/>
     <replacePath path="/webreferences/server.svg"/>
+    <replacePath path="/remote/serversToolWindow.svg"/>
   </iconReplacement>
 
   <iconReplacement icon="/outline/server@20x20.svg">
