@@ -31,7 +31,8 @@ class OutlineIconsPatcher : IconPathPatcher() {
   private val outlineIcons: IconReplacements = IconReplacementsFactory.create("/outline_icons.xml")
 
   /** Whether the patcher should be enabled or not. */
-  var enabled: Boolean = AtomSettingsConfig.instance.isEnabledUIIcons && AtomSettingsConfig.instance.isNewIconsEnabled
+  val enabled: Boolean
+    get() = AtomSettingsConfig.instance.isEnabledUIIcons && AtomSettingsConfig.instance.isNewIconsEnabled
 
   /**
    * Get the plugin context class loader if an icon needs to be patched.
