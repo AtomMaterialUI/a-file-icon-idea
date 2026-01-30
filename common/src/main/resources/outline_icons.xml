@@ -647,6 +647,7 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/collapse.svg">
+    <replacePath path="/actions/collapseall.svg"/>
     <replacePath path="/general/collapseComponent.svg"/>
     <replacePath path="/general/collapseComponentHover.svg"/>
     <replacePath path="/icons/expui/general/collapseComponent.svg"/>
@@ -659,7 +660,6 @@
   </iconReplacement>
 
   <iconReplacement icon="/outline/collapseAll.svg">
-    <replacePath path="/actions/collapseall.svg"/>
     <replacePath path="/general/collapseAll.svg"/>
     <replacePath path="/general/collapseAllHover.svg"/>
     <replacePath path="/icons/expui/general/collapseAll.svg"/>

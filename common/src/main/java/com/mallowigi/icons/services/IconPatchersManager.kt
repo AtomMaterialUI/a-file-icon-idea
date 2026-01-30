@@ -34,6 +34,7 @@ import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.util.ui.JBUI
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
+import com.mallowigi.icons.replacements.OutlineIconsPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 import javax.swing.UIManager
 
@@ -67,6 +68,7 @@ class IconPatchersManager {
   /** Update patchers on save. */
   fun updateIcons() {
     AbstractIconPatcher.clearCache()
+    OutlineIconsPatcher.clearCache()
     fixRunIcons()
 
     val atomFileIconsConfig = AtomSettingsConfig.instance

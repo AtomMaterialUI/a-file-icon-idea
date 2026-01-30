@@ -57,10 +57,11 @@ class OutlineIconsPatcher : IconPathPatcher() {
    * @return the patched path to the plugin icon, or the original path if the icon patcher is disabled
    */
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
+    if (!enabled) return null
     if (CACHE.containsKey(path)) return CACHE[path]
 
     val replacement = outlineIcons.getReplacement(path)
-    if (replacement == null || !enabled) return null
+    if (replacement == null) return null
 
     if (javaClass.getResource(replacement) == null) return null
 
@@ -71,5 +72,12 @@ class OutlineIconsPatcher : IconPathPatcher() {
   companion object {
     private val CACHE: MutableMap<String, String?> = HashMap(100)
     private val CL_CACHE: MutableMap<String, ClassLoader?> = HashMap(100)
+
+    /** Clear all caches. */
+    @JvmStatic
+    fun clearCache() {
+      CACHE.clear()
+      CL_CACHE.clear()
+    }
   }
 }
