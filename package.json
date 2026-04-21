@@ -6,7 +6,7 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "svgo": "^3.3.2"
+    "svgo": "^3.3.3"
   },
   "scripts": {
     "svgo": "svgo -f iconGenerator/assets -r -o src/main/resources/assets"
