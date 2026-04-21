@@ -12,9 +12,9 @@
     "prebuild": "npm run copy-icons"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.35.2",
-    "@catppuccin/starlight": "^1.0.2",
-    "astro": "^5.18.1",
+    "@astrojs/starlight": "^0.38.3",
+    "@catppuccin/starlight": "^2.0.1",
+    "astro": "^6.1.8",
     "glob": "^11.1.0",
     "sharp": "^0.34.2"
   }
