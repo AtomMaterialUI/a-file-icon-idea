@@ -55,6 +55,12 @@
                              parentId="AtomHomeConfigurable"
                              id="AtomSelectConfig"/>
 
+    <projectConfigurable instance="com.mallowigi.config.select.AtomProjectSelectConfigurable"
+                         key="AtomProjectSelectForm.title"
+                         groupId="appearance" dynamic="true"
+                         parentId="AtomSelectConfig"
+                         id="AtomProjectSelectConfig"/>
+
 
     <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
                            id="AtomConfigTopHitProvider"/>

@@ -32,6 +32,7 @@ import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiUtilCore
 import com.intellij.util.indexing.FileBasedIndex
 import com.mallowigi.config.AtomSettingsConfig
+import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
 import com.mallowigi.icons.associations.FileAssociationsIndex
@@ -43,7 +44,7 @@ import javax.swing.Icon
 /** Abstract file icon provider. */
 abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   /**
-   * Get the icon for the given psiElement
+   * Get the icon for the given psiElement.
    *
    * @param element The psiElement to get the icon for
    * @param flags The flags (unused)
@@ -55,7 +56,7 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   }
 
   /**
-   * Find icon for a psiElement
+   * Find icon for a psiElement.
    *
    * @param element the psi element
    * @return icon if found
@@ -77,27 +78,39 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
     CacheIconProvider.instance.iconCache.getOrPut(association.icon) { getIcon(association.icon) }
 
   /** Finds and retrieves the first matching association for the given file within the specified project scope. */
-  private fun findAssociation(file: FileInfo, project: Project): Association? = when {
-    getType() == IconType.FOLDER                -> getSource().findAssociation(file)
-    AtomSettingsConfig.instance.disableIndexing -> getSource().findAssociation(file)
-    CACHE.containsKey(file.path)                -> CACHE[file.path]
-    else                                        -> {
-      val fileBasedIndex = FileBasedIndex.getInstance()
-      val associations = fileBasedIndex.getValues(
-        FileAssociationsIndex.NAME,
-        file.path,
-        GlobalSearchScope.projectScope(project)
-      )
+  private fun findAssociation(file: FileInfo, project: Project): Association? {
+    val projectSelectConfig = AtomProjectSelectConfig.getInstance(project)
+    val projectSource = when (getType()) {
+      IconType.FILE        -> projectSelectConfig.selectedFileAssociations
+      IconType.FOLDER      -> projectSelectConfig.selectedFolderAssociations
+      IconType.FOLDER_OPEN -> projectSelectConfig.selectedFolderOpenAssociations
+      else                 -> projectSelectConfig.selectedFileAssociations
+    }
+    val projectAssociation = projectSource.findAssociation(file)
+    if (projectAssociation != null) return projectAssociation
 
-      val association = associations.firstOrNull()
-      if (association != null) CACHE[file.path] = association
+    return when {
+      getType() == IconType.FOLDER                -> getSource().findAssociation(file)
+      AtomSettingsConfig.instance.disableIndexing -> getSource().findAssociation(file)
+      CACHE.containsKey(file.path)                -> CACHE[file.path]
+      else                                        -> {
+        val fileBasedIndex = FileBasedIndex.getInstance()
+        val associations = fileBasedIndex.getValues(
+          FileAssociationsIndex.NAME,
+          file.path,
+          GlobalSearchScope.projectScope(project)
+        )
 
-      association
+        val association = associations.firstOrNull()
+        if (association != null) CACHE[file.path] = association
+
+        association
+      }
     }
   }
 
   /**
-   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider
+   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider.
    *
    * @param element the psi element
    * @return true if element is of type defined by this provider
@@ -105,21 +118,21 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   abstract fun isOfType(element: PsiElement): Boolean
 
   /**
-   * Determine whether this provider is applicable
+   * Determine whether this provider is applicable.
    *
    * @return true if not applicable
    */
   abstract fun isNotApplicable(): Boolean
 
   /**
-   * Get the source of associations
+   * Get the source of associations.
    *
    * @return the [Associations] source
    */
   abstract fun getSource(): Associations
 
   /**
-   * Get icon of an icon path
+   * Get icon of an icon path.
    *
    * @param iconPath the icon path to check
    * @return icon if there is an [Association] for this path
@@ -130,7 +143,7 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
   abstract fun getType(): IconType
 
   /**
-   * Whether this provider is for default associations
+   * Whether this provider is for default associations.
    *
    * @return true if default assoc provider
    */

@@ -31,6 +31,7 @@ import com.intellij.util.io.DataExternalizer
 import com.intellij.util.io.EnumeratorStringDescriptor
 import com.intellij.util.io.KeyDescriptor
 import com.mallowigi.config.AtomSettingsConfig
+import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
@@ -98,6 +99,7 @@ class FileAssociationsIndex : FileBasedIndexExtension<String, RegexAssociation>(
       val path = file.path
       val fileInfo = VirtualFileInfo(file)
       val isFolder = file.isDirectory
+      val project = inputData.project
 
       when {
         // isFolder && !AtomSettingsConfig.instance.isEnabledDirectories -> return emptyMap()
@@ -105,13 +107,15 @@ class FileAssociationsIndex : FileBasedIndexExtension<String, RegexAssociation>(
 
         // Find association for the given path
         else                                                     -> {
-          val fileAssociations = AtomSelectConfig.instance.selectedFileAssociations
+          val projectSelectConfig = AtomProjectSelectConfig.getInstance(project)
+          val projectFileAssociations = projectSelectConfig.selectedFileAssociations
+          val globalFileAssociations = AtomSelectConfig.instance.selectedFileAssociations
           // val folderAssociations = AtomSelectConfig.instance.selectedFolderAssociations
 
           // Find association for the given path
           val association = when {
             // isFolder -> folderAssociations.findAssociation(fileInfo)
-            else -> fileAssociations.findAssociation(fileInfo)
+            else -> projectFileAssociations.findAssociation(fileInfo) ?: globalFileAssociations.findAssociation(fileInfo)
           }
 
           if (association != null && association is RegexAssociation) {
@@ -125,7 +129,7 @@ class FileAssociationsIndex : FileBasedIndexExtension<String, RegexAssociation>(
 
   companion object {
     val NAME = ID.create<String, RegexAssociation>("com.mallowigi.icons.associations.fileAssociationsIndex")
-    const val VERSION = 3
+    const val VERSION = 4
 
   }
 }
