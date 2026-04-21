@@ -85,6 +85,7 @@ class AtomProjectSelectConfigurable(project: Project) : BoundSearchableConfigura
     NameEditableColumnInfo(this, true),
     PatternEditableColumnInfo(this, true),
     FileIconEditableColumnInfo(this, true),
+    CustomIconColumnInfo(),
     PriorityColumnInfo(this, true),
     IconColorEditableColumnInfo(this)
   )
@@ -95,6 +96,7 @@ class AtomProjectSelectConfigurable(project: Project) : BoundSearchableConfigura
     NameEditableColumnInfo(this, true),
     PatternEditableColumnInfo(this, true),
     FolderIconEditableColumnInfo(this, true),
+    CustomIconColumnInfo(),
     PriorityColumnInfo(this, true),
     FolderColorEditableColumnInfo(this),
     FolderIconColorEditableColumnInfo(this)
@@ -106,6 +108,7 @@ class AtomProjectSelectConfigurable(project: Project) : BoundSearchableConfigura
     NameEditableColumnInfo(this, true),
     PatternEditableColumnInfo(this, true),
     FolderIconEditableColumnInfo(this, true),
+    CustomIconColumnInfo(),
     PriorityColumnInfo(this, true),
     FolderColorEditableColumnInfo(this),
     FolderIconColorEditableColumnInfo(this)
