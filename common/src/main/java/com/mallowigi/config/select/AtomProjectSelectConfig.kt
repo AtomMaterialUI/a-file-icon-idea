@@ -55,7 +55,7 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
 
   /** List of user folder open [Association]s. */
   @Property
-  var selectedFolderOpenAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
+  var selectedFolderOpenAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER_OPEN)
 
   /** List of user psi [Association]s. */
   @Property

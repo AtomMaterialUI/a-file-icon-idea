@@ -50,8 +50,17 @@ class AssociationsTableItemEditor : DialogItemEditor<Association>, CollectionIte
    */
   override fun clone(item: Association, forInPlaceEditing: Boolean): Association {
     val association = when (item) {
-      is PsiAssociation -> PsiAssociation()
-      else              -> RegexAssociation()
+      is PsiAssociation -> {
+        val psi = PsiAssociation()
+        psi.path = item.path
+        psi
+      }
+
+      else              -> {
+        val reg = RegexAssociation()
+        reg.pattern = (item as RegexAssociation).pattern
+        reg
+      }
     }
 
     with(association) {

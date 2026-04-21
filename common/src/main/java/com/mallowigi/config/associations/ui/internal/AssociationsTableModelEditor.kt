@@ -254,7 +254,7 @@ class AssociationsTableModelEditor(
         psiAssociation.name = "New PSI Association (${increment})"
         psiAssociation.path = "path/to/icon${increment}.svg"
         psiAssociation.priority = DEFAULT_PRIORITY
-        psiAssociation.icon = ""
+        psiAssociation.icon = "/glyphs/nodes/class.svg"
         psiAssociation
       }
 

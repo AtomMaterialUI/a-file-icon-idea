@@ -101,8 +101,8 @@ class BundledAssociations {
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FILE) }
 
-    val psiAssociations = AssociationsFactory.create("/iconGenerator/psi_associations.xml")
-    psiAssociations.getTheAssociations()
+    val psiGlyphs = AssociationsFactory.create("/iconGenerator/psi_glyphs.xml")
+    psiGlyphs.getTheAssociations()
       .filterIsInstance<PsiAssociation>()
       .forEach { insert(it.name, it, IconType.PSI) }
   }
@@ -122,6 +122,8 @@ class BundledAssociations {
     map[name] = assoc
     if (assoc is RegexAssociation) {
       map[name]?.enabled = (assoc.defaultState != "false") // true
+    } else {
+      map[name]?.enabled = true
     }
   }
 
