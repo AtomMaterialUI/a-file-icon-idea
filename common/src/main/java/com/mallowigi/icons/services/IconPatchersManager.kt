@@ -34,6 +34,7 @@ import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.util.ui.JBUI
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
+import com.mallowigi.icons.patchers.PsiIconPathPatcher
 import com.mallowigi.icons.replacements.OutlineIconsPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 import javax.swing.UIManager
@@ -44,6 +45,7 @@ class IconPatchersManager {
 
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
+  private val psiIconPathPatcher = PsiIconPathPatcher()
 
   /** Init the patchers. */
   fun init() {
@@ -54,6 +56,7 @@ class IconPatchersManager {
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
+    installPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
   }
 
   /** Update all trees. */
@@ -75,6 +78,7 @@ class IconPatchersManager {
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
+    updatePathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
   }
 
   fun fixRunIcons() {

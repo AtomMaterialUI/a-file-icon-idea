@@ -33,6 +33,7 @@ import com.intellij.util.ui.*
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.PsiAssociation
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.models.IconType
 import com.mallowigi.utils.toHex
@@ -59,15 +60,15 @@ import javax.swing.event.DocumentEvent
  */
 @Suppress("HardCodedStringLiteral", "KDocMissingDocumentation", "OutdatedDocumentation")
 class AssociationsTableModelEditor(
-  items: List<RegexAssociation>,
+  items: List<Association>,
   columns: Array<ColumnInfo<*, *>>,
-  itemEditor: CollectionItemEditor<RegexAssociation>,
+  itemEditor: CollectionItemEditor<Association>,
   emptyText: String,
   val searchTextField: SearchTextField?,
   val type: IconType = IconType.FILE,
-) : CollectionModelEditor<RegexAssociation, CollectionItemEditor<RegexAssociation>?>(itemEditor) {
+) : CollectionModelEditor<Association, CollectionItemEditor<Association>?>(itemEditor) {
   /** Table View. */
-  private val table: TableView<RegexAssociation>
+  private val table: TableView<Association>
 
   /** Toolbar actions. */
   private val toolbarDecorator: ToolbarDecorator
@@ -76,11 +77,11 @@ class AssociationsTableModelEditor(
   private val model: AssociationTableModel = AssociationTableModel(columns, items)
 
   /** Backing field for model's unfiltered list. */
-  private val myList: MutableList<RegexAssociation>
+  private val myList: MutableList<Association>
     get() = model.allItems
 
   /** Backing field for model's filtered list. */
-  private val myFilteredList: MutableList<RegexAssociation>
+  private val myFilteredList: MutableList<Association>
     get() = model.filteredItems
 
   /** Own Increment for adding. */
@@ -151,7 +152,7 @@ class AssociationsTableModelEditor(
     emptyText: String,
     searchTextField: SearchTextField,
     type: IconType,
-  ) : this(emptyList<RegexAssociation>(), columns, itemEditor, emptyText, searchTextField, type)
+  ) : this(emptyList<Association>(), columns, itemEditor, emptyText, searchTextField, type)
 
   /** Inits the unfiltered list (before any search). */
   private fun initUnfilteredList() {
@@ -205,11 +206,11 @@ class AssociationsTableModelEditor(
    *
    * @return the new items after changes
    */
-  fun apply(): List<RegexAssociation> {
+  fun apply(): List<Association> {
     if (helper.hasModifiedItems()) {
       val columns = model.columnInfos
 
-      helper.process { newItem: RegexAssociation, oldItem: RegexAssociation ->
+      helper.process { newItem: Association, oldItem: Association ->
         // set all modified items new values
         for (column in columns) {
           if (column.isCellEditable(newItem)) column.setValue(oldItem, column.valueOf(newItem))
@@ -229,14 +230,14 @@ class AssociationsTableModelEditor(
    *
    * @return the model items
    */
-  override fun getItems(): List<RegexAssociation> = model.items
+  override fun getItems(): List<Association> = model.items
 
   /**
    * Resets the [model]'s items.
    *
    * @param originalItems the elements
    */
-  override fun reset(originalItems: List<RegexAssociation>) {
+  override fun reset(originalItems: List<Association>) {
     super.reset(originalItems)
     model.allItems = ArrayList(originalItems)
     model.filteredItems = ArrayList(originalItems)
@@ -244,18 +245,31 @@ class AssociationsTableModelEditor(
   }
 
   /** Create a new custom association. */
-  override fun createElement(): RegexAssociation {
+  override fun createElement(): Association {
     increment++
 
-    val regexAssociation = RegexAssociation()
-    regexAssociation.name = "New Association (${increment})"
-    regexAssociation.pattern = "^.*\\.ext${increment}$"
-    regexAssociation.priority = DEFAULT_PRIORITY
-    regexAssociation.iconColor = DEFAULT_ICON_COLOR
-    regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
-    regexAssociation.folderIconColor = DEFAULT_ICON_COLOR
-    regexAssociation.icon = ""
-    return regexAssociation
+    return when (type) {
+      IconType.PSI -> {
+        val psiAssociation = PsiAssociation()
+        psiAssociation.name = "New PSI Association (${increment})"
+        psiAssociation.path = "path/to/icon${increment}.svg"
+        psiAssociation.priority = DEFAULT_PRIORITY
+        psiAssociation.icon = ""
+        psiAssociation
+      }
+
+      else         -> {
+        val regexAssociation = RegexAssociation()
+        regexAssociation.name = "New Association (${increment})"
+        regexAssociation.pattern = "^.*\\.ext${increment}$"
+        regexAssociation.priority = DEFAULT_PRIORITY
+        regexAssociation.iconColor = DEFAULT_ICON_COLOR
+        regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
+        regexAssociation.folderIconColor = DEFAULT_ICON_COLOR
+        regexAssociation.icon = ""
+        regexAssociation
+      }
+    }
   }
 
   /**
@@ -265,7 +279,7 @@ class AssociationsTableModelEditor(
    * @param newItem new item to insert
    * @param index index in the filtered lisst
    */
-  override fun silentlyReplaceItem(oldItem: RegexAssociation, newItem: RegexAssociation, index: Int) {
+  override fun silentlyReplaceItem(oldItem: Association, newItem: Association, index: Int) {
     super.silentlyReplaceItem(oldItem, newItem, index)
     newItem.touched = true
     // silently replace item in unfiltered list
@@ -281,14 +295,14 @@ class AssociationsTableModelEditor(
    * @param items the items
    * @constructor
    */
-  inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<RegexAssociation>) :
-    ListTableModel<RegexAssociation>(columnNames, items) {
+  inner class AssociationTableModel(columnNames: Array<ColumnInfo<*, *>>, items: List<Association>) :
+    ListTableModel<Association>(columnNames, items) {
 
     /** This contains all items, before any filter is applied. This is also what will be persisted. */
-    var allItems: MutableList<RegexAssociation> = items.toMutableList()
+    var allItems: MutableList<Association> = items.toMutableList()
 
     /** This is the currently filtered table. */
-    var filteredItems: MutableList<RegexAssociation> = items.toMutableList()
+    var filteredItems: MutableList<Association> = items.toMutableList()
       set(value) {
         field = value
         super.setItems(value)
@@ -299,14 +313,14 @@ class AssociationsTableModelEditor(
      *
      * @return the [filteredItems]
      */
-    override fun getItems(): MutableList<RegexAssociation> = filteredItems
+    override fun getItems(): MutableList<Association> = filteredItems
 
     /**
      * When items are set, we reset the table's items.
      *
      * @param items
      */
-    override fun setItems(items: MutableList<RegexAssociation>) {
+    override fun setItems(items: MutableList<Association>) {
       allItems = items
       filteredItems = items
       fireTableDataChanged()
@@ -326,7 +340,7 @@ class AssociationsTableModelEditor(
       allItems.remove(item)
     }
 
-    override fun addRow(item: RegexAssociation) {
+    override fun addRow(item: Association) {
       super.addRow(item)
       allItems.add(item)
     }

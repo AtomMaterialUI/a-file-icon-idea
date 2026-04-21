@@ -57,18 +57,25 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
   @Property
   var selectedFolderOpenAssociations: SelectedAssociations = SelectedAssociations(IconType.FOLDER)
 
+  /** List of user psi [Association]s. */
+  @Property
+  var selectedPsiAssociations: SelectedAssociations = SelectedAssociations(IconType.PSI)
+
   fun apply(
     fileAssociations: SelectedAssociations,
     folderAssociations: SelectedAssociations,
-    folderOpenAssociations: SelectedAssociations
+    folderOpenAssociations: SelectedAssociations,
+    psiAssociations: SelectedAssociations
   ) {
     selectedFileAssociations = fileAssociations
     selectedFolderAssociations = folderAssociations
     selectedFolderOpenAssociations = folderOpenAssociations
+    selectedPsiAssociations = psiAssociations
 
     selectedFileAssociations.registerOwnAssociations()
     selectedFolderAssociations.registerOwnAssociations()
     selectedFolderOpenAssociations.registerOwnAssociations()
+    selectedPsiAssociations.registerOwnAssociations()
 
     fireChanged()
   }
@@ -81,6 +88,9 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
 
   /** Find folder open association by name. */
   fun findFolderOpenAssociationByName(name: String): Association? = selectedFolderOpenAssociations.findAssociationByName(name)
+
+  /** Find psi association by name. */
+  fun findPsiAssociationByName(name: String): Association? = selectedPsiAssociations.findAssociationByName(name)
 
   /**
    * Is file icons modified.
@@ -109,11 +119,17 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
     return !Objects.deepEquals(this.selectedFolderOpenAssociations.ownValues(), touched)
   }
 
+  fun isPsiIconsModified(psiAssociations: List<Association>): Boolean {
+    val touched = psiAssociations.filter { it.touched }
+    return !Objects.deepEquals(this.selectedPsiAssociations.ownValues(), touched)
+  }
+
   /** Resets the associations. */
   fun reset() {
     selectedFolderAssociations.reset()
     selectedFileAssociations.reset()
     selectedFolderOpenAssociations.reset()
+    selectedPsiAssociations.reset()
   }
 
   /** The config state. */

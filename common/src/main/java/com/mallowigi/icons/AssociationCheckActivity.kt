@@ -30,7 +30,7 @@ import com.intellij.openapi.roots.ProjectFileIndex
 import com.intellij.openapi.startup.ProjectActivity
 import com.mallowigi.config.BundledAssociations
 import com.mallowigi.config.select.AtomSelectConfig
-import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.icons.associations.Association
 import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
 
@@ -45,8 +45,8 @@ class AssociationCheckActivity : ProjectActivity {
 
     if (fileCandidateAssocs.isEmpty() && folderCandidateAssocs.isEmpty()) return
 
-    val matchedFileAssocs = mutableSetOf<RegexAssociation>()
-    val matchedFolderAssocs = mutableSetOf<RegexAssociation>()
+    val matchedFileAssocs = mutableSetOf<Association>()
+    val matchedFolderAssocs = mutableSetOf<Association>()
 
     ProjectFileIndex.getInstance(project).iterateContent { vFile ->
       val fileInfo = VirtualFileInfo(vFile)
@@ -74,12 +74,13 @@ class AssociationCheckActivity : ProjectActivity {
       config.apply(
         config.selectedFileAssociations,
         config.selectedFolderAssociations,
-        config.selectedFolderOpenAssociations
+        config.selectedFolderOpenAssociations,
+        config.selectedPsiAssociations
       )
     }
   }
 
-  private fun getCandidates(bundled: BundledAssociations, iconType: IconType): List<RegexAssociation> =
+  private fun getCandidates(bundled: BundledAssociations, iconType: IconType): List<Association> =
     bundled.getList(iconType).filter { it.defaultState == "false" && !it.touched && !it.enabled }
 
 }

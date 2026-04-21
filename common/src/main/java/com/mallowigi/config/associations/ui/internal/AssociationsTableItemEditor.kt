@@ -27,30 +27,34 @@ import com.intellij.util.Function
 import com.intellij.util.ui.CollectionItemEditor
 import com.intellij.util.ui.table.TableModelEditor.DialogItemEditor
 import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.PsiAssociation
 import com.mallowigi.icons.associations.RegexAssociation
 
 /** Editor for the [Association] table cells. */
-class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, CollectionItemEditor<RegexAssociation> {
+class AssociationsTableItemEditor : DialogItemEditor<Association>, CollectionItemEditor<Association> {
 
   /**
-   * Apply changes to the edited item
+   * Apply changes to the edited item.
    *
    * @param oldItem the item to modify
    * @param newItem the changes
    */
-  override fun applyEdited(oldItem: RegexAssociation, newItem: RegexAssociation): Unit = oldItem.apply(newItem)
+  override fun applyEdited(oldItem: Association, newItem: Association): Unit = oldItem.apply(newItem)
 
   /**
-   * Duplicate an item
+   * Duplicate an item.
    *
-   * @param item the [RegexAssociation]
+   * @param item the [Association]
    * @param forInPlaceEditing if editing in place (true)
    * @return a clone of the association
    */
-  override fun clone(item: RegexAssociation, forInPlaceEditing: Boolean): RegexAssociation {
-    val regexAssociation = RegexAssociation()
+  override fun clone(item: Association, forInPlaceEditing: Boolean): Association {
+    val association = when (item) {
+      is PsiAssociation -> PsiAssociation()
+      else              -> RegexAssociation()
+    }
 
-    with(regexAssociation) {
+    with(association) {
       iconType = item.iconType
       name = item.name
       icon = item.icon
@@ -63,19 +67,19 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
       folderIconColor = item.folderIconColor
     }
 
-    return regexAssociation
+    return association
   }
 
   /**
-   * Edits an item
+   * Edits an item.
    *
    * @param item the [Association]
    * @param mutator a function to mutate the item
    * @param isAdd if in add mode
    */
   override fun edit(
-    item: RegexAssociation,
-    mutator: Function<in RegexAssociation, out RegexAssociation>,
+    item: Association,
+    mutator: Function<in Association, out Association>,
     isAdd: Boolean,
   ) {
     val settings = clone(item, true)
@@ -83,25 +87,25 @@ class AssociationsTableItemEditor : DialogItemEditor<RegexAssociation>, Collecti
   }
 
   /** Class of the items. */
-  override fun getItemClass(): Class<out RegexAssociation> = RegexAssociation::class.java
+  override fun getItemClass(): Class<out Association> = Association::class.java
 
   /**
-   * Do not allow editing empty items
+   * Do not allow editing empty items.
    *
    * @param item the [Association]
    * @return true if editable
    */
-  override fun isEditable(item: RegexAssociation): Boolean = !item.isEmpty
+  override fun isEditable(item: Association): Boolean = !item.isEmpty
 
   /**
-   * Determines what constitues an empty [Association]
+   * Determines what constitues an empty [Association].
    *
    * @param item the [Association]
    * @return true if empty
    */
-  override fun isEmpty(item: RegexAssociation): Boolean = item.isEmpty
+  override fun isEmpty(item: Association): Boolean = item.isEmpty
 
   /** Whether item can be removed. */
-  override fun isRemovable(item: RegexAssociation): Boolean = item.touched
+  override fun isRemovable(item: Association): Boolean = item.touched
 
 }

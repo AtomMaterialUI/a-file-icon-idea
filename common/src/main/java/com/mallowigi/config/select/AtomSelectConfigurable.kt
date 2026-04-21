@@ -59,21 +59,25 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   private var fileAssociationsPanel: JPanel
   private var folderAssociationsPanel: JPanel
   private var folderOpenAssociationsPanel: JPanel
+  private var psiAssociationsPanel: JPanel
 
   // Search boxes
   private var fileSearch: SearchTextField = SearchTextField()
   private var folderSearch: SearchTextField = SearchTextField()
   private var folderOpenSearch: SearchTextField = SearchTextField()
+  private var psiSearch: SearchTextField = SearchTextField()
 
   // Tables
   private lateinit var fileIconsTable: JComponent
   private lateinit var folderIconsTable: JComponent
   private lateinit var folderOpenIconsTable: JComponent
+  private lateinit var psiIconsTable: JComponent
 
   // Editors
   private var fileAssociationsEditor: AssociationsTableModelEditor? = null
   private var folderAssociationsEditor: AssociationsTableModelEditor? = null
   private var folderOpenAssociationsEditor: AssociationsTableModelEditor? = null
+  private var psiAssociationsEditor: AssociationsTableModelEditor? = null
 
   // Columns
   private val fileColumns = arrayOf<ColumnInfo<*, *>>(
@@ -111,10 +115,21 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     FolderIconColorEditableColumnInfo(this)
   )
 
+  private val psiColumns = arrayOf<ColumnInfo<*, *>>(
+    EnabledColumnInfo(),
+    TouchedColumnInfo(),
+    NameEditableColumnInfo(this, true),
+    PsiPathEditableColumnInfo(true),
+    PsiIconEditableColumnInfo(this, true),
+    CustomIconColumnInfo(),
+    PriorityColumnInfo(this, true)
+  )
+
   init {
     createFileIconsTable()
     createFolderIconsTable()
     createFolderOpenIconsTable()
+    createPsiIconsTable()
 
     fileAssociationsPanel = panel {
       row {
@@ -154,6 +169,19 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       }
     }
 
+    psiAssociationsPanel = panel {
+      row {
+        cell(psiSearch)
+          .align(Align.FILL)
+      }
+
+      row {
+        cell(psiIconsTable)
+          .resizableColumn()
+          .align(Align.FILL)
+      }
+    }
+
     main = panel {
       row {
         comment(message("SelectForm.explanation.text"))
@@ -187,10 +215,12 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     fileSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
     folderSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
     folderOpenSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
+    psiSearch.textEditor.emptyText.text = message("fileSearch.placeholder")
 
     tabbedPane.addTab(message("SelectForm.fileAssociationsPanel.tab.title"), fileAssociationsPanel)
     tabbedPane.addTab(message("SelectForm.folderAssociationsPanel.tab.title"), folderAssociationsPanel)
     tabbedPane.addTab(message("SelectForm.folderOpenAssociationsPanel.tab.title"), folderOpenAssociationsPanel)
+    tabbedPane.addTab(message("SelectForm.psiAssociationsPanel.tab.title"), psiAssociationsPanel)
   }
 
   /** Configurable display name. */
@@ -238,13 +268,17 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
         (folderOpenAssociationsEditor
           ?: return@invokeLater).reset(settings.selectedFolderOpenAssociations.getTheAssociations())
       }
+      if (psiAssociationsEditor != null) {
+        (psiAssociationsEditor
+          ?: return@invokeLater).reset(settings.selectedPsiAssociations.getTheAssociations())
+      }
     }
   }
 
   /** Apply. */
   override fun apply() {
     super.apply()
-    settings.apply(getFileAssociations(), getFolderAssociations(), getFolderOpenAssociations())
+    settings.apply(getFileAssociations(), getFolderAssociations(), getFolderOpenAssociations(), getPsiAssociations())
   }
 
   /** Detect if settings have been modified. */
@@ -258,6 +292,9 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     }
     if (folderOpenAssociationsEditor != null) {
       isModified = isModified || settings.isFolderOpenIconsModified(folderOpenAssociationsEditor!!.getModel().items)
+    }
+    if (psiAssociationsEditor != null) {
+      isModified = isModified || settings.isPsiIconsModified(psiAssociationsEditor!!.getModel().items)
     }
     return isModified
   }
@@ -273,6 +310,10 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       if (folderOpenAssociationsEditor != null) {
         (folderOpenAssociationsEditor
           ?: return@invokeLater).reset(settings.selectedFolderOpenAssociations.getTheAssociations())
+      }
+      if (psiAssociationsEditor != null) {
+        (psiAssociationsEditor
+          ?: return@invokeLater).reset(settings.selectedPsiAssociations.getTheAssociations())
       }
     }
   }
@@ -290,6 +331,11 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   private fun getFolderOpenAssociations(): SelectedAssociations {
     assert(folderOpenAssociationsEditor != null)
     return SelectedAssociations(IconType.FOLDER_OPEN, folderOpenAssociationsEditor!!.getModel().allItems)
+  }
+
+  private fun getPsiAssociations(): SelectedAssociations {
+    assert(psiAssociationsEditor != null)
+    return SelectedAssociations(IconType.PSI, psiAssociationsEditor!!.getModel().allItems)
   }
 
   /** Create the file icons. */
@@ -324,10 +370,22 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
       folderOpenColumns,
       itemEditor,
       message("no.folder.associations"),
-      folderSearch,
+      folderOpenSearch,
       IconType.FOLDER_OPEN
     )
     folderOpenIconsTable = (folderOpenAssociationsEditor ?: return).createComponent()
+  }
+
+  private fun createPsiIconsTable() {
+    val itemEditor = AssociationsTableItemEditor()
+    psiAssociationsEditor = AssociationsTableModelEditor(
+      psiColumns,
+      itemEditor,
+      message("AssociationsForm.psiIconsTable.emptyText"),
+      psiSearch,
+      IconType.PSI
+    )
+    psiIconsTable = (psiAssociationsEditor ?: return).createComponent()
   }
 
   companion object {
