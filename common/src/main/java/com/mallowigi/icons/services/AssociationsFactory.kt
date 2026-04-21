@@ -25,6 +25,7 @@ package com.mallowigi.icons.services
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.mallowigi.icons.associations.DefaultAssociations
+import com.mallowigi.icons.associations.PsiAssociation
 import com.mallowigi.icons.associations.RegexAssociation
 import com.mallowigi.icons.associations.TypeAssociation
 import com.thoughtworks.xstream.XStream
@@ -32,7 +33,7 @@ import com.thoughtworks.xstream.XStream
 /** Factory for building associations from XML. */
 object AssociationsFactory {
   /**
-   * Generate the list of [DefaultAssociations] from XML
+   * Generate the list of [DefaultAssociations] from XML.
    *
    * @param associationsFile xml file
    * @return list of [DefaultAssociations]
@@ -46,6 +47,7 @@ object AssociationsFactory {
       processAnnotations(DefaultAssociations::class.java)
       processAnnotations(RegexAssociation::class.java)
       processAnnotations(TypeAssociation::class.java)
+      processAnnotations(PsiAssociation::class.java)
     }
     return try {
       xStream.fromXML(associationsXml) as DefaultAssociations
