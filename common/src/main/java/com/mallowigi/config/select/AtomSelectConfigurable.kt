@@ -122,7 +122,6 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     PsiPathEditableColumnInfo(true),
     PsiIconEditableColumnInfo(this, true),
     CustomIconColumnInfo(),
-    PriorityColumnInfo(this, true)
   )
 
   init {
@@ -243,6 +242,7 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
     fileAssociationsEditor = null
     folderAssociationsEditor = null
     folderOpenAssociationsEditor = null
+    psiAssociationsEditor = null
   }
 
   private fun resetSettings() {
@@ -278,7 +278,12 @@ class AtomSelectConfigurable : BoundSearchableConfigurable(
   /** Apply. */
   override fun apply() {
     super.apply()
-    settings.apply(getFileAssociations(), getFolderAssociations(), getFolderOpenAssociations(), getPsiAssociations())
+    settings.apply(
+      fileAssociations = getFileAssociations(),
+      folderAssociations = getFolderAssociations(),
+      folderOpenAssociations = getFolderOpenAssociations(),
+      psiAssociations = getPsiAssociations()
+    )
   }
 
   /** Detect if settings have been modified. */

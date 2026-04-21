@@ -32,7 +32,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
 /** A PSI [Association]. */
-@XStreamAlias("psi")
+@XStreamAlias("psiAssociation")
 class PsiAssociation internal constructor() : Association() {
 
   /** The path to the PSI icon. */

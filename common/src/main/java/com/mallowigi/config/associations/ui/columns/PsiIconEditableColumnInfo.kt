@@ -35,8 +35,10 @@ import javax.swing.Icon
 class PsiIconEditableColumnInfo(parent: Disposable, editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
-  override fun loadIcon(path: String): Icon =
-    if (path.isEmpty()) AtomIcons.getFileIcon("/glyphs/nodes/class.svg") else AtomIcons.getFileIcon(path)
+  override fun loadIcon(path: String): Icon = when {
+    path.isEmpty() -> AtomIcons.getFileIcon("/glyphs/nodes/class.svg")
+    else           -> AtomIcons.getFileIcon(path)
+  }
 
   override fun getIcons(): List<String> = BundledAssociations.instance.getList(IconType.PSI)
     .map { it.icon }

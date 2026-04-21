@@ -28,6 +28,7 @@ package com.mallowigi.config.associations.ui.columns
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
 import com.mallowigi.config.associations.ui.internal.ModifiedInfoCellRenderer
+import com.mallowigi.config.associations.ui.internal.RegExpTableCellRenderer
 import com.mallowigi.icons.associations.Association
 import javax.swing.table.TableCellRenderer
 
@@ -41,6 +42,8 @@ class PsiPathEditableColumnInfo(private val editable: Boolean) :
     item.matcher = value
     item.touched = true
   }
+
+  override fun getRenderer(item: Association?): TableCellRenderer? = RegExpTableCellRenderer()
 
   override fun getCustomizedRenderer(o: Association, renderer: TableCellRenderer): TableCellRenderer =
     ModifiedInfoCellRenderer(o)
