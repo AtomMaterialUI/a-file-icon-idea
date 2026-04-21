@@ -27,6 +27,7 @@ package com.mallowigi.icons.associations
 
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
+import com.mallowigi.models.IconType
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
@@ -38,6 +39,12 @@ class PsiAssociation internal constructor() : Association() {
   @field:Property
   @XStreamAsAttribute
   var path: String = ""
+
+  override var iconType: IconType
+    get() = IconType.PSI
+    set(@Suppress("UNUSED_PARAMETER") value) {
+      // do nothing, iconType is fixed for PsiAssociation
+    }
 
   /** The matcher is the path. */
   override var matcher: String

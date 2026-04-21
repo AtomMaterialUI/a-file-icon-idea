@@ -165,6 +165,11 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   }
 
   private fun init() {
+    selectedFolderAssociations.updateOwnAssociations()
+    selectedFileAssociations.updateOwnAssociations()
+    selectedFolderOpenAssociations.updateOwnAssociations()
+    selectedPsiAssociations.updateOwnAssociations()
+
     selectedFolderAssociations.initMutableListFromDefaults()
     selectedFileAssociations.initMutableListFromDefaults()
     selectedFolderOpenAssociations.initMutableListFromDefaults()

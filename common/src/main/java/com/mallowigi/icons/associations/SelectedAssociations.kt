@@ -52,13 +52,23 @@ class SelectedAssociations(
   private var mutableAssociations: MutableMap<String, Association> = mutableMapOf()
 
   /** My modified [Associations]. */
-  @Property
-  @XCollection
+  @Transient
   private var ownAssociations: MutableMap<String, Association> = mutableMapOf()
+
+  @Property
+  @XCollection(
+    elementTypes = [
+      RegexAssociation::class,
+      PsiAssociation::class,
+      TypeAssociation::class
+    ]
+  )
+  private var associationsList: MutableList<Association> = mutableListOf()
 
   init {
     // Copy from a list of other [Associations] (used when applying form)
     mutableAssociations = associations.associateBy { it.name }.toMutableMap()
+    mutableAssociations.values.forEach { it.iconType = iconType }
   }
 
   /** Reinitializes the [mutableAssociations]. */
@@ -174,6 +184,13 @@ class SelectedAssociations(
   /** Extract [ownAssociations] from [mutableAssociations]. */
   fun registerOwnAssociations() {
     ownAssociations.putAll(mutableAssociations.filter { it.value.touched })
+    associationsList.clear()
+    associationsList.addAll(ownAssociations.values)
+  }
+
+  fun updateOwnAssociations() {
+    ownAssociations.clear()
+    ownAssociations.putAll(associationsList.associateBy { it.name })
   }
 
   companion object {

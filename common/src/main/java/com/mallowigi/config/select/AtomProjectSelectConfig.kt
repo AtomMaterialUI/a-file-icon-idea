@@ -143,6 +143,14 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
     if (changed) {
       ApplicationManager.getApplication().invokeLater { fireChanged() }
     }
+    init()
+  }
+
+  private fun init() {
+    selectedFolderAssociations.updateOwnAssociations()
+    selectedFileAssociations.updateOwnAssociations()
+    selectedFolderOpenAssociations.updateOwnAssociations()
+    selectedPsiAssociations.updateOwnAssociations()
   }
 
   private fun fireChanged() {

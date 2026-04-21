@@ -255,6 +255,7 @@ class AssociationsTableModelEditor(
         psiAssociation.path = "path/to/icon${increment}.svg"
         psiAssociation.priority = DEFAULT_PRIORITY
         psiAssociation.icon = "/glyphs/nodes/class.svg"
+        psiAssociation.iconType = IconType.PSI
         psiAssociation
       }
 
@@ -267,6 +268,7 @@ class AssociationsTableModelEditor(
         regexAssociation.folderColor = DEFAULT_FOLDER_COLOR
         regexAssociation.folderIconColor = DEFAULT_ICON_COLOR
         regexAssociation.icon = ""
+        regexAssociation.iconType = type
         regexAssociation
       }
     }
