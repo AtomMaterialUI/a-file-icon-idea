@@ -101,8 +101,7 @@ class BundledAssociations {
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FILE) }
 
-    val psiGlyphs = AssociationsFactory.create("/iconGenerator/psi_glyphs.xml")
-    psiGlyphs.getTheAssociations()
+    psiAssociations.getTheAssociations()
       .filterIsInstance<PsiAssociation>()
       .forEach { insert(it.name, it, IconType.PSI) }
   }
@@ -143,6 +142,9 @@ class BundledAssociations {
     val fileAssociations: DefaultAssociations =
       AssociationsFactory.create("/iconGenerator/icon_associations.xml")
 
+    /** Load psi associations from XML. */
+    val psiAssociations: DefaultAssociations =
+      AssociationsFactory.create("/iconGenerator/psi_associations.xml")
   }
 
 }
