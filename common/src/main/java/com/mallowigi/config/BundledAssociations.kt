@@ -25,10 +25,7 @@ package com.mallowigi.config
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
-import com.mallowigi.icons.associations.Association
-import com.mallowigi.icons.associations.Associations
-import com.mallowigi.icons.associations.DefaultAssociations
-import com.mallowigi.icons.associations.RegexAssociation
+import com.mallowigi.icons.associations.*
 import com.mallowigi.icons.services.AssociationsFactory
 import com.mallowigi.models.IconType
 import com.mallowigi.utils.getValue
@@ -38,16 +35,16 @@ import com.mallowigi.utils.getValue
 class BundledAssociations {
 
   /** All loaded file [Associations]. */
-  private var defaultFileAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var defaultFileAssociations: MutableMap<String, Association> = mutableMapOf()
 
   /** All loaded folder [Associations]. */
-  private var defaultFolderAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var defaultFolderAssociations: MutableMap<String, Association> = mutableMapOf()
 
   /** All loaded folder open [Associations]. */
-  private var defaultFolderOpenAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var defaultFolderOpenAssociations: MutableMap<String, Association> = mutableMapOf()
 
   /** Default psi associations. */
-  private var defaultPsiAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var defaultPsiAssociations: MutableMap<String, Association> = mutableMapOf()
 
   init {
     init()
@@ -59,15 +56,15 @@ class BundledAssociations {
    * @param name the name
    * @param iconType the [IconType]
    */
-  fun getDefault(name: String, iconType: IconType): RegexAssociation? = getMap(iconType)[name]
+  fun getDefault(name: String, iconType: IconType): Association? = getMap(iconType)[name]
 
   /**
-   * Get the list of [RegexAssociation]s.
+   * Get the list of [Association]s.
    *
    * @param iconType the [IconType]
    * @return the list
    */
-  fun getList(iconType: IconType): List<RegexAssociation> = getMap(iconType).values.toList()
+  fun getList(iconType: IconType): List<Association> = getMap(iconType).values.toList()
 
   /**
    * Returns the relevant list according to the [IconType].
@@ -75,7 +72,7 @@ class BundledAssociations {
    * @param iconType
    * @return
    */
-  fun getMap(iconType: IconType): MutableMap<String, RegexAssociation> = when (iconType) {
+  fun getMap(iconType: IconType): MutableMap<String, Association> = when (iconType) {
     IconType.FILE        -> defaultFileAssociations
     IconType.FOLDER      -> defaultFolderAssociations
     IconType.FOLDER_OPEN -> defaultFolderOpenAssociations
@@ -103,22 +100,29 @@ class BundledAssociations {
     fileAssociations.getTheAssociations()
       .filterIsInstance<RegexAssociation>()
       .forEach { insert(it.name, it, IconType.FILE) }
+
+    val psiAssociations = AssociationsFactory.create("/iconGenerator/psi_associations.xml")
+    psiAssociations.getTheAssociations()
+      .filterIsInstance<PsiAssociation>()
+      .forEach { insert(it.name, it, IconType.PSI) }
   }
 
   /**
-   * Insert a new default [RegexAssociation].
+   * Insert a new default [Association].
    *
    * @param name assoc name
-   * @param assoc the [RegexAssociation]
+   * @param assoc the [Association]
    * @param iconType the [IconType]
    */
-  internal fun insert(name: String, assoc: RegexAssociation, iconType: IconType) {
+  internal fun insert(name: String, assoc: Association, iconType: IconType) {
     if (hasDefault(name, iconType)) return
 
     val map = getMap(iconType)
 
     map[name] = assoc
-    map[name]?.enabled = (assoc.defaultState != "false") // true
+    if (assoc is RegexAssociation) {
+      map[name]?.enabled = (assoc.defaultState != "false") // true
+    }
   }
 
   companion object {

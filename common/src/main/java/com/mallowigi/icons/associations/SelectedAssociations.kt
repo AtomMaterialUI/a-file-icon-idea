@@ -36,24 +36,25 @@ import org.jetbrains.annotations.NonNls
 @Suppress("MemberNameEqualsClassName")
 class SelectedAssociations(
   /** The [IconType] of the [SelectedAssociations]. */
-  @Property val iconType: IconType = IconType.FILE,
-  associations: List<RegexAssociation> = listOf(),
+  @Property
+  val iconType: IconType = IconType.FILE,
+  associations: List<Association> = listOf(),
 ) : Associations() {
   /** List of associations to ignore by type. */
   override val ignoredAssociations: Set<String>
     get() = when (iconType) {
       IconType.FILE -> FILE_IGNORED_ASSOCIATIONS.filter { it.second() }.map { it.first }.toSet()
-      else -> emptySet()
+      else          -> emptySet()
     }
 
-  /** All associations, mutable (from the form) */
+  /** All associations, mutable (from the form). */
   @Transient
-  private var mutableAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var mutableAssociations: MutableMap<String, Association> = mutableMapOf()
 
   /** My modified [Associations]. */
   @Property
   @XCollection
-  private var ownAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
+  private var ownAssociations: MutableMap<String, Association> = mutableMapOf()
 
   init {
     // Copy from a list of other [Associations] (used when applying form)
@@ -69,9 +70,9 @@ class SelectedAssociations(
    * Adds a new [RegexAssociation] to the collection of associations. If an association with the same name already exists, the new
    * association's name is appended with "(1)" to ensure uniqueness before adding it to the collection.
    *
-   * @param association the [RegexAssociation] to be added
+   * @param association the [Association] to be added
    */
-  fun addAssociation(association: RegexAssociation) {
+  fun addAssociation(association: Association) {
     if (hasOwn(association.name)) {
       association.name = "${association.name} (1)"
       ownAssociations[association.name] = association
@@ -81,21 +82,21 @@ class SelectedAssociations(
   }
 
   /**
-   * Checks if an own [Association] is already registered
+   * Checks if an own [Association] is already registered.
    *
    * @param name
    */
   private fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
 
   /**
-   * Gets the list of own [Associations]
+   * Gets the list of own [Associations].
    *
    * @return
    */
-  fun ownValues(): List<RegexAssociation> = ownAssociations.values.toList()
+  fun ownValues(): List<Association> = ownAssociations.values.toList()
 
   /**
-   * Find matching [Association] with the highest priority
+   * Find matching [Association] with the highest priority.
    *
    * @param file a file's [FileInfo]
    * @return the association if found
@@ -106,12 +107,12 @@ class SelectedAssociations(
 
     return when {
       inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
-      else -> inOwn ?: inMutable
+      else                               -> inOwn ?: inMutable
     }
   }
 
   /**
-   * Look for matching association in [ownAssociations]
+   * Look for matching association in [ownAssociations].
    *
    * @param file a file's [FileInfo]
    * @return matching association if found
@@ -121,7 +122,7 @@ class SelectedAssociations(
     .maxByOrNull { it.priority }
 
   /**
-   * Look for matching association in [mutableAssociations]
+   * Look for matching association in [mutableAssociations].
    *
    * @param file a file's [FileInfo]
    * @return matching association if found
@@ -141,13 +142,13 @@ class SelectedAssociations(
     .maxByOrNull { it.priority }
 
   /**
-   * Get the list of all [Associations]
+   * Get the list of all [Associations].
    *
    * @return the list of [Associations]
    */
-  override fun getTheAssociations(): List<RegexAssociation> {
+  override fun getTheAssociations(): List<Association> {
     // to display associations to the form, need to merge both
-    val result = mutableMapOf<String, RegexAssociation>()
+    val result = mutableMapOf<String, Association>()
     result.putAll(mutableAssociations)
     result.putAll(ownAssociations)
     return result.values.toList()
@@ -159,7 +160,7 @@ class SelectedAssociations(
 
     return when {
       inOwn != null && inMutable != null -> maxOf(inOwn, inMutable, compareBy { it.priority })
-      else -> inOwn ?: inMutable
+      else                               -> inOwn ?: inMutable
     }
   }
 

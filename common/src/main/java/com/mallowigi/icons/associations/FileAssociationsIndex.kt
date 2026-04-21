@@ -129,7 +129,7 @@ class FileAssociationsIndex : FileBasedIndexExtension<String, RegexAssociation>(
 
   companion object {
     val NAME = ID.create<String, RegexAssociation>("com.mallowigi.icons.associations.fileAssociationsIndex")
-    const val VERSION = 4
+    const val VERSION = 5
 
   }
 }
