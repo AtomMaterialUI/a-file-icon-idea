@@ -170,9 +170,11 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
   /** Fire event when settings are changed. */
   fun fireChanged() {
-    ApplicationManager.getApplication().messageBus
-      .syncPublisher(AtomConfigNotifier.TOPIC)
-      .configChanged(this)
+    ApplicationManager.getApplication().invokeLater {
+      ApplicationManager.getApplication().messageBus
+        .syncPublisher(AtomConfigNotifier.TOPIC)
+        .configChanged(this)
+    }
   }
 
   /** Apply settings. */

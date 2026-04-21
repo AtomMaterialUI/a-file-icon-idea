@@ -88,7 +88,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   fun findFolderOpenAssociationByName(name: String): Association? = selectedFolderOpenAssociations.findAssociationByName(name)
 
   /**
-   * Is file icons modified
+   * Is file icons modified.
    *
    * @param fileAssociations new file associations to compare to
    * @return true if they differ
@@ -100,7 +100,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   }
 
   /**
-   * Is folder icons modified
+   * Is folder icons modified.
    *
    * @param folderAssociations new folder associations to compare to
    * @return true if they differ
@@ -140,9 +140,11 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   }
 
   private fun fireChanged() {
-    ApplicationManager.getApplication().messageBus
-      .syncPublisher(AtomSelectNotifier.TOPIC)
-      .configChanged(this)
+    ApplicationManager.getApplication().invokeLater {
+      ApplicationManager.getApplication().messageBus
+        .syncPublisher(AtomSelectNotifier.TOPIC)
+        .configChanged(this)
+    }
   }
 
   private fun init() {

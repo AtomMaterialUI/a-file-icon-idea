@@ -24,6 +24,8 @@
 package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
+import com.mallowigi.config.BundledAssociations
+import com.mallowigi.models.IconType
 import icons.AtomIcons
 import javax.swing.Icon
 
@@ -33,4 +35,9 @@ class FolderIconEditableColumnInfo(private val parent: Disposable, private val e
   IconEditableColumnInfo(parent, editable) {
 
   override fun loadIcon(path: String): Icon = AtomIcons.getFolderIcon(path).openedIcon
+
+  override fun getIcons(): List<String> = BundledAssociations.instance.getList(IconType.FOLDER)
+    .map { it.icon }
+    .distinct()
+    .sorted()
 }

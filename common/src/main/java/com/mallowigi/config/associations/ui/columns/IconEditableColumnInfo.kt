@@ -24,16 +24,14 @@
 package com.mallowigi.config.associations.ui.columns
 
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
-import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.ui.ValidationInfo
 import com.intellij.openapi.ui.cellvalidators.ValidatingTableCellRendererWrapper
 import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.util.PathUtil
-import com.intellij.util.ui.LocalPathCellEditor
 import com.intellij.util.ui.table.IconTableCellRenderer
 import com.intellij.util.ui.table.TableModelEditor.EditableColumnInfo
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.associations.ui.internal.IconSelectionCellEditor
 import com.mallowigi.config.associations.ui.internal.ModifiedInfoCellRenderer
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.utils.getModifiedColor
@@ -49,8 +47,11 @@ import javax.swing.table.TableCellRenderer
 abstract class IconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.icon")) {
 
+  /** The cell editor. */
+  private val editor: IconSelectionCellEditor by lazy { IconSelectionCellEditor(getIcons()) { loadIcon(it) } }
+
   /**
-   * Gets the column value from the path name
+   * Gets the column value from the path name.
    *
    * @param item the [Association]
    * @return the full path
@@ -58,7 +59,7 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
   override fun valueOf(item: Association): String? = PathUtil.toSystemDependentName(item.icon)
 
   /**
-   * Set column value (sets the icon from the path)
+   * Set column value (sets the icon from the path).
    *
    * @param item [Association] to set
    * @param value the path name
@@ -71,16 +72,15 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
   }
 
   /**
-   * Creates an editor with a file chooser
+   * Returns the editor.
    *
    * @param item the [Association]
    * @return the [TableCellEditor]
    */
-  override fun getEditor(item: Association): TableCellEditor? =
-    LocalPathCellEditor().fileChooserDescriptor(DESCRIPTOR).normalizePath(true)
+  override fun getEditor(item: Association): TableCellEditor? = editor
 
   /**
-   * Creates a [TableCellRenderer] that displays the icon with it's path
+   * Creates a [TableCellRenderer] that displays the icon with it's path.
    *
    * @param item the [Association]
    * @return the [TableCellRenderer]
@@ -92,7 +92,7 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
         .withCellValidator { value: Any?, _: Int, _: Int ->
           when (value) {
             null, "" -> return@withCellValidator ValidationInfo(message("AtomAssocConfig.IconEditor.empty"))
-            else -> return@withCellValidator null
+            else     -> return@withCellValidator null
           }
         }
     }
@@ -115,7 +115,7 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
   }
 
   /**
-   * Load icon from the relevant folder (files/folders)
+   * Load icon from the relevant folder (files/folders).
    *
    * @param path
    * @return the icon
@@ -123,17 +123,13 @@ abstract class IconEditableColumnInfo(private val parent: Disposable, private va
   abstract fun loadIcon(path: String): Icon
 
   /**
-   * Prevents cell to be editable
+   * Get the list of icons.
    *
-   * @param item the [Association]
-   * @return true if editable
+   * @return list of icons
    */
-  override fun isCellEditable(item: Association): Boolean = editable
+  abstract fun getIcons(): List<String>
 
-  companion object {
-    private val DESCRIPTOR = FileChooserDescriptorFactory.createSingleFileDescriptor(
-      FileTypeManager.getInstance().getStdFileType("SVG")
-    )
-  }
+  /** Prevents cell to be editable. */
+  override fun isCellEditable(item: Association): Boolean = editable
 
 }

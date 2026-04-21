@@ -77,12 +77,14 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
   private fun onSettingsChanged() {
     thisLogger().debug("Settings Changed")
-    refreshIndex()
-    IconPatchersManager.instance.updateFileIcons()
-    IconPatchersManager.instance.updateIcons()
 
-    LafManager.getInstance().updateUI()
-    refreshOpenedProjects()
+    UIUtil.invokeLaterIfNeeded {
+      refreshIndex()
+      IconPatchersManager.instance.updateFileIcons()
+      IconPatchersManager.instance.updateIcons()
+      LafManager.getInstance().updateUI()
+      refreshOpenedProjects()
+    }
   }
 
   /** Run on project open. */
