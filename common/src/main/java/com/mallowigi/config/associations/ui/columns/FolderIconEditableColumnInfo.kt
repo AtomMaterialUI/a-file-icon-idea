@@ -31,7 +31,7 @@ import javax.swing.Icon
 
 /** Column info for the icon of a **Folder Icon Association**. Displays the icon path alongside the icon. */
 @Suppress("unused", "HardCodedStringLiteral")
-class FolderIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+class FolderIconEditableColumnInfo(parent: Disposable, editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
   override fun loadIcon(path: String): Icon = AtomIcons.getFolderIcon(path).openedIcon

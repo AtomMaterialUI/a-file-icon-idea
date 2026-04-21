@@ -32,7 +32,7 @@ import icons.AtomIcons
 import javax.swing.Icon
 
 /** Column info for the icon of a **PSI Icon Association**. */
-class PsiIconEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
+class PsiIconEditableColumnInfo(parent: Disposable, editable: Boolean) :
   IconEditableColumnInfo(parent, editable) {
 
   override fun loadIcon(path: String): Icon =

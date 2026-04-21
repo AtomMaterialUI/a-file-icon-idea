@@ -35,19 +35,18 @@ import javax.swing.table.TableCellEditor
 import javax.swing.table.TableCellRenderer
 
 /**
- * Editable column info for [Association] pattern
+ * Editable column info for [Association] pattern.
  *
  * @property parent the Parent class
  * @property editable whether the column should be editable
  */
-@Suppress("UnstableApiUsage")
 class PatternEditableColumnInfo(private val parent: Disposable, private val editable: Boolean) :
   EditableColumnInfo<Association, String>(message("AssociationsForm.folderIconsTable.columns.pattern")) {
-  /** Whether the regex highlight is enabled (disabled by default because it's slow) */
+  /** Whether the regex highlight is enabled (disabled by default because it's slow). */
   var toggledPattern: Boolean = false
 
   /**
-   * The value of the column is the matcher
+   * The value of the column is the matcher.
    *
    * @param item the [Association]
    * @return [Association] matcher
@@ -55,7 +54,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
   override fun valueOf(item: Association): String = item.matcher
 
   /**
-   * Set the [Association]'s matcher
+   * Set the [Association]'s matcher.
    *
    * @param item the [Association]
    * @param value the string value for the matcher
@@ -66,7 +65,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
   }
 
   /**
-   * Creates an editor for the [Association] pattern, which validates regexps
+   * Creates an editor for the [Association] pattern, which validates regexps.
    *
    * @param item the [Association]
    * @return the [TableCellEditor]
@@ -90,7 +89,7 @@ class PatternEditableColumnInfo(private val parent: Disposable, private val edit
     ModifiedInfoCellRenderer(o)
 
   /**
-   * Whether the cell is editable
+   * Whether the cell is editable.
    *
    * @param item the [Association]
    * @return true if editable
