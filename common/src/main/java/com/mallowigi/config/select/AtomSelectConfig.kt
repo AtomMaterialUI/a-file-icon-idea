@@ -174,8 +174,7 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
   companion object {
     /** Instance of the [AtomSelectConfig]. */
     @JvmStatic
-    val instance: AtomSelectConfig by lazy {
-      ApplicationManager.getApplication().getService(AtomSelectConfig::class.java)
-    }
+    val instance: AtomSelectConfig
+      get() = service()
   }
 }

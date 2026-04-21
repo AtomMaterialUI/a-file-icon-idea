@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NonNls
 import java.util.*
 
 /**
- * Main svg patcher: run all registered svg patchers
+ * Main svg patcher: run all registered svg patchers.
  *
  * @constructor Create empty Main svg patcher
  */
@@ -52,7 +52,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   )
 
   /**
-   * Add patcher to the OtherPatcher
+   * Add patcher to the OtherPatcher.
    *
    * @param otherPatcher
    */
@@ -88,7 +88,8 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
 
   companion object {
     /** Service instance. */
-    val instance: MainSvgPatcher by lazy { service() }
+    val instance: MainSvgPatcher
+      get() = service()
   }
 
 }

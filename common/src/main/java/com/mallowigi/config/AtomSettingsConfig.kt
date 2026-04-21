@@ -369,7 +369,8 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
 
     /** Instance of the Config service. */
     @JvmStatic
-    val instance: AtomSettingsConfig by lazy { service() }
+    val instance: AtomSettingsConfig
+      get() = service()
 
     private val accentColorFromTheme: String
       get() = getAccentFromTheme()
