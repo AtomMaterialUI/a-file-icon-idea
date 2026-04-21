@@ -90,6 +90,7 @@
     <!--suppress PluginXmlValidity -->
 
     <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
+    <postStartupActivity implementation="com.mallowigi.icons.AssociationCheckActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSVGPatchersListener"/>
     <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
