@@ -50,6 +50,8 @@ object AtomIcons {
   private const val FILES_PATH: String = "/assets"
   private const val FOLDERS_PATH: String = "/assets/icons/folders"
   private const val FOLDERS_OPEN_PATH: String = "/assets/icons/foldersOpen"
+  private const val PSI_PATH: String = ""
+
   val EXCLUDED: Icon = load("/icons/mt/modules/ExcludedTreeOpen.svg")
   val MODULE: Icon = load("/icons/mt/modules/ModuleOpen.svg")
   val SOURCE: Icon = load("/icons/mt/modules/sourceRootOpen.svg")
@@ -57,7 +59,7 @@ object AtomIcons {
   val LOGO: Icon = load("/logo.svg")
 
   /**
-   * Get file icon from the resources folder
+   * Get file icon from the resources folder.
    *
    * @param iconPath path without the prefix
    * @return the full path
@@ -66,7 +68,7 @@ object AtomIcons {
     IconLoader.getIcon(toCanonicalPath(FILES_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass)
 
   /**
-   * Get folder icons from the resources folder
+   * Get folder icons from the resources folder.
    *
    * @param iconPath path without the prefix
    * @return the DirIcon (closed+opened)
@@ -76,8 +78,11 @@ object AtomIcons {
     IconLoader.getIcon(toCanonicalPath(FOLDERS_OPEN_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass),
   )
 
+  /** Get psi icon from the resources folder. */
+  fun getPsiIcon(iconPath: String): Icon = IconLoader.getIcon(toCanonicalPath(PSI_PATH) + toCanonicalPath(iconPath), AtomIcons.javaClass)
+
   /**
-   * Loads an icon
+   * Loads an icon.
    *
    * @param path absolute path to the icon
    * @return the icon. must not be null
@@ -88,7 +93,7 @@ object AtomIcons {
   ): Icon = IconLoader.findIcon(toCanonicalPath(path), AtomIcons.javaClass)!!
 
   /**
-   * Tries to load a svg icon
+   * Tries to load a svg icon.
    *
    * @param canonicalPath
    * @return
@@ -107,7 +112,7 @@ object AtomIcons {
   }
 
   /**
-   * If the icon's height is 1, load a fallback icon, otherwise return the icon
+   * If the icon's height is 1, load a fallback icon, otherwise return the icon.
    *
    * @param icon The icon to use if the SVG icon can't be loaded.
    * @param path The path to the SVG file.
@@ -116,7 +121,7 @@ object AtomIcons {
 
   /**
    * If the file is a symlink, add the symlink icon to the file's icon; if the file is not writable, add the locked icon the file's icon;
-   * otherwise, return the file's icon
+   * otherwise, return the file's icon.
    *
    * @param icon The icon to be decorated.
    * @param virtualFile VirtualFile — the file to get the icon for

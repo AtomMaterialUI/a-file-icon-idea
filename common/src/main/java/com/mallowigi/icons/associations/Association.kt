@@ -60,7 +60,7 @@ abstract class Association @PropertyMapping() internal constructor() : Serializa
 
   @field:Property
   @XStreamAsAttribute
-  var iconType: IconType = IconType.FILE
+  open var iconType: IconType = IconType.FILE
 
   @field:Property
   @XStreamAsAttribute

@@ -41,7 +41,7 @@ import javax.swing.Icon
 abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
 
   /**
-   * Get icon of an icon path
+   * Get icon of an icon path.
    *
    * @param iconPath the icon path to check
    * @return icon if there is an [Association] for this path
@@ -49,7 +49,7 @@ abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
   abstract fun getIcon(iconPath: String): Icon?
 
   /**
-   * Get the source of associations
+   * Get the source of associations.
    *
    * @return the [Associations] source
    */
@@ -59,21 +59,21 @@ abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
   abstract fun getType(): IconType
 
   /**
-   * Whether this provider is for default associations
+   * Whether this provider is for default associations.
    *
    * @return true if default assoc provider
    */
   abstract fun isDefault(): Boolean
 
   /**
-   * Determine whether this provider is applicable
+   * Determine whether this provider is applicable.
    *
    * @return true if not applicable
    */
   abstract fun isNotApplicable(): Boolean
 
   /**
-   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider
+   * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider.
    *
    * @param element the psi element
    * @return true if element is of type defined by this provider
@@ -81,12 +81,12 @@ abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
   abstract fun isOfType(element: PsiElement): Boolean
 
   /**
-   * Get the icon for the given filePath, or null if no association foun
+   * Get the icon for the given filePath, or null if no association foun.
    *
    * @param filePath the file path
    * @param project The current project
    */
-  override fun getIcon(filePath: FilePath, project: Project?): Icon? {
+  override fun getIcon(filePath: FilePath, isDirectory: Boolean, project: Project?): Icon? {
     if (isNotApplicable()) return null
 
     return findIcon(filePath)
@@ -95,7 +95,7 @@ abstract class AbstractVcsFileIconProvider : FilePathIconProvider {
   private fun findAssociation(file: FileInfo): Association? = getSource().findAssociation(file)
 
   /**
-   * Find icon for a given path
+   * Find icon for a given path.
    *
    * @param filePath the filePath
    * @return icon if found

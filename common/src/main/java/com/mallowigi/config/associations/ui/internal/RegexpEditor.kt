@@ -46,7 +46,7 @@ import javax.swing.KeyStroke
 import javax.swing.table.TableCellEditor
 
 /**
- * A Regular expression editor with validation
+ * A Regular expression editor with validation.
  *
  * @param textField the text field component
  * @param parent the disposable parent
@@ -99,12 +99,12 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
       }
     }
 
-    myDocument!!.addDocumentListener(dl)
+    myDocument!!.addDocumentListener(dl, parent)
     Disposer.register(parent) { (myDocument ?: return@register).removeDocumentListener(dl) }
   }
 
   /**
-   * Creates a [TableCellEditor] with validation functionalities
+   * Creates a [TableCellEditor] with validation functionalities.
    *
    * @param table the table
    * @param value the value to render
@@ -142,14 +142,14 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
   }
 
   /**
-   * The cell value: the contents of the edited document
+   * The cell value: the contents of the edited document.
    *
    * @return the contents of the text field
    */
   override fun getCellEditorValue(): Any = myDocument!!.text
 
   /**
-   * Validates cell when edition stopped
+   * Validates cell when edition stopped.
    *
    * @return true if valid
    */
@@ -168,7 +168,7 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
   }
 
   /**
-   * Executes validations
+   * Executes validations.
    *
    * @return the [ValidationInfo] if there is
    */
@@ -183,7 +183,7 @@ class RegexpEditor(textField: JTextField, parent: Disposable) :
   }
 
   /**
-   * Get component: the editor
+   * Get component: the editor.
    *
    * @return the [EditorTextField]
    */
