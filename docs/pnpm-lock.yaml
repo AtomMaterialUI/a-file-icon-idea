@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@astrojs/internal-helpers':
+        specifier: ^0.8.0
+        version: 0.8.0
       '@astrojs/starlight':
         specifier: ^0.38.3
         version: 0.38.3(astro@6.1.8(@types/node@24.12.2)(rollup@4.60.2))
