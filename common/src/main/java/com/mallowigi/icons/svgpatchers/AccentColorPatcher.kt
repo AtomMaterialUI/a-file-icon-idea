@@ -24,23 +24,24 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.ui.ColorUtil
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.utils.toHash
 import com.mallowigi.utils.toHex
 import javax.swing.plaf.ColorUIResource
 
-/**
- * Tint color patcher
- *
- * @constructor Create empty Tint color patcher
- */
+/** Tint color patcher. */
 class AccentColorPatcher : SvgPatcher {
 
-  private var accentColor: ColorUIResource = getAccentColor()
+  /** Cached accent color. */
+  private var accentColor: ColorUIResource? = null
+
+  private val config: AtomSettingsConfig?
+    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
   override fun digest(): LongArray = longArrayOf(
-    accentColor.toHex().toHash()
+    (accentColor ?: getAccentColor()).toHex().toHash()
   )
 
   override fun patch(attributes: MutableMap<String, String>): Unit = patchTints(attributes)
@@ -49,11 +50,22 @@ class AccentColorPatcher : SvgPatcher {
 
   override fun refresh(): Unit = refreshAccentColor()
 
-  private fun getAccentColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentAccentColor()))
+  private fun getAccentColor(): ColorUIResource {
+    val hex = config?.getCurrentAccentColor() ?: DEFAULT_ACCENT_COLOR
+    return ColorUIResource(ColorUtil.fromHex(hex))
+  }
 
+  /**
+   * Updates the fill or stroke attributes of a given SVG element based on the specified tint property.
+   *
+   * @param attributes a mutable map representing the attributes of an SVG element. This should include keys for SVG-related properties,
+   *    such as `fill`, `stroke`, or a custom `data-tint`. If `data-tint` is present and its value is `"true"`, `"fill"`, or `"stroke"`, the
+   *    corresponding color attribute (fill or stroke) will be updated to match the current accent color.
+   */
   private fun patchTints(attributes: MutableMap<String, String>) {
     val tint = attributes[SvgPatcher.TINT] ?: return
-    val newAccentColor = ColorUtil.toHex(accentColor)
+    val color = accentColor ?: getAccentColor()
+    val newAccentColor = ColorUtil.toHex(color)
 
     // if tint = "true" or tint = "fill", change the fill color. If tint = "stroke", change the stroke color
     if (tint == SvgPatcher.TRUE || tint == SvgPatcher.FILL) {
@@ -65,6 +77,10 @@ class AccentColorPatcher : SvgPatcher {
 
   private fun refreshAccentColor() {
     accentColor = getAccentColor()
+  }
+
+  companion object {
+    private const val DEFAULT_ACCENT_COLOR: String = "009688"
   }
 
 }
