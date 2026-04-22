@@ -24,6 +24,7 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.application.ApplicationManager
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.utils.toHash
 import javax.swing.UIManager
@@ -36,6 +37,9 @@ class BigIconsPatcher : SvgPatcher {
   private var defaultRowHeight = UIManager.getInt(ROW_HEIGHT)
   private var hasCustomLineHeight = false
   private var hasCustomSize = false
+
+  private val config: AtomSettingsConfig?
+    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
   override fun digest(): LongArray {
     val entries = mutableListOf<Long>()
@@ -56,8 +60,9 @@ class BigIconsPatcher : SvgPatcher {
 
   private fun patchSizes(attributes: MutableMap<String, String>) {
     val hasWidth = attributes[SvgPatcher.WIDTH]
-    val customFontSize = AtomSettingsConfig.instance.customIconSize.toString()
-    val hasCustomSize = AtomSettingsConfig.instance.hasCustomIconSize
+    val currentConfig = config ?: return
+    val customFontSize = currentConfig.customIconSize.toString()
+    val hasCustomSize = currentConfig.hasCustomIconSize
     val size = if (hasCustomSize) customFontSize else DEFAULT_ICON_SIZE
 
     if (hasWidth == "16" || hasWidth == "16px") {
@@ -67,10 +72,11 @@ class BigIconsPatcher : SvgPatcher {
   }
 
   private fun refreshSizes() {
-    hasCustomSize = AtomSettingsConfig.instance.hasCustomIconSize
-    hasCustomLineHeight = AtomSettingsConfig.instance.hasCustomLineHeight
-    customIconSize = AtomSettingsConfig.instance.customIconSize
-    customLineHeight = AtomSettingsConfig.instance.customLineHeight
+    val currentConfig = config ?: return
+    hasCustomSize = currentConfig.hasCustomIconSize
+    hasCustomLineHeight = currentConfig.hasCustomLineHeight
+    customIconSize = currentConfig.customIconSize
+    customLineHeight = currentConfig.customLineHeight
 
     updateRowHeight()
   }
@@ -80,18 +86,15 @@ class BigIconsPatcher : SvgPatcher {
     val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight
     val materialHeight = UIManager.getInt(MATERIAL_ROW_HEIGHT)
 
-    if (materialHeight != 0) {
-      UIManager.put(ROW_HEIGHT, materialHeight)
-    } else if (customRowHeight != null) {
-      UIManager.put(ROW_HEIGHT, customRowHeight)
-    } else {
-      UIManager.put(ROW_HEIGHT, null)
+    when {
+      materialHeight != 0     -> UIManager.put(ROW_HEIGHT, materialHeight)
+      customRowHeight != null -> UIManager.put(ROW_HEIGHT, customRowHeight)
+      else                    -> UIManager.put(ROW_HEIGHT, null)
     }
   }
 
   companion object {
     private const val MIN_LINE_HEIGHT = 16
-    private const val DEFAULT_LINE_HEIGHT = 20
     private const val DEFAULT_ICON_SIZE = 16
     private const val ROW_HEIGHT = "Tree.rowHeight"
     private const val MATERIAL_ROW_HEIGHT = "Tree.materialRowHeight"
