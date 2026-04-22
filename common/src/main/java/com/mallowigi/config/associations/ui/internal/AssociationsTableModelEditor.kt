@@ -23,6 +23,10 @@
  */
 package com.mallowigi.config.associations.ui.internal
 
+import com.intellij.icons.AllIcons
+import com.intellij.openapi.actionSystem.ActionUpdateThread
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.Comparing
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.ui.*
@@ -32,6 +36,7 @@ import com.intellij.util.containers.ContainerUtil
 import com.intellij.util.ui.*
 import com.intellij.util.ui.table.ComboBoxTableCellEditor
 import com.mallowigi.config.AtomSettingsConfig
+import com.mallowigi.config.BundledAssociations
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.PsiAssociation
 import com.mallowigi.icons.associations.RegexAssociation
@@ -122,6 +127,25 @@ class AssociationsTableModelEditor(
     toolbarDecorator.run {
       disableUpDownActions()
       setRemoveActionUpdater { table.selectedObject?.touched == true }
+      addExtraAction(object : AnAction("Reset", "Reset", AllIcons.Actions.Rollback) {
+        override fun actionPerformed(e: AnActionEvent) {
+          val association = table.selectedObject ?: return
+          resetItem(association)
+        }
+
+        override fun update(e: AnActionEvent) {
+          e.presentation.isEnabled = this.isEnabled()
+        }
+
+        fun isEnabled(): Boolean {
+          val association = table.selectedObject ?: return false
+          if (!association.touched) return false
+
+          return BundledAssociations.instance.getDefault(association.name, type) != null
+        }
+
+        override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT
+      })
     }
 
     // Search and filter table
@@ -200,6 +224,18 @@ class AssociationsTableModelEditor(
 
   /** Create component with toolbar. */
   fun createComponent(): JComponent = toolbarDecorator.createPanel()
+
+  /**
+   * Resets the [Association] to its default values.
+   *
+   * @param item the [Association] to reset
+   */
+  private fun resetItem(item: Association) {
+    val default = BundledAssociations.instance.getDefault(item.name, type) ?: return
+    item.apply(default)
+    item.touched = false
+    model.fireTableDataChanged()
+  }
 
   /**
    * Apply changes to elements.
