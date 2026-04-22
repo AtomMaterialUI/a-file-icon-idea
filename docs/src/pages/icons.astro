@@ -10,6 +10,23 @@ import { glob } from 'glob';
 import path from 'path';
 import fs from 'fs';
 
+type Association = {
+  name: string;
+  iconColor: string;
+  priority: number;
+  pattern: string;
+  fileNames: string;
+  icon: string;
+  type: 'regex' | 'type';
+}
+
+type IconCategory = {
+  name: string;
+  path: string;
+  category: string;
+  association: Association | null;
+}
+
 // Function to parse XML and get icon associations
 async function getIconAssociations() {
   try {
@@ -17,7 +34,7 @@ async function getIconAssociations() {
     const xmlContent = fs.readFileSync(xmlPath, 'utf8');
 
     // Simple XML parsing for associations - extract regex and type elements
-    const associations = {};
+    const associations: Record<string, Association> = {};
 
     // Match regex elements
     const regexMatches = xmlContent.matchAll(/<regex[^>]*fileNames="([^"]*)"[^>]*name="([^"]*)"[^>]*iconColor="([^"]*)"[^>]*priority="([^"]*)"[^>]*pattern="([^"]*)"[^>]*icon="([^"]*)"/g);
@@ -64,7 +81,7 @@ async function getIconAssociations() {
 
 // Function to get all SVG files from icon directories
 async function getAllIcons() {
-  const iconCategories = {
+  const iconCategories: Record<string, Array<IconCategory>> = {
     files: [],
     folders: [],
     foldersOpen: [],
@@ -164,9 +181,11 @@ const allIcons = [
 
       <div class="icon-grid" id="iconGrid">
         {allIcons.map(icon => (
-          <div class="icon-item" data-category={icon.category} data-name={icon.name} data-association={JSON.stringify(icon.association)}>
+          <div class="icon-item" data-category={icon.category} data-name={icon.name}
+               data-association={JSON.stringify(icon.association)}>
             <div class="icon-display">
-              <img data-src={`/icons/icons/${icon.category}/${icon.name}.svg`} alt={icon.name} width="24" height="24" class="lazy-icon" />
+              <img data-src={`/icons/icons/${icon.category}/${icon.name}.svg`} alt={icon.name} width="24" height="24"
+                   class="lazy-icon" />
             </div>
             <div class="icon-name">{icon.name}</div>
             <div class="icon-category">{icon.category}</div>

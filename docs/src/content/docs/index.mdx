@@ -1,70 +1,51 @@
 ---
 title: Atom Material Icons
-description: Beautiful material design icons for your JetBrains IDE - files, folders, and UI elements with customizable themes and colors.
+description: Make your IDE more vibrant with beautiful Material Icons
 template: splash
 hero:
-  tagline: Transform your JetBrains IDE with beautiful material design icons
+  tagline: Make your IDE more vibrant with beautiful Material Icons
   image:
     alt: Atom Material Icons logo
-    file: ../../assets/houston.webp
+    file: ../../assets/logo.svg
   actions:
     - text: Get Started
       link: /installation/
       icon: right-arrow
       variant: primary
     - text: View on GitHub
-      link: https://github.com/mallowigi/a-file-icon-idea
+      link: https://github.com/AtomMaterialUI
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
+import Plugins from "../../pages/plugins.astro";
+import Credits from "../../pages/credits.astro";
 
-## Why Choose Atom Material Icons?
+<section class="section">
+  <h3 class="section-title">Features</h3>
 
-<CardGrid stagger>
-	<Card title="🗂️ File & Folder Icons" icon="document">
-		Over 1000+ beautifully crafted icons for files and directories based on extensions, frameworks, and patterns.
-	</Card>
-	<Card title="🎯 UI Enhancement" icon="setting">
-		Replace toolbar icons, gutter icons, and PSI icons with modern material design alternatives.
-	</Card>
-	<Card title="🎨 Customizable Themes" icon="pencil">
-		Monochrome filters, custom accent colors, and arrow styles to match your preference.
-	</Card>
-	<Card title="⚙️ Full Configuration" icon="laptop">
-		Custom file associations, icon sizes, hollow folders, and extensive personalization options.
-	</Card>
+<CardGrid>
+  <Card title="🗂️ File & Folder Icons" icon="document">
+    Over 1000+ beautifully crafted icons for files and directories based on extensions, frameworks,
+    and patterns.
+  </Card>
+  <Card title="🎯 UI Icons" icon="laptop">
+    Replace the IDE's UI Icons with vibrant and colorful Material Icons.
+  </Card>
+  <Card title="🎨 Customizable" icon="pencil">
+    Monochrome/Saturation filters, custom size, accent colors, and arrow styles to match your
+    preference.
+  </Card>
+  <Card title="⚙️ Extensible" icon="setting">
+    Add your own Associations for Files, Folders, and even PSI icons.
+  </Card>
 </CardGrid>
 
-## Features
+</section>
 
-This plugin is a port of the [Atom File Icons](https://github.com/file-icons/atom) for Atom and the icons of
-the [Material Theme UI](https://github.com/mallowigi/material-theme-issues) plugin.
+<Plugins />
 
-### File Icons
-Automatically replaces file icons based on their extension, content, or naming patterns:
+<hr />
 
-![File Icons Preview](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
-
-### Folder Icons
-Contextual folder icons for common patterns like `src`, `docs`, `node_modules`, etc:
-
-![Folder Icons Preview](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
-
-### Additional Features
-- **UI Icons**: Enhanced toolbar icons, gutter icons, and other UI elements
-- **PSI Icons**: Updated Program Structure Interface icons for classes, methods, variables, and other code elements
-- **Customization**: Monochrome filter, custom icon sizes, accent colors, and arrow styles
-- **Performance**: Optimized for smooth IDE performance with configurable options
-
-## Supported IDEs
-
-Works with all JetBrains IDEs including:
-
-- IntelliJ IDEA
-- WebStorm
-- PyCharm
-- PhpStorm
-- Android Studio
-- And more...
+<Credits />

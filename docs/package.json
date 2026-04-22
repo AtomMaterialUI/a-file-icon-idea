@@ -1,7 +1,7 @@
 {
   "name": "docs",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,10 +12,14 @@
     "prebuild": "npm run copy-icons"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.35.2",
-    "@catppuccin/starlight": "^1.0.2",
-    "astro": "^5.18.1",
-    "glob": "^11.1.0",
-    "sharp": "^0.34.2"
+    "@astrojs/starlight": "^0.38.3",
+    "astro": "^6.1.8",
+    "glob": "^13.0.6",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "prettier": "^3.8.3"
   }
 }

@@ -3,7 +3,7 @@ title: Basic Usage
 description: Learn how to use the Atom Material Icons plugin and access its features.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+import { Aside } from "@astrojs/starlight/components";
 
 ## Getting Started
 
@@ -16,17 +16,21 @@ To customize the plugin, navigate to the settings:
 **Path**: `Settings/Preferences → Appearance & Behavior → Atom Material Icons`
 
 **Keyboard Shortcut**:
+
 - Windows/Linux: `Ctrl+Alt+S` then search for "Atom Material"
 - macOS: `Cmd+,` then search for "Atom Material"
 
 <Aside type="tip">
-You can quickly find the settings by typing "Atom Material" in the settings search bar.
+  You can quickly find the settings by typing "Atom Material" in the settings
+  search bar.
 </Aside>
 
 ## Main Features Overview
 
 ### File Icons
+
 The plugin automatically replaces file icons based on:
+
 - **File extensions** (`.js`, `.ts`, `.py`, `.java`, etc.)
 - **File content** (configuration files, test files, etc.)
 - **Naming patterns** (`package.json`, `webpack.config.js`, etc.)
@@ -36,7 +40,9 @@ Here's how your file icons will look in the project explorer:
 ![File Icons Examples](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
 
 ### Folder Icons
+
 Contextual folder icons are applied based on:
+
 - **Common patterns**: `src`, `docs`, `test`, `assets`, `components`
 - **Framework folders**: `node_modules`, `.git`, `.vscode`, `dist`
 - **Custom associations**: Define your own folder icon mappings
@@ -46,7 +52,9 @@ See the different folder icons in action:
 ![Folder Icons Examples](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
 
 ### UI Icons
+
 Enhanced interface elements include:
+
 - **Toolbar icons**: Action buttons and tool windows
 - **Gutter icons**: Debugger, version control, and error indicators
 - **PSI icons**: Code structure elements (classes, methods, variables)
@@ -65,6 +73,7 @@ Toggle different icon categories on or off:
 ### Icon Size
 
 Adjust the size of file and folder icons:
+
 - **Range**: 12px to 24px
 - **Default**: 16px
 - **Recommendation**: Use smaller sizes (12-14px) for better performance
@@ -72,13 +81,17 @@ Adjust the size of file and folder icons:
 ### Visual Options
 
 #### Monochrome Filter
+
 Apply a single color filter to all icons:
+
 - **Enable**: Toggle monochrome mode on/off
 - **Color**: Choose any color (default: gray)
 - **Use case**: Perfect for minimalist themes or specific color schemes
 
 #### Accent Color
+
 Customize the accent color for specific UI elements:
+
 - **Close buttons**: Tab close buttons
 - **Highlighted arrows**: Tree view expand/collapse arrows
 - **Loading indicators**: Progress indicators
@@ -86,13 +99,17 @@ Customize the accent color for specific UI elements:
 ## Quick Actions
 
 ### Refresh Icons
+
 If icons don't update immediately after changes:
+
 1. Apply settings by clicking `OK`
 2. Restart your IDE
 3. Or use `File → Invalidate Caches and Restart`
 
 ### Reset to Defaults
+
 To restore original settings:
+
 1. Open plugin settings
 2. Look for "Reset" or "Restore Defaults" button
 3. Restart IDE to apply changes
@@ -100,19 +117,25 @@ To restore original settings:
 ## Common Use Cases
 
 ### Dark Theme Setup
+
 For dark themes, consider:
+
 - **Monochrome Filter**: Enable with white (#FFFFFF) or light gray (#CCCCCC)
 - **Accent Color**: Choose bright colors for better contrast
 - **Icon Size**: Slightly larger sizes (18-20px) for better visibility
 
 ### Light Theme Setup
+
 For light themes:
+
 - **Monochrome Filter**: Use dark colors (#333333) or keep disabled
 - **Accent Color**: Use darker colors for good contrast
 - **Icon Size**: Standard 16px works well
 
 ### Performance Optimization
+
 For better performance:
+
 - **Reduce Icon Size**: Use 12px or 14px
 - **Disable Unused Features**: Turn off PSI icons if not needed
 - **Limit Custom Associations**: Keep custom patterns reasonable
@@ -134,7 +157,7 @@ With the plugin active, your file tree becomes more intuitive:
 - **Consistent Design**: Unified visual language across your project
 
 <Aside type="note">
-Changes to icon settings require an IDE restart to take full effect.
+  Changes to icon settings require an IDE restart to take full effect.
 </Aside>
 
 ## What's Next?

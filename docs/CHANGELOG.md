@@ -1,6 +1,6 @@
 ## Changelog
 
-----
+---
 
 ## 104.0.0 (10.4.0)
 
@@ -61,11 +61,11 @@
 - Fix infinite indexing loop
 - Add a caching map to avoid recalculating indexed icons
 - Trying to fix the rare error of `Class initialization must not depend on services`
-- Support *Icon Viewer 2* plugin
+- Support _Icon Viewer 2_ plugin
 
 ### Additions
 
-- *File Icons*:
+- _File Icons_:
   - Ruff
   - Stryker
   - Wrangler
@@ -85,7 +85,7 @@
   - C3
   - Mise
   - Textlint Ignore
-- *Folder Icons*:
+- _Folder Icons_:
   - Liquibase
   - Obsidian
   - Trash
@@ -100,8 +100,8 @@
 
 ### Fixes
 
-- Disable *Hollow Folders* when the *Enable Folder Icons* option is disabled.
-- Fix the *Old Toolbar* menu
+- Disable _Hollow Folders_ when the _Enable Folder Icons_ option is disabled.
+- Fix the _Old Toolbar_ menu
 - Fix Custom Associations' icon selector
 
 ## 98.0.0 (9.8.0)
@@ -254,7 +254,7 @@
 
 ### Fixes
 
-- Improve *line height*: now the line height is changed only if one of the options "Custom Size" or "Custom Line Height"
+- Improve _line height_: now the line height is changed only if one of the options "Custom Size" or "Custom Line Height"
   are set. Otherwise it will use the IDE default.
 - Fix the search icon color.
 - Duplicate some icons in order for the color feature to work properly (for example, in associations such as "Kotlin
@@ -753,7 +753,7 @@
 
 - Support for JBR 17 and Experimental UI
 - Add the **Atom Material Icons** settings on the Experimental UI toolbar
-- Enable Experimental UI icons when *UI Icons* is disabled.
+- Enable Experimental UI icons when _UI Icons_ is disabled.
 
 ## 64.0.0 (6.4.0)
 
@@ -993,7 +993,7 @@
   - lolcode, nuxt, skript, textlint, grain
   - dockercompose, spectral, mdsvex
   - bundle.properties, mybatis
-- *Folders*:
+- _Folders_:
   - kotlin, java
   - perl, lua
   - input/output
@@ -1831,8 +1831,8 @@
 - Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
   - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93>
     and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
-- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons.
-  As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
+- Reorganized icons: now icons belonging to the _Files_ category and _PSI_ category are separate from the rest of icons.
+  As a result, toggling _UI Icons_ should not affect _File Icons_ and _PSI Icons_ and vice-versa.
 - Add icons to the **Atom Material Settings Toolbar Menu**.
 - Add actions for switching between **Arrow Styles**
 
@@ -2178,7 +2178,7 @@
   - fusebox
   - futhark
   - JetBrains Theme Files
-- *Update icon associations*:
+- _Update icon associations_:
   - actionscript
   - ansible
   - antlr

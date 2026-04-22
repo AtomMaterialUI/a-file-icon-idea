@@ -1,0 +1,63 @@
+---
+interface Plugin {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+const plugins: Plugin[] = [
+  {
+    name: 'VS Code Extension',
+    url: 'https://marketplace.visualstudio.com/items?itemName=AtomMaterial.a-file-icon-vscode',
+    icon: '/icons/vscode.svg',
+  },
+  {
+    name: 'Chrome Extension',
+    url: 'https://chromewebstore.google.com/detail/atom-material-icons/pljfkbaipkidhmaljaaakibigbcmmpnc?hl=en',
+    icon: '/icons/chrome.svg',
+  },
+  {
+    name: 'Firefox Extension',
+    url: 'https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/',
+    icon: '/icons/firefox.svg',
+  },
+  {
+    name: 'Edge Extension',
+    url: 'https://microsoftedge.microsoft.com/addons/detail/atom-material-icons/ajfcnjlggplaibcmaannbijmblhiiiee',
+    icon: '/icons/edge.svg',
+  }
+]
+---
+
+<section>
+  <h3 class="section-title">Also Available For:</h3>
+
+  <div class="packages-list">
+    {plugins.map(plugin => (
+      <a href={plugin.url} target="_blank" rel="noopener noreferrer"
+         title={plugin.name} class="package-item">
+        <img src={plugin.icon} alt={plugin.name} />
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .packages-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .package-item {
+    display: block;
+    width: 36px;
+    height: 36px;
+    img {
+      max-width: 36px;
+      max-height: 36px;
+    }
+  }
+</style>

@@ -3,7 +3,7 @@ title: Installation
 description: Step-by-step guide to install the Atom Material Icons plugin in your JetBrains IDE.
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 ## Requirements
 
@@ -14,67 +14,71 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 ## Installation Methods
 
 <Tabs>
-  <TabItem label="JetBrains Marketplace (Recommended)">
+<TabItem label="JetBrains Marketplace (Recommended)">
 
 This is the easiest and most recommended way to install the plugin.
 
-1. **Open Settings/Preferences**
-  - In your JetBrains IDE, go to `File > Settings` (Windows/Linux) or `IntelliJ IDEA > Preferences` (macOS)
-  - **Keyboard shortcut**: `Ctrl+Alt+S` (Windows/Linux) or `Cmd+,` (macOS)
+1.  **Open Settings/Preferences**
+    - In your JetBrains IDE, go to `File > Settings` (Windows/Linux) or `IntelliJ IDEA > Preferences` (macOS)
+    - **Keyboard shortcut**: `Ctrl+Alt+S` (Windows/Linux) or `Cmd+,` (macOS)
+    2. **Navigate to Plugins**
+    - In the Settings window, click on `Plugins` in the left sidebar
+    3. **Search for the Plugin**
+    - Click on the `Marketplace` tab and search for `"Atom Material Icons"` or `"File Icons"`
+    4. **Install the Plugin**
+    - Click the `Install` button next to the "Atom Material Icons" plugin by Elior Boukhobza
+    5. **Restart Your IDE**
+    - After installation, restart your IDE to activate the plugin
 
-2. **Navigate to Plugins**
-  - In the Settings window, click on `Plugins` in the left sidebar
-
-3. **Search for the Plugin**
-  - Click on the `Marketplace` tab and search for `"Atom Material Icons"` or `"File Icons"`
-
-4. **Install the Plugin**
-  - Click the `Install` button next to the "Atom Material Icons" plugin by Elior Boukhobza
-
-5. **Restart Your IDE**
-  - After installation, restart your IDE to activate the plugin
-
-  </TabItem>
-  <TabItem label="Manual Installation">
+</TabItem>
+<TabItem label="Manual Installation">
 
 Download and install the plugin manually if you can't access the marketplace.
 
 1. **Download the Plugin**
-  - Download the latest plugin ZIP file from the [GitHub releases page](https://github.com/mallowigi/a-file-icon-idea/releases)
+
+- Download the latest plugin ZIP file from the [GitHub releases page](https://github.com/mallowigi/a-file-icon-idea/releases)
 
 2. **Open Plugin Settings**
-  - Go to `File > Settings > Plugins` (or `IntelliJ IDEA > Preferences > Plugins` on macOS)
+
+- Go to `File > Settings > Plugins` (or `IntelliJ IDEA > Preferences > Plugins` on macOS)
 
 3. **Install from Disk**
-  - Click the gear icon ⚙️ and select `"Install Plugin from Disk..."`
+
+- Click the gear icon ⚙️ and select `"Install Plugin from Disk..."`
 
 4. **Select ZIP File**
-  - Navigate to and select the downloaded ZIP file, then click `OK`
+
+- Navigate to and select the downloaded ZIP file, then click `OK`
 
 5. **Restart IDE**
-  - Restart your IDE to complete the installation
 
-  </TabItem>
-  <TabItem label="Build from Source">
+- Restart your IDE to complete the installation
+
+</TabItem>
+<TabItem label="Build from Source">
 
 For developers who want to build the plugin from source code.
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/mallowigi/a-file-icon-idea.git
    cd a-file-icon-idea
    ```
 
 2. **Build the Plugin**
+
    ```bash
    ./gradlew buildPlugin
    ```
+
    The built plugin will be located in `build/distributions/`
 
 3. **Install the Built Plugin**
    Follow the Manual Installation steps using the ZIP file from `build/distributions/`
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Verification
