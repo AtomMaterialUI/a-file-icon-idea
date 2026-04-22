@@ -44,20 +44,15 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   var enabled: Boolean = false
 
   /** Singleton instance. */
-  var instance: AtomSettingsConfig? = AtomSettingsConfig.instance
-    get() {
-      if (field == null) field = AtomSettingsConfig.instance
-      return field
-    }
-    private set
+  val instance: AtomSettingsConfig
+    get() = AtomSettingsConfig.instance
 
   /**
-   * Get the plugin context class loader if an icon needs to be patched
+   * Get the plugin context class loader if an icon needs to be patched.
    *
    * @param path the icon path
    * @param originalClassLoader the original class loader
-   * @return the plugin class loader if the icon needs to be patched, or the
-   *     original class loader
+   * @return the plugin class loader if the icon needs to be patched, or the original class loader
    */
   override fun getContextClassLoader(path: String, originalClassLoader: ClassLoader?): ClassLoader? {
     val classLoader = javaClass.classLoader
@@ -68,12 +63,11 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /**
-   * Patch the icon path if there is an icon available
+   * Patch the icon path if there is an icon available.
    *
    * @param path the path to patch
    * @param classLoader the classloader of the icon
-   * @return the patched path to the plugin icon, or the original path if the
-   *     icon patcher is disabled
+   * @return the patched path to the plugin icon, or the original path if the icon patcher is disabled
    */
   override fun patchPath(path: String, classLoader: ClassLoader?): String? {
     if (instance == null) return null
@@ -92,8 +86,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /**
-   * Returns the patched path by taking the original path and appending the
-   * path to append, and converting to svg
+   * Returns the patched path by taking the original path and appending the path to append, and converting to svg.
    *
    * @param path
    * @return
@@ -142,7 +135,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   }
 
   /**
-   * Replace the path by using the pathToAppend and pathToRemove
+   * Replace the path by using the pathToAppend and pathToRemove.
    *
    * @param path
    * @return
@@ -150,7 +143,7 @@ abstract class AbstractIconPatcher : IconPathPatcher() {
   private fun getReplacement(path: String): String {
     val finalPath: String = when {
       path.contains(".gif") -> GIF.replace(path, ".svg")
-      else -> path.replace(".png", ".svg")
+      else                  -> path.replace(".png", ".svg")
     }
     return (pathToAppend + finalPath.replace(pathToRemove, "")).replace("//", "/") // don't ask
   }

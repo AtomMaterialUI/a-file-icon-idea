@@ -448,10 +448,16 @@ class AssociationsTableModelEditor(
     const val ROW_HEIGHT: Int = 32
     const val LOADING_FONT_SIZE: Float = 24.0F
     const val DEFAULT_PRIORITY: Int = 10_000
-    val DEFAULT_ICON_COLOR: String = AtomSettingsConfig.instance.getCurrentAccentColor()
-    val DEFAULT_FOLDER_COLOR: String = AtomSettingsConfig.instance.getCurrentThemedColor()
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
+
+    /** Default color for icon in the associations table. */
+    val DEFAULT_ICON_COLOR: String
+      get() = AtomSettingsConfig.instance.getCurrentAccentColor()
+
+    /** Default color for folder in the associations table. */
+    val DEFAULT_FOLDER_COLOR: String
+      get() = AtomSettingsConfig.instance.getCurrentThemedColor()
 
     // columns (yes this is hardcoded, but I have no idea how to do it differently)
     @Suppress("unused")
