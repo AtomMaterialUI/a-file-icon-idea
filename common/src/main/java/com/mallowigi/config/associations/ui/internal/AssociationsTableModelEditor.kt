@@ -288,7 +288,7 @@ class AssociationsTableModelEditor(
       IconType.PSI -> {
         val psiAssociation = PsiAssociation()
         psiAssociation.name = "New PSI Association (${increment})"
-        psiAssociation.path = "path/to/icon${increment}.svg"
+        psiAssociation.path = "identifier${increment}"
         psiAssociation.priority = DEFAULT_PRIORITY
         psiAssociation.icon = "/glyphs/nodes/class.svg"
         psiAssociation.iconType = IconType.PSI

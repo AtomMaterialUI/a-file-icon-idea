@@ -52,7 +52,7 @@ class PsiIconPathPatcher : AbstractIconPatcher() {
     val openProjects = ProjectManager.getInstance().openProjects
     for (project in openProjects) {
       val projectConfig = AtomProjectSelectConfig.getInstance(project)
-      val projectMatch = projectConfig.selectedPsiAssociations.findAssociation(fileInfo)
+      val projectMatch = projectConfig.selectedPsiAssociations.findAssociation(fileInfo, true)
       if (projectMatch != null) {
         return projectMatch.icon
       }
@@ -60,7 +60,7 @@ class PsiIconPathPatcher : AbstractIconPatcher() {
 
     // Then check global overrides
     val globalConfig = AtomSelectConfig.instance
-    val globalMatch = globalConfig.selectedPsiAssociations.findAssociation(fileInfo)
+    val globalMatch = globalConfig.selectedPsiAssociations.findAssociation(fileInfo, true)
     if (globalMatch != null) {
       return globalMatch.icon
     }

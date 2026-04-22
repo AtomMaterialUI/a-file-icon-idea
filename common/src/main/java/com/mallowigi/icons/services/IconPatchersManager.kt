@@ -54,9 +54,9 @@ class IconPatchersManager {
     fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
+    installPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
-    installPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
   }
 
   /** Update all trees. */

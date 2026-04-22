@@ -58,7 +58,7 @@ class PsiAssociation internal constructor() : Association() {
     get() = super.isEmpty || path.isEmpty()
 
   /** Matches by the [path]. */
-  override fun matches(file: FileInfo): Boolean = file.path.endsWith(path)
+  override fun matches(file: FileInfo): Boolean = file.path.endsWith("$path.svg")
 
   /**
    * Apply changes from another [PsiAssociation].
