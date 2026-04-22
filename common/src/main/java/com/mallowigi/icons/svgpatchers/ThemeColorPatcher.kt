@@ -24,8 +24,9 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.ui.ColorUtil
-import com.mallowigi.config.AtomSettingsConfig.Companion.instance
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.utils.toHash
 import com.mallowigi.utils.toHex
 import javax.swing.plaf.ColorUIResource
@@ -33,10 +34,14 @@ import javax.swing.plaf.ColorUIResource
 /** Color Patcher for themed color. */
 class ThemeColorPatcher : SvgPatcher {
 
-  private var themedColor: ColorUIResource = getThemedColor()
+  private var themedColor: ColorUIResource? = null
+
+  /** Gets the current config. */
+  private val config: AtomSettingsConfig?
+    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
   override fun digest(): LongArray = longArrayOf(
-    themedColor.toHex().toHash()
+    (themedColor ?: getThemedColor()).toHex().toHash()
   )
 
   override fun patch(attributes: MutableMap<String, String>): Unit = patchTints(attributes)
@@ -45,16 +50,30 @@ class ThemeColorPatcher : SvgPatcher {
 
   override fun refresh(): Unit = refreshThemeColor()
 
-  private fun getThemedColor(): ColorUIResource = ColorUIResource(ColorUtil.fromHex(instance.getCurrentThemedColor()))
+  private fun getThemedColor(): ColorUIResource {
+    val hex = config?.getCurrentThemedColor() ?: DEFAULT_THEME_COLOR
+    return ColorUIResource(ColorUtil.fromHex(hex))
+  }
 
+  /**
+   * Patches the attributes of an SVG element to apply a themed color tint.
+   *
+   * Modifies the `fill` or `stroke` attributes of the SVG based on the value of the `data-themed` key in the given attributes map. If the
+   * `data-themed` value is "true" or "fill", the `fill` attribute is updated to the themed color. If the value is "stroke", the `stroke`
+   * attribute is updated instead.
+   *
+   * @param attributes a mutable map of SVG attributes where the patching will be applied. Expected to contain the key `data-themed` with
+   *    values "true", "fill", or "stroke" to determine the attribute to be patched.
+   */
   private fun patchTints(attributes: MutableMap<String, String>) {
     val themed = attributes[SvgPatcher.THEMED] ?: return
-    val newThemedColor = ColorUtil.toHex(themedColor)
+    val color = themedColor ?: getThemedColor()
+    val newThemedColor = ColorUtil.toHex(color)
 
     // if data-themed="true" or themed="fill", change the fill color, or change the stroke color if "stroke"
     when (themed) {
       SvgPatcher.TRUE, SvgPatcher.FILL -> attributes[SvgPatcher.FILL] = "#$newThemedColor"
-      SvgPatcher.STROKE -> attributes[SvgPatcher.STROKE] = "#$newThemedColor"
+      SvgPatcher.STROKE                -> attributes[SvgPatcher.STROKE] = "#$newThemedColor"
     }
   }
 
@@ -62,4 +81,7 @@ class ThemeColorPatcher : SvgPatcher {
     themedColor = getThemedColor()
   }
 
+  companion object {
+    private const val DEFAULT_THEME_COLOR: String = "b0bec5"
+  }
 }

@@ -24,16 +24,23 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.application.ApplicationManager
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.utils.toHash
 
 /** Custom Color Patcher. */
 class CustomColorPatcher : SvgPatcher {
 
+  /** Gets the current config. */
+  private val config: AtomSelectConfig?
+    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSelectConfig::class.java)
+
+  /** Computes config-based hash digest of file and folder color associations. */
   override fun digest(): LongArray {
     val hasher = mutableListOf<Long>()
-    val fileAssociations = AtomSelectConfig.instance.selectedFileAssociations.ownValues()
-    val folderAssociations = AtomSelectConfig.instance.selectedFolderAssociations.ownValues()
+    val currentConfig = config ?: return longArrayOf()
+    val fileAssociations = currentConfig.selectedFileAssociations.ownValues()
+    val folderAssociations = currentConfig.selectedFolderAssociations.ownValues()
 
     fileAssociations.forEach {
       hasher.add((it.iconColor ?: "").toHash())
@@ -59,9 +66,10 @@ class CustomColorPatcher : SvgPatcher {
     // do nothing
   }
 
+  /** Patches folder SVG fill and stroke with associated color. */
   private fun patchFolderColor(attributes: MutableMap<String, String>) {
     val attr = attributes[SvgPatcher.FOLDERCOLOR] ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
+    val matchingAssociation = config?.findFolderAssociationByName(attr) ?: return
     val folderColor = matchingAssociation.folderColor
 
     attributes[SvgPatcher.FILL] = "#$folderColor"
@@ -70,9 +78,10 @@ class CustomColorPatcher : SvgPatcher {
     }
   }
 
+  /** Patches folder icon fill and stroke with associated color. */
   private fun patchFolderIconColor(attributes: MutableMap<String, String>) {
     val attr = attributes[SvgPatcher.FOLDERICONCOLOR] ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findFolderAssociationByName(attr) ?: return
+    val matchingAssociation = config?.findFolderAssociationByName(attr) ?: return
     val folderIconColor = matchingAssociation.folderIconColor
 
     attributes[SvgPatcher.FILL] = "#$folderIconColor"
@@ -81,9 +90,10 @@ class CustomColorPatcher : SvgPatcher {
     }
   }
 
+  /** Applies matching file association icon color to SVG fill and stroke. */
   private fun patchIconColor(attributes: MutableMap<String, String>) {
     val attr = attributes[SvgPatcher.ICONCOLOR] ?: return
-    val matchingAssociation = AtomSelectConfig.instance.findFileAssociationByName(attr) ?: return
+    val matchingAssociation = config?.findFileAssociationByName(attr) ?: return
     val iconColor = matchingAssociation.iconColor
 
     attributes[SvgPatcher.FILL] = "#$iconColor"

@@ -38,9 +38,11 @@ class BigIconsPatcher : SvgPatcher {
   private var hasCustomLineHeight = false
   private var hasCustomSize = false
 
+  /** Gets the current config. */
   private val config: AtomSettingsConfig?
     get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
+  /** Computes hash digest of custom size and line height settings. */
   override fun digest(): LongArray {
     val entries = mutableListOf<Long>()
     // Always include line height related settings in the digest
@@ -58,6 +60,13 @@ class BigIconsPatcher : SvgPatcher {
 
   override fun refresh(): Unit = refreshSizes()
 
+  /**
+   * Modifies the size attributes of an SVG element based on specific conditions. If the width attribute is equal to "16" or "16px", it
+   * updates both the width and height attributes to use either the custom icon size from the current configuration or a default size.
+   *
+   * @param attributes a mutable map representing the SVG attributes, where the size-related attributes like "width" and "height" may be
+   *    modified.
+   */
   private fun patchSizes(attributes: MutableMap<String, String>) {
     val hasWidth = attributes[SvgPatcher.WIDTH]
     val currentConfig = config ?: return
@@ -81,6 +90,17 @@ class BigIconsPatcher : SvgPatcher {
     updateRowHeight()
   }
 
+  /**
+   * Updates the row height configuration dynamically based on custom settings or material design defaults.
+   *
+   * The method calculates and applies a new row height depending on several conditions:
+   * 1. If custom size settings are enabled, the extra height is computed by combining the default row height, custom icon size, and a
+   *    predefined minimum line height offset.
+   * 2. If custom line height settings are enabled, it takes precedence over the extra height calculation.
+   * 3. If a material design row height is defined in the UIManager, it is preferred over all other values.
+   *
+   * The computed or default row height is then updated in the `UIManager` under the `ROW_HEIGHT` key.
+   */
   private fun updateRowHeight() {
     val extraHeight = if (hasCustomSize) defaultRowHeight + customIconSize - MIN_LINE_HEIGHT else null
     val customRowHeight = if (hasCustomLineHeight) customLineHeight else extraHeight

@@ -24,24 +24,23 @@
  */
 package com.mallowigi.icons.svgpatchers
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.ui.svg.SvgAttributePatcher
 import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
 import com.mallowigi.config.AtomSettingsConfig
-import com.mallowigi.utils.getValue
-import org.jetbrains.annotations.NonNls
 import java.util.*
 
-/**
- * Main svg patcher: run all registered svg patchers.
- *
- * @constructor Create empty Main svg patcher
- */
+/** Main svg patcher: run all registered svg patchers. */
 @Suppress("UnstableApiUsage")
 @Service(Service.Level.APP)
 class MainSvgPatcher : SvgElementColorPatcherProvider {
+
+  /** Get the config. */
+  private val config: AtomSettingsConfig?
+    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
   private val patchers: SortedSet<SvgPatcher> = sortedSetOf(
     compareByDescending { it.priority() },
@@ -51,11 +50,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
     CustomColorPatcher(),
   )
 
-  /**
-   * Add patcher to the OtherPatcher.
-   *
-   * @param otherPatcher
-   */
+  /** Add patcher to the OtherPatcher. */
   fun addPatcher(otherPatcher: SvgElementColorPatcherProvider) {
     patchers.add(OtherSvgPatcher(otherPatcher))
   }
@@ -72,7 +67,8 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
 
   private fun createPatcher(path: String): SvgAttributePatcher = object : SvgAttributePatcher {
     override fun patchColors(attributes: MutableMap<String, String>) {
-      val useFiltered = !AtomSettingsConfig.instance.isEnabledUIIcons && isWindowsMenuIcon(path)
+      val isEnabledUIIcons = config?.isEnabledUIIcons ?: true
+      val useFiltered = !isEnabledUIIcons && isWindowsMenuIcon(path)
       val effectivePatchers: Iterable<SvgPatcher> = if (useFiltered) patchers.filterNot { it is BigIconsPatcher } else patchers
       effectivePatchers.forEach { it.patch(attributes) }
     }
@@ -80,6 +76,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
 
   private fun isWindowsMenuIcon(path: String): Boolean = path.contains("windowsMenu@20x20", ignoreCase = true)
 
+  /** Aggregates digests from all patchers into single array. */
   override fun digest(): LongArray {
     val longArrays = mutableListOf<LongArray>()
     patchers.forEach { longArrays.add(it.digest()) }
@@ -87,7 +84,6 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   }
 
   companion object {
-    /** Service instance. */
     val instance: MainSvgPatcher
       get() = service()
   }
