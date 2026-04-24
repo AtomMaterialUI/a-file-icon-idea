@@ -5,11 +5,13 @@ description: Create your own Icon File and Folder associations
 
 import { Aside, Tabs, TabItem, CardGrid, Card } from "@astrojs/starlight/components";
 
-The Atom Material Icons plugin allows you to define custom icon mappings for files, folders, and PSI (Program Structure Interface) elements. Through the **Associations Editor**, you can view all existing associations or create your own to tailor the IDE's appearance to your needs.
+The Atom Material Icons plugin allows you to define custom icon mappings for files, folders, and PSI (Program Structure Interface) elements.
+Through the **Associations Editor**, you can view all existing associations or create your own to tailor the IDE's appearance to your needs.
 
 ## Associations Editor
 
-To access the Associations Editor, navigate to **Settings/Preferences** > **Appearance & Behavior** > **Atom Material Icons** > **Associations**.
+To access the Associations Editor, navigate to **Settings/Preferences** > **Appearance & Behavior** > **Atom Material Icons** > *
+*Associations**.
 
 The editor is organized into several tabs:
 
@@ -22,7 +24,7 @@ The editor is organized into several tabs:
 
 File associations allow you to match files based on their names or extensions using regular expressions (Regex).
 
-![fileAssociations.png](/src/assets/screens/fileAssociations.png "File Associations Editor")
+![fileAssociations.png](../../../../src/assets/screens/fileAssociations.png "File Associations Editor")
 
 Each association entry contains:
 
@@ -32,15 +34,17 @@ Each association entry contains:
 - **Priority**: Determines which association wins if multiple patterns match (higher numbers take precedence).
 - **Icon Color**: An optional color override applied to the SVG icon.
 
-You can edit these fields directly in the table. Click the **Icon** column to select from the built-in library, or click the **Folder** icon to load a custom SVG from your computer.
+You can edit these fields directly in the table. Click the **Icon** column to select from the built-in library, or click the **Folder** icon
+to load a custom SVG from your computer.
 
 ### Folder Associations
 
 Folder associations function similarly to file associations but apply specifically to directories.
 
-![folderAssociations.png](/src/assets/screens/folderAssociations.png "Folder Associations Editor")
+![folderAssociations.png](../../../../src/assets/screens/folderAssociations.png "Folder Associations Editor")
 
-You can define patterns to match common directory names (e.g., `src`, `test`, `docs`) and assign them distinct icons to improve project navigation.
+You can define patterns to match common directory names (e.g., `src`, `test`, `docs`) and assign them distinct icons to improve project
+navigation.
 
 Each association entry contains:
 
@@ -53,11 +57,13 @@ Each association entry contains:
 
 ### PSI Associations
 
-PSI associations differ from file and folder associations because they replace the icons (glyphs) for internal code elements in the editor and Structure View. This includes classes, interfaces, methods, and variables.
+PSI associations differ from file and folder associations because they replace the icons (glyphs) for internal code elements in the editor
+and Structure View. This includes classes, interfaces, methods, and variables.
 
-Instead of a file pattern, these associations match a specific icon **Identifier**. You can find the standard IntelliJ icon identifiers at [https://intellij-icons.jetbrains.design](https://intellij-icons.jetbrains.design).
+Instead of a file pattern, these associations match a specific icon **Identifier**. You can find the standard IntelliJ icon identifiers
+at [https://intellij-icons.jetbrains.design](https://intellij-icons.jetbrains.design).
 
-![psiAssociations.png](/src/assets/screens/psiAssociations.png "PSI Associations Editor")
+![psiAssociations.png](../../../../src/assets/screens/psiAssociations.png "PSI Associations Editor")
 
 Each association entry contains:
 
@@ -66,7 +72,7 @@ Each association entry contains:
 - **Icon**: The replacement icon to be displayed.
 
 **Example: Custom PSI Icons**
-![customPsi.png](/src/assets/screens/customPsi.png "Custom PSI Icons Example")
+![customPsi.png](../../../../src/assets/screens/customPsi.png "Custom PSI Icons Example")
 
 ---
 
@@ -82,10 +88,11 @@ The Associations Editor provides several tools for managing your custom mappings
 
 ### Customizing Colors
 
-The `Icon Color` and `Folder Color` fields allow you to override default SVG colors. This feature dynamically replaces the `fill` and `stroke` attributes within the SVG with your specified color.
+The `Icon Color` and `Folder Color` fields allow you to override default SVG colors. This feature dynamically replaces the `fill` and
+`stroke` attributes within the SVG with your specified color.
 
 **Example: Customized Icon and Folder Colors**
-![customColors.png](/src/assets/screens/customColors.png)
+![customColors.png](../../../../src/assets/screens/customColors.png)
 
 ---
 
@@ -93,31 +100,37 @@ The `Icon Color` and `Folder Color` fields allow you to override default SVG col
 
 A faster way to create associations is directly from the Project Tree:
 
-1. **For Folders**: Right-click a folder and select **Change Folder**. This will create a new folder association and open the editor for further customization.
+1. **For Folders**: Right-click a folder and select **Change Folder**. This will create a new folder association and open the editor for
+   further customization.
 2. **For Files**: Right-click a file and select **Add Atom Association**. This will open a dialog pre-filled with the item's name.
 
 **Example: Changing a Folder Icon**
 
 Example:
-![changeFolderIcon.png](/src/assets/screens/changeFolderIcon.png "Change Folder Icon")
+![changeFolderIcon.png](../../../../src/assets/screens/changeFolderIcon.png "Change Folder Icon")
 
-![newFolderIcon.png](/src/assets/screens/newFolderIcon.png "New Folder Icon")
+![newFolderIcon.png](../../../../src/assets/screens/newFolderIcon.png "New Folder Icon")
 
 ---
 
 ## Project-Specific Associations
 
-By default, associations are **global** and apply to all projects. However, you can also define **per-project** associations. This is useful if you want different icon sets for different tech stacks (e.g., Java vs. Python) within the same IDE instance.
+By default, associations are **global** and apply to all projects. However, you can also define **per-project** associations. This is useful
+if you want different icon sets for different tech stacks (e.g., Java vs. Python) within the same IDE instance.
 
-![perProject.png](/src/assets/screens/perProject.png "Per-project Associations")
+![perProject.png](../../../../src/assets/screens/perProject.png "Per-project Associations")
 
 ---
 
 ## Automatic Detection
 
-With over 2,000 icons covering a wide range of languages and frameworks, scanning every association for every file can be inefficient—especially since many are highly specific. To optimize performance, only the most popular languages and patterns are enabled by default.
+With over 2,000 icons covering a wide range of languages and frameworks, scanning every association for every file can be
+inefficient—especially since many are highly specific. To optimize performance, only the most popular languages and patterns are enabled by
+default.
 
-To save you from manually enabling the rest, the **Automatic Detection** feature scans your project for files and folders matching disabled associations and enables them for you. This process runs in the background whenever a project is opened, ensuring no impact on your workflow. Once an icon is automatically enabled, it remains active until you manually disable it.
+To save you from manually enabling the rest, the **Automatic Detection** feature scans your project for files and folders matching disabled
+associations and enables them for you. This process runs in the background whenever a project is opened, ensuring no impact on your
+workflow. Once an icon is automatically enabled, it remains active until you manually disable it.
 
 ## What's Next?
 
