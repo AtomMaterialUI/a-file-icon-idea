@@ -2,6 +2,16 @@
 
 ----
 
+## 200.0.0 (20.0.0)
+
+### Features
+
+- **Automatic Detection**: Automatically detect and enable disabled associations at project open.
+- **Per-project Associations**: Ability to add associations per-project.
+- **Custom PSI Icons**: Add a new table allowing you to replace PSI Icons.
+- **New UI Icons**: The _New UI Icons_ are now enabled by default.
+- **Updated Documentation**: Check the new documentation at https://a-file-icon-idea.netlify.app/
+
 ## 104.0.0 (10.4.0)
 
 ### Features
