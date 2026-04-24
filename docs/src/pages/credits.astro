@@ -1,7 +1,6 @@
 ---
-import { Card, CardGrid, Icon } from "@astrojs/starlight/components";
+import { Card, CardGrid, Icon } from '@astrojs/starlight/components';
 import type { StarlightIcon } from '@astrojs/starlight/types';
-
 ---
 
 <section class="section">
@@ -17,14 +16,14 @@ import type { StarlightIcon } from '@astrojs/starlight/types';
         <h4 class="member-nick">(Mallowigi)</h4>
         <p class="member-description">Atom Material UI Owner &amp; Software engineer</p>
 
-        <div class="member-links" >
+        <div class="member-links">
           <div class="links">
             <a href="https://github.com/mallowigi" target="_blank" rel="noopener" class="link no-icon" aria-label="github">
-              <Icon name="github" class="link no-icon" aria-label="github"/>
+              <Icon name="github" class="link no-icon" aria-label="github" />
             </a>
 
             <a href="https://www.linkedin.com/in/eliorboukhobza" target="_blank" rel="noopener" class="link no-icon" aria-label="linkedin">
-              <Icon name="linkedin" class="link no-icon" aria-label="linkedin"/>
+              <Icon name="linkedin" class="link no-icon" aria-label="linkedin" />
             </a>
           </div>
         </div>
@@ -33,72 +32,3 @@ import type { StarlightIcon } from '@astrojs/starlight/types';
     </Card>
   </CardGrid>
 </section>
-
-<style>
-  .contents {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .member-image {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    margin: 0 auto;
-  }
-
-  .member-title {
-    text-align: center;
-    margin-top: 16px;
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 24px;
-    color: var(--sl-color-white);
-  }
-
-  .member-nick {
-    text-align: center;
-    margin-top: 4px;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--sl-color-gray-1);
-  }
-
-  .member-description {
-    text-align: center;
-    line-height: 24px;
-    font-size: 14px;
-    color: var(--sl-color-gray-2);
-    margin-bottom: 16px;
-  }
-
-  .member-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .links {
-    display: flex;
-    justify-content: center;
-  }
-
-  .link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    color: var(--sl-color-gray-2);
-    transition: color .5s;
-
-    & > * {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-  }
-
-</style>
