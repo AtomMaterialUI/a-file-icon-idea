@@ -7,6 +7,7 @@
 :root[data-theme="light"] {
   --sl-color-accent-low: var(--mat-links, #80cbc4);
   --sl-color-accent: var(--mat-accent, #009688);
+  --sl-color-text-accent: var(--mat-primary, #009688);
   --sl-color-accent-high: var(--mat-primary, #ffd54f);
   --sl-color-white: var(--mat-selFg, #ffffff);
   --sl-color-gray-1: var(--mat-fg, #b0bec5);
@@ -15,7 +16,9 @@
   --sl-color-gray-4: var(--mat-hl, #546e7a);
   --sl-color-gray-5: var(--mat-second, #32424a);
   --sl-color-gray-6: var(--mat-bg, #263238);
+  --sl-color-gray-7: var(--mat-contrast, #1e272c);
   --sl-color-black: var(--mat-contrast, #1e272c);
+  --sl-color-bg-nav: var(--mat-bg, #263238);
 }
 
 body {
@@ -55,6 +58,7 @@ body {
   overflow: hidden;
   max-width: 100%;
 }
+
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {
