@@ -7,9 +7,6 @@ const site = 'https://a-file-icon-idea.netlify.app/';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://a-file-icon-idea.netlify.app/',
-  build: {
-    inlineStylesheets: 'always',
-  },
   integrations: [
     starlight({
       title: 'Atom Material Icons',
