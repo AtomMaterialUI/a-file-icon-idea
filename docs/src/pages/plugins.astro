@@ -48,7 +48,7 @@ const plugins: Plugin[] = [
 </section>
 
 <style>
-  .packages-list {
+  :global(.packages-list) {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -56,13 +56,13 @@ const plugins: Plugin[] = [
     align-items: center;
   }
 
-  .package-item {
+  :global(.package-item) {
     display: block;
     width: 36px;
     height: 36px;
   }
 
-  .package-item img {
+  :global(.package-item img) {
     max-width: 36px;
     max-height: 36px;
   }
