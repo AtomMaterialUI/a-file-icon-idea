@@ -30,7 +30,6 @@ import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.tree.arrows.ArrowsStyles
 import com.mallowigi.utils.getAccentFromTheme
 import com.mallowigi.utils.getThemedFromTheme
-import com.mallowigi.utils.getValue
 
 /** Atom file icons config. */
 @Suppress("TooManyFunctions")
@@ -152,7 +151,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
   var disableIndexing: Boolean by property(false)
 
   /** Is new icons enabeld. */
-  var isNewIconsEnabled: Boolean by property(false)
+  var isNewIconsEnabled: Boolean by property(true)
 
   /** Config state. */
   override fun getState(): AtomSettingsConfig = this
@@ -216,7 +215,7 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     isUseReduxIcons = true
     isUseRubyIcons = true
     isUseTestsIcons = true
-    isNewIconsEnabled = false
+    isNewIconsEnabled = true
     monochromeColor = DEFAULT_MONOCHROME // NON-NLS
     opacity = DEFAULT_OPACITY
     saturation = DEFAULT_SATURATION
