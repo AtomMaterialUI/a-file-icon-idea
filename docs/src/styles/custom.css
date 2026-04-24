@@ -188,10 +188,10 @@ strong {
   height: 36px;
   color: var(--sl-color-gray-2);
   transition: color .5s;
+}
 
-  & > * {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
+.link > * {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }

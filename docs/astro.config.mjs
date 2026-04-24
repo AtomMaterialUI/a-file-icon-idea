@@ -15,12 +15,12 @@ export default defineConfig({
         light: './src/assets/logo.svg',
         dark: './src/assets/logo.svg',
       },
-      favicon: './src/assets/logo.svg',
+      favicon: '/favicon.svg',
       social: [
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/AtomMaterialUI',
+          href: 'https://github.com/AtomMaterialUI/a-file-icon-idea',
         },
       ],
       head: [
