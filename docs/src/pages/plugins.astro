@@ -1,4 +1,9 @@
 ---
+import vscodeIcon from '../assets/icons/vscode.svg?url';
+import chromeIcon from '../assets/icons/chrome.svg?url';
+import firefoxIcon from '../assets/icons/firefox.svg?url';
+import edgeIcon from '../assets/icons/edge.svg?url';
+
 interface Plugin {
   name: string;
   url: string;
@@ -9,22 +14,22 @@ const plugins: Plugin[] = [
   {
     name: 'VS Code Extension',
     url: 'https://marketplace.visualstudio.com/items?itemName=AtomMaterial.a-file-icon-vscode',
-    icon: '/src/assets/icons/vscode.svg',
+    icon: vscodeIcon,
   },
   {
     name: 'Chrome Extension',
     url: 'https://chromewebstore.google.com/detail/atom-material-icons/pljfkbaipkidhmaljaaakibigbcmmpnc?hl=en',
-    icon: '/src/assets/icons/chrome.svg',
+    icon: chromeIcon,
   },
   {
     name: 'Firefox Extension',
     url: 'https://addons.mozilla.org/en-US/firefox/addon/atom-file-icons-web/',
-    icon: '/src/assets/icons/firefox.svg',
+    icon: firefoxIcon,
   },
   {
     name: 'Edge Extension',
     url: 'https://microsoftedge.microsoft.com/addons/detail/atom-material-icons/ajfcnjlggplaibcmaannbijmblhiiiee',
-    icon: 'src/assets/icons/edge.svg',
+    icon: edgeIcon,
   },
 ];
 ---
