@@ -503,10 +503,11 @@ class AssociationsTableModelEditor(
       NAME(2),
       PATTERN(3),
       ICON(4),
-      PRIORITY(5),
-      ICONCOLOR(6),
-      FOLDERCOLOR(6),
-      FOLDERICONCOLOR(7),
+      SELECT(5),
+      PRIORITY(6),
+      ICONCOLOR(7),
+      FOLDERCOLOR(7),
+      FOLDERICONCOLOR(8),
     }
   }
 }
