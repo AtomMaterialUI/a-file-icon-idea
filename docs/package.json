@@ -19,8 +19,6 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "oxfmt": "^0.46.0",
-    "oxlint": "^1.61.0",
     "prettier": "^3.8.3"
   }
 }
