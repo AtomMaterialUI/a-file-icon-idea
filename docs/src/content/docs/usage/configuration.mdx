@@ -3,315 +3,167 @@ title: Configuration
 description: Detailed configuration options and advanced settings for the Atom Material Icons plugin.
 ---
 
-import { Aside, Tabs, TabItem } from "@astrojs/starlight/components";
+import { Aside, Tabs, TabItem, CardGrid, Card } from "@astrojs/starlight/components";
 
-## Configuration Overview
+## Atom Material Icons Configuration
 
-The Atom Material Icons plugin offers extensive configuration options to customize your IDE's appearance. All settings are accessible through:
+Here is a comprehensive guide to the available configuration options for the Atom Material Icons plugin. You can access these settings via **Settings/Preferences** > **Appearance & Behavior** > **Atom Material Icons**.
 
-**Settings Path**: `Settings/Preferences → Appearance & Behavior → Atom Material Icons`
+![settings 2.png](/src/assets/screens/settings%202.png "Atom Material Icons Settings")
 
-## Basic Configuration
+### Toggle Icons
 
-### Icon Categories
+This section allows you to enable or disable specific categories of icons across the IDE.
 
-Control which types of icons are replaced:
+- **Enable File Icons**: Replaces default file icons in the Project Tree, lists, and editor tabs.
+- **Enable Folder Icons**: Replaces default folder icons in the Project Tree and lists.
+- **Enable UI Icons**: Replaces various IDE interface icons (e.g., toolbar buttons, tool window icons).
+- **Enable PSI Icons**: Replaces Program Structure Interface (PSI) icons, such as those for classes, interfaces, methods, and variables.
+- **Hollow Folders**: When enabled, folders containing files that are currently open in the editor will appear "hollow," making it easier to identify active directories.
 
-| Setting                 | Description                                           | Default    |
-| ----------------------- | ----------------------------------------------------- | ---------- |
-| **Enable File Icons**   | Replace file icons with material design alternatives  | ✅ Enabled |
-| **Enable Folder Icons** | Replace folder icons with contextual designs          | ✅ Enabled |
-| **Enable UI Icons**     | Replace toolbar and interface icons                   | ✅ Enabled |
-| **Enable PSI Icons**    | Replace code structure icons (classes, methods, etc.) | ✅ Enabled |
+#### Examples
 
-### Visual Customization
+Without File Icons:
+![noFileIcons.png](/src/assets/screens/noFileIcons.png "Without File Icons")
 
-#### Icon Size
+Without Folder Icons:
+![noFolderIcons.png](/src/assets/screens/noFolderIcons.png "Without Folder Icons")
 
-- **Range**: 12px - 24px
-- **Default**: 16px
-- **Recommended**: 14px for performance, 18px for better visibility
+Without PSI Icons:
+![noPSIIcons.png](/src/assets/screens/noPSIIcons.png "Without PSI Icons")
 
-#### Monochrome Filter
+Hollow Folders:
+![hollowFolders.png](/src/assets/screens/hollowFolders.png "Hollow Folders")
 
-Apply a single color to all icons:
+Hollow Decorated Folders:
+![hollowDecoratedFolders.png](/src/assets/screens/hollowDecoratedFolders.png "Hollow Decorated Folders")
 
-- **Color Picker**: Choose any hex color
-- **Popular choices**:
-  - `#FFFFFF` (white) for dark themes
-  - `#333333` (dark gray) for light themes
-  - `#546E7A` (blue-gray) for neutral themes
+---
 
-#### Accent Color
+### Icon Packs
 
-Customize highlights and interactive elements:
+Icon packs provide specialized icon sets for specific technologies and frameworks.
 
-- **Affects**: Close buttons, arrows, progress indicators
-- **Default**: `#2196F3` (Material Blue)
+- **Use Ruby PSI Icons**: Uses Ruby-specific PSI icons instead of standard file icons.
+- **Use Rails Custom Icons**: Enables specific icons for Ruby on Rails components (e.g., controllers, jobs, schemas).
+- **Use Angular Icons**: Enables dedicated icons for Angular elements (e.g., components, services).
+- **Use Angular Icons (Old Icon)**: Uses the legacy design for Angular icons.
+- **Use Nest Icons**: Enables specific icons for NestJS components (e.g., controllers, middleware).
+- **Use NextJS Icons**: Enables specific icons for NextJS pages and configurations.
+- **Use Redux Icons**: Enables dedicated icons for Redux elements (e.g., actions, reducers).
+- **Use NgRx Icons**: Enables specific icons for NgRx components (e.g., effects, store).
+- **Use New CSS Icon**: Switches to a modern version of the CSS file icon.
+- **Use Recoil Icons**: Enables specific icons for Recoil atoms and selectors.
+- **Use Tests Icons**: Applies distinct icons to test files to help them stand out from source code.
 
-## Advanced Settings
+---
 
-### Arrow Styles
+### Hide Icons
 
-Customize tree view expand/collapse arrows:
+If you prefer a more minimalist interface, you can completely hide certain icon types.
 
-<Tabs>
-<TabItem label="Material">
+- **Hide File Icons**: Removes all file icons from the UI.
+- **Hide Folder Icons**: Removes all folder icons from the UI.
 
-**Chevron-style arrows** (default)
+Hide File Icons:
+![hideIcons.png](/src/assets/screens/noIcons.png "Hide Icons")
 
-- Modern, consistent with material design
-- Smooth, rounded appearance
-- Best for material themes
+Hide Folder Icons:
+![hideFolderIcons.png](/src/assets/screens/noFolders.png "Hide Folder Icons")
 
-</TabItem>
-<TabItem label="Darcula">
+---
 
-**Traditional triangle arrows**
+### Appearance Settings
 
-- Classic IDE appearance
-- Sharp, angular design
-- Good for dark themes
+Fine-tune the visual style of your icons to match your preferred theme.
 
-</TabItem>
-<TabItem label="Plus-Minus">
+- **Custom Accent Color**: Overrides the default accent color of the icons with a color of your choice.
+- **Custom Themed Color**: Overrides the primary color of the icons.
 
-**Plus and minus signs**
+Example: Custom Accent and Themed Colors:
+![customThemedColor.png](/src/assets/screens/customThemedColor.png "Custom Themed Color")
 
-- Clear expand/collapse indication
-- Minimal, functional design
-- Good for accessibility
+#### Size and Line Height
 
-</TabItem>
-<TabItem label="Simple Arrows">
+- **Custom Icon Size**: Set a custom size for the icons (default is 16).
+- **Custom Line Height**: Set a custom line height in Tree Views (default is 30).
 
-**Basic arrow shapes**
+#### Screenshots
 
-- Minimalist appearance
-- Low visual noise
-- Clean, professional look
+Big Icons:
+![bigIcons.png](/src/assets/screens/bigIcons.png "Custom Icon Size")
 
-</TabItem>
-<TabItem label="None">
+Small Icons:
+![smallIcons.png](/src/assets/screens/smallIcons.png "Custom Icon Size")
 
-**No arrows displayed**
-
-- Maximum simplicity
-- Relies on indentation only
-- Ultra-minimalist approach
-
-</TabItem>
-
-</Tabs>
-
-### Hollow Folders
-
-Special decoration for folders containing open files:
-
-- **Purpose**: Visual indication of active/opened folders
-- **Appearance**: Outlined folder icons instead of filled
-- **Use case**: Helpful for large projects with deep folder structures
-- **Performance**: Minimal impact, but can be disabled if not needed
-
-## Custom File Associations
-
-Create your own file icon mappings using patterns and regular expressions.
-
-### Visual Reference
-
-See the wide variety of file icons available for your custom associations:
-
-![Available File Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
-
-### Adding Custom Associations
-
-1. Open plugin settings
-2. Navigate to "File Associations" tab
-3. Click "Add" or "+" button
-4. Define pattern and select icon
-
-### Pattern Examples
-
-| Pattern                 | Matches                   | Use Case            |
-| ----------------------- | ------------------------- | ------------------- |
-| `*.test.js`             | All JavaScript test files | Test files          |
-| `*.config.*`            | Any configuration file    | Config files        |
-| `.*\.env.*`             | Environment files         | Environment configs |
-| `package\.json$`        | Exact filename match      | Specific files      |
-| `.*\.(spec\|test)\.ts$` | TypeScript test files     | TypeScript tests    |
-
-<Aside type="tip">
-  Use regex patterns for more flexible matching. The `.*` matches any characters, `\.` escapes dots,
-  and `$` ensures end-of-string matching.
-</Aside>
-
-### Priority System
-
-When multiple patterns match a file:
-
-- **Higher priority wins** (0 is lowest)
-- **Later rules override earlier ones** (if same priority)
-- **Built-in associations** have priority 0
-
-## Custom Folder Associations
-
-Associate specific icons with folder names:
-
-### Visual Reference
-
-Explore the different folder icons available for your custom associations:
-
-![Available Folder Icons](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
-
-### Common Patterns
-
-| Folder Name                  | Icon               | Description           |
-| ---------------------------- | ------------------ | --------------------- |
-| `src`, `source`              | Source icon        | Source code folders   |
-| `docs`, `documentation`      | Documentation icon | Documentation folders |
-| `test`, `tests`, `__tests__` | Test icon          | Test folders          |
-| `components`                 | Component icon     | React/Vue components  |
-| `utils`, `utilities`         | Tools icon         | Utility functions     |
-| `assets`, `static`           | Asset icon         | Static assets         |
-| `config`, `configuration`    | Config icon        | Configuration folders |
-
-### Case Sensitivity
-
-- **Case Sensitive**: Exact name matching (default: off)
-- **Case Insensitive**: `SRC` matches `src` (recommended)
-
-## Performance Optimization
-
-### Memory Usage
-
-To reduce memory consumption:
-
-```yaml
-Recommended Settings:
-  - Icon Size: 12px or 14px
-  - Monochrome Filter: Disabled (or enabled with single color)
-  - Custom Associations: < 50 patterns
-  - Hollow Folders: Disabled if not used
-```
-
-### CPU Usage
-
-For better performance:
-
-- **Disable unused categories** (PSI icons if not needed)
-- **Simplify regex patterns** (avoid complex expressions)
-- **Limit file watching** (fewer custom associations)
-
-### Large Projects
-
-For projects with 1000+ files:
-
-- **Reduce icon size** to 12px
-- **Enable monochrome filter** (single color processing)
-- **Disable hollow folders**
-- **Use specific patterns** instead of broad regex
-
-## Configuration File
-
-The plugin stores settings in your IDE's configuration directory:
-
-<Tabs>
-<TabItem label="Windows">
-
-```
-%APPDATA%/JetBrains/[IDE_NAME]/options/atom-material-icons.xml
-```
-
-</TabItem>
-<TabItem label="macOS">
-
-```
-~/Library/Application Support/JetBrains/[IDE_NAME]/options/atom-material-icons.xml
-```
-
-</TabItem>
-<TabItem label="Linux">
-
-```
-~/.config/JetBrains/[IDE_NAME]/options/atom-material-icons.xml
-```
-
-</TabItem>
-</Tabs>
-
-### Backup and Restore
-
-To backup your configuration:
-
-1. Copy the `atom-material-icons.xml` file
-2. Store it safely
-3. To restore: Replace the file and restart IDE
-
-### Export/Import Settings
-
-Use IDE's built-in export/import:
-
-1. `File → Manage IDE Settings → Export Settings`
-2. Select "Atom Material Icons" plugin
-3. Choose export location
-4. To import: `File → Manage IDE Settings → Import Settings`
-
-## Troubleshooting Configuration
-
-### Settings Not Applying
-
-If changes don't take effect:
-
-1. **Click "Apply" or "OK"** in settings
-2. **Restart the IDE** completely
-3. **Clear caches**: `File → Invalidate Caches and Restart`
-
-### Performance Issues
-
-If IDE becomes slow:
-
-1. **Reduce icon size** to 12px
-2. **Disable features** you don't use
-3. **Limit custom associations** to essentials
-4. **Check memory usage** in IDE's performance monitor
-
-### Icon Conflicts
-
-If icons look wrong or inconsistent:
-
-1. **Check for conflicting plugins** (other icon plugins)
-2. **Reset to defaults** and reconfigure
-3. **Verify file associations** aren't overlapping
+Large Line Height:
+![largeRowHeight.png](/src/assets/screens/largeRowHeight.png "Custom Row Height")
 
 <Aside type="caution">
-  Some theme plugins may override icon settings. Try disabling other visual plugins to identify
-  conflicts.
+  The Custom Line Height have no effect when the Material Theme UI plugin is enabled.
 </Aside>
 
-## Best Practices
+---
 
-### Organization
+### Other Settings
 
-- **Group similar patterns** together
-- **Use descriptive names** for custom associations
-- **Document complex regex** patterns with comments
+- **Monochrome Icons**: Set the whole IDE with a Monochrome filter. The color is customizable.
+- **Custom Saturation**: Customize the saturation of the icons (0 is regular, 20 is completely desaturated).
+- **Arrows Style**: Change the style of the arrows in trees. Options include Material, Darcula, Plus-Minus, Arrows, and Circle.
 
-### Maintenance
+#### Screenshots
 
-- **Review associations** periodically
-- **Remove unused patterns** to improve performance
-- **Update patterns** when project structure changes
+Monochrome Icons (Blue):
+![monochrome.png](/src/assets/screens/monochrome.png "Monochrome Icons (Blue)")
 
-### Team Settings
+Monochrome Icons (Orange):
+![monochrome2.png](/src/assets/screens/monochrome2.png "Monochrome Icons (Orange)")
 
-- **Share configuration** via IDE settings export
-- **Document custom patterns** for team members
-- **Use consistent naming** across team projects
+Custom Saturation:
+![saturated.png](/src/assets/screens/saturated.png "Saturated")
+
+Full Saturation:
+![noSaturated.png](/src/assets/screens/noSaturated.png "Full Saturation")
+
+### Arrows Style
+
+Choose between a list of different arrow styles:
+
+- Material: Material Design chevrons
+- Darcula: IntelliJ Darcula triangles
+- Plus-Minus: Plus and Minus signs
+- Arrows: Simple arrows
+- Circle: Arrows inside circles
+- None: Hide arrows
+
+#### Screenshots
+
+Darcula Arrows:
+![darculaArrows.png](/src/assets/screens/darculaArrows.png "Darcula Style")
+
+Plus-Minus Arrows:
+![plusMinusArrows.png](/src/assets/screens/plusMinusArrows.png "Plus-Minus Style")
+
+Arrows:
+![arrowsArrows.png](/src/assets/screens/arrowsArrows.png "Arrows Style")
+
+Circle Arrows:
+![circleArrows.png](/src/assets/screens/circleArrows.png "Circle Arrows")
+
+No Arrows:
+![noArrows.png](/src/assets/screens/noArrows.png "No Arrows")
+
+---
+
+### Advanced Settings
+
+- **Enable New Icons (WIP)**: Preview the upcoming "New UI" icon set (Work in Progress).
+- **Fix Action Buttons Color**: Ensures action buttons in the toolbar use consistent coloring.
+- **Low Power Mode**: Disables project view decorators to reduce resource usage. **Note:** This should be disabled when using the plugin with JetBrains Gateway.
+- **Disable Icon Indexing**: Turn this setting **OFF** only if you experience IDE crashes that appear related to icon processing.
 
 ## What's Next?
 
 Explore advanced customization options:
 
 - [Customization](/usage/customization) - Create advanced icon mappings
-- [File Icons](/features/file-icons) - Explore all supported file types
-- [API Reference](/reference/api) - For plugin developers

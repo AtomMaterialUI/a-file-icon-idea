@@ -75,6 +75,7 @@ export default defineConfig({
           items: [
             { label: "Basic Usage", slug: "usage/basic" },
             { label: "Configuration", slug: "usage/configuration" },
+            { label: "Customization", slug: "usage/customization" },
           ],
         },
         {

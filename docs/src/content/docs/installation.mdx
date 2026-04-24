@@ -16,49 +16,40 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 <Tabs>
 <TabItem label="JetBrains Marketplace (Recommended)">
 
-This is the easiest and most recommended way to install the plugin.
+The easiest way to install the plugin is directly from the JetBrains Marketplace.
 
 1.  **Open Settings/Preferences**
-    - In your JetBrains IDE, go to `File > Settings` (Windows/Linux) or `IntelliJ IDEA > Preferences` (macOS)
+    - Go to `File > Settings` (Windows/Linux) or `IntelliJ IDEA > Preferences` (macOS)
     - **Keyboard shortcut**: `Ctrl+Alt+S` (Windows/Linux) or `Cmd+,` (macOS)
-    2. **Navigate to Plugins**
-    - In the Settings window, click on `Plugins` in the left sidebar
-    3. **Search for the Plugin**
-    - Click on the `Marketplace` tab and search for `"Atom Material Icons"` or `"File Icons"`
-    4. **Install the Plugin**
-    - Click the `Install` button next to the "Atom Material Icons" plugin by Elior Boukhobza
-    5. **Restart Your IDE**
-    - After installation, restart your IDE to activate the plugin
+2.  **Navigate to Plugins**
+    - Click on `Plugins` in the left sidebar
+3.  **Search for the Plugin**
+    - Open the `Marketplace` tab and search for `Atom Material Icons`
+4.  **Install the Plugin**
+    - Click `Install` next to the plugin entry
+5.  **Restart Your IDE**
+    - Restart your IDE to activate the plugin
 
 </TabItem>
 <TabItem label="Manual Installation">
 
-Download and install the plugin manually if you can't access the marketplace.
+Use this method if you cannot access the JetBrains Marketplace.
 
 1. **Download the Plugin**
-
-- Download the latest plugin ZIP file from the [GitHub releases page](https://github.com/mallowigi/a-file-icon-idea/releases)
-
+   - Download the latest ZIP file from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
 2. **Open Plugin Settings**
-
-- Go to `File > Settings > Plugins` (or `IntelliJ IDEA > Preferences > Plugins` on macOS)
-
+   - Go to `File > Settings > Plugins` (or `IntelliJ IDEA > Preferences > Plugins` on macOS)
 3. **Install from Disk**
-
-- Click the gear icon ⚙️ and select `"Install Plugin from Disk..."`
-
-4. **Select ZIP File**
-
-- Navigate to and select the downloaded ZIP file, then click `OK`
-
-5. **Restart IDE**
-
-- Restart your IDE to complete the installation
+   - Click the gear icon ⚙️ and select `Install Plugin from Disk...`
+4. **Select the ZIP File**
+   - Browse to the downloaded ZIP file and click `OK`
+5. **Restart Your IDE**
+   - Restart your IDE to complete the installation
 
 </TabItem>
 <TabItem label="Build from Source">
 
-For developers who want to build the plugin from source code.
+For developers who want to build the plugin from source.
 
 1. **Clone the Repository**
 
@@ -73,39 +64,40 @@ For developers who want to build the plugin from source code.
    ./gradlew buildPlugin
    ```
 
-   The built plugin will be located in `build/distributions/`
+   The built plugin will be located in `build/distributions/`.
 
 3. **Install the Built Plugin**
-   Follow the Manual Installation steps using the ZIP file from `build/distributions/`
+
+   Follow the [Manual Installation](#) steps using the ZIP file from `build/distributions/`.
 
 </TabItem>
 </Tabs>
 
 ## Verification
 
-After installation, verify that the plugin is working correctly:
+After installation, confirm the plugin is working correctly:
 
 1. Open any project in your IDE
-2. Check if file icons have changed to material design icons
+2. Check that file icons have changed to Material Icons
 3. Go to `Settings > Appearance & Behavior > Atom Material Icons`
-4. You should see the plugin configuration options
+4. Verify that the plugin configuration options are visible
 
 ### What You Should See
 
-Once the plugin is successfully installed and activated, your IDE file explorer will display beautiful material design icons:
+Once the plugin is installed and active, your IDE should look like this:
 
-**File Icons:**
-![File Icons Preview](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/files.png)
+![withAll.png](/src/screens/withAll.png "Atom Material Icons")
 
-**Folder Icons:**
-![Folder Icons Preview](https://raw.githubusercontent.com/mallowigi/iconGenerator/master/assets/folders.png)
+![settings.png](/src/screens/settings.png "Atom Material Icons Settings")
 
 :::tip[Success Indicators]
 
-- File icons should automatically change to material design alternatives
-- The plugin settings page should be accessible
-- Folder icons should display contextual designs based on their names
-  :::
+- IDE icons change to Material Icons automatically
+- The plugin settings page is accessible under `Appearance & Behavior`
+- File icons reflect their file type logos
+- Folder icons display contextual designs based on their names
+
+:::
 
 ## Troubleshooting
 
@@ -113,29 +105,37 @@ Once the plugin is successfully installed and activated, your IDE file explorer 
 
 If the plugin doesn't appear after installation:
 
-- Make sure you restarted the IDE completely
-- Check if your IDE version is supported (2020.1+)
-- Verify the plugin is enabled in `Settings > Plugins`
+- Make sure you fully restarted the IDE
+- Check that your IDE version is 2020.1 or later
+- Verify the plugin is enabled under `Settings > Plugins`
 
 ### Icons Not Changing
 
-If icons remain unchanged:
+If icons remain unchanged after installation:
 
-- Go to `Settings > Atom Material Icons` and enable the plugin
-- Try toggling the "File Icons" option off and on
-- Restart the IDE after making changes
+- Go to `Settings > Appearance & Behavior > Atom Material Icons` and ensure the plugin is enabled
+- Toggle the "File Icons" option off and back on
+- Restart the IDE after making any changes
+
+### No Icons Visible
+
+If no icons appear, the "Hide File Icons" setting may be enabled:
+
+- Go to `Settings > Appearance & Behavior > Atom Material Icons`
+- Uncheck the "_Hide File Icons_" or "_Hide Folder Icons_" option
 
 ### Performance Issues
 
-If you experience performance issues:
+If you notice performance degradation:
 
-- Reduce the icon size in settings
-- Disable unused features like "Hollow Folders" or "Monochrome Filter"
-- Consider using the minimal icon set
+- Make sure the **Low Power Mode** setting is enabled
+- Make sure to enable **Icon Indexing**. This will take some time at start but will improve performance on later loads.
+- Disable unused features such as "_Hollow Folders_" or "_Monochrome Filter_"
+- Consider switching to the minimal icon set
 
 ## What's Next?
 
-Now that you have the plugin installed, learn how to use and customize it:
+Now that the plugin is installed, explore how to use and customize it:
 
 - [Basic Usage](/usage/basic) - Learn the fundamentals
 - [Configuration](/usage/configuration) - Customize the plugin

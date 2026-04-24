@@ -83,3 +83,26 @@ body {
 .right-sidebar-panel a:not([aria-current="true"]) {
   color: var(--sl-color-gray-2);
 }
+
+strong {
+  color: var(--sl-color-accent);
+  font-weight: bold;
+}
+
+.pagination-links a {
+  background-color: var(--sl-color-gray-4);
+}
+
+.sl-markdown-content img {
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+  cursor: zoom-in;
+  display: block;
+  margin: auto;
+}
+
+.sl-markdown-content img:hover {
+  transform: scale(1.5);
+  position: relative;
+  z-index: 999;
+}

@@ -13,6 +13,7 @@ import fs from 'fs';
 type Association = {
   name: string;
   iconColor: string;
+  folderIconColor?: string;
   priority: number;
   pattern: string;
   fileNames: string;
@@ -37,14 +38,20 @@ async function getIconAssociations() {
     const associations: Record<string, Association> = {};
 
     // Match regex elements
-    const regexMatches = xmlContent.matchAll(/<regex[^>]*fileNames="([^"]*)"[^>]*name="([^"]*)"[^>]*iconColor="([^"]*)"[^>]*priority="([^"]*)"[^>]*pattern="([^"]*)"[^>]*icon="([^"]*)"/g);
+    const regexMatches = xmlContent.matchAll(/<regex[^>]*name="([^"]*)"[^>]*priority="([^"]*)"[^>]*pattern="([^"]*)"[^>]*icon="([^"]*)"/g);
     for (const match of regexMatches) {
-      const [, fileNames, name, iconColor, priority, pattern, icon] = match;
+      const [, name, priority, pattern, icon] = match;
+      const fileNamesMatch = match[0].match(/fileNames="([^"]*)"/);
+      const iconColorMatch = match[0].match(/iconColor="([^"]*)"/);
+
+      const fileNames = fileNamesMatch ? fileNamesMatch[1] : 'N/A';
+      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : 'inherit';
+
       const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
       if (iconName) {
         associations[iconName] = {
           name,
-          iconColor: `#${iconColor}`,
+          iconColor,
           priority: parseInt(priority),
           pattern,
           fileNames,
@@ -55,14 +62,17 @@ async function getIconAssociations() {
     }
 
     // Match type elements
-    const typeMatches = xmlContent.matchAll(/<type[^>]*name="([^"]*)"[^>]*iconColor="([^"]*)"[^>]*priority="([^"]*)"[^>]*icon="([^"]*)"/g);
+    const typeMatches = xmlContent.matchAll(/<type[^>]*name="([^"]*)"[^>]*priority="([^"]*)"[^>]*icon="([^"]*)"/g);
     for (const match of typeMatches) {
-      const [, name, iconColor, priority, icon] = match;
+      const [, name, priority, icon] = match;
+      const iconColorMatch = match[0].match(/iconColor="([^"]*)"/);
+      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : 'inherit';
+
       const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
       if (iconName) {
         associations[iconName] = {
           name,
-          iconColor: `#${iconColor}`,
+          iconColor,
           priority: parseInt(priority),
           pattern: 'Type-based association',
           fileNames: 'N/A',
@@ -79,6 +89,50 @@ async function getIconAssociations() {
   }
 }
 
+async function getFolderAssociations() {
+  try {
+    const xmlPath = path.resolve('../src/main/resources/iconGenerator/folder_associations.xml');
+    const xmlContent = fs.readFileSync(xmlPath, 'utf8');
+
+    // Simple XML parsing for associations - extract regex and type elements
+    const associations: Record<string, Association> = {};
+
+    // Match regex elements
+    const regexMatches = xmlContent.matchAll(/<regex[^>]*name="([^"]*)"[^>]*priority="([^"]*)"[^>]*pattern="([^"]*)"[^>]*icon="([^"]*)"/g);
+    for (const match of regexMatches) {
+      const fullMatch = match[0];
+      const [, name, priority, pattern, icon] = match;
+
+      const folderNamesMatch = fullMatch.match(/folderNames="([^"]*)"/);
+      const folderColorMatch = fullMatch.match(/folderColor="([^"]*)"/);
+      const folderIconColorMatch = fullMatch.match(/folderIconColor="([^"]*)"/);
+
+      const folderNames = folderNamesMatch ? folderNamesMatch[1] : 'N/A';
+      const folderColor = folderColorMatch ? `#${folderColorMatch[1]}` : 'inherit';
+      const folderIconColor = folderIconColorMatch ? `#${folderIconColorMatch[1]}` : undefined;
+
+      const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
+      if (iconName) {
+        associations[iconName] = {
+          name,
+          iconColor: folderColor,
+          folderIconColor,
+          priority: parseInt(priority),
+          pattern,
+          fileNames: folderNames,
+          icon,
+          type: 'regex',
+        };
+      }
+    }
+
+    return associations;
+  } catch (error) {
+    console.error('Error loading folder associations:', error);
+    return {};
+  }
+}
+
 // Function to get all SVG files from icon directories
 async function getAllIcons() {
   const iconCategories: Record<string, Array<IconCategory>> = {
@@ -90,6 +144,7 @@ async function getAllIcons() {
 
   const baseIconPath = path.resolve('../iconGenerator/assets/icons');
   const associations = await getIconAssociations();
+  const folderAssociations = await getFolderAssociations();
 
   try {
     // Get file icons
@@ -107,7 +162,7 @@ async function getAllIcons() {
       name: icon.replace('.svg', ''),
       path: `/icons/folders/${icon}`,
       category: 'folders',
-      association: associations[icon.replace('.svg', '')] || null,
+      association: folderAssociations[icon.replace('.svg', '')] || null,
     }));
 
     // Get folder open icons
@@ -116,7 +171,7 @@ async function getAllIcons() {
       name: icon.replace('.svg', ''),
       path: `/icons/foldersOpen/${icon}`,
       category: 'foldersOpen',
-      association: associations[icon.replace('.svg', '')] || null,
+      association: folderAssociations[icon.replace('.svg', '')] || null,
     }));
 
     // Get UI icons
@@ -290,7 +345,7 @@ const allIcons = [
     border: 1px solid var(--sl-color-hairline-light);
     border-radius: 0.5rem;
     transition: all 0.2s ease;
-    background: var(--sl-color-bg);
+    background: var(--sl-color-gray-4);
     cursor: pointer;
   }
 
@@ -357,7 +412,7 @@ const allIcons = [
     font-size: 1.1rem;
   }
 
-  /* Modal styles */
+  /* Modal styles - Using :global to ensure they apply to dynamically injected content */
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -419,11 +474,11 @@ const allIcons = [
     background: var(--sl-color-bg-sidebar);
   }
 
-  .modal-content {
+  :global(.modal-content) {
     padding: 1.5rem;
   }
 
-  .icon-preview {
+  :global(.icon-preview) {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -433,21 +488,21 @@ const allIcons = [
     border-radius: 0.5rem;
   }
 
-  .icon-preview img {
+  :global(.icon-preview img) {
     width: 48px;
     height: 48px;
   }
 
-  .icon-info h3 {
+  :global(.icon-info h3) {
     color: var(--sl-color-text);
     font-size: 1.125rem;
     font-weight: 600;
     margin: 0 0 0.25rem 0;
   }
 
-  .icon-info .category-badge {
+  :global(.icon-info .category-badge) {
     display: inline-block;
-    background: var(--sl-color-accent-high);
+    background: var(--sl-color-gray-4);
     color: var(--sl-color-accent);
     padding: 0.125rem 0.5rem;
     border-radius: 0.25rem;
@@ -456,11 +511,11 @@ const allIcons = [
     text-transform: capitalize;
   }
 
-  .association-info {
+  :global(.association-info) {
     margin-top: 1rem;
   }
 
-  .info-item {
+  :global(.info-item) {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -468,18 +523,18 @@ const allIcons = [
     border-bottom: 1px solid var(--sl-color-hairline-light);
   }
 
-  .info-item:last-child {
+  :global(.info-item:last-child) {
     border-bottom: none;
   }
 
-  .info-label {
+  :global(.info-label) {
     font-weight: 600;
     color: var(--sl-color-text);
     font-size: 0.875rem;
     min-width: 80px;
   }
 
-  .info-value {
+  :global(.info-value) {
     color: var(--sl-color-text);
     font-size: 0.875rem;
     text-align: right;
@@ -488,7 +543,7 @@ const allIcons = [
     word-break: break-word;
   }
 
-  .color-swatch {
+  :global(.color-swatch) {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -498,8 +553,8 @@ const allIcons = [
     margin-left: 0.5rem;
   }
 
-  .priority-badge {
-    background: var(--sl-color-accent-high);
+  :global(.priority-badge) {
+    background: var(--sl-color-gray-4);
     color: var(--sl-color-accent);
     padding: 0.125rem 0.5rem;
     border-radius: 0.25rem;
@@ -507,7 +562,7 @@ const allIcons = [
     font-size: 0.75rem;
   }
 
-  .no-association {
+  :global(.no-association) {
     color: var(--sl-color-text);
     opacity: 0.7;
     font-style: italic;
@@ -649,15 +704,21 @@ const allIcons = [
 							</div>
 							<div class="info-item">
 								<span class="info-label">Color:</span>
-								<span class="info-value">${association.iconColor}<span class="color-swatch" style="background-color: ${association.iconColor};"></span></span>
+								<span class="info-value">${association.iconColor}${association.iconColor !== 'inherit' ? `<span class="color-swatch" style="background-color: ${association.iconColor};"></span>` : ''}</span>
 							</div>
+							${association.folderIconColor ? `
+							<div class="info-item">
+								<span class="info-label">Folder Icon Color:</span>
+								<span class="info-value">${association.folderIconColor}<span class="color-swatch" style="background-color: ${association.folderIconColor};"></span></span>
+							</div>
+							` : ''}
 							<div class="info-item">
 								<span class="info-label">Pattern:</span>
 								<span class="info-value"><code style="background: var(--sl-color-bg-sidebar); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">${association.pattern}</code></span>
 							</div>
 							${association.fileNames && association.fileNames !== 'N/A' ? `
 							<div class="info-item">
-								<span class="info-label">Examples:</span>
+								<span class="info-label">${iconCategory.includes('folder') ? 'Folders' : 'Examples'}:</span>
 								<span class="info-value" style="font-size: 0.75rem; opacity: 0.8;">${association.fileNames.split(',').slice(0, 3).join(', ')}${association.fileNames.split(',').length > 3 ? '...' : ''}</span>
 							</div>
 							` : ''}
