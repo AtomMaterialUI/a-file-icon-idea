@@ -277,7 +277,7 @@ const allIcons = [
     text-align: center;
   }
 
-  .search-input {
+  :global(.search-input) {
     width: 100%;
     max-width: 500px;
     padding: 0.75rem 1rem;
@@ -286,7 +286,7 @@ const allIcons = [
     border-radius: 0.5rem;
     outline: none;
     transition: all 0.2s ease;
-    background: var(--sl-color-bg);
+    background: var(--sl-color-gray-5);
     color: var(--sl-color-text);
   }
 
@@ -306,7 +306,7 @@ const allIcons = [
   .filter-btn {
     padding: 0.5rem 1rem;
     border: 1px solid var(--sl-color-hairline);
-    background: var(--sl-color-bg);
+    background: var(--sl-color-gray-5);
     color: var(--sl-color-text);
     border-radius: 0.5rem;
     cursor: pointer;
