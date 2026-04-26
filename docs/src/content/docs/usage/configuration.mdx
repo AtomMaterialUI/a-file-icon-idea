@@ -3,14 +3,38 @@ title: Configuration
 description: Detailed configuration options and advanced settings for the Atom Material Icons plugin.
 ---
 
+import ImageWrapper from "../../../components/ImageWrapper.astro";
+
 import { Aside, Tabs, TabItem, CardGrid, Card } from "@astrojs/starlight/components";
+
+import img_settings_202_0 from "../../../assets/screens/settings2.png";
+import img_noFileIcons_1 from "../../../assets/screens/noFileIcons.png";
+import img_noFolderIcons_2 from "../../../assets/screens/noFolderIcons.png";
+import img_noPsiIcons_3 from "../../../assets/screens/noPsiIcons.png";
+import img_hollowFolders_4 from "../../../assets/screens/hollowFolders.png";
+import img_hollowDecoratedFolders_5 from "../../../assets/screens/hollowDecoratedFolders.png";
+import img_noIcons_6 from "../../../assets/screens/noIcons.png";
+import img_noFolders_7 from "../../../assets/screens/noFolders.png";
+import img_customThemedColor_8 from "../../../assets/screens/customThemedColor.png";
+import img_bigIcons_9 from "../../../assets/screens/bigIcons.png";
+import img_smallIcons_10 from "../../../assets/screens/smallIcons.png";
+import img_largeRowHeight_11 from "../../../assets/screens/largeRowHeight.png";
+import img_monochrome_12 from "../../../assets/screens/monochrome.png";
+import img_monochrome2_13 from "../../../assets/screens/monochrome2.png";
+import img_saturated_14 from "../../../assets/screens/saturated.png";
+import img_noSaturated_15 from "../../../assets/screens/noSaturated.png";
+import img_darculaArrows_16 from "../../../assets/screens/darculaArrows.png";
+import img_plusMinusArrows_17 from "../../../assets/screens/plusMinusArrows.png";
+import img_arrowsArrows_18 from "../../../assets/screens/arrowsArrows.png";
+import img_circleArrows_19 from "../../../assets/screens/circleArrows.png";
+import img_noArrows_20 from "../../../assets/screens/noArrows.png";
 
 ## Atom Material Icons Configuration
 
 Here is a comprehensive guide to the available configuration options for the Atom Material Icons plugin. You can access these settings via *
 *Settings/Preferences** > **Appearance & Behavior** > **Atom Material Icons**.
 
-![settings 2.png](../../../../src/assets/screens/settings%202.png "Atom Material Icons Settings")
+<ImageWrapper src={img_settings_202_0} alt="settings 2.png" title="Atom Material Icons Settings" />
 
 ### Toggle Icons
 
@@ -26,19 +50,19 @@ This section allows you to enable or disable specific categories of icons across
 #### Examples
 
 Without File Icons:
-![noFileIcons.png](../../../../src/assets/screens/noFileIcons.png "Without File Icons")
+<ImageWrapper src={img_noFileIcons_1} alt="noFileIcons.png" title="Without File Icons" />
 
 Without Folder Icons:
-![noFolderIcons.png](../../../../src/assets/screens/noFolderIcons.png "Without Folder Icons")
+<ImageWrapper src={img_noFolderIcons_2} alt="noFolderIcons.png" title="Without Folder Icons" />
 
 Without PSI Icons:
-![noPSIIcons.png](../../../../src/assets/screens/noPsiIcons.png "Without PSI Icons")
+<ImageWrapper src={img_noPsiIcons_3} alt="noPSIIcons.png" title="Without PSI Icons" />
 
 Hollow Folders:
-![hollowFolders.png](../../../../src/assets/screens/hollowFolders.png "Hollow Folders")
+<ImageWrapper src={img_hollowFolders_4} alt="hollowFolders.png" title="Hollow Folders" />
 
 Hollow Decorated Folders:
-![hollowDecoratedFolders.png](../../../../src/assets/screens/hollowDecoratedFolders.png "Hollow Decorated Folders")
+<ImageWrapper src={img_hollowDecoratedFolders_5} alt="hollowDecoratedFolders.png" title="Hollow Decorated Folders" />
 
 ---
 
@@ -68,10 +92,10 @@ If you prefer a more minimalist interface, you can completely hide certain icon 
 - **Hide Folder Icons**: Removes all folder icons from the UI.
 
 Hide File Icons:
-![hideIcons.png](../../../../src/assets/screens/noIcons.png "Hide Icons")
+<ImageWrapper src={img_noIcons_6} alt="hideIcons.png" title="Hide Icons" />
 
 Hide Folder Icons:
-![hideFolderIcons.png](../../../../src/assets/screens/noFolders.png "Hide Folder Icons")
+<ImageWrapper src={img_noFolders_7} alt="hideFolderIcons.png" title="Hide Folder Icons" />
 
 ---
 
@@ -83,7 +107,7 @@ Fine-tune the visual style of your icons to match your preferred theme.
 - **Custom Themed Color**: Overrides the primary color of the icons.
 
 Example: Custom Accent and Themed Colors:
-![customThemedColor.png](../../../../src/assets/screens/customThemedColor.png "Custom Themed Color")
+<ImageWrapper src={img_customThemedColor_8} alt="customThemedColor.png" title="Custom Themed Color" />
 
 #### Size and Line Height
 
@@ -93,13 +117,13 @@ Example: Custom Accent and Themed Colors:
 #### Screenshots
 
 Big Icons:
-![bigIcons.png](../../../../src/assets/screens/bigIcons.png "Custom Icon Size")
+<ImageWrapper src={img_bigIcons_9} alt="bigIcons.png" title="Custom Icon Size" />
 
 Small Icons:
-![smallIcons.png](../../../../src/assets/screens/smallIcons.png "Custom Icon Size")
+<ImageWrapper src={img_smallIcons_10} alt="smallIcons.png" title="Custom Icon Size" />
 
 Large Line Height:
-![largeRowHeight.png](../../../../src/assets/screens/largeRowHeight.png "Custom Row Height")
+<ImageWrapper src={img_largeRowHeight_11} alt="largeRowHeight.png" title="Custom Row Height" />
 
 <Aside type="caution">
   The Custom Line Height have no effect when the Material Theme UI plugin is enabled.
@@ -116,16 +140,16 @@ Large Line Height:
 #### Screenshots
 
 Monochrome Icons (Blue):
-![monochrome.png](../../../../src/assets/screens/monochrome.png "Monochrome Icons (Blue)")
+<ImageWrapper src={img_monochrome_12} alt="monochrome.png" title="Monochrome Icons (Blue)" />
 
 Monochrome Icons (Orange):
-![monochrome2.png](../../../../src/assets/screens/monochrome2.png "Monochrome Icons (Orange)")
+<ImageWrapper src={img_monochrome2_13} alt="monochrome2.png" title="Monochrome Icons (Orange)" />
 
 Custom Saturation:
-![saturated.png](../../../../src/assets/screens/saturated.png "Saturated")
+<ImageWrapper src={img_saturated_14} alt="saturated.png" title="Saturated" />
 
 Full Saturation:
-![noSaturated.png](../../../../src/assets/screens/noSaturated.png "Full Saturation")
+<ImageWrapper src={img_noSaturated_15} alt="noSaturated.png" title="Full Saturation" />
 
 ### Arrows Style
 
@@ -141,19 +165,19 @@ Choose between a list of different arrow styles:
 #### Screenshots
 
 Darcula Arrows:
-![darculaArrows.png](../../../../src/assets/screens/darculaArrows.png "Darcula Style")
+<ImageWrapper src={img_darculaArrows_16} alt="darculaArrows.png" title="Darcula Style" />
 
 Plus-Minus Arrows:
-![plusMinusArrows.png](../../../../src/assets/screens/plusMinusArrows.png "Plus-Minus Style")
+<ImageWrapper src={img_plusMinusArrows_17} alt="plusMinusArrows.png" title="Plus-Minus Style" />
 
 Arrows:
-![arrowsArrows.png](../../../../src/assets/screens/arrowsArrows.png "Arrows Style")
+<ImageWrapper src={img_arrowsArrows_18} alt="arrowsArrows.png" title="Arrows Style" />
 
 Circle Arrows:
-![circleArrows.png](../../../../src/assets/screens/circleArrows.png "Circle Arrows")
+<ImageWrapper src={img_circleArrows_19} alt="circleArrows.png" title="Circle Arrows" />
 
 No Arrows:
-![noArrows.png](../../../../src/assets/screens/noArrows.png "No Arrows")
+<ImageWrapper src={img_noArrows_20} alt="noArrows.png" title="No Arrows" />
 
 ---
 

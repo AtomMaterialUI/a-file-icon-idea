@@ -99,16 +99,8 @@ strong {
 
 .sl-markdown-content img {
   max-width: 100%;
-  transition: transform 0.3s ease-in-out;
-  cursor: zoom-in;
   display: block;
   margin: auto;
-}
-
-.sl-markdown-content img:hover {
-  transform: scale(1.5);
-  position: relative;
-  z-index: 999;
 }
 
 .packages-list {

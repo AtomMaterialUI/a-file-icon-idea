@@ -3,7 +3,12 @@ title: Installation
 description: Step-by-step guide to install the Atom Material Icons plugin in your JetBrains IDE.
 ---
 
+import ImageWrapper from "../../components/ImageWrapper.astro";
+
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+import withAll from "../../assets/screens/withAll.png";
+import settings from "../../assets/screens/settings.png";
 
 ## Requirements
 
@@ -104,9 +109,9 @@ After installation, confirm the plugin is working correctly:
 
 Once the plugin is installed and active, your IDE should look like this:
 
-![withAll.png](../../../src/assets/screens/withAll.png "Atom Material Icons")
+<ImageWrapper src={withAll} alt="withAll.png" title="Atom Material Icons" />
 
-![settings.png](../../../src/assets/screens/settings.png "Atom Material Icons Settings")
+<ImageWrapper src={settings} alt="settings.png" title="Atom Material Icons Settings" />
 
 :::tip[Success Indicators]
 

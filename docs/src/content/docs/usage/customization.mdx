@@ -3,7 +3,18 @@ title: Customization
 description: Create your own Icon File and Folder associations
 ---
 
+import ImageWrapper from "../../../components/ImageWrapper.astro";
+
 import { Aside, Tabs, TabItem, CardGrid, Card } from "@astrojs/starlight/components";
+
+import img_fileAssociations_0 from "../../../../assets/screens/fileAssociations.png";
+import img_folderAssociations_1 from "../../../../assets/screens/folderAssociations.png";
+import img_psiAssociations_2 from "../../../../assets/screens/psiAssociations.png";
+import img_customPsi_3 from "../../../../assets/screens/customPsi.png";
+import img_customColors_4 from "../../../../assets/screens/customColors.png";
+import img_changeFolderIcon_5 from "../../../../assets/screens/changeFolderIcon.png";
+import img_newFolderIcon_6 from "../../../../assets/screens/newFolderIcon.png";
+import img_perProject_7 from "../../../../assets/screens/perProject.png";
 
 The Atom Material Icons plugin allows you to define custom icon mappings for files, folders, and PSI (Program Structure Interface) elements.
 Through the **Associations Editor**, you can view all existing associations or create your own to tailor the IDE's appearance to your needs.
@@ -24,7 +35,7 @@ The editor is organized into several tabs:
 
 File associations allow you to match files based on their names or extensions using regular expressions (Regex).
 
-![fileAssociations.png](../../../../src/assets/screens/fileAssociations.png "File Associations Editor")
+<ImageWrapper src={img_fileAssociations_0} alt="fileAssociations.png" title="File Associations Editor" />
 
 Each association entry contains:
 
@@ -41,7 +52,7 @@ to load a custom SVG from your computer.
 
 Folder associations function similarly to file associations but apply specifically to directories.
 
-![folderAssociations.png](../../../../src/assets/screens/folderAssociations.png "Folder Associations Editor")
+<ImageWrapper src={img_folderAssociations_1} alt="folderAssociations.png" title="Folder Associations Editor" />
 
 You can define patterns to match common directory names (e.g., `src`, `test`, `docs`) and assign them distinct icons to improve project
 navigation.
@@ -63,7 +74,7 @@ and Structure View. This includes classes, interfaces, methods, and variables.
 Instead of a file pattern, these associations match a specific icon **Identifier**. You can find the standard IntelliJ icon identifiers
 at [https://intellij-icons.jetbrains.design](https://intellij-icons.jetbrains.design).
 
-![psiAssociations.png](../../../../src/assets/screens/psiAssociations.png "PSI Associations Editor")
+<ImageWrapper src={img_psiAssociations_2} alt="psiAssociations.png" title="PSI Associations Editor" />
 
 Each association entry contains:
 
@@ -72,7 +83,7 @@ Each association entry contains:
 - **Icon**: The replacement icon to be displayed.
 
 **Example: Custom PSI Icons**
-![customPsi.png](../../../../src/assets/screens/customPsi.png "Custom PSI Icons Example")
+<ImageWrapper src={img_customPsi_3} alt="customPsi.png" title="Custom PSI Icons Example" />
 
 ---
 
@@ -92,7 +103,7 @@ The `Icon Color` and `Folder Color` fields allow you to override default SVG col
 `stroke` attributes within the SVG with your specified color.
 
 **Example: Customized Icon and Folder Colors**
-![customColors.png](../../../../src/assets/screens/customColors.png)
+<ImageWrapper src={img_customColors_4} alt="customColors.png" />
 
 ---
 
@@ -107,9 +118,9 @@ A faster way to create associations is directly from the Project Tree:
 **Example: Changing a Folder Icon**
 
 Example:
-![changeFolderIcon.png](../../../../src/assets/screens/changeFolderIcon.png "Change Folder Icon")
+<ImageWrapper src={img_changeFolderIcon_5} alt="changeFolderIcon.png" title="Change Folder Icon" />
 
-![newFolderIcon.png](../../../../src/assets/screens/newFolderIcon.png "New Folder Icon")
+<ImageWrapper src={img_newFolderIcon_6} alt="newFolderIcon.png" title="New Folder Icon" />
 
 ---
 
@@ -118,7 +129,7 @@ Example:
 By default, associations are **global** and apply to all projects. However, you can also define **per-project** associations. This is useful
 if you want different icon sets for different tech stacks (e.g., Java vs. Python) within the same IDE instance.
 
-![perProject.png](../../../../src/assets/screens/perProject.png "Per-project Associations")
+<ImageWrapper src={img_perProject_7} alt="perProject.png" title="Per-project Associations" />
 
 ---
 

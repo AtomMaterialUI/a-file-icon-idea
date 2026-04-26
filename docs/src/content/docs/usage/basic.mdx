@@ -4,6 +4,7 @@ description: Learn how to use the Atom Material Icons plugin and access its feat
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import ImageWrapper from "../../../components/ImageWrapper.astro";
 
 ## Getting Started
 
@@ -50,7 +51,13 @@ Contextual folder icons are applied based on:
 
 Here's how icons appear in the project explorer and editor tabs:
 
-![withAll.png](../../../assets/screens/withAll.png "Atom Material Icons")
+import withAllBasic from "../../../assets/screens/withAll.png";
+
+<ImageWrapper
+src={withAllBasic}
+alt="Atom Material Icons"
+title="Atom Material Icons"
+/>
 
 <Aside type="tip">
   For a complete list of supported File and Folder Associations, click [here](/icons).
