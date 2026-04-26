@@ -42,7 +42,10 @@ class PsiAssociation internal constructor() : Association() {
 
   override var iconType: IconType
     get() = IconType.PSI
-    set(@Suppress("UNUSED_PARAMETER") value) {
+    set(
+      @Suppress("UNUSED_PARAMETER")
+      value
+    ) {
       // do nothing, iconType is fixed for PsiAssociation
     }
 

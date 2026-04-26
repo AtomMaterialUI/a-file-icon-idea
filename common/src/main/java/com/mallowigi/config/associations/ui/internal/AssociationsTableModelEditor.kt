@@ -284,7 +284,7 @@ class AssociationsTableModelEditor(
   override fun createElement(): Association {
     increment++
 
-    return when (type) {
+    val association = when (type) {
       IconType.PSI -> {
         val psiAssociation = PsiAssociation()
         psiAssociation.name = "New PSI Association (${increment})"
@@ -308,6 +308,7 @@ class AssociationsTableModelEditor(
         regexAssociation
       }
     }
+    return association
   }
 
   /**
