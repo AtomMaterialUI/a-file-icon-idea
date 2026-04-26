@@ -37,8 +37,7 @@ import com.mallowigi.icons.associations.RegexAssociation
 
 class AddFolderAssociationAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent) {
-    val virtualFile = e.getData(CommonDataKeys.VIRTUAL_FILE)
-    if (virtualFile == null) return
+    val virtualFile = e.getData(CommonDataKeys.VIRTUAL_FILE) ?: return
 
     val fileName = virtualFile.name
     val fileNameWithoutExtension = virtualFile.nameWithoutExtension.replaceFirstChar { it.uppercase() }

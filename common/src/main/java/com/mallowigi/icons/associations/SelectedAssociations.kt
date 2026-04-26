@@ -51,9 +51,14 @@ class SelectedAssociations(
   @Transient
   private var mutableAssociations: MutableMap<String, Association> = mutableMapOf()
 
-  /** My modified [Associations]. */
   @Transient
-  private var ownAssociations: MutableMap<String, Association> = mutableMapOf()
+  private var ownedAssociations: MutableMap<String, Association> = mutableMapOf()
+
+  /** My modified [Associations]. Legacy persisted field for backward compatibility. */
+  @Property
+  @XCollection
+  @Deprecated("Use associationsList instead")
+  var ownAssociations: MutableMap<String, RegexAssociation> = mutableMapOf()
 
   @Property
   @XCollection(
@@ -63,7 +68,7 @@ class SelectedAssociations(
       TypeAssociation::class
     ]
   )
-  private var associationsList: MutableList<Association> = mutableListOf()
+  var associationsList: MutableList<Association> = mutableListOf()
 
   init {
     // Copy from a list of other [Associations] (used when applying form)
@@ -85,25 +90,21 @@ class SelectedAssociations(
   fun addAssociation(association: Association) {
     if (hasOwn(association.name)) {
       association.name = "${association.name} (1)"
-      ownAssociations[association.name] = association
+      // ownAssociations[association.name] = association
+      ownedAssociations[association.name] = association
     } else {
-      ownAssociations[association.name] = association
+      // ownAssociations[association.name] = association
+      ownedAssociations[association.name] = association
     }
   }
 
-  /**
-   * Checks if an own [Association] is already registered.
-   *
-   * @param name
-   */
-  private fun hasOwn(name: String): Boolean = ownAssociations.containsKey(name)
+  /** Checks if an own [Association] is already registered. */
+  private fun hasOwn(name: String): Boolean {
+    return ownedAssociations.containsKey(name) || ownAssociations.containsKey(name)
+  }
 
-  /**
-   * Gets the list of own [Associations].
-   *
-   * @return
-   */
-  fun ownValues(): List<Association> = ownAssociations.values.toList()
+  /** Gets the list of own [Associations]. */
+  fun ownValues(): List<Association> = ownedAssociations.values.toList()
 
   /**
    * Find matching [Association] with the highest priority.
@@ -122,7 +123,7 @@ class SelectedAssociations(
   }
 
   /**
-   * Look for matching association in [ownAssociations].
+   * Look for matching association in [ownedAssociations].
    *
    * @param file a file's [FileInfo]
    * @return matching association if found
@@ -141,7 +142,7 @@ class SelectedAssociations(
     .filter { it.enabled && it.matches(file) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
-  /** Look for matching association in [ownAssociations]. */
+  /** Look for matching association in [ownedAssociations]. */
   private fun findInOwnByName(path: String): Association? = ownValues()
     .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) }
     .maxByOrNull { it.priority }
@@ -151,16 +152,12 @@ class SelectedAssociations(
     .filter { it.enabled && it.matchesName(path) && IconPackManager.instance.hasIconPack(it.iconPack) && !hasOwn(it.name) }
     .maxByOrNull { it.priority }
 
-  /**
-   * Get the list of all [Associations].
-   *
-   * @return the list of [Associations]
-   */
+  /** Get the list of all [Associations]. */
   override fun getTheAssociations(): List<Association> {
     // to display associations to the form, need to merge both
     val result = mutableMapOf<String, Association>()
     result.putAll(mutableAssociations)
-    result.putAll(ownAssociations)
+    result.putAll(ownedAssociations)
     return result.values.toList()
   }
 
@@ -178,19 +175,24 @@ class SelectedAssociations(
   fun reset() {
     mutableAssociations.clear()
     ownAssociations.clear()
+    ownedAssociations.clear()
     initMutableListFromDefaults()
   }
 
-  /** Extract [ownAssociations] from [mutableAssociations]. */
+  /** Extract [ownedAssociations] from [mutableAssociations]. */
   fun registerOwnAssociations() {
-    ownAssociations.putAll(mutableAssociations.filter { it.value.touched })
+    ownedAssociations.putAll(mutableAssociations.filter { it.value.touched })
     associationsList.clear()
-    associationsList.addAll(ownAssociations.values)
+    associationsList.addAll(ownedAssociations.values)
   }
 
   fun updateOwnAssociations() {
-    ownAssociations.clear()
-    ownAssociations.putAll(associationsList.associateBy { it.name })
+    // Migrate legacy ownAssociations map into associationsList if needed
+    if (associationsList.isEmpty() && ownAssociations.isNotEmpty()) {
+      associationsList.addAll(ownAssociations.values)
+    }
+    ownedAssociations.clear()
+    ownedAssociations.putAll(associationsList.associateBy { it.name })
   }
 
   companion object {
