@@ -31,6 +31,7 @@ import com.intellij.ui.dsl.builder.Align
 import com.intellij.ui.dsl.builder.TopGap
 import com.intellij.ui.dsl.builder.panel
 import com.mallowigi.config.AtomSettingsBundle.message
+import com.mallowigi.config.select.AtomSelectConfigurable
 import com.mallowigi.utils.findSettingsPage
 import icons.AtomIcons.LOGO
 import org.jetbrains.annotations.NonNls
@@ -80,7 +81,7 @@ class AtomHomeConfigurable : BoundSearchableConfigurable(
             }
 
             link(message("AtomSelectForm.title")) {
-              findSettingsPage(it.source as ActionLink, AtomSettingsConfigurable.ID)
+              findSettingsPage(it.source as ActionLink, AtomSelectConfigurable.ID)
             }
           }
         }.align(Align.CENTER)
