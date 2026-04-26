@@ -69,12 +69,13 @@ class BigIconsPatcher : SvgPatcher {
    */
   private fun patchSizes(attributes: MutableMap<String, String>) {
     val hasWidth = attributes[SvgPatcher.WIDTH]
+    val ignore = attributes[SvgPatcher.IGNORE]
     val currentConfig = config ?: return
     val customFontSize = currentConfig.customIconSize.toString()
     val hasCustomSize = currentConfig.hasCustomIconSize
     val size = if (hasCustomSize) customFontSize else DEFAULT_ICON_SIZE
 
-    if (hasWidth == "16" || hasWidth == "16px") {
+    if (hasWidth == "16" || hasWidth == "16px" && ignore == null) {
       attributes[SvgPatcher.WIDTH] = size.toString() + SvgPatcher.PX
       attributes[SvgPatcher.HEIGHT] = size.toString() + SvgPatcher.PX
     }

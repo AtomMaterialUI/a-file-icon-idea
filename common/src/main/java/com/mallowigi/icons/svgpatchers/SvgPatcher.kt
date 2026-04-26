@@ -31,7 +31,7 @@ interface SvgPatcher {
   fun digest(): LongArray
 
   /**
-   * Patch colors
+   * Patch colors.
    *
    * @param attributes
    * @param path
@@ -39,7 +39,7 @@ interface SvgPatcher {
   fun patch(attributes: MutableMap<String, String>)
 
   /**
-   * Priority in the list of patchers
+   * Priority in the list of patchers.
    *
    * @return
    */
@@ -56,6 +56,7 @@ interface SvgPatcher {
     const val FILL: String = "fill"
     const val WIDTH: String = "width"
     const val HEIGHT: String = "height"
+    const val IGNORE: String = "data-ignore"
     const val TRUE: String = "true"
     const val BIG: String = "data-big"
     const val TINT: String = "data-tint"
