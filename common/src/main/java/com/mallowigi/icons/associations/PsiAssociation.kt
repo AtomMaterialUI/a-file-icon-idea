@@ -28,6 +28,7 @@ package com.mallowigi.icons.associations
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
+import com.mallowigi.models.PsiFileInfo
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 
@@ -61,7 +62,7 @@ class PsiAssociation internal constructor() : Association() {
     get() = super.isEmpty || path.isEmpty()
 
   /** Matches by the [path]. */
-  override fun matches(file: FileInfo): Boolean = file.path.endsWith("$path.svg")
+  override fun matches(file: FileInfo): Boolean = file is PsiFileInfo && file.path.endsWith("/$path.svg")
 
   /**
    * Apply changes from another [PsiAssociation].
