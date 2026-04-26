@@ -82,7 +82,7 @@ class IconPatchersManager {
   }
 
   fun fixRunIcons() {
-    if (!AtomSettingsConfig.instance.fixActionButtonsColor) return;
+    if (!AtomSettingsConfig.instance.fixActionButtonsColor) return
 
     val resources = setOf(
       "RunToolbar.Debug.activeBackground",

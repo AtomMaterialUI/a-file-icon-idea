@@ -57,17 +57,16 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   }
 
   /** Create patcher for path. */
-  override fun attributeForPath(path: String): SvgAttributePatcher = createPatcher(path)
-
-  private fun createPatcher(path: String): SvgAttributePatcher = object : SvgAttributePatcher {
+  override fun attributeForPath(path: String): SvgAttributePatcher = object : SvgAttributePatcher {
     override fun patchColors(attributes: MutableMap<String, String>) {
-      val useFiltered = isIconIgnored(path)
-      val effectivePatchers: Iterable<SvgPatcher> = if (useFiltered) patchers.filterNot { it is BigIconsPatcher } else patchers
+      val useFiltered = ignoredIcons.any { path.contains(it, ignoreCase = true) }
+      val effectivePatchers: Iterable<SvgPatcher> = when {
+        useFiltered -> patchers.filterNot { it is BigIconsPatcher }
+        else        -> patchers
+      }
       effectivePatchers.forEach { it.patch(attributes) }
     }
   }
-
-  private fun isIconIgnored(path: String): Boolean = ignoredIcons.any { path.contains(it, ignoreCase = true) }
 
   /** Aggregates digests from all patchers into single array. */
   override fun digest(): LongArray {
