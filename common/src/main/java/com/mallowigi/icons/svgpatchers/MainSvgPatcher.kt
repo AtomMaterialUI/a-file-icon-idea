@@ -24,23 +24,17 @@
  */
 package com.mallowigi.icons.svgpatchers
 
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.ui.svg.SvgAttributePatcher
 import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
-import com.mallowigi.config.AtomSettingsConfig
 import java.util.*
 
 /** Main svg patcher: run all registered svg patchers. */
 @Suppress("UnstableApiUsage")
 @Service(Service.Level.APP)
 class MainSvgPatcher : SvgElementColorPatcherProvider {
-
-  /** Get the config. */
-  private val config: AtomSettingsConfig?
-    get() = ApplicationManager.getApplication().getServiceIfCreated(AtomSettingsConfig::class.java)
 
   private val patchers: SortedSet<SvgPatcher> = sortedSetOf(
     compareByDescending { it.priority() },
@@ -67,14 +61,13 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
 
   private fun createPatcher(path: String): SvgAttributePatcher = object : SvgAttributePatcher {
     override fun patchColors(attributes: MutableMap<String, String>) {
-      val isEnabledUIIcons = config?.isEnabledUIIcons ?: true
-      val useFiltered = !isEnabledUIIcons && isWindowsMenuIcon(path)
+      val useFiltered = isIconIgnored(path)
       val effectivePatchers: Iterable<SvgPatcher> = if (useFiltered) patchers.filterNot { it is BigIconsPatcher } else patchers
       effectivePatchers.forEach { it.patch(attributes) }
     }
   }
 
-  private fun isWindowsMenuIcon(path: String): Boolean = path.contains("windowsMenu@20x20", ignoreCase = true)
+  private fun isIconIgnored(path: String): Boolean = ignoredIcons.any { path.contains(it, ignoreCase = true) }
 
   /** Aggregates digests from all patchers into single array. */
   override fun digest(): LongArray {
@@ -86,6 +79,25 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   companion object {
     val instance: MainSvgPatcher
       get() = service()
+
+    private val ignoredIcons = setOf(
+      "checkBox.svg",
+      "checkBoxDisabled.svg",
+      "checkBoxFocused.svg",
+      "checkBoxIndeterminateSelectedFocused.svg",
+      "checkBoxIndeterminateSelectedDisabled.svg",
+      "checkBoxIndeterminateSelected.svg",
+      "checkBoxSelected.svg",
+      "checkBoxSelectedDisabled.svg",
+      "checkBoxSelectedFocused.svg",
+      "radio.svg",
+      "radioDisabled.svg",
+      "radioFocused.svg",
+      "radioSelected.svg",
+      "radioSelectedDisabled.svg",
+      "radioSelectedFocused.svg",
+      "windowsMenu@20x20.svg"
+    )
   }
 
 }
