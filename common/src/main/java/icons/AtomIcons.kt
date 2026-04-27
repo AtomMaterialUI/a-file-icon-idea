@@ -29,9 +29,12 @@ import com.intellij.openapi.util.Ref
 import com.intellij.openapi.util.io.FileUtil.toCanonicalPath
 import com.intellij.openapi.vfs.VFileProperty
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.ui.scale.DerivedScaleType
 import com.intellij.ui.scale.ScaleContext
+import com.intellij.ui.svg.loadSvg
 import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
+import com.intellij.util.ui.ImageUtil
 import com.intellij.util.ui.JBUI
 import com.mallowigi.icons.special.DirIcon
 import com.mallowigi.utils.LayeredIconService
@@ -40,6 +43,7 @@ import java.awt.Image
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
+import java.io.InputStream
 import java.net.MalformedURLException
 import java.net.URL
 import java.util.logging.Logger
@@ -107,8 +111,15 @@ object AtomIcons {
     } catch (e: MalformedURLException) {
       Logger.getAnonymousLogger().info(e.message)
     }
-    val bufferedImage: Image = SVGLoader.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
+    val bufferedImage: Image = this.loadHiDPI(url.get(), FileInputStream(canonicalPath), ScaleContext.create())
     return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), JBUI.scale(16), JBUI.scale(16))
+  }
+
+  /** Custom version of loadHiDPI that uses the svg patchers. */
+  fun loadHiDPI(url: URL?, stream: InputStream, context: ScaleContext): Image {
+    val scale = context.getScale(DerivedScaleType.PIX_SCALE).toFloat()
+    val image = loadSvg(path = url?.path, stream = stream, scale = scale, colorPatcherProvider = SVGLoader.colorPatcherProvider)
+    return ImageUtil.ensureHiDPI(image, context)
   }
 
   /**
