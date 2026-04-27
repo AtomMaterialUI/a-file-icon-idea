@@ -27,6 +27,7 @@ package com.mallowigi.icons.svgpatchers
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.ui.svg.SvgAttributePatcher
+import com.intellij.ui.svg.setSelectionColorPatcherProvider
 import com.intellij.util.SVGLoader
 import com.intellij.util.SVGLoader.SvgElementColorPatcherProvider
 import java.util.*
@@ -53,6 +54,8 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   fun applySvgPatchers() {
     SVGLoader.colorPatcherProvider = this
     patchers.forEach { it.refresh() }
+    // Registry.get("ide.patch.icons.on.selection").setValue(false)
+    setSelectionColorPatcherProvider(this)
     // SwingUtilities.invokeLater { ActionToolbarImpl.updateAllToolbarsImmediately() }
   }
 
