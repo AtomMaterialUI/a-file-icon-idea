@@ -2,6 +2,88 @@
 
 ----
 
+## 201.0.0 (20.1.0)
+
+### Fixes
+
+- Fix the issue where older saved associations weren't migrated to the new format
+- Fix the issue where PSI icons overrode the File Icons
+- Fix the issue where custom icons would not get the accent/themed color or the custom size applied
+- Fix the issue where selected icons in the Project Tree would revert back to their default color
+- Prevent settings' icons from being scaled with custom size
+- Support for `.cts/.mts` files
+
+### Additions
+
+- **New File Icons**:
+  - AAB
+  - Agents.md
+  - .aiassistant files
+  - AppWrite
+  - Bashly
+  - Chromatic
+  - Claude
+  - Crossplane
+  - Crush
+  - Cursor
+  - DBT
+  - Doppler
+  - Glow
+  - GritQL
+  - Happo
+  - Lynx
+  - MCP
+  - MrPack
+  - ONNX
+  - OpenTofu
+  - Oxc
+  - Packer
+  - Prompt
+  - Quarkdown
+  - Quarto
+  - Rolldown
+  - RStack
+  - SaltStack
+  - Skill.md
+  - TOON
+  - TSDown
+  - UV
+  - Verse
+  - VHS
+  - Vitest Files
+  - Warp.md
+- **New Folder Icons**
+  - .aiassistant
+  - Agents
+  - Airflow
+  - AppWrite
+  - Archived
+  - Assembly
+  - Blogs
+  - Composables
+  - Crossplane
+  - Cursor
+  - Deprecated
+  - DAL
+  - Eslint
+  - Forms
+  - Go
+  - GritQL
+  - Junie
+  - MCP
+  - Metro
+  - News
+  - Postman
+  - Proxy
+  - Prompts
+  - R
+  - Redis
+  - SaltStack
+  - Scrap
+  - Skills
+  - TRPC
+  - Vectors
+
 ## 200.0.0 (20.0.0)
 
 ### Features
@@ -144,7 +226,8 @@
 - **Angular** Icon Pack
 - **NextJS** Icon Pack
 - New Arrow Style: **Circle**
-- New option: **Fix Action Buttons Color**. This will change the color of the Toolbar buttons to a darker color for a better contrast with
+- New option: **Fix Action Buttons Color
+  **. This will change the color of the Toolbar buttons to a darker color for a better contrast with
   the plugin icons.
 
 ### Additions
@@ -392,10 +475,12 @@
   - Jest files: `jest/*.js|jsx|ts|tsx`
   - Mock files: `spy/*`, `mocks?/*`, `stubs?/*`
   - NgRx
-    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`,
+    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`,
+    `selectors/*.js|jsx|ts|tsx`,
     `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
   - Rails
-    files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`, `views?/*.rb`...
+    files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`,
+    `views?/*.rb`...
   - Redux
     files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`,
     `repo/*.js|jsx|ts|tsx`...
