@@ -49,7 +49,7 @@ val platformVersion: String by project
 
 val pluginName: String by project
 val pluginID: String by project
-val pluginVersion: String by project
+val pluginVersion: String = environment("PUBLISH_VERSION").getOrNull()?.takeIf { it.isNotBlank() } ?: properties("pluginVersion")
 val pluginDescription: String by project
 val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
@@ -191,7 +191,7 @@ intellijPlatform {
 
   publishing {
     token = environment("INTELLIJ_PUBLISH_TOKEN")
-    channels = environment("PUBLISH_CHANNELS").getOrElse(pluginChannels).split(',').map { it.trim() }
+    channels = (environment("PUBLISH_CHANNELS").getOrNull()?.takeIf { it.isNotBlank() } ?: pluginChannels).split(',').map { it.trim() }
   }
 
   signing {

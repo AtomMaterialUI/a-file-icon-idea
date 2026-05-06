@@ -10,6 +10,9 @@ on:
         description: 'Publishing channel'
         required: true
         default: 'EAP'
+      version:
+        description: 'Version (optional)'
+        required: false
 
 jobs:
   publish:
@@ -29,6 +32,15 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Determine Version
+        id: version
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.version }}" != "" ]]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Publish Plugin
         env:
           INTELLIJ_PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
@@ -36,4 +48,5 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
           PUBLISH_CHANNELS: ${{ github.event.inputs.channel || 'default' }}
+          PUBLISH_VERSION: ${{ steps.version.outputs.VERSION }}
         run: ./gradlew publishPlugin
