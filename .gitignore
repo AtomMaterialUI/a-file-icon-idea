@@ -339,3 +339,5 @@ src/main/resources/assets
 
 # Eagle files
 *.library
+
+CHANGELOG.html
