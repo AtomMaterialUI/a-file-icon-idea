@@ -191,13 +191,13 @@ intellijPlatform {
 
   publishing {
     token = environment("INTELLIJ_PUBLISH_TOKEN")
-    channels = pluginChannels.split(',').map { it.trim() }
+    channels = environment("PUBLISH_CHANNELS").getOrElse(pluginChannels).split(',').map { it.trim() }
   }
 
   signing {
-    certificateChain = fileContents("./chain.crt")
-    privateKey = fileContents("./private.pem")
-    password = fileContents("./private_encrypted.pem")
+    certificateChain = environment("CERTIFICATE_CHAIN").orElse(fileContents("./chain.crt"))
+    privateKey = environment("PRIVATE_KEY").orElse(fileContents("./private.pem"))
+    password = environment("PRIVATE_KEY_PASSWORD").orElse(fileContents("./private_encrypted.pem"))
   }
 
   pluginVerification {
