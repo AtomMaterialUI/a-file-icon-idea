@@ -111,11 +111,25 @@ class IconSelectionCellEditor(
     val emptyLabel = JLabel("No matching icons", SwingConstants.CENTER)
     val panel = JPanel(BorderLayout(JBUI.scale(8), JBUI.scale(8)))
     var selectionCommitted = false
+    var previewsEnabled = false
+    var previewPath: String? = null
 
     lateinit var chooserPopup: JBPopup
 
     iconList.selectionMode = ListSelectionModel.SINGLE_SELECTION
-    iconList.cellRenderer = iconRenderer()
+    iconList.cellRenderer = iconRenderer {
+      when {
+        previewsEnabled -> previewPath
+        else            -> null
+      }
+    }
+
+    iconList.addListSelectionListener {
+      if (previewsEnabled && !it.valueIsAdjusting) {
+        previewPath = iconList.selectedValue
+        iconList.repaint()
+      }
+    }
 
     panel.border = JBUI.Borders.empty(8)
     panel.add(searchField, BorderLayout.NORTH)
@@ -209,9 +223,14 @@ class IconSelectionCellEditor(
     // Show the chooser close to the cell being edited
     val cellBounds = table.getCellRect(row, column, true)
     chooserPopup.show(RelativePoint(table, Point(cellBounds.x, cellBounds.y + cellBounds.height)))
+
+    // Only show the icons when the popup appears
+    ApplicationManager.getApplication().invokeLater {
+      if (popup === chooserPopup) previewsEnabled = true
+    }
   }
 
-  private fun iconRenderer(): SimpleListCellRenderer<String> = object : SimpleListCellRenderer<String>() {
+  private fun iconRenderer(previewPath: () -> String?): SimpleListCellRenderer<String> = object : SimpleListCellRenderer<String>() {
     override fun customize(
       list: JList<out String>,
       value: String?,
@@ -222,7 +241,10 @@ class IconSelectionCellEditor(
       if (value == null) return
 
       text = PathUtil.getFileName(value)
-      icon = previewCache.getOrPut(value) { loadIcon(value) }
+      icon = when {
+        value == previewPath() -> previewCache.getOrPut(value) { loadIcon(value) }
+        else                   -> null
+      }
     }
   }
 
