@@ -105,32 +105,93 @@ class IconSelectionCellEditor(
   private fun showChooser(table: JTable, row: Int, column: Int) {
     popup?.cancel()
 
-    val searchField = SearchTextField()
-    val listModel = DefaultListModel<String>()
-    val iconList = JBList(listModel)
-    val emptyLabel = JLabel("No matching icons", SwingConstants.CENTER)
-    val panel = JPanel(BorderLayout(JBUI.scale(8), JBUI.scale(8)))
-    var selectionCommitted = false
+    IconChooser(
+      table = table,
+      row = row,
+      column = column,
+    ).show()
+  }
 
-    lateinit var chooserPopup: JBPopup
+  /**
+   * IconChooser is a helper class for displaying a popup dialog to select an icon
+   * for a specified cell in a JTable. It provides a searchable list of icons
+   * that allows users to filter and select a desired icon from a predefined set.
+   *
+   * @constructor
+   * @param table The JTable instance where the popup is displayed.
+   * @param row The row index of the cell for which the chooser is invoked.
+   * @param column The column index of the cell for which the chooser is invoked.
+   */
+  private inner class IconChooser(
+    private val table: JTable,
+    private val row: Int,
+    private val column: Int,
+  ) {
+    private val searchField = SearchTextField()
+    private val listModel = DefaultListModel<String>()
+    private val iconList = JBList(listModel)
+    private val emptyLabel = JLabel("No matching icons", SwingConstants.CENTER)
+    private val panel = JPanel(BorderLayout(JBUI.scale(8), JBUI.scale(8)))
+    private val filterTimer = Timer(FILTER_DELAY_MS) { refreshIcons() }.apply { isRepeats = false }
+    private var selectionCommitted = false
+    private val chooserPopup: JBPopup
 
-    // Performance improvements!
-    iconList.selectionMode = ListSelectionModel.SINGLE_SELECTION
-    iconList.fixedCellHeight = JBUI.scale(ICON_ROW_HEIGHT)
-    iconList.fixedCellWidth = JBUI.scale(ICON_LIST_WIDTH)
-    iconList.visibleRowCount = VISIBLE_ICON_ROWS
-    iconList.cellRenderer = iconRenderer()
+    init {
+      configureIconList()
+      configurePanel()
+      installListeners()
+      refreshIcons()
 
-    panel.border = JBUI.Borders.empty(8)
-    panel.add(searchField, BorderLayout.NORTH)
-    panel.add(JBScrollPane(iconList), BorderLayout.CENTER)
-    panel.add(emptyLabel, BorderLayout.SOUTH)
+      chooserPopup = createPopup()
+    }
 
-    /**
-     * Update the list with the search filter
-     */
-    fun updateList() {
-      // Filter the list
+    fun show() {
+      popup = chooserPopup
+
+      val cellBounds = table.getCellRect(row, column, true)
+      chooserPopup.show(RelativePoint(table, Point(cellBounds.x, cellBounds.y + cellBounds.height)))
+    }
+
+    private fun configureIconList() {
+      iconList.selectionMode = ListSelectionModel.SINGLE_SELECTION
+      iconList.fixedCellHeight = JBUI.scale(ICON_ROW_HEIGHT)
+      iconList.fixedCellWidth = JBUI.scale(ICON_LIST_WIDTH)
+      iconList.visibleRowCount = VISIBLE_ICON_ROWS
+      iconList.cellRenderer = iconRenderer()
+    }
+
+    private fun configurePanel() {
+      panel.border = JBUI.Borders.empty(8)
+      panel.add(searchField, BorderLayout.NORTH)
+      panel.add(JBScrollPane(iconList), BorderLayout.CENTER)
+      panel.add(emptyLabel, BorderLayout.SOUTH)
+    }
+
+    private fun installListeners() {
+      searchField.addDocumentListener(object : DocumentAdapter() {
+        override fun textChanged(event: DocumentEvent) = filterTimer.restart()
+      })
+
+      iconList.registerKeyboardAction(
+        { commitSelection() },
+        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+        JComponent.WHEN_FOCUSED,
+      )
+
+      searchField.textEditor.registerKeyboardAction(
+        { commitSelection() },
+        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+        JComponent.WHEN_FOCUSED,
+      )
+
+      iconList.addMouseListener(object : MouseAdapter() {
+        override fun mouseClicked(event: MouseEvent) {
+          if (event.clickCount == DOUBLE_CLICK_COUNT) commitSelection()
+        }
+      })
+    }
+
+    private fun refreshIcons() {
       val query = searchField.text.trim()
       val filteredIcons = icons.filter { iconPath ->
         when {
@@ -147,18 +208,7 @@ class IconSelectionCellEditor(
       selectCurrentValue(iconList = iconList)
     }
 
-    // Debounce
-    val filterTimer = Timer(FILTER_DELAY_MS) { updateList() }.apply { isRepeats = false }
-
-    // Search filter
-    searchField.addDocumentListener(object : DocumentAdapter() {
-      override fun textChanged(event: DocumentEvent) = filterTimer.restart()
-    })
-
-    /**
-     * Apply the selected icon
-     */
-    fun selectIcon() {
+    private fun commitSelection() {
       val selectedIcon = iconList.selectedValue ?: return
 
       value = selectedIcon
@@ -167,52 +217,26 @@ class IconSelectionCellEditor(
       fireEditingStopped()
     }
 
-    // Select the icon when pressing enter on the list
-    iconList.registerKeyboardAction(
-      { selectIcon() },
-      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-      JComponent.WHEN_FOCUSED,
-    )
-
-    // Select the current icon when pressing enter on the search field
-    searchField.textEditor.registerKeyboardAction(
-      { selectIcon() },
-      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-      JComponent.WHEN_FOCUSED,
-    )
-
-    // Select the icon when double-clicking on the list
-    iconList.addMouseListener(object : MouseAdapter() {
-      override fun mouseClicked(event: MouseEvent) {
-        if (event.clickCount == DOUBLE_CLICK_COUNT) selectIcon()
-      }
-    })
-
-    updateList()
-
-    // Create the chooser popup
-    chooserPopup = JBPopupFactory.getInstance()
+    private fun createPopup(): JBPopup = JBPopupFactory.getInstance()
       .createComponentPopupBuilder(panel, searchField.textEditor)
       .setFocusable(true)
       .setRequestFocus(true)
       .setResizable(true)
       .setCancelOnClickOutside(true)
       .createPopup()
+      .also { popup ->
+        popup.addListener(object : JBPopupListener {
+          override fun onClosed(event: LightweightWindowEvent) {
+            filterTimer.stop()
 
-    chooserPopup.addListener(object : JBPopupListener {
-      override fun onClosed(event: LightweightWindowEvent) {
-        filterTimer.stop()
-        popup = null
+            if (this@IconSelectionCellEditor.popup === popup) {
+              this@IconSelectionCellEditor.popup = null
+            }
 
-        if (!selectionCommitted) fireEditingCanceled()
+            if (!selectionCommitted) fireEditingCanceled()
+          }
+        })
       }
-    })
-
-    popup = chooserPopup
-
-    // Show the chooser close to the cell being edited
-    val cellBounds = table.getCellRect(row, column, true)
-    chooserPopup.show(RelativePoint(table, Point(cellBounds.x, cellBounds.y + cellBounds.height)))
   }
 
   private fun iconRenderer(): SimpleListCellRenderer<String> = object : SimpleListCellRenderer<String>() {
