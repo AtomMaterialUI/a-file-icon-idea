@@ -28,16 +28,16 @@ import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.ProjectViewNodeDecorator
 import com.intellij.ide.projectView.impl.ProjectRootsUtil
 import com.intellij.openapi.diagnostic.thisLogger
-import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.PlatformIcons
 import com.mallowigi.config.AtomSettingsConfig
-import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.icons.special.DirIcon
+import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.models.VirtualFileInfo
+import com.mallowigi.models.IconType
 import icons.AtomIcons
 import java.util.*
 import javax.swing.Icon
@@ -55,14 +55,13 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
         !AtomSettingsConfig.instance.isEnabledDirectories -> return
         !file.isDirectory                                 -> return
         AtomSettingsConfig.instance.isHideFolderIcons     -> return
-        isFolderContainingOpenFiles(project, file)        -> setOpenDirectoryIcon(data, file, project)
+        OpenFileDirectoryTracker.getInstance(project).contains(file) -> setOpenDirectoryIcon(
+          data = data,
+          file = file,
+          project = project
+        )
       }
     }
-  }
-
-  private fun isFolderContainingOpenFiles(project: Project, virtualFile: VirtualFile): Boolean {
-    val openFiles = FileEditorManager.getInstance(project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(virtualFile.path) }
   }
 
   /**
@@ -100,11 +99,12 @@ class HollowFoldersDecorator : ProjectViewNodeDecorator {
 
   private fun matchAssociation(virtualFile: VirtualFile, project: Project): Icon? {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val projectSelectConfig = AtomProjectSelectConfig.getInstance(project)
-    val globalSelectConfig = AtomSelectConfig.instance
-
-    val matchingAssociation = projectSelectConfig.selectedFolderOpenAssociations.findAssociation(fileInfo)
-      ?: globalSelectConfig.selectedFolderOpenAssociations.findAssociation(fileInfo)
+    val matchingAssociation = AssociationResolver.instance.findAssociation(
+      project = project,
+      iconType = IconType.FOLDER_OPEN,
+      file = fileInfo,
+      globalAssociations = AtomSelectConfig.instance.selectedFolderOpenAssociations,
+    )
 
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon

@@ -37,12 +37,14 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.util.messages.MessageBusConnection
 import com.intellij.util.ui.UIUtil
+import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.services.AssociationResolver
+import com.mallowigi.tree.OpenFileDirectoryTracker
 import com.mallowigi.utils.getPluginId
 import com.mallowigi.utils.refreshOpenedProjects
 
@@ -98,8 +100,11 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   }
 
   private fun onSettingsChanged() {
-    thisLogger().debug("Settings Changed")
     AssociationResolver.instance.invalidate()
+
+    if (AtomSettingsConfig.instance.isUseHollowFolders) {
+      OpenFileDirectoryTracker.refreshOpenProjects()
+    }
 
     UIUtil.invokeLaterIfNeeded {
       IconPatchersManager.instance.updateFileIcons()

@@ -34,7 +34,9 @@ import com.jetbrains.rider.projectView.workspace.getVirtualFileAsParent
 import com.jetbrains.rider.projectView.workspace.isDirectory
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomSelectConfig
+import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.models.VirtualFileInfo
+import com.mallowigi.models.IconType
 import icons.AtomIcons
 
 /**
@@ -67,9 +69,13 @@ class RiderDefaultFilesDecorator(project: Project) : SolutionExplorerCustomizati
 
   private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFileAssociations
+    val matchingAssociation = AssociationResolver.instance.findAssociation(
+      project = project,
+      iconType = IconType.FILE,
+      file = fileInfo,
+      globalAssociations = AtomSelectConfig.instance.selectedFileAssociations,
+    )
 
-    val matchingAssociation = associations.findAssociation(fileInfo)
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
       val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)

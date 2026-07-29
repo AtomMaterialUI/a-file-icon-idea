@@ -27,11 +27,14 @@ package com.mallowigi.tree
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.ide.projectView.ProjectViewNode
 import com.intellij.ide.projectView.ProjectViewNodeDecorator
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.ui.EmptyIcon
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.VirtualFileInfo
+import com.mallowigi.models.IconType
+import com.mallowigi.icons.services.AssociationResolver
 import icons.AtomIcons
 
 /** New custom files decorator. */
@@ -49,7 +52,7 @@ class DefaultFilesDecorator : ProjectViewNodeDecorator {
         AtomSettingsConfig.instance.isLowPowerMode -> return
         AtomSettingsConfig.instance.isHideFileIcons -> hideIcon(data)
         !AtomSettingsConfig.instance.isEnabledIcons -> return
-        else -> matchAssociation(file, data)
+        else -> matchAssociation(project = project, virtualFile = file, data = data)
       }
 
     }
@@ -57,11 +60,16 @@ class DefaultFilesDecorator : ProjectViewNodeDecorator {
 
   private fun hideIcon(data: PresentationData) = data.setIcon(EmptyIcon.ICON_0)
 
-  private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
+  private fun matchAssociation(project: Project, virtualFile: VirtualFile, data: PresentationData) {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFileAssociations
 
-    val matchingAssociation = associations.findAssociation(fileInfo)
+    val matchingAssociation = AssociationResolver.instance.findAssociation(
+      project = project,
+      iconType = IconType.FILE,
+      file = fileInfo,
+      globalAssociations = AtomSelectConfig.instance.selectedFileAssociations,
+    )
+
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
       val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFileIcon(iconPath), iconPath)

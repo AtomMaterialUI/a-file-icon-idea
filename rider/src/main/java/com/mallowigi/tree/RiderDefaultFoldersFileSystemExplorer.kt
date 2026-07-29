@@ -32,7 +32,9 @@ import com.jetbrains.rider.projectView.views.FileSystemNodeBase
 import com.jetbrains.rider.projectView.views.fileSystemExplorer.FileSystemExplorerCustomization
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomSelectConfig
+import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.models.VirtualFileInfo
+import com.mallowigi.models.IconType
 import icons.AtomIcons
 
 /**
@@ -54,7 +56,7 @@ class RiderDefaultFoldersFileSystemExplorer(project: Project) : FileSystemExplor
         !virtualFile.isDirectory -> return
         AtomSettingsConfig.instance.isHideFolderIcons -> hideIcon(presentation)
         !AtomSettingsConfig.instance.isEnabledDirectories -> return
-        else -> matchAssociation(virtualFile, presentation)
+        else -> matchAssociation(virtualFile = virtualFile, data = presentation)
       }
     }
   }
@@ -69,9 +71,13 @@ class RiderDefaultFoldersFileSystemExplorer(project: Project) : FileSystemExplor
    */
   private fun matchAssociation(virtualFile: VirtualFile, data: PresentationData) {
     val fileInfo = VirtualFileInfo(virtualFile)
-    val associations = AtomSelectConfig.instance.selectedFolderAssociations
+    val matchingAssociation = AssociationResolver.instance.findAssociation(
+      project = project,
+      iconType = IconType.FOLDER,
+      file = fileInfo,
+      globalAssociations = AtomSelectConfig.instance.selectedFolderAssociations,
+    )
 
-    val matchingAssociation = associations.findAssociation(fileInfo)
     if (matchingAssociation != null) {
       val iconPath = matchingAssociation.icon
       val icon = AtomIcons.loadIconWithFallback(AtomIcons.getFolderIcon(iconPath), iconPath)

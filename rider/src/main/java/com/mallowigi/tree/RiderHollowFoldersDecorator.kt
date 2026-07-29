@@ -26,9 +26,7 @@ package com.mallowigi.tree
 
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.openapi.diagnostic.thisLogger
-import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.PlatformIcons
 import com.jetbrains.rider.projectView.views.solutionExplorer.SolutionExplorerCustomization
 import com.jetbrains.rider.projectView.workspace.ProjectModelEntity
@@ -44,13 +42,15 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
 
   override fun updateNode(presentation: PresentationData, entity: ProjectModelEntity) {
     super.updateNode(presentation, entity)
+    val virtualFile = entity.getVirtualFileAsParent()
 
     if (!project.isDisposed) {
       when {
         !AtomSettingsConfig.instance.isUseHollowFolders -> return
         !entity.isDirectory() -> return
+        virtualFile == null -> return
         AtomSettingsConfig.instance.isHideFolderIcons -> return
-        isFolderContainingOpenFiles(project, entity) -> setOpenDirectoryIcon(presentation)
+        OpenFileDirectoryTracker.getInstance(project).contains(virtualFile) -> setOpenDirectoryIcon(presentation)
       }
 
     }
@@ -75,10 +75,5 @@ class RiderHollowFoldersDecorator(project: Project) : SolutionExplorerCustomizat
     } catch (e: Exception) {
       thisLogger().warn(e.message)
     }
-  }
-
-  private fun isFolderContainingOpenFiles(project: Project, entity: ProjectModelEntity): Boolean {
-    val openFiles = FileEditorManager.getInstance(project).openFiles
-    return openFiles.any { vf: VirtualFile -> vf.path.contains(entity.getVirtualFileAsParent()?.path ?: "-1") }
   }
 }

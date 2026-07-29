@@ -35,13 +35,19 @@ import com.mallowigi.utils.refresh
 class RefreshTreeListener : FileEditorManagerListener {
 
   /** Refresh tree when files are open, for hollow directories. */
-  override fun fileClosed(source: FileEditorManager, file: VirtualFile) {
-    if (AtomSettingsConfig.instance.isUseHollowFolders) refresh(source.project)
-  }
+  override fun fileClosed(source: FileEditorManager, file: VirtualFile) = refreshHollowFolders(source)
 
   /** Refresh tree when files are open, for hollow directories. */
-  override fun fileOpened(source: FileEditorManager, file: VirtualFile) {
-    if (AtomSettingsConfig.instance.isUseHollowFolders) refresh(source.project)
-  }
+  override fun fileOpened(source: FileEditorManager, file: VirtualFile) = refreshHollowFolders(source)
 
+  /**
+   * Refresh hollow folders in the project view when a file is opened or closed.
+   */
+  private fun refreshHollowFolders(source: FileEditorManager) {
+    if (!AtomSettingsConfig.instance.isUseHollowFolders) return
+
+    if (OpenFileDirectoryTracker.getInstance(source.project).refresh()) {
+      refresh(source.project)
+    }
+  }
 }
