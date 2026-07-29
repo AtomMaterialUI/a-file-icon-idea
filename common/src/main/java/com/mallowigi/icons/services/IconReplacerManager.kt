@@ -32,8 +32,14 @@ import com.mallowigi.icons.replacements.OutlineIconsPatcher
 
 @Service(Service.Level.APP)
 class IconReplacerManager {
+  private var initialized = false
+
+  @Synchronized
   fun init() {
+    if (initialized) return
+
     IconLoader.installPathPatcher(OutlineIconsPatcher())
+    initialized = true
   }
 
   companion object {

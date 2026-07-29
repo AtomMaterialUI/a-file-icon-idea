@@ -123,7 +123,11 @@ class IconPatchersManager {
   }
 
   private fun installPathPatcher(patcher: AbstractIconPatcher, enabled: Boolean) {
-    installedPatchers.add(patcher)
+    if (!installedPatchers.add(patcher)) {
+      patcher.enabled = enabled
+      return
+    }
+
     IconLoader.installPathPatcher(patcher)
     patcher.enabled = enabled
   }

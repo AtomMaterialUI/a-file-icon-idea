@@ -31,6 +31,7 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
+import com.intellij.util.messages.MessageBusConnection
 import com.intellij.util.SVGLoader
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.icons.providers.CacheIconProvider
@@ -41,6 +42,8 @@ import com.mallowigi.utils.getPluginId
 
 /** Listener for SVG Patchers. */
 class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAware {
+  private var connection: MessageBusConnection? = null
+
 
   /** Init on plugin loaded. */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
@@ -53,17 +56,25 @@ class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAwar
 
   private fun applySvgPatchers() = MainSvgPatcher.instance.applySvgPatchers()
 
-  private fun disposeComponent() = ApplicationManager.getApplication().messageBus.connect().disconnect()
+  private fun disposeComponent() {
+    connection?.disconnect()
+    connection = null
+  }
 
   @Suppress("UnstableApiUsage")
   private fun initComponent() {
+    if (connection != null) return
+
     val otherPatcher = collectOtherPatcher()
     MainSvgPatcher.instance.addPatcher(otherPatcher)
     SVGLoader.colorPatcherProvider = MainSvgPatcher.instance
 
-    // Listen for changes on the settings
     val connect = ApplicationManager.getApplication().messageBus.connect()
-    connect.run {
+    connection = connect
+
+    with(connect) {
+      subscribe(DynamicPluginListener.TOPIC, this@AtomSVGPatchersListener)
+
       subscribe(LafManagerListener.TOPIC, LafManagerListener {
         applySvgPatchers()
         IconPatchersManager.instance.fixRunIcons()
