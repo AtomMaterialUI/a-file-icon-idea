@@ -37,6 +37,7 @@ class AssociationResolver {
   private val cache = object : LinkedHashMap<CacheKey, CacheEntry>(MAX_ENTRIES, LOAD_FACTOR, true) {
     override fun removeEldestEntry(eldest: MutableMap.MutableEntry<CacheKey, CacheEntry>?): Boolean = size > MAX_ENTRIES
   }
+  private var generation = 0L
 
   fun findAssociation(
     project: Project,
@@ -48,8 +49,9 @@ class AssociationResolver {
 
     // First try to check if the association is already cached
     val key = CacheKey(project.locationHash, iconType, file.path)
-    synchronized(cache) {
+    val cacheGeneration = synchronized(cache) {
       cache[key]?.let { return it.association }
+      generation
     }
 
     // Resolve the association and cache it for future use
@@ -61,7 +63,9 @@ class AssociationResolver {
     )
 
     synchronized(cache) {
-      cache[key] = CacheEntry(association)
+      if (generation == cacheGeneration) {
+        cache[key] = CacheEntry(association)
+      }
     }
 
     return association
@@ -69,6 +73,7 @@ class AssociationResolver {
 
   fun invalidate() {
     synchronized(cache) {
+      generation++
       cache.clear()
     }
   }
