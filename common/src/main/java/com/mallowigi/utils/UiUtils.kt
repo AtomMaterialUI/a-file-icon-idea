@@ -36,12 +36,9 @@ import com.intellij.openapi.project.ProjectManager
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
 import com.intellij.ui.components.ActionLink
-import com.intellij.util.indexing.FileBasedIndex
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.AtomSettingsConfig
-import com.mallowigi.icons.associations.FileAssociationsIndex
-import com.mallowigi.icons.providers.AbstractFileIconProvider
 import javax.swing.UIManager
 
 const val IMAGE_ICON_PLUGIN = "com.mallowigi.imageicon"
@@ -118,8 +115,3 @@ fun findSettingsPage(link: ActionLink, id: String) {
 }
 
 fun isPluginEnabled(pluginId: String) = PluginManagerCore.getPlugin(PluginId.getId(pluginId))?.isEnabled == true
-
-fun refreshIndex() {
-  FileBasedIndex.getInstance().requestRebuild(FileAssociationsIndex.NAME)
-  AbstractFileIconProvider.clearCache()
-}

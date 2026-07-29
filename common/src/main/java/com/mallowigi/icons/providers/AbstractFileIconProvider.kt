@@ -28,14 +28,10 @@ import com.intellij.ide.IconProvider
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
-import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiUtilCore
-import com.intellij.util.indexing.FileBasedIndex
-import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
-import com.mallowigi.icons.associations.FileAssociationsIndex
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
@@ -89,24 +85,7 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
     val projectAssociation = projectSource.findAssociation(file)
     if (projectAssociation != null) return projectAssociation
 
-    return when {
-      getType() == IconType.FOLDER                -> getSource().findAssociation(file)
-      AtomSettingsConfig.instance.disableIndexing -> getSource().findAssociation(file)
-      CACHE.containsKey(file.path)                -> CACHE[file.path]
-      else                                        -> {
-        val fileBasedIndex = FileBasedIndex.getInstance()
-        val associations = fileBasedIndex.getValues(
-          FileAssociationsIndex.NAME,
-          file.path,
-          GlobalSearchScope.projectScope(project)
-        )
-
-        val association = associations.firstOrNull()
-        if (association != null) CACHE[file.path] = association
-
-        association
-      }
-    }
+    return getSource().findAssociation(file)
   }
 
   /**
@@ -149,11 +128,4 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
    */
   abstract fun isDefault(): Boolean
 
-  companion object {
-    private val CACHE: MutableMap<String, Association> = mutableMapOf()
-
-    fun clearCache() {
-      CACHE.clear()
-    }
-  }
 }

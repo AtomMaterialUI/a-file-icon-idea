@@ -29,7 +29,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.util.IconLoader
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.services.IconPatchersManager
-import com.mallowigi.utils.refreshIndex
 
 /** Refresh icons action. */
 class RefreshIconsAction : AnAction() {
@@ -39,6 +38,5 @@ class RefreshIconsAction : AnAction() {
     AtomSettingsConfig.instance.fireChanged()
     IconLoader.clearCache()
     IconPatchersManager.instance.init()
-    refreshIndex()
   }
 }

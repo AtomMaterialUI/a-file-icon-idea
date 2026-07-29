@@ -41,7 +41,6 @@ import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
-import com.mallowigi.utils.refreshIndex
 import com.mallowigi.utils.refreshOpenedProjects
 
 /** Listener for Settings Changes. */
@@ -79,7 +78,6 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
     thisLogger().debug("Settings Changed")
 
     UIUtil.invokeLaterIfNeeded {
-      refreshIndex()
       IconPatchersManager.instance.updateFileIcons()
       IconPatchersManager.instance.updateIcons()
       LafManager.getInstance().updateUI()

@@ -82,8 +82,6 @@
                   order="first, after HiddenFolderIconProvider"
                   id="DefaultFolderIconProvider"/>
 
-    <fileBasedIndex implementation="com.mallowigi.icons.associations.FileAssociationsIndex"/>
-
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator"/>
     <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
     <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>

@@ -244,6 +244,18 @@ detekt {
 }
 
 tasks {
+  val generateIconAssets by registering(Exec::class) {
+    group = "build"
+    description = "Optimizes generated SVG icons for the plugin resources."
+    inputs.dir(layout.projectDirectory.dir("iconGenerator/assets"))
+    outputs.dir(layout.projectDirectory.dir("src/main/resources/assets"))
+    commandLine("npm", "run", "svgo")
+  }
+
+  named<Copy>("processResources") {
+    dependsOn(generateIconAssets)
+  }
+
   wrapper {
     gradleVersion = properties("gradleVersion")
   }
