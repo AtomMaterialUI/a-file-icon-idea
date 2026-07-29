@@ -35,6 +35,7 @@ import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
+import com.intellij.util.messages.MessageBusConnection
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.listeners.AtomSelectNotifier
@@ -42,26 +43,43 @@ import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.services.AssociationResolver
+import com.mallowigi.utils.getPluginId
 import com.mallowigi.utils.refreshOpenedProjects
 
 /** Listener for Settings Changes. */
 class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
+  private var connection: MessageBusConnection? = null
 
   /** Init on plugin loaded. */
-  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
+  override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor) {
+    initComponent()
+    AssociationResolver.instance.invalidate()
+  }
 
   /** Dispose on plugin unloaded. */
-  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
+  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
+    AssociationResolver.instance.invalidate()
+    if (pluginDescriptor.pluginId == getPluginId()) {
+      disposeComponent()
+    }
+  }
 
   private fun disposeComponent() {
     AbstractIconPatcher.clearCache()
     AssociationResolver.instance.invalidate()
-    ApplicationManager.getApplication().messageBus.connect().disconnect()
+    connection?.disconnect()
+    connection = null
   }
 
   private fun initComponent() {
+    if (connection != null) return
+
     val connect = ApplicationManager.getApplication().messageBus.connect()
+    connection = connect
+
     with(connect) {
+      subscribe(DynamicPluginListener.TOPIC, this@AtomSettingsListener)
+
       subscribe(UISettingsListener.TOPIC, UISettingsListener { IconFilterManager.applyFilter() })
 
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { onSettingsChanged() })
