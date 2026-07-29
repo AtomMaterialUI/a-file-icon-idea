@@ -32,6 +32,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 import com.intellij.util.xmlb.annotations.Property
 import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.associations.Association
+import com.mallowigi.icons.associations.Associations
 import com.mallowigi.icons.associations.SelectedAssociations
 import com.mallowigi.models.IconType
 import java.util.*
@@ -91,6 +92,13 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
 
   /** Find psi association by name. */
   fun findPsiAssociationByName(name: String): Association? = selectedPsiAssociations.findAssociationByName(name)
+
+  fun getAssociations(iconType: IconType): Associations = when (iconType) {
+    IconType.FILE        -> selectedFileAssociations
+    IconType.FOLDER      -> selectedFolderAssociations
+    IconType.FOLDER_OPEN -> selectedFolderOpenAssociations
+    else                 -> selectedFileAssociations
+  }
 
   /**
    * Is file icons modified.

@@ -41,6 +41,7 @@ import com.mallowigi.config.listeners.AtomSelectNotifier
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
+import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.utils.refreshOpenedProjects
 
 /** Listener for Settings Changes. */
@@ -54,6 +55,7 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
   private fun disposeComponent() {
     AbstractIconPatcher.clearCache()
+    AssociationResolver.instance.invalidate()
     ApplicationManager.getApplication().messageBus.connect().disconnect()
   }
 
@@ -67,7 +69,10 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
       subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged() })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
-        override fun fileTypesChanged(event: FileTypeEvent) = IconPatchersManager.instance.updateIcons()
+        override fun fileTypesChanged(event: FileTypeEvent) {
+          AssociationResolver.instance.invalidate()
+          IconPatchersManager.instance.updateIcons()
+        }
       })
     }
 
@@ -76,6 +81,7 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
   private fun onSettingsChanged() {
     thisLogger().debug("Settings Changed")
+    AssociationResolver.instance.invalidate()
 
     UIUtil.invokeLaterIfNeeded {
       IconPatchersManager.instance.updateFileIcons()

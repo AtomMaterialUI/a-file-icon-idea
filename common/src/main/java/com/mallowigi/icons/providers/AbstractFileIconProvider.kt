@@ -29,9 +29,9 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiUtilCore
-import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.icons.associations.Association
 import com.mallowigi.icons.associations.Associations
+import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.models.FileInfo
 import com.mallowigi.models.IconType
 import com.mallowigi.models.VirtualFileInfo
@@ -74,19 +74,8 @@ abstract class AbstractFileIconProvider : IconProvider(), DumbAware {
     CacheIconProvider.instance.iconCache.getOrPut(association.icon) { getIcon(association.icon) }
 
   /** Finds and retrieves the first matching association for the given file within the specified project scope. */
-  private fun findAssociation(file: FileInfo, project: Project): Association? {
-    val projectSelectConfig = AtomProjectSelectConfig.getInstance(project)
-    val projectSource = when (getType()) {
-      IconType.FILE        -> projectSelectConfig.selectedFileAssociations
-      IconType.FOLDER      -> projectSelectConfig.selectedFolderAssociations
-      IconType.FOLDER_OPEN -> projectSelectConfig.selectedFolderOpenAssociations
-      else                 -> projectSelectConfig.selectedFileAssociations
-    }
-    val projectAssociation = projectSource.findAssociation(file)
-    if (projectAssociation != null) return projectAssociation
-
-    return getSource().findAssociation(file)
-  }
+  private fun findAssociation(file: FileInfo, project: Project): Association? =
+    AssociationResolver.instance.findAssociation(project, getType(), file, getSource())
 
   /**
    * Checks whether psiElement is of type (PsiFile/PsiDirectory) defined by this provider.
