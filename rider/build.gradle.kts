@@ -30,7 +30,9 @@ val riderVersion: String by project
 
 dependencies {
   intellijPlatform {
-    rider(riderVersion, useInstaller = false)
+    create("RD", riderVersion) {
+      useInstaller = false
+    }
     // instrumentationTools()
 
     pluginVerifier()

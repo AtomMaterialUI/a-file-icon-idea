@@ -85,7 +85,9 @@ plugins {
 
 dependencies {
   intellijPlatform {
-    create(platformType, platformVersion, useInstaller = false)
+    create(platformType, platformVersion) {
+      useInstaller = false
+    }
     pluginVerifier()
     zipSigner()
     bundledPlugins(

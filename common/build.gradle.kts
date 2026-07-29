@@ -28,11 +28,37 @@ fun environment(key: String) = providers.environmentVariable(key)
 fun fileContents(filePath: String) = providers.fileContents(layout.projectDirectory.file(filePath)).asText
 
 val pluginsVersion: String by project
+val rustVersion: String by project
+val llmVersion: String by project
+
+val platformType: String by project
 val platformVersion: String by project
+
+val pluginName: String by project
+val pluginID: String by project
+val pluginVersion: String by project
+val pluginDescription: String by project
+val pluginSinceBuild: String by project
+val pluginUntilBuild: String by project
+
+val pluginCode: String by project
+val pluginReleaseDate: String by project
+val pluginReleaseVersion: String by project
+
+val pluginVendorName: String by project
+val pluginVendorEmail: String by project
+val pluginVendorUrl: String by project
+
+val pluginChannels: String by project
+
+val javaVersion: String by project
+val gradleVersion: String by project
 
 dependencies {
   intellijPlatform {
-    intellijIdeaUltimate(platformVersion, useInstaller = false)
+    create(platformType, platformVersion) {
+      useInstaller = false
+    }
     // instrumentationTools()
 
     pluginVerifier()
@@ -43,7 +69,7 @@ dependencies {
     )
   }
 
-  implementation("org.javassist:javassist:3.30.2-GA")
+  implementation("org.javassist:javassist:3.31.0-GA")
   implementation("com.fasterxml:aalto-xml:1.3.3")
 }
 
