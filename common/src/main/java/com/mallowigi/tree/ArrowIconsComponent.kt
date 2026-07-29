@@ -32,24 +32,36 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.util.messages.MessageBusConnection
 import com.mallowigi.config.listeners.AtomConfigNotifier
+import com.mallowigi.utils.getPluginId
 import com.mallowigi.utils.replaceArrowIcons
 
 /** Arrow icons component: replace arrows. */
 class ArrowIconsComponent : DynamicPluginListener, ProjectActivity {
-  private val connection: MessageBusConnection = ApplicationManager.getApplication().messageBus.connect()
+  private var connection: MessageBusConnection? = null
 
   /** Init on plugin loaded. */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor): Unit = initComponent()
 
   /** Dispose on plugin unloaded. */
-  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean): Unit = disposeComponent()
+  override fun pluginUnloaded(pluginDescriptor: IdeaPluginDescriptor, isUpdate: Boolean) {
+    if (pluginDescriptor.pluginId == getPluginId()) disposeComponent()
+  }
 
-  private fun disposeComponent() = connection.disconnect()
+  private fun disposeComponent() {
+    connection?.disconnect()
+    connection = null
+  }
 
   private fun initComponent() {
+    if (connection != null) return
+
     replaceArrowIcons()
 
-    connection.run {
+    val connect = ApplicationManager.getApplication().messageBus.connect()
+    connection = connect
+
+    with(connect) {
+      subscribe(DynamicPluginListener.TOPIC, this@ArrowIconsComponent)
       subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { replaceArrowIcons() })
       subscribe(LafManagerListener.TOPIC, LafManagerListener { replaceArrowIcons() })
     }
