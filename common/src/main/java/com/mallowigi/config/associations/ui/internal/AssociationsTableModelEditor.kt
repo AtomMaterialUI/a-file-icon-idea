@@ -51,6 +51,7 @@ import javax.swing.JComponent
 import javax.swing.ListSelectionModel
 import javax.swing.RowSorter
 import javax.swing.SortOrder
+import javax.swing.Timer
 import javax.swing.event.DocumentEvent
 
 /**
@@ -91,6 +92,11 @@ class AssociationsTableModelEditor(
 
   /** Own Increment for adding. */
   private var increment: Int = 0
+
+  /**
+   * Debouncing timer for filtering the table
+   */
+  private val filterTimer = Timer(FILTER_DELAY_MS) { filterTable() }.apply { isRepeats = false }
 
   init {
     initUnfilteredList()
@@ -162,7 +168,7 @@ class AssociationsTableModelEditor(
       })
 
       searchTextField.addDocumentListener(object : DocumentAdapter() {
-        override fun textChanged(e: DocumentEvent) = filterTable()
+        override fun textChanged(e: DocumentEvent) = scheduleFilter()
       })
     }
 
@@ -203,6 +209,11 @@ class AssociationsTableModelEditor(
 //    model.filteredItems = myFilteredList
     model.fireTableDataChanged()
   }
+
+  /**
+   * Schedules a filter operation by restarting the debounce timer.
+   */
+  private fun scheduleFilter() = filterTimer.restart()
 
   /**
    * Convenience method to disable/enable the table.
@@ -274,6 +285,7 @@ class AssociationsTableModelEditor(
    * @param originalItems the elements
    */
   override fun reset(originalItems: List<Association>) {
+    filterTimer.stop()
     super.reset(originalItems)
     model.allItems = ArrayList(originalItems)
     model.filteredItems = ArrayList(originalItems)
@@ -487,6 +499,7 @@ class AssociationsTableModelEditor(
     const val DEFAULT_PRIORITY: Int = 10_000
     const val PREFERABLE_VIEWPORT_WIDTH: Int = 200
     const val PREFERABLE_VIEWPORT_HEIGHT: Int = 280
+    const val FILTER_DELAY_MS: Int = 150
 
     /** Default color for icon in the associations table. */
     val DEFAULT_ICON_COLOR: String
