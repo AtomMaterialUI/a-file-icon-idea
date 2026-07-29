@@ -111,25 +111,15 @@ class IconSelectionCellEditor(
     val emptyLabel = JLabel("No matching icons", SwingConstants.CENTER)
     val panel = JPanel(BorderLayout(JBUI.scale(8), JBUI.scale(8)))
     var selectionCommitted = false
-    var previewsEnabled = false
-    var previewPath: String? = null
 
     lateinit var chooserPopup: JBPopup
 
+    // Performance improvements!
     iconList.selectionMode = ListSelectionModel.SINGLE_SELECTION
-    iconList.cellRenderer = iconRenderer {
-      when {
-        previewsEnabled -> previewPath
-        else            -> null
-      }
-    }
-
-    iconList.addListSelectionListener {
-      if (previewsEnabled && !it.valueIsAdjusting) {
-        previewPath = iconList.selectedValue
-        iconList.repaint()
-      }
-    }
+    iconList.fixedCellHeight = JBUI.scale(ICON_ROW_HEIGHT)
+    iconList.fixedCellWidth = JBUI.scale(ICON_LIST_WIDTH)
+    iconList.visibleRowCount = VISIBLE_ICON_ROWS
+    iconList.cellRenderer = iconRenderer()
 
     panel.border = JBUI.Borders.empty(8)
     panel.add(searchField, BorderLayout.NORTH)
@@ -223,14 +213,9 @@ class IconSelectionCellEditor(
     // Show the chooser close to the cell being edited
     val cellBounds = table.getCellRect(row, column, true)
     chooserPopup.show(RelativePoint(table, Point(cellBounds.x, cellBounds.y + cellBounds.height)))
-
-    // Only show the icons when the popup appears
-    ApplicationManager.getApplication().invokeLater {
-      if (popup === chooserPopup) previewsEnabled = true
-    }
   }
 
-  private fun iconRenderer(previewPath: () -> String?): SimpleListCellRenderer<String> = object : SimpleListCellRenderer<String>() {
+  private fun iconRenderer(): SimpleListCellRenderer<String> = object : SimpleListCellRenderer<String>() {
     override fun customize(
       list: JList<out String>,
       value: String?,
@@ -241,10 +226,7 @@ class IconSelectionCellEditor(
       if (value == null) return
 
       text = PathUtil.getFileName(value)
-      icon = when {
-        value == previewPath() -> previewCache.getOrPut(value) { loadIcon(value) }
-        else                   -> null
-      }
+      icon = previewCache.getOrPut(value) { loadIcon(value) }
     }
   }
 
@@ -265,6 +247,9 @@ class IconSelectionCellEditor(
 
   companion object {
     private const val FILTER_DELAY_MS = 150
+    private const val ICON_ROW_HEIGHT = 24
+    private const val ICON_LIST_WIDTH = 360
+    private const val VISIBLE_ICON_ROWS = 12
     private const val PREVIEW_CACHE_SIZE = 256
     private const val LOAD_FACTOR = 0.75f
     private const val DOUBLE_CLICK_COUNT = 2
