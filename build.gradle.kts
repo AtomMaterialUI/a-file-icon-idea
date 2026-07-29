@@ -25,6 +25,9 @@
 
 import io.gitlab.arturbosch.detekt.Detekt
 import kotlinx.coroutines.runBlocking
+import org.gradle.api.JavaVersion
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.extensions.intellijPlatform
@@ -65,13 +68,14 @@ val pluginVendorUrl: String by project
 val pluginChannels: String by project
 
 val javaVersion: String by project
+val javaVersionNumber = javaVersion.toInt()
 val gradleVersion: String by project
 
 group = pluginID
 version = pluginVersion
 
 kotlin {
-  jvmToolchain(javaVersion.toInt())
+  jvmToolchain(javaVersionNumber)
 }
 
 plugins {
@@ -109,6 +113,14 @@ allprojects {
     plugin("java")
     plugin("org.jetbrains.kotlin.jvm")
     plugin("org.jetbrains.intellij.platform")
+  }
+
+  extensions.configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.toVersion(javaVersionNumber)
+    targetCompatibility = JavaVersion.toVersion(javaVersionNumber)
+    toolchain {
+      languageVersion.set(JavaLanguageVersion.of(javaVersionNumber))
+    }
   }
 
   intellijPlatform {

@@ -71,6 +71,7 @@ dependencies {
 
   implementation("org.javassist:javassist:3.31.0-GA")
   implementation("com.fasterxml:aalto-xml:1.3.3")
+  implementation("com.thoughtworks.xstream:xstream:1.4.21")
 }
 
 tasks {
