@@ -32,6 +32,7 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.IconPathPatcher
 import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.patchers.PsiIconPathPatcher
@@ -61,7 +62,7 @@ class IconPatchersManager {
 
   /** Update all trees. */
   fun updateFileIcons() {
-    ApplicationManager.getApplication().invokeLater {
+    UIUtil.invokeLaterIfNeeded {
       val app = ApplicationManager.getApplication()
       app.runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
       applyFilter()

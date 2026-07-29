@@ -108,7 +108,6 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
     UIUtil.invokeLaterIfNeeded {
       IconPatchersManager.instance.updateFileIcons()
-      IconPatchersManager.instance.updateIcons()
       LafManager.getInstance().updateUI()
       refreshOpenedProjects()
     }
