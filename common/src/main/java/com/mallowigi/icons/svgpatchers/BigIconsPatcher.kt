@@ -91,7 +91,15 @@ class BigIconsPatcher : SvgPatcher {
     customIconSize = currentConfig.customIconSize
     customLineHeight = currentConfig.customLineHeight
 
+    updateCustomIconSize()
     updateRowHeight()
+  }
+
+  private fun updateCustomIconSize() {
+    when {
+      hasCustomSize -> UIManager.put(CUSTOM_ICON_SIZE_KEY, "$customIconSize${SvgPatcher.PX}")
+      else          -> UIManager.put(CUSTOM_ICON_SIZE_KEY, null)
+    }
   }
 
   /**
@@ -122,6 +130,7 @@ class BigIconsPatcher : SvgPatcher {
     private const val DEFAULT_ICON_SIZE = 16
     private const val ROW_HEIGHT = "Tree.rowHeight"
     private const val MATERIAL_ROW_HEIGHT = "Tree.materialRowHeight"
+    private const val CUSTOM_ICON_SIZE_KEY = "AtomIcons.customIconSize"
   }
 
 }

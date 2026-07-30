@@ -26,24 +26,37 @@ package com.mallowigi.utils
 
 import javassist.ClassPool
 import javassist.expr.ExprEditor
-import javassist.expr.MethodCall
+import javassist.expr.NewExpr
 
 class HackComponent {
   init {
     hackBigIcons()
   }
 
+  @Suppress("CallToSuspiciousStringMethod")
   private fun hackBigIcons() {
     try {
       val cp = ClassPool(true)
+      cp.importPackage("javax.swing")
 
       val uiClass = cp["com.intellij.ui.svg.JSvgDocumentFactoryKt"]
       uiClass.getDeclaredMethod("buildDocument").apply {
         instrument(object : ExprEditor() {
-          override fun edit(m: MethodCall) {
-            if ("readAttributes" != m.methodName) return
+          override fun edit(e: NewExpr) {
+            if ("com.intellij.ui.svg.ParsedSvgDocument" != e.className) return
             // language=JShellLanguage
-            m.replace("{ \$2 = attributeMutator; \$_ = \$proceed($$); }")
+            e.replace(
+              $$"""{
+                String atomW = $3;
+                String atomH = $4;
+                Object atomSize = UIManager.get("AtomIcons.customIconSize");
+                if (atomSize != null) {
+                    if ("16".equals(atomW) || "16px".equals(atomW)) atomW = atomSize.toString();
+                    if ("16".equals(atomH) || "16px".equals(atomH)) atomH = atomSize.toString();
+                }
+                $_ = $proceed($1, $2, atomW, atomH, $5);
+            }""".trimMargin()
+            )
           }
         })
       }
