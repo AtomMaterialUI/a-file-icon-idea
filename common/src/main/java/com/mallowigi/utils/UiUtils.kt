@@ -25,7 +25,7 @@
 package com.mallowigi.utils
 
 import com.intellij.ide.DataManager
-import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.plugins.PluginDetailsService
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.ide.ui.LafManager
@@ -44,6 +44,7 @@ import javax.swing.UIManager
 const val IMAGE_ICON_PLUGIN = "com.mallowigi.imageicon"
 const val ICON_VIEWER_PLUGIN = "lermitage.intellij.iconviewer"
 val ICON_PLUGINS = setOf(IMAGE_ICON_PLUGIN, ICON_VIEWER_PLUGIN)
+private const val PLUGIN_ID: String = "com.mallowigi"
 
 /** Refresh. */
 fun refresh(project: Project?) {
@@ -63,16 +64,15 @@ fun refreshOpenedProjects() {
 }
 
 /** Get plugin descriptor. */
-fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(getPluginId())
+@Suppress("UnstableApiUsage")
+fun getPlugin(): PluginDetailsService.PluginDetails? = PluginDetailsService.getInstance().findDetails(getPluginId())
 
 /** Plugin ID. */
-fun getPluginId(): PluginId = PluginId.getId("com.mallowigi")
+fun getPluginId(): PluginId = PluginId.getId(PLUGIN_ID)
 
 /** Get current plugin version. */
-fun getVersion(): String {
-  val plugin: IdeaPluginDescriptor? = getPlugin()
-  return if (plugin != null) plugin.version else AtomSettingsBundle.message("plugin.version")
-}
+@Suppress("UnstableApiUsage")
+fun getVersion(): String = getPlugin()?.version ?: AtomSettingsBundle.message("plugin.version")
 
 /** Modified color. */
 fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)
