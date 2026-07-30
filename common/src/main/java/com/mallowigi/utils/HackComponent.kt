@@ -47,14 +47,16 @@ class HackComponent {
             // language=JShellLanguage
             e.replace(
               $$"""{
-                String atomW = $3;
-                String atomH = $4;
+                boolean isScaled = $2;
+                String rawWidth = $3;
+                String rawHeight = $4;
                 Object atomSize = UIManager.get("AtomIcons.customIconSize");
                 if (atomSize != null) {
-                    if ("16".equals(atomW) || "16px".equals(atomW)) atomW = atomSize.toString();
-                    if ("16".equals(atomH) || "16px".equals(atomH)) atomH = atomSize.toString();
+                    if ("16".equals(rawWidth) || "16px".equals(rawWidth)) rawWidth = atomSize.toString();
+                    if ("16".equals(rawHeight) || "16px".equals(rawHeight)) rawHeight = atomSize.toString();
+                    isScaled = true;
                 }
-                $_ = $proceed($1, $2, atomW, atomH, $5);
+                $_ = $proceed($1, isScaled, rawWidth, rawHeight, $5);
             }""".trimMargin()
             )
           }
