@@ -9,7 +9,8 @@
     "svgo": "^4.0.1"
   },
   "scripts": {
-    "svgo": "svgo -f iconGenerator/assets -r -o src/main/resources/assets"
+    "svgo": "svgo -f iconGenerator/assets -r -o src/main/resources/assets",
+    "check-upstream": "node scripts/upstream-sync/check-upstream.mjs"
   },
   "author": "",
   "license": "ISC"
