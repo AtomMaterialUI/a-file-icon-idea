@@ -30,7 +30,7 @@ import javax.swing.Icon
 
 /** No arrows style. */
 class NoneArrowsStyle : ArrowsStyle {
-  private val emptyIcon = EmptyIcon.create(AllIcons.General.ArrowUp)
+  private val emptyIcon: Icon by lazy { EmptyIcon.create(AllIcons.General.ArrowUp) }
   override val expandIcon: Icon
     get() = emptyIcon
   override val expandIconPath: String
