@@ -1,0 +1,21 @@
+{
+  "name": "upstream-sync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tracks icon-related issues/PRs from the upstream vscode-material-icon-theme repo and reports which are not yet ported into this repo's association XMLs.",
+  "type": "module",
+  "scripts": {
+    "start": "node check-upstream.mjs",
+    "check": "node check-upstream.mjs"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.26.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.1.1",
+    "commander": "^13.1.0",
+    "fast-xml-parser": "^4.5.3"
+  }
+}

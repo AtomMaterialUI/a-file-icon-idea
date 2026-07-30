@@ -30,10 +30,21 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: pnpm
+          cache-dependency-path: scripts/upstream-sync/pnpm-lock.yaml
+
+      - name: Install upstream-sync dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: scripts/upstream-sync
 
       - name: Run upstream check
         env:

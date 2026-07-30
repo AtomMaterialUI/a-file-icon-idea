@@ -22,12 +22,31 @@
  * SOFTWARE.
  */
 
-// Thin entry point: delegate to the CLI orchestrator. The real logic lives in
-// the ./src modules so each concern stays small and independently testable.
+// Command-line parsing built on commander. Environment variables provide
+// defaults so the GitHub workflow can drive the script via `env:` instead of a
+// shell-built argument list.
 
-import { run } from './src/cli.mjs';
+import { Command } from 'commander';
 
-run(process.argv.slice(2)).catch((error) => {
-  console.error(error.message || error);
-  process.exit(1);
-});
+export function parseArgs(argv) {
+  const program = new Command();
+
+  program
+    .name('check-upstream')
+    .description('Report upstream icon requests not yet ported into the association XMLs.')
+    .option('--write-state', 'persist new / updated records back to state.json', false)
+    .option('--report <path>', 'write the Markdown report to a file (also printed to stdout)', process.env.REPORT_PATH)
+    .option('--include-closed', 'also scan closed/merged upstream items', process.env.INCLUDE_CLOSED === 'true')
+    .option('--limit <n>', 'only process the first n fetched items', (value) => Number(value) || 0, 0)
+    .allowExcessArguments(false);
+
+  program.parse(argv, { from: 'user' });
+  const options = program.opts();
+
+  return {
+    writeState: Boolean(options.writeState),
+    report: options.report ?? null,
+    includeClosed: Boolean(options.includeClosed),
+    limit: options.limit ?? 0,
+  };
+}

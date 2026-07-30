@@ -14,6 +14,16 @@ instead of re-reporting everything.
 
 ## Running locally
 
+The tool is a small pnpm package under `scripts/upstream-sync/`. Install its
+dependencies once:
+
+```bash
+cd scripts/upstream-sync
+pnpm install --frozen-lockfile
+```
+
+Then run it from the repository root:
+
 ```bash
 # Recommended: authenticate to raise the GitHub API rate limit.
 export GITHUB_TOKEN="$(gh auth token)"
@@ -24,6 +34,22 @@ npm run check-upstream
 # Update state.json and write a Markdown report file.
 node scripts/upstream-sync/check-upstream.mjs --write-state --report upstream-report.md
 ```
+
+## Project layout
+
+The logic is split into small, single-purpose modules under `src/`:
+
+| Module | Responsibility |
+| --- | --- |
+| `check-upstream.mjs` | Thin entry point; delegates to `src/cli.mjs`. |
+| `src/cli.mjs` | Orchestrates one run (args → index → fetch → reconcile → report). |
+| `src/config.mjs` | Paths, upstream coordinates and the tokenizer stop-word list. |
+| `src/args.mjs` | Command-line parsing (`commander`) with env-var defaults. |
+| `src/associations.mjs` | Builds the token index from the XMLs (`fast-xml-parser`). |
+| `src/classify.mjs` | Title tokenization and the missing/review/present heuristic. |
+| `src/github.mjs` | Upstream issue/PR fetching (`@octokit/rest`) + relevance filter. |
+| `src/state.mjs` | Loads, reconciles and persists `state.json`. |
+| `src/report.mjs` | Renders the Markdown report. |
 
 ### Flags
 
@@ -67,12 +93,13 @@ downgrades a human-set `ported`/`ignored` back to `pending`.
 `.github/workflows/upstream-sync.yml` runs weekly (and on demand). It is built
 from marketplace actions and a single npm script — no inline shell logic:
 
-1. `actions/checkout` (with submodules) + `actions/setup-node`.
-2. `npm run check-upstream -- --write-state --report upstream-report.md`
+1. `actions/checkout` (with submodules) + `pnpm/action-setup` + `actions/setup-node`.
+2. `pnpm install --frozen-lockfile` inside `scripts/upstream-sync`.
+3. `npm run check-upstream -- --write-state --report upstream-report.md`
    (the `include_closed` dispatch input is passed via the `INCLUDE_CLOSED` env
    var, which the script reads directly).
-3. `actions/upload-artifact` publishes `upstream-report.md`.
-4. `peter-evans/create-pull-request` commits the refreshed `state.json` to a
+4. `actions/upload-artifact` publishes `upstream-report.md`.
+5. `peter-evans/create-pull-request` commits the refreshed `state.json` to a
    fixed `automation/upstream-sync-state` branch and opens (or updates) a single
    rolling pull request whose **body is the report** (`body-path`). Because
    `master` is protected, changes land via this PR rather than a direct push.
