@@ -1,6 +1,29 @@
+# Changelog
+
 ## Changelog
 
-----
+### Features
+
+### Fixes
+
+### Removals
+
+### Additions
+
+### Other
+
+## 210.0.0 (21.0.0)
+
+### Fixes
+
+- This version is a complete overhaul of the icon-matching engine, designed to improve performance. Thanks to AI's assistance, we managed to
+  get rid of the **index**, which was causing a lot of issues to users and dramatically tanked performance. Hopefully, the new caching
+  engine is much more efficient.
+- We also improved the performance of the **Hollow Folders**, which was running at every rendering cycle.
+- We replaced the old, clunky icon selector in the **Associations** Tables with a custom selection popup which is much faster, with search
+  capabilites and an easier UI.
+- Fixed the **Big Icons** setting no longer working since the 2026.2 release
+- Fixed the **PSI Associations** patcher no longer working due to a change in the `SVGColorProvider`.
 
 ## 201.0.0 (20.1.0)
 
@@ -227,8 +250,7 @@
 - **NextJS** Icon Pack
 - New Arrow Style: **Circle**
 - New option: **Fix Action Buttons Color
-  **. This will change the color of the Toolbar buttons to a darker color for a better contrast with
-  the plugin icons.
+  **. This will change the color of the Toolbar buttons to a darker color for a better contrast with the plugin icons.
 
 ### Additions
 
@@ -337,10 +359,10 @@
 ### Features
 
 - Support for **Custom Folder Open Icons**. You can now define your custom hollow folders!
-  - If you define a _Custom Folder Icon_ without a _Custom Folder Open Icon_, the folder icon will be set for both the
-    closed and open states
-  - You can define a _Custom Folder Open Icon_ without a _Custom Folder Icon_, it will be displayed only when you have
-    an opened file of that folder.
+  - If you define a _Custom Folder Icon_ without a _Custom Folder Open Icon_, the folder icon will be set for both the closed and open
+    states
+  - You can define a _Custom Folder Open Icon_ without a _Custom Folder Icon_, it will be displayed only when you have an opened file of
+    that folder.
   - You need the _Hollow Folders_ option enabled.
   - For Rider, you need to disable the _Low Power Mode_.
 - Add back _Custom Associations_ for **PHP, Java and Kotlin**!
@@ -350,16 +372,16 @@
 - Improve *line height*: now the line height is changed only if one of the options "Custom Size" or "Custom Line Height"
   are set. Otherwise it will use the IDE default.
 - Fix the search icon color.
-- Duplicate some icons in order for the color feature to work properly (for example, in associations such as "Kotlin
-  Tests Folder" or "Jest Files", to be separated from the regular Kotlin/Jest icons).
+- Duplicate some icons in order for the color feature to work properly (for example, in associations such as "Kotlin Tests Folder" or "Jest
+  Files", to be separated from the regular Kotlin/Jest icons).
 - Fix Custom Associations not working on Windows (hopefully!)
 
 ### Additions
 
 - Add NestJS resolvers
 - Add NestJS models
-- Icons: C, CSharp, QSharp, Turborepo, SWCRC, SyncPack, FormKit, Lottie, Containerfile, Containerignore, CSharpier,
-  Docker Bake, HappyX, Panda, Plastic SCM, Taurignore
+- Icons: C, CSharp, QSharp, Turborepo, SWCRC, SyncPack, FormKit, Lottie, Containerfile, Containerignore, CSharpier, Docker Bake, HappyX,
+  Panda, Plastic SCM, Taurignore
 - Folders: Bot, Plastic SCM, UI, Swagger, Gitea, Lottie, Turborepo
 
 ## 92.0.0 (9.2.0)
@@ -386,8 +408,7 @@
   - Easier to add new settings
   - No need for a separate plugin
   - Removal of many old code not needed any more
-- New Setting: **Icon Packs**: now you can disable certain icon packs directly from the settings rather than the Custom
-  Associations:
+- New Setting: **Icon Packs**: now you can disable certain icon packs directly from the settings rather than the Custom Associations:
   - Angular
   - Nest
   - Redux
@@ -474,15 +495,12 @@
   - Lang files: `langs/*`, `locales?/*`, `translations?/*`, `i18n/*`
   - Jest files: `jest/*.js|jsx|ts|tsx`
   - Mock files: `spy/*`, `mocks?/*`, `stubs?/*`
-  - NgRx
-    files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`,
+  - NgRx files: `actions/*.js|jsx|ts|tsx`, `effects/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`,
     `selectors/*.js|jsx|ts|tsx`,
     `states/*.js|jsx|ts|tsx`, `repo/*.js|jsx|ts|tsx`...
-  - Rails
-    files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`,
+  - Rails files: `channels?/*.rb`, `controllers?/*.rb`, `helpers?/*.rb`, `jobs?/*.rb`, `mailers?/*.rb`, `models?/*.rb`,
     `views?/*.rb`...
-  - Redux
-    files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`,
+  - Redux files: `actions/*.js|jsx|ts|tsx`, `reducers/*.js|jsx|ts|tsx`, `selectors/*.js|jsx|ts|tsx`, `states/*.js|jsx|ts|tsx`,
     `repo/*.js|jsx|ts|tsx`...
   - Rspec files: `rspec/*.rb`
   - Slug files: `slugs?/*.js|jsx|ts|tsx`
@@ -529,9 +547,8 @@
 ### Fixes
 
 - Fix fatal error on LayeredIcon
-- Merged the "New UI Icons" setting with the "UI Icons". Now it automatically uses the New UI's icons when the plugin's
-  UI Icons are disabled and the user is on
-  the new UI.
+- Merged the "New UI Icons" setting with the "UI Icons". Now it automatically uses the New UI's icons when the plugin's UI Icons are
+  disabled and the user is on the new UI.
 - Added newest UI Icons
 
 ## 81.0.0 (8.1.0)
@@ -584,7 +601,6 @@
   - Yggdrasil
   - Concord
   - Woodpecker
-
 - Folders:
   - Contacts
   - Info
@@ -668,8 +684,7 @@
   - Please note that this setting can go in the way of the plugin's own icons, such as the UI and PSI Icons.
 - New Setting: **Custom Line Height**. Allows you to customize the line height in the tree views.
 - Add "_Reset Settings_" button for easy restoring default settings.
-- Added back **Dark variants** of specific icons in the _Associations Settings_. Now you can customize dark themes'
-  icons' colors.
+- Added back **Dark variants** of specific icons in the _Associations Settings_. Now you can customize dark themes' icons' colors.
 
 ### Fixes
 
@@ -694,8 +709,7 @@
   - **Important**: To make it work for custom icons, you will need to add specific attributes on your SVG files:
     - Add `iconColor=<icon name>` for file icons, with `Icon Name` being the exact name of the icon association ("
       Kotlin", "Index", etc)
-    - Add `folderColor=<folder icon name>` and `folderIconColor=<folder icon name>` for folder icons, with the same
-      requirement
+    - Add `folderColor=<folder icon name>` and `folderIconColor=<folder icon name>` for folder icons, with the same requirement
   - On the same note, **do not change the pre-bundled associations' names**, or the icon coloring will stop working!
 
 ### Additions
@@ -863,8 +877,6 @@
 - Fix **Folder Icons** not applying in Rider when not using the _Solution Explorer_
 - Fix Settings being exported as `UNKNOWN` when using _Settings Sync_
 
----
-
 ## 63.0.0 (6.3.0)
 
 ### Fixes
@@ -974,8 +986,8 @@
 
 ### Features
 
-- Refactor the project to use the `ProjectViewDecorators` instead of `FileIconProvider`, thus fixing the problems with
-  plugins overriding icons provided by the plugin, as well as the icons not showing when using the Remote client.
+- Refactor the project to use the `ProjectViewDecorators` instead of `FileIconProvider`, thus fixing the problems with plugins overriding
+  icons provided by the plugin, as well as the icons not showing when using the Remote client.
 
 ### Additions
 
@@ -1926,8 +1938,8 @@
 - Add new action: **Refresh Icons**. This will manually refresh all icons and reload the panes.
   - This should fix bugs such as <https://github.com/mallowigi/a-file-icon-idea/issues/93>
     and <https://github.com/mallowigi/a-file-icon-idea/issues/79>
-- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons.
-  As a result, toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
+- Reorganized icons: now icons belonging to the *Files* category and *PSI* category are separate from the rest of icons. As a result,
+  toggling *UI Icons* should not affect *File Icons* and *PSI Icons* and vice-versa.
 - Add icons to the **Atom Material Settings Toolbar Menu**.
 - Add actions for switching between **Arrow Styles**
 
@@ -1937,8 +1949,7 @@
 
 - New Option: "**Folder Color**" to customize Folder Colors from the current theme.
 - Better detection of the current theme's accent color
-- Add Checkboxes to **Accent Color** and **Folder Color** to allow customizing such colors instead of picking them from
-  the theme
+- Add Checkboxes to **Accent Color** and **Folder Color** to allow customizing such colors instead of picking them from the theme
 
 ### Additions
 
@@ -2324,8 +2335,8 @@
 
 ### Features
 
-- Restore the **Accent Color** function to colorize icons with the Accent color (defined from Material Theme, or from
-  the current active tab indicator color)
+- Restore the **Accent Color** function to colorize icons with the Accent color (defined from Material Theme, or from the current active tab
+  indicator color)
 
 ### Additions
 
