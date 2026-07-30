@@ -26,7 +26,6 @@ package com.mallowigi.utils
 
 import com.intellij.ide.DataManager
 import com.intellij.ide.plugins.PluginDetailsService
-import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.projectView.ProjectView
 import com.intellij.ide.ui.LafManager
 import com.intellij.openapi.extensions.PluginId
@@ -88,7 +87,7 @@ fun replaceArrowIcons() {
 }
 
 /** Extract accent color from current theme. */
-@Suppress("HardCodedStringLiteral", "UnstableApiUsage")
+@Suppress("HardCodedStringLiteral")
 fun getAccentFromTheme(): String {
   val namedKey = when (LafManager.getInstance().currentUIThemeLookAndFeel?.name) {
     "IntelliJ Light" -> "ActionButton.focusedBorderColor"
@@ -114,4 +113,5 @@ fun findSettingsPage(link: ActionLink, id: String) {
   settings?.select(settings.find(id))
 }
 
-fun isPluginEnabled(pluginId: String) = PluginManagerCore.getPlugin(PluginId.getId(pluginId))?.isEnabled == true
+@Suppress("UnstableApiUsage")
+fun isPluginEnabled(pluginId: String) = PluginDetailsService.getInstance().isLoaded(PluginId.getId(pluginId))
