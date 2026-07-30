@@ -55,7 +55,7 @@ class IconPatchersManager {
     fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
-    installPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
+    installPostPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
@@ -130,6 +130,24 @@ class IconPatchersManager {
     }
 
     IconLoader.installPathPatcher(patcher)
+    patcher.enabled = enabled
+  }
+
+  /**
+   * Install a patcher as a *post* path patcher.
+   *
+   * Post patchers run after the regular patchers, so they receive the path already rewritten by the glyph patchers
+   * (e.g. `/glyphs/nodes/class.svg`). [PsiIconPathPatcher] matches on that rewritten glyph path, which is why it must be
+   * installed here rather than as a regular pre-patcher.
+   */
+  @Suppress("UnstableApiUsage")
+  private fun installPostPathPatcher(patcher: AbstractIconPatcher, enabled: Boolean) {
+    if (!installedPatchers.add(patcher)) {
+      patcher.enabled = enabled
+      return
+    }
+
+    IconLoader.installPostPathPatcher(patcher)
     patcher.enabled = enabled
   }
 
