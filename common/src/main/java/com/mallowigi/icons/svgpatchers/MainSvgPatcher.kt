@@ -62,12 +62,7 @@ class MainSvgPatcher : SvgElementColorPatcherProvider {
   /** Create patcher for path. */
   override fun attributeForPath(path: String): SvgAttributePatcher = object : SvgAttributePatcher {
     override fun patchColors(attributes: MutableMap<String, String>) {
-      val useFiltered = ignoredIcons.any { path.contains(it, ignoreCase = true) }
-      val effectivePatchers: Iterable<SvgPatcher> = when {
-        useFiltered -> patchers.filterNot { it is BigIconsPatcher }
-        else        -> patchers
-      }
-      effectivePatchers.forEach { it.patch(attributes) }
+      patchers.forEach { it.patch(attributes) }
     }
   }
 

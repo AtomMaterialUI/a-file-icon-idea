@@ -311,14 +311,16 @@ class AtomSettingsConfigurable : BoundSearchableConfigurable(
                 .bindSelected(settings::hasCustomIconSize)
                 .gap(RightGap.SMALL)
                 .component
+              customSizeCheckbox.isEnabled = false
+              customSizeCheckbox.toolTipText = message("SettingsForm.temporarilyDisabled.toolTipText")
             },
             {
               spinner(MIN_ICON_SIZE..MAX_ICON_SIZE, 1)
                 .bindIntValue(settings::customIconSize)
-                .enabledIf(customSizeCheckbox.selected)
+                .enabled(false)
                 .gap(RightGap.SMALL)
             }
-          ).rowComment(message("SettingsForm.customIconSizeCheckbox.toolTipText"))
+          ).rowComment(message("SettingsForm.temporarilyDisabled.toolTipText"))
 
           twoColumnsRow(
             {
