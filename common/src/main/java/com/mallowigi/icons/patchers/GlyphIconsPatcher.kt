@@ -28,4 +28,16 @@ import com.thoughtworks.xstream.annotations.XStreamAlias
 
 /** Glyph icons patcher. */
 @XStreamAlias("glyphPatcher")
-class GlyphIconsPatcher : ExternalIconsPatcher()
+class GlyphIconsPatcher : ExternalIconsPatcher() {
+
+  /**
+   * Rewrite the path to its glyph variant, then apply any PSI user override on top of it.
+   *
+   * The override is matched against the glyph path (e.g. `/glyphs/nodes/class.svg`), so this reproduces the previous
+   * post-path-patcher behavior without relying on the internal `IconLoader.installPostPathPatcher` API.
+   */
+  override fun patchPath(path: String, classLoader: ClassLoader?): String? {
+    val glyphPath = super.patchPath(path, classLoader) ?: return null
+    return PsiIconOverrides.findOverride(glyphPath) ?: glyphPath
+  }
+}

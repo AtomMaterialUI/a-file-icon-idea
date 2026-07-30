@@ -30,41 +30,33 @@ import com.mallowigi.config.select.AtomProjectSelectConfig
 import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.models.PsiFileInfo
 
-/** PSI Icon Patcher to apply overrides. */
-class PsiIconPathPatcher : AbstractIconPatcher() {
-
-  override val pathToAppend: String = ""
-  override val pathToRemove: String = ""
+/**
+ * Resolves user PSI icon overrides for an already glyph-rewritten path.
+ *
+ * The glyph patchers first rewrite a platform icon path (e.g. `/nodes/class.svg`) into its glyph variant
+ * (e.g. `/glyphs/nodes/class.svg`). This helper is then applied to that glyph path to let project or global PSI
+ * associations override the icon. Keeping the composition inside [GlyphIconsPatcher] avoids the internal
+ * `IconLoader.installPostPathPatcher` API while preserving the "match on the rewritten glyph path" behavior.
+ */
+object PsiIconOverrides {
 
   /**
-   * Patch the icon path if there is an override.
+   * Return the overriding icon path for a glyph path, or `null` when no PSI association matches.
    *
-   * @param path the path to patch
-   * @param classLoader the classloader of the icon
-   * @return the patched path if found, or null
+   * Project-level overrides take precedence over global ones.
+   *
+   * @param glyphPath the glyph path produced by a [GlyphIconsPatcher]
    */
-  override fun patchPath(path: String, classLoader: ClassLoader?): String? {
-    if (!enabled) return null
+  fun findOverride(glyphPath: String): String? {
+    val fileInfo = PsiFileInfo(glyphPath)
 
-    val fileInfo = PsiFileInfo(path)
-
-    // Check project-level overrides first
     val openProjects = ProjectManager.getInstance().openProjects
     for (project in openProjects) {
-      val projectConfig = AtomProjectSelectConfig.getInstance(project)
-      val projectMatch = projectConfig.selectedPsiAssociations.findAssociation(fileInfo, true)
-      if (projectMatch != null) {
-        return projectMatch.icon
-      }
+      val projectMatch = AtomProjectSelectConfig.getInstance(project).selectedPsiAssociations.findAssociation(fileInfo, true)
+      if (projectMatch != null) return projectMatch.icon
     }
 
-    // Then check global overrides
-    val globalConfig = AtomSelectConfig.instance
-    val globalMatch = globalConfig.selectedPsiAssociations.findAssociation(fileInfo, true)
-    if (globalMatch != null) {
-      return globalMatch.icon
-    }
-
-    return null
+    val globalMatch = AtomSelectConfig.instance.selectedPsiAssociations.findAssociation(fileInfo, true)
+    return globalMatch?.icon
   }
 }

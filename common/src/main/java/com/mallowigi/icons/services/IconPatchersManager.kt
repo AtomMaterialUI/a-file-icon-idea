@@ -35,7 +35,6 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
-import com.mallowigi.icons.patchers.PsiIconPathPatcher
 import com.mallowigi.icons.replacements.OutlineIconsPatcher
 import com.mallowigi.icons.services.IconFilterManager.applyFilter
 import javax.swing.UIManager
@@ -46,7 +45,6 @@ class IconPatchersManager {
 
   private val iconPathPatchers = IconPatchersFactory.create()
   private val installedPatchers: MutableCollection<IconPathPatcher> = HashSet(100)
-  private val psiIconPathPatcher = PsiIconPathPatcher()
 
   /** Init the patchers. */
   fun init() {
@@ -55,7 +53,6 @@ class IconPatchersManager {
     fixRunIcons()
 
     installPathPatchers(atomFileIconsConfig.isEnabledUIIcons)
-    installPostPathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
     installPSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     installFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
   }
@@ -79,7 +76,6 @@ class IconPatchersManager {
     updatePathPatchers(atomFileIconsConfig.isEnabledUIIcons)
     updatePSIPatchers(atomFileIconsConfig.isEnabledPsiIcons)
     updateFileIconsPatchers(atomFileIconsConfig.isEnabledIcons)
-    updatePathPatcher(psiIconPathPatcher, atomFileIconsConfig.isEnabledPsiIcons)
   }
 
   fun fixRunIcons() {
@@ -130,24 +126,6 @@ class IconPatchersManager {
     }
 
     IconLoader.installPathPatcher(patcher)
-    patcher.enabled = enabled
-  }
-
-  /**
-   * Install a patcher as a *post* path patcher.
-   *
-   * Post patchers run after the regular patchers, so they receive the path already rewritten by the glyph patchers
-   * (e.g. `/glyphs/nodes/class.svg`). [PsiIconPathPatcher] matches on that rewritten glyph path, which is why it must be
-   * installed here rather than as a regular pre-patcher.
-   */
-  @Suppress("UnstableApiUsage")
-  private fun installPostPathPatcher(patcher: AbstractIconPatcher, enabled: Boolean) {
-    if (!installedPatchers.add(patcher)) {
-      patcher.enabled = enabled
-      return
-    }
-
-    IconLoader.installPostPathPatcher(patcher)
     patcher.enabled = enabled
   }
 
