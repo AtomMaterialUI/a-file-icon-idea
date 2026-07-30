@@ -63,6 +63,12 @@ const STOP_WORDS = new Set([
 
 function parseArgs(argv) {
   const args = { writeState: false, report: null, includeClosed: false, limit: 0 };
+
+  // Environment fallbacks let the GitHub workflow drive the script via `env:`
+  // instead of shell-built argument lists.
+  if (process.env.INCLUDE_CLOSED === 'true') args.includeClosed = true;
+  if (process.env.REPORT_PATH) args.report = process.env.REPORT_PATH;
+
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--write-state') args.writeState = true;

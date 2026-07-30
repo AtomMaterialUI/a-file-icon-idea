@@ -64,7 +64,19 @@ downgrades a human-set `ported`/`ignored` back to `pending`.
 
 ## Automation
 
-`.github/workflows/upstream-sync.yml` runs weekly (and on demand). It executes
-the script, uploads the report as an artifact, creates/updates a single
-`upstream-sync`-labeled tracking issue with the latest report, and commits the
-refreshed `state.json`.
+`.github/workflows/upstream-sync.yml` runs weekly (and on demand). It is built
+from marketplace actions and a single npm script — no inline shell logic:
+
+1. `actions/checkout` (with submodules) + `actions/setup-node`.
+2. `npm run check-upstream -- --write-state --report upstream-report.md`
+   (the `include_closed` dispatch input is passed via the `INCLUDE_CLOSED` env
+   var, which the script reads directly).
+3. `actions/upload-artifact` publishes `upstream-report.md`.
+4. `peter-evans/create-pull-request` commits the refreshed `state.json` to a
+   fixed `automation/upstream-sync-state` branch and opens (or updates) a single
+   rolling pull request whose **body is the report** (`body-path`). Because
+   `master` is protected, changes land via this PR rather than a direct push.
+
+> **Repo setting required:** enable
+> _Settings → Actions → General → "Allow GitHub Actions to create and approve
+> pull requests"_ so the workflow's `GITHUB_TOKEN` can open the state PR.

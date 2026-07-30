@@ -13,12 +13,12 @@ on:
     inputs:
       include_closed:
         description: 'Also scan closed/merged upstream items'
-        required: false
-        default: 'false'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
-  issues: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -38,15 +38,8 @@ jobs:
       - name: Run upstream check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          EXTRA=""
-          if [[ "${{ github.event.inputs.include_closed }}" == "true" ]]; then
-            EXTRA="--include-closed"
-          fi
-          node scripts/upstream-sync/check-upstream.mjs \
-            --write-state \
-            --report upstream-report.md \
-            $EXTRA
+          INCLUDE_CLOSED: ${{ inputs.include_closed }}
+        run: npm run check-upstream -- --write-state --report upstream-report.md
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
@@ -54,30 +47,13 @@ jobs:
           name: upstream-icon-report
           path: upstream-report.md
 
-      - name: Publish / update tracking issue
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TITLE="Upstream icon sync report"
-          BODY_FILE=upstream-report.md
-          EXISTING=$(gh issue list --repo "$GITHUB_REPOSITORY" \
-            --state open --label upstream-sync --search "$TITLE in:title" \
-            --json number --jq '.[0].number' || echo "")
-          if [[ -n "$EXISTING" ]]; then
-            gh issue edit "$EXISTING" --repo "$GITHUB_REPOSITORY" --body-file "$BODY_FILE"
-          else
-            gh label create upstream-sync --repo "$GITHUB_REPOSITORY" --color BFDADC \
-              --description "Automated upstream icon sync tracking" || true
-            gh issue create --repo "$GITHUB_REPOSITORY" \
-              --title "$TITLE" --label upstream-sync --body-file "$BODY_FILE"
-          fi
-
-      - name: Commit refreshed state
-        run: |
-          if [[ -n "$(git status --porcelain scripts/upstream-sync/state.json)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add scripts/upstream-sync/state.json
-            git commit -m "chore: refresh upstream icon sync state"
-            git push
-          fi
+      - name: Open / update state pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          base: ${{ github.ref_name }}
+          branch: automation/upstream-sync-state
+          add-paths: scripts/upstream-sync/state.json
+          commit-message: 'chore: refresh upstream icon sync state'
+          title: 'chore: refresh upstream icon sync state'
+          body-path: upstream-report.md
+          delete-branch: true
