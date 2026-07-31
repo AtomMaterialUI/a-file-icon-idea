@@ -611,6 +611,336 @@
       "classification": "missing",
       "firstSeen": "2026-07-31T14:33:18.825Z",
       "lastSeen": "2026-07-31T14:33:18.825Z"
+    },
+    "issue-3546": {
+      "type": "issue",
+      "number": 3546,
+      "title": "[Icon Request]: Lychee",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3546",
+      "status": "ported",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T16:27:34.538Z",
+      "lastSeen": "2026-07-31T16:27:34.538Z"
+    },
+    "issue-353": {
+      "type": "issue",
+      "number": 353,
+      "title": "[Icon Request] structures and events folders",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/353",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:21:17.233Z",
+      "lastSeen": "2026-07-31T17:21:17.233Z"
+    },
+    "issue-407": {
+      "type": "issue",
+      "number": 407,
+      "title": "[Icon Request] Cargo.toml and Cargo.lock",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/407",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:22:09.370Z",
+      "lastSeen": "2026-07-31T17:22:09.370Z"
+    },
+    "issue-440": {
+      "type": "issue",
+      "number": 440,
+      "title": "[Icon Request] Soy Templates (Google Closure)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/440",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:22:09.377Z",
+      "lastSeen": "2026-07-31T17:22:09.377Z"
+    },
+    "issue-451": {
+      "type": "issue",
+      "number": 451,
+      "title": "[Icon Request] React-Redux Middleware and Selectors icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/451",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:22:09.377Z",
+      "lastSeen": "2026-07-31T17:22:09.377Z"
+    },
+    "issue-473": {
+      "type": "issue",
+      "number": 473,
+      "title": "[Icon Request] .ninja",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/473",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.578Z",
+      "lastSeen": "2026-07-31T17:28:50.578Z"
+    },
+    "issue-478": {
+      "type": "issue",
+      "number": 478,
+      "title": "[Icon Request] Org mode",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/478",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-504": {
+      "type": "issue",
+      "number": 504,
+      "title": "[Icon Request] Angular page",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/504",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-522": {
+      "type": "issue",
+      "number": 522,
+      "title": "[Icon Request] Coq, Agda, Isabelle and Qt",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/522",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-523": {
+      "type": "issue",
+      "number": 523,
+      "title": "[Icon Request] Akita Store",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/523",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-538": {
+      "type": "issue",
+      "number": 538,
+      "title": "[Icon Request] .ux",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/538",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-558": {
+      "type": "issue",
+      "number": 558,
+      "title": "[Icon Request] Webapp folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/558",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-568": {
+      "type": "issue",
+      "number": 568,
+      "title": "[Icon Request] Vuex icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/568",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-579": {
+      "type": "issue",
+      "number": 579,
+      "title": "[Icon Request] crud operations folder icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/579",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-648": {
+      "type": "issue",
+      "number": 648,
+      "title": "[Icon Request] MediaWiki icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/648",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-656": {
+      "type": "issue",
+      "number": 656,
+      "title": "[Icon Request] Styled components icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/656",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-663": {
+      "type": "issue",
+      "number": 663,
+      "title": "[Icon Request] ( Pug/Jade ) folder",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/663",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-735": {
+      "type": "issue",
+      "number": 735,
+      "title": "[Folder Icon Request] SCHEMA folder",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/735",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-732": {
+      "type": "issue",
+      "number": 732,
+      "title": "[Folder Icon Request] Integration tests folder",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/732",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-742": {
+      "type": "issue",
+      "number": 742,
+      "title": "[Icon Request] OpenHAB",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/742",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-767": {
+      "type": "issue",
+      "number": 767,
+      "title": "[Icon Request] Support for Textile",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/767",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-775": {
+      "type": "issue",
+      "number": 775,
+      "title": "[Icon Request] NSIS",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/775",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-777": {
+      "type": "issue",
+      "number": 777,
+      "title": "[ICON Request] serializers folder",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/777",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-843": {
+      "type": "issue",
+      "number": 843,
+      "title": "[Folder icon request] Infrastructure",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/843",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-857": {
+      "type": "issue",
+      "number": 857,
+      "title": "[Icon Request] docker-compose icon different color than Dockerfile",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/857",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-885": {
+      "type": "issue",
+      "number": 885,
+      "title": "[Icon request] .dib file for vs code dotnet/interactive notebooks",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/885",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-888": {
+      "type": "issue",
+      "number": 888,
+      "title": "[Folder Icon Request] Input and Output",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/888",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-932": {
+      "type": "issue",
+      "number": 932,
+      "title": "[Icon Request] PlatformIO",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/932",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-1005": {
+      "type": "issue",
+      "number": 1005,
+      "title": "[Icon Request] Elixir extension .eex",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1005",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-1017": {
+      "type": "issue",
+      "number": 1017,
+      "title": "[icon request] Caddy Server - `Caddyfile` and .caddyfile",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1017",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-1039": {
+      "type": "issue",
+      "number": 1039,
+      "title": "[Icon Request] Add icon for Electron Framework.",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1039",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-1087": {
+      "type": "issue",
+      "number": 1087,
+      "title": "[icon request] more icon for nest js",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1087",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
+    },
+    "issue-1090": {
+      "type": "issue",
+      "number": 1090,
+      "title": "[Icon Request] Support for Composer",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1090",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T17:28:50.580Z",
+      "lastSeen": "2026-07-31T17:28:50.580Z"
     }
   }
 }
