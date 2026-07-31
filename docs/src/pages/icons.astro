@@ -1,14 +1,14 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
 
-const title = 'Icons Reference';
-const description = 'Browse and search through all available icons in the Atom Material Icons plugin.';
+const title = "Icons Reference";
+const description = "Browse and search through all available icons in the Atom Material Icons plugin.";
 
 // Get all icon files from the project
-import { glob } from 'glob';
-import path from 'path';
-import fs from 'fs';
+import { glob } from "glob";
+import path from "path";
+import fs from "fs";
 
 type Association = {
   name: string;
@@ -18,7 +18,8 @@ type Association = {
   pattern: string;
   fileNames: string;
   icon: string;
-  type: 'regex' | 'type';
+  url?: string;
+  type: "regex" | "type";
 }
 
 type IconCategory = {
@@ -31,8 +32,8 @@ type IconCategory = {
 // Function to parse XML and get icon associations
 async function getIconAssociations() {
   try {
-    const xmlPath = path.resolve('../src/main/resources/iconGenerator/icon_associations.xml');
-    const xmlContent = fs.readFileSync(xmlPath, 'utf8');
+    const xmlPath = path.resolve("../src/main/resources/iconGenerator/icon_associations.xml");
+    const xmlContent = fs.readFileSync(xmlPath, "utf8");
 
     // Simple XML parsing for associations - extract regex and type elements
     const associations: Record<string, Association> = {};
@@ -43,11 +44,13 @@ async function getIconAssociations() {
       const [, name, priority, pattern, icon] = match;
       const fileNamesMatch = match[0].match(/fileNames="([^"]*)"/);
       const iconColorMatch = match[0].match(/iconColor="([^"]*)"/);
+      const urlMatch = match[0].match(/url="([^"]*)"/);
 
-      const fileNames = fileNamesMatch ? fileNamesMatch[1] : 'N/A';
-      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : 'inherit';
+      const fileNames = fileNamesMatch ? fileNamesMatch[1] : "N/A";
+      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : "inherit";
+      const url = urlMatch ? urlMatch[1] : "";
 
-      const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
+      const iconName = icon.split("/").pop()?.replace(".svg", "") || "";
       if (iconName) {
         associations[iconName] = {
           name,
@@ -56,7 +59,8 @@ async function getIconAssociations() {
           pattern,
           fileNames,
           icon,
-          type: 'regex',
+          url,
+          type: "regex"
         };
       }
     }
@@ -66,33 +70,33 @@ async function getIconAssociations() {
     for (const match of typeMatches) {
       const [, name, priority, icon] = match;
       const iconColorMatch = match[0].match(/iconColor="([^"]*)"/);
-      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : 'inherit';
+      const iconColor = iconColorMatch ? `#${iconColorMatch[1]}` : "inherit";
 
-      const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
+      const iconName = icon.split("/").pop()?.replace(".svg", "") || "";
       if (iconName) {
         associations[iconName] = {
           name,
           iconColor,
           priority: parseInt(priority),
-          pattern: 'Type-based association',
-          fileNames: 'N/A',
+          pattern: "Type-based association",
+          fileNames: "N/A",
           icon,
-          type: 'type',
+          type: "type"
         };
       }
     }
 
     return associations;
   } catch (error) {
-    console.error('Error loading icon associations:', error);
+    console.error("Error loading icon associations:", error);
     return {};
   }
 }
 
 async function getFolderAssociations() {
   try {
-    const xmlPath = path.resolve('../src/main/resources/iconGenerator/folder_associations.xml');
-    const xmlContent = fs.readFileSync(xmlPath, 'utf8');
+    const xmlPath = path.resolve("../src/main/resources/iconGenerator/folder_associations.xml");
+    const xmlContent = fs.readFileSync(xmlPath, "utf8");
 
     // Simple XML parsing for associations - extract regex and type elements
     const associations: Record<string, Association> = {};
@@ -106,12 +110,14 @@ async function getFolderAssociations() {
       const folderNamesMatch = fullMatch.match(/folderNames="([^"]*)"/);
       const folderColorMatch = fullMatch.match(/folderColor="([^"]*)"/);
       const folderIconColorMatch = fullMatch.match(/folderIconColor="([^"]*)"/);
+      const urlMatch = fullMatch.match(/url="([^"]*)"/);
 
-      const folderNames = folderNamesMatch ? folderNamesMatch[1] : 'N/A';
-      const folderColor = folderColorMatch ? `#${folderColorMatch[1]}` : 'inherit';
+      const folderNames = folderNamesMatch ? folderNamesMatch[1] : "N/A";
+      const folderColor = folderColorMatch ? `#${folderColorMatch[1]}` : "inherit";
       const folderIconColor = folderIconColorMatch ? `#${folderIconColorMatch[1]}` : undefined;
+      const url = urlMatch ? urlMatch[1] : "";
 
-      const iconName = icon.split('/').pop()?.replace('.svg', '') || '';
+      const iconName = icon.split("/").pop()?.replace(".svg", "") || "";
       if (iconName) {
         associations[iconName] = {
           name,
@@ -121,14 +127,15 @@ async function getFolderAssociations() {
           pattern,
           fileNames: folderNames,
           icon,
-          type: 'regex',
+          url,
+          type: "regex"
         };
       }
     }
 
     return associations;
   } catch (error) {
-    console.error('Error loading folder associations:', error);
+    console.error("Error loading folder associations:", error);
     return {};
   }
 }
@@ -139,51 +146,51 @@ async function getAllIcons() {
     files: [],
     folders: [],
     foldersOpen: [],
-    ui: [],
+    ui: []
   };
 
-  const baseIconPath = path.resolve('../iconGenerator/assets/icons');
+  const baseIconPath = path.resolve("../iconGenerator/assets/icons");
   const associations = await getIconAssociations();
   const folderAssociations = await getFolderAssociations();
 
   try {
     // Get file icons
-    const fileIcons = await glob('*.svg', { cwd: path.join(baseIconPath, 'files') });
+    const fileIcons = await glob("*.svg", { cwd: path.join(baseIconPath, "files") });
     iconCategories.files = fileIcons.map(icon => ({
-      name: icon.replace('.svg', ''),
+      name: icon.replace(".svg", ""),
       path: `/icons/files/${icon}`,
-      category: 'files',
-      association: associations[icon.replace('.svg', '')] || null,
+      category: "files",
+      association: associations[icon.replace(".svg", "")] || null
     }));
 
     // Get folder icons
-    const folderIcons = await glob('*.svg', { cwd: path.join(baseIconPath, 'folders') });
+    const folderIcons = await glob("*.svg", { cwd: path.join(baseIconPath, "folders") });
     iconCategories.folders = folderIcons.map(icon => ({
-      name: icon.replace('.svg', ''),
+      name: icon.replace(".svg", ""),
       path: `/icons/folders/${icon}`,
-      category: 'folders',
-      association: folderAssociations[icon.replace('.svg', '')] || null,
+      category: "folders",
+      association: folderAssociations[icon.replace(".svg", "")] || null
     }));
 
     // Get folder open icons
-    const folderOpenIcons = await glob('*.svg', { cwd: path.join(baseIconPath, 'foldersOpen') });
+    const folderOpenIcons = await glob("*.svg", { cwd: path.join(baseIconPath, "foldersOpen") });
     iconCategories.foldersOpen = folderOpenIcons.map(icon => ({
-      name: icon.replace('.svg', ''),
+      name: icon.replace(".svg", ""),
       path: `/icons/foldersOpen/${icon}`,
-      category: 'foldersOpen',
-      association: folderAssociations[icon.replace('.svg', '')] || null,
+      category: "foldersOpen",
+      association: folderAssociations[icon.replace(".svg", "")] || null
     }));
 
     // Get UI icons
-    const uiIcons = await glob('*.svg', { cwd: path.join(baseIconPath, 'ui') });
+    const uiIcons = await glob("*.svg", { cwd: path.join(baseIconPath, "ui") });
     iconCategories.ui = uiIcons.map(icon => ({
-      name: icon.replace('.svg', ''),
+      name: icon.replace(".svg", ""),
       path: `/icons/ui/${icon}`,
-      category: 'ui',
-      association: associations[icon.replace('.svg', '')] || null,
+      category: "ui",
+      association: associations[icon.replace(".svg", "")] || null
     }));
   } catch (error) {
-    console.error('Error loading icons:', error);
+    console.error("Error loading icons:", error);
   }
 
   return iconCategories;
@@ -201,11 +208,11 @@ const allIcons = [
   ...icons.files,
   ...icons.folders,
   ...icons.foldersOpen,
-  ...icons.ui,
+  ...icons.ui
 ];
 ---
 
-<StarlightPage frontmatter={{ title, description }}>
+<StarlightPage frontmatter={{ title, description, tableOfContents: false }}>
   <div class="container">
     <div class="content">
       <AnchorHeading level="1" id="title">🎨 Icon Gallery</AnchorHeading>
@@ -236,10 +243,15 @@ const allIcons = [
 
       <div class="icon-grid" id="iconGrid">
         {allIcons.map(icon => (
-          <div class="icon-item" data-category={icon.category} data-name={icon.name}
+          <div class="icon-item"
+               data-category={icon.category}
+               data-name={icon.name}
                data-association={JSON.stringify(icon.association)}>
             <div class="icon-display">
-              <img data-src={`/icons/icons/${icon.category}/${icon.name}.svg`} alt={icon.name} width="24" height="24"
+              <img data-src={`/icons/icons/${icon.category}/${icon.name}.svg`}
+                   alt={icon.name}
+                   width="24"
+                   height="24"
                    class="lazy-icon" />
             </div>
             <div class="icon-name">{icon.name}</div>
@@ -272,6 +284,22 @@ const allIcons = [
 </StarlightPage>
 
 <style>
+  :root {
+    --sl-content-gap-y: 0;
+  }
+
+  .container {
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+
+  .content {
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+  }
+
   .search-section {
     margin: 2rem 0;
     text-align: center;
@@ -288,11 +316,16 @@ const allIcons = [
     transition: all 0.2s ease;
     background: var(--sl-color-gray-5);
     color: var(--sl-color-text);
-  }
 
-  .search-input:focus {
-    border-color: var(--sl-color-accent);
-    box-shadow: 0 0 0 3px var(--sl-color-accent-high);
+    &::placeholder {
+      color: var(--sl-color-text);
+      opacity: 0.6;
+    }
+
+    &:focus {
+      border-color: var(--sl-color-accent);
+      box-shadow: 0 0 0 3px var(--sl-color-accent-high);
+    }
   }
 
   .filter-buttons {
@@ -301,6 +334,11 @@ const allIcons = [
     gap: 0.5rem;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .filter-btn {
@@ -313,13 +351,13 @@ const allIcons = [
     transition: all 0.2s ease;
     font-size: 0.875rem;
     font-weight: 500;
-  }
 
-  .filter-btn.active,
-  .filter-btn:hover {
-    background: var(--sl-color-accent);
-    color: white;
-    border-color: var(--sl-color-accent);
+    &.active,
+    &:hover {
+      background: var(--sl-color-accent);
+      color: var(--sl-color-white);
+      border-color: var(--sl-color-accent);
+    }
   }
 
   .stats {
@@ -335,6 +373,11 @@ const allIcons = [
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 1rem;
     margin-top: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.5rem;
+    }
   }
 
   .icon-item {
@@ -343,16 +386,25 @@ const allIcons = [
     align-items: center;
     padding: 1rem;
     border: 1px solid var(--sl-color-hairline-light);
+    color: var(--sl-color-text);
     border-radius: 0.5rem;
     transition: all 0.2s ease;
-    background: var(--sl-color-gray-4);
+    background: var(--sl-color-gray-6);
     cursor: pointer;
-  }
 
-  .icon-item:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-    border-color: var(--sl-color-accent);
+    &:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      background: var(--sl-color-gray-5);
+      color: var(--sl-color-white);
+      border-color: var(--sl-color-gray-5);
+
+      .icon-category {
+        background: var(--sl-color-accent);
+        color: var(--sl-color-white);
+        opacity: 1;
+      }
+    }
   }
 
   .icon-display {
@@ -362,32 +414,31 @@ const allIcons = [
     display: flex;
     align-items: center;
     justify-content: center;
-  }
 
-  .icon-display svg {
-    width: 24px;
-    height: 24px;
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .lazy-icon {
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
 
-  .lazy-icon.loaded {
-    opacity: 1;
-  }
+    &.loaded {
+      opacity: 1;
+    }
 
-  .lazy-icon:not([src]) {
-    background: #f0f0f0;
-    border-radius: 4px;
+    &:not([src]) {
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
   }
 
   .icon-name {
-    font-size: 0.75rem;
+    font-size: small;
     text-align: center;
     word-break: break-word;
-    color: var(--sl-color-text);
     font-weight: 500;
   }
 
@@ -395,7 +446,7 @@ const allIcons = [
     font-size: 0.625rem;
     color: var(--sl-color-text);
     opacity: 0.7;
-    background: var(--sl-color-bg-sidebar);
+    background: var(--sl-color-gray-7);
     padding: 0.125rem 0.5rem;
     border-radius: 0.75rem;
     margin-top: 0.25rem;
@@ -425,10 +476,10 @@ const allIcons = [
     justify-content: center;
     z-index: 1000;
     padding: 1rem;
-  }
 
-  .modal-overlay.active {
-    display: flex;
+    &.active {
+      display: flex;
+    }
   }
 
   .modal {
@@ -467,11 +518,11 @@ const allIcons = [
     padding: 0.25rem;
     border-radius: 0.25rem;
     transition: all 0.2s ease;
-  }
 
-  .close-btn:hover {
-    opacity: 1;
-    background: var(--sl-color-bg-sidebar);
+    &:hover {
+      opacity: 1;
+      background: var(--sl-color-bg-sidebar);
+    }
   }
 
   :global(.modal-content) {
@@ -486,29 +537,31 @@ const allIcons = [
     padding: 1rem;
     background: var(--sl-color-bg-sidebar);
     border-radius: 0.5rem;
+
+    & img {
+      width: 48px;
+      height: 48px;
+    }
   }
 
-  :global(.icon-preview img) {
-    width: 48px;
-    height: 48px;
-  }
+  :global(.icon-info) {
+    h3 {
+      color: var(--sl-color-text);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+    }
 
-  :global(.icon-info h3) {
-    color: var(--sl-color-text);
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin: 0 0 0.25rem 0;
-  }
-
-  :global(.icon-info .category-badge) {
-    display: inline-block;
-    background: var(--sl-color-gray-4);
-    color: var(--sl-color-accent);
-    padding: 0.125rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: capitalize;
+    .category-badge {
+      display: inline-block;
+      background: var(--sl-color-gray-5);
+      color: var(--sl-color-accent);
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
   }
 
   :global(.association-info) {
@@ -521,10 +574,10 @@ const allIcons = [
     align-items: flex-start;
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--sl-color-hairline-light);
-  }
 
-  :global(.info-item:last-child) {
-    border-bottom: none;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   :global(.info-label) {
@@ -554,8 +607,8 @@ const allIcons = [
   }
 
   :global(.priority-badge) {
-    background: var(--sl-color-gray-4);
-    color: var(--sl-color-accent);
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-white);
     padding: 0.125rem 0.5rem;
     border-radius: 0.25rem;
     font-weight: 600;
@@ -569,59 +622,39 @@ const allIcons = [
     text-align: center;
     padding: 2rem;
   }
-
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-    }
-
-    .content {
-      padding: 1.5rem;
-    }
-
-    .icon-grid {
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 0.5rem;
-    }
-
-    .filter-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
 </style>
 
 
 <script is:inline>
   // JavaScript for search and filter functionality
-  const searchInput = document.getElementById('searchInput');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const iconGrid = document.getElementById('iconGrid');
-  const resultCount = document.getElementById('resultCount');
-  const noResults = document.getElementById('noResults');
-  const allIconItems = document.querySelectorAll('.icon-item');
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalContent = document.getElementById('modalContent');
-  const closeModal = document.getElementById('closeModal');
+  const searchInput = document.getElementById("searchInput");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const iconGrid = document.getElementById("iconGrid");
+  const resultCount = document.getElementById("resultCount");
+  const noResults = document.getElementById("noResults");
+  const allIconItems = document.querySelectorAll(".icon-item");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalContent = document.getElementById("modalContent");
+  const closeModal = document.getElementById("closeModal");
 
-  let currentFilter = 'all';
-  let currentSearch = '';
+  let currentFilter = "all";
+  let currentSearch = "";
 
   // Search functionality
-  searchInput.addEventListener('input', function() {
+  searchInput.addEventListener("input", function() {
     currentSearch = this.value.toLowerCase();
     filterIcons();
   });
 
   // Filter functionality
   filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener("click", function() {
       // Update active button
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
 
-      currentFilter = this.getAttribute('data-category');
+      currentFilter = this.getAttribute("data-category");
       filterIcons();
     });
   });
@@ -630,20 +663,20 @@ const allIcons = [
     let visibleCount = 0;
 
     allIconItems.forEach(item => {
-      const category = item.getAttribute('data-category');
-      const name = item.getAttribute('data-name').toLowerCase();
+      const category = item.getAttribute("data-category");
+      const name = item.getAttribute("data-name").toLowerCase();
 
       // Check category filter
-      const categoryMatch = currentFilter === 'all' || category === currentFilter;
+      const categoryMatch = currentFilter === "all" || category === currentFilter;
 
       // Check search filter
-      const searchMatch = currentSearch === '' || name.includes(currentSearch);
+      const searchMatch = currentSearch === "" || name.includes(currentSearch);
 
       if (categoryMatch && searchMatch) {
-        item.style.display = 'flex';
+        item.style.display = "flex";
         visibleCount++;
       } else {
-        item.style.display = 'none';
+        item.style.display = "none";
       }
     });
 
@@ -652,20 +685,20 @@ const allIcons = [
 
     // Show/hide no results message
     if (visibleCount === 0) {
-      iconGrid.style.display = 'none';
-      noResults.style.display = 'block';
+      iconGrid.style.display = "none";
+      noResults.style.display = "block";
     } else {
-      iconGrid.style.display = 'grid';
-      noResults.style.display = 'none';
+      iconGrid.style.display = "grid";
+      noResults.style.display = "none";
     }
   }
 
   // Modal functionality
   function showIconDetails(iconItem) {
-    const iconName = iconItem.getAttribute('data-name');
-    const iconCategory = iconItem.getAttribute('data-category');
-    const associationData = iconItem.getAttribute('data-association');
-    const iconSrc = iconItem.querySelector('img').src || iconItem.querySelector('img').getAttribute('data-src');
+    const iconName = iconItem.getAttribute("data-name");
+    const iconCategory = iconItem.getAttribute("data-category");
+    const associationData = iconItem.getAttribute("data-association");
+    const iconSrc = iconItem.querySelector("img").src || iconItem.querySelector("img").getAttribute("data-src");
 
     let association = null;
     try {
@@ -696,7 +729,7 @@ const allIcons = [
 							</div>
 							<div class="info-item">
 								<span class="info-label">Type:</span>
-								<span class="info-value">${association.type === 'regex' ? 'Pattern-based' : 'Type-based'}</span>
+								<span class="info-value">${association.type === "regex" ? "Pattern-based" : "Type-based"}</span>
 							</div>
 							<div class="info-item">
 								<span class="info-label">Priority:</span>
@@ -704,24 +737,24 @@ const allIcons = [
 							</div>
 							<div class="info-item">
 								<span class="info-label">Color:</span>
-								<span class="info-value">${association.iconColor}${association.iconColor !== 'inherit' ? `<span class="color-swatch" style="background-color: ${association.iconColor};"></span>` : ''}</span>
+								<span class="info-value">${association.iconColor}${association.iconColor !== "inherit" ? `<span class="color-swatch" style="background-color: ${association.iconColor};"></span>` : ""}</span>
 							</div>
 							${association.folderIconColor ? `
 							<div class="info-item">
 								<span class="info-label">Folder Icon Color:</span>
 								<span class="info-value">${association.folderIconColor}<span class="color-swatch" style="background-color: ${association.folderIconColor};"></span></span>
 							</div>
-							` : ''}
+							` : ""}
 							<div class="info-item">
 								<span class="info-label">Pattern:</span>
 								<span class="info-value"><code style="background: var(--sl-color-bg-sidebar); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">${association.pattern}</code></span>
 							</div>
-							${association.fileNames && association.fileNames !== 'N/A' ? `
+							${association.fileNames && association.fileNames !== "N/A" ? `
 							<div class="info-item">
-								<span class="info-label">${iconCategory.includes('folder') ? 'Folders' : 'Examples'}:</span>
-								<span class="info-value" style="font-size: 0.75rem; opacity: 0.8;">${association.fileNames.split(',').slice(0, 3).join(', ')}${association.fileNames.split(',').length > 3 ? '...' : ''}</span>
+								<span class="info-label">${iconCategory.includes("folder") ? "Folders" : "Examples"}:</span>
+								<span class="info-value" style="font-size: 0.75rem; opacity: 0.8;">${association.fileNames.split(",").slice(0, 3).join(", ")}${association.fileNames.split(",").length > 3 ? "..." : ""}</span>
 							</div>
-							` : ''}
+							` : ""}
 						</div>
 					`;
     } else {
@@ -734,51 +767,51 @@ const allIcons = [
     }
 
     modalContent.innerHTML = content;
-    modalOverlay.classList.add('active');
+    modalOverlay.classList.add("active");
   }
 
   function closeModalHandler() {
-    modalOverlay.classList.remove('active');
+    modalOverlay.classList.remove("active");
   }
 
   // Icon click handlers
   allIconItems.forEach(item => {
-    item.addEventListener('click', () => showIconDetails(item));
+    item.addEventListener("click", () => showIconDetails(item));
   });
 
   // Modal close handlers
-  closeModal.addEventListener('click', closeModalHandler);
-  modalOverlay.addEventListener('click', (e) => {
+  closeModal.addEventListener("click", closeModalHandler);
+  modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) {
       closeModalHandler();
     }
   });
 
   // Escape key to close modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
       closeModalHandler();
     }
   });
 
   // Lazy loading implementation
-  const lazyImages = document.querySelectorAll('.lazy-icon');
+  const lazyImages = document.querySelectorAll(".lazy-icon");
 
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        const src = img.getAttribute('data-src');
+        const src = img.getAttribute("data-src");
 
-        img.setAttribute('src', src);
-        img.classList.add('loaded');
-        img.removeAttribute('data-src');
+        img.setAttribute("src", src);
+        img.classList.add("loaded");
+        img.removeAttribute("data-src");
 
         observer.unobserve(img);
       }
     });
   }, {
-    rootMargin: '50px',
+    rootMargin: "50px"
   });
 
   lazyImages.forEach(img => imageObserver.observe(img));
