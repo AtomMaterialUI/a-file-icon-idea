@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import preact from '@astrojs/preact';
 
 const site = 'https://a-file-icon-idea.netlify.app/';
 
@@ -8,6 +9,7 @@ const site = 'https://a-file-icon-idea.netlify.app/';
 export default defineConfig({
   site: 'https://a-file-icon-idea.netlify.app/',
   integrations: [
+    preact(),
     starlight({
       title: 'Atom Material Icons',
       description: 'Make your IDE more vibrant with beautiful Material Icons',

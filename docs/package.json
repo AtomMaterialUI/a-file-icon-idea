@@ -14,9 +14,12 @@
   },
   "dependencies": {
     "@astrojs/internal-helpers": "^0.10.2",
+    "@astrojs/preact": "^6.0.2",
     "@astrojs/starlight": "^0.41.5",
     "astro": "^7.1.6",
+    "fast-xml-parser": "^5.10.1",
     "glob": "^13.0.6",
+    "preact": "^10.29.7",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
