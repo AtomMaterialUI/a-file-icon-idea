@@ -143,6 +143,22 @@ export default function IconModal({ icon, onClose }: Props) {
                     </span>
                   </div>
                 )}
+
+                {association.url && (
+                  <div class={styles.infoItem}>
+                    <span class={styles.infoLabel}>URL:</span>
+                    <span class={styles.infoValue}>
+                      <a
+                        class={styles.infoLink}
+                        href={association.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {association.url}
+                      </a>
+                    </span>
+                  </div>
+                )}
               </div>
             ) : (
               <div class={styles.noAssociation}>

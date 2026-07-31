@@ -37,18 +37,37 @@ export default function IconGallery({ icons, counts }: Props) {
   const [selected, setSelected] = useState<IconCategory | null>(null);
   const [limit, setLimit] = useState(PAGE_SIZE);
 
-  const sentinelRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   const query = search.trim().toLowerCase();
 
+  // Precompute a lowercased haystack (icon name + matched examples) once per
+  // dataset so keystroke filtering stays cheap and can match by example too.
+  const searchIndex = useMemo(
+    () =>
+      icons.map((icon) => {
+        const examples =
+          icon.association && icon.association.fileNames !== "N/A"
+            ? icon.association.fileNames
+            : "";
+        return {
+          icon,
+          haystack: `${icon.name} ${examples}`.toLowerCase(),
+        };
+      }),
+    [icons],
+  );
+
   const visible = useMemo(
     () =>
-      icons.filter((icon) => {
-        const categoryMatch = filter === "all" || icon.category === filter;
-        const searchMatch = query === "" || icon.name.toLowerCase().includes(query);
-        return categoryMatch && searchMatch;
-      }),
-    [icons, filter, query],
+      searchIndex
+        .filter(({ icon, haystack }) => {
+          const categoryMatch = filter === "all" || icon.category === filter;
+          const searchMatch = query === "" || haystack.includes(query);
+          return categoryMatch && searchMatch;
+        })
+        .map((entry) => entry.icon),
+    [searchIndex, filter, query],
   );
 
   const shown = visible.slice(0, limit);
@@ -93,9 +112,11 @@ export default function IconGallery({ icons, counts }: Props) {
         <input
           type="text"
           class={styles.searchInput}
-          placeholder="Search icons by name or association..."
+          placeholder="Search icons by name or example (e.g. package.json)..."
           value={search}
-          onInput={(event) => changeSearch((event.target as HTMLInputElement).value)}
+          onInput={(event) =>
+            changeSearch((event.target as HTMLInputElement).value)
+          }
         />
 
         <div class={styles.filterButtons}>
@@ -120,10 +141,20 @@ export default function IconGallery({ icons, counts }: Props) {
         <>
           <div class={styles.iconGrid}>
             {shown.map((icon) => (
-              <IconCard key={`${icon.category}/${icon.name}`} icon={icon} onSelect={setSelected} />
+              <IconCard
+                key={`${icon.category}/${icon.name}`}
+                icon={icon}
+                onSelect={setSelected}
+              />
             ))}
           </div>
-          {hasMore && <div ref={sentinelRef} class={styles.scrollSentinel} aria-hidden="true" />}
+          {hasMore && (
+            <div
+              ref={sentinelRef}
+              class={styles.scrollSentinel}
+              aria-hidden="true"
+            />
+          )}
         </>
       ) : (
         <div class={styles.noResults}>

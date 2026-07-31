@@ -171,6 +171,16 @@
   opacity: 0.8;
 }
 
+.infoLink {
+  color: var(--sl-color-accent);
+  font-size: 0.875rem;
+  word-break: break-all;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .patternCode {
   background: var(--sl-color-bg-sidebar);
   padding: 0.25rem 0.5rem;
