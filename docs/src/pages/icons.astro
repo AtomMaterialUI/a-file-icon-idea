@@ -2,6 +2,7 @@
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
 import IconGallery from "../components/icons/IconGallery/IconGallery.tsx";
+import IconRequestButton from "../components/icons/IconRequestButton/IconRequestButton.tsx";
 import { getAllIcons } from "../lib/icons";
 
 const title = "Icons Reference";
@@ -12,7 +13,10 @@ const icons = await getAllIcons();
 
 <StarlightPage frontmatter={{ title, description, tableOfContents: false }}>
   <div class="content">
-    <AnchorHeading level="1" id="title">🎨 Icon Gallery</AnchorHeading>
+    <div class="page-header">
+      <AnchorHeading level="1" id="title">🎨 Icon Gallery</AnchorHeading>
+      <IconRequestButton client:visible />
+    </div>
     <p class="subtitle">
       Browse and search through all {icons.counts.all} available icons
     </p>
@@ -20,3 +24,13 @@ const icons = await getAllIcons();
     <IconGallery client:visible icons={icons.all} counts={icons.counts} />
   </div>
 </StarlightPage>
+
+<style>
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

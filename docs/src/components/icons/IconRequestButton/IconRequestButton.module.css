@@ -1,0 +1,16 @@
+.requestBtn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--sl-color-accent);
+  background: var(--sl-color-accent);
+  color: var(--sl-color-white);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--sl-color-accent-high);
+    border-color: var(--sl-color-accent-high);
+  }
+}
