@@ -1,4 +1,5 @@
-import type { IconCategory } from "../../lib/icons";
+import type { IconCategory } from "../../../lib/icons";
+import styles from "./IconCard.module.css";
 
 type Props = {
   icon: IconCategory;
@@ -7,8 +8,8 @@ type Props = {
 
 export default function IconCard({ icon, onSelect }: Props) {
   return (
-    <button type="button" class="icon-item" onClick={() => onSelect(icon)}>
-      <div class="icon-display">
+    <button type="button" class={styles.iconItem} onClick={() => onSelect(icon)}>
+      <div class={styles.iconDisplay}>
         <img
           src={icon.path}
           alt={icon.name}
@@ -18,8 +19,8 @@ export default function IconCard({ icon, onSelect }: Props) {
           decoding="async"
         />
       </div>
-      <div class="icon-name">{icon.name}</div>
-      <div class="icon-category">{icon.category}</div>
+      <div class={styles.iconName}>{icon.name}</div>
+      <div class={styles.iconCategory}>{icon.category}</div>
     </button>
   );
 }

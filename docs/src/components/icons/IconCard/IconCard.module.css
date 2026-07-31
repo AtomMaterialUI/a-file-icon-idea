@@ -1,0 +1,64 @@
+.iconItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-hairline-light);
+  color: var(--sl-color-text);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background: var(--sl-color-gray-6);
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-white);
+    border-color: var(--sl-color-gray-5);
+
+    .iconCategory {
+      background: var(--sl-color-accent);
+      color: var(--sl-color-white);
+      opacity: 1;
+    }
+  }
+}
+
+.iconDisplay {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & svg,
+  & img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.iconName {
+  font-size: small;
+  text-align: center;
+  word-break: break-word;
+  font-weight: 500;
+}
+
+.iconCategory {
+  font-size: 0.625rem;
+  color: var(--sl-color-text);
+  opacity: 0.7;
+  background: var(--sl-color-gray-7);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}

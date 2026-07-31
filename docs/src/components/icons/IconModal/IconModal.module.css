@@ -1,0 +1,211 @@
+/* Modal (native <dialog>) */
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  background: var(--sl-color-bg);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: min(500px, calc(100% - 2rem));
+  height: fit-content;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid var(--sl-color-hairline-light);
+  color: var(--sl-color-text);
+
+  /* Enter animation: fade + rise in when opened (instant close). */
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  &[open] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+
+  &::backdrop {
+    background: rgb(0 0 0 / 0);
+    transition: background 0.2s ease;
+  }
+
+  &[open]::backdrop {
+    background: rgb(0 0 0 / 0.5);
+  }
+
+  @starting-style {
+    &[open]::backdrop {
+      background: rgb(0 0 0 / 0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal::backdrop {
+    transition: none;
+  }
+}
+
+.modalHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  color: var(--sl-color-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--sl-color-text);
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    background: var(--sl-color-bg-sidebar);
+  }
+}
+
+.modalContent {
+  padding: 1.5rem;
+}
+
+.iconPreview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--sl-color-bg-sidebar);
+  border-radius: 0.5rem;
+
+  & img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.iconInfo {
+  h3 {
+    color: var(--sl-color-text);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .categoryBadge {
+    display: inline-block;
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-accent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}
+
+.associationInfo {
+  margin-top: 1rem;
+}
+
+.associationTitle {
+  color: var(--sl-color-text);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: var(--sl-color-text);
+  font-size: 0.875rem;
+  min-width: 80px;
+}
+
+.infoValue {
+  color: var(--sl-color-text);
+  font-size: 0.875rem;
+  text-align: right;
+  flex: 1;
+  margin-left: 1rem;
+  word-break: break-word;
+}
+
+.infoExamples {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.patternCode {
+  background: var(--sl-color-bg-sidebar);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.colorSwatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 0.25rem;
+  border: 1px solid var(--sl-color-hairline);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.priorityBadge {
+  background: var(--sl-color-gray-5);
+  color: var(--sl-color-white);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.noAssociation {
+  color: var(--sl-color-text);
+  opacity: 0.7;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.noAssociationHint {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}

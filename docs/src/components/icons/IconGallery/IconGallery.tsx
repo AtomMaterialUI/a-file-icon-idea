@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { flushSync } from "preact/compat";
-import type { IconCategory, IconData } from "../../lib/icons";
-import IconCard from "./IconCard";
-import IconModal from "./IconModal";
-import "./icon-gallery.css";
+import type { IconCategory, IconData } from "../../../lib/icons";
+import IconCard from "../IconCard";
+import IconModal from "../IconModal";
+import styles from "./IconGallery.module.css";
+import "./view-transitions.css";
 
 type Filter = "all" | keyof IconData["byCategory"];
 
@@ -87,22 +88,22 @@ export default function IconGallery({ icons, counts }: Props) {
     });
 
   return (
-    <div class="icon-gallery">
-      <div class="search-section">
+    <div class={styles.iconGallery}>
+      <div class={styles.searchSection}>
         <input
           type="text"
-          class="search-input"
+          class={styles.searchInput}
           placeholder="Search icons by name or association..."
           value={search}
           onInput={(event) => changeSearch((event.target as HTMLInputElement).value)}
         />
 
-        <div class="filter-buttons">
+        <div class={styles.filterButtons}>
           {FILTERS.map(({ key, label }) => (
             <button
               type="button"
               key={key}
-              class={`filter-btn${filter === key ? " active" : ""}`}
+              class={`${styles.filterBtn}${filter === key ? ` ${styles.active}` : ""}`}
               onClick={() => changeFilter(key)}
             >
               {label} ({counts[key]})
@@ -110,22 +111,22 @@ export default function IconGallery({ icons, counts }: Props) {
           ))}
         </div>
 
-        <div class="stats">
+        <div class={styles.stats}>
           <span>{visible.length}</span> icons shown
         </div>
       </div>
 
       {visible.length > 0 ? (
         <>
-          <div class="icon-grid">
+          <div class={styles.iconGrid}>
             {shown.map((icon) => (
               <IconCard key={`${icon.category}/${icon.name}`} icon={icon} onSelect={setSelected} />
             ))}
           </div>
-          {hasMore && <div ref={sentinelRef} class="scroll-sentinel" aria-hidden="true" />}
+          {hasMore && <div ref={sentinelRef} class={styles.scrollSentinel} aria-hidden="true" />}
         </>
       ) : (
-        <div class="no-results">
+        <div class={styles.noResults}>
           <h3>No icons found</h3>
           <p>Try adjusting your search terms or filters</p>
         </div>

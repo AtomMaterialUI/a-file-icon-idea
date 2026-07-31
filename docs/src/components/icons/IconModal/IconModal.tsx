@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "preact/hooks";
-import type { IconCategory } from "../../lib/icons";
+import type { IconCategory } from "../../../lib/icons";
+import styles from "./IconModal.module.css";
 
 type Props = {
   icon: IconCategory | null;
@@ -11,14 +12,18 @@ function examplesLabel(category: string): string {
 }
 
 function firstExamples(fileNames: string): string {
+  const numParts = 6;
   const parts = fileNames.split(",");
-  const shown = parts.slice(0, 3).join(", ");
-  return parts.length > 3 ? `${shown}...` : shown;
+  const shown = parts.slice(0, numParts).join(", ");
+  return parts.length > numParts ? `${shown}...` : shown;
 }
 
 export default function IconModal({ icon, onClose }: Props) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
+  // Native <dialog>.showModal() gives us Escape-to-close and the backdrop for
+  // free; the `close` event (Escape, close button, or backdrop click) bubbles
+  // up through onClose.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -35,7 +40,7 @@ export default function IconModal({ icon, onClose }: Props) {
   return (
     <dialog
       ref={dialogRef}
-      class="modal"
+      class={styles.modal}
       onClose={onClose}
       onClick={(event) => {
         if (event.target === dialogRef.current) {
@@ -45,11 +50,11 @@ export default function IconModal({ icon, onClose }: Props) {
     >
       {icon && (
         <>
-          <div class="modal-header">
-            <h2 class="modal-title">{icon.name} Icon</h2>
+          <div class={styles.modalHeader}>
+            <h2 class={styles.modalTitle}>{icon.name} Icon</h2>
             <button
               type="button"
-              class="close-btn"
+              class={styles.closeBtn}
               aria-label="Close"
               onClick={onClose}
             >
@@ -57,47 +62,49 @@ export default function IconModal({ icon, onClose }: Props) {
             </button>
           </div>
 
-          <div class="modal-content">
-            <div class="icon-preview">
+          <div class={styles.modalContent}>
+            <div class={styles.iconPreview}>
               <img src={icon.path} alt={icon.name} />
-              <div class="icon-info">
+              <div class={styles.iconInfo}>
                 <h3>{icon.name}</h3>
-                <span class="category-badge">{icon.category}</span>
+                <span class={styles.categoryBadge}>{icon.category}</span>
               </div>
             </div>
 
             {association ? (
-              <div class="association-info">
-                <h4 class="association-title">Association Details</h4>
+              <div class={styles.associationInfo}>
+                <h4 class={styles.associationTitle}>Association Details</h4>
 
-                <div class="info-item">
-                  <span class="info-label">Name:</span>
-                  <span class="info-value">{association.name}</span>
+                <div class={styles.infoItem}>
+                  <span class={styles.infoLabel}>Name:</span>
+                  <span class={styles.infoValue}>{association.name}</span>
                 </div>
 
-                <div class="info-item">
-                  <span class="info-label">Type:</span>
-                  <span class="info-value">
+                <div class={styles.infoItem}>
+                  <span class={styles.infoLabel}>Type:</span>
+                  <span class={styles.infoValue}>
                     {association.type === "regex"
                       ? "Pattern-based"
                       : "Type-based"}
                   </span>
                 </div>
 
-                <div class="info-item">
-                  <span class="info-label">Priority:</span>
-                  <span class="info-value">
-                    <span class="priority-badge">{association.priority}</span>
+                <div class={styles.infoItem}>
+                  <span class={styles.infoLabel}>Priority:</span>
+                  <span class={styles.infoValue}>
+                    <span class={styles.priorityBadge}>
+                      {association.priority}
+                    </span>
                   </span>
                 </div>
 
-                <div class="info-item">
-                  <span class="info-label">Color:</span>
-                  <span class="info-value">
+                <div class={styles.infoItem}>
+                  <span class={styles.infoLabel}>Color:</span>
+                  <span class={styles.infoValue}>
                     {association.iconColor}
                     {association.iconColor !== "inherit" && (
                       <span
-                        class="color-swatch"
+                        class={styles.colorSwatch}
                         style={{ backgroundColor: association.iconColor }}
                       />
                     )}
@@ -105,40 +112,42 @@ export default function IconModal({ icon, onClose }: Props) {
                 </div>
 
                 {association.folderIconColor && (
-                  <div class="info-item">
-                    <span class="info-label">Folder Icon Color:</span>
-                    <span class="info-value">
+                  <div class={styles.infoItem}>
+                    <span class={styles.infoLabel}>Folder Icon Color:</span>
+                    <span class={styles.infoValue}>
                       {association.folderIconColor}
                       <span
-                        class="color-swatch"
+                        class={styles.colorSwatch}
                         style={{ backgroundColor: association.folderIconColor }}
                       />
                     </span>
                   </div>
                 )}
 
-                <div class="info-item">
-                  <span class="info-label">Pattern:</span>
-                  <span class="info-value">
-                    <code class="pattern-code">{association.pattern}</code>
+                <div class={styles.infoItem}>
+                  <span class={styles.infoLabel}>Pattern:</span>
+                  <span class={styles.infoValue}>
+                    <code class={styles.patternCode}>
+                      {association.pattern}
+                    </code>
                   </span>
                 </div>
 
                 {association.fileNames && association.fileNames !== "N/A" && (
-                  <div class="info-item">
-                    <span class="info-label">
+                  <div class={styles.infoItem}>
+                    <span class={styles.infoLabel}>
                       {examplesLabel(icon.category)}:
                     </span>
-                    <span class="info-value info-examples">
+                    <span class={`${styles.infoValue} ${styles.infoExamples}`}>
                       {firstExamples(association.fileNames)}
                     </span>
                   </div>
                 )}
               </div>
             ) : (
-              <div class="no-association">
+              <div class={styles.noAssociation}>
                 <p>No association data available for this icon.</p>
-                <p class="no-association-hint">
+                <p class={styles.noAssociationHint}>
                   This icon may be used for UI elements or custom associations.
                 </p>
               </div>

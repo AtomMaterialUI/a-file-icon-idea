@@ -1,0 +1,96 @@
+.iconGallery {
+  --sl-content-gap-y: 0;
+
+  .searchSection {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .searchInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-text);
+
+    &::placeholder {
+      color: var(--sl-color-text);
+      opacity: 0.6;
+    }
+
+    &:focus {
+      border-color: var(--sl-color-accent);
+      box-shadow: 0 0 0 3px var(--sl-color-accent-high);
+    }
+  }
+
+  .filterButtons {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .filterBtn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-text);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &.active,
+    &:hover {
+      background: var(--sl-color-accent);
+      color: var(--sl-color-white);
+      border-color: var(--sl-color-accent);
+    }
+  }
+
+  .stats {
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--sl-color-text);
+    opacity: 0.8;
+    font-size: 0.875rem;
+  }
+
+  .iconGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    view-transition-name: icon-grid;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.5rem;
+    }
+  }
+
+  .scrollSentinel {
+    height: 1px;
+  }
+
+  .noResults {
+    text-align: center;
+    padding: 3rem;
+    color: var(--sl-color-text);
+    opacity: 0.8;
+    font-size: 1.1rem;
+  }
+}

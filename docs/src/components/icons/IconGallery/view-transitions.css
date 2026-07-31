@@ -1,0 +1,18 @@
+/*
+ * Global (document-level) styles for the grid cross-fade on filter / tab change.
+ * These target the View Transitions pseudo-elements, which live outside the
+ * component tree, so they cannot be scoped via CSS Modules.
+ */
+::view-transition-old(icon-grid),
+::view-transition-new(icon-grid) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
