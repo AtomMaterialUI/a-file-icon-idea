@@ -97,7 +97,7 @@
       "number": 3517,
       "title": "feat(icon): add dbt-bouncer icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3517",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -327,7 +327,7 @@
       "number": 3343,
       "title": "feat: add `mcp-folder` icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3343",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -337,7 +337,7 @@
       "number": 3342,
       "title": "feat(icons): add icon support for .aab files",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3342",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -367,7 +367,7 @@
       "number": 3306,
       "title": "feat: add cpp folder icons",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3306",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -407,7 +407,7 @@
       "number": 3247,
       "title": "feat: add mcp.json icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3247",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -707,7 +707,7 @@
       "number": 2613,
       "title": "[Icon Request]: intro-cli",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2613",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -977,7 +977,7 @@
       "number": 3535,
       "title": "[Icon Request]: direnv",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3535",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1197,7 +1197,7 @@
       "number": 3457,
       "title": "[Icon Request]: Env Test file",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3457",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1407,7 +1407,7 @@
       "number": 3021,
       "title": "[Icon Request]: MCP Folder",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3021",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2467,7 +2467,7 @@
       "number": 3164,
       "title": "[Icon Request]: eas file",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3164",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2727,7 +2727,7 @@
       "number": 1885,
       "title": "[Icon Request] PHP Test",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1885",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2767,7 +2767,7 @@
       "number": 1808,
       "title": "[Icon Request] cgi-bin",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1808",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2797,7 +2797,7 @@
       "number": 1781,
       "title": "[Icon Request] AWS-S3",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1781",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2917,7 +2917,7 @@
       "number": 1441,
       "title": "[Icon Request] <ARM Keil>",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1441",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3007,7 +3007,7 @@
       "number": 1150,
       "title": "[Icon request] rbs icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1150",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3177,7 +3177,7 @@
       "number": 2881,
       "title": "[Icon Request]: lex.config.ts",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2881",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3247,7 +3247,7 @@
       "number": 2005,
       "title": "[Icon Request] JSX general icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2005",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3437,7 +3437,7 @@
       "number": 1143,
       "title": "[Icon Request] PDF folder icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1143",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3717,7 +3717,7 @@
       "number": 379,
       "title": "[Icon request] Lex files .l format",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/379",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -4007,7 +4007,7 @@
       "number": 2221,
       "title": "[Icon Request] Seti's original elephant icon for PHP",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2221",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -4027,7 +4027,7 @@
       "number": 1985,
       "title": "[Icon Request] TS/JS/JSX _test and _spec suffix",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1985",
-      "status": "pending",
+      "status": "ignored",
       "classification": "review",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
