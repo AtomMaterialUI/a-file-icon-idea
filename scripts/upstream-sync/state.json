@@ -1,5 +1,606 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "items": {}
+  "updatedAt": "2026-07-30T19:10:13.183Z",
+  "items": {
+    "pr-3550": {
+      "type": "pr",
+      "number": 3550,
+      "title": "feat: add tensorflow folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3550",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3549": {
+      "type": "pr",
+      "number": 3549,
+      "title": "feat: add keras file icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3549",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3540": {
+      "type": "pr",
+      "number": 3540,
+      "title": "Add Plix language icon support",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3540",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3534": {
+      "type": "pr",
+      "number": 3534,
+      "title": "feat: add Canopy icon for canopy.json",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3534",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3531": {
+      "type": "pr",
+      "number": 3531,
+      "title": "fix: correct icon for Quarto",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3531",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3530": {
+      "type": "pr",
+      "number": 3530,
+      "title": "feat: add nika workflow file icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3530",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3529": {
+      "type": "pr",
+      "number": 3529,
+      "title": "feat: add nika file and folder icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3529",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3523": {
+      "type": "pr",
+      "number": 3523,
+      "title": "feat: add cronjob's folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3523",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3522": {
+      "type": "pr",
+      "number": 3522,
+      "title": "feat: add ocx icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3522",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3517": {
+      "type": "pr",
+      "number": 3517,
+      "title": "feat(icon): add dbt-bouncer icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3517",
+      "status": "pending",
+      "classification": "review",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3514": {
+      "type": "pr",
+      "number": 3514,
+      "title": "feat: add folder icon for profile directories",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3514",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3500": {
+      "type": "pr",
+      "number": 3500,
+      "title": "feat: add `.vscode-test` config file icon mapping",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3500",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3490": {
+      "type": "pr",
+      "number": 3490,
+      "title": "feat: add roadmap folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3490",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3486": {
+      "type": "pr",
+      "number": 3486,
+      "title": "feat: add document icon for doc.md and docs.md files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3486",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3485": {
+      "type": "pr",
+      "number": 3485,
+      "title": "feat: add question/FAQ icons for folders and files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3485",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3483": {
+      "type": "pr",
+      "number": 3483,
+      "title": "feat: add benchmark icon for markdown files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3483",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3480": {
+      "type": "pr",
+      "number": 3480,
+      "title": "Feat/add eucode theme",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3480",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3469": {
+      "type": "pr",
+      "number": 3469,
+      "title": "feat: add codex folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3469",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3463": {
+      "type": "pr",
+      "number": 3463,
+      "title": "Added native icon mapping support for the F++ scripting language extension (.fpp).feat: add support for F++ language (.fpp) file icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3463",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3453": {
+      "type": "pr",
+      "number": 3453,
+      "title": "feat: add ferris as alt rust icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3453",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3446": {
+      "type": "pr",
+      "number": 3446,
+      "title": "feat: add icons for custom agent folders and files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3446",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3445": {
+      "type": "pr",
+      "number": 3445,
+      "title": "feat: add icons for `AGENTS.md` file",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3445",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3443": {
+      "type": "pr",
+      "number": 3443,
+      "title": "feat: add fileonix icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3443",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3437": {
+      "type": "pr",
+      "number": 3437,
+      "title": "feat: added `AGENTS.md` file icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3437",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3432": {
+      "type": "pr",
+      "number": 3432,
+      "title": "feat(icon): add internal folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3432",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3430": {
+      "type": "pr",
+      "number": 3430,
+      "title": "feat: add TAPL Lang file icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3430",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3409": {
+      "type": "pr",
+      "number": 3409,
+      "title": "feat: added AI folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3409",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3407": {
+      "type": "pr",
+      "number": 3407,
+      "title": "feat: Add aspire icon for apphost.ts and apphost.cs",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3407",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3405": {
+      "type": "pr",
+      "number": 3405,
+      "title": "feat: add LLVM & MLIR file icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3405",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3402": {
+      "type": "pr",
+      "number": 3402,
+      "title": "feat: add Bison and Flex file icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3402",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3393": {
+      "type": "pr",
+      "number": 3393,
+      "title": "feat(icon): File and folder icons for Postgraphile",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3393",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3373": {
+      "type": "pr",
+      "number": 3373,
+      "title": "feat: add Kubernetes icon for files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3373",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3370": {
+      "type": "pr",
+      "number": 3370,
+      "title": "Add official icon support for .aura files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3370",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3343": {
+      "type": "pr",
+      "number": 3343,
+      "title": "feat: add `mcp-folder` icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3343",
+      "status": "pending",
+      "classification": "review",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3342": {
+      "type": "pr",
+      "number": 3342,
+      "title": "feat(icons): add icon support for .aab files",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3342",
+      "status": "pending",
+      "classification": "review",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3332": {
+      "type": "pr",
+      "number": 3332,
+      "title": "feat: add kdl language icon for '.kdl' file extension",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3332",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3314": {
+      "type": "pr",
+      "number": 3314,
+      "title": "feat: add icon for BensinDB (.bensin)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3314",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3306": {
+      "type": "pr",
+      "number": 3306,
+      "title": "feat: add cpp folder icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3306",
+      "status": "pending",
+      "classification": "review",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3269": {
+      "type": "pr",
+      "number": 3269,
+      "title": "feat: add devops folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3269",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3250": {
+      "type": "pr",
+      "number": 3250,
+      "title": "feat: add Dooor folder icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3250",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3248": {
+      "type": "pr",
+      "number": 3248,
+      "title": "feat: Add convex file and folder icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3248",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3247": {
+      "type": "pr",
+      "number": 3247,
+      "title": "feat: add mcp.json icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3247",
+      "status": "pending",
+      "classification": "review",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3241": {
+      "type": "pr",
+      "number": 3241,
+      "title": "feat: add agents.md icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3241",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3225": {
+      "type": "pr",
+      "number": 3225,
+      "title": "Added filepaths to support the .config directory proposal ahead of time (adopted by prisma)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3225",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3221": {
+      "type": "pr",
+      "number": 3221,
+      "title": "feat: add icon for .allcontributorsrc",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3221",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3191": {
+      "type": "pr",
+      "number": 3191,
+      "title": "feat: add `.ets`、`.d.ets` icons and remove `.ets`、`.d.ets` from TypeScript",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3191",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3173": {
+      "type": "pr",
+      "number": 3173,
+      "title": "feat(icon-theme): add notice file and its .md/.rst/.txt extensions",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3173",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3149": {
+      "type": "pr",
+      "number": 3149,
+      "title": "feat: add discord.py cogs icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3149",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3117": {
+      "type": "pr",
+      "number": 3117,
+      "title": "add trpc folder icons",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3117",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3116": {
+      "type": "pr",
+      "number": 3116,
+      "title": "feat: add file icon for W++ (.wpp)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3116",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3084": {
+      "type": "pr",
+      "number": 3084,
+      "title": "feat: support Raku",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3084",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3076": {
+      "type": "pr",
+      "number": 3076,
+      "title": "feat: ✨ editorconfig icon",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3076",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3032": {
+      "type": "pr",
+      "number": 3032,
+      "title": "feat: add folder icon for datastructure",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3032",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-3015": {
+      "type": "pr",
+      "number": 3015,
+      "title": "feat: add icons for pyret (and compiled)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3015",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2976": {
+      "type": "pr",
+      "number": 2976,
+      "title": "feat: add folder icon for lighthouse",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2976",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2948": {
+      "type": "pr",
+      "number": 2948,
+      "title": "feat: add folder icon for swagger",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2948",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2896": {
+      "type": "pr",
+      "number": 2896,
+      "title": "feat: add icons for crossplane",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2896",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2832": {
+      "type": "pr",
+      "number": 2832,
+      "title": "feat: add icon for temporary files (`.tmp`, `.temp`)",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2832",
+      "status": "pending",
+      "classification": "missing",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2783": {
+      "type": "pr",
+      "number": 2783,
+      "title": "feat: add new icons for storage folder",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2783",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "pr-2162": {
+      "type": "pr",
+      "number": 2162,
+      "title": "feat: add new icons folder fluig and totvs",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2162",
+      "status": "pending",
+      "classification": "present",
+      "firstSeen": "2026-07-30T19:10:13.183Z",
+      "lastSeen": "2026-07-30T19:10:13.183Z"
+    }
+  }
 }
