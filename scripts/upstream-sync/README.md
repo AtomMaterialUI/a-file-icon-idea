@@ -47,7 +47,7 @@ The logic is split into small, single-purpose modules under `src/`:
 | `src/args.mjs` | Command-line parsing (`commander`) with env-var defaults. |
 | `src/associations.mjs` | Builds the token index from the XMLs (`fast-xml-parser`). |
 | `src/classify.mjs` | Title tokenization and the missing/review/present heuristic. |
-| `src/github.mjs` | Upstream issue/PR fetching via the Search API (`@octokit/rest`), asserting each query's result count against `total_count` so a truncated response fails instead of silently dropping tracked items, + relevance filter. |
+| `src/github.mjs` | Upstream issue/PR fetching (`@octokit/rest`), paging `issues.listForRepo` by explicit page number and validating the total against the repo's `open_issues_count` so a truncated response is detected and retried (then warned, not fatal), + relevance filter. |
 | `src/state.mjs` | Loads, reconciles and persists `state.json`. |
 | `src/report.mjs` | Renders the Markdown report. |
 

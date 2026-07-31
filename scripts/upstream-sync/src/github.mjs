@@ -26,31 +26,31 @@
 // upstream issues and PRs, plus the relevance filter used to keep only
 // icon-related items.
 //
-// The issues list endpoint (`issues.listForRepo`) is eventually consistent and
-// was observed returning silently truncated pages in CI, which let already
-// tracked items vanish from the report. We instead drive the Search API, whose
-// `total_count` gives an authoritative expected size we can assert against, so a
-// truncated fetch fails loudly rather than corrupting the tracking state.
+// We page the `issues.listForRepo` endpoint by explicit page number rather than
+// relying on `Link`-header pagination: that endpoint is eventually consistent
+// and was observed dropping the `next` link (or returning a short page) early,
+// which silently truncated the result set. The Search API is not a viable
+// alternative here because the Actions `GITHUB_TOKEN` returns restricted
+// cross-repo search results. `open_issues_count` from the repo endpoint gives a
+// token-agnostic expected size we can validate against.
+//
+// A shortfall is reported as a warning rather than a hard failure: the report is
+// rendered from the persisted state (not from a single run's fetch), so a
+// partial run only delays discovery of new items instead of dropping tracked
+// ones.
 
 import { Octokit } from '@octokit/rest';
 
 import { UPSTREAM_OWNER, UPSTREAM_REPO } from './config.mjs';
 
-const SEARCH_PAGE_SIZE = 100;
-// Search only exposes the first 1000 results; treat anything beyond that as
-// unfetchable rather than pretending the page count is authoritative.
-const SEARCH_RESULT_CAP = 1000;
+const PAGE_SIZE = 100;
+// Hard ceiling on pages walked, well above the current open-item count, so a
+// misbehaving endpoint can never spin us into an unbounded loop.
+const MAX_PAGES = 30;
 const FETCH_ATTEMPTS = 3;
-
-const REPO_QUALIFIER = `repo:${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
-
-// The two independent signals that mark an upstream item as an icon request.
-// Kept as separate queries (rather than a fragile boolean OR) so each one has
-// its own authoritative `total_count` to validate against.
-const RELEVANCE_QUERIES = [
-  'label:"icon request",icons',
-  '"icon request" in:title',
-];
+// Concurrent opens/closes mean the live count and the paged count rarely match
+// exactly; only a larger gap indicates real truncation.
+const SHORTFALL_TOLERANCE = 5;
 
 function createClient() {
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
@@ -60,85 +60,62 @@ function createClient() {
   });
 }
 
-function keyOf(item) {
-  return `${item.pull_request ? 'pr' : 'issue'}-${item.number}`;
+// The repo's own open issue/PR total (includes PRs). Token-agnostic and works
+// cross-repo on public repos, unlike Search. Returns null on the closed scan,
+// where no single authoritative count is available.
+async function expectedOpenCount(octokit, includeClosed) {
+  if (includeClosed) return null;
+
+  const { data } = await octokit.rest.repos.get({ owner: UPSTREAM_OWNER, repo: UPSTREAM_REPO });
+  return data.open_issues_count;
 }
 
-// Page through a single search query, asserting the collected item count
-// reconciles with the API-reported `total_count`. Throws on any shortfall so a
-// truncated response can never be mistaken for an authoritative empty result.
-async function searchAll(octokit, query) {
-  const items = [];
-  let expected = null;
-  let incomplete = false;
+// Walk pages by explicit number, stopping only on an empty page. Short but
+// non-empty pages are tolerated (the endpoint returns them mid-list) so we do
+// not stop early the way Link-following pagination did.
+async function pageThrough(octokit, includeClosed) {
+  const items = new Map();
 
-  for (let page = 1; page <= Math.ceil(SEARCH_RESULT_CAP / SEARCH_PAGE_SIZE); page++) {
-    const { data } = await octokit.rest.search.issuesAndPullRequests({
-      q: query,
-      per_page: SEARCH_PAGE_SIZE,
+  for (let page = 1; page <= MAX_PAGES; page++) {
+    const { data } = await octokit.rest.issues.listForRepo({
+      owner: UPSTREAM_OWNER,
+      repo: UPSTREAM_REPO,
+      state: includeClosed ? 'all' : 'open',
+      per_page: PAGE_SIZE,
       page,
-      advanced_search: 'true',
     });
 
-    if (page === 1) {
-      expected = data.total_count;
-      incomplete = Boolean(data.incomplete_results);
-    }
+    if (data.length === 0) break;
 
-    items.push(...data.items);
-
-    if (data.items.length < SEARCH_PAGE_SIZE) break;
-    if (items.length >= SEARCH_RESULT_CAP) break;
+    for (const item of data) items.set(item.number, item);
   }
 
-  const reachable = Math.min(expected, SEARCH_RESULT_CAP);
-
-  if (incomplete) {
-    throw new Error(`search returned incomplete_results for query "${query}" (expected ${expected})`);
-  }
-
-  if (items.length !== reachable) {
-    throw new Error(`search truncated for query "${query}": collected ${items.length} of ${reachable} expected`);
-  }
-
-  if (expected > SEARCH_RESULT_CAP) {
-    console.warn(`warning: query "${query}" has ${expected} results, above the ${SEARCH_RESULT_CAP} search cap; only the first ${SEARCH_RESULT_CAP} were fetched.`);
-  }
-
-  return items;
+  return [...items.values()];
 }
 
-async function fetchOnce(octokit, includeClosed) {
-  const stateQualifier = includeClosed ? '' : 'is:open ';
-  const merged = new Map();
-
-  for (const relevance of RELEVANCE_QUERIES) {
-    const query = `${REPO_QUALIFIER} ${stateQualifier}${relevance}`.trim();
-    for (const item of await searchAll(octokit, query)) {
-      merged.set(keyOf(item), item);
-    }
-  }
-
-  return [...merged.values()];
-}
-
-// Fetch icon-related upstream issues/PRs via the Search API. Retries the whole
-// fetch on truncation/transient inconsistency and surfaces a hard failure if it
-// never reconciles, so partial data is never written to state.
+// Fetch icon-related upstream issues/PRs, retrying while the paged count falls
+// short of the repo's reported open count. Never throws on an incomplete fetch:
+// it warns and returns whatever was gathered, leaving the persisted state (and
+// thus the report) intact.
 export async function fetchUpstreamItems(includeClosed) {
   const octokit = createClient();
+  const expected = await expectedOpenCount(octokit, includeClosed);
 
-  let lastError;
+  let best = [];
   for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt++) {
-    try {
-      return await fetchOnce(octokit, includeClosed);
-    } catch (error) {
-      lastError = error;
-      console.warn(`fetch attempt ${attempt}/${FETCH_ATTEMPTS} failed: ${error.message}`);
-    }
+    const items = await pageThrough(octokit, includeClosed);
+    if (items.length > best.length) best = items;
+
+    if (expected === null || best.length >= expected - SHORTFALL_TOLERANCE) return best;
+
+    console.warn(`fetch attempt ${attempt}/${FETCH_ATTEMPTS} collected ${items.length} of ~${expected} open items; retrying.`);
   }
 
-  throw new Error(`unable to fetch a complete upstream item set after ${FETCH_ATTEMPTS} attempts: ${lastError?.message}`);
+  if (expected !== null && best.length < expected - SHORTFALL_TOLERANCE) {
+    console.warn(`warning: upstream fetch incomplete (${best.length} of ~${expected} open items). Report is rendered from persisted state, so tracked items are preserved; new items may be picked up on a later run.`);
+  }
+
+  return best;
 }
 
 export function isIconRelevant(item) {

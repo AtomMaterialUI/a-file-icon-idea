@@ -29,9 +29,15 @@ import { UPSTREAM_URL } from './config.mjs';
 
 const CLASSIFICATION_ORDER = { missing: 0, review: 1, present: 2 };
 
+// All still-open (pending) tracked records, independent of whether the current
+// run happened to re-see them. The upstream fetch can be incomplete (cross-repo
+// results under the Actions token are unreliable), so filtering by `seen` here
+// would silently drop genuinely pending items. Instead we keep them and flag the
+// ones missing from the latest fetch as stale.
 function pendingRecords(state, seen) {
   return Object.values(state.items)
-    .filter((record) => record.status === 'pending' && seen.has(`${record.type}-${record.number}`))
+    .filter((record) => record.status === 'pending')
+    .map((record) => ({ ...record, stale: !seen.has(`${record.type}-${record.number}`) }))
     .sort((a, b) =>
       (CLASSIFICATION_ORDER[a.classification] - CLASSIFICATION_ORDER[b.classification]) || (b.number - a.number));
 }
@@ -50,7 +56,8 @@ function section(lines, heading, records) {
   lines.push('| --- | --- | --- | --- |');
   for (const record of records) {
     const safeTitle = record.title.replace(/\|/g, '\\|');
-    lines.push(`| ${record.type} | ${record.number} | ${safeTitle} | [open](${record.url}) |`);
+    const title = record.stale ? `⚠ ${safeTitle}` : safeTitle;
+    lines.push(`| ${record.type} | ${record.number} | ${title} | [open](${record.url}) |`);
   }
   lines.push('');
 }
@@ -60,6 +67,7 @@ export function buildReport(state, seen) {
   const missing = pending.filter((record) => record.classification === 'missing');
   const review = pending.filter((record) => record.classification === 'review');
   const present = pending.filter((record) => record.classification === 'present');
+  const staleCount = pending.filter((record) => record.stale).length;
 
   const lines = [];
   lines.push('# Upstream icon sync report');
@@ -71,6 +79,9 @@ export function buildReport(state, seen) {
   lines.push(`- **${missing.length}** likely missing`);
   lines.push(`- **${review.length}** need review`);
   lines.push(`- **${present.length}** likely already present`);
+  if (staleCount > 0) {
+    lines.push(`- ⚠ **${staleCount}** tracked but not returned by the latest fetch (still open as far as we know; the upstream fetch can be incomplete)`);
+  }
   lines.push('');
 
   section(lines, 'Likely missing — not found in association XMLs', missing);
