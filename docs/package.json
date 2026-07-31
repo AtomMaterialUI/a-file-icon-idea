@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "copy-icons": "mkdir -p ./public/icons && cp -R ../iconGenerator/assets/icons ./public/icons",
-    "prebuild": "npm run copy-icons"
+    "prebuild": "npm run copy-icons",
+    "predev": "npm run copy-icons"
   },
   "dependencies": {
     "@astrojs/internal-helpers": "^0.10.2",
