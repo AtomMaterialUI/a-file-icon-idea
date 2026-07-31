@@ -601,6 +601,16 @@
       "classification": "present",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-30T19:10:13.183Z"
+    },
+    "issue-3552": {
+      "type": "issue",
+      "number": 3552,
+      "title": "[Icon Request]: Zod",
+      "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/3552",
+      "status": "ignored",
+      "classification": "missing",
+      "firstSeen": "2026-07-31T14:33:18.825Z",
+      "lastSeen": "2026-07-31T14:33:18.825Z"
     }
   }
 }
