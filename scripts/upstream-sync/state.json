@@ -2067,7 +2067,7 @@
       "number": 2013,
       "title": "[Icon Request] Rakkas",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2013",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2077,7 +2077,7 @@
       "number": 2004,
       "title": "[Icon Request] <Params>",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2004",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2117,7 +2117,7 @@
       "number": 1905,
       "title": "[Icon Request] <designliquido>",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1905",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2127,7 +2127,7 @@
       "number": 1895,
       "title": "[Icon Request] Parser",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1895",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2757,7 +2757,7 @@
       "number": 1844,
       "title": "[Icon Request] .cmrc.json",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1844",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2787,7 +2787,7 @@
       "number": 1797,
       "title": "[Icon Request] Mikro ORM",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1797",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3627,7 +3627,7 @@
       "number": 1911,
       "title": "[Icon Request] Colored folder without icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1911",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"

@@ -142,7 +142,9 @@ file XML uses `    ` for entries, the folder XML uses `        `). Keep lines â‰
 ```
 
 - `fileNames`: comma-separated globs/filenames.
-- `pattern`: a JS-style regex matching the filename (s); anchor with `$`.
+- `pattern`: a JS-style regex matching the filename (s); anchor with `$`. When the mapped filenames end in `.js`/`.ts` (config-style
+  files), use the atomic config extension group `[cm]?[jt]s(on)?` instead of spelling out variants â€” it covers `.js`, `.ts`, `.cjs`,
+  `.mjs`, `.cts`, `.mts` and `.json` in one shot (e.g. `^mikro-orm\.config\.[cm]?[jt]s(on)?$`).
 - `priority`: `1` for generic extensions; higher (e.g. `100`, `1000`) for specific full filenames that must win over generic ones.
 - `icon`: `/icons/files/<name>.svg`.
 
