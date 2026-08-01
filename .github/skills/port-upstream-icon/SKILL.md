@@ -106,18 +106,50 @@ Save the raw SVG to the source assets dir (never the generated
 Use a lowercase, camelCase-or-plain filename consistent with neighbors (e.g. `tensorflow.svg`, `githubActions.svg`). Do not overwrite an
 existing file without confirming.
 
+### File SVG `data-iconColor` (recolor anchor)
+
+Every **file** icon must expose a single recolor anchor so the generator can retint it to the association's `iconColor`. Add a
+`data-iconColor="<Name>"` attribute (the value **must match the association `name`**, e.g. `data-iconColor="KDL"`) to the element that
+carries the icon's main fill. This is especially important for icons imported from upstream — they arrive without it, so add it by hand.
+
+- **Single fill** → put `data-iconColor="<Name>"` directly on the one `<path>` (or `<rect>`/`<polygon>`) that holds the brand color.
+- **Multiple fills** → wrap the paths/rects in a single `<g>`, move the main `fill` onto that `<g>`, and put `data-iconColor="<Name>"` on the
+  `<g>`. Elements that must keep a different color (e.g. a white accent) keep their own explicit `fill` so they survive the retint.
+
+Exactly one `data-iconColor` per file SVG. Match an existing icon (e.g. `files/bors.svg` for the single-fill case, `files/phpcsxml.svg` for
+the wrapped-`<g>` case) rather than inventing a structure.
+
+**Masking extra colors.** When the source SVG has **more than one color**, also add a `<mask>` that hides the secondary-color shapes, so the
+icon reduces to the single tinted anchor. Define it in `<defs>` and apply it to the wrapping `<g>`:
+
+- Inside `<mask id="Mask">`, put a full-canvas `<rect ... fill="white"/>` (everything visible) followed by a **black** copy of each
+  secondary shape (those areas hidden).
+- On the icon body use `<g mask="url(#Mask)" …>` with `data-iconColor` on the main fill element.
+
+See `files/phpcsxml.svg` and `files/bcheck.svg` for the pattern. Add this mask whenever you detect extra colors — it is **provisional**: the
+maintainer may keep the other colors or drop them and remove the mask, so leave it clearly as the multi-color fallback rather than flattening
+the artwork yourself.
+
 ### Folder SVG structure (closed + open)
 
 Folder icons in this repo are **standalone composite SVGs**, not auto-generated from a file icon. Each is a `24 24` viewBox SVG containing
 two parts:
 
-1. **Folder shell** — a `<path>` carrying `data-folderColor="<Name>"`, filled with the `folderColor`. The shell path differs between the two
+1. **Folder shell** — a `<path>` carrying `data-folderColor="<Name>"` (the recolor anchor retinted to the association's `folderColor`), filled
+   with the `folderColor`. The `data-folderColor` value **must match the association `name`**. The shell path differs between the two
    variants (copy the exact paths from any existing pair, e.g. `folders/gitlab.svg` and `foldersOpen/gitlab.svg`):
    - Closed: `m10 4h-6c-1.11 0-2 .89-2 2v12c0 1.097.903 2 2 2h16c1.097 0 2-.903 2-2v-10c0-1.11-.9-2-2-2h-8l-2-2z`
    - Open: `M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z`
-2. **Brand glyph** — a `<path>` (or `<g>`) carrying `data-folderIconColor="<Name>"`, filled with the `folderIconColor`, positioned
-   bottom-right with a `transform` (e.g. `scale(0.45) translate(25 20)` for a 24-viewBox logo). This is where the sourced brand SVG's path
-   goes — never fabricate it.
+2. **Brand glyph** — a `<path>` (or `<g>`) carrying `data-folderIconColor="<Name>"` (the recolor anchor retinted to the association's
+   `folderIconColor`, value **matching the association `name`**), filled with the `folderIconColor`, positioned bottom-right with a
+   `transform` (e.g. `scale(0.45) translate(25 20)` for a 24-viewBox logo). This is where the sourced brand SVG's path goes — never fabricate
+   it. Put `data-folderColor` and `data-folderIconColor` on exactly one element each, and keep both attribute values equal to the association
+   `name`.
+
+When the sourced brand glyph itself has **more than one color**, apply the same masking approach as file icons: wrap the glyph in a `<g>` with
+`data-folderIconColor`, and add a `<mask>` (full-canvas white `<rect>` plus black copies of the secondary shapes) to hide the extra colors so
+the glyph reduces to the single `folderIconColor` tint. This mask is **provisional** — the maintainer may keep or drop the other colors and
+remove it — so add it as a fallback rather than flattening the glyph yourself.
 
 **The open and closed variants are identical except for the folder-shell path** — same glyph, same `transform`, same colors, same MIT header.
 Build the closed one, then produce the open one by swapping only the shell path. Both must exist or the open state renders blank.
@@ -222,6 +254,12 @@ When the user wants to **dismiss** an item (skip/ignore/mark handled without por
 - **One item per invocation** — port or dismiss exactly the requested item.
 - **Dismiss = state only** — mark it `ignored` in `state.json`; touch nothing else.
 - **Never fabricate an SVG** — get it from upstream or ask the user.
+- **File icons need a `data-iconColor`** — one recolor anchor per file SVG, value matching the association `name`; on the single fill
+  element, or on a wrapping `<g>` when the SVG has multiple fills.
+- **Folder icons need recolor anchors** — one `data-folderColor` (shell) and one `data-folderIconColor` (glyph) per SVG, both values matching
+  the association `name`.
+- **Multi-color icons get a provisional mask** — when a file or folder glyph has more than one color, add a `<mask>` that hides the secondary
+  shapes so it reduces to the single tinted anchor; leave it as a fallback for the maintainer to keep or remove.
 - **Folder icons need two SVGs** — a closed variant in `folders/` and a matching open variant in `foldersOpen/`, identical except the
   folder-shell path; both must exist.
 - **Respect conventions** — alphabetical region, indentation, `priority`

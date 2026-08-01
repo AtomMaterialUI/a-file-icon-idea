@@ -347,7 +347,7 @@
       "number": 3332,
       "title": "feat: add kdl language icon for '.kdl' file extension",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/3332",
-      "status": "pending",
+      "status": "ported",
       "classification": "present",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1997,7 +1997,7 @@
       "number": 2079,
       "title": "[Icon Request] KDL",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2079",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2007,7 +2007,7 @@
       "number": 2076,
       "title": "[Icon Request] lspt",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2076",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2017,7 +2017,7 @@
       "number": 2070,
       "title": "[Icon Request] dtos",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2070",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
