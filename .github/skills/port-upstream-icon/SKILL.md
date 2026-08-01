@@ -66,7 +66,8 @@ Report what you resolved: the upstream key, title, link, report section, and `st
 Determine the association type from the item title/body:
 
 - **Folder** association → the title mentions "folder" (e.g. `add tensorflow folder icon`). Target: `iconGenerator/folder_associations.xml`,
-  SVG dir `iconGenerator/assets/icons/folders/`.
+  with **two** SVGs: a closed variant in `iconGenerator/assets/icons/folders/` and a matching open variant in
+  `iconGenerator/assets/icons/foldersOpen/` (see step 5).
 - **File / language** association (the default) → everything else. Target: `iconGenerator/icon_associations.xml`, SVG dir
   `iconGenerator/assets/icons/files/`.
 
@@ -98,10 +99,28 @@ Save the raw SVG to the source assets dir (never the generated
 `src/main/resources/assets/`, which is git-ignored and produced by `npm run svgo`):
 
 - File icon → `iconGenerator/assets/icons/files/<name>.svg`
-- Folder icon → `iconGenerator/assets/icons/folders/<name>.svg`
+- Folder icon → **two files are required**, both named `<name>.svg`:
+  - Closed: `iconGenerator/assets/icons/folders/<name>.svg`
+  - Open: `iconGenerator/assets/icons/foldersOpen/<name>.svg`
 
 Use a lowercase, camelCase-or-plain filename consistent with neighbors (e.g. `tensorflow.svg`, `githubActions.svg`). Do not overwrite an
 existing file without confirming.
+
+### Folder SVG structure (closed + open)
+
+Folder icons in this repo are **standalone composite SVGs**, not auto-generated from a file icon. Each is a `24 24` viewBox SVG containing
+two parts:
+
+1. **Folder shell** — a `<path>` carrying `data-folderColor="<Name>"`, filled with the `folderColor`. The shell path differs between the two
+   variants (copy the exact paths from any existing pair, e.g. `folders/gitlab.svg` and `foldersOpen/gitlab.svg`):
+   - Closed: `m10 4h-6c-1.11 0-2 .89-2 2v12c0 1.097.903 2 2 2h16c1.097 0 2-.903 2-2v-10c0-1.11-.9-2-2-2h-8l-2-2z`
+   - Open: `M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z`
+2. **Brand glyph** — a `<path>` (or `<g>`) carrying `data-folderIconColor="<Name>"`, filled with the `folderIconColor`, positioned
+   bottom-right with a `transform` (e.g. `scale(0.45) translate(25 20)` for a 24-viewBox logo). This is where the sourced brand SVG's path
+   goes — never fabricate it.
+
+**The open and closed variants are identical except for the folder-shell path** — same glyph, same `transform`, same colors, same MIT header.
+Build the closed one, then produce the open one by swapping only the shell path. Both must exist or the open state renders blank.
 
 ## 6. Add the association entry
 
@@ -145,7 +164,8 @@ file XML uses `    ` for entries, the folder XML uses `        `). Keep lines �
 - `folderNames`: include the `.`/`_` prefixed variants like existing entries.
 - `pattern`: `^[\._]?<name>$` (optionally handle plural/aliases with `(...)`).
 - `folderColor` is the folder fill; `folderIconColor` a lighter accent.
-- Folder `icon` paths are `/<name>.svg` (no `/icons/folders/` prefix).
+- Folder `icon` paths are `/<name>.svg` (no `/icons/folders/` prefix). The single `icon` attribute covers **both** variants — the generator
+  resolves the closed SVG from `folders/` and the open SVG from `foldersOpen/` by the same filename, so both source files must be present.
 - `priority` is typically `100`; keep `defaultState="false"` like neighbors.
 
 Preserve existing precedence — don't reorder or renumber unrelated entries. Do not touch the MIT license header comment.
@@ -160,8 +180,9 @@ issue remains the source of truth and the next sync will record it.
 
 ## 8. Validate and report
 
-- Confirm the XML is well-formed and the new `icon` path matches the saved SVG filename. A quick check: `npm run check-upstream` should now
-  classify the item as `present` (needs `GITHUB_TOKEN`); this is optional and network-dependent.
+- Confirm the XML is well-formed and the new `icon` path matches the saved SVG filename. For a **folder** icon, also confirm **both** the
+  closed (`folders/<name>.svg`) and open (`foldersOpen/<name>.svg`) source files exist and are well-formed. A quick check:
+  `npm run check-upstream` should now classify the item as `present` (needs `GITHUB_TOKEN`); this is optional and network-dependent.
 - You do **not** need to run `npm run svgo` or Gradle — `processResources`
   regenerates `src/main/resources/assets/` from these sources at build time.
 - Summarize for the user: the item ported, file vs folder, the SVG path, the XML entry added, and the `state.json` status change. List
@@ -199,6 +220,8 @@ When the user wants to **dismiss** an item (skip/ignore/mark handled without por
 - **One item per invocation** — port or dismiss exactly the requested item.
 - **Dismiss = state only** — mark it `ignored` in `state.json`; touch nothing else.
 - **Never fabricate an SVG** — get it from upstream or ask the user.
+- **Folder icons need two SVGs** — a closed variant in `folders/` and a matching open variant in `foldersOpen/`, identical except the
+  folder-shell path; both must exist.
 - **Respect conventions** — alphabetical region, indentation, `priority`
   precedence, `.`/`_` folder-name variants, ≤160-char lines, MIT header intact.
 - **Ask when ambiguous** — unresolved match, missing SVG, or uncertain color.

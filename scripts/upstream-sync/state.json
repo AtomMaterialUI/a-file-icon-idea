@@ -1677,7 +1677,7 @@
       "number": 1699,
       "title": "[Icon Request] dotenv",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1699",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1807,7 +1807,7 @@
       "number": 1593,
       "title": "[Icon Request]: pugjs",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1593",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2147,7 +2147,7 @@
       "number": 1785,
       "title": "[Icon Request] google",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1785",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2167,7 +2167,7 @@
       "number": 1816,
       "title": "[Icon Request] MVC",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1816",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2177,7 +2177,7 @@
       "number": 1719,
       "title": "[Icon Request] RabbitMQ",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1719",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2287,7 +2287,7 @@
       "number": 1473,
       "title": "[Icon Request] Fluent",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1473",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2827,7 +2827,7 @@
       "number": 1696,
       "title": "[Icon Request] Adaptive Cards",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1696",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3397,7 +3397,7 @@
       "number": 1400,
       "title": "[Icon Request] Feature folder icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/1400",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
