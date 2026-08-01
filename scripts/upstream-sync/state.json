@@ -567,7 +567,7 @@
       "number": 2832,
       "title": "feat: add icon for temporary files (`.tmp`, `.temp`)",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/pull/2832",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-30T19:10:13.183Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -587,7 +587,7 @@
       "number": 2724,
       "title": "[Icon Request]: encore ",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2724",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1787,7 +1787,7 @@
       "number": 2883,
       "title": "[Icon Request]: <llm>",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2883",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
