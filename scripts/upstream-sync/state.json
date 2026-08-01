@@ -1447,7 +1447,7 @@
       "number": 2031,
       "title": "[Icon Request] Livewire",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2031",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2027,7 +2027,7 @@
       "number": 2061,
       "title": "[Icon Request] BCheck",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2061",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3927,7 +3927,7 @@
       "number": 830,
       "title": "[Folder Icon Request] Laravel Livewire Folder Icon",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/830",
-      "status": "ignored",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
