@@ -1877,7 +1877,7 @@
       "number": 2293,
       "title": "[Icon Request] FlatBuffers",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2293",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
