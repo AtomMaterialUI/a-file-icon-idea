@@ -897,7 +897,7 @@
       "number": 2197,
       "title": "[Icon Request] blob folder",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2197",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1917,7 +1917,7 @@
       "number": 2209,
       "title": "[Icon Request] BitBake",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2209",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -1927,7 +1927,7 @@
       "number": 2150,
       "title": "[Icon Request] SIESTA",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2150",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2657,7 +2657,7 @@
       "number": 2208,
       "title": "[Icon Request]  floder-spider",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2208",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -2697,7 +2697,7 @@
       "number": 2107,
       "title": "[Icon Request] Objs folder",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2107",
-      "status": "pending",
+      "status": "ignored",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
@@ -3207,7 +3207,7 @@
       "number": 2278,
       "title": "[Icon Request] @exlint.io/inflint",
       "url": "https://github.com/material-extensions/vscode-material-icon-theme/issues/2278",
-      "status": "pending",
+      "status": "ported",
       "classification": "missing",
       "firstSeen": "2026-07-31T18:05:01.906Z",
       "lastSeen": "2026-07-31T18:05:01.906Z"
