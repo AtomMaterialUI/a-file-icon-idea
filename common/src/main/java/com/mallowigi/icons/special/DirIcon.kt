@@ -23,6 +23,8 @@
  */
 package com.mallowigi.icons.special
 
+import com.intellij.ui.RetrievableIcon
+import com.intellij.ui.icons.IconReplacer
 import icons.AtomIcons
 import java.awt.Component
 import java.awt.Graphics
@@ -31,10 +33,14 @@ import javax.swing.Icon
 /**
  * Dir icon
  *
+ * Implements [RetrievableIcon] so that Remote Development (JetBrains Gateway / Toolbox remote) can serialize it: the backend only knows how
+ * to send platform icon types to the frontend, and renders an unknown [Icon] implementation as an empty icon. Exposing the wrapped icon
+ * lets the platform send the underlying [closedIcon] instead.
+ *
  * @property closedIcon
  * @property openedIcon
  */
-open class DirIcon(private val closedIcon: Icon, val openedIcon: Icon) : Icon {
+open class DirIcon(private val closedIcon: Icon, val openedIcon: Icon) : RetrievableIcon {
   internal constructor() : this(AtomIcons.Nodes2.FolderOpen, AtomIcons.Nodes2.FolderOpen)
 
   constructor(icon: Icon) : this(icon, icon)
@@ -47,5 +53,11 @@ open class DirIcon(private val closedIcon: Icon, val openedIcon: Icon) : Icon {
 
   /** Icon height. */
   override fun getIconHeight(): Int = closedIcon.iconHeight
+
+  /** The icon actually painted, used by the platform to serialize this icon. */
+  override fun retrieveIcon(): Icon = closedIcon
+
+  /** Apply the replacer to both icons, keeping the opened icon available to the hollow folders' decorator. */
+  override fun replaceBy(replacer: IconReplacer): Icon = DirIcon(replacer.replaceIcon(closedIcon), replacer.replaceIcon(openedIcon))
 
 }

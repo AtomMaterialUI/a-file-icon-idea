@@ -6,6 +6,8 @@
 
 ### Fixes
 
+- Fixed folder icons not showing in **Remote Development** (JetBrains Gateway / Toolbox remote): folders with an association rendered with no icon at all.
+
 ### Removals
 
 ### Additions
