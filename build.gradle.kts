@@ -98,6 +98,7 @@ dependencies {
       "com.intellij.java",
       "Git4Idea",
     )
+    bundledModule("intellij.regexp")
   }
 
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")

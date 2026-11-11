@@ -64,6 +64,9 @@ dependencies {
     pluginVerifier()
     zipSigner()
 
+    bundledModule("intellij.regexp")
+    bundledModule("intellij.platform.vcs.shared")
+
     plugins(
       "com.jetbrains.php:${pluginsVersion}"
     )
