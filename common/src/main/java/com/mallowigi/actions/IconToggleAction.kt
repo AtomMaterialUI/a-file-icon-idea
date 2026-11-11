@@ -64,7 +64,7 @@ abstract class IconToggleAction : ToggleAction() {
   override fun update(e: AnActionEvent) {
     val selected = isSelected(e)
     val presentation = e.presentation
-    val icon = presentation.icon ?: return
+    val icon = templatePresentation.icon ?: return
     Toggleable.setSelected(presentation, selected)
     val fallbackIcon = selectedFallbackIcon()
     val actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon)
@@ -72,7 +72,7 @@ abstract class IconToggleAction : ToggleAction() {
     // Recreate the action button look
     when {
       selected -> e.presentation.icon = LayeredIconService.create(actionButtonIcon, regularIcon(icon))
-      else -> e.presentation.icon = regularIcon(icon)
+      else     -> e.presentation.icon = regularIcon(icon)
     }
   }
 
