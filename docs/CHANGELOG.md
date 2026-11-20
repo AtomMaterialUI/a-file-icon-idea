@@ -6,6 +6,9 @@
 
 ### Fixes
 
+- Fixed folder icons not showing in **Remote Development** (JetBrains Gateway / Toolbox remote): folders with an association rendered with no icon at all.
+- Fixed the plugin not loading in the **JetBrains Client** in split mode (Remote Development): UI icons, settings pages and toolbar actions now apply on the client, and settings are kept in sync with the host. Install the plugin on both the host and the client.
+
 ### Removals
 
 ### Additions

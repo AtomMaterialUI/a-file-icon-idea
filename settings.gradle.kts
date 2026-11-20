@@ -25,3 +25,8 @@ rootProject.name = "a-file-icon-idea"
 //include("common", "rider")
 include("common")
 include("rider")
+// Split mode content modules: the project name is the module name, so the jar is lib/modules/<module>.jar
+include("com.mallowigi.frontend")
+include("com.mallowigi.backend")
+project(":com.mallowigi.frontend").projectDir = file("frontend")
+project(":com.mallowigi.backend").projectDir = file("backend")

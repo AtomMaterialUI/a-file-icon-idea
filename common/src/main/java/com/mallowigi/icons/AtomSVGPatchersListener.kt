@@ -25,7 +25,6 @@ package com.mallowigi.icons
 
 import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
-import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.LafManagerListener
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.DumbAware
@@ -39,6 +38,7 @@ import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.svgpatchers.MainSvgPatcher
 import com.mallowigi.utils.SvgLoaderHacker.collectOtherPatcher
 import com.mallowigi.utils.getPluginId
+import com.mallowigi.utils.refreshUI
 
 /** Listener for SVG Patchers. */
 class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAware {
@@ -85,7 +85,7 @@ class AtomSVGPatchersListener : DynamicPluginListener, ProjectActivity, DumbAwar
       })
     }
 
-    ApplicationManager.getApplication().invokeLater { LafManager.getInstance().updateUI() }
+    ApplicationManager.getApplication().invokeLater { refreshUI() }
   }
 
   /** Init on project opened. */

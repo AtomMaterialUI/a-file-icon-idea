@@ -156,6 +156,9 @@ class AtomSelectConfig : PersistentStateComponent<AtomSelectConfig> {
     init()
   }
 
+  /** Reset to defaults when the other side of a split mode session has no stored state. */
+  override fun noStateLoaded(): Unit = loadState(AtomSelectConfig())
+
   private fun fireChanged() {
     ApplicationManager.getApplication().invokeLater {
       ApplicationManager.getApplication().messageBus

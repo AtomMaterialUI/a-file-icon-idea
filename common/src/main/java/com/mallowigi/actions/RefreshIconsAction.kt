@@ -36,6 +36,7 @@ class RefreshIconsAction : AnAction() {
   /** Refresh icons. */
   override fun actionPerformed(e: AnActionEvent) {
     AtomSettingsConfig.instance.fireChanged()
+    IconPatchersManager.instance.updateFileIcons()
     IconLoader.clearCache()
     IconPatchersManager.instance.init()
   }

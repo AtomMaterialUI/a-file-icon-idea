@@ -154,6 +154,9 @@ class AtomProjectSelectConfig : PersistentStateComponent<AtomProjectSelectConfig
     init()
   }
 
+  /** Reset to defaults when the other side of a split mode session has no stored state. */
+  override fun noStateLoaded(): Unit = loadState(AtomProjectSelectConfig())
+
   private fun init() {
     selectedFolderAssociations.updateOwnAssociations()
     selectedFileAssociations.updateOwnAssociations()

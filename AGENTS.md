@@ -5,6 +5,7 @@
 - `common/` contains shared Kotlin implementation code.
 - `rider/` contains Rider-specific Kotlin integration.
 - `src/main/resources/META-INF/` contains plugin descriptors.
+- `frontend/` and `backend/` contain the descriptor-only split mode content modules `com.mallowigi.frontend` and `com.mallowigi.backend`. Their classes stay in `common/`.
 - `iconGenerator/assets/` is the source for generated SVG resources.
 - `src/main/resources/assets/` is generated and ignored by Git.
 
@@ -38,6 +39,9 @@
 - Use project/application services for shared state. Dispose message-bus connections and invalidate caches on every relevant lifecycle event.
 - Preserve project-specific association precedence over global associations.
 - Use `DumbAware` paths only with VFS/file-type/configuration data; do not require PSI or indexes during indexing.
+- Register extensions by where they run in split mode (Remote Development). Settings pages and toolbar actions go in `com.mallowigi.frontend.xml`. Icon providers, project view decorators and anything needing PSI or the project model go in `com.mallowigi.backend.xml`. Only what both sides need goes in `plugin.xml`, including UI theming (icon patchers, SVG patchers, tree arrows): the backend draws some panels, such as the Git log, and streams them to the client. A regular IDE loads both modules.
+- Do not add a plugin dependency to `plugin.xml` that the JetBrains Client cannot fully load (such as `Git4Idea`): the client then excludes the whole plugin.
+- Persisted settings are synchronized between client and backend through `AtomRemoteSettingInfoProvider`. A new `@State` component must be added there, declared as `applicationSettings` or `projectSettings` in `plugin.xml`, and override `noStateLoaded()`.
 
 ## Scope and editing
 
