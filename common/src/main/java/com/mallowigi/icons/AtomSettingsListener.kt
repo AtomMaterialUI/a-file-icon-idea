@@ -25,7 +25,6 @@ package com.mallowigi.icons
 
 import com.intellij.ide.plugins.DynamicPluginListener
 import com.intellij.ide.plugins.IdeaPluginDescriptor
-import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.UISettingsListener
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.diagnostic.thisLogger
@@ -35,22 +34,30 @@ import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
+import com.intellij.openapi.util.JDOMUtil
 import com.intellij.util.messages.MessageBusConnection
 import com.intellij.util.ui.UIUtil
+import com.intellij.util.xmlb.XmlSerializer
 import com.mallowigi.config.AtomSettingsConfig
 import com.mallowigi.config.listeners.AtomConfigNotifier
 import com.mallowigi.config.listeners.AtomSelectNotifier
+import com.mallowigi.config.select.AtomSelectConfig
 import com.mallowigi.icons.patchers.AbstractIconPatcher
 import com.mallowigi.icons.services.IconFilterManager
 import com.mallowigi.icons.services.IconPatchersManager
 import com.mallowigi.icons.services.AssociationResolver
 import com.mallowigi.tree.OpenFileDirectoryTracker
+import com.mallowigi.tree.arrows.ArrowsStyles
 import com.mallowigi.utils.getPluginId
 import com.mallowigi.utils.refreshOpenedProjects
+import com.mallowigi.utils.refreshUI
+import org.jdom.Element
 
 /** Listener for Settings Changes. */
 class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
   private var connection: MessageBusConnection? = null
+  private var fileIconSettings: AtomSettingsConfig? = null
+  private var globalAssociations: Element? = null
 
   /** Init on plugin loaded. */
   override fun pluginLoaded(pluginDescriptor: IdeaPluginDescriptor) {
@@ -84,9 +91,9 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
       subscribe(UISettingsListener.TOPIC, UISettingsListener { IconFilterManager.applyFilter() })
 
-      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { onSettingsChanged() })
+      subscribe(AtomConfigNotifier.TOPIC, AtomConfigNotifier { onSettingsChanged(refreshFileIcons = fileIconSettingsChanged()) })
 
-      subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged() })
+      subscribe(AtomSelectNotifier.TOPIC, AtomSelectNotifier { onSettingsChanged(refreshFileIcons = associationsChanged(it)) })
 
       subscribe(FileTypeManager.TOPIC, object : FileTypeListener {
         override fun fileTypesChanged(event: FileTypeEvent) {
@@ -96,10 +103,25 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
       })
     }
 
+    fileIconSettings = fileIconSettingsSnapshot()
+    globalAssociations = XmlSerializer.serialize(AtomSelectConfig.instance)
+
     UIUtil.invokeLaterIfNeeded { IconFilterManager.applyFilter() }
   }
 
-  private fun onSettingsChanged() {
+  /**
+   * Refreshing file icons fires a file type change, which re-applies the icon patchers and makes the IDE re-scan the project for indexing.
+   * Changes that only affect how icons are painted skip it and only repaint.
+   */
+  private fun onSettingsChanged(refreshFileIcons: Boolean) {
+    if (!refreshFileIcons) {
+      UIUtil.invokeLaterIfNeeded {
+        IconFilterManager.applyFilter()
+        refreshUI()
+      }
+      return
+    }
+
     AssociationResolver.instance.invalidate()
 
     if (AtomSettingsConfig.instance.isUseHollowFolders) {
@@ -108,9 +130,44 @@ class AtomSettingsListener : DynamicPluginListener, ProjectActivity, DumbAware {
 
     UIUtil.invokeLaterIfNeeded {
       IconPatchersManager.instance.updateFileIcons()
-      LafManager.getInstance().updateUI()
+      refreshUI()
       refreshOpenedProjects()
     }
+  }
+
+  /** Whether the settings changed other than in the ones applied at paint time. */
+  private fun fileIconSettingsChanged(): Boolean {
+    val current = fileIconSettingsSnapshot()
+    val changed = current != fileIconSettings
+
+    fileIconSettings = current
+    return changed
+  }
+
+  /** The settings without the icon filters and the tree arrows, which are applied at paint time. */
+  private fun fileIconSettingsSnapshot(): AtomSettingsConfig = AtomSettingsConfig().apply {
+    copyFrom(AtomSettingsConfig.instance)
+    isMonochromeIcons = false
+    monochromeColor = null
+    isSaturatedIcons = false
+    saturation = 0
+    isOpacityIcons = false
+    opacity = 0
+    arrowsStyle = ArrowsStyles.MATERIAL
+  }
+
+  /**
+   * Whether the global associations changed. A synchronized state always looks changed to [AtomSelectConfig.loadState], so compare the
+   * serialized state instead. Project associations (`null`) are not tracked and always count as changed.
+   */
+  private fun associationsChanged(config: AtomSelectConfig?): Boolean {
+    if (config == null) return true
+
+    val current = XmlSerializer.serialize(config)
+    val changed = !JDOMUtil.areElementsEqual(current, globalAssociations)
+
+    globalAssociations = current
+    return changed
   }
 
   /** Run on project open. */

@@ -164,6 +164,9 @@ class AtomSettingsConfig : BaseState(), PersistentStateComponent<AtomSettingsCon
     firstRun = false
   }
 
+  /** Reset to defaults when the other side of a split mode session has no stored state. */
+  override fun noStateLoaded(): Unit = loadState(AtomSettingsConfig())
+
   /** Fire event when settings are changed. */
   fun fireChanged() {
     ApplicationManager.getApplication().invokeLater {

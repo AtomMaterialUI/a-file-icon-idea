@@ -31,71 +31,40 @@
   <idea-version since-build="211"/>
 
   <depends>com.intellij.modules.platform</depends>
-  <depends optional="true" config-file="withVcs.xml">Git4Idea</depends>
   <depends optional="true" config-file="withRider.xml">com.intellij.modules.rider</depends>
   <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
 
   <resource-bundle>messages.AtomFileIconsBundle</resource-bundle>
 
+  <!--
+    Split mode (Remote Development) layout.
+    This descriptor loads on both the backend and the JetBrains Client. The content modules below load where their platform
+    dependency is available; in a regular (local) IDE both of them load.
+  -->
+  <content>
+    <module name="com.mallowigi.frontend"/>
+    <module name="com.mallowigi.backend"/>
+  </content>
+
   <extensions defaultExtensionNs="com.intellij">
-    <!-- New Settings -->
-    <applicationConfigurable instance="com.mallowigi.config.AtomHomeConfigurable"
-                             id="AtomHomeConfigurable"
-                             key="settings.titles.main"
-                             groupId="appearance"/>
-    <applicationConfigurable instance="com.mallowigi.config.AtomSettingsConfigurable"
-                             parentId="AtomHomeConfigurable"
-                             key="settings.title"
-                             id="AtomSettingsConfigurable"
-                             groupId="appearance"/>
-
-    <applicationConfigurable instance="com.mallowigi.config.select.AtomSelectConfigurable"
-                             key="AtomSelectForm.title"
-                             groupId="appearance" dynamic="true"
-                             parentId="AtomHomeConfigurable"
-                             id="AtomSelectConfig"/>
-
-    <projectConfigurable instance="com.mallowigi.config.select.AtomProjectSelectConfigurable"
-                         key="AtomProjectSelectForm.title"
-                         groupId="appearance" dynamic="true"
-                         parentId="AtomSelectConfig"
-                         id="AtomProjectSelectConfig"/>
-
-
-    <search.topHitProvider implementation="com.mallowigi.config.AtomConfigTopHitProvider"
-                           id="AtomConfigTopHitProvider"/>
-    <search.optionContributor implementation="com.mallowigi.config.AtomOptionContributor"
-                              id="AtomOptionContributor"/>
-
-    <!--suppress PluginXmlValidity -->
-    <iconProvider implementation="com.mallowigi.icons.HiddenIconProvider" order="first" id="HiddenIconProvider"/>
-    <!--suppress PluginXmlValidity -->
-    <iconProvider implementation="com.mallowigi.icons.HiddenFolderIconProvider" order="first"
-                  id="HiddenFolderIconProvider"/>
-
-    <!--suppress PluginXmlValidity -->
-    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFileIconProvider"
-                  order="first, after HiddenIconProvider"
-                  id="DefaultFileIconProvider"/>
-    <!--suppress PluginXmlValidity -->
-    <iconProvider implementation="com.mallowigi.icons.providers.DefaultFolderIconProvider"
-                  order="first, after HiddenFolderIconProvider"
-                  id="DefaultFolderIconProvider"/>
-
-    <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFoldersDecorator"/>
-    <projectViewNodeDecorator implementation="com.mallowigi.tree.DefaultFilesDecorator"/>
-    <projectViewNodeDecorator implementation="com.mallowigi.tree.HollowFoldersDecorator"/>
-
     <notificationGroup displayType="BALLOON"
                        id="Atom Material Notifications"
                        bundle="messages.AtomFileIconsBundle"
                        key="notification.group.atom.material.notifications"/>
 
-    <!--suppress PluginXmlValidity -->
+    <!-- Keep settings in sync between the JetBrains Client and the backend -->
+    <applicationSettings service="com.mallowigi.config.AtomSettingsConfig"/>
+    <applicationSettings service="com.mallowigi.config.select.AtomSelectConfig"/>
+    <projectSettings service="com.mallowigi.config.select.AtomProjectSelectConfig"/>
+    <rdct.remoteSettingProvider implementation="com.mallowigi.config.AtomRemoteSettingInfoProvider"/>
 
-    <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
-    <postStartupActivity implementation="com.mallowigi.icons.AssociationCheckActivity"/>
+    <!-- VCS changes view icons: the extension point is part of the platform, available on both sides -->
+    <openapi.vcs.changes.ui.filePathIconProvider implementation="com.mallowigi.icons.providers.DefaultVcsFileIconProvider"/>
+
     <postStartupActivity implementation="com.mallowigi.icons.AtomSettingsListener"/>
+
+    <!-- UI theming runs on both sides: the client paints the UI, and the backend paints the panels it streams to the client -->
+    <postStartupActivity implementation="com.mallowigi.icons.IconPathPatcherActivity"/>
     <postStartupActivity implementation="com.mallowigi.icons.AtomSVGPatchersListener"/>
     <postStartupActivity implementation="com.mallowigi.tree.ArrowIconsComponent"/>
   </extensions>
@@ -106,90 +75,6 @@
       <implementation-class>com.mallowigi.utils.HackComponent</implementation-class>
     </component>
   </application-components>
-
-  <!--suppress PluginXmlValidity -->
-  <applicationListeners>
-    <listener class="com.mallowigi.tree.RefreshTreeListener"
-              topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
-
-  </applicationListeners>
-
-  <actions>
-    <group id="AtomFileIcons.OldToolbar" popup="true" icon="/actions/tools.svg"
-           class="com.mallowigi.actions.OldToolbarGroup">
-      <add-to-group group-id="MainToolBar" anchor="last"/>
-      <add-to-group group-id="MainToolbarRight"/>
-
-    </group>
-
-    <group id="AtomFileIcons.Actions" popup="true" icon="/actions/atom.svg"
-           class="com.mallowigi.actions.ActionGroup">
-      <add-to-group group-id="MainToolBar" anchor="last"/>
-      <add-to-group group-id="ToolsMenu"/>
-      <add-to-group group-id="ChangeScheme" anchor="last"/>
-      <add-to-group group-id="MainToolbarRight"/>
-      <action class="com.mallowigi.actions.EnableFileIconsAction" id="EnableFileIconsAction"
-              icon="/actions/atom.svg"/>
-      <action class="com.mallowigi.actions.EnableDirectoryIconsAction" id="EnableDirectoryIconsAction"
-              icon="/actions/compiledClassesFolder.svg"/>
-      <action class="com.mallowigi.actions.EnableUIIconsAction" id="EnableUIIconsAction"
-              icon="/actions/plugin.svg"/>
-      <action class="com.mallowigi.actions.EnablePsiIconsAction" id="EnablePsiIconsAction"
-              icon="/actions/psi.svg"/>
-      <action class="com.mallowigi.actions.EnableMonochromeIconsAction" id="EnableMonochromeIconsAction"
-              icon="/actions/monochrome.svg"/>
-      <action class="com.mallowigi.actions.EnableSaturationIconsAction" id="EnableSaturationIconsAction"
-              icon="/actions/saturation.svg"/>
-      <action class="com.mallowigi.actions.HideFileIconsAction" id="HideFileIcons"
-              icon="/actions/hideFileAction.svg"/>
-      <action class="com.mallowigi.actions.HideFolderIconsAction" id="HideFolderIcons"
-              icon="/actions/hideFolderAction.svg"/>
-      <action class="com.mallowigi.actions.HollowFoldersAction" id="HollowFoldersAction"
-              icon="/actions/folderOpen.svg"/>
-      <action class="com.mallowigi.actions.CustomIconSizeAction" id="BiggerIconsAction"
-              icon="/actions/plus.svg"/>
-      <action class="com.mallowigi.actions.CustomLineHeightAction" id="CustomLineHeightAction"
-              icon="/actions/lineHeight.svg"/>
-      <separator/>
-
-      <group id="AtomFileIcons.ArrowStyles" popup="true">
-        <action class="com.mallowigi.actions.arrows.MTMaterialArrows"
-                id="MTMaterialArrows"
-                icon="/actions/arrows/material.svg"/>
-        <action class="com.mallowigi.actions.arrows.MTDarculaArrows"
-                id="MTDarculaArrows"
-                icon="/actions/arrows/darcula.svg"/>
-        <action class="com.mallowigi.actions.arrows.MTPlusMinusArrows"
-                id="MTPlusMinusArrows"
-                icon="/actions/arrows/plusminus.svg"/>
-        <action class="com.mallowigi.actions.arrows.MTArrowsArrows"
-                id="MTArrowsArrows"
-                icon="/actions/arrows/arrows.svg"/>
-        <action class="com.mallowigi.actions.arrows.MTNoneArrows"
-                icon="/actions/arrows/none.svg"
-                id="MTNoneArrows"/>
-      </group>
-      <action class="com.mallowigi.actions.RefreshIconsAction"
-              id="RefreshIconsAction"
-              icon="/actions/reload.svg"/>
-      <separator/>
-    </group>
-
-    <group id="AtomFileIcons.Menus">
-      <action class="com.mallowigi.actions.AddFileAssociationAction"
-              id="AddFileAssociationAction"
-              icon="/actions/add.svg">
-      </action>
-      <action class="com.mallowigi.actions.AddFolderAssociationAction"
-              id="AddFolderAssociationAction"
-              icon="/actions/addFolder.svg">
-      </action>
-
-      <add-to-group group-id="NewGroup"/>
-    </group>
-
-
-  </actions>
 
   <description><![CDATA[
     <h1>Atom Material File Icons</h1>

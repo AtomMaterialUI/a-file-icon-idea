@@ -99,6 +99,8 @@ dependencies {
       "Git4Idea",
     )
     bundledModule("intellij.regexp")
+    pluginModule(implementation(project(":com.mallowigi.frontend")))
+    pluginModule(implementation(project(":com.mallowigi.backend")))
   }
 
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")

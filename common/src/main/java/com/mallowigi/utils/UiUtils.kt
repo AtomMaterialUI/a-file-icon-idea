@@ -32,12 +32,14 @@ import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.options.ex.Settings
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
+import com.intellij.platform.ide.productMode.IdeProductMode
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
 import com.intellij.ui.components.ActionLink
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.config.AtomSettingsBundle
 import com.mallowigi.config.AtomSettingsConfig
+import java.awt.Window
 import javax.swing.UIManager
 
 const val IMAGE_ICON_PLUGIN = "com.mallowigi.imageicon"
@@ -75,6 +77,21 @@ fun getVersion(): String = getPlugin()?.version ?: AtomSettingsBundle.message("p
 
 /** Modified color. */
 fun getModifiedColor(): JBColor = JBColor.namedColor("Tree.modifiedItemForeground", JBColor.BLUE)
+
+/**
+ * Update the UI after the icons changed.
+ *
+ * In split mode (Remote Development) the backend only draws the panels it streams to the JetBrains Client, and the icon filter and patchers
+ * apply at paint time, so a repaint is enough there instead of a full UI update, which re-lays out every panel the backend draws.
+ */
+fun refreshUI() {
+  if (IdeProductMode.isBackend) {
+    Window.getWindows().forEach { it.repaint() }
+    return
+  }
+
+  LafManager.getInstance().updateUI()
+}
 
 /** Replace arrow icons. */
 fun replaceArrowIcons() {
